@@ -1,0 +1,4351 @@
+[
+  {
+    "_id": "65a92307fb1780a27c611835",
+    "name": "CAMLICA",
+    "eventId": "65a9138b7932ebe436ba96ac",
+    "streamSettings": {
+      "streamId": "330caa51-e13f-4b06-8148-510ec2983c30"
+    },
+    "order": 0,
+    "slug": "camlica",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:27.392Z",
+    "updatedAt": "2024-04-25T10:41:07.867Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92307fb1780a27c611837",
+    "name": "BEYAZIT",
+    "eventId": "65a9138c7932ebe436ba96bf",
+    "streamSettings": {
+      "streamId": "https://us06web.zoom.us/j/87085827138?pwd=ITe03l1V381b7HFIhReOHRwV9PoPjg.1"
+    },
+    "order": 0,
+    "slug": "beyazit",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:27.534Z",
+    "updatedAt": "2024-04-25T10:40:32.031Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92307fb1780a27c61183b",
+    "name": "USKUDAR 3",
+    "eventId": "65a9138d7932ebe436ba96d3",
+    "streamSettings": {
+      "streamId": "4cc06e09-ea02-48aa-9e27-8f5e64e7c812"
+    },
+    "order": 0,
+    "slug": "uskudar_3",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:27.829Z",
+    "updatedAt": "2024-04-25T10:40:34.004Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92307fb1780a27c61183d",
+    "name": "BEYAZIT",
+    "eventId": "65a9138d7932ebe436ba96da",
+    "streamSettings": {
+      "streamId": "ec76319c-1d17-4963-b932-d8944da5e907"
+    },
+    "order": 0,
+    "slug": "beyazit",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:27.961Z",
+    "updatedAt": "2024-04-25T10:41:08.480Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92308fb1780a27c61183f",
+    "name": "EMIRGAN 1",
+    "eventId": "65a9138d7932ebe436ba96da",
+    "streamSettings": {
+      "streamId": "f9948720-7c06-4c62-bd6b-07043dfb9b5a"
+    },
+    "order": 0,
+    "slug": "emirgan_1",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:28.095Z",
+    "updatedAt": "2024-04-25T10:40:34.689Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92308fb1780a27c611841",
+    "name": "HARBIYE",
+    "eventId": "65a9138d7932ebe436ba96da",
+    "streamSettings": {
+      "streamId": "a1685075-7a97-442e-abee-bcd97846b806"
+    },
+    "order": 0,
+    "slug": "harbiye",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:28.233Z",
+    "updatedAt": "2024-04-25T10:40:55.066Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92308fb1780a27c611843",
+    "name": "EMIRGAN 1",
+    "eventId": "65a9138e7932ebe436ba96e0",
+    "streamSettings": {
+      "streamId": "579d6f86-2982-489a-b7ff-5d2045a4f866"
+    },
+    "order": 0,
+    "slug": "emirgan_1",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:28.407Z",
+    "updatedAt": "2024-04-25T10:41:21.997Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92308fb1780a27c611845",
+    "name": "EMIRGAN 2",
+    "eventId": "65a9138e7932ebe436ba96e0",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "emirgan_2",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:28.560Z",
+    "updatedAt": "2024-04-25T10:41:22.677Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92308fb1780a27c611847",
+    "name": "3B36",
+    "eventId": "65a9138e7932ebe436ba96e8",
+    "streamSettings": {
+      "streamId": "4d8af09c-0da3-447c-bdbd-52ecc07526af"
+    },
+    "order": 0,
+    "slug": "3b36",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:28.695Z",
+    "updatedAt": "2024-04-25T10:40:55.812Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92308fb1780a27c611849",
+    "name": "USKUDAR 2",
+    "eventId": "65a9138f7932ebe436ba96ee",
+    "streamSettings": {
+      "streamId": "43850ec9-bb86-4b7a-ba5e-ea5d5d672e93"
+    },
+    "order": 0,
+    "slug": "uskudar_2",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:28.825Z",
+    "updatedAt": "2024-04-25T10:41:23.533Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92308fb1780a27c61184b",
+    "name": "Connie",
+    "eventId": "65a913907932ebe436ba96f4",
+    "streamSettings": {
+      "streamId": "ea711af7-f4de-4271-bc3f-915e3c6cff25"
+    },
+    "order": 0,
+    "slug": "connie",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:28.970Z",
+    "updatedAt": "2024-04-25T10:41:24.148Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92309fb1780a27c61184d",
+    "name": "Main Stage",
+    "eventId": "65a913907932ebe436ba96f4",
+    "streamSettings": {
+      "streamId": "0af33fde-ae10-4e7a-8451-d30c49ca8f3b"
+    },
+    "order": 0,
+    "slug": "main_stage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:29.120Z",
+    "updatedAt": "2024-04-25T10:41:24.797Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92309fb1780a27c61184f",
+    "name": "BEYAZIT",
+    "eventId": "65a913907932ebe436ba96fa",
+    "streamSettings": {
+      "streamId": "b9042549-2082-4870-9c8f-224211205b2a"
+    },
+    "order": 0,
+    "slug": "beyazit",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:29.271Z",
+    "updatedAt": "2024-04-25T10:40:35.447Z",
+    "__v": 0,
+    "organizationId": "65a90bf27932ebe436ba9348"
+  },
+  {
+    "_id": "65a92309fb1780a27c611851",
+    "name": "Creators Lab",
+    "eventId": "65a9138b7932ebe436ba96a9",
+    "streamSettings": {
+      "streamId": "5a958e9e-5104-4df6-9412-e2356b4328e9"
+    },
+    "order": 0,
+    "slug": "creators_lab",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:29.413Z",
+    "updatedAt": "2024-04-25T10:40:56.367Z",
+    "__v": 0,
+    "organizationId": "65a90bf47932ebe436ba9351"
+  },
+  {
+    "_id": "65a92309fb1780a27c611853",
+    "name": "Lexis",
+    "eventId": "65a9138b7932ebe436ba96a9",
+    "streamSettings": {
+      "streamId": "5a958e9e-5104-4df6-9412-e2356b4328e9"
+    },
+    "order": 0,
+    "slug": "lexis",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:29.553Z",
+    "updatedAt": "2024-04-25T10:41:25.581Z",
+    "__v": 0,
+    "organizationId": "65a90bf47932ebe436ba9351"
+  },
+  {
+    "_id": "65a92309fb1780a27c611855",
+    "name": "Magazin - Main Stage",
+    "eventId": "65a9138c7932ebe436ba96b8",
+    "streamSettings": {
+      "streamId": "1d0aa22a-701a-4ef7-8c6e-fa41f6eb11e1"
+    },
+    "order": 0,
+    "slug": "magazin__main_stage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:29.691Z",
+    "updatedAt": "2024-04-25T10:41:26.401Z",
+    "__v": 0,
+    "organizationId": "65a90bf47932ebe436ba9351"
+  },
+  {
+    "_id": "65a92309fb1780a27c611857",
+    "name": "Atelier - Side Stage",
+    "eventId": "65a9138c7932ebe436ba96b8",
+    "streamSettings": {
+      "streamId": "678c6374-3900-434e-8766-9d7139e0c643"
+    },
+    "order": 0,
+    "slug": "atelier__side_stage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:29.828Z",
+    "updatedAt": "2024-04-25T10:41:09.227Z",
+    "__v": 0,
+    "organizationId": "65a90bf47932ebe436ba9351"
+  },
+  {
+    "_id": "65a92309fb1780a27c611859",
+    "name": "Loft - Workshop 0",
+    "eventId": "65a9138c7932ebe436ba96b8",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "loft__workshop_0",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:29.973Z",
+    "updatedAt": "2024-04-25T10:41:09.865Z",
+    "__v": 0,
+    "organizationId": "65a90bf47932ebe436ba9351"
+  },
+  {
+    "_id": "65a9230afb1780a27c61185b",
+    "name": "Atelier - Workshop 1",
+    "eventId": "65a9138c7932ebe436ba96b8",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "atelier__workshop_1",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:30.107Z",
+    "updatedAt": "2024-04-25T10:41:10.557Z",
+    "__v": 0,
+    "organizationId": "65a90bf47932ebe436ba9351"
+  },
+  {
+    "_id": "65a9230afb1780a27c61185d",
+    "name": "East Room ( Main )",
+    "eventId": "65a9138b7932ebe436ba96b2",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "east_room__main_",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:30.240Z",
+    "updatedAt": "2024-04-25T10:41:27.220Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9354"
+  },
+  {
+    "_id": "65a9230afb1780a27c61185f",
+    "name": "Gallery",
+    "eventId": "65a9138b7932ebe436ba96b2",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "gallery",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:30.384Z",
+    "updatedAt": "2024-04-25T10:40:36.124Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9354"
+  },
+  {
+    "_id": "65a9230afb1780a27c611861",
+    "name": "Lincoln Stage ( Builder / Legal)",
+    "eventId": "65a9138b7932ebe436ba96b2",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "lincoln_stage__builder__legal",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:30.517Z",
+    "updatedAt": "2024-04-25T10:41:11.278Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9354"
+  },
+  {
+    "_id": "65a9230afb1780a27c611863",
+    "name": "Michigan Stage ( creatives / trad business )",
+    "eventId": "65a9138b7932ebe436ba96b2",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "michigan_stage__creatives__trad_business_",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:30.667Z",
+    "updatedAt": "2024-04-25T10:40:57.012Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9354"
+  },
+  {
+    "_id": "65a9230afb1780a27c611865",
+    "name": "Oak Room (Hacker room)",
+    "eventId": "65a9138b7932ebe436ba96b2",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "oak_room_hacker_room",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:30.844Z",
+    "updatedAt": "2024-04-25T10:40:57.562Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9354"
+  },
+  {
+    "_id": "65a9230afb1780a27c611867",
+    "name": "Casa da Música",
+    "eventId": "65a9138b7932ebe436ba96af",
+    "streamSettings": {
+      "streamId": "20cb8f91-4388-4f56-a72a-9bb7228818d7"
+    },
+    "order": 0,
+    "slug": "casa_da_msica",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:30.987Z",
+    "updatedAt": "2024-04-25T10:40:36.942Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9357"
+  },
+  {
+    "_id": "65a9230bfb1780a27c611869",
+    "name": "Conference main hall",
+    "eventId": "65a9138b7932ebe436ba96af",
+    "streamSettings": {
+      "streamId": "7718a79e-a2f3-46ae-bf44-9e005f2bb2d1"
+    },
+    "order": 0,
+    "slug": "conference_main_hall",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:31.119Z",
+    "updatedAt": "2024-04-25T10:40:37.658Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9357"
+  },
+  {
+    "_id": "65a9230bfb1780a27c61186b",
+    "name": "Hackathon",
+    "eventId": "65a9138b7932ebe436ba96af",
+    "streamSettings": {
+      "streamId": "20cb8f91-4388-4f56-a72a-9bb7228818d7"
+    },
+    "order": 0,
+    "slug": "hackathon",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:31.251Z",
+    "updatedAt": "2024-04-25T10:41:28.039Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9357"
+  },
+  {
+    "_id": "65a9230bfb1780a27c61186d",
+    "name": "Workshop",
+    "eventId": "65a9138b7932ebe436ba96af",
+    "streamSettings": {
+      "streamId": "20cb8f91-4388-4f56-a72a-9bb7228818d7"
+    },
+    "order": 0,
+    "slug": "workshop",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:31.386Z",
+    "updatedAt": "2024-04-25T10:40:38.286Z",
+    "__v": 0,
+    "organizationId": "65a90bf57932ebe436ba9357"
+  },
+  {
+    "_id": "65a9230bfb1780a27c61186f",
+    "name": "Mainstage",
+    "eventId": "65a9138c7932ebe436ba96b6",
+    "streamSettings": {
+      "streamId": "0e577125-8b01-45bd-b058-c6f2731f73f9"
+    },
+    "order": 0,
+    "slug": "mainstage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:31.555Z",
+    "updatedAt": "2024-04-25T10:40:38.952Z",
+    "__v": 0,
+    "organizationId": "65a90bf67932ebe436ba935a"
+  },
+  {
+    "_id": "65a9230bfb1780a27c611871",
+    "name": "Farabeuf Amphitheater",
+    "eventId": "65a9138c7932ebe436ba96c1",
+    "streamSettings": {
+      "streamId": "0e577125-8b01-45bd-b058-c6f2731f73f9"
+    },
+    "order": 0,
+    "slug": "farabeuf_amphitheater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:31.692Z",
+    "updatedAt": "2024-04-25T10:41:11.860Z",
+    "__v": 0,
+    "organizationId": "65a90bf67932ebe436ba935a"
+  },
+  {
+    "_id": "65a9230dfb1780a27c611887",
+    "name": "Main Stage",
+    "eventId": "65a9138d7932ebe436ba96cd",
+    "streamSettings": {
+      "streamId": "64680696-cad9-4762-9e39-344c0845dca7"
+    },
+    "order": 0,
+    "slug": "main_stage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:33.259Z",
+    "updatedAt": "2024-04-25T10:40:39.743Z",
+    "__v": 0,
+    "organizationId": "65a90bf87932ebe436ba9363"
+  },
+  {
+    "_id": "65a9230dfb1780a27c611889",
+    "name": "Gulf Stage",
+    "eventId": "65a9138d7932ebe436ba96d6",
+    "streamSettings": {
+      "streamId": "3b83003e-a082-4ae2-92c2-c8d1dcb6b6d2"
+    },
+    "order": 0,
+    "slug": "gulf_stage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:33.400Z",
+    "updatedAt": "2024-04-25T10:40:58.162Z",
+    "__v": 0,
+    "organizationId": "65a90bf97932ebe436ba9369"
+  },
+  {
+    "_id": "65a9230dfb1780a27c61188f",
+    "name": "Volcano Stage",
+    "eventId": "65a9138d7932ebe436ba96d6",
+    "streamSettings": {
+      "streamId": "1fd084b7-bbd7-441b-a75a-4c84c31e7b95"
+    },
+    "order": 0,
+    "slug": "volcano_stage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:33.814Z",
+    "updatedAt": "2024-04-25T10:41:29.356Z",
+    "__v": 0,
+    "organizationId": "65a90bf97932ebe436ba9369"
+  },
+  {
+    "_id": "65a9230efb1780a27c611893",
+    "name": "Rome",
+    "eventId": "65a9138d7932ebe436ba96dc",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "rome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:34.102Z",
+    "updatedAt": "2024-04-25T10:41:13.192Z",
+    "__v": 0,
+    "organizationId": "65a90bfa7932ebe436ba936c"
+  },
+  {
+    "_id": "65a9230efb1780a27c61189b",
+    "name": "Mainstage",
+    "eventId": "65a9169bf39fbd12acc22e19",
+    "streamSettings": {
+      "streamId": "6ea1f9c3-c371-4982-992b-109d5b2d167b"
+    },
+    "order": 0,
+    "slug": "mainstage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:34.681Z",
+    "updatedAt": "2024-04-25T10:41:31.418Z",
+    "__v": 0,
+    "organizationId": "65a90bfa7932ebe436ba936c"
+  },
+  {
+    "_id": "65a9230efb1780a27c61189d",
+    "name": "Mainstage",
+    "eventId": "65a9138e7932ebe436ba96e2",
+    "streamSettings": {
+      "streamId": "252f02eb-1268-412a-b1ec-9a17b12e179f"
+    },
+    "order": 0,
+    "slug": "mainstage",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:34.815Z",
+    "updatedAt": "2024-04-25T10:40:58.753Z",
+    "__v": 0,
+    "organizationId": "65a90bfb7932ebe436ba9372"
+  },
+  {
+    "_id": "65a9230efb1780a27c61189f",
+    "name": "Workshop Room 1",
+    "eventId": "65a9138e7932ebe436ba96e2",
+    "streamSettings": {
+      "streamId": "a7bd08rh13lu397l"
+    },
+    "order": 0,
+    "slug": "workshop_room_1",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:34.954Z",
+    "updatedAt": "2024-04-25T10:41:32.170Z",
+    "__v": 0,
+    "organizationId": "65a90bfb7932ebe436ba9372"
+  },
+  {
+    "_id": "65a9230ffb1780a27c6118a1",
+    "name": "Workshop Room 2",
+    "eventId": "65a9138e7932ebe436ba96e2",
+    "streamSettings": {
+      "streamId": "a7bdc6ce-28bc-4ca1-b112-3083fa9a737f"
+    },
+    "order": 0,
+    "slug": "workshop_room_2",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:35.090Z",
+    "updatedAt": "2024-04-25T10:40:59.347Z",
+    "__v": 0,
+    "organizationId": "65a90bfb7932ebe436ba9372"
+  },
+  {
+    "_id": "65a9230ffb1780a27c6118a3",
+    "name": "Theater",
+    "eventId": "65a9138e7932ebe436ba96e6",
+    "streamSettings": {
+      "streamId": "c2de848a-c8eb-49a0-b35d-ca8e3d4e8cc4"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:35.231Z",
+    "updatedAt": "2024-04-25T10:41:32.854Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a9230ffb1780a27c6118a5",
+    "name": "Theater",
+    "eventId": "65a9138f7932ebe436ba96eb",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:35.399Z",
+    "updatedAt": "2024-04-25T10:41:33.517Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a9230ffb1780a27c6118a7",
+    "name": "Theater",
+    "eventId": "65a913907932ebe436ba96f2",
+    "streamSettings": {
+      "streamId": "c1d02b81-6627-49fd-829e-5e0f9376fda5"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:35.550Z",
+    "updatedAt": "2024-04-25T10:40:59.882Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a9230ffb1780a27c6118a9",
+    "name": "Theater",
+    "eventId": "65a913907932ebe436ba96f8",
+    "streamSettings": {
+      "streamId": "c2de848a-c8eb-49a0-b35d-ca8e3d4e8cc4"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:35.697Z",
+    "updatedAt": "2024-04-25T10:41:34.059Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a9230ffb1780a27c6118ab",
+    "name": "Theater",
+    "eventId": "65a913917932ebe436ba96fd",
+    "streamSettings": {
+      "streamId": "64ba6572-2081-414f-b458-17fb117136d8"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:35.825Z",
+    "updatedAt": "2024-04-25T10:40:42.061Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92310fb1780a27c6118b1",
+    "name": "3rd Floor",
+    "eventId": "65a913917932ebe436ba9700",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "3rd_floor",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:36.253Z",
+    "updatedAt": "2024-04-25T10:41:13.908Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92310fb1780a27c6118bb",
+    "name": "Theater",
+    "eventId": "65a913917932ebe436ba9700",
+    "streamSettings": {
+      "streamId": "e6da3a55-4a75-44c7-9695-7171ee7cb258"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:36.938Z",
+    "updatedAt": "2024-04-25T10:40:43.597Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92311fb1780a27c6118c1",
+    "name": "Theater",
+    "eventId": "65a913927932ebe436ba9703",
+    "streamSettings": {
+      "streamId": "1379ca5b-2825-412c-b1ca-d2e74c020b43"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:37.361Z",
+    "updatedAt": "2024-04-25T10:41:36.845Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92311fb1780a27c6118c3",
+    "name": "Theater",
+    "eventId": "65a913927932ebe436ba9706",
+    "streamSettings": {
+      "streamId": "e5421883-5887-4dd3-a249-74aba6f0f3d2"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:37.505Z",
+    "updatedAt": "2024-04-25T10:41:37.665Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92311fb1780a27c6118c5",
+    "name": "Theater",
+    "eventId": "65a913937932ebe436ba9709",
+    "streamSettings": {
+      "streamId": "0d311bb6-d372-4f1d-839f-afa019e7ea7d"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:37.642Z",
+    "updatedAt": "2024-04-25T10:40:44.247Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92311fb1780a27c6118c7",
+    "name": "Theater",
+    "eventId": "65a913937932ebe436ba970c",
+    "streamSettings": {
+      "streamId": "97f79686-ccd1-48a4-889b-3c8ecf76bc30"
+    },
+    "order": 0,
+    "slug": "theater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:37.781Z",
+    "updatedAt": "2024-04-25T10:41:38.381Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92311fb1780a27c6118c9",
+    "name": "Dome",
+    "eventId": "65a913947932ebe436ba970f",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:37.928Z",
+    "updatedAt": "2024-04-25T10:40:45.031Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92312fb1780a27c6118cd",
+    "name": "Ballroom",
+    "eventId": "65a913957932ebe436ba9712",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "ballroom",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:38.203Z",
+    "updatedAt": "2024-04-25T10:40:45.748Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92312fb1780a27c6118cf",
+    "name": "Dome",
+    "eventId": "65a913957932ebe436ba9712",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:38.337Z",
+    "updatedAt": "2024-04-25T10:40:46.568Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92312fb1780a27c6118d1",
+    "name": "Lighthouse",
+    "eventId": "65a913957932ebe436ba9712",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "lighthouse",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:38.479Z",
+    "updatedAt": "2024-04-25T10:41:39.098Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92312fb1780a27c6118d7",
+    "name": "Dome",
+    "eventId": "65a913957932ebe436ba9715",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:38.913Z",
+    "updatedAt": "2024-04-25T10:41:02.953Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92313fb1780a27c6118df",
+    "name": "Dome",
+    "eventId": "65a913967932ebe436ba9718",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:39.541Z",
+    "updatedAt": "2024-04-25T10:41:41.149Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92314fb1780a27c6118e7",
+    "name": "Dome",
+    "eventId": "65a913967932ebe436ba971b",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:40.111Z",
+    "updatedAt": "2024-04-25T10:40:49.352Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92314fb1780a27c6118ef",
+    "name": "Dome",
+    "eventId": "65a913977932ebe436ba971e",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:40.686Z",
+    "updatedAt": "2024-04-25T10:41:17.459Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92315fb1780a27c6118f5",
+    "name": "Ballroom",
+    "eventId": "65a913977932ebe436ba9721",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "ballroom",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:41.099Z",
+    "updatedAt": "2024-04-25T10:41:43.194Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92315fb1780a27c6118f7",
+    "name": "Dome",
+    "eventId": "65a913977932ebe436ba9721",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:41.239Z",
+    "updatedAt": "2024-04-25T10:40:52.404Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92315fb1780a27c6118fb",
+    "name": "Amphitheater",
+    "eventId": "65a913987932ebe436ba9724",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "amphitheater",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:41.519Z",
+    "updatedAt": "2024-04-25T10:41:04.192Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92315fb1780a27c6118fd",
+    "name": "Ballroom",
+    "eventId": "65a913987932ebe436ba9724",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "ballroom",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:41.666Z",
+    "updatedAt": "2024-04-25T10:40:53.052Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92315fb1780a27c6118ff",
+    "name": "Dome",
+    "eventId": "65a913987932ebe436ba9724",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:41.812Z",
+    "updatedAt": "2024-04-25T10:40:53.837Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92316fb1780a27c611905",
+    "name": "Dome",
+    "eventId": "65a913987932ebe436ba9727",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:42.239Z",
+    "updatedAt": "2024-04-25T10:41:43.913Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92316fb1780a27c61190b",
+    "name": "Dome",
+    "eventId": "65a913997932ebe436ba972a",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:42.659Z",
+    "updatedAt": "2024-04-25T10:41:44.525Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92316fb1780a27c61190d",
+    "name": "Ballroom",
+    "eventId": "65a913997932ebe436ba972d",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "ballroom",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:42.791Z",
+    "updatedAt": "2024-04-25T10:40:54.422Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a92316fb1780a27c61190f",
+    "name": "Dome",
+    "eventId": "65a913997932ebe436ba972d",
+    "streamSettings": {
+      "streamId": "123"
+    },
+    "order": 0,
+    "slug": "dome",
+    "plugins": [],
+    "createdAt": "2024-01-18T13:09:42.926Z",
+    "updatedAt": "2024-04-25T10:41:20.337Z",
+    "__v": 0,
+    "organizationId": "65a90bfc7932ebe436ba9375"
+  },
+  {
+    "_id": "65a9eda7973b440841226197",
+    "name": "Base House",
+    "eventId": "65a913897932ebe436ba96a6",
+    "streamSettings": {
+      "streamId": "6500f458-0047-4b8d-b53f-fd325c132fa7"
+    },
+    "order": 0,
+    "slug": "base_house",
+    "plugins": [],
+    "createdAt": "2024-01-19T03:33:59.243Z",
+    "updatedAt": "2024-04-25T10:41:06.375Z",
+    "__v": 0,
+    "organizationId": "65a90bf17932ebe436ba9345"
+  },
+  {
+    "_id": "65a9ef65973b44084122619f",
+    "name": "Workshop Room",
+    "eventId": "65a9138d7932ebe436ba96d1",
+    "streamSettings": {
+      "streamId": "79b505b9-190d-4167-9252-430b173bbabc"
+    },
+    "order": 0,
+    "slug": "workshop_room",
+    "plugins": [],
+    "createdAt": "2024-01-19T03:41:25.160Z",
+    "updatedAt": "2024-04-25T10:41:21.178Z",
+    "__v": 0,
+    "organizationId": "65a90bf87932ebe436ba9366"
+  },
+  {
+    "_id": "65aa09bc907d8970e7ddc50f",
+    "name": "Virtual Stage",
+    "eventId": "65a9138c7932ebe436ba96c4",
+    "streamSettings": {
+      "streamId": "ffc6f002-d27a-49e5-8c9f-aa41d38c99e1"
+    },
+    "order": 0,
+    "slug": "virtual_stage",
+    "plugins": [],
+    "createdAt": "2024-01-19T05:33:48.029Z",
+    "updatedAt": "2024-04-25T10:41:45.047Z",
+    "__v": 0,
+    "organizationId": "65a90bf77932ebe436ba9360"
+  },
+  {
+    "_id": "65bda306f206d61f8a2fb042",
+    "name": "Escenario principal",
+    "eventId": "65bd9f74f206d61f8a2f79d0",
+    "streamSettings": {
+      "streamId": "975eaafb-3fb1-4d9f-a6be-ace4665595eb"
+    },
+    "order": 0,
+    "slug": "escenario_principal",
+    "plugins": [],
+    "createdAt": "2024-02-03T02:20:54.735Z",
+    "updatedAt": "2024-04-25T10:41:53.334Z",
+    "__v": 0,
+    "organizationId": "65bd950cf206d61f8a2f797b"
+  },
+  {
+    "_id": "65d3a29e10f6b1b75e024748",
+    "name": "Main stage",
+    "eventId": "65cf3a8c59a007fea099627b",
+    "streamSettings": {
+      "streamId": "4d66f918-6266-46ef-bb18-0f0fa912b3f1"
+    },
+    "order": 0,
+    "slug": "main_stage",
+    "plugins": [],
+    "createdAt": "2024-02-19T18:49:02.085Z",
+    "updatedAt": "2024-04-25T10:41:50.260Z",
+    "__v": 0,
+    "organizationId": "65cf399859a007fea099626a"
+  },
+  {
+    "_id": "65d5b66b9b651d666ce3917d",
+    "name": "Mainstage",
+    "eventId": "65d5b6209b651d666ce39043",
+    "streamSettings": {
+      "streamId": "f47799ae-c3f3-46c9-bad4-ae5cdf86eb8b"
+    },
+    "order": 0,
+    "slug": "mainstage",
+    "plugins": [],
+    "createdAt": "2024-02-21T08:38:03.434Z",
+    "updatedAt": "2024-04-25T10:41:50.874Z",
+    "__v": 0,
+    "organizationId": "65a90bf87932ebe436ba9366"
+  },
+  {
+    "_id": "65d5d5d66213d3683ba129b5",
+    "name": "Classroom",
+    "eventId": "65d5d5b06213d3683ba1292f",
+    "streamSettings": {
+      "streamId": "71175aa0-b00f-4933-a1bd-d124da5c9201"
+    },
+    "order": 0,
+    "slug": "classroom",
+    "plugins": [],
+    "createdAt": "2024-02-21T10:52:06.852Z",
+    "updatedAt": "2024-04-25T10:41:51.796Z",
+    "__v": 0,
+    "organizationId": "65cf97e702e803dbd57d823f"
+  },
+  {
+    "_id": "65d635a227279f0ee65d8ac5",
+    "name": "hello",
+    "eventId": "65d6358127279f0ee65d857a",
+    "streamSettings": {
+      "streamKey": "",
+      "parentId": "",
+      "playbackId": "",
+      "isActive": false,
+      "isHealthy": false,
+      "streamId": "e032bafa-26bc-439a-b2b7-0e0364e76d2b",
+      "targets": []
+    },
+    "order": 0,
+    "slug": "hello",
+    "plugins": [],
+    "createdAt": "2024-02-21T17:40:50.289Z",
+    "updatedAt": "2024-04-25T10:48:52.748Z",
+    "__v": 0,
+    "organizationId": "65d626cc27279f0ee65cd986",
+    "description": "",
+    "mintable": false,
+    "nftCollections": [],
+    "published": true,
+    "streamDate": "2024-04-25T10:39:44.524Z",
+    "thumbnail": ""
+  },
+  {
+    "_id": "65d65b474a6b6d1f624a9a62",
+    "name": "test",
+    "eventId": "65d64fd14a6b6d1f62466f72",
+    "streamSettings": {
+      "streamId": "a658156f-7129-484f-b5d1-19094200b1b6"
+    },
+    "order": 0,
+    "slug": "test",
+    "plugins": [],
+    "createdAt": "2024-02-21T20:21:27.936Z",
+    "updatedAt": "2024-04-25T10:41:54.153Z",
+    "__v": 0,
+    "organizationId": "65d626cc27279f0ee65cd986"
+  },
+  {
+    "_id": "65d8e122c473c05da9004027",
+    "name": "Main stage",
+    "eventId": "65d8e113c473c05da9004011",
+    "streamSettings": {
+      "streamId": "ad812c63-7d90-48af-aed5-aacd263f7f9c"
+    },
+    "order": 0,
+    "slug": "main_stage",
+    "plugins": [],
+    "createdAt": "2024-02-23T18:17:06.059Z",
+    "updatedAt": "2024-04-25T10:41:55.541Z",
+    "__v": 0,
+    "organizationId": "65d8dffcc473c05da9002f58"
+  },
+  {
+    "_id": "65de79e3a6d370a1ab68066e",
+    "name": "Mainstage",
+    "eventId": "65de79c4a6d370a1ab680658",
+    "streamSettings": {
+      "streamId": "a971cfd3-773e-41f6-90b6-bc968585c7c8"
+    },
+    "order": 0,
+    "slug": "mainstage",
+    "plugins": [],
+    "createdAt": "2024-02-28T00:10:11.055Z",
+    "updatedAt": "2024-04-25T10:41:57.532Z",
+    "__v": 0,
+    "organizationId": "65de78cda6d370a1ab67fce3"
+  },
+  {
+    "_id": "65eb16d67993530148b9fad6",
+    "name": "StreamETH Conference Vancouver 2024",
+    "eventId": "65eb06507993530148b5bf0d",
+    "streamSettings": {
+      "streamId": "a2f16cc5-166a-4564-80b5-83d9a488afd1"
+    },
+    "order": 0,
+    "slug": "streameth_conference_vancouver_2024",
+    "plugins": [],
+    "createdAt": "2024-03-08T13:47:02.968Z",
+    "updatedAt": "2024-03-08T13:47:02.968Z",
+    "__v": 0
+  },
+  {
+    "_id": "65f2d2447993530148e9b856",
+    "name": "Workshop Room",
+    "eventId": "65f2d1bb7993530148e9b7f2",
+    "streamSettings": {
+      "streamId": "e3f4c7f9-920e-47dc-8b64-d9bf66235c6c"
+    },
+    "order": 0,
+    "slug": "workshop_room",
+    "plugins": [],
+    "createdAt": "2024-03-14T10:32:36.759Z",
+    "updatedAt": "2024-04-25T10:43:16.097Z",
+    "__v": 0,
+    "organizationId": "65f2d0127993530148e97b86"
+  },
+  {
+    "_id": "65f960f6c03f1e5655f21185",
+    "name": "Online Workshop",
+    "eventId": "65f2d1bb7993530148e9b7f2",
+    "streamSettings": {
+      "streamId": ""
+    },
+    "order": 0,
+    "slug": "online_workshop",
+    "plugins": [],
+    "createdAt": "2024-03-19T09:55:02.594Z",
+    "updatedAt": "2024-04-25T10:43:16.892Z",
+    "__v": 0,
+    "organizationId": "65f2d0127993530148e97b86"
+  },
+  {
+    "_id": "663a295888d017fe708c38b2",
+    "name": "hello world",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6634b081e5407783ce51ceb8",
+    "eventId": "663a295788d017fe708c38b1",
+    "streamSettings": {
+      "streamId": "54cfef90-8a69-45ac-9add-2d3094d73cda",
+      "streamKey": "54cf-hxai-zmvb-eh9w",
+      "parentId": "",
+      "playbackId": "54cfr1uless1w4dx",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "slug": "hello_world",
+    "streamDate": "2024-05-07T13:15:03.040Z",
+    "mintable": true,
+    "nftCollections": [
+      "663a2a5488d017fe708c3c8d"
+    ],
+    "plugins": [],
+    "createdAt": "2024-05-07T13:15:04.495Z",
+    "updatedAt": "2024-05-16T09:20:47.525Z",
+    "__v": 0
+  },
+  {
+    "_id": "664b71ad82a534de935a2be9",
+    "name": "GEN VIDEO After Party | Berlin Blockchain Week",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/livepeertv/LivepeerTV_D01_Twitter_16_9__2_.png",
+    "organizationId": "6630cbf8acc05d8af03dce59",
+    "eventId": "664b71ad82a534de935a2be8",
+    "streamSettings": {
+      "streamId": "f9f6f343-25fa-46c4-9b5c-9471d32af878",
+      "streamKey": "f9f6-myx5-eqyf-32cb",
+      "parentId": "",
+      "playbackId": "f9f6f4cv566jslqd",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "slug": "gen_video_after_party__berlin_blockchain_week",
+    "streamDate": "2024-05-23T18:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-05-20T15:52:13.598Z",
+    "updatedAt": "2024-09-13T10:28:04.518Z",
+    "__v": 0,
+    "isMultipleDate": false,
+    "streamEndDate": "2024-07-22T08:31:57.653Z"
+  },
+  {
+    "_id": "664dbf0d5c3b797c33d20ab5",
+    "name": "Swarm Summit 2024: Upload the future",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/swarm/SwarmSummit2024_general.jpg",
+    "organizationId": "65a90bfa7932ebe436ba936c",
+    "eventId": "664dbf0b5c3b797c33d20a33",
+    "streamSettings": {
+      "streamId": "d812bc2d-7a83-4b67-9978-e3d900454f44",
+      "streamKey": "d812-jehq-14bj-z6x1",
+      "parentId": "",
+      "playbackId": "d8121ydngbham96d",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "slug": "swarm_summit_2024_upload_the_future",
+    "streamDate": "2024-06-20T09:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-05-22T09:46:53.190Z",
+    "updatedAt": "2024-06-21T07:31:05.478Z",
+    "__v": 0,
+    "isMultipleDate": true,
+    "streamEndDate": "2024-06-21T16:00:00.000Z"
+  },
+  {
+    "_id": "66582ef0968acef004598458",
+    "name": "Root Stage",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/ethprague/ethPragueBanner.png",
+    "organizationId": "6654820ef7d7fdcbec9a1aca",
+    "eventId": "66582eef968acef004598456",
+    "streamSettings": {
+      "streamId": "e575e563-d2f8-4e2e-9fff-1f69d6d2beac",
+      "streamKey": "e575-m1xk-tu9t-ibzy",
+      "parentId": "",
+      "playbackId": "e575dihp0b3q4hv0",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "slug": "root_stage",
+    "streamDate": "2024-06-02T08:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-05-30T07:46:56.671Z",
+    "updatedAt": "2024-06-06T09:16:49.988Z",
+    "__v": 0,
+    "isMultipleDate": false,
+    "streamEndDate": "2024-06-05T17:58:24.264Z"
+  },
+  {
+    "_id": "66582f0c968acef004598619",
+    "name": "Flower Stage",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/ethprague/ethPragueBanner.png",
+    "organizationId": "6654820ef7d7fdcbec9a1aca",
+    "eventId": "66582f0a968acef004598562",
+    "streamSettings": {
+      "streamId": "995ad970-e46b-46f9-a23a-8423e8480553",
+      "streamKey": "995a-dwo6-d9hq-cbxr",
+      "parentId": "",
+      "playbackId": "995a79xy0b49g1is",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "slug": "flower_stage",
+    "streamDate": "2024-06-02T08:30:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-05-30T07:47:24.054Z",
+    "updatedAt": "2024-06-06T09:16:52.174Z",
+    "__v": 0,
+    "isMultipleDate": false,
+    "streamEndDate": "2024-06-05T17:58:24.264Z"
+  },
+  {
+    "_id": "66582f24968acef004598640",
+    "name": "Leaf Stage",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/ethprague/ethPragueBanner.png",
+    "organizationId": "6654820ef7d7fdcbec9a1aca",
+    "eventId": "66582f23968acef00459863f",
+    "streamSettings": {
+      "streamId": "bebb8e79-c802-4176-a66b-57b07097c348",
+      "streamKey": "bebb-i2wb-1wm0-rc8l",
+      "parentId": "",
+      "playbackId": "bebb81rw59r4zi16",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "slug": "leaf_stage",
+    "streamDate": "2024-06-02T08:30:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-05-30T07:47:48.023Z",
+    "updatedAt": "2024-06-06T09:16:54.344Z",
+    "__v": 0,
+    "isMultipleDate": false,
+    "streamEndDate": "2024-06-05T17:58:24.264Z"
+  },
+  {
+    "_id": "665df33711c49a573f8a869e",
+    "name": "Content Authenticity & Provenance in AI Video",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/tv/LivepeerTV_Twitter_16_9__8_.png",
+    "organizationId": "6630cbf8acc05d8af03dce59",
+    "eventId": "665df33611c49a573f8a869b",
+    "streamSettings": {
+      "streamId": "9882aafc-dbcd-476d-bb57-08feb4dede21",
+      "streamKey": "9882-0yf5-pzh0-itsg",
+      "parentId": "",
+      "playbackId": "98827n25q7jrr86z",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "slug": "content_authenticity__provenance_in_ai_video",
+    "streamDate": "2024-06-05T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-03T16:45:43.795Z",
+    "updatedAt": "2024-06-05T23:46:08.717Z",
+    "__v": 0,
+    "isMultipleDate": false,
+    "streamEndDate": "2024-06-05T17:58:24.264Z"
+  },
+  {
+    "_id": "66636ca01e795319795787ad",
+    "name": "Main Stage",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/lbwtv/photo_2024_06_08_12.07.55.jpeg",
+    "organizationId": "66636b641e7953197957825f",
+    "eventId": "66636ca01e795319795787ac",
+    "streamSettings": {
+      "streamId": "63f96712-219c-415b-8b22-69a3557ba67e",
+      "streamKey": "63f9-mm6q-9sw4-fs56",
+      "parentId": "",
+      "playbackId": "63f9ngnld3hpjg1g",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": true,
+    "slug": "main_stage",
+    "streamDate": "2024-06-10T07:00:00.000Z",
+    "streamEndDate": "2024-06-15T16:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-07T20:25:04.633Z",
+    "updatedAt": "2024-06-14T15:49:59.428Z",
+    "__v": 0
+  },
+  {
+    "_id": "66680885f9b8e98b1ec915fe",
+    "name": "ZuBerlin - Sequencing",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/zuberlin/Sequencing.png",
+    "organizationId": "66680822f9b8e98b1ec915cd",
+    "eventId": "66680884f9b8e98b1ec915fc",
+    "streamSettings": {
+      "streamId": "57c62de5-beb4-4ba8-96ce-6f2764330bb6",
+      "streamKey": "57c6-s3om-yzx2-d1iz",
+      "parentId": "",
+      "playbackId": "57c66xsc8myvo3na",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "9ee49037-cb60-43d2-98e8-13ab33e0980e",
+          "name": "Twitter",
+          "_id": "66680b5df9b8e98b1ec91c2d"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "zuberlin__sequencing",
+    "streamDate": "2024-06-11T08:19:00.000Z",
+    "streamEndDate": "2024-06-11T08:19:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-11T08:19:17.887Z",
+    "updatedAt": "2024-06-25T07:29:43.529Z",
+    "__v": 0
+  },
+  {
+    "_id": "66686d1806eda795c892b681",
+    "name": "Protocol Day",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/zuberlin/Protocol.png",
+    "organizationId": "66680822f9b8e98b1ec915cd",
+    "eventId": "66686d1606eda795c892b680",
+    "streamSettings": {
+      "streamId": "185ed73e-7df0-4392-bf5d-abfbab5cca4a",
+      "streamKey": "185e-6c5h-84o4-8snh",
+      "parentId": "",
+      "playbackId": "185edwi0mjzq5r3g",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "28320acc-53f2-443b-b530-cced1ab72627",
+          "name": "Twittier",
+          "_id": "6669582b07f92b086c283c1f"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "protocol_day",
+    "streamDate": "2024-06-12T08:00:00.000Z",
+    "streamEndDate": "2024-06-11T15:28:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-11T15:28:24.064Z",
+    "updatedAt": "2024-06-25T07:29:44.794Z",
+    "__v": 0
+  },
+  {
+    "_id": "666a9fe907f92b086c2b4bc1",
+    "name": "MEV",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/zuberlin/MEV.png",
+    "organizationId": "66680822f9b8e98b1ec915cd",
+    "eventId": "666a9fe807f92b086c2b4bbc",
+    "streamSettings": {
+      "streamId": "2e71ba44-ed43-473a-a8b5-736a6e36d7c4",
+      "streamKey": "2e71-jj2z-24rr-zck9",
+      "parentId": "",
+      "playbackId": "2e7119fxtznpn01w",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "mev",
+    "streamDate": "2024-06-13T10:00:00.000Z",
+    "streamEndDate": "2024-06-13T07:29:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-13T07:29:45.980Z",
+    "updatedAt": "2024-06-25T07:29:46.188Z",
+    "__v": 0
+  },
+  {
+    "_id": "666b627d07f92b086c2de3a7",
+    "name": "Cryptography & ZK",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/zuberlin/Cryptography_ZK.png",
+    "organizationId": "66680822f9b8e98b1ec915cd",
+    "eventId": "666b627c07f92b086c2de3a6",
+    "streamSettings": {
+      "streamId": "7851620c-c15d-4e72-9b97-2ad9d4247004",
+      "streamKey": "7851-hura-7l75-u072",
+      "parentId": "",
+      "playbackId": "7851mi20lp65h5cx",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "cryptography__zk",
+    "streamDate": "2024-06-14T08:00:00.000Z",
+    "streamEndDate": "2024-06-13T21:19:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-13T21:19:57.026Z",
+    "updatedAt": "2024-06-25T07:29:47.443Z",
+    "__v": 0
+  },
+  {
+    "_id": "666d533f07f92b086c32a019",
+    "name": "Grand Finale",
+    "description": "",
+    "thumbnail": "https://streameth-develop.ams3.digitaloceanspaces.com/livestreams/lbwtv/LBW_Banner_01.png",
+    "organizationId": "66636b641e7953197957825f",
+    "eventId": "666d533e07f92b086c32a018",
+    "streamSettings": {
+      "streamId": "48fad54f-5893-4484-bc59-492422c798cd",
+      "streamKey": "48fa-sawp-wlgg-u17r",
+      "parentId": "",
+      "playbackId": "48fa9zbhbwl9ebar",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": false,
+    "slug": "grand_finale",
+    "streamDate": "2024-06-15T08:39:00.000Z",
+    "streamEndDate": "2024-06-15T08:39:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-15T08:39:27.360Z",
+    "updatedAt": "2024-06-15T17:49:06.978Z",
+    "__v": 0
+  },
+  {
+    "_id": "667149ba07f92b086c3ac159",
+    "name": "Decentralized AI Day 1",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/zuberlin/Decentralized_AI_Day1.png",
+    "organizationId": "66680822f9b8e98b1ec915cd",
+    "eventId": "667149b907f92b086c3ac158",
+    "streamSettings": {
+      "streamId": "8e671d8d-48d7-4639-bba8-8205512cfdb0",
+      "streamKey": "8e67-j7u9-b9k1-3fu9",
+      "parentId": "",
+      "playbackId": "8e67sxspafg5r0qb",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "d82f987d-7de8-4010-af8f-8d4b2a83534c",
+          "name": "Twitter",
+          "_id": "667154bd07f92b086c3adb38"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "decentralized_ai_day_1",
+    "streamDate": "2024-06-18T09:00:00.000Z",
+    "streamEndDate": "2024-06-18T08:47:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-18T08:47:54.299Z",
+    "updatedAt": "2024-06-25T07:29:48.600Z",
+    "__v": 0
+  },
+  {
+    "_id": "66729a1807f92b086c3cc729",
+    "name": "Decentralized AI Day 2",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/zuberlin/Decentralized_AI_Day2.png",
+    "organizationId": "66680822f9b8e98b1ec915cd",
+    "eventId": "66729a1807f92b086c3cc728",
+    "streamSettings": {
+      "streamId": "48677f1f-e53e-4440-8e25-067a87e27947",
+      "streamKey": "4867-ln2y-h6v6-e3b1",
+      "parentId": "",
+      "playbackId": "4867hyk321nju6cb",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "c94ef8fe-dd43-4c57-960a-b122977b4dff",
+          "name": "Twitter",
+          "_id": "66729d2307f92b086c3ccda5"
+        }
+      ]
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": false,
+    "slug": "decentralized_ai_day_2",
+    "streamDate": "2024-06-19T09:00:00.000Z",
+    "streamEndDate": "2024-06-19T08:43:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-19T08:43:04.588Z",
+    "updatedAt": "2024-06-25T11:54:40.852Z",
+    "__v": 0
+  },
+  {
+    "_id": "6672a29e07f92b086c3ce457",
+    "name": "Live 1",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/ethcc/ethcc7.jpg",
+    "organizationId": "6655bcaa968acef00450eb61",
+    "eventId": "667d41aac5090b2250b12e75",
+    "streamSettings": {
+      "streamId": "b829ff13-5e57-47f1-8d18-327108f507c7",
+      "streamKey": "b829-yto8-8ch9-5phd",
+      "parentId": "",
+      "playbackId": "b829e7q61qowsnou",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "live_1",
+    "streamDate": "2024-07-08T08:00:00.000Z",
+    "streamEndDate": "2024-06-19T09:19:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-19T09:19:26.913Z",
+    "updatedAt": "2024-09-15T07:21:31.502Z",
+    "__v": 0,
+    "recordingIndex": 1
+  },
+  {
+    "_id": "6672a3dd07f92b086c3cec40",
+    "name": "Live 3",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/ethcc/ethcc7.jpg",
+    "organizationId": "6655bcaa968acef00450eb61",
+    "eventId": "667d41aac5090b2250b12e75",
+    "streamSettings": {
+      "streamId": "66045577-4a41-435d-ba3a-8074bf2ee674",
+      "streamKey": "6604-tt4e-oedf-fuo4",
+      "parentId": "",
+      "playbackId": "6604oixmylw00ih8",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "live_3",
+    "streamDate": "2024-07-08T07:00:00.000Z",
+    "streamEndDate": "2024-06-19T09:24:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-19T09:24:45.920Z",
+    "updatedAt": "2024-07-16T15:16:12.505Z",
+    "__v": 0
+  },
+  {
+    "_id": "6672a40707f92b086c3cecf5",
+    "name": "Live 4",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/ethcc/ethcc7.jpg",
+    "organizationId": "6655bcaa968acef00450eb61",
+    "eventId": "667d41aac5090b2250b12e75",
+    "streamSettings": {
+      "streamId": "3cdba014-71bc-4540-ab4b-5eb5a55286e1",
+      "streamKey": "3cdb-v8nz-y9vw-rx9i",
+      "parentId": "",
+      "playbackId": "3cdbm1a3e1pg50yy",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "live_4",
+    "streamDate": "2024-07-08T06:00:00.000Z",
+    "streamEndDate": "2024-06-19T09:25:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-19T09:25:27.859Z",
+    "updatedAt": "2024-07-16T15:16:13.473Z",
+    "__v": 0
+  },
+  {
+    "_id": "6672a43807f92b086c3cedd2",
+    "name": "Live 5",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/ethcc/ethcc7.jpg",
+    "organizationId": "6655bcaa968acef00450eb61",
+    "eventId": "667d41aac5090b2250b12e75",
+    "streamSettings": {
+      "streamId": "4113fa48-d61c-499f-9b60-d79c373cbafd",
+      "streamKey": "4113-x5ef-0gzq-lyll",
+      "parentId": "",
+      "playbackId": "4113up5nhipp7heg",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "live_5",
+    "streamDate": "2024-07-08T07:00:00.000Z",
+    "streamEndDate": "2024-06-19T09:26:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-19T09:26:16.370Z",
+    "updatedAt": "2024-07-16T15:16:14.648Z",
+    "__v": 0
+  },
+  {
+    "_id": "6672a46407f92b086c3cee9f",
+    "name": "Live 6",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/ethcc/ethcc7.jpg",
+    "organizationId": "6655bcaa968acef00450eb61",
+    "eventId": "667d41aac5090b2250b12e75",
+    "streamSettings": {
+      "streamId": "603257db-3aaa-4087-9f0c-6dda28118956",
+      "streamKey": "6032-gtb2-l5v1-avku",
+      "parentId": "",
+      "playbackId": "6032u0r5kuhb5qc2",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "live_6",
+    "streamDate": "2024-07-08T07:00:00.000Z",
+    "streamEndDate": "2024-06-19T09:26:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-19T09:27:00.327Z",
+    "updatedAt": "2024-07-16T15:16:16.241Z",
+    "__v": 0
+  },
+  {
+    "_id": "6672a49307f92b086c3cef89",
+    "name": "Live 7",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/ethcc/ethcc7.jpg",
+    "organizationId": "6655bcaa968acef00450eb61",
+    "eventId": "667d41aac5090b2250b12e75",
+    "streamSettings": {
+      "streamId": "c4298e40-9fe2-4d32-b350-e9c8ba518b6c",
+      "streamKey": "c429-4o69-m7f3-yt7g",
+      "parentId": "",
+      "playbackId": "c429obqjb6bsa8he",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "live_7",
+    "streamDate": "2024-07-07T13:00:00.000Z",
+    "streamEndDate": "2024-06-19T09:27:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-19T09:27:47.877Z",
+    "updatedAt": "2024-07-16T15:16:17.718Z",
+    "__v": 0
+  },
+  {
+    "_id": "66752bd4e79dda9fa2ba984f",
+    "name": "Swarm Summit 2024: Upload the future - Day 2",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/livestreams/swarm/SwarmSummit2024_general.jpg",
+    "organizationId": "65a90bfa7932ebe436ba936c",
+    "eventId": "66752bd3e79dda9fa2ba984e",
+    "streamSettings": {
+      "streamId": "36604296-4306-465c-8bd3-0b2659ec0868",
+      "streamKey": "3660-4jim-88ck-uuik",
+      "parentId": "",
+      "playbackId": "3660o5hsy5nt7lny",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "swarm_summit_2024_upload_the_future__day_2",
+    "streamDate": "2024-06-21T08:00:00.000Z",
+    "streamEndDate": "2024-06-21T07:29:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-21T07:29:24.258Z",
+    "updatedAt": "2024-06-24T08:16:30.108Z",
+    "__v": 0
+  },
+  {
+    "_id": "667960860d49d6570f3fa5a0",
+    "name": "Stable Summit II - Brussels",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/stable_summit/StSum2.png",
+    "organizationId": "65ce21ca44c543d5ebcd5799",
+    "eventId": "667960850d49d6570f3fa59f",
+    "streamSettings": {
+      "streamId": "d30419cb-0a07-4fb5-a421-322fdd79998d",
+      "streamKey": "d304-chy9-belk-qa6k",
+      "parentId": "",
+      "playbackId": "d304cewbhwcawrqb",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": true,
+    "slug": "stable_summit_ii__brussels",
+    "streamDate": "2024-07-06T06:00:00.000Z",
+    "streamEndDate": "2024-07-07T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-06-24T12:03:18.391Z",
+    "updatedAt": "2024-07-07T15:55:58.020Z",
+    "__v": 0
+  },
+  {
+    "_id": "668f980513eca070c18adf7c",
+    "name": "New Foundation Brussel",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/new_foundation/Group_7951__1_.png",
+    "organizationId": "668f97f513eca070c18add59",
+    "eventId": "668f980413eca070c18adefb",
+    "streamSettings": {
+      "streamId": "cf2cdec9-771a-4cc1-8775-922105c6dac4",
+      "streamKey": "cf2c-a23u-io46-mkv8",
+      "parentId": "",
+      "playbackId": "cf2c50ck4jy1266q",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "ba9a326e-7788-4b39-bc13-8cb1eb13ed69",
+          "name": "YouTube",
+          "_id": "668f9aef13eca070c18b69a5"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "new_foundation_brussel",
+    "streamDate": "2024-07-11T08:29:00.000Z",
+    "streamEndDate": "2024-07-11T08:29:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-07-11T08:29:57.592Z",
+    "updatedAt": "2024-07-18T10:18:14.077Z",
+    "__v": 0
+  },
+  {
+    "_id": "66c1b5a614dae87d37c87824",
+    "name": "Studio One",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66bdddbf14dae87d37be9529",
+    "eventId": "66c1b5a414dae87d37c8779f",
+    "streamSettings": {
+      "streamId": "619aef91-9234-47e1-8ee6-1446988dd701",
+      "streamKey": "619a-nn42-90p9-4m7f",
+      "parentId": "",
+      "playbackId": "619arcivwmo3bsxg",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "studio_one",
+    "streamDate": "2024-08-19T08:00:00.000Z",
+    "streamEndDate": "2024-08-18T08:49:39.315Z",
+    "mintable": false,
+    "nftCollections": [],
+    "plugins": [],
+    "createdAt": "2024-08-18T08:49:42.652Z",
+    "updatedAt": "2024-08-21T11:36:52.214Z",
+    "__v": 0
+  },
+  {
+    "_id": "66d916d84f2179fbae7c65b5",
+    "name": "Emerald Hall",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "65a90bfb7932ebe436ba9372",
+    "eventId": "66d916e14f2179fbae7c661b",
+    "streamSettings": {
+      "streamId": "006961e6-e1e1-4cd5-8a58-a16f8fab0c6e",
+      "streamKey": "0069-m0v5-rt7m-rglp",
+      "parentId": "",
+      "playbackId": "00697jah7s645y5l",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "d58f7001-ec56-4352-96fd-263b3b455423",
+          "name": "Y",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "66d983bad04d37dd6c0fca21"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "emerald_hall",
+    "streamDate": "2024-09-05T02:26:32.959Z",
+    "streamEndDate": "2024-09-05T02:26:25.629Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 7,
+    "plugins": [],
+    "createdAt": "2024-09-05T02:26:41.949Z",
+    "updatedAt": "2024-09-07T14:48:05.497Z",
+    "__v": 0
+  },
+  {
+    "_id": "6708f4792f3849fecfaca6aa",
+    "name": "prueba2",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6707f6942f3849fecfa32ba0",
+    "eventId": "6708f4792f3849fecfaca6a9",
+    "streamSettings": {
+      "streamId": "85405470-0213-4f8d-83c4-e2501eaeeaa0",
+      "streamKey": "8540-6mak-5ics-994t",
+      "parentId": "",
+      "playbackId": "8540yqh8df6r3w5o",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "prueba2",
+    "streamDate": "2024-10-11T09:48:00.000Z",
+    "streamEndDate": "2024-10-11T09:48:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-11T09:48:41.919Z",
+    "updatedAt": "2024-10-11T14:02:14.554Z",
+    "__v": 0
+  },
+  {
+    "_id": "670b620a2f3849fecfb658e0",
+    "name": "Edge City - 13 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "670b62092f3849fecfb658df",
+    "streamSettings": {
+      "streamId": "53f09394-ff37-415f-bdab-f685d193c098",
+      "streamKey": "53f0-rupi-wjkq-ywc6",
+      "parentId": "",
+      "playbackId": "53f0df50h3o52w8c",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__13_oct",
+    "streamDate": "2024-10-13T06:00:42.106Z",
+    "streamEndDate": "2024-10-13T06:00:42.106Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-13T06:00:42.359Z",
+    "updatedAt": "2024-10-13T10:09:59.539Z",
+    "__v": 0
+  },
+  {
+    "_id": "670df5e050c4a85480bd1f7e",
+    "name": "Edge City  - 15 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "670df5e050c4a85480bd1f7d",
+    "streamSettings": {
+      "streamId": "8da431ed-e98a-4ad8-b0a8-1612f1a5d948",
+      "streamKey": "8da4-xu2a-5m5h-bgxo",
+      "parentId": "",
+      "playbackId": "8da4zfkyiwjxqc6j",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city___15_oct",
+    "streamDate": "2024-10-16T04:55:00.000Z",
+    "streamEndDate": "2024-10-16T04:55:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-15T04:56:00.837Z",
+    "updatedAt": "2024-10-15T11:14:00.804Z",
+    "__v": 0
+  },
+  {
+    "_id": "670f608750c4a85480cf6c3d",
+    "name": "Edge City - 16 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "670f608650c4a85480cf6c3c",
+    "streamSettings": {
+      "streamId": "70778e76-761c-4a1e-ae91-d82e041cb4d6",
+      "streamKey": "7077-nf6n-cuu6-dl8s",
+      "parentId": "",
+      "playbackId": "7077z4v9bq0yhhpl",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__16_oct",
+    "streamDate": "2024-10-16T06:43:17.286Z",
+    "streamEndDate": "2024-10-16T06:43:17.286Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-16T06:43:19.035Z",
+    "updatedAt": "2024-10-16T10:24:31.700Z",
+    "__v": 0
+  },
+  {
+    "_id": "6711f83050c4a85480010b3a",
+    "name": "Edge City - 18 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6711f83050c4a85480010b39",
+    "streamSettings": {
+      "streamId": "69d21db0-2a88-48a4-9424-fc61c1d3f030",
+      "streamKey": "69d2-vkgj-0k0x-6j7q",
+      "parentId": "",
+      "playbackId": "69d2yuuire6fo9kg",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__18_oct",
+    "streamDate": "2024-10-18T05:54:55.077Z",
+    "streamEndDate": "2024-10-18T05:54:55.077Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 3,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-18T05:54:56.737Z",
+    "updatedAt": "2024-10-19T04:52:02.007Z",
+    "__v": 0
+  },
+  {
+    "_id": "671320988f864ede033f1381",
+    "name": "Edge City - 19 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "671320978f864ede033f1380",
+    "streamSettings": {
+      "streamId": "2a135656-4d43-48e5-885a-fbf3def8575b",
+      "streamKey": "2a13-yr8r-qbdk-4qta",
+      "parentId": "",
+      "playbackId": "2a13koik3fvf6g03",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__19_oct",
+    "streamDate": "2024-10-19T02:59:34.662Z",
+    "streamEndDate": "2024-10-19T02:59:34.662Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 6,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-19T02:59:36.852Z",
+    "updatedAt": "2024-10-20T09:10:36.799Z",
+    "__v": 0
+  },
+  {
+    "_id": "6715fc0f8f864ede038fa856",
+    "name": "Edge City - 21 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6715fc0e8f864ede038fa855",
+    "streamSettings": {
+      "streamId": "7685c6cc-23a2-433c-abe7-77c466cf75cd",
+      "streamKey": "7685-vl2g-70i0-yzky",
+      "parentId": "",
+      "playbackId": "76854tunohk791yd",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__21_oct",
+    "streamDate": "2024-10-21T07:00:30.014Z",
+    "streamEndDate": "2024-10-21T07:00:30.014Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-21T07:00:31.113Z",
+    "updatedAt": "2024-10-21T09:57:55.733Z",
+    "__v": 0
+  },
+  {
+    "_id": "67174e508f864ede03d0e626",
+    "name": "Edge City 22oct",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "67174e508f864ede03d0e622",
+    "streamSettings": {
+      "streamId": "83fce7b9-ba7e-42e3-af00-77b7e4d73ca1",
+      "streamKey": "83fc-k9jk-foc0-hpt6",
+      "parentId": "",
+      "playbackId": "83fceuojwhsypf41",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city_22oct",
+    "streamDate": "2024-10-22T07:03:43.260Z",
+    "streamEndDate": "2024-10-22T07:03:43.260Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 1,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-22T07:03:44.472Z",
+    "updatedAt": "2024-10-22T08:21:08.875Z",
+    "__v": 0
+  },
+  {
+    "_id": "6719df838f864ede03fcd00a",
+    "name": "Edge City - 24 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6719df838f864ede03fcd009",
+    "streamSettings": {
+      "streamId": "8c6fe9e5-9c7e-4996-a3b1-07ea299b9a81",
+      "streamKey": "8c6f-r9lw-6jlf-zn14",
+      "parentId": "",
+      "playbackId": "8c6fgq7dbvjya2e5",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__24_oct",
+    "streamDate": "2024-10-23T11:56:50.478Z",
+    "streamEndDate": "2024-10-23T11:56:50.478Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 1,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-24T05:47:47.670Z",
+    "updatedAt": "2024-10-24T10:29:36.511Z",
+    "__v": 0
+  },
+  {
+    "_id": "671b19159da0f165b838a6a2",
+    "name": "Edge City - 25 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "671b19149da0f165b838a6a1",
+    "streamSettings": {
+      "streamId": "73249dbc-9527-4b7d-a207-c31612a88bce",
+      "streamKey": "7324-fulr-ikqj-nyyk",
+      "parentId": "",
+      "playbackId": "7324sk1wpk28d8h4",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__25_oct",
+    "streamDate": "2024-10-25T04:05:40.788Z",
+    "streamEndDate": "2024-10-25T04:05:40.788Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 3,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-25T04:05:41.194Z",
+    "updatedAt": "2024-10-25T08:44:32.576Z",
+    "__v": 0
+  },
+  {
+    "_id": "671f6ffb9da0f165b89ddd7c",
+    "name": "DevConflict - Day 2",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/livestreams/devconflict/Only_Logo-1730113527465.png",
+    "organizationId": "671f6f8f9da0f165b89ddd1d",
+    "eventId": "671f6ffa9da0f165b89ddd7b",
+    "streamSettings": {
+      "streamId": "15b21fdd-c1e9-4f7a-8e2d-15ef1bfec825",
+      "streamKey": "15b2-djg3-5w4e-y4mu",
+      "parentId": "",
+      "playbackId": "15b26yy1h25fmdp1",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "c0d99555-6551-49d2-8d5d-7803c550dbc5",
+          "name": "Twitter",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "672ec76af861dff095993edd"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "devconflict__day_2",
+    "streamDate": "2024-11-09T02:00:00.000Z",
+    "streamEndDate": "2024-10-28T11:05:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 8,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-28T11:05:31.012Z",
+    "updatedAt": "2024-11-13T03:42:44.343Z",
+    "__v": 0
+  },
+  {
+    "_id": "6720fca224af22d0ca96c743",
+    "name": "Breakout 3",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6720fca124af22d0ca96c742",
+    "streamSettings": {
+      "streamId": "0e35b7e6-af46-489e-b312-34c3832134ee",
+      "streamKey": "0e35-dun9-dsbl-59vf",
+      "parentId": "",
+      "playbackId": "0e357aiegaz0yi4y",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "cce1fc4e-3ee8-4adb-9b9e-10270343abef",
+          "name": "Breakout 3 YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d9db80d989c5b73eca52"
+        },
+        {
+          "id": "245159cc-53e0-4a83-9ff4-ad07a659253e",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6734149b3a168eb5359becc0"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "breakout_3",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-15T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 9,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:17:54.318Z",
+    "updatedAt": "2024-11-15T09:40:43.570Z",
+    "__v": 0
+  },
+  {
+    "_id": "6720fe2a24af22d0ca96c99c",
+    "name": "Classroom A",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6720fe2a24af22d0ca96c99b",
+    "streamSettings": {
+      "streamId": "17419e9d-8a84-4a1c-9fc0-7b04d2d062ab",
+      "streamKey": "1741-hj4c-byv9-epns",
+      "parentId": "",
+      "playbackId": "1741ipjmfh3kqven",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "4ccd2625-0638-4643-b9e7-7494b34b564e",
+          "name": "Classroom A YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d38680d989c5b71d9134"
+        },
+        {
+          "id": "0458621d-49eb-48f9-ad4f-a0e4e404c68c",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329c1480d989c5b74c22e6"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "classroom_a",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-15T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 29,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:24:26.672Z",
+    "updatedAt": "2024-11-15T09:00:03.876Z",
+    "__v": 0
+  },
+  {
+    "_id": "6720fed724af22d0ca96ca9b",
+    "name": "Classroom B",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6720fed624af22d0ca96ca9a",
+    "streamSettings": {
+      "streamId": "d385092b-41a4-4bfe-9223-09367d16c765",
+      "streamKey": "d385-l8wu-tls8-zw87",
+      "parentId": "",
+      "playbackId": "d385hn20i7rs0vhq",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "02145ff6-0aff-4175-b738-4b603148f97d",
+          "name": "Classroom B YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d40580d989c5b71ff571"
+        },
+        {
+          "id": "9c86b396-2629-4769-b119-de7aea87cfe6",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329c7880d989c5b74cad5f"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "classroom_b",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-15T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 8,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:27:19.227Z",
+    "updatedAt": "2024-11-15T10:38:02.858Z",
+    "__v": 0
+  },
+  {
+    "_id": "6720ff3024af22d0ca96cb41",
+    "name": "Classroom C",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6720ff2f24af22d0ca96cb40",
+    "streamSettings": {
+      "streamId": "a7382f6f-60c9-47b3-a16f-f61edf4cf9be",
+      "streamKey": "a738-ht97-gp0w-9jnb",
+      "parentId": "",
+      "playbackId": "a738h5bn9iu7ibcv",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "3be97451-b188-4534-80d0-bc8508efa924",
+          "name": "Classroom C YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d45d80d989c5b720f425"
+        },
+        {
+          "id": "6ba8b567-2ecd-40c9-bc64-cfdfc3a393b0",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329cc980d989c5b74d3df3"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "classroom_c",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-15T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 8,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:28:48.120Z",
+    "updatedAt": "2024-11-15T09:02:46.449Z",
+    "__v": 0
+  },
+  {
+    "_id": "6720ff8124af22d0ca96cbda",
+    "name": "Classroom D",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6720ff8024af22d0ca96cbd8",
+    "streamSettings": {
+      "streamId": "0ebfc4d3-85b7-4b9f-9d21-806a6d08dac0",
+      "streamKey": "0ebf-wall-eupf-tunc",
+      "parentId": "",
+      "playbackId": "0ebfvs3nt7ptyysw",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "a35a6113-0628-4070-a0ee-de2ec0ea23f5",
+          "name": "Classroom D YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731da1c80d989c5b740216c"
+        },
+        {
+          "id": "74de5305-88d3-4dc4-bce3-ac68422580fb",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329d1880d989c5b74d3ff5"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "classroom_d",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-15T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 10,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:30:09.470Z",
+    "updatedAt": "2024-11-15T09:28:08.251Z",
+    "__v": 0
+  },
+  {
+    "_id": "6720ffa224af22d0ca96cc2f",
+    "name": "Classroom E",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6720ffa124af22d0ca96cc2c",
+    "streamSettings": {
+      "streamId": "5941e05f-c7ec-4a34-9303-d26664a48a3e",
+      "streamKey": "5941-c6xa-hvjr-28sq",
+      "parentId": "",
+      "playbackId": "59418efbip01nrpj",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "eac9a539-4ac5-4613-b3b3-f27f13461ca7",
+          "name": "Classroom E YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731da5d80d989c5b74216a5"
+        },
+        {
+          "id": "dbec4d57-76d7-48b4-bea0-fbdc9df91310",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6732a1d880d989c5b7505478"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "classroom_e",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-15T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 13,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:30:42.670Z",
+    "updatedAt": "2024-11-15T10:49:24.804Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721005924af22d0ca96cdf2",
+    "name": "Main Stage",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6721005824af22d0ca96cdf0",
+    "streamSettings": {
+      "streamId": "f1cde04a-8a94-4989-86fb-4e2d89e408f3",
+      "streamKey": "f1cd-eqwx-88bh-cdg3",
+      "parentId": "",
+      "playbackId": "f1cd4zx2kpl0w7hz",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "3c40765b-dc57-4e33-8995-02e9f7e881fb",
+          "name": "x",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6736a86b9dbb7a90e161895d"
+        }
+      ]
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": true,
+    "slug": "main_stage",
+    "streamDate": "2024-11-12T00:30:00.000Z",
+    "streamEndDate": "2024-11-12T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 30,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:33:45.563Z",
+    "updatedAt": "2024-11-15T11:30:38.797Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721008424af22d0ca96ce72",
+    "name": "Stage 1",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6721008324af22d0ca96ce70",
+    "streamSettings": {
+      "streamId": "03d946e9-7ce6-44be-899f-ee5d3a1550fe",
+      "streamKey": "03d9-dvgz-5365-qbdg",
+      "parentId": "",
+      "playbackId": "03d9lwoxzjid8zyy",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "0fe9ad0d-44e0-4db3-9e25-85704118ab3a",
+          "name": "Stage 1 YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d1c080d989c5b7145926"
+        },
+        {
+          "id": "483dba0c-83df-404e-84be-71573fce7f28",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6732999f80d989c5b74abb3f"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "stage_1",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-14T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 23,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:34:28.870Z",
+    "updatedAt": "2024-11-15T09:58:50.053Z",
+    "__v": 0
+  },
+  {
+    "_id": "672100a824af22d0ca96cee4",
+    "name": "Stage 2",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "672100a724af22d0ca96cee3",
+    "streamSettings": {
+      "streamId": "506e4f9a-c8ec-4d86-9f81-d34ac9f92d64",
+      "streamKey": "506e-l3kg-7i7w-wb6l",
+      "parentId": "",
+      "playbackId": "506e9coxvz4nr0nn",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "fb14f26f-f53e-4d05-8d9c-c9d26878fb27",
+          "name": "Stage 2 YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d21380d989c5b7171f1f"
+        },
+        {
+          "id": "2a9428c6-7453-4599-a080-8ca3a55ca5d7",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "673298e480d989c5b74ab9c6"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "stage_2",
+    "streamDate": "2024-11-12T01:00:00.000Z",
+    "streamEndDate": "2024-11-13T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 33,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:35:04.253Z",
+    "updatedAt": "2024-11-15T10:19:04.512Z",
+    "__v": 0
+  },
+  {
+    "_id": "672100d224af22d0ca96cf76",
+    "name": "Stage 4",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "672100d024af22d0ca96cf6c",
+    "streamSettings": {
+      "streamId": "a0faed23-68e3-469c-821c-2e62531079a7",
+      "streamKey": "a0fa-sobc-rmoe-kksn",
+      "parentId": "",
+      "playbackId": "a0fa145q4hjftpua",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "e069c15c-471f-476c-95d9-203b35159454",
+          "name": "Stage 4 YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d2c880d989c5b71a5d7e"
+        },
+        {
+          "id": "f63b28a1-d8e5-47f6-bc3a-1db23ddaef1b",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329b0080d989c5b74bdd99"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "stage_4",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-14T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 13,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:35:46.835Z",
+    "updatedAt": "2024-11-15T10:39:26.275Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721010424af22d0ca96d0a2",
+    "name": "Stage 3",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6721010424af22d0ca96d0a0",
+    "streamSettings": {
+      "streamId": "fb0c0ec6-d6ac-4a16-a7d3-d8cce9d73daa",
+      "streamKey": "fb0c-xjsk-l7dl-l6ex",
+      "parentId": "",
+      "playbackId": "fb0chakn4mferv7n",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "7035fc37-19e5-4653-b2c1-9ba04fb09e91",
+          "name": "Stage 3 YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d28680d989c5b7193193"
+        },
+        {
+          "id": "63e608b3-413d-40d6-b1d4-8f7fe36f171c",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329aa780d989c5b74b3b87"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "stage_3",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-14T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 21,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:36:36.975Z",
+    "updatedAt": "2024-11-15T09:49:16.133Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721016f24af22d0ca96d20f",
+    "name": "Stage 5",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6721016d24af22d0ca96d209",
+    "streamSettings": {
+      "streamId": "f40fdbb3-0d05-4cdf-839b-0b0973d89861",
+      "streamKey": "f40f-1qg3-vhjl-i99r",
+      "parentId": "",
+      "playbackId": "f40fm3s7cjbhs53o",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "f1c00ab1-e4bb-4a91-ac42-68a118bc5fda",
+          "name": "Stage 5 YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d30e80d989c5b71b3847"
+        },
+        {
+          "id": "c88f4a39-e715-44f4-9159-2dae1d79f16c",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329b5180d989c5b74c1ee0"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "stage_5",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-14T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 24,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:38:23.602Z",
+    "updatedAt": "2024-11-15T08:50:11.318Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721019a24af22d0ca96d2ba",
+    "name": "Stage 6",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/devcon_7_sea/Screenshot_2024_12_23_at_14-1737721615097.png",
+    "organizationId": "6720f97e24af22d0ca96c11c",
+    "eventId": "6721019a24af22d0ca96d2b7",
+    "streamSettings": {
+      "streamId": "2336f5f0-32f2-48e7-a09e-d8f688ce8d3f",
+      "streamKey": "2336-6vih-t5on-kjud",
+      "parentId": "",
+      "playbackId": "233664iist01iemf",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": [
+        {
+          "id": "5098e912-6166-403c-aa47-deb3e61318bd",
+          "name": "Stage 6 YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "6731d0b080d989c5b7115e1f"
+        },
+        {
+          "id": "8294fb75-8b55-410c-b944-3f31266c279b",
+          "name": "sg.castr.io",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67329ba980d989c5b74c204f"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "stage_6",
+    "streamDate": "2024-11-12T09:00:00.000Z",
+    "streamEndDate": "2024-11-14T17:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 18,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-29T15:39:06.917Z",
+    "updatedAt": "2025-01-24T12:26:57.771Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721ae7a24af22d0ca9d89d8",
+    "name": "Edge City - 30 Oct.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6721ae7924af22d0ca9d89d7",
+    "streamSettings": {
+      "streamId": "62be8217-bff4-44f8-a67e-a53f27b07248",
+      "streamKey": "62be-0g31-dgrv-x9xp",
+      "parentId": "",
+      "playbackId": "62be958ck46h0ons",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__30_oct",
+    "streamDate": "2024-10-30T03:56:41.210Z",
+    "streamEndDate": "2024-10-30T03:56:41.210Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 1,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-30T03:56:42.081Z",
+    "updatedAt": "2024-10-30T05:23:27.496Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721bf2c24af22d0caa175ef",
+    "name": "Edge City - 30 Oct 2",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6721bf2c24af22d0caa175ed",
+    "streamSettings": {
+      "streamId": "3c531219-8109-4739-a184-f10f96c75ae1",
+      "streamKey": "3c53-0a2m-idcu-tt4s",
+      "parentId": "",
+      "playbackId": "3c53y20hmrr7y5rz",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__30_oct_2",
+    "streamDate": "2024-10-30T05:07:56.083Z",
+    "streamEndDate": "2024-10-30T05:07:56.083Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 3,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-30T05:07:56.961Z",
+    "updatedAt": "2024-10-30T08:08:18.463Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721eeb924af22d0caa5cfab",
+    "name": "Uniday",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6721ee9a24af22d0caa5cf2a",
+    "eventId": "6721eeb824af22d0caa5cfaa",
+    "streamSettings": {
+      "streamId": "188027f1-3519-4dfc-8426-c019bc07a7fb",
+      "streamKey": "1880-xbup-gczu-os9f",
+      "parentId": "",
+      "playbackId": "1880x1c02o7h0sdu",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "616a7d7f-bb53-45ce-9d90-2393992484e2",
+          "name": "Twitter",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "67315e0780d989c5b748e2fd"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "uniday",
+    "streamDate": "2024-11-11T02:00:00.000Z",
+    "streamEndDate": "2024-10-30T08:30:47.886Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 4,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-30T08:30:49.112Z",
+    "updatedAt": "2024-11-15T03:21:19.374Z",
+    "__v": 0
+  },
+  {
+    "_id": "6721f31824af22d0caa5e579",
+    "name": "Edge City Lanna Hackathon",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/edge_city/output-1730360065943.png",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6721f31624af22d0caa5e572",
+    "streamSettings": {
+      "streamId": "dc6879d6-5cc3-4001-b2e2-23f9804c8685",
+      "streamKey": "dc68-5qlf-lrk1-36nf",
+      "parentId": "",
+      "playbackId": "dc681675udblugsv",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "edge_city_lanna_hackathon",
+    "streamDate": "2024-11-02T12:00:00.000Z",
+    "streamEndDate": "2024-11-08T08:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 13,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-10-30T08:49:28.137Z",
+    "updatedAt": "2024-11-13T12:45:13.627Z",
+    "__v": 0
+  },
+  {
+    "_id": "6724508b24af22d0caf86d8c",
+    "name": "Edge City - 1 Nov.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6724508a24af22d0caf86d8b",
+    "streamSettings": {
+      "streamId": "ce3f288b-7ecd-4037-a116-add8db42f751",
+      "streamKey": "ce3f-nbvz-ep3y-xr1x",
+      "parentId": "",
+      "playbackId": "ce3fdctdy9k31bmb",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__1_nov",
+    "streamDate": "2024-10-31T12:52:58.810Z",
+    "streamEndDate": "2024-10-31T12:52:58.810Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 6,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-01T03:52:43.643Z",
+    "updatedAt": "2024-11-02T03:19:42.866Z",
+    "__v": 0
+  },
+  {
+    "_id": "67248d1333f8149ddedecdf3",
+    "name": "Edge City - 1 Nov 2",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "67248d1133f8149ddedecdf2",
+    "streamSettings": {
+      "streamId": "9d4b592e-7d74-4bac-a379-bdc1bfdc3409",
+      "streamKey": "9d4b-cn1n-ls82-k81l",
+      "parentId": "",
+      "playbackId": "9d4bm1k34a1nsbcu",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__1_nov_2",
+    "streamDate": "2024-11-01T08:10:57.567Z",
+    "streamEndDate": "2024-11-01T08:10:57.567Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 5,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-01T08:10:59.100Z",
+    "updatedAt": "2024-11-02T11:19:10.064Z",
+    "__v": 0
+  },
+  {
+    "_id": "672596f5f861dff095567f61",
+    "name": "2 november",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "672596f5f861dff095567f5f",
+    "streamSettings": {
+      "streamId": "16839e35-c83b-4327-9085-2b41de0c2f6d",
+      "streamKey": "1683-vpfh-9o3l-1roy",
+      "parentId": "",
+      "playbackId": "1683nn0yqbtugwl0",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "2_november",
+    "streamDate": "2024-11-02T03:05:24.347Z",
+    "streamEndDate": "2024-11-02T03:05:24.347Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-02T03:05:25.566Z",
+    "updatedAt": "2024-11-02T06:54:38.967Z",
+    "__v": 0
+  },
+  {
+    "_id": "6725cd05f861dff095603333",
+    "name": "Hackathon - 2 Nov.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6725cd04f861dff095603325",
+    "streamSettings": {
+      "streamId": "0bf051d8-89a7-4355-b99b-bf4e8b67f5f7",
+      "streamKey": "0bf0-lgme-153u-73ra",
+      "parentId": "",
+      "playbackId": "0bf02n9acyozw30t",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "hackathon__2_nov",
+    "streamDate": "2024-11-02T06:56:04.356Z",
+    "streamEndDate": "2024-11-02T06:56:04.356Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 1,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-02T06:56:05.739Z",
+    "updatedAt": "2024-11-02T12:25:07.886Z",
+    "__v": 0
+  },
+  {
+    "_id": "6725cd2bf861dff09560337e",
+    "name": "ai x neuro-2 nov",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6725cd2af861dff09560337c",
+    "streamSettings": {
+      "streamId": "a4b97ace-d9e1-41ac-af6b-b52e96333b99",
+      "streamKey": "a4b9-x1g1-6ukp-9wbg",
+      "parentId": "",
+      "playbackId": "a4b9nwijduo0abh8",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "ai_x_neuro2_nov",
+    "streamDate": "2024-11-02T06:56:41.968Z",
+    "streamEndDate": "2024-11-02T06:56:41.968Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-02T06:56:43.594Z",
+    "updatedAt": "2024-11-02T10:23:54.666Z",
+    "__v": 0
+  },
+  {
+    "_id": "67285e52f861dff095b912da",
+    "name": "Edge City - 4 Nov.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "67285e51f861dff095b912d9",
+    "streamSettings": {
+      "streamId": "76ab79a7-c9b4-48e9-8929-928de8ce86ad",
+      "streamKey": "76ab-94iw-8jmm-ynqz",
+      "parentId": "",
+      "playbackId": "76abm07usq3rv855",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__4_nov",
+    "streamDate": "2024-11-02T13:13:04.690Z",
+    "streamEndDate": "2024-11-02T13:13:04.690Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-04T05:40:34.538Z",
+    "updatedAt": "2024-11-04T08:17:48.502Z",
+    "__v": 0
+  },
+  {
+    "_id": "6729b0a1f861dff09544604a",
+    "name": "Edge City - 5 Nov.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "6729b0a0f861dff095446049",
+    "streamSettings": {
+      "streamId": "10a3b1c9-4662-4e7b-8084-aac783a401c3",
+      "streamKey": "10a3-v6ot-52w8-ig0a",
+      "parentId": "",
+      "playbackId": "10a3wjiobvpo1g9c",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__5_nov",
+    "streamDate": "2024-11-05T05:43:59.314Z",
+    "streamEndDate": "2024-11-05T05:43:59.314Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 1,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-05T05:44:01.593Z",
+    "updatedAt": "2024-11-05T08:49:07.858Z",
+    "__v": 0
+  },
+  {
+    "_id": "672aed7df861dff095aa0067",
+    "name": "Edge City - 6 Nov.",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "66f53999a57d9e47ea8f6ecb",
+    "eventId": "672aed7cf861dff095aa0064",
+    "streamSettings": {
+      "streamId": "6a22d791-b847-4582-bd24-6bf36f0cd371",
+      "streamKey": "6a22-ep0y-cav6-3r0u",
+      "parentId": "",
+      "playbackId": "6a22jjy7kx8fre8e",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "edge_city__6_nov",
+    "streamDate": "2024-11-06T04:15:55.923Z",
+    "streamEndDate": "2024-11-06T04:15:55.923Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 1,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-06T04:15:57.739Z",
+    "updatedAt": "2024-11-06T08:53:19.770Z",
+    "__v": 0
+  },
+  {
+    "_id": "672d6afbf861dff0951ef800",
+    "name": "Funding the Commons & Earth Commons Bangkok",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/livestreams/_funding_the_commons_/thumb-1731029663570.png",
+    "organizationId": "672d69fdf861dff0951ef7d5",
+    "eventId": "672d6afaf861dff0951ef7ff",
+    "streamSettings": {
+      "streamId": "2b613a80-8f79-4e7b-947e-e4d5555117d4",
+      "streamKey": "2b61-0ski-31w9-oka6",
+      "parentId": "",
+      "playbackId": "2b61wlcwgyter160",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": true,
+    "slug": "funding_the_commons__earth_commons_bangkok",
+    "streamDate": "2024-11-08T02:00:00.000Z",
+    "streamEndDate": "2024-11-08T11:30:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 4,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-08T01:35:55.334Z",
+    "updatedAt": "2024-11-08T09:29:50.108Z",
+    "__v": 0
+  },
+  {
+    "_id": "672dd52bf861dff0954bc13c",
+    "name": "Funding the Commons & Earth Commons Bangkok",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "672d69fdf861dff0951ef7d5",
+    "eventId": "672dd52af861dff0954bc13b",
+    "streamSettings": {
+      "streamId": "e0102a26-949e-4ec2-8082-39e0eb9df7f9",
+      "streamKey": "e010-wqpd-x54m-axhq",
+      "parentId": "",
+      "playbackId": "e010ftj2eimfmieh",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": false,
+    "slug": "funding_the_commons__earth_commons_bangkok",
+    "streamDate": "2024-11-08T09:08:53.935Z",
+    "streamEndDate": "2024-11-08T09:08:53.935Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-08T09:08:59.229Z",
+    "updatedAt": "2024-11-08T11:47:24.632Z",
+    "__v": 0
+  },
+  {
+    "_id": "672ebcc4f861dff0959852a5",
+    "name": "Day 2: Funding the Commons & Earth Commons Bangkok",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "672d69fdf861dff0951ef7d5",
+    "eventId": "672ebcc3f861dff0959852a4",
+    "streamSettings": {
+      "streamId": "bf7d2de3-dec1-4b69-9e57-8ccc5504f7fb",
+      "streamKey": "bf7d-v5wu-6mpm-3yga",
+      "parentId": "",
+      "playbackId": "bf7d93s9q6e2s8l1",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": false,
+    "slug": "day_2_funding_the_commons__earth_commons_bangkok",
+    "streamDate": "2024-11-09T01:37:03.750Z",
+    "streamEndDate": "2024-11-09T01:37:03.750Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 4,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-09T01:37:08.319Z",
+    "updatedAt": "2025-01-19T11:12:51.224Z",
+    "__v": 0,
+    "transcripts": {
+      "status": "processing",
+      "chunks": [
+        {
+          "start": 2.5799999237060547,
+          "end": 3.0399999618530273,
+          "word": "After",
+          "_id": "678cdd8aa0f22d157ded1de2"
+        },
+        {
+          "start": 3.0399999618530273,
+          "end": 3.2799999713897705,
+          "word": "that",
+          "_id": "678cdd8aa0f22d157ded1de3"
+        },
+        {
+          "start": 3.2799999713897705,
+          "end": 3.700000047683716,
+          "word": "process",
+          "_id": "678cdd8aa0f22d157ded1de4"
+        },
+        {
+          "start": 3.9000000953674316,
+          "end": 4.019999980926514,
+          "word": "we'll",
+          "_id": "678cdd8aa0f22d157ded1de5"
+        },
+        {
+          "start": 4.019999980926514,
+          "end": 4.400000095367432,
+          "word": "deploy",
+          "_id": "678cdd8aa0f22d157ded1de6"
+        },
+        {
+          "start": 4.400000095367432,
+          "end": 5.519999980926514,
+          "word": "a",
+          "_id": "678cdd8aa0f22d157ded1de7"
+        },
+        {
+          "start": 5.519999980926514,
+          "end": 5.659999847412109,
+          "word": "smart",
+          "_id": "678cdd8aa0f22d157ded1de8"
+        },
+        {
+          "start": 5.659999847412109,
+          "end": 5.880000114440918,
+          "word": "contract",
+          "_id": "678cdd8aa0f22d157ded1de9"
+        },
+        {
+          "start": 5.880000114440918,
+          "end": 6.21999979019165,
+          "word": "wallet",
+          "_id": "678cdd8aa0f22d157ded1dea"
+        },
+        {
+          "start": 6.21999979019165,
+          "end": 6.78000020980835,
+          "word": "that",
+          "_id": "678cdd8aa0f22d157ded1deb"
+        },
+        {
+          "start": 6.78000020980835,
+          "end": 7,
+          "word": "will",
+          "_id": "678cdd8aa0f22d157ded1dec"
+        },
+        {
+          "start": 7.260000228881836,
+          "end": 7.260000228881836,
+          "word": "of",
+          "_id": "678cdd8aa0f22d157ded1ded"
+        },
+        {
+          "start": 7.260000228881836,
+          "end": 7.260000228881836,
+          "word": "course",
+          "_id": "678cdd8aa0f22d157ded1dee"
+        },
+        {
+          "start": 7.440000057220459,
+          "end": 7.460000038146973,
+          "word": "come",
+          "_id": "678cdd8aa0f22d157ded1def"
+        },
+        {
+          "start": 7.460000038146973,
+          "end": 7.559999942779541,
+          "word": "for",
+          "_id": "678cdd8aa0f22d157ded1df0"
+        },
+        {
+          "start": 7.559999942779541,
+          "end": 7.559999942779541,
+          "word": "me",
+          "_id": "678cdd8aa0f22d157ded1df1"
+        }
+      ],
+      "lastSegmentTimestamp": 347.98,
+      "text": "After that process, we'll deploy a smart contract wallet that will, of course, come for me."
+    }
+  },
+  {
+    "_id": "6730925367d7e77da51f078c",
+    "name": "Talk 2",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6730922e67d7e77da51f060d",
+    "eventId": "6730925367d7e77da51f078a",
+    "streamSettings": {
+      "streamId": "4d41b634-627d-4371-8442-ddb0717c46d8",
+      "streamKey": "4d41-39g4-dzu8-ms26",
+      "parentId": "",
+      "playbackId": "4d41p5woqpexuyem",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": true,
+    "isMultipleDate": false,
+    "slug": "talk_2",
+    "streamDate": "2024-11-11T02:00:00.000Z",
+    "streamEndDate": "2024-11-10T11:00:34.743Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 3,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "plugins": [],
+    "createdAt": "2024-11-10T11:00:35.614Z",
+    "updatedAt": "2024-11-11T10:16:40.879Z",
+    "__v": 0
+  },
+  {
+    "_id": "682dc3fcc149844bac79a2b4",
+    "name": "Cinema 10",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/65a90bf47932ebe436ba9351/Main_Stage___Kino_10-1749556711531.png",
+    "organizationId": "65a90bf47932ebe436ba9351",
+    "eventId": "682dc3fbc149844bac79a2b3",
+    "streamSettings": {
+      "streamId": "aca7fac9-a9e1-4f60-b23b-632dc26c1f63",
+      "streamKey": "aca7-kgur-weic-uqz5",
+      "parentId": "",
+      "playbackId": "aca7tni1pscbqij0",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "cinema_10",
+    "streamDate": "2025-06-13T04:00:00.000Z",
+    "streamEndDate": "2025-06-13T16:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 3,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "pending",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-05-21T12:15:56.405Z",
+    "updatedAt": "2025-06-13T17:56:04.454Z",
+    "__v": 0
+  },
+  {
+    "_id": "682dc45ec149844bac79a2e0",
+    "name": "Cinema 7",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/65a90bf47932ebe436ba9351/Side_Stage___Kino_7-1749556706022.png",
+    "organizationId": "65a90bf47932ebe436ba9351",
+    "eventId": "682dc45ec149844bac79a2df",
+    "streamSettings": {
+      "streamId": "92f4a18d-0207-46ac-b8aa-e2716744d826",
+      "streamKey": "92f4-b6bb-88js-nmv6",
+      "parentId": "",
+      "playbackId": "92f40jfng8qnxmdh",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "cinema_7",
+    "streamDate": "2025-06-13T07:00:00.000Z",
+    "streamEndDate": "2025-06-13T16:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 4,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "pending",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-05-21T12:17:34.967Z",
+    "updatedAt": "2025-06-13T15:41:33.818Z",
+    "__v": 0
+  },
+  {
+    "_id": "682dc4e0c149844bac79a37f",
+    "name": "Cinema 6",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/65a90bf47932ebe436ba9351/Side_Stage___Kino_6-1749556697580.png",
+    "organizationId": "65a90bf47932ebe436ba9351",
+    "eventId": "682dc4e0c149844bac79a37e",
+    "streamSettings": {
+      "streamId": "82e2e748-5e77-4ed1-9d5b-f541012c68a0",
+      "streamKey": "82e2-wv5y-s0or-fnbe",
+      "parentId": "",
+      "playbackId": "82e2ewjc4smxrywv",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "cinema_6",
+    "streamDate": "2025-06-13T08:00:00.000Z",
+    "streamEndDate": "2025-06-13T16:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 2,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "pending",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-05-21T12:19:44.239Z",
+    "updatedAt": "2025-06-13T15:44:41.607Z",
+    "__v": 0
+  },
+  {
+    "_id": "682dc528c149844bac79a3be",
+    "name": "Cinema 9 (Workshops)",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/65a90bf47932ebe436ba9351/Workshop___Kino_9-1749556686685.png",
+    "organizationId": "65a90bf47932ebe436ba9351",
+    "eventId": "682dc527c149844bac79a3bd",
+    "streamSettings": {
+      "streamId": "cb1f16d2-5362-4991-a8eb-934dbaa849bd",
+      "streamKey": "cb1f-1ze1-oymf-oyb7",
+      "parentId": "",
+      "playbackId": "cb1fss72adkq3av9",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "cinema_9_workshops",
+    "streamDate": "2025-06-13T07:30:00.000Z",
+    "streamEndDate": "2025-06-13T15:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 4,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "pending",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-05-21T12:20:56.091Z",
+    "updatedAt": "2025-06-13T16:08:13.610Z",
+    "__v": 0
+  },
+  {
+    "_id": "682f61b0c149844bac821d7b",
+    "name": "DappCon25: Day 3 - Consensus Layer (Halle)",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/682f5f23c149844bac821bf0/DappCon_Logo-1750057024303.png",
+    "organizationId": "682f5f23c149844bac821bf0",
+    "eventId": "682f61afc149844bac821d7a",
+    "streamSettings": {
+      "streamId": "3661968c-8d24-41d4-b6c2-bedb2e8ad2ca",
+      "streamKey": "3661-0kzj-fhfm-avt1",
+      "parentId": "",
+      "playbackId": "3661uwftoguj8h1c",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "2e204ae1-7248-4636-bf25-7189b2907efe",
+          "name": "Twitter",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "684fbf58caecf08629bf5f9c"
+        },
+        {
+          "id": "7bb17c64-ae02-4543-82e6-52e9be82250f",
+          "name": "YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "684fcc83caecf08629bfc684"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "dappcon25_day_3__consensus_layer_halle",
+    "streamDate": "2025-06-18T08:00:00.000Z",
+    "streamEndDate": "2025-06-18T16:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 7,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "completed",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-05-22T17:41:04.294Z",
+    "updatedAt": "2025-09-17T17:19:55.453Z",
+    "__v": 0
+  },
+  {
+    "_id": "682f629bc149844bac821ea9",
+    "name": "DappCon25: Day 3 - Execution Layer (Workshop Room)",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/stages/682f5f23c149844bac821bf0/DappCon_Logo-1750057015477.png",
+    "organizationId": "682f5f23c149844bac821bf0",
+    "eventId": "682f629bc149844bac821ea8",
+    "streamSettings": {
+      "streamId": "f5fe23b9-b7a2-422b-9197-3ab7d9571c51",
+      "streamKey": "f5fe-c8bk-pqj0-h00w",
+      "parentId": "",
+      "playbackId": "f5fevtqchpgbp4mk",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": [
+        {
+          "id": "ea559073-2136-4d10-80dc-b0cd8ea66a26",
+          "name": "YouTube",
+          "socialId": "",
+          "socialType": "",
+          "broadcastId": "",
+          "_id": "684ff34ccaecf08629c00669"
+        }
+      ]
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "dappcon25_day_3__execution_layer_workshop_room",
+    "streamDate": "2025-06-18T08:00:00.000Z",
+    "streamEndDate": "2025-06-18T16:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 9,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "processing",
+      "chunks": [
+        {
+          "start": 0,
+          "end": 0.23999999463558197,
+          "word": "So",
+          "_id": "6852d36a361334773f039c37"
+        },
+        {
+          "start": 0.23999999463558197,
+          "end": 0.5799999833106995,
+          "word": "the",
+          "_id": "6852d36a361334773f039c38"
+        },
+        {
+          "start": 0.5799999833106995,
+          "end": 0.5799999833106995,
+          "word": "hook",
+          "_id": "6852d36a361334773f039c39"
+        },
+        {
+          "start": 0.5799999833106995,
+          "end": 0.8600000143051147,
+          "word": "we're",
+          "_id": "6852d36a361334773f039c3a"
+        },
+        {
+          "start": 0.8600000143051147,
+          "end": 0.8600000143051147,
+          "word": "going",
+          "_id": "6852d36a361334773f039c3b"
+        },
+        {
+          "start": 0.8600000143051147,
+          "end": 1.1399999856948853,
+          "word": "to",
+          "_id": "6852d36a361334773f039c3c"
+        },
+        {
+          "start": 1.1399999856948853,
+          "end": 1.2200000286102295,
+          "word": "talk",
+          "_id": "6852d36a361334773f039c3d"
+        },
+        {
+          "start": 1.2200000286102295,
+          "end": 1.4600000381469727,
+          "word": "about",
+          "_id": "6852d36a361334773f039c3e"
+        },
+        {
+          "start": 1.4600000381469727,
+          "end": 1.8600000143051147,
+          "word": "first",
+          "_id": "6852d36a361334773f039c3f"
+        },
+        {
+          "start": 1.8600000143051147,
+          "end": 2.0199999809265137,
+          "word": "is",
+          "_id": "6852d36a361334773f039c40"
+        },
+        {
+          "start": 2.0199999809265137,
+          "end": 2.2200000286102295,
+          "word": "the",
+          "_id": "6852d36a361334773f039c41"
+        },
+        {
+          "start": 2.2200000286102295,
+          "end": 2.5399999618530273,
+          "word": "stable",
+          "_id": "6852d36a361334773f039c42"
+        },
+        {
+          "start": 2.5399999618530273,
+          "end": 2.859999895095825,
+          "word": "surge",
+          "_id": "6852d36a361334773f039c43"
+        },
+        {
+          "start": 2.859999895095825,
+          "end": 3.1600000858306885,
+          "word": "hook",
+          "_id": "6852d36a361334773f039c44"
+        },
+        {
+          "start": 3.740000009536743,
+          "end": 4.28000020980835,
+          "word": "This",
+          "_id": "6852d36a361334773f039c45"
+        },
+        {
+          "start": 4.28000020980835,
+          "end": 4.800000190734863,
+          "word": "was",
+          "_id": "6852d36a361334773f039c46"
+        },
+        {
+          "start": 4.800000190734863,
+          "end": 5.019999980926514,
+          "word": "an",
+          "_id": "6852d36a361334773f039c47"
+        },
+        {
+          "start": 5.019999980926514,
+          "end": 5.559999942779541,
+          "word": "innovative",
+          "_id": "6852d36a361334773f039c48"
+        },
+        {
+          "start": 5.559999942779541,
+          "end": 6.119999885559082,
+          "word": "directional",
+          "_id": "6852d36a361334773f039c49"
+        },
+        {
+          "start": 6.119999885559082,
+          "end": 6.420000076293945,
+          "word": "fee",
+          "_id": "6852d36a361334773f039c4a"
+        },
+        {
+          "start": 6.420000076293945,
+          "end": 6.880000114440918,
+          "word": "mechanism",
+          "_id": "6852d36a361334773f039c4b"
+        },
+        {
+          "start": 6.880000114440918,
+          "end": 7.099999904632568,
+          "word": "that",
+          "_id": "6852d36a361334773f039c4c"
+        },
+        {
+          "start": 7.099999904632568,
+          "end": 7.21999979019165,
+          "word": "was",
+          "_id": "6852d36a361334773f039c4d"
+        },
+        {
+          "start": 7.21999979019165,
+          "end": 7.599999904632568,
+          "word": "actually",
+          "_id": "6852d36a361334773f039c4e"
+        },
+        {
+          "start": 7.599999904632568,
+          "end": 8.0600004196167,
+          "word": "proposed",
+          "_id": "6852d36a361334773f039c4f"
+        },
+        {
+          "start": 8.0600004196167,
+          "end": 8.399999618530273,
+          "word": "by",
+          "_id": "6852d36a361334773f039c50"
+        },
+        {
+          "start": 8.399999618530273,
+          "end": 8.479999542236328,
+          "word": "one",
+          "_id": "6852d36a361334773f039c51"
+        },
+        {
+          "start": 8.479999542236328,
+          "end": 8.619999885559082,
+          "word": "of",
+          "_id": "6852d36a361334773f039c52"
+        },
+        {
+          "start": 8.619999885559082,
+          "end": 8.739999771118164,
+          "word": "our",
+          "_id": "6852d36a361334773f039c53"
+        },
+        {
+          "start": 8.739999771118164,
+          "end": 9.260000228881836,
+          "word": "maxis",
+          "_id": "6852d36a361334773f039c54"
+        }
+      ],
+      "lastSegmentTimestamp": 342,
+      "text": "So the hook we're going to talk about first is the stable surge hook. This was an innovative directional fee mechanism that was actually proposed by one of our maxis."
+    },
+    "plugins": [],
+    "createdAt": "2025-05-22T17:44:59.928Z",
+    "updatedAt": "2025-06-18T16:45:43.589Z",
+    "__v": 0
+  },
+  {
+    "_id": "68525baf4ac43bf73db613ca",
+    "name": "DappCon25: Day 3 - The Blob (Studio A)",
+    "description": "",
+    "thumbnail": "https://streameth-production.ams3.digitaloceanspaces.com/livestreams/682f5f23c149844bac821bf0/DappCon_Logo-1750227879288.png",
+    "organizationId": "682f5f23c149844bac821bf0",
+    "eventId": "68525bae4ac43bf73db613c9",
+    "streamSettings": {
+      "streamId": "b8b74e88-66cd-4c52-9645-00f3b9b7ca40",
+      "streamKey": "b8b7-xafe-p6ll-2vf1",
+      "parentId": "",
+      "playbackId": "b8b7osdq733l5s6q",
+      "isActive": false,
+      "isHealthy": true,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": false,
+    "slug": "dappcon25_day_3__the_blob_studio_a",
+    "streamDate": "2025-06-18T08:00:00.000Z",
+    "streamEndDate": "2025-06-18T06:24:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 1,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "pending",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-06-18T06:24:47.015Z",
+    "updatedAt": "2025-06-19T08:03:55.112Z",
+    "__v": 0
+  },
+  {
+    "_id": "6918eaf3aaaed07b949f6d3e",
+    "name": "Stage XL",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6918e24caaaed07b949bbdd1",
+    "eventId": "6918eaf3aaaed07b949f6d3d",
+    "streamSettings": {
+      "streamId": "733cb693-cf85-4ccf-b3ec-ccff1b65ec71",
+      "streamKey": "733c-4ohv-tvv3-xoy0",
+      "parentId": "",
+      "playbackId": "733c92qxc0c1w36t",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "stage_xl",
+    "streamDate": "2025-11-17T03:00:00.000Z",
+    "streamEndDate": "2025-11-23T03:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 58,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "pending",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-11-15T21:04:51.511Z",
+    "updatedAt": "2025-11-17T23:17:46.225Z",
+    "__v": 0
+  },
+  {
+    "_id": "6918ed8baaaed07b94a00717",
+    "name": "Lightning ",
+    "description": "",
+    "thumbnail": "",
+    "organizationId": "6918e24caaaed07b949bbdd1",
+    "eventId": "6918ed8baaaed07b94a00716",
+    "streamSettings": {
+      "streamId": "96d2f1d7-424f-480f-a748-c81a75c65474",
+      "streamKey": "96d2-rb06-d31w-3hq8",
+      "parentId": "",
+      "playbackId": "96d2vlj98brwom94",
+      "isActive": false,
+      "isHealthy": false,
+      "targets": []
+    },
+    "order": 0,
+    "published": false,
+    "isMultipleDate": true,
+    "slug": "lightning",
+    "streamDate": "2025-11-17T03:00:00.000Z",
+    "streamEndDate": "2025-11-23T03:00:00.000Z",
+    "mintable": false,
+    "nftCollections": [],
+    "recordingIndex": 33,
+    "source": {
+      "url": "",
+      "m3u8Url": "",
+      "type": ""
+    },
+    "type": "livepeer",
+    "transcripts": {
+      "status": "pending",
+      "chunks": []
+    },
+    "plugins": [],
+    "createdAt": "2025-11-15T21:15:55.274Z",
+    "updatedAt": "2025-11-22T17:10:36.255Z",
+    "__v": 0
+  }
+]

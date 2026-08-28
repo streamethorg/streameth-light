@@ -1,0 +1,2340 @@
+[
+  {
+    "_id": "65a913897932ebe436ba96a6",
+    "name": "Base House",
+    "description": "Base is celebrating creativity and onchain art at Art Basel. Join us at Base House, our home base in Miami featuring an onchain gallery, creator panels, interactive demos, and more. Explore what it means to bring art onchain, connect with creators, and learn about Base’s vision for a more open future internet. Not in Miami? Tune in to the livestream right here or on Base X. Or, mint the broadcast channel to watch the livestream from any NFT marketplace such as OpenSea or Coinbase NFT, and receive commemorative drops after the event.",
+    "start": "2023-12-08T00:00:00.000Z",
+    "end": "2023-12-09T00:00:00.000Z",
+    "location": "Miami",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/base_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/base_banner.png",
+    "startTime": "11:00",
+    "endTime": "19:00",
+    "organizationId": "65a90bf17932ebe436ba9345",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1qQ9aFLIVo60jWi5Thtel67EvxMRi2af-nev_vBP-3wg",
+          "apiKey": ""
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/base_cover.png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "EST",
+    "accentColor": "#3d3c3c",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "s",
+          "driveApiKey": "s"
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "base_house",
+    "createdAt": "2024-01-18T12:03:21.905Z",
+    "updatedAt": "2024-02-20T12:57:26.883Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138b7932ebe436ba96a9",
+    "name": "ETHBerlin 2022",
+    "description": "ETHBerlin³ (2022) was a hackathon, a cultural festival, an educational event, a platform for hacktivism, and a community initiative to push the decentralized ecosystem forward.",
+    "start": "2022-09-16T00:00:00.000Z",
+    "end": "2022-09-18T00:00:00.000Z",
+    "location": "Berlin, Germany",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf47932ebe436ba9351",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1EJg7Z0WpyhdRa89Noti5lRb-iRjywGqa9_MbN6FsdWM",
+          "apiKey": "AIzaSyBfg-L5lDCUx7L-s6ubJe3z6mYeXIkIFU4"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethberlin_2022.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#28282B",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "ethberlin_2022",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:23.233Z",
+    "updatedAt": "2024-01-18T12:03:23.233Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138b7932ebe436ba96ac",
+    "name": "Conflux - Web3 UX Unconference",
+    "description": "Open-source design unconference and structured working groups helping to drive improved User Experience and usability standards forward for the decentralized eco-system.\n",
+    "start": "2023-11-16T00:00:00.000Z",
+    "end": "2023-11-16T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/web3-ux-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/conflux_banner.png",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "19g9VZyOSMw2L5FAG7SWJdtAmDiZDMzth4Zw_EXO40x0",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/conflux_banner.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "black",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1ikrJ2uc1q9Ac1l10G_bYyLWogKA2933W",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "conflux__web3_ux_unconference",
+    "createdAt": "2024-01-18T12:03:23.571Z",
+    "updatedAt": "2024-01-18T12:03:23.571Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138b7932ebe436ba96af",
+    "name": "EthPorto 2023",
+    "description": "March 16-18th, 2023 🇵🇹 Bringing the first ETH event to the beautiful city of Porto",
+    "start": "2023-03-16T00:00:00.000Z",
+    "end": "2023-03-18T00:00:00.000Z",
+    "location": "Porto, Portugal",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf57932ebe436ba9357",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1oe2C9BFunInC0-rLVOHuQQ3Uu5osOHUlAJxLooLd69c",
+          "apiKey": "AIzaSyBfg-L5lDCUx7L-s6ubJe3z6mYeXIkIFU4"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethporto_2023.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#191970",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "ethporto_2023",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:23.824Z",
+    "updatedAt": "2024-01-18T12:03:23.824Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138b7932ebe436ba96b2",
+    "name": "ETHChicago",
+    "description": "ETHChicago is a community-run hackathon and conference focused on decentralized technology, particularly within the Ethereum ecosystem. Our aim is to catalyze innovation, foster collaboration, and promote education through real-world impact in blockchain technology.",
+    "start": "2023-09-15T00:00:00.000Z",
+    "end": "2023-09-17T00:00:00.000Z",
+    "location": "Chicago, USA",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethchicago_logo.jpeg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethchicago_banner.jpeg",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf57932ebe436ba9354",
+    "dataImporter": [
+      {
+        "type": "pretalx",
+        "config": {
+          "url": "https://pretalx.com/api/events/ethchi-2023",
+          "apiToken": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethchicago.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "America/Chicago",
+    "accentColor": "#0C354B",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "ethchicago",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:23.947Z",
+    "updatedAt": "2024-01-18T12:03:23.947Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138c7932ebe436ba96b6",
+    "name": "Funding the Commons Berlin 2023",
+    "description": "We are individuals and organizations building new models of sustainable public goods funding and value alignment in open source networks. Our goal with Funding the Commons is to bridge the public goods community across Web2, Web3, research, philanthropy and industry. We do this by convening builders and practitioners, researchers and academics, and funders and philanthropists, catalyzing innovation in public goods. In the future, we seek to expand our impact by facilitating the creation of a public goods fund tied to impact evaluators, seeding projects that are conceived and incubated by the Funding the Commons community.",
+    "start": "2023-09-09T00:00:00.000Z",
+    "end": "2023-09-09T00:00:00.000Z",
+    "location": "Berlin, Germany",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ftc_logo.jpeg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ftc_banner.jpeg",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf67932ebe436ba935a",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1CuefhHHDbdWH77JGnkPQODdaq880mUAhwLlOeYnwWpo",
+          "apiKey": "w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/funding_the_commons_berlin_2023.jpg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Berlin",
+    "accentColor": "#00898a",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "funding_the_commons_berlin_2023",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:24.182Z",
+    "updatedAt": "2024-01-18T12:03:24.182Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138c7932ebe436ba96b8",
+    "name": "Protocol Berg",
+    "description": "The decentralized protocol and infrastructure conference. Protocol Berg is a one-day technical conference for protocol/system/network engineers, decentralized-infrastructure administrators, researchers, and other curious minds from different ecosystems.",
+    "start": "2023-09-15T00:00:00.000Z",
+    "end": "2023-09-15T00:00:00.000Z",
+    "location": "Berlin",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/berg_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/berg_banner.png",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf47932ebe436ba9351",
+    "dataImporter": [
+      {
+        "type": "pretalx",
+        "config": {
+          "url": "https://speak.protocol.berlin/api/events/protocol-berg"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/protocol_berg.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "white",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "protocol_berg",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:24.193Z",
+    "updatedAt": "2024-01-18T12:03:24.193Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138c7932ebe436ba96bf",
+    "name": "Cryptographic Resilience",
+    "description": "Cryptographic Resilience",
+    "start": "2023-11-13T00:00:00.000Z",
+    "end": "2023-11-13T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1E8LFSL-W5eh0GQmoa4f8-kd8a3JSMUghsvakzg5dotU",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/cryptographic_resilience.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#635E8F",
+    "unlisted": true,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1rR5akwvV6ex0Nfyj6v0GhYyYa59CcZl-",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "cryptographic_resilience",
+    "createdAt": "2024-01-18T12:03:24.532Z",
+    "updatedAt": "2024-01-18T12:03:24.532Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138c7932ebe436ba96c1",
+    "name": "Funding the Commons Paris 2023",
+    "description": "We are individuals and organizations building new models of sustainable public goods funding and value alignment in open source networks. Our goal with Funding the Commons is to bridge the public goods community across Web2, Web3, research, philanthropy and industry.",
+    "start": "2023-07-15T00:00:00.000Z",
+    "end": "2023-07-16T00:00:00.000Z",
+    "location": "Paris, France",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf67932ebe436ba935a",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1JUFF93zl0Y84h70t4RMDeCfZdA4eYYKf7_0vReLx4Xg",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/funding_the_commons_paris_2023.png",
+    "archiveMode": true,
+    "website": "https://fundingthecommons.io/",
+    "timezone": "utc",
+    "accentColor": "#00898a",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "funding_the_commons_paris_2023",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:24.627Z",
+    "updatedAt": "2024-01-18T12:03:24.627Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138c7932ebe436ba96c4",
+    "name": "Scroll's Mainnet Housewarming Party",
+    "description": "After three successful testnets spanning over 15 months with extensive testing and rigorous security audits, users and builders are now free to explore Scroll’s zkEVM, a scaling solution nearly identical to Ethereum with lower cost, faster speed and limitless scaling potential. \n\n To celebrate this milestone with our global community, we are hosting a livestream event from our team off-site in Vietnam. \n You’ll hear from our founders, engineering and research teams, ecosystem projects, and other members of the global Ethereum community. We’ll also be sharing highlights from the past two weeks.\n Join us!",
+    "start": "2023-10-20T00:00:00.000Z",
+    "end": "2023-10-20T00:00:00.000Z",
+    "location": "Hanoi, Vietnam",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/scroll_logo.jpg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/scroll_banner.png",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf77932ebe436ba9360",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1nM8U6a8TlmuMzE835ZvCol9IW5vmjLD9YI0Moc_SUJE",
+          "apiKey": "l"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/scroll_banner.png",
+    "archiveMode": false,
+    "website": "http://scroll.io",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "accentColor": "#EB5132",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "scroll_announcement_stream",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:24.778Z",
+    "updatedAt": "2024-01-18T12:03:24.778Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138d7932ebe436ba96cb",
+    "name": "EPF Day",
+    "description": "EPF Day is the culmination of the fourth cohort of the Ethereum Protocol Fellowship, a program designed to onboard aspiring developers to the world of Ethereum core protocol research and development. Fellows will present the projects they have been working on over the past four months, on topics from all corners of Ethereum R&D.\n",
+    "start": "2023-11-17T00:00:00.000Z",
+    "end": "2023-11-17T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/epf-logo.jpg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/EPF_Banner.jpg",
+    "startTime": "08:30",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1gaf8oSQr_ekvfs2UPkiI29uCUIrbUhnzoGO8jhP5zfU",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/EPF_Cover.jpg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#9D67A4",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1XKGr516_BvfwjE5QmoObL2qsMesjEIuC",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "epf_day",
+    "createdAt": "2024-01-18T12:03:25.003Z",
+    "updatedAt": "2024-01-18T12:03:25.003Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138d7932ebe436ba96cd",
+    "name": "Secureum TrustX",
+    "description": "Secureum TrustX is a first-of-its-kind technical event dedicated to the Ethereum security ecosystem. Security is critical to Ethereum and its applications. TrustX is a flagship community event dedicated to Ethereum security.",
+    "start": "2023-11-13T00:00:00.000Z",
+    "end": "2023-11-14T00:00:00.000Z",
+    "location": "Main Stage Secureum TrustX Istanbul",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/SecureumLogo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/secureum_banner.jpeg",
+    "startTime": "08:30",
+    "endTime": "",
+    "organizationId": "65a90bf87932ebe436ba9363",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1sfzI87_rzdA-Xjs4gAAqOIew7P-1J4lLq2FwP_9QXKA",
+          "apiKey": "s"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/secureum_banner.jpeg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#0C0404",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "secureum_trustx",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:25.090Z",
+    "updatedAt": "2024-01-18T12:03:25.090Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138d7932ebe436ba96d1",
+    "name": "Si Her DeFi: Africa",
+    "description": "Hear from GenZ web3 innovators streaming live from Nigeria, Africa’s emerging tech hub. Discover how Africa’s youth market is rapidly adopting crypto & blockchain technologies.",
+    "start": "2023-12-20T00:00:00.000Z",
+    "end": "2023-12-20T00:00:00.000Z",
+    "location": "Virtual",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/siher_logo.jpg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/siherBanner.jpg",
+    "startTime": "16:00",
+    "endTime": "",
+    "organizationId": "65a90bf87932ebe436ba9366",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "10j5yAbKvB9GsO1wWk-XijtUTcDeitefEBjKklslN3Cw",
+          "apiKey": "s"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/siherCover.jpg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Africa/Lagos",
+    "accentColor": "#5E1A6F",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "siher_defi_africa",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:25.383Z",
+    "updatedAt": "2024-01-18T12:03:25.383Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138d7932ebe436ba96d3",
+    "name": "ETHconomics",
+    "description": "ETHconomics gathers budding researchers and established Researchooors to explore the hardest problems in cryptoeconomics\n",
+    "start": "2023-11-15T00:00:00.000Z",
+    "end": "2023-11-15T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethconomics_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethconomics_banner.jpeg",
+    "startTime": "14:00",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1Q0FkNLt-acQoNm8-1v4HbznuRyf5nehbvlhic1Fp_F0",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethconomics_cover.jpeg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "red",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1sUqjIFPTlIBLkLcfys2Hhpy6hVQsAxfF",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "ethconomics",
+    "createdAt": "2024-01-18T12:03:25.467Z",
+    "updatedAt": "2024-01-18T12:03:25.467Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138d7932ebe436ba96d6",
+    "name": "Spagetteth Naples",
+    "description": "The Italian Ethereum movement to buidl an open sauce future together.",
+    "start": "2023-05-24T00:00:00.000Z",
+    "end": "2023-05-26T00:00:00.000Z",
+    "location": "Naples, Italy",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bf97932ebe436ba9369",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "17aPr5DDYwH2pv20xpdS_Ci08r0pkgpWD-mm5-vDre2w",
+          "apiKey": "AIzaSyBfg-L5lDCUx7L-s6ubJe3z6mYeXIkIFU4"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/spagetteth_naples.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7467ec",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "spagetteth_naples",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:25.686Z",
+    "updatedAt": "2024-01-18T12:03:25.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138d7932ebe436ba96da",
+    "name": "ETHGünü",
+    "description": "Turkish: 1 günlük Türkçe Ethereum'a giriş etkinliği. Hedef kitlesi Türkiye'de yaşayan öğrenciler, web2 geliştiricileri ve Ethereum'a yeni olup al-sat yapmış fakat Ethereum'un ne olduğunu bilmeyenler.\n\nEnglish: 1-day intro-to-Ethereum event in the Turkish language focused on locals: students, web2 devs, and newbies into trading but never knew what really Ethereum is. \n",
+    "start": "2023-11-13T00:00:00.000Z",
+    "end": "2023-11-13T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ETHGunu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ETHGunu_Banner.png",
+    "startTime": "09:30",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1rPt0YxvrUmbQlpVpIJLisdXNClsbImRwCP-_miuEqBs",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ETHGunu_cover.jpeg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#1B4DFE",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "18-WbDJ-XkbAamplIjdckdRiAMNAS7ilT",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "ethgunu",
+    "createdAt": "2024-01-18T12:03:25.939Z",
+    "updatedAt": "2024-01-18T12:03:25.939Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138d7932ebe436ba96dc",
+    "name": "Swarm Summit 2023",
+    "description": "As the summer light symbolically vanquished the darkness on 21 June, Swarm network kicked off its three-day Swarm Virtual Summit. This year, the network’s global community gathered in the virtual world, giving all its diverse members a chance to watch and listen to leading voices and keen enthusiasts across different fields on the online stage.",
+    "start": "2023-06-21T00:00:00.000Z",
+    "end": "2023-06-23T00:00:00.000Z",
+    "location": "Virtual",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/swarm_logo.jpeg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfa7932ebe436ba936c",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "129T5ggZEdmH_u_2Sp1-LJShcoOqgBGDWosVBQQ6IfYg",
+          "apiKey": "AIzaSyBfg-L5lDCUx7L-s6ubJe3z6mYeXIkIFU4"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/swarm_summit_2023.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#F5F5F5",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "swarm_summit_2023",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:25.978Z",
+    "updatedAt": "2024-01-18T12:03:25.978Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138e7932ebe436ba96e0",
+    "name": "EVM Summit",
+    "description": "The EVM Summit 0 will explore the future of the Ethereum Virtual Machine, identifying areas for improvement and addressing challenges. The summit will cover a range of topics, including L1 and L2 scaling solutions, zkEVMs, and encourage collaboration between different networks. Additionally, it will feature interesting discussions on the language and smart contract world, as well as security, and client-specific findings on EVM peculiarities. Attendees can expect a full day of in-depth talks, panel discussions, workshops, and opportunities for collaboration among (core) developers, researchers, industry experts, and enthusiasts.\n",
+    "start": "2023-11-14T00:00:00.000Z",
+    "end": "2023-11-14T00:00:00.000Z",
+    "location": "Istanbul Congress Center (ICC), Turkey - B2 Level, Emirgan 1-2 Rooms",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/EVM_Summit_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/EVM_Summit_Banner.jpeg",
+    "startTime": "09:00",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1jOGnwxTkZ4e3H9aUGaI2ijrSeRoyh0aleeGWbSeZVfU",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/EVM_summit_cover.jpeg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#F3AB33",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1OVUHo7M6KextXg_2_UqJjs3IWxzvplCR",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "evm_summit",
+    "createdAt": "2024-01-18T12:03:26.438Z",
+    "updatedAt": "2024-01-18T12:03:26.438Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138e7932ebe436ba96e2",
+    "name": "Web3 Lagos Conference 2023",
+    "description": "The Web3 Lagos Conference is the largest Web3 Event in Lagos, Nigeria. This conference will bring together Web3 enthusiasts from all over Nigeria and beyond. Here, community meets technology for three days of intensive Networking and Learning experiences.",
+    "start": "2023-08-31T00:00:00.000Z",
+    "end": "2023-09-02T00:00:00.000Z",
+    "location": "The Zone, Gbagada, Lagos State.",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/web3bridge_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/web3lagos_cover.png",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfb7932ebe436ba9372",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1sInPVRuI6GQKau5hVTTosLJKA7G2TQ-6M0vTgd6ZLV0",
+          "apiKey": "w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/web3lagos_cover.png",
+    "archiveMode": false,
+    "website": "https://event.web3bridge.com/",
+    "timezone": "Africa/Lagos",
+    "accentColor": "#F5F5F5",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "web3_lagos_conference_2023",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:26.533Z",
+    "updatedAt": "2024-01-18T12:03:26.533Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138e7932ebe436ba96e6",
+    "name": "ZuConnect - Decentralized Social Track",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.\n",
+    "start": "2023-11-07T00:00:00.000Z",
+    "end": "2023-11-07T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1zt8QKriLco6PIi5fF4eWGD4ERFsuBPm70I6h08Dca8Q",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect__decentralized_social_track",
+    "createdAt": "2024-01-18T12:03:26.834Z",
+    "updatedAt": "2024-01-18T12:03:26.834Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138e7932ebe436ba96e8",
+    "name": "Light Client Summit",
+    "description": "A day for builders to explore the state of light clients in the Ethereum ecosystem.\n",
+    "start": "2023-11-18T00:00:00.000Z",
+    "end": "2023-11-18T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/ethlightclients_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/LightClient _Banner.jpg",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1dfd6HNSZR5W844xeE6IFiggvzU_VhUa1FWjQG3GaJqs",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/LightClient_Cover.jpg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#6ED1B4",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1l40ph-mbHVvJQGCYoCOfbr_os1gSMidT",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "light_client_summit",
+    "createdAt": "2024-01-18T12:03:26.919Z",
+    "updatedAt": "2024-01-18T12:03:26.919Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138f7932ebe436ba96eb",
+    "name": "ZuConnect - Public Goods Track",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.\n",
+    "start": "2023-11-04T00:00:00.000Z",
+    "end": "2023-11-04T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "09:30",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1aL40yIUHg-cWfy7kdt8bokjTrS3RJSkyTKY1DY9H7K4",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect__public_goods_track",
+    "createdAt": "2024-01-18T12:03:27.448Z",
+    "updatedAt": "2024-01-18T12:03:27.448Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9138f7932ebe436ba96ee",
+    "name": "Solidity Summit",
+    "description": "Solidity ecosystem day for people involved and interested in the Solidity language and the ecosystem around it. It features talks & discussions on Solidity, Yul, language design and tooling.\n",
+    "start": "2023-11-16T00:00:00.000Z",
+    "end": "2023-11-16T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/solidity-summit-logo.jpg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/solidity-submit-banner.jpg",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "18ewcQfL_L7gHMBHKBAM6YOqdats3eJqXnhYKAdD_g9k",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/solidity-submit-cover.jpg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#635E8F",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1xtB13ka_Ej8BTn991B8B5tyC8OnOFg1S",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "solidity_summit",
+    "createdAt": "2024-01-18T12:03:27.588Z",
+    "updatedAt": "2024-01-18T12:03:27.588Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913907932ebe436ba96f2",
+    "name": "ZuConnect - ZK Track",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.\n",
+    "start": "2023-11-06T00:00:00.000Z",
+    "end": "2023-11-06T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1C2QxXaPMkAV_Hk3TQ7dsItU9ADMvUdoBWrKviG4dkIo",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect__zk_track",
+    "createdAt": "2024-01-18T12:03:28.058Z",
+    "updatedAt": "2024-01-18T12:03:28.058Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913907932ebe436ba96f4",
+    "name": "ETHStaker's Staking Gathering",
+    "description": "ETHStaker's Staking Gathering",
+    "start": "2023-11-13T00:00:00.000Z",
+    "end": "2023-11-14T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/staking_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/staking_cover.jpeg",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1SF9Z_6Y1pkbUEX5lEL8JEvPf-Ze11Oc7OevKZVmCUYU",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/staking_cover.jpeg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#3C4043",
+    "unlisted": true,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "staking_gathering_2023",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:28.086Z",
+    "updatedAt": "2024-01-18T12:03:28.086Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913907932ebe436ba96f8",
+    "name": "ZuConnect DeSci Track",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.",
+    "start": "2023-11-03T00:00:00.000Z",
+    "end": "2023-11-03T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1iMUdjDp2eUXKLc0v2YHdRm4nLJzO7Is_YtXVZRj0Wc0",
+          "apiKey": "w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect_desci_track",
+    "createdAt": "2024-01-18T12:03:28.678Z",
+    "updatedAt": "2024-01-18T12:03:28.678Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913907932ebe436ba96fa",
+    "name": "Wallet Unconference",
+    "description": "Wallet Unconference",
+    "start": "2023-11-17T00:00:00.000Z",
+    "end": "2023-11-17T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/wallet_unconference_logo.jpeg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/wallet_unconference_banner.jpeg",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bf27932ebe436ba9348",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1dLl-rVjjciYA0v5EJpFxkYOhGfrdp_9aDrhjH5S_--U",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/wallet_unconference_cover.jpg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "gray",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "1C5VBsXVWvV7fWa9SoMAaMPiWsY6OkWKR",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "wallet_unconference",
+    "createdAt": "2024-01-18T12:03:28.690Z",
+    "updatedAt": "2024-01-18T12:03:28.690Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913917932ebe436ba96fd",
+    "name": "ZuConnect Hackathon",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.\n",
+    "start": "2023-11-10T00:00:00.000Z",
+    "end": "2023-11-10T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "09:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1bw8MPPTskz8ZUP3FukBTZiZ3aRPekdzu3Rc0T92YNSs",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect_hackathon",
+    "createdAt": "2024-01-18T12:03:29.196Z",
+    "updatedAt": "2024-01-18T12:03:29.196Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913917932ebe436ba9700",
+    "name": "ZuConnect Istanbul",
+    "description": "Embark on a transformative journey at ZuConnect before DevConnect — a two-week popup village in Istanbul where the luminaries of crypto, AI, governance, decentralized science, and culture coalesce. We will convene to co-work, foster collaborations, and build and test new projects in the above mentioned fields. \n\n\nLooking for the ZuConnect Hacker Applications? Check here\n\nLooking for ZuConnect Scholarship Applications? Check here",
+    "start": "2023-10-30T11:39:18.573Z",
+    "end": "2023-10-30T11:39:18.573Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "13:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1hv434Sl3EWRyv7J69BwBEc2sq0ZlAxIrYZF1D556kjs",
+          "apiKey": "a"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/5Ie2qQzG.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect_istanbul",
+    "createdAt": "2024-01-18T12:03:29.686Z",
+    "updatedAt": "2024-01-18T12:03:29.686Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913927932ebe436ba9703",
+    "name": "ZuConnect Istanbul - AI Track ",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.",
+    "start": "2023-11-02T00:00:00.000Z",
+    "end": "2023-11-02T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "14:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1CTrmXBfdbkNRNjK5kWyuFYMJ0kfWHzPY_CryJrnokAs",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect_istanbul__ai_track",
+    "createdAt": "2024-01-18T12:03:30.196Z",
+    "updatedAt": "2024-01-18T12:03:30.196Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913927932ebe436ba9706",
+    "name": "ZuConnect Istanbul - Art Track",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.",
+    "start": "2023-11-02T00:00:00.000Z",
+    "end": "2023-11-02T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "10:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1BOcK5i1KRLcFPd44I0bEpok0fDqYz_kphct-U4pdTwk",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect_istanbul__art_track",
+    "createdAt": "2024-01-18T12:03:30.673Z",
+    "updatedAt": "2024-01-18T12:03:30.673Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913937932ebe436ba9709",
+    "name": "ZuConnect Istanbul - NeuroTech Track ",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.\n",
+    "start": "2023-10-31T00:00:00.000Z",
+    "end": "2023-10-31T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "13:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1kBKKL2Z-0zKQ-1ByLfnGfM86_a6ve9CImXzymCALqXE",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect_istanbul__neurotech_track",
+    "createdAt": "2024-01-18T12:03:31.346Z",
+    "updatedAt": "2024-01-18T12:03:31.346Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913937932ebe436ba970c",
+    "name": "ZuConnect Istanbul - New Governance ",
+    "description": "Join ZuConnect, the 2023 Zuzalu gathering in Istanbul! The talks cover Ethereum, ZK tech, AI, Decentralized Social, Science, and New Governance. Join the conversation at the forefront of technology and innovation.",
+    "start": "2023-11-01T00:00:00.000Z",
+    "end": "2023-11-01T00:00:00.000Z",
+    "location": "Istanbul, Türkiye",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-banner.png",
+    "startTime": "09:00",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1gMhYSzp8Sa5DvR4emv2Jr5p_SA9mJMKfeIi3y3vdZ-U",
+          "apiKey": "k"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu-cover.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Europe/Istanbul",
+    "accentColor": "#047C66",
+    "unlisted": false,
+    "dataExporter": [
+      {
+        "type": "gdrive",
+        "config": {
+          "driveId": "",
+          "driveApiKey": ""
+        }
+      }
+    ],
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuconnect_istanbul__new_governance",
+    "createdAt": "2024-01-18T12:03:31.816Z",
+    "updatedAt": "2024-01-18T12:03:31.816Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913947932ebe436ba970f",
+    "name": "Zuzalu Montenegro 2023 - Coordi-nations and Digital Tribes",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-05-15T00:00:00.000Z",
+    "end": "2023-05-19T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1S-2vBhIfOqvsTsDJU0Xt9Luaudvp7GucVVYIccvUVQ0",
+          "apiKey": "l"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__coordinations_and_digital_tribes",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:32.579Z",
+    "updatedAt": "2024-01-18T12:03:32.579Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913957932ebe436ba9712",
+    "name": "Zuzalu Montenegro 2023 - CryptoxAI",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-05-04T00:00:00.000Z",
+    "end": "2023-05-06T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1yBxwb9R5YcUOuJ9_af4GgeSwWmnXvD1FXHtpbm1LsKE",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__cryptoxai.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__cryptoxai",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:33.091Z",
+    "updatedAt": "2024-02-20T13:13:55.992Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913957932ebe436ba9715",
+    "name": "Zuzalu Montenegro 2023 - Jurisdictions for Longevity",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-04-09T00:00:00.000Z",
+    "end": "2023-04-11T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1KYyLZGlO1nLJYbTzQbUvOX_KrRAhYYwZdhGIVE1kwD4",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__jurisdictions_for_longevity.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__jurisdictions_for_longevity",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:33.665Z",
+    "updatedAt": "2024-02-20T13:12:48.561Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913967932ebe436ba9718",
+    "name": "Zuzalu Montenegro 2023 - Longevity 0-1",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-05-07T00:00:00.000Z",
+    "end": "2023-05-10T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1yQzNcTxlMyrjwpM9xeukZ9rTxLzxfwKhEpykMDI_hk4",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__longevity_01.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__longevity_01",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:34.128Z",
+    "updatedAt": "2024-02-20T13:09:39.631Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913967932ebe436ba971b",
+    "name": "Zuzalu Montenegro 2023 - Longevity Biotech Conference",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-05-12T00:00:00.000Z",
+    "end": "2023-05-14T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1GzBqh0jziaGiLH1I9M5ee9PH0numlD5abTibfs1zW0o",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__longevity_biotech_conference.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__longevity_biotech_conference",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:34.618Z",
+    "updatedAt": "2024-02-20T13:09:56.131Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913977932ebe436ba971e",
+    "name": "Zuzalu Montenegro 2023 - Longevity Introductory",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-03-28T00:00:00.000Z",
+    "end": "2023-03-31T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1_CsWVC9yfgDhOHMpJd5lr8d7_fcIzOX_Cz_LBXPzbmc",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__longevity_introductory.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__longevity_introductory",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:35.098Z",
+    "updatedAt": "2024-02-20T13:14:19.155Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913977932ebe436ba9721",
+    "name": "Zuzalu Montenegro 2023 - Network States",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-04-30T00:00:00.000Z",
+    "end": "2023-05-01T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1uT9UNYJiMJLaPjBwtEHfoUMXaGy8ZD9cTN2LN4dlydc",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__network_states.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__network_states",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:35.586Z",
+    "updatedAt": "2024-02-20T13:14:24.953Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913987932ebe436ba9724",
+    "name": "Zuzalu Montenegro 2023 - Other",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-03-25T00:00:00.000Z",
+    "end": "2023-05-25T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1rvWyrBKIMCscwRGTciU0cnEiTGcpYzXxkLv9UH31seI",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__other.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__other",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:36.069Z",
+    "updatedAt": "2024-02-20T13:10:33.447Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913987932ebe436ba9727",
+    "name": "Zuzalu Montenegro 2023 - Public Goods",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-04-12T00:00:00.000Z",
+    "end": "2023-04-15T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1DtKqSLXTw9ujLcNPmA26MY6UuiQm75dol2Hh5xH6Tkc",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__public_goods.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__public_goods",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:36.865Z",
+    "updatedAt": "2024-02-20T13:11:03.587Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913997932ebe436ba972a",
+    "name": "Zuzalu Montenegro 2023 - Synthetic Biology",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-04-01T00:00:00.000Z",
+    "end": "2023-04-02T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1cKin8UyfylwbrNcU_4r0TldAaFDdv5yvhyU1WQuoSqQ",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__synthetic_biology.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__synthetic_biology",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:37.330Z",
+    "updatedAt": "2024-02-20T13:14:49.950Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a913997932ebe436ba972d",
+    "name": "Zuzalu Montenegro 2023 - zkSync",
+    "description": "Join 200 core residents brought together by a shared desire to learn, create, live longer and healthier lives, and build self-sustaining communities.",
+    "start": "2023-04-16T00:00:00.000Z",
+    "end": "2023-04-23T00:00:00.000Z",
+    "location": "Montenegro",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_logo.png",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/undefined",
+    "startTime": "",
+    "endTime": "",
+    "organizationId": "65a90bfc7932ebe436ba9375",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1HlHRmoM5zn67iAX9_JJSpK6NNVQX5dshhPUzilRXipA",
+          "apiKey": "AIzaSyChBCoGLIXhlMxY3eI9gJMpYujvFN90v6w"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/zuzalu_montenegro_2023__zksync.png",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#7983ff",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "zuzalu_montenegro_2023__zksync",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:03:37.842Z",
+    "updatedAt": "2024-02-20T13:08:59.977Z",
+    "__v": 0
+  },
+  {
+    "_id": "65a9169bf39fbd12acc22e19",
+    "name": "Swarm 2.0 - The Winter Solstice Event",
+    "description": "Swarm Foundation is proud to announce the launch of Swarm 2.0; the network that is ready to serve as a foundation for a self-sovereign digital society.\n\nJoin us on 21 December, 17.00 CET, aligning with the winter solstice, as we usher in the rebirth of the Sun and the dawn of Swarm's enhanced capabilities.\n\nWhat to expect?\n\nSwarm Foundation team members will provide an overview of Swarm 2.0 features and capabilities. They will explore the exponential network growth and the ongoing Great Data Upload, discuss the future, community engagement, and decentralised AI. Additionally, the event will showcase some of the projects within Swarm’s Ecosystem and reveal partnerships and collaborations that align with a shared vision of the digital future. \n\n #generatefreedom",
+    "start": "2023-12-21T00:00:00.000Z",
+    "end": "2023-12-21T00:00:00.000Z",
+    "location": "Virtual",
+    "logo": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/swarm_logo.jpeg",
+    "banner": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/swarm_cover.jpeg",
+    "startTime": "17:00",
+    "endTime": "",
+    "organizationId": "65a90bfa7932ebe436ba936c",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "12Gxkcy7PEXEkxA5QuQQVTjbu0fFXn5sakdLzZ4vru8E",
+          "apiKey": "s"
+        }
+      }
+    ],
+    "eventCover": "https://streamethapp.ams3.cdn.digitaloceanspaces.com/events/swarm_cover.jpeg",
+    "archiveMode": true,
+    "website": "",
+    "timezone": "CET",
+    "accentColor": "#F6F7F9",
+    "unlisted": false,
+    "enableVideoDownloader": true,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "swarm_winter_solstice",
+    "entity": "65a9169bf39fbd12acc22e19",
+    "dataExporter": [],
+    "createdAt": "2024-01-18T12:16:27.170Z",
+    "updatedAt": "2024-01-18T12:16:27.305Z",
+    "__v": 0
+  },
+  {
+    "_id": "65bd9f74f206d61f8a2f79d0",
+    "name": "ETH Lima Day ☀️",
+    "description": "Aprende, comparte, conéctate!\n\nUn encuentro en Lima para la comunidad de Ethereum, con la participación de builders y speakers del ecosistema Ethereum, donde podrás:\n\n♦️ Aprender conceptos básicos de Ethereum\n\n♦️ Adquirir nuevos conocimientos y herramientas, si eres un builder\n\n♦️ Conectar con personas de Latinoamérica que pueden impulsar tu futuro en el mundo Web3",
+    "start": "2024-02-03T03:00:00.000Z",
+    "end": "2024-02-04T03:00:00.000Z",
+    "location": "Lima, Peru",
+    "logo": "https://streameth-production.ams3.digitaloceanspaces.com/events/lima_logo.jpg",
+    "banner": "https://streameth-production.ams3.digitaloceanspaces.com/events/banner.jpg",
+    "startTime": "08:30 AM",
+    "endTime": "20:00 PM",
+    "organizationId": "65bd950cf206d61f8a2f797b",
+    "eventCover": "https://streameth-production.ams3.digitaloceanspaces.com/events/lima_cover.jpg",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "etc/gmt-5",
+    "accentColor": "#4054b2",
+    "unlisted": true,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "eth_lima_day_",
+    "dataImporter": [],
+    "dataExporter": [],
+    "createdAt": "2024-02-03T02:05:40.262Z",
+    "updatedAt": "2024-02-03T02:18:29.260Z",
+    "__v": 0
+  },
+  {
+    "_id": "65ce229744c543d5ebcd5cec",
+    "name": "unStable Summit Denver",
+    "description": "The unStable Summit is the one-day global edition of DeFi's most stable conference, the Stable Summit. Our Denver edition features the same technical stablecoin content you've seen in Paris and Istanbul, with a long-awaited twist of Real World Assets.",
+    "start": "2024-02-28T07:00:00.000Z",
+    "end": "2024-02-28T07:00:00.000Z",
+    "location": "Denver",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/stable_summit/unStable Summit Logo.png",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/stable_summit/unStable Summit Banner Image.jpg",
+    "startTime": "09:30 AM",
+    "endTime": "18:00 PM",
+    "organizationId": "65ce21ca44c543d5ebcd5799",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/stable_summit/unStable Summit Cover Image.jpg",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "america/denver",
+    "accentColor": "#524f4f",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "unstable_summit_denver",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1OE5X3i2UtjARpmB5S42ORz2cvfNgzC4cNyEqS28viTo"
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-15T14:41:27.788Z",
+    "updatedAt": "2024-02-27T18:11:49.680Z",
+    "__v": 0
+  },
+  {
+    "_id": "65cf3a8c59a007fea099627b",
+    "name": "Proof of Data Summit",
+    "description": "The Proof of Data Summit, hosted by Ceramic and Tableland, is a pivotal convening aimed at reshaping data management within the decentralized landscape. It unites pioneers from DePIN, decentralized AI, compute over data, reputation and identity ecosystems to harness the potential of distributed infrastructures for groundbreaking innovations and community advancement. This event signifies a critical move toward a data-centric future in decentralized technology, fostering collaborative efforts to navigate this transformative epoch.",
+    "start": "2024-03-01T00:00:00.000Z",
+    "end": "2024-03-01T00:00:00.000Z",
+    "location": "Denver",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/photo_2024-02-28_12-22-32.jpg",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/Group 183.png",
+    "startTime": "09:00 AM",
+    "endTime": "16:00 PM",
+    "organizationId": "65cf399859a007fea099626a",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/POD Banner.png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "america/denver",
+    "accentColor": "#052d61",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "proof_of_data_summit",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1yU0azOYzdqtGx4RqFuQ6aiC_giL4X2Ln6XZArBLd-Ys"
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-16T10:35:56.477Z",
+    "updatedAt": "2024-02-28T12:24:52.001Z",
+    "__v": 0
+  },
+  {
+    "_id": "65d5b6209b651d666ce39043",
+    "name": "SI HER SUMMIT",
+    "description": " A one-day virtual gathering with 50 speakers amplifying the web3 organizations, communities and diverse voices leading us into the decentralized web.",
+    "start": "2024-02-22T00:00:00.000Z",
+    "end": "2024-02-22T00:00:00.000Z",
+    "location": "Metaverse",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/si_her/photo_2024-02-09_18-24-24.jpg",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/si_her/Screenshot 2024-02-21 at 08.36.18.png",
+    "startTime": "09:00 AM",
+    "endTime": "21:00 PM",
+    "organizationId": "65a90bf87932ebe436ba9366",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/si_her/photo_2024-02-17_03-20-32.jpg",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "america/phoenix",
+    "accentColor": "#be99c8",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "si_her_summit",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1YYiy-KDOeIWTu-vzNHcjkwPOrOirwUOljViZqJK6f9s"
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-21T08:36:48.254Z",
+    "updatedAt": "2024-02-23T12:00:12.275Z",
+    "__v": 0
+  },
+  {
+    "_id": "65d5d5b06213d3683ba1292f",
+    "name": "EPF Study Group",
+    "description": "A 10-week educational journey through the Ethereum Protocol\\\n[Discord Server](https://discord.gg/epfsg)",
+    "start": "2024-02-21T10:49:54.102Z",
+    "end": "2024-04-26T22:00:00.000Z",
+    "location": "Online",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/ethereum_protocol_fellowship/EPF Icon.png",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/EPFsg Header Crop.jpg",
+    "startTime": "16:00 PM",
+    "endTime": "17:30 PM",
+    "organizationId": "65cf97e702e803dbd57d823f",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/ethereum_protocol_fellowship/EPFsg Header Crop.jpg",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "utc",
+    "accentColor": "#4a4a4a",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "epf_study_group",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": ""
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-21T10:51:28.058Z",
+    "updatedAt": "2024-02-22T20:28:23.214Z",
+    "__v": 0
+  },
+  {
+    "_id": "65d6358127279f0ee65d857a",
+    "name": "test",
+    "description": "tetst",
+    "start": "2024-02-21T17:39:08.354Z",
+    "end": "2024-02-21T17:39:08.354Z",
+    "location": "test",
+    "logo": "",
+    "banner": "",
+    "startTime": "03:00 AM",
+    "endTime": "04:00 AM",
+    "organizationId": "65d626cc27279f0ee65cd986",
+    "eventCover": "",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "africa/algiers",
+    "accentColor": "#417505",
+    "unlisted": true,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "test",
+    "dataImporter": [],
+    "dataExporter": [],
+    "createdAt": "2024-02-21T17:40:17.466Z",
+    "updatedAt": "2024-02-21T17:40:17.466Z",
+    "__v": 0
+  },
+  {
+    "_id": "65d64fd14a6b6d1f62466f72",
+    "name": "Another test",
+    "description": "creating an event for the first time is easy\n\n- and here is a list with markdown\n- `and some code`",
+    "start": "2024-02-22T03:00:00.000Z",
+    "end": "2024-02-23T03:00:00.000Z",
+    "location": "metaverse",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/streameth/logo.png",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/swarmNFT.jpeg",
+    "startTime": "22:30 PM",
+    "endTime": "23:30 PM",
+    "organizationId": "65d626cc27279f0ee65cd986",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/streameth/streameth_banner.png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "africa/bissau",
+    "accentColor": "#bd10e0",
+    "unlisted": true,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "another_test",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": ""
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-21T19:32:33.289Z",
+    "updatedAt": "2024-02-29T17:34:48.553Z",
+    "__v": 0
+  },
+  {
+    "_id": "65d78841feed2c5b14a6ff24",
+    "name": "pablo",
+    "description": "this is a test",
+    "start": "2024-02-23T03:00:00.000Z",
+    "end": "2024-02-24T03:00:00.000Z",
+    "location": "test",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/test/livepeer_black.png",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/test/streameth_twitter_banner.jpeg",
+    "startTime": "04:30 AM",
+    "endTime": "04:30 AM",
+    "organizationId": "65d787edfeed2c5b14a6e415",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/test/streameth_banner.png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "africa/bamako",
+    "accentColor": "#000000",
+    "unlisted": true,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "pablo",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": ""
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-22T17:45:37.728Z",
+    "updatedAt": "2024-02-26T15:40:31.268Z",
+    "__v": 0
+  },
+  {
+    "_id": "65d8e113c473c05da9004011",
+    "name": "Vitalia City",
+    "description": "VitaDAO Life Extension Conference\nWebsite → https://vitalia.city/",
+    "start": "2024-02-23T18:12:26.648Z",
+    "end": "2024-02-25T03:00:00.000Z",
+    "location": "Vitalia City",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/vitalia/vitlogo.jpeg",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/vitalia/vitaliaBanner.jpeg",
+    "startTime": "09:00 AM",
+    "endTime": "18:00 PM",
+    "organizationId": "65d8dffcc473c05da9002f58",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/vitalia/vitaliaCover .png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "america/mexico_city",
+    "accentColor": "#308616",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "vitalia_city",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1c5xyFCQxbBIw8WCHXDdwAmfDvUqMAqNAfUxfqdJkAFQ"
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-23T18:16:51.850Z",
+    "updatedAt": "2024-03-01T11:13:27.139Z",
+    "__v": 0
+  },
+  {
+    "_id": "65de79c4a6d370a1ab680658",
+    "name": "Decentralize AI Day @ ETH Denver 2024",
+    "description": "",
+    "start": "2024-02-28T03:00:00.000Z",
+    "end": "2024-02-28T03:00:00.000Z",
+    "location": "Edge city",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/decentraliced_ai/dcentralisedai.jpeg",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/Group 184.png",
+    "startTime": "09:00 AM",
+    "endTime": "18:00 PM",
+    "organizationId": "65de78cda6d370a1ab67fce3",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/decentraliced_ai/Capture-2024-02-27-210844.png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "america/denver",
+    "accentColor": "#212325",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "decentralize_ai_day__eth_denver_2024",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1Pp3bmMEMXeGJym-rWOEfDT6SYKw1yvcQ1VNW1_S1nww"
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-02-28T00:09:40.560Z",
+    "updatedAt": "2024-02-28T17:14:53.102Z",
+    "__v": 0
+  },
+  {
+    "_id": "65eb06507993530148b5bf0d",
+    "name": "StreamETH Conference Vancouver 2024",
+    "description": "StreamETH goes live in Vancouver, Canada on March 28, 2024. Join us live as we unveil groundbreaking technologies and applications of decentralized streaming services leveraged on blockchain network.\n\nBreak free from censorship, and get access to live insights and analytics of your user engagements globally as we integrate live streaming service on all exisiting streaming platforms.",
+    "start": "2024-03-08T12:13:11.808Z",
+    "end": "2024-03-08T12:13:11.808Z",
+    "location": "Vancouver",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/omotayo_wardaddy/Favicon.png",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/omotayo_wardaddy/cover.jpg",
+    "startTime": "10:00 AM",
+    "endTime": "16:00 PM",
+    "organizationId": "65eafddc7993530148b2f801",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/omotayo_wardaddy/Web Cover.png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "canada/central",
+    "accentColor": "#4a90e2",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "streameth_conference_vancouver_2024",
+    "dataImporter": [],
+    "dataExporter": [],
+    "createdAt": "2024-03-08T12:36:32.523Z",
+    "updatedAt": "2024-03-08T13:01:36.769Z",
+    "__v": 0
+  },
+  {
+    "_id": "65f2d1bb7993530148e9b7f2",
+    "name": "ETHMumbai 2024",
+    "description": "Build from Mumbai, for the world. 29-31 March 2024.",
+    "start": "2024-03-19T00:00:00.000Z",
+    "end": "2024-03-31T00:00:00.000Z",
+    "location": "Mumbai",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/ethmumbai/Ethmumbai Logo.png",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/ethmumbai/Ethmumbai.png",
+    "startTime": "19:00 PM",
+    "endTime": "21:00 PM",
+    "organizationId": "65f2d0127993530148e97b86",
+    "eventCover": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/events/ethmumbai/Ethmumbai Banner 3-1.png",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "asia/kolkata",
+    "accentColor": "#4f4f4f",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "ethmumbai_2024",
+    "dataImporter": [
+      {
+        "type": "gsheet",
+        "config": {
+          "sheetId": "1MTEA5hABBIyGTKm8GZv8WHZanPI-dZsyxN8OoOFSYWU"
+        }
+      }
+    ],
+    "dataExporter": [],
+    "createdAt": "2024-03-14T10:30:19.464Z",
+    "updatedAt": "2024-03-14T10:39:26.027Z",
+    "__v": 0
+  },
+  {
+    "_id": "667d41aac5090b2250b12e75",
+    "name": "EthCC2024",
+    "description": "EthCC 2024 event",
+    "start": "2024-07-08T08:03:27.197Z",
+    "end": "2024-07-12T14:03:27.197Z",
+    "location": "brussels",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/organizations/ethCC_logo.jpg",
+    "banner": "",
+    "startTime": "08:00",
+    "endTime": "17:00",
+    "organizationId": "6655bcaa968acef00450eb61",
+    "eventCover": "",
+    "archiveMode": false,
+    "website": "https://ethcc.io/archive",
+    "timezone": "CET",
+    "accentColor": "",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "ethcc2024",
+    "eventNFT": {
+      "address": "",
+      "name": "",
+      "symbol": ""
+    },
+    "dataImporter": [],
+    "dataExporter": [],
+    "createdAt": "2024-06-27T10:40:42.300Z",
+    "updatedAt": "2024-06-27T10:40:42.300Z",
+    "__v": 0
+  },
+  {
+    "_id": "6688215fc5090b2250f5e3a6",
+    "name": "Stable Summit II",
+    "description": "Stable Summit II 2024 event",
+    "start": "2024-07-06T08:03:27.197Z",
+    "end": "2024-07-07T14:03:27.197Z",
+    "location": "brussels",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/stages/stable_summit/StSum2.png",
+    "banner": "",
+    "startTime": "08:00",
+    "endTime": "17:00",
+    "organizationId": "65ce21ca44c543d5ebcd5799",
+    "eventCover": "",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "CET",
+    "accentColor": "",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "stable_summit_ii",
+    "eventNFT": {
+      "address": "",
+      "name": "",
+      "symbol": ""
+    },
+    "dataImporter": [],
+    "dataExporter": [],
+    "createdAt": "2024-07-05T16:37:51.423Z",
+    "updatedAt": "2024-07-05T16:37:51.423Z",
+    "__v": 0
+  },
+  {
+    "_id": "66c1ba2b6e7e09ffb2c8c6b4",
+    "name": "Web3 Summit 2024",
+    "description": "Web3 Summit 2024",
+    "start": "2024-08-19T08:00:00.000Z",
+    "end": "2024-08-21T08:00:00.000Z",
+    "location": "Berlin",
+    "logo": "https://do3z7e6uuakno.cloudfront.net/uploads/event/logo/1138814/1d22a84ca6803e2a2e6246b4f15246db.png",
+    "banner": "",
+    "startTime": "08:00",
+    "endTime": "17:00",
+    "organizationId": "66bdddbf14dae87d37be9529",
+    "eventCover": "",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "CET",
+    "accentColor": "",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "web3_summit_2024",
+    "eventNFT": {
+      "address": "",
+      "name": "",
+      "symbol": ""
+    },
+    "dataImporter": [],
+    "dataExporter": [],
+    "createdAt": "2024-08-18T09:08:59.827Z",
+    "updatedAt": "2024-08-18T09:08:59.827Z",
+    "__v": 0
+  }
+]
