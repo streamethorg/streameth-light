@@ -9,20 +9,86 @@ function load<T>(file: string): T {
   return JSON.parse(raw) as T;
 }
 
-const HAS_VIDEO = (s: Session) =>
-  Boolean(s.playbackId || s.videoUrl || s.playback?.videoUrl);
+// The legacy lp-playback.com short-link domain itself is dead (DNS/redirect
+// no longer resolves), but the underlying Livepeer asset usually still
+// exists — resolved via scripts/resolve-livepeer-playback.py against
+// Livepeer's public playback-info API (https://livepeer.studio/api/playback)
+// and cached here by playbackId. Only sessions with neither a working direct
+// URL nor a resolved playbackId are genuinely unplayable.
+const DEAD_VIDEO_HOSTS = new Set(["lp-playback.com"]);
+
+function isDeadVideoHost(url: string): boolean {
+  try {
+    return DEAD_VIDEO_HOSTS.has(new URL(url).hostname);
+  } catch {
+    return true;
+  }
+}
+
+const getResolvedPlaybackUrls = cache((): Record<string, string | null> => {
+  try {
+    return load<Record<string, string | null>>("sources/livepeer-resolved.json");
+  } catch {
+    return {};
+  }
+});
+
+function resolvedUrlForSession(s: Session): string | undefined {
+  if (!s.playbackId) return undefined;
+  return getResolvedPlaybackUrls()[s.playbackId] ?? undefined;
+}
+
+const HAS_VIDEO = (s: Session) => {
+  const videoUrl = s.videoUrl || s.playback?.videoUrl;
+  if (videoUrl && !isDeadVideoHost(videoUrl)) return true;
+  return Boolean(resolvedUrlForSession(s));
+};
+
+// The old StreamETH DigitalOcean Spaces buckets (both the CDN alias, which no
+// longer has DNS, and the origin bucket, which now 404s/NoSuchBucket) have
+// been decommissioned — every logo/banner/thumbnail hosted there is gone for
+// good. Strip those URLs so the UI falls back to its placeholder treatment
+// instead of rendering a broken image.
+function cleanImageUrl<T extends string | undefined>(url: T): T {
+  if (!url || /digitaloceanspaces\.com/i.test(url)) {
+    return undefined as T;
+  }
+  return url;
+}
 
 export const getStore = cache(() => {
-  const organizations = load<Organization[]>("organizations.json").filter(
-    (o) => o.slug
-  );
-  const events = load<Event[]>("events.json").filter(
-    (e) => e.slug && !e.unlisted
-  );
+  const organizations = load<Organization[]>("organizations.json")
+    .filter((o) => o.slug)
+    .map((o) => ({
+      ...o,
+      logo: cleanImageUrl(o.logo),
+      banner: cleanImageUrl(o.banner),
+    }));
+  const events = load<Event[]>("events.json")
+    .filter((e) => e.slug && !e.unlisted)
+    .map((e) => ({
+      ...e,
+      logo: cleanImageUrl(e.logo),
+      banner: cleanImageUrl(e.banner),
+      eventCover: cleanImageUrl(e.eventCover),
+    }));
   const stages = load<Stage[]>("stages.json");
-  const speakers = load<Speaker[]>("speakers.json");
+  const speakers = load<Speaker[]>("speakers.json").map((sp) => ({
+    ...sp,
+    photo: cleanImageUrl(sp.photo),
+  }));
   const sessions = load<Session[]>("sessions.json")
     .filter(HAS_VIDEO)
+    .map(
+      (s): Session => ({
+        ...s,
+        coverImage: cleanImageUrl(s.coverImage),
+        speakers: (s.speakers ?? []).map((sp) => ({
+          ...sp,
+          photo: cleanImageUrl(sp.photo),
+        })),
+      })
+    )
     .sort((a, b) => b.start - a.start);
 
   const orgById = new Map(organizations.map((o) => [o._id, o]));
@@ -157,20 +223,19 @@ export function getSessionVideoUrl(session: Session): string | undefined {
 export function buildPlaybackSrc(
   session: Session
 ): { src: string; type: "hls" | "mp4" } | undefined {
-  if (session.playbackId) {
+  const videoUrl = session.videoUrl || session.playback?.videoUrl;
+  if (videoUrl && !isDeadVideoHost(videoUrl)) {
     return {
-      src: `https://livepeercdn.studio/hls/${session.playbackId}/index.m3u8`,
-      type: "hls",
+      src: videoUrl,
+      type: videoUrl.endsWith(".m3u8") ? "hls" : "mp4",
     };
   }
-  if (session.videoUrl) {
-    return {
-      src: session.videoUrl,
-      type: session.videoUrl.endsWith(".m3u8") ? "hls" : "mp4",
-    };
+  const resolved = resolvedUrlForSession(session);
+  if (resolved) {
+    return { src: resolved, type: "hls" };
   }
-  if (session.playback?.videoUrl) {
-    return { src: session.playback.videoUrl, type: "mp4" };
+  if (videoUrl) {
+    return { src: videoUrl, type: videoUrl.endsWith(".m3u8") ? "hls" : "mp4" };
   }
   return undefined;
 }

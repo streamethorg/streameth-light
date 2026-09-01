@@ -43,7 +43,7 @@ async function main() {
 
   const sessionsRaw = await db
     .collection("sessions")
-    .find({ published: "public" })
+    .find({ published: { $in: ["public", "private"] } })
     .toArray();
   const sessions = sessionsRaw.map((s) => {
     const clean = serialize(s);
@@ -66,7 +66,15 @@ async function main() {
   ).map(serialize);
   console.log(`events: ${events.length}`);
 
-  const orgIds = [...new Set(events.map((e) => e.organizationId).filter(Boolean))].map(
+  // Org IDs come from two sources: via each session's event (the normal
+  // path), AND directly from session.organizationId. The second is required
+  // because many public sessions reference an eventId that no longer exists
+  // as a document (orphaned/dangling reference) — without it, every org
+  // whose only sessions are orphaned this way would be silently dropped,
+  // even though the sessions themselves are real, public, and playable.
+  const orgIdsFromEvents = events.map((e) => e.organizationId).filter(Boolean);
+  const orgIdsFromSessions = sessions.map((s) => s.organizationId).filter(Boolean);
+  const orgIds = [...new Set([...orgIdsFromEvents, ...orgIdsFromSessions])].map(
     (id) => new ObjectId(id)
   );
 

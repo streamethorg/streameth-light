@@ -1,0 +1,62 @@
+{
+  "base": [
+    "https://www.youtube.com/@base",
+    "UC3V0rBqEbyeBCFB7NDkV1XQ",
+    "medium"
+  ],
+  "ethchicago": [
+    "https://www.youtube.com/@ethchicago",
+    "UC_E1rU69cuqFIqhUosLF7aA",
+    "high"
+  ],
+  "ethporto": [
+    "https://www.youtube.com/@ethporto",
+    "UCVUoxTc89rXB5zLLPP4bBfg",
+    "high"
+  ],
+  "swarm": [
+    "https://www.youtube.com/@ethswarm",
+    "UCu6ywn9MTqdREuE6xuRkskA",
+    "high"
+  ],
+  "web3bridge": [
+    "https://www.youtube.com/@web3bridge",
+    "UCrXJHMI98Y3LI9ljrmEeY3g",
+    "high"
+  ],
+  "stable_summit": [
+    "https://www.youtube.com/@stablesummit",
+    "UCQbNgvOtWVKbo1TGXtGF-BA",
+    "high"
+  ],
+  "ethmumbai": [
+    "https://www.youtube.com/@ethmumbai",
+    "UCgXjEooTjj_d0X67I8ZZ3SQ",
+    "high"
+  ],
+  "funding_the_commons": [
+    "https://www.youtube.com/@Funding-the-Commons",
+    "UCjxkd3ik9DFb7DTV5MMRygQ",
+    "high"
+  ],
+  "devconnect": [
+    "https://www.youtube.com/@EthereumFoundation",
+    "UCNOfzGXD_C9YMYmnefmPH0g",
+    "high"
+  ],
+  "ethberlin": [
+    "https://www.youtube.com/channel/UCsdFvJOMJAcFzSsKnmgnaLQ",
+    "UCsdFvJOMJAcFzSsKnmgnaLQ",
+    "medium"
+  ],
+  "ethereum_lima": [
+    "https://www.youtube.com/channel/UCL9FWLW20-7-j1sx4HFyELA",
+    "UCL9FWLW20-7-j1sx4HFyELA",
+    "high"
+  ],
+  "ethereum_protocol_fellowship": [
+    "https://www.youtube.com/channel/UCzWHVEk7QLJINdtv7TG2mkA",
+    "UCzWHVEk7QLJINdtv7TG2mkA",
+    "medium"
+  ]
+}

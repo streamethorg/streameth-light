@@ -2304,6 +2304,40 @@
     "__v": 0
   },
   {
+    "_id": "668bc3d500551e6b4e7ef265",
+    "name": "Shared Security Symposium",
+    "description": "Shared Security Symposium",
+    "start": "2024-07-08T08:00:00.197Z",
+    "end": "2024-07-08T17:00:00.197Z",
+    "location": "brussels",
+    "logo": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/organizations/Screenshot_2024_06_24_alle_14.05.55.png",
+    "banner": "https://streameth-production.ams3.cdn.digitaloceanspaces.com/organizations/Screenshot_2024_06_24_alle_14.06.23.png",
+    "startTime": "08:00",
+    "endTime": "17:00",
+    "organizationId": "667961de0d49d6570f3fbdfc",
+    "eventCover": "",
+    "archiveMode": false,
+    "website": "",
+    "timezone": "CET",
+    "accentColor": "",
+    "unlisted": false,
+    "enableVideoDownloader": false,
+    "plugins": {
+      "disableChat": false
+    },
+    "slug": "shared_security_symposium",
+    "eventNFT": {
+      "address": "",
+      "name": "",
+      "symbol": ""
+    },
+    "dataImporter": [],
+    "dataExporter": [],
+    "createdAt": "2024-07-08T10:47:49.351Z",
+    "updatedAt": "2024-07-08T10:47:49.351Z",
+    "__v": 0
+  },
+  {
     "_id": "66c1ba2b6e7e09ffb2c8c6b4",
     "name": "Web3 Summit 2024",
     "description": "Web3 Summit 2024",

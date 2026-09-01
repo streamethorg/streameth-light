@@ -44,6 +44,30 @@ export function callSign(name: string, length = 3): string {
   return letters.toUpperCase().padEnd(length, "X");
 }
 
+export function isUsableAccent(color?: string): boolean {
+  if (!color) return false;
+  const c = color.trim().toLowerCase();
+  return c !== "" && c !== "#fff" && c !== "#ffffff" && c !== "white";
+}
+
+export function accentStyle(
+  color?: string
+): { "--accent": string } | undefined {
+  return isUsableAccent(color) ? { "--accent": color! } : undefined;
+}
+
+const TAG_COLORS = ["accent", "tag-cyan", "tag-yellow", "tag-magenta", "tag-green"] as const;
+export type TagColor = (typeof TAG_COLORS)[number];
+
+/** Deterministic tag color per string — same channel/event always gets the
+ * same color, but the set as a whole reads as varied rather than one accent
+ * hue repeated on every tile. */
+export function tagColorFor(seed: string): TagColor {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return TAG_COLORS[h % TAG_COLORS.length];
+}
+
 export function initials(name: string): string {
   const words = name.trim().split(/\s+/).filter(Boolean);
   if (words.length === 0) return "?";

@@ -71,6 +71,11 @@ export interface Session {
   eventSlug: string;
   autoLabels?: string[];
   talkType?: string;
+  aiDescription?: string;
+  transcripts?: {
+    subtitleUrl?: string;
+    text?: string;
+  };
 }
 
 export interface Speaker {

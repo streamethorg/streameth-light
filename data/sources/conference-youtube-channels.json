@@ -1,0 +1,87 @@
+[
+  {
+    "name": "ETHTaipei",
+    "youtubeChannel": "https://www.youtube.com/@ETHTaipei",
+    "youtubeConfidence": "high",
+    "youtubeNote": "Talks/workshops from multiple editions",
+    "website": "https://ethtaipei.org/"
+  },
+  {
+    "name": "ETHTokyo",
+    "youtubeChannel": null,
+    "youtubeConfidence": "low",
+    "youtubeNote": "Already has an org page on streameth.org (streameth.org/ethtokyo) — no separate YouTube discovery needed, just not in our current public-sessions export",
+    "website": "https://ethtokyo.org",
+    "onStreamETH": true
+  },
+  {
+    "name": "Devcon",
+    "youtubeChannel": "https://www.youtube.com/channel/UCNOfzGXD_C9YMYmnefmPH0g",
+    "youtubeConfidence": "high",
+    "youtubeNote": "EF channel hosts Devcon+Devconnect, many editions",
+    "website": "https://devcon.org/"
+  },
+  {
+    "name": "ETHSafari",
+    "youtubeChannel": null,
+    "youtubeConfidence": "low",
+    "youtubeNote": "No standalone channel, content scattered under co-hosts",
+    "website": "https://ethsafari.xyz/"
+  },
+  {
+    "name": "Common S3nse (CryptoCanal)",
+    "youtubeChannel": null,
+    "youtubeConfidence": "low",
+    "youtubeNote": "No dedicated channel found",
+    "website": "https://commons3nse.cryptocanal.org/"
+  },
+  {
+    "name": "ETHRome",
+    "youtubeChannel": "https://www.youtube.com/@ethrome",
+    "youtubeConfidence": "high",
+    "youtubeNote": "Confirmed by direct handle check",
+    "website": "https://www.ethrome.org/"
+  },
+  {
+    "name": "European Blockchain Convention",
+    "youtubeChannel": "https://www.youtube.com/channel/UC0hhm0r8FUllvs1gcL2EgFA",
+    "youtubeConfidence": "high",
+    "youtubeNote": "Multi-year convention channel",
+    "website": "https://eblockchainconvention.com/"
+  },
+  {
+    "name": "Pragma (ETHGlobal)",
+    "youtubeChannel": "https://www.youtube.com/channel/UCfF9ZO8Ug4xk_AJd4aeT5HA",
+    "youtubeConfidence": "high",
+    "youtubeNote": "Uses ETHGlobal's own channel",
+    "website": "https://ethglobal.com/pragma"
+  },
+  {
+    "name": "ETHSofia",
+    "youtubeChannel": "https://www.youtube.com/@ETHSofia",
+    "youtubeConfidence": "high",
+    "youtubeNote": "Yearly playlists, multi-edition",
+    "website": "https://www.ethsofia.com/"
+  },
+  {
+    "name": "ETHGlobal",
+    "youtubeChannel": "https://www.youtube.com/@ETHGlobal",
+    "youtubeConfidence": "high",
+    "youtubeNote": "~30K subs, active since 2017, large multi-year archive",
+    "website": "https://ethglobal.com/"
+  },
+  {
+    "name": "Ethereum Cypherpunk Congress",
+    "youtubeChannel": "https://www.youtube.com/@web3privacynow",
+    "youtubeConfidence": "medium",
+    "youtubeNote": "Run by Web3Privacy Now (parent org), confirmed channel; has dedicated Congress playlist",
+    "website": "https://luma.com/spsnos9t"
+  },
+  {
+    "name": "ETHBelgrade",
+    "youtubeChannel": "https://www.youtube.com/@ethbelgrade",
+    "youtubeConfidence": "high",
+    "youtubeNote": "Confirmed by direct handle check",
+    "website": "https://ethbelgrade.rs/"
+  }
+]

@@ -38,8 +38,8 @@ export default function LibraryBrowser({
   const shown = filtered.slice(0, visible);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-3 border-b border-line pb-6 sm:flex-row sm:items-center">
         <input
           type="text"
           value={query}
@@ -47,8 +47,8 @@ export default function LibraryBrowser({
             setQuery(e.target.value);
             setVisible(PAGE_SIZE);
           }}
-          placeholder="Search title, description, speaker..."
-          className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-500 sm:max-w-sm"
+          placeholder="Search title, description, speaker…"
+          className="w-full rounded-md border border-line bg-panel px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-accent/60 focus:outline-none sm:max-w-sm"
         />
         <select
           value={eventFilter}
@@ -56,7 +56,7 @@ export default function LibraryBrowser({
             setEventFilter(e.target.value);
             setVisible(PAGE_SIZE);
           }}
-          className="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-500 sm:max-w-xs"
+          className="w-full rounded-md border border-line bg-panel px-3 py-2 text-sm text-ink focus:border-accent/60 focus:outline-none sm:max-w-xs"
         >
           <option value="">All events</option>
           {events.map((e) => (
@@ -65,17 +65,18 @@ export default function LibraryBrowser({
             </option>
           ))}
         </select>
-        <span className="text-xs text-neutral-500 sm:ml-auto">
-          {filtered.length} video{filtered.length === 1 ? "" : "s"}
+        <span className="font-mono text-xs tabular text-ink-faint sm:ml-auto">
+          {String(filtered.length).padStart(3, "0")} video
+          {filtered.length === 1 ? "" : "s"}
         </span>
       </div>
 
       {shown.length === 0 ? (
-        <p className="py-16 text-center text-sm text-neutral-500">
+        <p className="py-16 text-center font-mono text-sm text-ink-faint">
           No videos match your search.
         </p>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {shown.map((s) => (
             <VideoCard key={s._id} session={s} event={eventById.get(s.eventId)} />
           ))}
@@ -85,7 +86,7 @@ export default function LibraryBrowser({
       {visible < filtered.length && (
         <button
           onClick={() => setVisible((v) => v + PAGE_SIZE)}
-          className="mx-auto rounded-md border border-neutral-700 px-4 py-2 text-sm text-neutral-200 hover:bg-neutral-800"
+          className="mx-auto rounded-md border border-line px-4 py-2 font-mono text-xs uppercase tracking-wide text-ink-dim transition-colors hover:border-accent/50 hover:text-ink"
         >
           Load more
         </button>
