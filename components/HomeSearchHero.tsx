@@ -15,8 +15,8 @@ export default function HomeSearchHero() {
       }}
       className="flex w-full max-w-xl flex-col items-center gap-6"
     >
-      <h1 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-        Stream<span className="text-accent">Ξ</span>TH
+      <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+        STREAM<span className="text-accent">Ξ</span>TH
       </h1>
       <div className="flex w-full items-center gap-3 rounded-full border border-line bg-panel px-5 py-3.5 shadow-sm focus-within:border-ink-faint">
         <svg
