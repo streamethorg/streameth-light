@@ -133,6 +133,7 @@ for (const s of sessions) {
   const duration =
     s.playback?.duration ??
     (s.start && s.end && s.end > s.start ? (s.end - s.start) / 1000 : null);
+  const transcript = s.transcripts?.text ?? "";
 
   insertVideo.run(
     s._id,
@@ -150,9 +151,18 @@ for (const s of sessions) {
     `/watch/${s._id}`,
     speakers,
     topics,
-    0
+    transcript ? 1 : 0
   );
-  insertFts.run(s._id, s.name ?? "", description, speakers, topics, org?.name ?? "", event?.name ?? "");
+  insertFts.run(
+    s._id,
+    s.name ?? "",
+    description,
+    speakers,
+    topics,
+    org?.name ?? "",
+    event?.name ?? "",
+    transcript
+  );
   streamethCount++;
 }
 
