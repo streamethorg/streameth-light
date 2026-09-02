@@ -57,6 +57,26 @@ function resolvedThumbnailForSession(s: Session): string | undefined {
   return getResolvedThumbnails()[s.playbackId] ?? undefined;
 }
 
+// A direct progressive MP4 URL per playbackId (see
+// scripts/resolve-livepeer-downloads.py) — what actually makes a "Download"
+// button possible, since an .m3u8 HLS playlist isn't a single file.
+const getResolvedDownloads = lazy((): Record<string, string | null> => {
+  try {
+    return load<Record<string, string | null>>("sources/livepeer-downloads.json");
+  } catch {
+    return {};
+  }
+});
+
+export function getDownloadUrl(session: Session): string | undefined {
+  const videoUrl = session.videoUrl || session.playback?.videoUrl;
+  if (videoUrl && !isDeadVideoHost(videoUrl) && videoUrl.endsWith(".mp4")) {
+    return videoUrl;
+  }
+  if (!session.playbackId) return undefined;
+  return getResolvedDownloads()[session.playbackId] ?? undefined;
+}
+
 const HAS_VIDEO = (s: Session) => {
   const videoUrl = s.videoUrl || s.playback?.videoUrl;
   if (videoUrl && !isDeadVideoHost(videoUrl)) return true;

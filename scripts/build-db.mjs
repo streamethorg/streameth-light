@@ -48,6 +48,7 @@ const stages = load("stages.json");
 const directory = load("directory.json").entries;
 const livepeerResolved = loadSource("livepeer-resolved.json") ?? {};
 const livepeerThumbnails = loadSource("livepeer-thumbnails.json") ?? {};
+const livepeerDownloads = loadSource("livepeer-downloads.json") ?? {};
 const youtubeVideosBySlug = loadSource("youtube-videos.json") ?? {};
 const youtubeTranscripts = loadSource("youtube-transcripts.json") ?? {};
 
@@ -55,6 +56,15 @@ function resolvedCoverImage(s) {
   const clean = cleanImageUrl(s.coverImage);
   if (clean) return clean;
   if (s.playbackId) return livepeerThumbnails[s.playbackId] ?? null;
+  return null;
+}
+
+function resolvedDownloadUrl(s) {
+  const videoUrl = s.videoUrl || s.playback?.videoUrl;
+  if (videoUrl && !isDeadVideoHost(videoUrl) && videoUrl.endsWith(".mp4")) {
+    return videoUrl;
+  }
+  if (s.playbackId) return livepeerDownloads[s.playbackId] ?? null;
   return null;
 }
 
@@ -96,7 +106,9 @@ db.exec(`
     watch_url TEXT NOT NULL,
     speakers TEXT NOT NULL DEFAULT '',
     topics TEXT NOT NULL DEFAULT '',
-    has_transcript INTEGER NOT NULL DEFAULT 0
+    has_transcript INTEGER NOT NULL DEFAULT 0,
+    transcript TEXT,
+    download_url TEXT
   );
 
   CREATE INDEX idx_videos_org ON videos(org_id);
@@ -126,8 +138,8 @@ const insertVideo = db.prepare(`
   INSERT INTO videos (
     id, source, title, description, org_id, org_name, org_slug, event_id,
     event_name, published_at, duration_seconds, cover_image, watch_url,
-    speakers, topics, has_transcript
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    speakers, topics, has_transcript, transcript, download_url
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertFts = db.prepare(`
   INSERT INTO videos_fts (id, title, description, speakers, topics, org_name, event_name, transcript)
@@ -193,7 +205,9 @@ for (const s of sessions) {
     `/watch/${s._id}`,
     speakerNames,
     topicsDisplay,
-    transcript ? 1 : 0
+    transcript ? 1 : 0,
+    transcript || null,
+    resolvedDownloadUrl(s)
   );
   insertFts.run(
     s._id,
@@ -243,7 +257,9 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       `/watch/${id}`,
       "",
       "",
-      transcript ? 1 : 0
+      transcript ? 1 : 0,
+      transcript || null,
+      null
     );
     insertFts.run(id, v.title ?? "", descriptionSearchText, "", "", orgName, "", transcript);
     youtubeCount++;

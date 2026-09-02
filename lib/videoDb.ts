@@ -18,6 +18,8 @@ export interface UnifiedVideo {
   watchUrl: string;
   speakers: string[];
   topics: string[];
+  transcript: string | null;
+  downloadUrl: string | null;
 }
 
 export interface OrgOption {
@@ -40,6 +42,8 @@ interface VideoRow {
   watch_url: string;
   speakers: string;
   topics: string;
+  transcript: string | null;
+  download_url: string | null;
 }
 
 function rowToVideo(row: VideoRow): UnifiedVideo {
@@ -57,6 +61,8 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     watchUrl: row.watch_url,
     speakers: row.speakers ? row.speakers.split(", ").filter(Boolean) : [],
     topics: row.topics ? row.topics.split(", ").filter(Boolean) : [],
+    transcript: row.transcript,
+    downloadUrl: row.download_url,
   };
 }
 

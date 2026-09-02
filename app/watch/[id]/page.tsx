@@ -5,12 +5,14 @@ import type { Metadata } from "next";
 import VideoPlayer from "@/components/VideoPlayer";
 import VideoCard from "@/components/VideoCard";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
-import SpeakerChip from "@/components/SpeakerChip";
+import SpeakerCard from "@/components/SpeakerCard";
+import TranscriptPanel from "@/components/TranscriptPanel";
 import {
   getSession,
   getEventById,
   getOrgForEvent,
   buildPlaybackSrc,
+  getDownloadUrl,
   listAllSessions,
   relatedSessions,
 } from "@/lib/data";
@@ -69,6 +71,8 @@ export default async function WatchPage({
   const playback = buildPlaybackSrc(session);
   const related = relatedSessions(session, 12);
   const duration = getSessionDurationSeconds(session);
+  const downloadUrl = getDownloadUrl(session);
+  const transcript = session.transcripts?.text;
 
   return (
     <div
@@ -91,7 +95,18 @@ export default async function WatchPage({
           )}
         </div>
 
-        <h1 className="text-xl font-semibold text-ink sm:text-2xl">{session.name}</h1>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h1 className="text-xl font-semibold text-ink sm:text-2xl">{session.name}</h1>
+          {downloadUrl && (
+            <a
+              href={downloadUrl}
+              download
+              className="flex shrink-0 items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
+            >
+              Download
+            </a>
+          )}
+        </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
           {org && (
@@ -122,9 +137,9 @@ export default async function WatchPage({
         </div>
 
         {session.speakers && session.speakers.length > 0 && (
-          <div className="flex flex-wrap gap-x-6 gap-y-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {session.speakers.map((sp) => (
-              <SpeakerChip key={sp._id} speaker={sp} />
+              <SpeakerCard key={sp._id} speaker={sp} />
             ))}
           </div>
         )}
@@ -148,6 +163,8 @@ export default async function WatchPage({
             {session.description}
           </p>
         )}
+
+        {transcript && <TranscriptPanel text={transcript} />}
       </div>
 
       {related.length > 0 && (
@@ -214,6 +231,8 @@ function YoutubeWatchPage({ id }: { id: string }) {
             {video.description}
           </p>
         )}
+
+        {video.transcript && <TranscriptPanel text={video.transcript} />}
       </div>
 
       {related.length > 0 && (
