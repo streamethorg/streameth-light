@@ -4,8 +4,8 @@ import { formatDateShort, formatTimecode, initials } from "@/lib/format";
 import CoverPlaceholder from "./CoverPlaceholder";
 
 export default function UnifiedVideoCard({ video }: { video: UnifiedVideo }) {
-  const inner = (
-    <>
+  return (
+    <Link href={video.watchUrl} className="group flex flex-col gap-2.5">
       <div className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-panel">
         {video.coverImage ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -52,25 +52,6 @@ export default function UnifiedVideoCard({ video }: { video: UnifiedVideo }) {
           )}
         </div>
       </div>
-    </>
-  );
-
-  if (video.external) {
-    return (
-      <a
-        href={video.watchUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="group flex flex-col gap-2.5"
-      >
-        {inner}
-      </a>
-    );
-  }
-
-  return (
-    <Link href={video.watchUrl} className="group flex flex-col gap-2.5">
-      {inner}
     </Link>
   );
 }

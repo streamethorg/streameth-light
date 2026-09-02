@@ -16,7 +16,6 @@ export interface UnifiedVideo {
   durationSeconds: number | null;
   coverImage: string | null;
   watchUrl: string;
-  external: boolean;
   speakers: string[];
   topics: string[];
 }
@@ -39,7 +38,6 @@ interface VideoRow {
   duration_seconds: number | null;
   cover_image: string | null;
   watch_url: string;
-  external: number;
   speakers: string;
   topics: string;
 }
@@ -57,7 +55,6 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     durationSeconds: row.duration_seconds,
     coverImage: row.cover_image,
     watchUrl: row.watch_url,
-    external: Boolean(row.external),
     speakers: row.speakers ? row.speakers.split(", ").filter(Boolean) : [],
     topics: row.topics ? row.topics.split(", ").filter(Boolean) : [],
   };
@@ -170,6 +167,24 @@ export function topTopics(limit = 16): string[] {
     .map(([topic]) => topic);
 }
 
+export function getVideoById(id: string): UnifiedVideo | undefined {
+  const db = getDb();
+  const row = db.prepare("SELECT * FROM videos WHERE id = ?").get(id) as
+    | VideoRow
+    | undefined;
+  return row ? rowToVideo(row) : undefined;
+}
+
+export function relatedVideos(video: UnifiedVideo, limit = 12): UnifiedVideo[] {
+  const db = getDb();
+  const rows = db
+    .prepare(
+      `SELECT * FROM videos WHERE org_slug = ? AND id != ? ORDER BY published_at DESC LIMIT ?`
+    )
+    .all(video.orgSlug, video.id, limit) as unknown as VideoRow[];
+  return rows.map(rowToVideo);
+}
+
 export function listChannelOptions(): OrgOption[] {
   const db = getDb();
   const rows = db
@@ -180,58 +195,4 @@ export function listChannelOptions(): OrgOption[] {
   // node:sqlite rows are null-prototype objects, which RSC can't serialize
   // across the client-component boundary — copy into plain objects.
   return rows.map((r) => ({ slug: r.slug, name: r.name }));
-}
-
-export type MatchField = "title" | "speaker" | "topic" | "description" | "transcript";
-
-export interface DetailedSearchResult {
-  video: UnifiedVideo;
-  matchedIn: MatchField[];
-  snippet: string | null;
-}
-
-/** Deep search across every field, including YouTube video transcripts —
- * powers /api/search. Unlike browseVideos (which only needs to rank the
- * currently-filtered feed), this also reports which fields matched and a
- * highlighted snippet, using FTS5's own snippet() rather than re-scanning
- * raw text in JS. */
-export function searchVideosDetailed(query: string, limit = 30): DetailedSearchResult[] {
-  const db = getDb();
-  const rows = db
-    .prepare(
-      `SELECT v.*, snippet(videos_fts, -1, '', '', '…', 16) as snippet
-       FROM videos_fts
-       JOIN videos v ON v.id = videos_fts.id
-       WHERE videos_fts MATCH ?
-       ORDER BY bm25(videos_fts)
-       LIMIT ?`
-    )
-    .all(matchQuery(query), limit) as unknown as (VideoRow & { snippet: string })[];
-
-  const terms = query
-    .toLowerCase()
-    .split(/\s+/)
-    .filter(Boolean);
-
-  return rows.map((row) => {
-    const video = rowToVideo(row);
-    const matchedIn = new Set<MatchField>();
-    const title = video.title.toLowerCase();
-    const speakerText = video.speakers.join(" ").toLowerCase();
-    const topicText = video.topics.join(" ").toLowerCase();
-    const description = video.description.toLowerCase();
-    for (const term of terms) {
-      if (title.includes(term)) matchedIn.add("title");
-      if (speakerText.includes(term)) matchedIn.add("speaker");
-      if (topicText.includes(term)) matchedIn.add("topic");
-      if (description.includes(term)) matchedIn.add("description");
-    }
-    if (matchedIn.size === 0) matchedIn.add("transcript");
-
-    return {
-      video,
-      matchedIn: [...matchedIn],
-      snippet: row.snippet || null,
-    };
-  });
 }

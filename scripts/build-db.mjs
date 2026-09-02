@@ -76,7 +76,6 @@ db.exec(`
     duration_seconds REAL,
     cover_image TEXT,
     watch_url TEXT NOT NULL,
-    external INTEGER NOT NULL DEFAULT 0,
     speakers TEXT NOT NULL DEFAULT '',
     topics TEXT NOT NULL DEFAULT '',
     has_transcript INTEGER NOT NULL DEFAULT 0
@@ -109,8 +108,8 @@ const insertVideo = db.prepare(`
   INSERT INTO videos (
     id, source, title, description, org_id, org_name, org_slug, event_id,
     event_name, published_at, duration_seconds, cover_image, watch_url,
-    external, speakers, topics, has_transcript
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    speakers, topics, has_transcript
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertFts = db.prepare(`
   INSERT INTO videos_fts (id, title, description, speakers, topics, org_name, event_name, transcript)
@@ -149,7 +148,6 @@ for (const s of sessions) {
     duration,
     s.coverImage ?? null,
     `/watch/${s._id}`,
-    0,
     speakers,
     topics,
     0
@@ -174,7 +172,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
     seenVideoIds.add(v.videoId);
     const transcript = youtubeTranscripts[v.videoId] ?? "";
     const publishedAt = v.publishedAt ? new Date(v.publishedAt).getTime() : 0;
-    const id = `yt:${v.videoId}`;
+    const id = `yt-${v.videoId}`;
 
     insertVideo.run(
       id,
@@ -189,8 +187,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       publishedAt,
       null,
       v.thumbnail ?? null,
-      `https://www.youtube.com/watch?v=${v.videoId}`,
-      1,
+      `/watch/${id}`,
       "",
       "",
       transcript ? 1 : 0

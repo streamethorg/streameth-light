@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import VideoPlayer from "@/components/VideoPlayer";
 import VideoCard from "@/components/VideoCard";
+import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import SpeakerChip from "@/components/SpeakerChip";
 import {
   getSession,
@@ -13,9 +14,15 @@ import {
   listAllSessions,
   relatedSessions,
 } from "@/lib/data";
+import { getVideoById, relatedVideos } from "@/lib/videoDb";
 import { slugifyTopic } from "@/lib/topics";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
-import { accentStyle, formatDateLong, formatTimecode } from "@/lib/format";
+import { accentStyle, formatDateLong, formatTimecode, initials } from "@/lib/format";
+
+// YouTube-backed watch pages (`yt-<videoId>`) aren't in this list — they're
+// rendered on demand instead of prerendered at build time, since there are
+// 11.5k of them and they're just an iframe embed, not worth the build cost.
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return listAllSessions().map((session) => ({ id: session._id }));
@@ -27,6 +34,14 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  if (id.startsWith("yt-")) {
+    const video = getVideoById(id);
+    if (!video) return {};
+    return {
+      title: `${video.title} — StreamETH Light`,
+      description: video.description?.slice(0, 200),
+    };
+  }
   const session = getSession(id);
   if (!session) return {};
   return {
@@ -41,6 +56,11 @@ export default async function WatchPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
+  if (id.startsWith("yt-")) {
+    return <YoutubeWatchPage id={id} />;
+  }
+
   const session = getSession(id);
   if (!session) notFound();
 
@@ -152,3 +172,60 @@ export default async function WatchPage({
   );
 }
 
+function YoutubeWatchPage({ id }: { id: string }) {
+  const video = getVideoById(id);
+  if (!video) notFound();
+
+  const videoId = id.slice("yt-".length);
+  const related = relatedVideos(video, 12);
+
+  return (
+    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 px-4 py-6 sm:px-6 lg:flex-row lg:items-start">
+      <div className="flex min-w-0 flex-1 flex-col gap-4">
+        <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="h-full w-full"
+          />
+        </div>
+
+        <h1 className="text-xl font-semibold text-ink sm:text-2xl">{video.title}</h1>
+
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
+          <Link href={`/${video.orgSlug}`} className="flex items-center gap-3 hover:text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-panel text-sm text-ink-dim">
+              {initials(video.orgName)}
+            </div>
+            <div className="flex flex-col">
+              <span className="text-sm font-medium text-ink">{video.orgName}</span>
+              <span className="font-mono text-xs text-ink-faint">
+                YouTube
+                {video.publishedAt ? ` · ${formatDateLong(video.publishedAt)}` : ""}
+              </span>
+            </div>
+          </Link>
+        </div>
+
+        {video.description && (
+          <p className="max-w-3xl whitespace-pre-line text-sm leading-relaxed text-ink-dim">
+            {video.description}
+          </p>
+        )}
+      </div>
+
+      {related.length > 0 && (
+        <div className="flex w-full shrink-0 flex-col gap-3 lg:sticky lg:top-[73px] lg:w-[380px]">
+          <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">Up next</h2>
+          <div className="flex flex-col gap-3">
+            {related.map((v) => (
+              <UnifiedVideoCard key={v.id} video={v} />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

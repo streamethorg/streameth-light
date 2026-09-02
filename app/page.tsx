@@ -73,17 +73,9 @@ export default async function Home({
         />
       </div>
 
-      <div className="flex items-center justify-between">
-        <p className="font-mono text-xs text-ink-faint">
-          {results.length.toLocaleString()} video{results.length === 1 ? "" : "s"}
-        </p>
-        <Link
-          href="/search"
-          className="font-mono text-xs text-ink-faint underline-offset-2 hover:text-ink-dim hover:underline"
-        >
-          Deep search (transcripts) →
-        </Link>
-      </div>
+      <p className="font-mono text-xs text-ink-faint">
+        {results.length.toLocaleString()} video{results.length === 1 ? "" : "s"}
+      </p>
 
       {shown.length === 0 ? (
         <p className="py-16 text-center text-sm text-ink-faint">

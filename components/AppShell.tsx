@@ -10,7 +10,6 @@ const NAV = [
   { href: "/channels", label: "Channels" },
   { href: "/speakers", label: "Speakers" },
   { href: "/topics", label: "Topics" },
-  { href: "/search", label: "Search everything" },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
