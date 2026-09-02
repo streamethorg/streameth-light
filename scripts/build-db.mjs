@@ -36,6 +36,7 @@ function isDeadVideoHost(url) {
 const organizationsRaw = load("organizations.json").filter((o) => o.slug);
 const events = load("events.json").filter((e) => e.slug && !e.unlisted);
 const sessions = load("sessions.json");
+const stages = load("stages.json");
 const directory = load("directory.json").entries;
 const livepeerResolved = loadSource("livepeer-resolved.json") ?? {};
 const youtubeVideosBySlug = loadSource("youtube-videos.json") ?? {};
@@ -43,6 +44,7 @@ const youtubeTranscripts = loadSource("youtube-transcripts.json") ?? {};
 
 const orgById = new Map(organizationsRaw.map((o) => [o._id, o]));
 const eventById = new Map(events.map((e) => [e._id, e]));
+const stageById = new Map(stages.map((st) => [st._id, st]));
 const directoryBySlug = new Map(directory.map((d) => [d.slug, d]));
 
 function sessionHasVideo(s) {
@@ -127,13 +129,37 @@ for (const s of sessions) {
   seenIds.add(s._id);
   const event = eventById.get(s.eventId);
   const org = event ? orgById.get(event.organizationId) : orgById.get(s.organizationId);
-  const speakers = (s.speakers ?? []).map((sp) => sp.name).filter(Boolean).join(", ");
-  const topics = (s.autoLabels ?? []).join(", ");
+  const stage = stageById.get(s.stageId);
+  const speakerList = s.speakers ?? [];
+
+  // Display columns stay clean (just names / autoLabels) — the FTS index
+  // below is separately enriched with everything else we know how to
+  // extract (speaker bios, track/talk type, stage, event & org context) so
+  // a query can match on it without it cluttering the video card/detail UI.
+  const speakerNames = speakerList.map((sp) => sp.name).filter(Boolean).join(", ");
+  const topicsDisplay = (s.autoLabels ?? []).join(", ");
   const description = [s.description, s.aiDescription].filter(Boolean).join(" ");
   const duration =
     s.playback?.duration ??
     (s.start && s.end && s.end > s.start ? (s.end - s.start) / 1000 : null);
   const transcript = s.transcripts?.text ?? "";
+
+  const speakerSearchText = speakerList
+    .map((sp) => [sp.name, sp.company, sp.bio].filter(Boolean).join(" — "))
+    .join(" | ");
+  const track = Array.isArray(s.track) ? s.track.join(", ") : s.track;
+  const topicsSearchText = [topicsDisplay, track, s.talkType, stage?.name]
+    .filter(Boolean)
+    .join(", ");
+  const descriptionSearchText = [
+    description,
+    event?.description,
+    event?.location,
+    org?.description,
+    org?.location,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   insertVideo.run(
     s._id,
@@ -149,16 +175,16 @@ for (const s of sessions) {
     duration,
     s.coverImage ?? null,
     `/watch/${s._id}`,
-    speakers,
-    topics,
+    speakerNames,
+    topicsDisplay,
     transcript ? 1 : 0
   );
   insertFts.run(
     s._id,
     s.name ?? "",
-    description,
-    speakers,
-    topics,
+    descriptionSearchText,
+    speakerSearchText,
+    topicsSearchText,
     org?.name ?? "",
     event?.name ?? "",
     transcript
@@ -183,6 +209,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
     const transcript = youtubeTranscripts[v.videoId] ?? "";
     const publishedAt = v.publishedAt ? new Date(v.publishedAt).getTime() : 0;
     const id = `yt-${v.videoId}`;
+    const descriptionSearchText = [v.description, entry?.location].filter(Boolean).join(" ");
 
     insertVideo.run(
       id,
@@ -202,7 +229,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       "",
       transcript ? 1 : 0
     );
-    insertFts.run(id, v.title ?? "", v.description ?? "", "", "", orgName, "", transcript);
+    insertFts.run(id, v.title ?? "", descriptionSearchText, "", "", orgName, "", transcript);
     youtubeCount++;
   }
 }
