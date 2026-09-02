@@ -51,6 +51,12 @@ const livepeerThumbnails = loadSource("livepeer-thumbnails.json") ?? {};
 const livepeerDownloads = loadSource("livepeer-downloads.json") ?? {};
 const youtubeVideosBySlug = loadSource("youtube-videos.json") ?? {};
 const youtubeTranscripts = loadSource("youtube-transcripts.json") ?? {};
+// pull-youtube-videos.py's --flat-playlist listing has no duration, real
+// description, or tags — scripts/pull-youtube-metadata.py backfills those
+// per-video via a heavier yt-dlp call, run separately (it's slow: one
+// YouTube request per video) and still in progress as of writing, so this
+// is partial coverage that improves as more of it finishes.
+const youtubeMetadata = loadSource("youtube-metadata.json") ?? {};
 
 function resolvedCoverImage(s) {
   const clean = cleanImageUrl(s.coverImage);
@@ -236,32 +242,36 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       continue;
     }
     seenVideoIds.add(v.videoId);
+    const meta = youtubeMetadata[v.videoId];
     const transcript = youtubeTranscripts[v.videoId] ?? "";
     const publishedAt = v.publishedAt ? new Date(v.publishedAt).getTime() : 0;
     const id = `yt-${v.videoId}`;
-    const descriptionSearchText = [v.description, entry?.location].filter(Boolean).join(" ");
+    const description = meta?.description || v.description || "";
+    const duration = meta?.duration ?? null;
+    const topics = [...(meta?.tags ?? []), ...(meta?.categories ?? [])].join(", ");
+    const descriptionSearchText = [description, entry?.location].filter(Boolean).join(" ");
 
     insertVideo.run(
       id,
       "youtube",
       v.title ?? "",
-      v.description ?? "",
+      description,
       null,
       orgName,
       channelSlug,
       null,
       "",
       publishedAt,
-      null,
+      duration,
       v.thumbnail ?? null,
       `/watch/${id}`,
       "",
-      "",
+      topics,
       transcript ? 1 : 0,
       transcript || null,
       null
     );
-    insertFts.run(id, v.title ?? "", descriptionSearchText, "", "", orgName, "", transcript);
+    insertFts.run(id, v.title ?? "", descriptionSearchText, "", topics, orgName, "", transcript);
     youtubeCount++;
   }
 }
