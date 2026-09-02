@@ -33,14 +33,30 @@ function isDeadVideoHost(url) {
   }
 }
 
+// The old StreamETH DigitalOcean Spaces bucket that hosted session cover
+// images is gone for good (see lib/data.ts's cleanImageUrl) — strip it here
+// too so the DB doesn't carry dead image URLs into the UI.
+function cleanImageUrl(url) {
+  if (!url || /digitaloceanspaces\.com/i.test(url)) return null;
+  return url;
+}
+
 const organizationsRaw = load("organizations.json").filter((o) => o.slug);
 const events = load("events.json").filter((e) => e.slug && !e.unlisted);
 const sessions = load("sessions.json");
 const stages = load("stages.json");
 const directory = load("directory.json").entries;
 const livepeerResolved = loadSource("livepeer-resolved.json") ?? {};
+const livepeerThumbnails = loadSource("livepeer-thumbnails.json") ?? {};
 const youtubeVideosBySlug = loadSource("youtube-videos.json") ?? {};
 const youtubeTranscripts = loadSource("youtube-transcripts.json") ?? {};
+
+function resolvedCoverImage(s) {
+  const clean = cleanImageUrl(s.coverImage);
+  if (clean) return clean;
+  if (s.playbackId) return livepeerThumbnails[s.playbackId] ?? null;
+  return null;
+}
 
 const orgById = new Map(organizationsRaw.map((o) => [o._id, o]));
 const eventById = new Map(events.map((e) => [e._id, e]));
@@ -173,7 +189,7 @@ for (const s of sessions) {
     event?.name ?? s.eventSlug ?? "",
     s.start ?? 0,
     duration,
-    s.coverImage ?? null,
+    resolvedCoverImage(s),
     `/watch/${s._id}`,
     speakerNames,
     topicsDisplay,

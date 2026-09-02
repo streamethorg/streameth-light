@@ -38,6 +38,25 @@ function resolvedUrlForSession(s: Session): string | undefined {
   return getResolvedPlaybackUrls()[s.playbackId] ?? undefined;
 }
 
+// The dead DigitalOcean Spaces bucket (see cleanImageUrl below) took every
+// session coverImage with it. For sessions with a Livepeer playbackId,
+// resolve-livepeer-thumbnails.py recovers a real thumbnail — either a
+// direct Livepeer-generated image or the first frame of its "Thumbnails"
+// VTT track — via Livepeer's public playback-info API, cached here by
+// playbackId.
+const getResolvedThumbnails = lazy((): Record<string, string | null> => {
+  try {
+    return load<Record<string, string | null>>("sources/livepeer-thumbnails.json");
+  } catch {
+    return {};
+  }
+});
+
+function resolvedThumbnailForSession(s: Session): string | undefined {
+  if (!s.playbackId) return undefined;
+  return getResolvedThumbnails()[s.playbackId] ?? undefined;
+}
+
 const HAS_VIDEO = (s: Session) => {
   const videoUrl = s.videoUrl || s.playback?.videoUrl;
   if (videoUrl && !isDeadVideoHost(videoUrl)) return true;
@@ -82,7 +101,7 @@ export const getStore = lazy(() => {
     .map(
       (s): Session => ({
         ...s,
-        coverImage: cleanImageUrl(s.coverImage),
+        coverImage: cleanImageUrl(s.coverImage) ?? resolvedThumbnailForSession(s),
         speakers: (s.speakers ?? []).map((sp) => ({
           ...sp,
           photo: cleanImageUrl(sp.photo),
