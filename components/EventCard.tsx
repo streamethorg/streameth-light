@@ -22,7 +22,7 @@ export default function EventCard({
   return (
     <Link
       href={`/${orgSlug}/${event.slug}`}
-      className="group flex flex-col overflow-hidden rounded-md border border-line bg-panel transition-colors hover:border-accent/50"
+      className="group flex flex-col overflow-hidden rounded-md border border-line bg-panel transition-all duration-200 hover:border-accent/50 hover:shadow-md"
     >
       <div className="relative aspect-[2/1] w-full overflow-hidden bg-panel-raised">
         {cover ? (

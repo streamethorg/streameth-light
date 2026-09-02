@@ -44,10 +44,33 @@ export function callSign(name: string, length = 3): string {
   return letters.toUpperCase().padEnd(length, "X");
 }
 
+function hexToHsl(hex: string): { s: number; l: number } | undefined {
+  const m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return undefined;
+  let h = m[1];
+  if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+  const r = parseInt(h.slice(0, 2), 16) / 255;
+  const g = parseInt(h.slice(2, 4), 16) / 255;
+  const b = parseInt(h.slice(4, 6), 16) / 255;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  const d = max - min;
+  const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+  return { s: s * 100, l: l * 100 };
+}
+
+/** Rejects colors too washed-out, too dark, or too light to read as an
+ * intentional accent (near-black/near-white/near-gray event branding). */
 export function isUsableAccent(color?: string): boolean {
   if (!color) return false;
   const c = color.trim().toLowerCase();
-  return c !== "" && c !== "#fff" && c !== "#ffffff" && c !== "white";
+  if (c === "" || c === "#fff" || c === "#ffffff" || c === "white") return false;
+  const hsl = hexToHsl(c);
+  if (!hsl) return true;
+  if (hsl.l < 20 || hsl.l > 85) return false;
+  if (hsl.s < 15) return false;
+  return true;
 }
 
 export function accentStyle(

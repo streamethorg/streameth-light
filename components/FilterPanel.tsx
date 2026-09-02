@@ -89,7 +89,7 @@ export default function FilterPanel({
             type="date"
             value={filters.dateFrom}
             onChange={(e) => onChange({ dateFrom: e.target.value })}
-            className="bg-transparent focus:outline-none [color-scheme:dark]"
+            className="bg-transparent focus:outline-none [color-scheme:light]"
           />
         </label>
         <label className="flex items-center gap-1.5 rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink">
@@ -98,7 +98,7 @@ export default function FilterPanel({
             type="date"
             value={filters.dateTo}
             onChange={(e) => onChange({ dateTo: e.target.value })}
-            className="bg-transparent focus:outline-none [color-scheme:dark]"
+            className="bg-transparent focus:outline-none [color-scheme:light]"
           />
         </label>
 
@@ -127,7 +127,7 @@ export default function FilterPanel({
                 onClick={() => onChange({ topic: active ? "" : topic })}
                 className={`rounded-full border px-3 py-1 text-xs transition-colors ${
                   active
-                    ? "border-ink bg-ink text-void"
+                    ? "border-accent bg-accent/10 text-accent"
                     : "border-line text-ink-dim hover:border-ink-faint"
                 }`}
               >

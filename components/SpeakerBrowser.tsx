@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { initials } from "@/lib/format";
+import Avatar from "@/components/Avatar";
 import type { Speaker } from "@/lib/people";
 
 export default function SpeakerBrowser({ speakers }: { speakers: Speaker[] }) {
@@ -32,20 +32,12 @@ export default function SpeakerBrowser({ speakers }: { speakers: Speaker[] }) {
           <Link
             key={sp.slug}
             href={`/speakers/${sp.slug}`}
-            className="group flex flex-col items-center gap-2 rounded-md border border-line bg-panel p-4 text-center transition-colors hover:border-accent/50"
+            className="group flex flex-col items-center gap-2 rounded-md border border-line bg-panel p-4 text-center transition-all duration-200 hover:border-accent/50 hover:shadow-md"
           >
-            {sp.photo ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={sp.photo}
-                alt=""
-                className="h-14 w-14 rounded-full object-cover"
-              />
-            ) : (
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-panel-raised font-display text-sm font-bold text-ink-dim">
-                {initials(sp.name)}
-              </div>
-            )}
+            <span className="relative">
+              <Avatar name={sp.name} photo={sp.photo} className="h-14 w-14 text-sm" />
+              <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/5 transition-colors group-hover:ring-accent/40" />
+            </span>
             <span className="line-clamp-1 text-xs font-medium text-ink group-hover:text-accent">
               {sp.name}
             </span>

@@ -2,9 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import VideoCard from "@/components/VideoCard";
+import Avatar from "@/components/Avatar";
 import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
 import { getEventById } from "@/lib/data";
-import { initials } from "@/lib/format";
 
 export function generateStaticParams() {
   return listSpeakers().map((sp) => ({ speaker: sp.slug }));
@@ -46,18 +46,7 @@ export default async function SpeakerPage({
       </Link>
 
       <div className="flex items-center gap-5">
-        {speaker.photo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={speaker.photo}
-            alt=""
-            className="h-20 w-20 rounded-full object-cover"
-          />
-        ) : (
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-panel-raised font-display text-xl font-bold text-ink-dim">
-            {initials(speaker.name)}
-          </div>
-        )}
+        <Avatar name={speaker.name} photo={speaker.photo} className="h-20 w-20 text-xl" />
         <div className="flex flex-col gap-1.5">
           <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">
             {speaker.name}

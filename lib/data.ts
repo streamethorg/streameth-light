@@ -235,6 +235,20 @@ export function getOrgForEvent(event: Event | undefined): Organization | undefin
   return event ? getStore().orgById.get(event.organizationId) : undefined;
 }
 
+export function getOrganizationById(orgId: string | undefined): Organization | undefined {
+  return orgId ? getStore().orgById.get(orgId) : undefined;
+}
+
+/** A session's event record can be missing (orphaned sessions, per
+ * lib/orphanSessions.ts) even though the session still carries its own
+ * organizationId — falls back to that so the org is never silently dropped. */
+export function getOrgForSession(
+  session: Session,
+  event: Event | undefined
+): Organization | undefined {
+  return getOrgForEvent(event) ?? getOrganizationById(session.organizationId);
+}
+
 export function listSessionsForEvent(eventId: string): Session[] {
   return getStore().sessionsByEvent.get(eventId) ?? [];
 }

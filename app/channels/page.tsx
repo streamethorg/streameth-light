@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getDirectory, type DirectoryEntry } from "@/lib/directory";
 import { getOrganization, getOrgSessionCount } from "@/lib/data";
-import { initials } from "@/lib/format";
+import Avatar from "@/components/Avatar";
 
 export const metadata: Metadata = {
   title: "Channels — StreamETH Light",
@@ -38,7 +38,7 @@ export default function ChannelsPage() {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-2xl font-semibold text-ink sm:text-3xl">Channels</h1>
+        <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">Channels</h1>
         <p className="max-w-2xl text-sm text-ink-dim">
           {active.length} channels with a video archive, plus {tracked.length} more
           Ethereum-ecosystem organizations and conferences tracked here.
@@ -50,13 +50,14 @@ export default function ChannelsPage() {
           <Link
             key={entry.slug}
             href={`/${entry.slug}`}
-            className="group flex flex-col gap-3 rounded-lg border border-line p-4 hover:border-ink-faint"
+            className="group flex flex-col gap-3 rounded-lg border border-line bg-panel p-4 transition-all duration-200 hover:border-accent/50 hover:shadow-md"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-panel text-sm font-medium text-ink-dim">
-              {initials(entry.name)}
-            </div>
+            <span className="relative w-fit">
+              <Avatar name={entry.name} className="h-12 w-12 text-sm" />
+              <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/5 transition-colors group-hover:ring-accent/40" />
+            </span>
             <div>
-              <h2 className="text-sm font-medium text-ink group-hover:text-white">
+              <h2 className="text-sm font-medium text-ink group-hover:text-accent">
                 {entry.name}
               </h2>
               <p className="text-xs text-ink-faint">{coverageLabel(entry)}</p>
