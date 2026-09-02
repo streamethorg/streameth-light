@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import SessionPlayer from "@/components/SessionPlayer";
+import YoutubeSessionPlayer from "@/components/YoutubeSessionPlayer";
 import VideoCard from "@/components/VideoCard";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import SpeakerCard from "@/components/SpeakerCard";
@@ -85,6 +86,7 @@ export default async function WatchPage({
           playback={playback}
           poster={session.coverImage}
           track={{
+            source: "streameth",
             id: session._id,
             title: session.name,
             orgName: org?.name ?? "",
@@ -207,15 +209,20 @@ function YoutubeWatchPage({ id }: { id: string }) {
   return (
     <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 px-4 py-6 sm:px-6 lg:flex-row lg:items-start">
       <div className="flex min-w-0 flex-1 flex-col gap-4">
-        <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="h-full w-full"
-          />
-        </div>
+        <YoutubeSessionPlayer
+          videoId={videoId}
+          title={video.title}
+          poster={video.coverImage}
+          track={{
+            source: "youtube",
+            id: video.id,
+            title: video.title,
+            orgName: video.orgName,
+            coverImage: video.coverImage,
+            watchUrl: `/watch/${video.id}`,
+            videoId,
+          }}
+        />
 
         <div className="flex flex-wrap items-start justify-between gap-3">
           <h1 className="text-xl font-semibold text-ink sm:text-2xl">{video.title}</h1>
