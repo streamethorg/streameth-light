@@ -91,7 +91,7 @@ function AppBody({ children }: { children: React.ReactNode }) {
         )}
       </header>
 
-      <main className={`min-w-0 flex-1 ${track ? "pb-16" : ""}`}>{children}</main>
+      <main className={`min-w-0 flex-1 ${track ? "pb-20" : ""}`}>{children}</main>
 
       <MiniPlayerBar />
     </div>
