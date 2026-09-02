@@ -1,6 +1,9 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import WatchLayout from "@/components/WatchLayout";
+import YoutubeVideoCard from "@/components/YoutubeVideoCard";
+import YoutubeSessionPlayer from "@/components/YoutubeSessionPlayer";
+import SaveButton from "@/components/SaveButton";
 import { getOrganization } from "@/lib/data";
 import { getDirectory, getDirectoryEntry } from "@/lib/directory";
 import {
@@ -8,6 +11,7 @@ import {
   getYoutubeVideosForChannel,
   groupVideosByInferredEvent,
 } from "@/lib/youtube";
+import { getVideoById } from "@/lib/videoDb";
 import { formatDateLong } from "@/lib/format";
 
 export function generateStaticParams() {
@@ -50,81 +54,61 @@ export default async function YoutubeEventPage({
 
   const selected = (v && group.videos.find((vid) => vid.videoId === v)) || group.videos[0];
   const others = group.videos.filter((vid) => vid.videoId !== selected.videoId);
+  const unified = getVideoById(`yt-${selected.videoId}`);
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6">
-      <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-xs uppercase tracking-wide text-ink-faint">
-        <Link href={`/${orgSlug}`} className="transition-colors hover:text-ink-dim">
-          {orgName}
-        </Link>
-        <span>/</span>
-        <span>{group.label}</span>
-      </div>
-
-      <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
-        <iframe
-          key={selected.videoId}
-          src={`https://www.youtube-nocookie.com/embed/${selected.videoId}`}
-          title={selected.title}
-          className="h-full w-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
-      </div>
-
-      <div className="flex flex-col gap-3 border-b border-line pb-8">
-        <h1 className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
-          {selected.title}
-        </h1>
-        <p className="font-mono text-xs tabular text-ink-faint">
-          {selected.publishedAt ? formatDateLong(selected.publishedAt) : ""}
-          <span className="ml-2 rounded-sm bg-panel-raised px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-ink-dim">
-            YouTube
-          </span>
-        </p>
-        {selected.description && (
-          <p className="max-w-3xl whitespace-pre-line text-sm leading-relaxed text-ink-dim">
-            {selected.description}
-          </p>
-        )}
-      </div>
-
-      {others.length > 0 && (
-        <div className="flex flex-col gap-4">
-          <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-            More from {group.label}
-          </h2>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {others.map((vid) => (
-              <Link
-                key={vid.videoId}
-                href={`/${orgSlug}/y/${groupSlug}?v=${vid.videoId}`}
-                className="group flex flex-col gap-2.5"
-              >
-                <div className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-panel">
-                  {vid.thumbnail ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={vid.thumbnail}
-                      alt=""
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center font-mono text-[11px] uppercase tracking-wide text-ink-faint">
-                      No preview
-                    </div>
-                  )}
-                  <span className="absolute inset-0 ring-1 ring-inset ring-white/5 transition-colors group-hover:ring-accent/40" />
-                </div>
-                <h3 className="line-clamp-2 text-[13px] font-medium leading-snug text-ink transition-colors group-hover:text-accent">
-                  {vid.title}
-                </h3>
-              </Link>
-            ))}
+    <WatchLayout
+      orgName={orgName}
+      orgSlug={orgSlug}
+      crumb={group.label}
+      player={
+        unified ? (
+          <YoutubeSessionPlayer
+            key={selected.videoId}
+            videoId={selected.videoId}
+            title={selected.title}
+            poster={unified.coverImage}
+            track={{
+              source: "youtube",
+              id: unified.id,
+              title: unified.title,
+              orgName: orgName,
+              coverImage: unified.coverImage,
+              watchUrl: unified.watchUrl,
+              videoId: selected.videoId,
+            }}
+          />
+        ) : (
+          <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
+            <iframe
+              key={selected.videoId}
+              src={`https://www.youtube-nocookie.com/embed/${selected.videoId}`}
+              title={selected.title}
+              className="h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
           </div>
-        </div>
-      )}
-    </div>
+        )
+      }
+      title={selected.title}
+      actions={
+        unified && (
+          <SaveButton
+            videoId={unified.id}
+            videoSource="youtube"
+            title={unified.title}
+            coverImage={unified.coverImage}
+          />
+        )
+      }
+      metaLine={selected.publishedAt ? formatDateLong(selected.publishedAt) : undefined}
+      description={selected.description || unified?.description}
+      transcript={unified?.transcript}
+      relatedLabel={`More from ${group.label}`}
+      related={others.map((vid) => (
+        <YoutubeVideoCard key={vid.videoId} video={vid} orgSlug={orgSlug} groupSlug={groupSlug} />
+      ))}
+    />
   );
 }

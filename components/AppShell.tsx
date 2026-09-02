@@ -14,6 +14,7 @@ const NAV = [
   { href: "/channels", label: "Channels" },
   { href: "/speakers", label: "Speakers" },
   { href: "/topics", label: "Topics" },
+  { href: "/saved", label: "Saved" },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {

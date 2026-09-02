@@ -49,7 +49,7 @@ export default function SignInForm() {
         {status === "sending" ? "Sending…" : "Send sign-in link"}
       </button>
       {status === "error" && (
-        <p className="text-sm text-red-600">Couldn&apos;t send that link — try again.</p>
+        <p className="text-sm text-error">Couldn&apos;t send that link — try again.</p>
       )}
     </form>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { YoutubeVideo } from "@/lib/directory";
 import { formatDateShort } from "@/lib/format";
+import CoverPlaceholder from "./CoverPlaceholder";
 
 export default function YoutubeVideoCard({
   video,
@@ -14,7 +15,7 @@ export default function YoutubeVideoCard({
 }) {
   const content = (
     <>
-      <div className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-panel">
+      <div className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-panel shadow-none transition-shadow duration-200 group-hover:shadow-md">
         {video.thumbnail ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -24,9 +25,7 @@ export default function YoutubeVideoCard({
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center font-mono text-[11px] uppercase tracking-wide text-ink-faint">
-            No preview
-          </div>
+          <CoverPlaceholder label={video.title} />
         )}
         <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-black/80 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-white">
           YouTube

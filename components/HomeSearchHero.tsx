@@ -39,7 +39,7 @@ export default function HomeSearchHero() {
         </h1>
       </div>
       <div className="relative w-full">
-        <div className="flex w-full items-center gap-3 rounded-full border border-line bg-panel px-5 py-3.5 shadow-sm focus-within:border-ink-faint">
+        <div className="flex w-full items-center gap-3 rounded-full border border-line bg-panel px-5 py-3.5 shadow-sm transition-shadow focus-within:border-accent focus-within:shadow-[0_0_0_3px_hsl(250_75%_45%/0.15)]">
           <svg
             viewBox="0 0 20 20"
             fill="none"

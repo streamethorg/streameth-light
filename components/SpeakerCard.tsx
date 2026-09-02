@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { SessionSpeaker } from "@/lib/types";
-import { initials } from "@/lib/format";
+import Avatar from "@/components/Avatar";
 import { findSpeakerSlugForName, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
 
 export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
@@ -22,15 +22,8 @@ export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
   );
 
   return (
-    <div className="flex gap-3 rounded-md border border-line bg-panel p-4">
-      {photo ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={photo} alt="" className="h-14 w-14 shrink-0 rounded-full object-cover" />
-      ) : (
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-panel-raised text-sm font-medium text-ink-dim">
-          {initials(speaker.name)}
-        </div>
-      )}
+    <div className="flex gap-3 rounded-md border border-line bg-panel p-4 transition-shadow duration-200 hover:shadow-md">
+      <Avatar name={speaker.name} photo={photo} className="h-14 w-14 shrink-0 text-sm" />
       <div className="flex min-w-0 flex-col gap-1">
         <div className="text-sm">{nameEl}</div>
         {company && <p className="text-xs text-ink-faint">{company}</p>}

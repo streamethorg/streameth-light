@@ -12,8 +12,13 @@
   --ink: #334155;
   --ink-dim: hsl(215 19% 35%);
   --ink-faint: hsl(215 20% 65%);
-  --accent: hsl(250 69% 26%);
+  --accent: hsl(250 75% 45%);
   --accent-ink: hsl(0 0% 100%);
+  --tag-cyan: hsl(190 70% 45%);
+  --tag-yellow: hsl(42 90% 50%);
+  --tag-magenta: hsl(330 70% 50%);
+  --tag-green: hsl(150 55% 40%);
+  --error: hsl(0 65% 45%);
 }
 
 @theme inline {
@@ -26,6 +31,11 @@
   --color-ink-faint: var(--ink-faint);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --color-tag-cyan: var(--tag-cyan);
+  --color-tag-yellow: var(--tag-yellow);
+  --color-tag-magenta: var(--tag-magenta);
+  --color-tag-green: var(--tag-green);
+  --color-error: var(--error);
   --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-inter);
