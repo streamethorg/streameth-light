@@ -8,39 +8,6 @@ export interface YoutubeVideoWithChannel extends YoutubeVideo {
   channelSlug: string;
 }
 
-const getAllVideosFlat = lazy((): YoutubeVideoWithChannel[] => {
-  const raw = readFileSync(
-    join(process.cwd(), "data", "sources", "youtube-videos.json"),
-    "utf-8"
-  );
-  const bySlug = JSON.parse(raw) as Record<string, YoutubeVideo[]>;
-  const flat: YoutubeVideoWithChannel[] = [];
-  for (const [channelSlug, videos] of Object.entries(bySlug)) {
-    for (const v of videos) flat.push({ ...v, channelSlug });
-  }
-  return flat;
-});
-
-const getTranscripts = lazy((): Record<string, string | null> => {
-  const path = join(process.cwd(), "data", "sources", "youtube-transcripts.json");
-  if (!existsSync(path)) return {};
-  try {
-    return JSON.parse(readFileSync(path, "utf-8")) as Record<string, string | null>;
-  } catch {
-    // File is being rewritten concurrently by the transcript-pull script —
-    // treat a torn read as "no transcripts yet" rather than failing search.
-    return {};
-  }
-});
-
-export function listAllYoutubeVideos(): YoutubeVideoWithChannel[] {
-  return getAllVideosFlat();
-}
-
-export function getYoutubeTranscript(videoId: string): string | null {
-  return getTranscripts()[videoId] ?? null;
-}
-
 export function getYoutubeVideosForChannel(slug: string): YoutubeVideo[] {
   const raw = readFileSync(
     join(process.cwd(), "data", "sources", "youtube-videos.json"),
@@ -173,12 +140,4 @@ export function getInferredEventGroup(
 ): InferredEventGroup | undefined {
   const groups = groupVideosByInferredEvent(getYoutubeVideosForChannel(channelSlug), channelSlug);
   return groups.find((g) => g.slug === groupSlug);
-}
-
-export function findGroupSlugForVideo(
-  channelSlug: string,
-  videoId: string
-): string | undefined {
-  const groups = groupVideosByInferredEvent(getYoutubeVideosForChannel(channelSlug), channelSlug);
-  return groups.find((g) => g.videos.some((v) => v.videoId === videoId))?.slug;
 }

@@ -40,3 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 __pycache__/
+
+# generated — rebuilt from data/*.json by `pnpm build-db` (runs automatically
+# via predev/prebuild), not a source of truth worth diffing in git
+/data/streameth.db*

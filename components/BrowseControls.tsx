@@ -4,17 +4,20 @@ import { usePathname, useRouter } from "next/navigation";
 import FilterPanel from "@/components/FilterPanel";
 import type { BrowseFilters } from "@/lib/browseParams";
 import { paramsFromFilters } from "@/lib/browseParams";
-import type { Event, Organization } from "@/lib/types";
+import type { OrgOption } from "@/lib/videoDb";
+import type { Event } from "@/lib/types";
 
 export default function BrowseControls({
   filters,
-  organizations,
+  channels,
   events,
+  orgIdBySlug,
   topics,
 }: {
   filters: BrowseFilters;
-  organizations: Organization[];
+  channels: OrgOption[];
   events: Event[];
+  orgIdBySlug: Record<string, string>;
   topics: string[];
 }) {
   const router = useRouter();
@@ -28,8 +31,9 @@ export default function BrowseControls({
   return (
     <FilterPanel
       filters={filters}
-      organizations={organizations}
+      channels={channels}
       events={events}
+      orgIdBySlug={orgIdBySlug}
       topics={topics}
       hasQuery={Boolean(filters.q.trim())}
       onChange={handleChange}

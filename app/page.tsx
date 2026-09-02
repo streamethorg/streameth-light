@@ -2,10 +2,10 @@ import Link from "next/link";
 import BrowseControls from "@/components/BrowseControls";
 import HomeSearchHero from "@/components/HomeSearchHero";
 import SessionCarousel from "@/components/SessionCarousel";
-import VideoCard from "@/components/VideoCard";
-import { browseSessions, topAutoLabels } from "@/lib/browse";
+import UnifiedVideoCard from "@/components/UnifiedVideoCard";
+import { browseVideos, listChannelOptions, topTopics } from "@/lib/videoDb";
 import { EMPTY_FILTERS, filtersFromParams, paramsFromFilters } from "@/lib/browseParams";
-import { listAllEvents, listAllSessions, listOrganizations, getOrgForEvent } from "@/lib/data";
+import { listAllEvents, listOrganizations } from "@/lib/data";
 
 const PAGE_SIZE = 48;
 const CAROUSEL_SIZE = 16;
@@ -36,31 +36,25 @@ export default async function Home({
   const filters = filtersFromParams(urlSearchParams);
   const page = Math.max(1, Number(rawParams.page) || 1);
 
-  const organizations = listOrganizations();
+  const channels = listChannelOptions();
   const events = listAllEvents();
-  const eventById = new Map(events.map((e) => [e._id, e]));
-  const orgById = new Map(organizations.map((o) => [o._id, o]));
+  const orgIdBySlug = Object.fromEntries(listOrganizations().map((o) => [o.slug, o._id]));
 
   if (isIdle(filters)) {
-    const highlights = browseSessions(EMPTY_FILTERS).slice(0, CAROUSEL_SIZE);
+    const highlights = browseVideos(EMPTY_FILTERS).slice(0, CAROUSEL_SIZE);
 
     return (
       <div className="mx-auto flex w-full max-w-[1600px] min-h-[calc(100vh-53px)] flex-col gap-10 px-4 py-6 sm:px-6">
         <div className="flex flex-1 items-center justify-center">
           <HomeSearchHero />
         </div>
-        <SessionCarousel
-          title="Recently added"
-          sessions={highlights}
-          eventById={eventById}
-          orgById={orgById}
-        />
+        <SessionCarousel title="Recently added" videos={highlights} />
       </div>
     );
   }
 
-  const topics = topAutoLabels(listAllSessions());
-  const results = browseSessions(filters);
+  const topics = topTopics();
+  const results = browseVideos(filters);
   const shown = results.slice(0, page * PAGE_SIZE);
   const hasMore = shown.length < results.length;
 
@@ -72,8 +66,9 @@ export default async function Home({
       <div className="flex items-center justify-between gap-3">
         <BrowseControls
           filters={filters}
-          organizations={organizations}
+          channels={channels}
           events={events}
+          orgIdBySlug={orgIdBySlug}
           topics={topics}
         />
       </div>
@@ -86,7 +81,7 @@ export default async function Home({
           href="/search"
           className="font-mono text-xs text-ink-faint underline-offset-2 hover:text-ink-dim hover:underline"
         >
-          Search transcripts &amp; YouTube →
+          Deep search (transcripts) →
         </Link>
       </div>
 
@@ -96,13 +91,8 @@ export default async function Home({
         </p>
       ) : (
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {shown.map((s) => (
-            <VideoCard
-              key={s._id}
-              session={s}
-              event={eventById.get(s.eventId)}
-              org={getOrgForEvent(eventById.get(s.eventId))}
-            />
+          {shown.map((v) => (
+            <UnifiedVideoCard key={v.id} video={v} />
           ))}
         </div>
       )}

@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { searchAll } from "@/lib/search";
-import { getEventById } from "@/lib/data";
-import { getDirectoryEntry } from "@/lib/directory";
-import { findGroupSlugForVideo } from "@/lib/youtube";
+import { searchVideosDetailed } from "@/lib/videoDb";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -12,46 +9,20 @@ export async function GET(request: Request) {
     return NextResponse.json({ query: q, results: [] });
   }
 
-  const matches = searchAll(q, 30);
+  const matches = searchVideosDetailed(q, 30);
 
-  const results = matches.map((m) => {
-    if (m.type === "session") {
-      const session = m.session!;
-      const event = getEventById(session.eventId);
-      return {
-        type: "session" as const,
-        id: session._id,
-        name: session.name,
-        eventName: event?.name ?? session.eventSlug,
-        coverImage: session.coverImage ?? null,
-        speakers: (session.speakers ?? []).map((sp) => sp.name),
-        topics: session.autoLabels ?? [],
-        score: m.score,
-        matchedIn: m.matchedIn,
-        snippet: m.snippet,
-        href: `/watch/${session._id}`,
-      };
-    }
-
-    const video = m.video!;
-    const entry = getDirectoryEntry(video.channelSlug);
-    const groupSlug = findGroupSlugForVideo(video.channelSlug, video.videoId);
-    return {
-      type: "youtube" as const,
-      id: video.videoId,
-      name: video.title,
-      eventName: entry?.name ?? video.channelSlug,
-      coverImage: video.thumbnail,
-      speakers: [] as string[],
-      topics: [] as string[],
-      score: m.score,
-      matchedIn: m.matchedIn,
-      snippet: m.snippet,
-      href: groupSlug
-        ? `/${video.channelSlug}/y/${groupSlug}?v=${video.videoId}`
-        : `https://www.youtube.com/watch?v=${video.videoId}`,
-    };
-  });
+  const results = matches.map(({ video, matchedIn, snippet }) => ({
+    type: video.source === "streameth" ? ("session" as const) : ("youtube" as const),
+    id: video.id,
+    name: video.title,
+    eventName: video.eventName || video.orgName,
+    coverImage: video.coverImage,
+    speakers: video.speakers,
+    topics: video.topics,
+    matchedIn,
+    snippet,
+    href: video.watchUrl,
+  }));
 
   return NextResponse.json({ query: q, results });
 }

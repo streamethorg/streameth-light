@@ -1,6 +1,7 @@
 "use client";
 
-import type { Event, Organization } from "@/lib/types";
+import type { Event } from "@/lib/types";
+import type { OrgOption } from "@/lib/videoDb";
 import type { BrowseFilters, DurationBucket, SortMode } from "@/lib/browseParams";
 
 const DURATION_LABELS: Record<DurationBucket, string> = {
@@ -19,22 +20,25 @@ const SORT_OPTIONS: { value: SortMode; label: string }[] = [
 
 export default function FilterPanel({
   filters,
-  organizations,
+  channels,
   events,
+  orgIdBySlug,
   topics,
   hasQuery,
   onChange,
 }: {
   filters: BrowseFilters;
-  organizations: Organization[];
+  channels: OrgOption[];
   events: Event[];
+  orgIdBySlug: Record<string, string>;
   topics: string[];
   hasQuery: boolean;
   onChange: (patch: Partial<BrowseFilters>) => void;
 }) {
+  const selectedOrgIds = filters.orgIds.map((slug) => orgIdBySlug[slug]).filter(Boolean);
   const eventOptions =
-    filters.orgIds.length > 0
-      ? events.filter((e) => filters.orgIds.includes(e.organizationId))
+    selectedOrgIds.length > 0
+      ? events.filter((e) => selectedOrgIds.includes(e.organizationId))
       : events;
 
   return (
@@ -45,10 +49,10 @@ export default function FilterPanel({
           onChange={(e) => onChange({ orgIds: e.target.value ? [e.target.value] : [], eventIds: [] })}
           className="rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink focus:outline-none focus:ring-1 focus:ring-ink-faint"
         >
-          <option value="">All organizations</option>
-          {organizations.map((org) => (
-            <option key={org._id} value={org._id}>
-              {org.name}
+          <option value="">All channels</option>
+          {channels.map((channel) => (
+            <option key={channel.slug} value={channel.slug}>
+              {channel.name}
             </option>
           ))}
         </select>
@@ -134,30 +138,30 @@ export default function FilterPanel({
         </div>
       )}
 
-      <ActiveFilterChips filters={filters} organizations={organizations} events={events} onChange={onChange} />
+      <ActiveFilterChips filters={filters} channels={channels} events={events} onChange={onChange} />
     </div>
   );
 }
 
 function ActiveFilterChips({
   filters,
-  organizations,
+  channels,
   events,
   onChange,
 }: {
   filters: BrowseFilters;
-  organizations: Organization[];
+  channels: OrgOption[];
   events: Event[];
   onChange: (patch: Partial<BrowseFilters>) => void;
 }) {
   const chips: { label: string; clear: () => void }[] = [];
 
-  for (const orgId of filters.orgIds) {
-    const org = organizations.find((o) => o._id === orgId);
-    if (org) {
+  for (const slug of filters.orgIds) {
+    const channel = channels.find((c) => c.slug === slug);
+    if (channel) {
       chips.push({
-        label: org.name,
-        clear: () => onChange({ orgIds: filters.orgIds.filter((id) => id !== orgId) }),
+        label: channel.name,
+        clear: () => onChange({ orgIds: filters.orgIds.filter((s) => s !== slug) }),
       });
     }
   }

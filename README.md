@@ -24,6 +24,17 @@ cp scripts/.env.export.example scripts/.env.export  # fill in DB_PASSWORD
 pnpm export-db
 ```
 
+## Search index
+
+The homepage feed and `/search` (deep search across transcripts and tracked
+YouTube videos) both query `data/streameth.db` — a SQLite database with an
+FTS5 full-text index unifying StreamETH sessions and YouTube videos into one
+`videos` table (see `scripts/build-db.mjs`, `lib/videoDb.ts`). It's generated
+from the committed JSON, not itself committed — `pnpm dev`/`pnpm build` run
+`pnpm build-db` automatically via `predev`/`prebuild`. Uses Node's built-in
+`node:sqlite` (Node 22.5+, no native compilation), so it runs anywhere the
+app's Node runtime does.
+
 ## Development
 
 ```bash
@@ -34,4 +45,5 @@ pnpm dev
 ## Deploy
 
 Deployed on Vercel. `data/*.json` is committed to git, so a normal Vercel
-build (no environment variables, no database) is enough.
+build (no environment variables, no database) is enough — `data/streameth.db`
+is rebuilt from it during `pnpm build`.
