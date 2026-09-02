@@ -1,11 +1,27 @@
 import Link from "next/link";
 import BrowseControls from "@/components/BrowseControls";
+import HomeSearchHero from "@/components/HomeSearchHero";
+import SessionCarousel from "@/components/SessionCarousel";
 import VideoCard from "@/components/VideoCard";
 import { browseSessions, topAutoLabels } from "@/lib/browse";
-import { filtersFromParams, paramsFromFilters } from "@/lib/browseParams";
+import { EMPTY_FILTERS, filtersFromParams, paramsFromFilters } from "@/lib/browseParams";
 import { listAllEvents, listAllSessions, listOrganizations, getOrgForEvent } from "@/lib/data";
 
 const PAGE_SIZE = 48;
+const CAROUSEL_SIZE = 16;
+
+function isIdle(filters: ReturnType<typeof filtersFromParams>): boolean {
+  return (
+    !filters.q.trim() &&
+    filters.orgIds.length === 0 &&
+    filters.eventIds.length === 0 &&
+    !filters.speaker &&
+    !filters.topic &&
+    !filters.duration &&
+    !filters.dateFrom &&
+    !filters.dateTo
+  );
+}
 
 export default async function Home({
   searchParams,
@@ -23,8 +39,27 @@ export default async function Home({
   const organizations = listOrganizations();
   const events = listAllEvents();
   const eventById = new Map(events.map((e) => [e._id, e]));
-  const topics = topAutoLabels(listAllSessions());
+  const orgById = new Map(organizations.map((o) => [o._id, o]));
 
+  if (isIdle(filters)) {
+    const highlights = browseSessions(EMPTY_FILTERS).slice(0, CAROUSEL_SIZE);
+
+    return (
+      <div className="mx-auto flex w-full max-w-[1600px] min-h-[calc(100vh-53px)] flex-col gap-10 px-4 py-6 sm:px-6">
+        <div className="flex flex-1 items-center justify-center">
+          <HomeSearchHero />
+        </div>
+        <SessionCarousel
+          title="Recently added"
+          sessions={highlights}
+          eventById={eventById}
+          orgById={orgById}
+        />
+      </div>
+    );
+  }
+
+  const topics = topAutoLabels(listAllSessions());
   const results = browseSessions(filters);
   const shown = results.slice(0, page * PAGE_SIZE);
   const hasMore = shown.length < results.length;
