@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import VideoPlayer from "@/components/VideoPlayer";
+import SessionPlayer from "@/components/SessionPlayer";
 import VideoCard from "@/components/VideoCard";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import SpeakerCard from "@/components/SpeakerCard";
@@ -81,20 +81,19 @@ export default async function WatchPage({
       className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 px-4 py-6 sm:px-6 lg:flex-row lg:items-start"
     >
       <div className="flex min-w-0 flex-1 flex-col gap-4">
-        <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
-          {playback ? (
-            <VideoPlayer
-              key={playback.src}
-              src={playback.src}
-              type={playback.type}
-              poster={session.coverImage}
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center font-mono text-xs text-ink-faint">
-              No playable video source for this session.
-            </div>
-          )}
-        </div>
+        <SessionPlayer
+          playback={playback}
+          poster={session.coverImage}
+          track={{
+            id: session._id,
+            title: session.name,
+            orgName: org?.name ?? "",
+            coverImage: session.coverImage ?? null,
+            watchUrl: `/watch/${session._id}`,
+            src: playback?.src ?? "",
+            type: playback?.type ?? "mp4",
+          }}
+        />
 
         <div className="flex flex-wrap items-start justify-between gap-3">
           <h1 className="text-xl font-semibold text-ink sm:text-2xl">{session.name}</h1>

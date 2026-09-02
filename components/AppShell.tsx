@@ -6,6 +6,8 @@ import { Suspense, useState } from "react";
 import SearchBar from "@/components/SearchBar";
 import StreamethLogo from "@/components/StreamethLogo";
 import AuthStatus from "@/components/AuthStatus";
+import PodcastPlayerProvider, { usePodcastPlayer } from "@/components/PodcastPlayerProvider";
+import MiniPlayerBar from "@/components/MiniPlayerBar";
 
 const NAV = [
   { href: "/", label: "Home" },
@@ -15,9 +17,18 @@ const NAV = [
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  return (
+    <PodcastPlayerProvider>
+      <AppBody>{children}</AppBody>
+    </PodcastPlayerProvider>
+  );
+}
+
+function AppBody({ children }: { children: React.ReactNode }) {
   const [navOpen, setNavOpen] = useState(false);
   const pathname = usePathname();
   const isRoot = pathname === "/";
+  const { track } = usePodcastPlayer();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -80,7 +91,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         )}
       </header>
 
-      <main className="min-w-0 flex-1">{children}</main>
+      <main className={`min-w-0 flex-1 ${track ? "pb-16" : ""}`}>{children}</main>
+
+      <MiniPlayerBar />
     </div>
   );
 }
