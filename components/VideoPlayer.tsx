@@ -1,44 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Hls from "hls.js";
+import { useRef, type RefObject } from "react";
+import { useHlsSource } from "@/lib/useHlsSource";
 
 export default function VideoPlayer({
   src,
   type,
   poster,
+  videoRef: externalRef,
 }: {
   src: string;
   type: "hls" | "mp4";
   poster?: string;
+  /** Lets a parent read/seek the underlying <video> — used to hand off the
+   * current playback position when switching into Listen mode. */
+  videoRef?: RefObject<HTMLVideoElement | null>;
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [ready, setReady] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || type !== "hls") return;
-
-    if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = src;
-      return;
-    }
-
-    if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(src);
-      hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => setReady(true));
-      hls.on(Hls.Events.ERROR, (_evt, data) => {
-        if (data.fatal) setError(true);
-      });
-      return () => hls.destroy();
-    }
-
-    const timer = window.setTimeout(() => setError(true), 0);
-    return () => window.clearTimeout(timer);
-  }, [src, type]);
+  const internalRef = useRef<HTMLVideoElement>(null);
+  const videoRef = externalRef ?? internalRef;
+  const { ready, setReady, error } = useHlsSource(videoRef, src, type);
 
   return (
     <div className="relative h-full w-full">
@@ -59,7 +39,6 @@ export default function VideoPlayer({
         poster={poster}
         className="h-full w-full bg-black"
         onLoadedData={() => setReady(true)}
-        {...(type === "mp4" ? { src } : {})}
       />
     </div>
   );

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import VideoPlayer from "@/components/VideoPlayer";
+import SessionPlayer from "@/components/SessionPlayer";
+import YoutubeSessionPlayer from "@/components/YoutubeSessionPlayer";
 import VideoCard from "@/components/VideoCard";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import SpeakerCard from "@/components/SpeakerCard";
@@ -82,18 +83,20 @@ export default async function WatchPage({
       orgSlug={org?.slug}
       crumb={event?.name}
       player={
-        playback ? (
-          <VideoPlayer
-            key={playback.src}
-            src={playback.src}
-            type={playback.type}
-            poster={session.coverImage}
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center font-mono text-xs text-ink-faint">
-            No playable video source for this session.
-          </div>
-        )
+        <SessionPlayer
+          playback={playback}
+          poster={session.coverImage}
+          track={{
+            source: "streameth",
+            id: session._id,
+            title: session.name,
+            orgName: org?.name ?? "",
+            coverImage: session.coverImage ?? null,
+            watchUrl: `/watch/${session._id}`,
+            src: playback?.src ?? "",
+            type: playback?.type ?? "mp4",
+          }}
+        />
       }
       title={session.name}
       actions={
@@ -173,12 +176,19 @@ function YoutubeWatchPage({ id }: { id: string }) {
       orgSlug={video.orgSlug}
       crumb="YouTube"
       player={
-        <iframe
-          src={`https://www.youtube.com/embed/${videoId}`}
+        <YoutubeSessionPlayer
+          videoId={videoId}
           title={video.title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="h-full w-full"
+          poster={video.coverImage}
+          track={{
+            source: "youtube",
+            id: video.id,
+            title: video.title,
+            orgName: video.orgName,
+            coverImage: video.coverImage,
+            watchUrl: `/watch/${video.id}`,
+            videoId,
+          }}
         />
       }
       title={video.title}

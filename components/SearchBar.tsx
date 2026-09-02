@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import SearchSuggestions from "@/components/SearchSuggestions";
+import { useSearchSuggestions } from "@/lib/useSearchSuggestions";
 
 export default function SearchBar() {
   const router = useRouter();
@@ -10,12 +12,25 @@ export default function SearchBar() {
   const urlValue = pathname === "/" ? searchParams.get("q") ?? "" : "";
   const [value, setValue] = useState(urlValue);
   const [syncedUrlValue, setSyncedUrlValue] = useState(urlValue);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const containerRef = useRef<HTMLFormElement>(null);
+  const suggestions = useSearchSuggestions(value, dropdownOpen);
 
   if (urlValue !== syncedUrlValue) {
     setSyncedUrlValue(urlValue);
     setValue(urlValue);
   }
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   function push(nextValue: string) {
     const params = pathname === "/" ? new URLSearchParams(searchParams.toString()) : new URLSearchParams();
@@ -30,13 +45,15 @@ export default function SearchBar() {
 
   return (
     <form
+      ref={containerRef}
       role="search"
       onSubmit={(e) => {
         e.preventDefault();
         if (debounceRef.current) clearTimeout(debounceRef.current);
+        setDropdownOpen(false);
         push(value);
       }}
-      className="w-full max-w-xl"
+      className="relative w-full max-w-xl"
     >
       <div className="flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2 focus-within:border-ink-faint">
         <svg
@@ -53,15 +70,20 @@ export default function SearchBar() {
           type="search"
           value={value}
           placeholder="Search talks, speakers, topics..."
+          onFocus={() => setDropdownOpen(true)}
           onChange={(e) => {
             const next = e.target.value;
             setValue(next);
+            setDropdownOpen(true);
             if (debounceRef.current) clearTimeout(debounceRef.current);
             debounceRef.current = setTimeout(() => push(next), 250);
           }}
           className="w-full bg-transparent text-sm text-ink placeholder:text-ink-faint focus:outline-none"
         />
       </div>
+      {dropdownOpen && (
+        <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
+      )}
     </form>
   );
 }

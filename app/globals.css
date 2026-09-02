@@ -65,6 +65,59 @@ body {
   font-feature-settings: "tnum" 1;
 }
 
+/* Player scrubber — a plain <input type="range"> whose filled portion is
+   painted via an inline background-image gradient (see MiniPlayerBar); this
+   just gives it a thin track and a round thumb that only appears on hover,
+   since browsers don't expose track/thumb via ordinary utility classes. */
+.player-scrubber {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 3px;
+  border-radius: 9999px;
+  outline: none;
+}
+.player-scrubber::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.player-scrubber:hover::-webkit-slider-thumb,
+.player-scrubber:focus::-webkit-slider-thumb {
+  opacity: 1;
+}
+.player-scrubber::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border: none;
+  border-radius: 9999px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.player-scrubber:hover::-moz-range-thumb,
+.player-scrubber:focus::-moz-range-thumb {
+  opacity: 1;
+}
+
+@keyframes eq-bar {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.eq-bar {
+  animation: eq-bar 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

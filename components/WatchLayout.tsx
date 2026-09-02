@@ -8,7 +8,10 @@ import { accentStyle } from "@/lib/format";
  * sessions, standalone YouTube videos, and YouTube videos browsed inside an
  * inferred event group all use this, so the underlying data source never
  * produces a visually different page (breadcrumb, player, title/meta,
- * description, related grid). Only the player and data lookup differ. */
+ * description, related grid). Only the player and data lookup differ.
+ * `player` must supply its own aspect-video/border/bg-black chrome (see
+ * SessionPlayer/YoutubeSessionPlayer), since those also render a
+ * "Listen (audio only)" control below the video box itself. */
 export default function WatchLayout({
   accentColor,
   orgName,
@@ -60,9 +63,7 @@ export default function WatchLayout({
         </div>
       )}
 
-      <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
-        {player}
-      </div>
+      {player}
 
       <div className="flex flex-col gap-3 border-b border-line pb-6">
         <div className="flex flex-wrap items-start justify-between gap-3">

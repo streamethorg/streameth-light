@@ -8,13 +8,25 @@ export interface YoutubeVideoWithChannel extends YoutubeVideo {
   channelSlug: string;
 }
 
-export function getYoutubeVideosForChannel(slug: string): YoutubeVideo[] {
+const getAllYoutubeVideosBySlug = lazy((): Record<string, YoutubeVideo[]> => {
   const raw = readFileSync(
     join(process.cwd(), "data", "sources", "youtube-videos.json"),
     "utf-8"
   );
-  const bySlug = JSON.parse(raw) as Record<string, YoutubeVideo[]>;
-  return bySlug[slug] ?? [];
+  return JSON.parse(raw) as Record<string, YoutubeVideo[]>;
+});
+
+export function getYoutubeVideosForChannel(slug: string): YoutubeVideo[] {
+  return getAllYoutubeVideosBySlug()[slug] ?? [];
+}
+
+// directory.json's youtubeVideoCount is a point-in-time snapshot from
+// whenever the directory was last regenerated — it goes stale the moment
+// pull-youtube-videos.py re-pulls a channel (e.g. one entry stayed at "15"
+// after a full-coverage pull found 2,377 real uploads). Count the actual
+// pulled file instead of trusting the snapshot.
+export function getLiveYoutubeVideoCount(slug: string): number {
+  return getYoutubeVideosForChannel(slug).length;
 }
 
 export interface InferredEventGroup {

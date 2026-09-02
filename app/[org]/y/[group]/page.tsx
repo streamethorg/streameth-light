@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import WatchLayout from "@/components/WatchLayout";
 import YoutubeVideoCard from "@/components/YoutubeVideoCard";
+import YoutubeSessionPlayer from "@/components/YoutubeSessionPlayer";
 import SaveButton from "@/components/SaveButton";
 import { getOrganization } from "@/lib/data";
 import { getDirectory, getDirectoryEntry } from "@/lib/directory";
@@ -61,14 +62,34 @@ export default async function YoutubeEventPage({
       orgSlug={orgSlug}
       crumb={group.label}
       player={
-        <iframe
-          key={selected.videoId}
-          src={`https://www.youtube-nocookie.com/embed/${selected.videoId}`}
-          title={selected.title}
-          className="h-full w-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
+        unified ? (
+          <YoutubeSessionPlayer
+            key={selected.videoId}
+            videoId={selected.videoId}
+            title={selected.title}
+            poster={unified.coverImage}
+            track={{
+              source: "youtube",
+              id: unified.id,
+              title: unified.title,
+              orgName: orgName,
+              coverImage: unified.coverImage,
+              watchUrl: unified.watchUrl,
+              videoId: selected.videoId,
+            }}
+          />
+        ) : (
+          <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
+            <iframe
+              key={selected.videoId}
+              src={`https://www.youtube-nocookie.com/embed/${selected.videoId}`}
+              title={selected.title}
+              className="h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        )
       }
       title={selected.title}
       actions={

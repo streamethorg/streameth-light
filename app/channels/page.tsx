@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getDirectory, type DirectoryEntry } from "@/lib/directory";
 import { getOrganization, getOrgSessionCount } from "@/lib/data";
 import Avatar from "@/components/Avatar";
+import { getLiveYoutubeVideoCount } from "@/lib/youtube";
 
 export const metadata: Metadata = {
   title: "Channels — StreamETH Light",
@@ -20,12 +21,20 @@ function coverageLabel(entry: DirectoryEntry): string {
 }
 
 export default function ChannelsPage() {
-  // directory.json's sessionCount is a point-in-time snapshot that goes
-  // stale the moment sessions.json is re-exported — prefer the live count
-  // for anything that maps to a real StreamETH org.
+  // directory.json's sessionCount/youtubeVideoCount are point-in-time
+  // snapshots that go stale the moment sessions.json is re-exported or a
+  // channel is re-pulled (e.g. one entry stayed at "15" after a
+  // full-coverage YouTube pull found 2,377 real uploads) — prefer live
+  // counts computed from the actual current data.
   const directory = getDirectory().map((entry) => {
     const org = getOrganization(entry.slug);
-    return org ? { ...entry, sessionCount: getOrgSessionCount(org._id) } : entry;
+    return {
+      ...entry,
+      sessionCount: org ? getOrgSessionCount(org._id) : entry.sessionCount,
+      youtubeVideoCount: entry.youtubeChannel
+        ? getLiveYoutubeVideoCount(entry.slug)
+        : entry.youtubeVideoCount,
+    };
   });
 
   const active = directory

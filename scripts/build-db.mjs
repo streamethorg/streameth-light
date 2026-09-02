@@ -41,6 +41,33 @@ function cleanImageUrl(url) {
   return url;
 }
 
+// Some orgs' YouTube channels re-upload the exact same recording that's
+// already a StreamETH session (own Livepeer asset, own /watch page) — same
+// talk, two catalog entries. Detected ~335/16.2k YouTube videos this way
+// when auditing the data. Normalize + substring-match titles within the
+// same org to catch it (YouTube titles are often "Talk Title - Speaker" or
+// "Talk Title | EventName" rather than an exact match).
+const MIN_TITLE_LEN = 12;
+function normalizeTitle(t) {
+  return (t || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+const sessionTitlesByOrgSlug = new Map();
+function isReuploadOfSession(orgSlug, rawTitle) {
+  const titles = sessionTitlesByOrgSlug.get(orgSlug);
+  if (!titles) return false;
+  const nt = normalizeTitle(rawTitle);
+  if (nt.length < MIN_TITLE_LEN) return false;
+  for (const st of titles) {
+    if (st.length < MIN_TITLE_LEN) continue;
+    if (nt.includes(st) || st.includes(nt)) return true;
+  }
+  return false;
+}
+
 const organizationsRaw = load("organizations.json").filter((o) => o.slug);
 const events = load("events.json").filter((e) => e.slug && !e.unlisted);
 const sessions = load("sessions.json");
@@ -166,6 +193,12 @@ for (const s of sessions) {
   const stage = stageById.get(s.stageId);
   const speakerList = s.speakers ?? [];
 
+  if (org?.slug && s.name) {
+    const list = sessionTitlesByOrgSlug.get(org.slug) ?? [];
+    list.push(normalizeTitle(s.name));
+    sessionTitlesByOrgSlug.set(org.slug, list);
+  }
+
   // Display columns stay clean (just names / autoLabels) — the FTS index
   // below is separately enriched with everything else we know how to
   // extract (speaker bios, track/talk type, stage, event & org context) so
@@ -230,6 +263,7 @@ for (const s of sessions) {
 
 let youtubeCount = 0;
 let youtubeDupeCount = 0;
+let youtubeReuploadCount = 0;
 // The same video occasionally turns up under more than one discovered
 // channel slug (shared/cross-posted uploads) — keep the first occurrence.
 const seenVideoIds = new Set();
@@ -239,6 +273,10 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
   for (const v of videos) {
     if (seenVideoIds.has(v.videoId)) {
       youtubeDupeCount++;
+      continue;
+    }
+    if (isReuploadOfSession(channelSlug, v.title)) {
+      youtubeReuploadCount++;
       continue;
     }
     seenVideoIds.add(v.videoId);
@@ -281,5 +319,7 @@ db.close();
 
 console.log(`Built ${DB_PATH}`);
 console.log(`  streameth videos: ${streamethCount}`);
-console.log(`  youtube videos:   ${youtubeCount} (skipped ${youtubeDupeCount} cross-channel dupes)`);
+console.log(
+  `  youtube videos:   ${youtubeCount} (skipped ${youtubeDupeCount} cross-channel dupes, ${youtubeReuploadCount} re-uploads of a StreamETH session)`
+);
 console.log(`  total:            ${streamethCount + youtubeCount}`);
