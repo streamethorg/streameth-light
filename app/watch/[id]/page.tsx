@@ -7,6 +7,7 @@ import VideoCard from "@/components/VideoCard";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import SpeakerCard from "@/components/SpeakerCard";
 import TranscriptPanel from "@/components/TranscriptPanel";
+import SaveButton from "@/components/SaveButton";
 import {
   getSession,
   getEventById,
@@ -97,15 +98,23 @@ export default async function WatchPage({
 
         <div className="flex flex-wrap items-start justify-between gap-3">
           <h1 className="text-xl font-semibold text-ink sm:text-2xl">{session.name}</h1>
-          {downloadUrl && (
-            <a
-              href={downloadUrl}
-              download
-              className="flex shrink-0 items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
-            >
-              Download
-            </a>
-          )}
+          <div className="flex shrink-0 items-center gap-2">
+            <SaveButton
+              videoId={session._id}
+              videoSource="streameth"
+              title={session.name}
+              coverImage={session.coverImage ?? null}
+            />
+            {downloadUrl && (
+              <a
+                href={downloadUrl}
+                download
+                className="flex items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
+              >
+                Download
+              </a>
+            )}
+          </div>
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
@@ -209,7 +218,15 @@ function YoutubeWatchPage({ id }: { id: string }) {
           />
         </div>
 
-        <h1 className="text-xl font-semibold text-ink sm:text-2xl">{video.title}</h1>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <h1 className="text-xl font-semibold text-ink sm:text-2xl">{video.title}</h1>
+          <SaveButton
+            videoId={video.id}
+            videoSource="youtube"
+            title={video.title}
+            coverImage={video.coverImage}
+          />
+        </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
           <Link href={`/${video.orgSlug}`} className="flex items-center gap-3 hover:text-white">

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Suspense, useState } from "react";
 import SearchBar from "@/components/SearchBar";
 import StreamethLogo from "@/components/StreamethLogo";
+import AuthStatus from "@/components/AuthStatus";
 
 const NAV = [
   { href: "/", label: "Home" },
@@ -46,6 +47,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <SearchBar />
             </Suspense>
           )}
+
+          <div className={isRoot ? "ml-auto" : ""}>
+            <AuthStatus />
+          </div>
 
           <button
             type="button"

@@ -26,14 +26,32 @@ pnpm export-db
 
 ## Search index
 
-The homepage feed and `/search` (deep search across transcripts and tracked
-YouTube videos) both query `data/streameth.db` — a SQLite database with an
-FTS5 full-text index unifying StreamETH sessions and YouTube videos into one
-`videos` table (see `scripts/build-db.mjs`, `lib/videoDb.ts`). It's generated
-from the committed JSON, not itself committed — `pnpm dev`/`pnpm build` run
-`pnpm build-db` automatically via `predev`/`prebuild`. Uses Node's built-in
-`node:sqlite` (Node 22.5+, no native compilation), so it runs anywhere the
-app's Node runtime does.
+The homepage feed's search/filtering queries `data/streameth.db` — a SQLite
+database with an FTS5 full-text index (including transcripts) unifying
+StreamETH sessions and tracked YouTube videos into one `videos` table (see
+`scripts/build-db.mjs`, `lib/videoDb.ts`). It's generated from the committed
+JSON, not itself committed — `pnpm dev`/`pnpm build` run `pnpm build-db`
+automatically via `predev`/`prebuild`. Uses Node's built-in `node:sqlite`
+(Node 22.5+, no native compilation), so it runs anywhere the app's Node
+runtime does.
+
+## Accounts (saved videos)
+
+Sign-in (magic link/email OTP) and "Save" are backed by a Supabase project
+(Postgres + Auth) — the one persistent, writable piece of an otherwise
+read-only/static app. Schema lives in `supabase/migrations/`; `saved_videos`
+rows are protected by row-level security so a user can only see/write their
+own. Requires env vars (see `.env.example`):
+
+```bash
+cp .env.example .env.local  # fill in your Supabase project's URL + anon key
+```
+
+New environment (e.g. a fresh Supabase project): `supabase link --project-ref
+<ref>` then `supabase db push` to apply the migrations. If deploying to a
+new domain, also add `<domain>/auth/callback` to that project's
+Authentication → URL Configuration → Redirect URLs, or magic links won't
+redirect back correctly.
 
 ## Development
 
@@ -44,6 +62,7 @@ pnpm dev
 
 ## Deploy
 
-Deployed on Vercel. `data/*.json` is committed to git, so a normal Vercel
-build (no environment variables, no database) is enough — `data/streameth.db`
-is rebuilt from it during `pnpm build`.
+Deployed on Vercel. `data/*.json` is committed to git, so the video archive
+itself needs no environment variables or database — `data/streameth.db` is
+rebuilt from it during `pnpm build`. Accounts/saved-videos need the Supabase
+env vars above set in the Vercel project.

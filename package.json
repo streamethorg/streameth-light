@@ -13,6 +13,8 @@
     "build-db": "node scripts/build-db.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.112.4",
     "hls.js": "^1.7.1",
     "next": "16.3.3",
     "react": "19.2.8",
