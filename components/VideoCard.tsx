@@ -31,7 +31,7 @@ export default function VideoCard({
           <CoverPlaceholder label={session.name} />
         )}
         {duration !== undefined && (
-          <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-void/85 px-1.5 py-0.5 font-mono text-[10px] tabular text-ink">
+          <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-black/80 px-1.5 py-0.5 font-mono text-[10px] tabular text-white">
             {formatTimecode(duration)}
           </span>
         )}

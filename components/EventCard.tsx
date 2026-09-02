@@ -37,7 +37,7 @@ export default function EventCard({
           <CoverPlaceholder label={event.name} />
         )}
         {extraVideoCount > 0 && (
-          <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-void/85 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide text-ink">
+          <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-black/80 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide text-white">
             +YouTube
           </span>
         )}

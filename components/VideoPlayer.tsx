@@ -44,7 +44,7 @@ export default function VideoPlayer({
     <div className="relative h-full w-full">
       {!ready && !error && (
         <div className="absolute inset-0 flex items-center justify-center bg-panel">
-          <span className="on-air-dot h-2 w-2 rounded-full bg-accent" />
+          <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
         </div>
       )}
       {error && (

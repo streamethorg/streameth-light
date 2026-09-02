@@ -19,12 +19,12 @@ export default function UnifiedVideoCard({ video }: { video: UnifiedVideo }) {
           <CoverPlaceholder label={video.title} />
         )}
         {video.durationSeconds !== null && (
-          <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-void/85 px-1.5 py-0.5 font-mono text-[10px] tabular text-ink">
+          <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-black/80 px-1.5 py-0.5 font-mono text-[10px] tabular text-white">
             {formatTimecode(video.durationSeconds)}
           </span>
         )}
         {video.source === "youtube" && (
-          <span className="absolute left-1.5 top-1.5 rounded-sm bg-void/85 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide text-ink-dim">
+          <span className="absolute left-1.5 top-1.5 rounded-sm bg-black/80 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide text-white">
             YouTube
           </span>
         )}

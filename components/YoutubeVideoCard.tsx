@@ -28,7 +28,7 @@ export default function YoutubeVideoCard({
             No preview
           </div>
         )}
-        <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-void/85 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-ink">
+        <span className="absolute bottom-1.5 right-1.5 rounded-sm bg-black/80 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-white">
           YouTube
         </span>
         <span className="absolute inset-0 ring-1 ring-inset ring-white/5 transition-colors group-hover:ring-accent/40" />

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import StreamethLogo from "@/components/StreamethLogo";
 
 export default function HomeSearchHero() {
   const router = useRouter();
@@ -15,9 +16,12 @@ export default function HomeSearchHero() {
       }}
       className="flex w-full max-w-xl flex-col items-center gap-6"
     >
-      <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-        STREAM<span className="text-accent">Ξ</span>TH
-      </h1>
+      <div className="flex items-center gap-2.5">
+        <StreamethLogo className="h-8 w-auto" />
+        <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          StreamETH
+        </h1>
+      </div>
       <div className="flex w-full items-center gap-3 rounded-full border border-line bg-panel px-5 py-3.5 shadow-sm focus-within:border-ink-faint">
         <svg
           viewBox="0 0 20 20"
