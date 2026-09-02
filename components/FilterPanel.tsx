@@ -1,0 +1,223 @@
+"use client";
+
+import type { Event, Organization } from "@/lib/types";
+import type { BrowseFilters, DurationBucket, SortMode } from "@/lib/browseParams";
+
+const DURATION_LABELS: Record<DurationBucket, string> = {
+  short: "Under 4 min",
+  medium: "4–20 min",
+  long: "Over 20 min",
+};
+
+const SORT_OPTIONS: { value: SortMode; label: string }[] = [
+  { value: "relevance", label: "Relevance" },
+  { value: "newest", label: "Newest" },
+  { value: "oldest", label: "Oldest" },
+  { value: "duration_desc", label: "Longest" },
+  { value: "duration_asc", label: "Shortest" },
+];
+
+export default function FilterPanel({
+  filters,
+  organizations,
+  events,
+  topics,
+  hasQuery,
+  onChange,
+}: {
+  filters: BrowseFilters;
+  organizations: Organization[];
+  events: Event[];
+  topics: string[];
+  hasQuery: boolean;
+  onChange: (patch: Partial<BrowseFilters>) => void;
+}) {
+  const eventOptions =
+    filters.orgIds.length > 0
+      ? events.filter((e) => filters.orgIds.includes(e.organizationId))
+      : events;
+
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <select
+          value={filters.orgIds[0] ?? ""}
+          onChange={(e) => onChange({ orgIds: e.target.value ? [e.target.value] : [], eventIds: [] })}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink focus:outline-none focus:ring-1 focus:ring-ink-faint"
+        >
+          <option value="">All organizations</option>
+          {organizations.map((org) => (
+            <option key={org._id} value={org._id}>
+              {org.name}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.eventIds[0] ?? ""}
+          onChange={(e) => onChange({ eventIds: e.target.value ? [e.target.value] : [] })}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink focus:outline-none focus:ring-1 focus:ring-ink-faint"
+        >
+          <option value="">All events</option>
+          {eventOptions.map((e) => (
+            <option key={e._id} value={e._id}>
+              {e.name}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.duration}
+          onChange={(e) => onChange({ duration: e.target.value as DurationBucket | "" })}
+          className="rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink focus:outline-none focus:ring-1 focus:ring-ink-faint"
+        >
+          <option value="">Any length</option>
+          {(Object.keys(DURATION_LABELS) as DurationBucket[]).map((bucket) => (
+            <option key={bucket} value={bucket}>
+              {DURATION_LABELS[bucket]}
+            </option>
+          ))}
+        </select>
+
+        <label className="flex items-center gap-1.5 rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink">
+          From
+          <input
+            type="date"
+            value={filters.dateFrom}
+            onChange={(e) => onChange({ dateFrom: e.target.value })}
+            className="bg-transparent focus:outline-none [color-scheme:dark]"
+          />
+        </label>
+        <label className="flex items-center gap-1.5 rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink">
+          To
+          <input
+            type="date"
+            value={filters.dateTo}
+            onChange={(e) => onChange({ dateTo: e.target.value })}
+            className="bg-transparent focus:outline-none [color-scheme:dark]"
+          />
+        </label>
+
+        <select
+          value={filters.sort}
+          onChange={(e) => onChange({ sort: e.target.value as SortMode })}
+          disabled={!hasQuery && filters.sort === "relevance"}
+          className="ml-auto rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-ink focus:outline-none focus:ring-1 focus:ring-ink-faint"
+        >
+          {SORT_OPTIONS.filter((o) => o.value !== "relevance" || hasQuery).map((o) => (
+            <option key={o.value} value={o.value}>
+              Sort: {o.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {topics.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {topics.map((topic) => {
+            const active = filters.topic.toLowerCase() === topic.toLowerCase();
+            return (
+              <button
+                key={topic}
+                type="button"
+                onClick={() => onChange({ topic: active ? "" : topic })}
+                className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                  active
+                    ? "border-ink bg-ink text-void"
+                    : "border-line text-ink-dim hover:border-ink-faint"
+                }`}
+              >
+                {topic}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      <ActiveFilterChips filters={filters} organizations={organizations} events={events} onChange={onChange} />
+    </div>
+  );
+}
+
+function ActiveFilterChips({
+  filters,
+  organizations,
+  events,
+  onChange,
+}: {
+  filters: BrowseFilters;
+  organizations: Organization[];
+  events: Event[];
+  onChange: (patch: Partial<BrowseFilters>) => void;
+}) {
+  const chips: { label: string; clear: () => void }[] = [];
+
+  for (const orgId of filters.orgIds) {
+    const org = organizations.find((o) => o._id === orgId);
+    if (org) {
+      chips.push({
+        label: org.name,
+        clear: () => onChange({ orgIds: filters.orgIds.filter((id) => id !== orgId) }),
+      });
+    }
+  }
+  for (const eventId of filters.eventIds) {
+    const event = events.find((e) => e._id === eventId);
+    if (event) {
+      chips.push({
+        label: event.name,
+        clear: () => onChange({ eventIds: filters.eventIds.filter((id) => id !== eventId) }),
+      });
+    }
+  }
+  if (filters.speaker) {
+    chips.push({ label: `Speaker: ${filters.speaker}`, clear: () => onChange({ speaker: "" }) });
+  }
+  if (filters.topic) {
+    chips.push({ label: `Topic: ${filters.topic}`, clear: () => onChange({ topic: "" }) });
+  }
+  if (filters.duration) {
+    chips.push({ label: DURATION_LABELS[filters.duration], clear: () => onChange({ duration: "" }) });
+  }
+  if (filters.dateFrom || filters.dateTo) {
+    chips.push({
+      label: `${filters.dateFrom || "…"} → ${filters.dateTo || "…"}`,
+      clear: () => onChange({ dateFrom: "", dateTo: "" }),
+    });
+  }
+
+  if (chips.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      {chips.map((chip, i) => (
+        <button
+          key={`${chip.label}-${i}`}
+          type="button"
+          onClick={chip.clear}
+          className="flex items-center gap-1.5 rounded-full bg-panel-raised px-3 py-1 text-xs text-ink-dim hover:text-ink"
+        >
+          {chip.label}
+          <span aria-hidden>×</span>
+        </button>
+      ))}
+      <button
+        type="button"
+        onClick={() =>
+          onChange({
+            orgIds: [],
+            eventIds: [],
+            speaker: "",
+            topic: "",
+            duration: "",
+            dateFrom: "",
+            dateTo: "",
+          })
+        }
+        className="text-xs text-ink-faint underline-offset-2 hover:text-ink-dim hover:underline"
+      >
+        Clear all
+      </button>
+    </div>
+  );
+}

@@ -1,5 +1,5 @@
 import "server-only";
-import { cache } from "react";
+import { lazy } from "./lazy";
 import { getStore } from "./data";
 import type { Session, SessionSpeaker } from "./types";
 
@@ -25,7 +25,7 @@ function slugify(name: string): string {
   );
 }
 
-const getSpeakerIndex = cache(() => {
+const getSpeakerIndex = lazy(() => {
   const { sessions } = getStore();
   const byName = new Map<string, Speaker>();
 

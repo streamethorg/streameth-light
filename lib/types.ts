@@ -72,6 +72,7 @@ export interface Session {
   autoLabels?: string[];
   talkType?: string;
   aiDescription?: string;
+  track?: string | string[];
   transcripts?: {
     subtitleUrl?: string;
     text?: string;

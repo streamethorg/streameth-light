@@ -1,7 +1,7 @@
 import "server-only";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { cache } from "react";
+import { lazy } from "./lazy";
 import type { Event, Organization, Session, Speaker, Stage } from "./types";
 
 function load<T>(file: string): T {
@@ -25,7 +25,7 @@ function isDeadVideoHost(url: string): boolean {
   }
 }
 
-const getResolvedPlaybackUrls = cache((): Record<string, string | null> => {
+const getResolvedPlaybackUrls = lazy((): Record<string, string | null> => {
   try {
     return load<Record<string, string | null>>("sources/livepeer-resolved.json");
   } catch {
@@ -56,7 +56,7 @@ function cleanImageUrl<T extends string | undefined>(url: T): T {
   return url;
 }
 
-export const getStore = cache(() => {
+export const getStore = lazy(() => {
   const organizations = load<Organization[]>("organizations.json")
     .filter((o) => o.slug)
     .map((o) => ({

@@ -1,5 +1,5 @@
 import "server-only";
-import { cache } from "react";
+import { lazy } from "./lazy";
 import { getStore } from "./data";
 import type { Session } from "./types";
 import { listAllYoutubeVideos, getYoutubeTranscript } from "./youtube";
@@ -18,7 +18,7 @@ interface IndexedItem {
   transcript: string;
 }
 
-const getSearchIndex = cache((): IndexedItem[] => {
+const getSearchIndex = lazy((): IndexedItem[] => {
   const { sessions } = getStore();
   const items: IndexedItem[] = sessions.map((session) => ({
     type: "session",

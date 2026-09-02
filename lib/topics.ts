@@ -1,5 +1,5 @@
 import "server-only";
-import { cache } from "react";
+import { lazy } from "./lazy";
 import { getStore } from "./data";
 import type { Session } from "./types";
 
@@ -19,7 +19,7 @@ export function slugifyTopic(name: string): string {
   );
 }
 
-const getTopicIndex = cache(() => {
+const getTopicIndex = lazy(() => {
   const { sessions } = getStore();
   const bySlug = new Map<string, Topic>();
 

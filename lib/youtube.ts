@@ -1,14 +1,14 @@
 import "server-only";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
-import { cache } from "react";
+import { lazy } from "./lazy";
 import type { YoutubeVideo } from "./directory";
 
 export interface YoutubeVideoWithChannel extends YoutubeVideo {
   channelSlug: string;
 }
 
-const getAllVideosFlat = cache((): YoutubeVideoWithChannel[] => {
+const getAllVideosFlat = lazy((): YoutubeVideoWithChannel[] => {
   const raw = readFileSync(
     join(process.cwd(), "data", "sources", "youtube-videos.json"),
     "utf-8"
@@ -21,7 +21,7 @@ const getAllVideosFlat = cache((): YoutubeVideoWithChannel[] => {
   return flat;
 });
 
-const getTranscripts = cache((): Record<string, string | null> => {
+const getTranscripts = lazy((): Record<string, string | null> => {
   const path = join(process.cwd(), "data", "sources", "youtube-transcripts.json");
   if (!existsSync(path)) return {};
   try {
@@ -70,7 +70,7 @@ interface ClassifiedGroup {
   videoIds: string[];
 }
 
-const getEventGroupClassification = cache((): Record<string, ClassifiedGroup[]> => {
+const getEventGroupClassification = lazy((): Record<string, ClassifiedGroup[]> => {
   const path = join(process.cwd(), "data", "sources", "youtube-event-groups.json");
   if (!existsSync(path)) return {};
   try {

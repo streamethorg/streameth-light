@@ -1,62 +1,86 @@
 import Link from "next/link";
-import ChannelBrowser from "@/components/ChannelBrowser";
-import SignalMeter from "@/components/SignalMeter";
-import { getDirectory } from "@/lib/directory";
-import { getOrganization, getOrgSessionCount } from "@/lib/data";
+import BrowseControls from "@/components/BrowseControls";
+import VideoCard from "@/components/VideoCard";
+import { browseSessions, topAutoLabels } from "@/lib/browse";
+import { filtersFromParams, paramsFromFilters } from "@/lib/browseParams";
+import { listAllEvents, listAllSessions, listOrganizations, getOrgForEvent } from "@/lib/data";
 
-export default function Home() {
-  // directory.json's sessionCount is a generated-at-a-point-in-time snapshot
-  // and goes stale the moment sessions.json is re-exported (e.g. widening
-  // the DB filter to include private sessions) — for any entry that maps to
-  // a real StreamETH org, prefer the live count so channels with content
-  // never show as empty just because the snapshot predates the latest export.
-  const directory = getDirectory().map((entry) => {
-    const org = getOrganization(entry.slug);
-    return org ? { ...entry, sessionCount: getOrgSessionCount(org._id) } : entry;
-  });
-  const totalVideos = directory.reduce((sum, e) => sum + e.sessionCount, 0);
-  const withVideo = directory.filter((e) => e.sessionCount > 0).length;
+const PAGE_SIZE = 48;
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const rawParams = await searchParams;
+  const urlSearchParams = new URLSearchParams();
+  for (const [key, value] of Object.entries(rawParams)) {
+    if (typeof value === "string") urlSearchParams.set(key, value);
+  }
+  const filters = filtersFromParams(urlSearchParams);
+  const page = Math.max(1, Number(rawParams.page) || 1);
+
+  const organizations = listOrganizations();
+  const events = listAllEvents();
+  const eventById = new Map(events.map((e) => [e._id, e]));
+  const topics = topAutoLabels(listAllSessions());
+
+  const results = browseSessions(filters);
+  const shown = results.slice(0, page * PAGE_SIZE);
+  const hasMore = shown.length < results.length;
+
+  const moreParams = paramsFromFilters(filters);
+  moreParams.set("page", String(page + 1));
 
   return (
-    <div className="flex flex-1 flex-col">
-      <section className="relative overflow-hidden border-b border-line">
-        <div className="grain-overlay" />
-        <div className="absolute inset-y-0 right-0 hidden w-64 opacity-[0.14] lg:block">
-          <SignalMeter />
-        </div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-96 bg-gradient-to-l from-void via-void/60 to-transparent lg:block" />
-        <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 sm:py-24">
-          <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-faint">
-            <span className="on-air-dot h-1.5 w-1.5 rounded-full bg-accent" />
-            read-only archive
-          </div>
-          <h1 className="max-w-2xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl">
-            Every talk, and every channel, from the{" "}
-            <span className="text-accent">Ethereum</span> events world.
-          </h1>
-          <p className="max-w-xl text-base leading-relaxed text-ink-dim">
-            {totalVideos.toLocaleString()} public sessions playable now,
-            across {withVideo} channels — plus {directory.length - withVideo}{" "}
-            more Ethereum-ecosystem organizations and conferences tracked
-            here, video archive or not.
-          </p>
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <Link
-              href="/videos"
-              className="rounded-sm bg-accent px-4 py-2 font-mono text-xs font-medium uppercase tracking-wide text-accent-ink transition-opacity hover:opacity-90"
-            >
-              Browse all videos →
-            </Link>
-            <span className="font-mono text-xs text-ink-faint">
-              or pick a channel below
-            </span>
-          </div>
-        </div>
-      </section>
+    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-5 px-4 py-6 sm:px-6">
+      <div className="flex items-center justify-between gap-3">
+        <BrowseControls
+          filters={filters}
+          organizations={organizations}
+          events={events}
+          topics={topics}
+        />
+      </div>
 
-      <section className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-12 sm:px-6">
-        <ChannelBrowser directory={directory} />
-      </section>
+      <div className="flex items-center justify-between">
+        <p className="font-mono text-xs text-ink-faint">
+          {results.length.toLocaleString()} video{results.length === 1 ? "" : "s"}
+        </p>
+        <Link
+          href="/search"
+          className="font-mono text-xs text-ink-faint underline-offset-2 hover:text-ink-dim hover:underline"
+        >
+          Search transcripts &amp; YouTube →
+        </Link>
+      </div>
+
+      {shown.length === 0 ? (
+        <p className="py-16 text-center text-sm text-ink-faint">
+          No videos match your search.
+        </p>
+      ) : (
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {shown.map((s) => (
+            <VideoCard
+              key={s._id}
+              session={s}
+              event={eventById.get(s.eventId)}
+              org={getOrgForEvent(eventById.get(s.eventId))}
+            />
+          ))}
+        </div>
+      )}
+
+      {hasMore && (
+        <Link
+          href={`/?${moreParams.toString()}`}
+          scroll={false}
+          className="mx-auto rounded-md border border-line px-4 py-2 text-sm text-ink-dim hover:bg-panel hover:text-ink"
+        >
+          Load more
+        </Link>
+      )}
     </div>
   );
 }

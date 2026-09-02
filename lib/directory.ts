@@ -1,7 +1,7 @@
 import "server-only";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { cache } from "react";
+import { lazy } from "./lazy";
 
 export interface DirectoryEntry {
   name: string;
@@ -45,7 +45,7 @@ export interface YoutubeVideo {
   description: string | null;
 }
 
-export const getDirectory = cache((): DirectoryEntry[] => {
+export const getDirectory = lazy((): DirectoryEntry[] => {
   const raw = readFileSync(join(process.cwd(), "data", "directory.json"), "utf-8");
   return (JSON.parse(raw) as { entries: DirectoryEntry[] }).entries;
 });
@@ -54,7 +54,7 @@ export function getDirectoryEntry(slug: string): DirectoryEntry | undefined {
   return getDirectory().find((e) => e.slug === slug);
 }
 
-const getMiraEvents = cache((): MiraEvent[] => {
+const getMiraEvents = lazy((): MiraEvent[] => {
   const raw = readFileSync(
     join(process.cwd(), "data", "sources", "mira-events.json"),
     "utf-8"

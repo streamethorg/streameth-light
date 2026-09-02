@@ -14,6 +14,7 @@ import {
   relatedSessions,
 } from "@/lib/data";
 import { slugifyTopic } from "@/lib/topics";
+import { getSessionDurationSeconds } from "@/lib/browseParams";
 import { accentStyle, formatDateLong, formatTimecode } from "@/lib/format";
 
 export function generateStaticParams() {
@@ -46,60 +47,59 @@ export default async function WatchPage({
   const event = getEventById(session.eventId);
   const org = getOrgForEvent(event);
   const playback = buildPlaybackSrc(session);
-  const related = relatedSessions(session, 10);
-  const duration = session.playback?.duration;
+  const related = relatedSessions(session, 12);
+  const duration = getSessionDurationSeconds(session);
 
   return (
     <div
-      style={
-        accentStyle(event?.accentColor ?? org?.accentColor) as
-          | CSSProperties
-          | undefined
-      }
-      className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6"
+      style={accentStyle(event?.accentColor ?? org?.accentColor) as CSSProperties | undefined}
+      className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 px-4 py-6 sm:px-6 lg:flex-row lg:items-start"
     >
-      <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-xs uppercase tracking-wide text-ink-faint">
-        {org && (
-          <Link href={`/${org.slug}`} className="transition-colors hover:text-ink-dim">
-            {org.name}
-          </Link>
-        )}
-        {event && (
-          <>
-            <span>/</span>
-            <Link
-              href={`/${org?.slug ?? ""}/${event.slug}`}
-              className="transition-colors hover:text-ink-dim"
-            >
-              {event.name}
+      <div className="flex min-w-0 flex-1 flex-col gap-4">
+        <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
+          {playback ? (
+            <VideoPlayer
+              key={playback.src}
+              src={playback.src}
+              type={playback.type}
+              poster={session.coverImage}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center font-mono text-xs text-ink-faint">
+              No playable video source for this session.
+            </div>
+          )}
+        </div>
+
+        <h1 className="text-xl font-semibold text-ink sm:text-2xl">{session.name}</h1>
+
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
+          {org && (
+            <Link href={`/${org.slug}`} className="flex items-center gap-3 hover:text-white">
+              {org.logo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={org.logo}
+                  alt={org.name}
+                  className="h-10 w-10 rounded-full bg-panel object-contain"
+                />
+              ) : (
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-panel text-sm text-ink-dim">
+                  {org.name.slice(0, 1)}
+                </div>
+              )}
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-ink">{org.name}</span>
+                {event && (
+                  <span className="font-mono text-xs text-ink-faint">
+                    {event.name} · {formatDateLong(session.start)}
+                    {duration ? ` · ${formatTimecode(duration)}` : ""}
+                  </span>
+                )}
+              </div>
             </Link>
-          </>
-        )}
-      </div>
-
-      <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
-        {playback ? (
-          <VideoPlayer
-            key={playback.src}
-            src={playback.src}
-            type={playback.type}
-            poster={session.coverImage}
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center font-mono text-xs text-ink-faint">
-            No playable video source for this session.
-          </div>
-        )}
-      </div>
-
-      <div className="flex flex-col gap-5 border-b border-line pb-8">
-        <h1 className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
-          {session.name}
-        </h1>
-        <p className="font-mono text-xs tabular text-ink-faint">
-          {formatDateLong(session.start)}
-          {duration ? ` · ${formatTimecode(duration)}` : ""}
-        </p>
+          )}
+        </div>
 
         {session.speakers && session.speakers.length > 0 && (
           <div className="flex flex-wrap gap-x-6 gap-y-3">
@@ -107,12 +107,6 @@ export default async function WatchPage({
               <SpeakerChip key={sp._id} speaker={sp} />
             ))}
           </div>
-        )}
-
-        {session.description && (
-          <p className="max-w-3xl whitespace-pre-line text-sm leading-relaxed text-ink-dim">
-            {session.description}
-          </p>
         )}
 
         {session.autoLabels && session.autoLabels.length > 0 && (
@@ -128,20 +122,33 @@ export default async function WatchPage({
             ))}
           </div>
         )}
+
+        {session.description && (
+          <p className="max-w-3xl whitespace-pre-line text-sm leading-relaxed text-ink-dim">
+            {session.description}
+          </p>
+        )}
       </div>
 
       {related.length > 0 && (
-        <div className="flex flex-col gap-4">
-          <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-            More from {event?.name}
-          </h2>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {related.map((s) => (
-              <VideoCard key={s._id} session={s} event={event} />
-            ))}
+        <div className="flex w-full shrink-0 flex-col gap-3 lg:sticky lg:top-[73px] lg:w-[380px]">
+          <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">Up next</h2>
+          <div className="flex flex-col gap-3">
+            {related.map((s) => {
+              const relatedEvent = getEventById(s.eventId);
+              return (
+                <VideoCard
+                  key={s._id}
+                  session={s}
+                  event={relatedEvent}
+                  org={getOrgForEvent(relatedEvent)}
+                />
+              );
+            })}
           </div>
         </div>
       )}
     </div>
   );
 }
+

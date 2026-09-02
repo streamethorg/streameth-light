@@ -1,7 +1,7 @@
 import "server-only";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
-import { cache } from "react";
+import { lazy, memoize1 } from "./lazy";
 import { getStore } from "./data";
 import type { Session } from "./types";
 import { slugifyGroupLabel } from "./youtube";
@@ -50,7 +50,7 @@ interface ClassifiedGroup {
   sessionIds: string[];
 }
 
-const getSessionGroupClassification = cache((): Record<string, ClassifiedGroup[]> => {
+const getSessionGroupClassification = lazy((): Record<string, ClassifiedGroup[]> => {
   const path = join(process.cwd(), "data", "sources", "session-event-groups.json");
   if (!existsSync(path)) return {};
   try {
@@ -194,7 +194,7 @@ export function groupSessionsByInferredEvent(
   return groups;
 }
 
-export const getOrphanSessionsForOrg = cache((orgId: string): Session[] => {
+export const getOrphanSessionsForOrg = memoize1((orgId: string): Session[] => {
   const { sessions, eventById } = getStore();
   return sessions.filter(
     (s) => s.organizationId === orgId && !eventById.has(s.eventId)

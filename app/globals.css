@@ -1,24 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --void: #0a0a0c;
-  --panel: #131316;
-  --panel-raised: #1b1b1f;
-  --line: #2a2a30;
-  --ink: #f5f3ee;
-  --ink-dim: #918f96;
-  --ink-faint: #56545c;
-  --accent: #ff6a1f;
-  --accent-ink: #180a02;
+  --void: #0a0a0a;
+  --panel: #171717;
+  --panel-raised: #262626;
+  --line: #262626;
+  --ink: #f5f5f5;
+  --ink-dim: #a3a3a3;
+  --ink-faint: #737373;
+  --accent: #ff0000;
+  --accent-ink: #ffffff;
 
-  /* Teletext-derived tag colors — used sparingly for category chips and
-     the per-channel index tab, never as the dominant palette. Distinct
-     hues let the "every channel" promise actually read as variety instead
-     of one accent color repeated on every single tile. */
-  --tag-cyan: #2be5d6;
-  --tag-yellow: #ffcf3f;
-  --tag-magenta: #ff3f9e;
-  --tag-green: #5fe680;
+  /* Flat neutral set — CoverPlaceholder picks one per label for a
+     touch of variety without a multi-hue "brand" palette. */
+  --tag-cyan: #a3a3a3;
+  --tag-yellow: #a3a3a3;
+  --tag-magenta: #a3a3a3;
+  --tag-green: #a3a3a3;
 }
 
 @theme inline {
@@ -35,9 +33,9 @@
   --color-tag-yellow: var(--tag-yellow);
   --color-tag-magenta: var(--tag-magenta);
   --color-tag-green: var(--tag-green);
-  --font-display: var(--font-space-grotesk);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-plex-mono);
+  --font-display: var(--font-geist-sans);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 * {
@@ -87,47 +85,4 @@ body {
 
 .on-air-dot {
   animation: pulse-dot 1.6s ease-in-out infinite;
-}
-
-@keyframes signal-bounce {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(0.35);
-  }
-}
-
-.signal-bar {
-  transform-origin: bottom;
-  animation: signal-bounce 1.8s ease-in-out infinite;
-}
-
-.grain-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Faint fixed scanline field over the whole app — a CRT-monitor texture
-   that reinforces "you are watching a broadcast archive" without being a
-   loud effect. Deliberately subtle: 2px repeat, ~3% opacity. */
-.scanlines::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    var(--ink) 0px,
-    var(--ink) 1px,
-    transparent 1px,
-    transparent 3px
-  );
 }
