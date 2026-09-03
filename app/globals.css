@@ -118,6 +118,22 @@ body {
   transform-origin: bottom;
 }
 
+/* Plyr's YouTube embed — retheme its custom-skinned controls onto our
+   accent/panel tokens instead of Plyr's own default blue. */
+.plyr {
+  --plyr-color-main: var(--accent);
+  --plyr-video-control-color: var(--accent-ink);
+  --plyr-video-control-color-hover: var(--accent-ink);
+  --plyr-video-control-background-hover: var(--accent);
+  --plyr-video-background: #000;
+  --plyr-menu-background: var(--panel);
+  --plyr-menu-color: var(--ink);
+  --plyr-tooltip-background: var(--panel-raised);
+  --plyr-tooltip-color: var(--ink);
+  --plyr-font-family: var(--font-sans);
+  border-radius: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
