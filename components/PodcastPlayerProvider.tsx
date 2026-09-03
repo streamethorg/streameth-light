@@ -8,8 +8,9 @@ import {
   useRef,
   useState,
 } from "react";
+import "plyr/dist/plyr.css";
 import { useHlsSource } from "@/lib/useHlsSource";
-import { loadYoutubeIframeApi, type YTPlayer } from "@/lib/youtubeIframeApi";
+import { YOUTUBE_PLYR_OPTIONS, loadPlyr, type PlyrInstance } from "@/lib/plyrYoutube";
 
 interface StreamethTrack {
   source: "streameth";
@@ -56,11 +57,10 @@ export function usePodcastPlayer() {
   return ctx;
 }
 
-const YT_MOUNT_ID = "podcast-yt-mount";
-
 export default function PodcastPlayerProvider({ children }: { children: React.ReactNode }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const ytPlayerRef = useRef<YTPlayer | null>(null);
+  const ytMountRef = useRef<HTMLDivElement>(null);
+  const plyrRef = useRef<PlyrInstance | null>(null);
   const [track, setTrack] = useState<PodcastTrack | null>(null);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -70,40 +70,66 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
   const { ready } = useHlsSource(videoRef, streamethSrc, streamethType);
   const pendingSeekRef = useRef<number | undefined>(undefined);
 
-  const playTrack = useCallback((next: PodcastTrack, startAt?: number) => {
-    // Only one source plays at a time — pause whichever isn't about to be used.
-    if (next.source === "streameth") {
-      ytPlayerRef.current?.pauseVideo();
-      pendingSeekRef.current = startAt;
-      setTrack(next);
-      setPlaying(true);
+  // Loads a YouTube video into the one persistent Plyr instance — created on
+  // first use (Plyr needs the embed id up front), then reused for every
+  // later YouTube track via `.source =` so the same player survives
+  // navigation between pages.
+  const attachYoutubeSource = useCallback((videoId: string, startAt: number | undefined) => {
+    const existing = plyrRef.current;
+    if (existing) {
+      existing.source = { type: "video", sources: [{ src: videoId, provider: "youtube" }] };
+      existing.once("ready", () => {
+        if (startAt !== undefined) existing.currentTime = startAt;
+        existing.play();
+      });
       return;
     }
 
-    videoRef.current?.pause();
-    setTrack(next);
-    setPlaying(true);
-    if (ytPlayerRef.current) {
-      ytPlayerRef.current.loadVideoById(next.videoId, startAt);
-      return;
-    }
-    loadYoutubeIframeApi().then((YT) => {
-      ytPlayerRef.current = new YT.Player(YT_MOUNT_ID, {
-        videoId: next.videoId,
-        playerVars: { playsinline: 1, start: Math.floor(startAt ?? 0) },
-        events: {
-          onStateChange: (e) => setPlaying(e.data === YT.PlayerState.PLAYING),
-        },
+    const mount = ytMountRef.current;
+    if (!mount) return;
+    mount.setAttribute("data-plyr-provider", "youtube");
+    mount.setAttribute("data-plyr-embed-id", videoId);
+    loadPlyr().then((PlyrCtor) => {
+      const plyr = new PlyrCtor(mount, YOUTUBE_PLYR_OPTIONS);
+      plyr.on("playing", () => setPlaying(true));
+      plyr.on("pause", () => setPlaying(false));
+      plyr.on("timeupdate", () => {
+        setCurrentTime(plyr.currentTime);
+        setDuration(plyr.duration || 0);
+      });
+      plyrRef.current = plyr;
+      plyr.once("ready", () => {
+        if (startAt !== undefined) plyr.currentTime = startAt;
+        plyr.play();
       });
     });
   }, []);
 
+  const playTrack = useCallback(
+    (next: PodcastTrack, startAt?: number) => {
+      // Only one source plays at a time — pause whichever isn't about to be used.
+      if (next.source === "streameth") {
+        plyrRef.current?.pause();
+        pendingSeekRef.current = startAt;
+        setTrack(next);
+        setPlaying(true);
+        return;
+      }
+
+      videoRef.current?.pause();
+      setTrack(next);
+      setPlaying(true);
+      attachYoutubeSource(next.videoId, startAt);
+    },
+    [attachYoutubeSource]
+  );
+
   const togglePlay = useCallback(() => {
     if (track?.source === "youtube") {
-      const yt = ytPlayerRef.current;
-      if (!yt) return;
-      if (playing) yt.pauseVideo();
-      else yt.playVideo();
+      const plyr = plyrRef.current;
+      if (!plyr) return;
+      if (playing) plyr.pause();
+      else plyr.play();
       return;
     }
     const video = videoRef.current;
@@ -115,7 +141,7 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
   const seek = useCallback(
     (time: number) => {
       if (track?.source === "youtube") {
-        ytPlayerRef.current?.seekTo(time, true);
+        if (plyrRef.current) plyrRef.current.currentTime = time;
         setCurrentTime(time);
         return;
       }
@@ -127,15 +153,24 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
 
   const stop = useCallback(() => {
     videoRef.current?.pause();
-    ytPlayerRef.current?.pauseVideo();
+    plyrRef.current?.pause();
     setTrack(null);
     setPlaying(false);
   }, []);
 
   const getCurrentTime = useCallback(() => {
-    if (track?.source === "youtube") return ytPlayerRef.current?.getCurrentTime() ?? 0;
+    if (track?.source === "youtube") return plyrRef.current?.currentTime ?? 0;
     return videoRef.current?.currentTime ?? 0;
   }, [track]);
+
+  // The persistent Plyr instance itself lives for the whole app session —
+  // only torn down when the provider unmounts.
+  useEffect(() => {
+    return () => {
+      plyrRef.current?.destroy();
+      plyrRef.current = null;
+    };
+  }, []);
 
   // StreamETH: once the HLS/mp4 source is loaded, apply the requested start
   // time and play.
@@ -170,18 +205,6 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
       video.removeEventListener("timeupdate", onTimeUpdate);
       video.removeEventListener("loadedmetadata", onDuration);
     };
-  }, [track]);
-
-  // YouTube: the IFrame API has no timeupdate event, so poll for position.
-  useEffect(() => {
-    if (track?.source !== "youtube") return;
-    const interval = setInterval(() => {
-      const yt = ytPlayerRef.current;
-      if (!yt) return;
-      setCurrentTime(yt.getCurrentTime() || 0);
-      setDuration(yt.getDuration() || 0);
-    }, 500);
-    return () => clearInterval(interval);
   }, [track]);
 
   // System-level (lock screen / OS media key) controls.
@@ -226,17 +249,19 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
         aria-hidden="true"
         tabIndex={-1}
       />
-      {/* YouTube's own IFrame Player — official embed API, not an extracted
-          stream. Shown as a small floating video when a YouTube track is
-          active (their player doesn't reliably keep decoding when fully
-          hidden), collapsed to nothing otherwise; the element itself is
-          never unmounted so the same player instance survives navigation. */}
+      {/* YouTube playback via a Plyr-skinned embed (own controls, YouTube's
+          chrome trimmed via embed params) — official YouTube iframe under
+          the hood, not an extracted stream. Shown as a small floating video
+          when a YouTube track is active (the underlying iframe doesn't
+          reliably keep decoding when fully hidden), collapsed to nothing
+          otherwise; the element itself is never unmounted so the same Plyr
+          instance survives navigation. */}
       <div
         className={`fixed z-40 overflow-hidden rounded-md shadow-lg transition-all ${
           isYoutube ? "bottom-20 right-4 h-24 w-40 border border-line" : "h-0 w-0"
         }`}
       >
-        <div id={YT_MOUNT_ID} className="h-full w-full" />
+        <div ref={ytMountRef} className="h-full w-full" />
       </div>
     </PodcastPlayerContext.Provider>
   );

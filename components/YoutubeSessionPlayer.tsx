@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import "plyr/dist/plyr.css";
 import CoverPlaceholder from "@/components/CoverPlaceholder";
 import { usePodcastPlayer, type PodcastTrack } from "@/components/PodcastPlayerProvider";
-import { loadYoutubeIframeApi, type YTPlayer } from "@/lib/youtubeIframeApi";
+import { YOUTUBE_PLYR_OPTIONS, loadPlyr, type PlyrInstance } from "@/lib/plyrYoutube";
 
 export default function YoutubeSessionPlayer({
   videoId,
@@ -16,50 +17,50 @@ export default function YoutubeSessionPlayer({
   poster?: string | null;
   track: Extract<PodcastTrack, { source: "youtube" }>;
 }) {
-  const mountId = `yt-inline-${videoId}`;
-  const inlinePlayerRef = useRef<YTPlayer | null>(null);
+  const embedRef = useRef<HTMLDivElement>(null);
+  const inlinePlayerRef = useRef<PlyrInstance | null>(null);
   const [inlineReady, setInlineReady] = useState(false);
   const player = usePodcastPlayer();
   const isListening = player.track?.id === track.id;
 
   useEffect(() => {
+    if (!embedRef.current) return;
     let cancelled = false;
-    loadYoutubeIframeApi().then((YT) => {
-      if (cancelled) return;
-      inlinePlayerRef.current = new YT.Player(mountId, {
-        videoId,
-        playerVars: { playsinline: 1 },
-        events: { onReady: () => setInlineReady(true) },
-      });
+    loadPlyr().then((PlyrCtor) => {
+      if (cancelled || !embedRef.current) return;
+      const plyr = new PlyrCtor(embedRef.current, YOUTUBE_PLYR_OPTIONS);
+      plyr.once("ready", () => setInlineReady(true));
+      inlinePlayerRef.current = plyr;
     });
     return () => {
       cancelled = true;
       inlinePlayerRef.current?.destroy();
       inlinePlayerRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId]);
 
   function startListening() {
-    const startAt = inlinePlayerRef.current?.getCurrentTime() ?? 0;
-    inlinePlayerRef.current?.pauseVideo();
+    const startAt = inlinePlayerRef.current?.currentTime ?? 0;
+    inlinePlayerRef.current?.pause();
     player.playTrack(track, startAt);
   }
 
   function switchToVideo() {
     const resumeAt = player.getCurrentTime();
     player.stop();
-    inlinePlayerRef.current?.seekTo(resumeAt, true);
-    inlinePlayerRef.current?.playVideo();
+    const plyr = inlinePlayerRef.current;
+    if (plyr) {
+      plyr.currentTime = resumeAt;
+      plyr.play();
+    }
   }
 
   return (
     <div className="flex flex-col gap-2">
       <div className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
-        <div
-          id={mountId}
-          className={isListening || !inlineReady ? "h-0 w-0 overflow-hidden" : "h-full w-full"}
-        />
+        <div className={isListening || !inlineReady ? "h-0 w-0 overflow-hidden" : "h-full w-full"}>
+          <div ref={embedRef} data-plyr-provider="youtube" data-plyr-embed-id={videoId} />
+        </div>
 
         {!inlineReady && !isListening && (
           <div className="absolute inset-0 flex items-center justify-center font-mono text-xs text-ink-faint">
