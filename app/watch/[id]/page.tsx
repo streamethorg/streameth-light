@@ -203,6 +203,15 @@ function YoutubeWatchPage({ id }: { id: string }) {
       metaLine={video.publishedAt ? formatDateLong(video.publishedAt) : undefined}
       description={video.description}
       transcript={video.transcript}
+      speakers={
+        video.speakers.length > 0 && (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {video.speakers.map((name) => (
+              <SpeakerCard key={name} speaker={{ _id: name, name }} />
+            ))}
+          </div>
+        )
+      }
       relatedLabel={`More from ${video.orgName}`}
       related={related.map((v) => (
         <UnifiedVideoCard key={v.id} video={v} />
