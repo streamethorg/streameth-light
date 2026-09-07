@@ -8,6 +8,7 @@ import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import SpeakerCard from "@/components/SpeakerCard";
 import SaveButton from "@/components/SaveButton";
 import WatchLayout from "@/components/WatchLayout";
+import { actionButtonClass, DownloadIcon } from "@/components/ActionButton";
 import {
   getSession,
   getEventById,
@@ -108,11 +109,8 @@ export default async function WatchPage({
             coverImage={session.coverImage ?? null}
           />
           {downloadUrl && (
-            <a
-              href={downloadUrl}
-              download
-              className="flex items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
-            >
+            <a href={downloadUrl} download className={actionButtonClass()}>
+              <DownloadIcon />
               Download
             </a>
           )}

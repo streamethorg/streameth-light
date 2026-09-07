@@ -1,21 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { actionButtonClass, TranscriptIcon } from "@/components/ActionButton";
 
 export default function TranscriptPanel({ text }: { text: string }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="flex flex-col gap-2">
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        className="flex w-fit items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
-      >
+    // display:contents lets the button and (when open) the panel act as
+    // independent siblings of the surrounding actions row, so the button
+    // sits inline with Save/Download while the panel still wraps to its
+    // own full-width line instead of being squeezed into a button-sized column.
+    <div className="contents">
+      <button type="button" onClick={() => setExpanded((v) => !v)} className={actionButtonClass(expanded)}>
+        <TranscriptIcon />
         {expanded ? "Hide transcript" : "Show transcript"}
       </button>
       {expanded && (
-        <div className="max-h-96 overflow-y-auto whitespace-pre-line rounded-md border border-line bg-panel p-4 text-sm leading-relaxed text-ink-dim">
+        <div className="order-last max-h-96 w-full max-w-3xl overflow-y-auto whitespace-pre-line rounded-md border border-line bg-panel p-4 text-sm leading-relaxed text-ink-dim">
           {text}
         </div>
       )}

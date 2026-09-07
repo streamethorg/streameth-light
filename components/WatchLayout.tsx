@@ -66,12 +66,15 @@ export default function WatchLayout({
       {player}
 
       <div className="flex flex-col gap-3 border-b border-line pb-6">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <h1 className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
-            {title}
-          </h1>
-          {actions && <div className="flex shrink-0 items-center gap-2">{actions}</div>}
-        </div>
+        <h1 className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
+          {title}
+        </h1>
+        {(actions || transcript) && (
+          <div className="flex flex-wrap items-center gap-2">
+            {actions}
+            {transcript && <TranscriptPanel text={transcript} />}
+          </div>
+        )}
         {metaLine && <p className="font-mono text-xs tabular text-ink-faint">{metaLine}</p>}
         {topics}
         {description && (
@@ -82,8 +85,6 @@ export default function WatchLayout({
       </div>
 
       {speakers}
-
-      {transcript && <TranscriptPanel text={transcript} />}
 
       <div className="flex flex-col gap-4">
         <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">

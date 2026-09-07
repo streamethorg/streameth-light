@@ -4,6 +4,7 @@ import { useRef } from "react";
 import VideoPlayer from "@/components/VideoPlayer";
 import CoverPlaceholder from "@/components/CoverPlaceholder";
 import { usePodcastPlayer, type PodcastTrack } from "@/components/PodcastPlayerProvider";
+import { actionButtonClass } from "@/components/ActionButton";
 
 export default function SessionPlayer({
   playback,
@@ -83,7 +84,7 @@ export default function SessionPlayer({
               <button
                 type="button"
                 onClick={switchToVideo}
-                className="mt-1 flex items-center gap-1.5 rounded-full border border-line bg-panel px-3.5 py-1.5 text-sm text-ink-dim hover:bg-panel-raised hover:text-ink"
+                className={`mt-1 ${actionButtonClass()} bg-panel hover:bg-panel-raised`}
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
                   <path d="M4 4.5A1.5 1.5 0 015.5 3h2A1.5 1.5 0 019 4.5v11A1.5 1.5 0 017.5 17h-2A1.5 1.5 0 014 15.5v-11zM11 4.5A1.5 1.5 0 0112.5 3h2A1.5 1.5 0 0116 4.5v11a1.5 1.5 0 01-1.5 1.5h-2a1.5 1.5 0 01-1.5-1.5v-11z" opacity=".4" />
@@ -112,7 +113,7 @@ export default function SessionPlayer({
         <button
           type="button"
           onClick={startListening}
-          className="flex w-fit items-center gap-1.5 rounded-full border border-line px-3.5 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
+          className={actionButtonClass()}
         >
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4">
             <path

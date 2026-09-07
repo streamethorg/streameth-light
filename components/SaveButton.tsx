@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { actionButtonClass, BookmarkIcon } from "@/components/ActionButton";
 
 export default function SaveButton({
   videoId,
@@ -89,12 +90,9 @@ export default function SaveButton({
       type="button"
       onClick={toggle}
       disabled={userId === undefined || busy}
-      className={`flex shrink-0 items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm disabled:opacity-60 ${
-        saved
-          ? "border-accent bg-accent/10 text-accent"
-          : "border-line text-ink-dim hover:bg-panel hover:text-ink"
-      }`}
+      className={`${actionButtonClass(saved)} disabled:opacity-60`}
     >
+      <BookmarkIcon filled={saved} />
       {saved ? "Saved" : "Save"}
     </button>
   );
