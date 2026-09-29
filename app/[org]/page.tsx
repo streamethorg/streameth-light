@@ -22,6 +22,7 @@ import {
   groupSessionsByInferredEvent,
 } from "@/lib/orphanSessions";
 import { accentStyle } from "@/lib/format";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return getDirectory().map((entry) => ({ org: entry.slug }));
@@ -35,14 +36,15 @@ export async function generateMetadata({
   const { org: orgSlug } = await params;
   const org = getOrganization(orgSlug);
   if (org) {
-    return {
-      title: `${org.name} — StreamETH Light`,
+    return buildMetadata({
+      title: `${org.name} — StreamETH`,
       description: org.description?.slice(0, 200),
-    };
+      image: org.banner ?? org.logo,
+    });
   }
   const entry = getDirectoryEntry(orgSlug);
   if (!entry) return {};
-  return { title: `${entry.name} — StreamETH Light` };
+  return buildMetadata({ title: `${entry.name} — StreamETH` });
 }
 
 export default async function OrgPage({

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import VideoCard from "@/components/VideoCard";
 import { listTopics, getTopicBySlug, getTopicSessions } from "@/lib/topics";
 import { getEventById } from "@/lib/data";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return listTopics().map((t) => ({ topic: t.slug }));
@@ -17,7 +18,10 @@ export async function generateMetadata({
   const { topic: slug } = await params;
   const topic = getTopicBySlug(slug);
   if (!topic) return {};
-  return { title: `${topic.name} — StreamETH Light` };
+  return buildMetadata({
+    title: `${topic.name} — StreamETH`,
+    description: `Talks tagged “${topic.name}” from the StreamETH video archive.`,
+  });
 }
 
 export default async function TopicPage({

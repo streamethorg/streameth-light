@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import SpeakerBrowser from "@/components/SpeakerBrowser";
 import { listSpeakers } from "@/lib/people";
+import { buildMetadata } from "@/lib/social";
 
-export const metadata: Metadata = {
-  title: "Speakers — StreamETH Light",
+export const metadata = buildMetadata({
+  title: "Speakers — StreamETH",
   description: "Every speaker with a public session in the archive.",
-};
+});
 
 export default function SpeakersPage() {
   const speakers = listSpeakers();

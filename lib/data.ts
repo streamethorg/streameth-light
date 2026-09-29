@@ -2,6 +2,7 @@ import "server-only";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { lazy } from "./lazy";
+import { HIDDEN_ORG_SLUGS, isJunkSession } from "./curation";
 import type { Event, Organization, Session, Speaker, Stage } from "./types";
 
 function load<T>(file: string): T {
@@ -145,7 +146,7 @@ function cleanImageUrl<T extends string | undefined>(url: T): T {
 
 export const getStore = lazy(() => {
   const organizations = load<Organization[]>("organizations.json")
-    .filter((o) => o.slug)
+    .filter((o) => o.slug && !HIDDEN_ORG_SLUGS.has(o.slug))
     .map((o) => ({
       ...o,
       logo: cleanImageUrl(o.logo),
@@ -164,8 +165,14 @@ export const getStore = lazy(() => {
     ...sp,
     photo: cleanImageUrl(sp.photo),
   }));
+  const hiddenOrgIds = new Set(
+    load<Organization[]>("organizations.json")
+      .filter((o) => o.slug && HIDDEN_ORG_SLUGS.has(o.slug))
+      .map((o) => o._id)
+  );
   const sessions = load<Session[]>("sessions.json")
     .filter(HAS_VIDEO)
+    .filter((s) => !hiddenOrgIds.has(s.organizationId) && !isJunkSession(s))
     .map(
       (s): Session => ({
         ...s,

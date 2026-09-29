@@ -23,6 +23,7 @@ import { getVideoById, relatedVideos } from "@/lib/videoDb";
 import { slugifyTopic } from "@/lib/topics";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
 import { formatDateLong, formatTimecode } from "@/lib/format";
+import { buildMetadata } from "@/lib/social";
 
 // YouTube-backed watch pages (`yt-<videoId>`) aren't in this list — they're
 // rendered on demand instead of prerendered at build time, since there are
@@ -42,17 +43,19 @@ export async function generateMetadata({
   if (id.startsWith("yt-")) {
     const video = getVideoById(id);
     if (!video) return {};
-    return {
-      title: `${video.title} — StreamETH Light`,
+    return buildMetadata({
+      title: `${video.title} — StreamETH`,
       description: video.description?.slice(0, 200),
-    };
+      image: video.coverImage ?? undefined,
+    });
   }
   const session = getSession(id);
   if (!session) return {};
-  return {
-    title: `${session.name} — StreamETH Light`,
+  return buildMetadata({
+    title: `${session.name} — StreamETH`,
     description: session.description?.slice(0, 200),
-  };
+    image: session.coverImage,
+  });
 }
 
 export default async function WatchPage({
