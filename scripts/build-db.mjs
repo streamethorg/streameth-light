@@ -158,6 +158,10 @@ const livepeerThumbnails = loadSource("livepeer-thumbnails.json") ?? {};
 const livepeerDownloads = loadSource("livepeer-downloads.json") ?? {};
 const youtubeVideosBySlug = loadSource("youtube-videos.json") ?? {};
 const youtubeTranscripts = loadSource("youtube-transcripts.json") ?? {};
+// Built by scripts/extract-youtube-speakers.py — exact matches of a YouTube
+// title against real speaker names already known from StreamETH's own
+// sessions.json/speakers.json, not an inferred/invented name.
+const youtubeSpeakersBySlug = loadSource("youtube-speakers.json") ?? {};
 // pull-youtube-videos.py's --flat-playlist listing has no duration, real
 // description, or tags — scripts/pull-youtube-metadata.py backfills those
 // per-video via a heavier yt-dlp call, run separately (it's slow: one
@@ -186,7 +190,42 @@ const eventById = new Map(events.map((e) => [e._id, e]));
 const stageById = new Map(stages.map((st) => [st._id, st]));
 const directoryBySlug = new Map(directory.map((d) => [d.slug, d]));
 
+// Literal upload-test recordings ("test", "test clip", "TEsting") — not real
+// conference content, just noise left over from testing the recording setup.
+const TEST_TITLE_RE = /^test(ing)?(\s+(clip|live))?$/i;
+// A raw device/export filename with no real title ever set (e.g. "IMG_4887.MOV",
+// "9M78AK.mp4", "1003 (1)(1).mp4") — unlike "Fund Tokenization.mp4" (a real
+// title that just kept its extension), these have no recoverable talk name.
+const RAW_FILENAME_RE = /^(img_\d+|[0-9a-z]{4,10}|\d+\s*(\(\d+\))*)\.(mp4|mov|mkv|m4v)$/i;
+
+// An organizing team credited as if it were an individual speaker (e.g.
+// "ETHBerlin Team", "Zuzalu Team", or the platform name "StreamETH" itself)
+// — a real artifact in the source data, not a person.
+function isPlaceholderSpeakerName(name) {
+  const n = (name ?? "").trim();
+  return /\bteam$/i.test(n) || /^streameth$/i.test(n);
+}
+
+function isJunkTitle(title) {
+  const t = (title ?? "").trim();
+  return TEST_TITLE_RE.test(t) || RAW_FILENAME_RE.test(t);
+}
+
+// A real title that just kept its file extension (e.g. "Fund Tokenization.mp4")
+// — strip it so the display title reads like every other session's.
+function cleanTitle(title) {
+  const t = (title ?? "").trim();
+  return t.replace(/\.(mp4|mov|mkv|m4v)$/i, "");
+}
+
 function sessionHasVideo(s) {
+  // `published: "private"` sessions are internal review copies, failed/pending
+  // processing clips, or unlisted draft segments (e.g. Devcon 7 SEA alone has
+  // 1,667 private sessions vs. 459 public ones, many sharing the exact same
+  // generic talk title as their public counterpart) — never meant to be
+  // browsable, so they're excluded regardless of whether a video URL resolved.
+  if (s.published === "private") return false;
+  if (isJunkTitle(s.name)) return false;
   const url = s.videoUrl || s.playback?.videoUrl;
   if (url && !isDeadVideoHost(url)) return true;
   return Boolean(s.playbackId && livepeerResolved[s.playbackId]);
@@ -272,7 +311,7 @@ for (const s of sessions) {
   const event = eventById.get(s.eventId);
   const org = event ? orgById.get(event.organizationId) : orgById.get(s.organizationId);
   const stage = stageById.get(s.stageId);
-  const speakerList = s.speakers ?? [];
+  const speakerList = (s.speakers ?? []).filter((sp) => !isPlaceholderSpeakerName(sp.name));
 
   if (org?.slug && s.name) {
     const list = sessionTitlesByOrgSlug.get(org.slug) ?? [];
@@ -312,7 +351,7 @@ for (const s of sessions) {
   insertVideo.run(
     s._id,
     "streameth",
-    s.name ?? "",
+    cleanTitle(s.name),
     description,
     org?._id ?? null,
     org?.name ?? "",
@@ -331,7 +370,7 @@ for (const s of sessions) {
   );
   insertFts.run(
     s._id,
-    s.name ?? "",
+    cleanTitle(s.name),
     descriptionSearchText,
     speakerSearchText,
     topicsSearchText,
@@ -369,6 +408,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
     const duration = meta?.duration ?? null;
     const topics = [...(meta?.tags ?? []), ...(meta?.categories ?? [])].join(", ");
     const descriptionSearchText = [description, entry?.location].filter(Boolean).join(" ");
+    const speakerNames = (youtubeSpeakersBySlug[channelSlug]?.[v.videoId] ?? []).join(", ");
 
     insertVideo.run(
       id,
@@ -384,13 +424,13 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       duration,
       v.thumbnail ?? null,
       `/watch/${id}`,
-      "",
+      speakerNames,
       topics,
       transcript ? 1 : 0,
       transcript || null,
       null
     );
-    insertFts.run(id, v.title ?? "", descriptionSearchText, "", topics, orgName, "", transcript);
+    insertFts.run(id, v.title ?? "", descriptionSearchText, speakerNames, topics, orgName, "", transcript);
     youtubeCount++;
   }
 }

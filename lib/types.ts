@@ -77,6 +77,7 @@ export interface Session {
     subtitleUrl?: string;
     text?: string;
   };
+  published?: string;
 }
 
 export interface Speaker {
