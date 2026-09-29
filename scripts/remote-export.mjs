@@ -45,14 +45,40 @@ async function main() {
     .collection("sessions")
     .find({ published: { $in: ["public", "private"] } })
     .toArray();
+
+  // Transcripts are kept in their own file (transcripts.json, keyed by
+  // session _id) rather than inline on each session — inline, they made
+  // sessions.json a single ~58MB blob. A legacy bug also sometimes put the
+  // raw WEBVTT transcript body in `subtitleUrl` instead of a real URL;
+  // recover that as transcript text rather than losing it. See the matching
+  // loaders in lib/data.ts and scripts/build-db.mjs.
+  function looksLikeUrl(v) {
+    return typeof v === "string" && v.length < 500 && /^https?:\/\//i.test(v);
+  }
+  const transcripts = {};
+
   const sessions = sessionsRaw.map((s) => {
     const clean = serialize(s);
     delete clean.videoTranscription;
-    if (clean.transcripts) delete clean.transcripts.chunks;
     delete clean.aiAnalysis;
+
+    const t = clean.transcripts;
+    delete clean.transcripts;
+    if (t) {
+      let text = typeof t.text === "string" && t.text.trim() ? t.text : undefined;
+      const subtitleUrl = looksLikeUrl(t.subtitleUrl) ? t.subtitleUrl : undefined;
+      if (!subtitleUrl && typeof t.subtitleUrl === "string" && t.subtitleUrl.trim() && !text) {
+        text = t.subtitleUrl;
+      }
+      if (text || subtitleUrl) {
+        transcripts[clean._id] = { ...(text ? { text } : {}), ...(subtitleUrl ? { subtitleUrl } : {}) };
+      }
+    }
+
     return clean;
   });
   console.log(`sessions: ${sessions.length}`);
+  console.log(`transcripts: ${Object.keys(transcripts).length}`);
 
   const eventIds = [...new Set(sessions.map((s) => s.eventId).filter(Boolean))].map(
     (id) => new ObjectId(id)
@@ -114,6 +140,7 @@ async function main() {
   const dataDir = "/app/data";
   mkdirSync(dataDir, { recursive: true });
   writeFileSync(join(dataDir, "sessions.json"), JSON.stringify(sessions, null, 2));
+  writeFileSync(join(dataDir, "transcripts.json"), JSON.stringify(transcripts, null, 2));
   writeFileSync(join(dataDir, "events.json"), JSON.stringify(events, null, 2));
   writeFileSync(join(dataDir, "stages.json"), JSON.stringify(stages, null, 2));
   writeFileSync(

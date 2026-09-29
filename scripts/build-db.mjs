@@ -71,6 +71,9 @@ function isReuploadOfSession(orgSlug, rawTitle) {
 const organizationsRaw = load("organizations.json").filter((o) => o.slug);
 const events = load("events.json").filter((e) => e.slug && !e.unlisted);
 const sessions = load("sessions.json");
+// Kept in its own file, keyed by session _id — see the identical note in
+// lib/data.ts's getTranscripts.
+const transcriptsById = load("transcripts.json");
 const stages = load("stages.json");
 const directory = load("directory.json").entries;
 const livepeerResolved = loadSource("livepeer-resolved.json") ?? {};
@@ -248,7 +251,7 @@ for (const s of sessions) {
   const duration =
     s.playback?.duration ??
     (s.start && s.end && s.end > s.start ? (s.end - s.start) / 1000 : null);
-  const transcript = s.transcripts?.text ?? "";
+  const transcript = transcriptsById[s._id]?.text ?? "";
 
   const speakerSearchText = speakerList
     .map((sp) => [sp.name, sp.company, sp.bio].filter(Boolean).join(" — "))

@@ -104,6 +104,20 @@ function cleanTitle(title: string | undefined): string {
   return (title ?? "").trim().replace(/\.(mp4|mov|mkv|m4v)$/i, "");
 }
 
+// Transcripts live in their own file, keyed by session _id, rather than
+// inline on each session — inline, they made data/sessions.json a 58MB
+// single blob (mostly transcript text plus ~22MB of a legacy export bug
+// where subtitleUrl held the raw WEBVTT body instead of a URL). See
+// scripts/build-db.mjs's identical loader and scripts/remote-export.mjs,
+// which produces this split at the source.
+const getTranscripts = lazy(() => {
+  try {
+    return load<Record<string, Session["transcripts"]>>("transcripts.json");
+  } catch {
+    return {};
+  }
+});
+
 // `published: "private"` sessions are internal review copies, failed/pending
 // processing clips, or unlisted draft segments — often sharing the exact
 // same generic talk title as a real public session (e.g. Devcon 7 SEA has
@@ -157,6 +171,7 @@ export const getStore = lazy(() => {
         ...s,
         name: cleanTitle(s.name),
         coverImage: cleanImageUrl(s.coverImage) ?? resolvedThumbnailForSession(s),
+        transcripts: getTranscripts()[s._id] ?? undefined,
         speakers: (s.speakers ?? [])
           .filter((sp) => !isPlaceholderSpeakerName(sp.name))
           .map((sp) => ({
