@@ -6,6 +6,7 @@ import PageHero, { HeroLink } from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
 import { getEventById, getOrgForEvent } from "@/lib/data";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return listSpeakers().map((sp) => ({ speaker: sp.slug }));
@@ -19,10 +20,11 @@ export async function generateMetadata({
   const { speaker: slug } = await params;
   const speaker = getSpeakerBySlug(slug);
   if (!speaker) return {};
-  return {
+  return buildMetadata({
     title: `${speaker.name} — StreamETH`,
     description: speaker.bio?.slice(0, 200),
-  };
+    image: speaker.photo,
+  });
 }
 
 export default async function SpeakerPage({

@@ -8,6 +8,7 @@ import {
   getOrphanSessionsForOrg,
   groupSessionsByInferredEvent,
 } from "@/lib/orphanSessions";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return listOrganizations().flatMap((org) => {
@@ -30,7 +31,10 @@ export async function generateMetadata({
   if (!org) return {};
   const group = getInferredSessionGroup(org._id, org.slug, org.name, groupSlug);
   if (!group) return {};
-  return { title: `${group.label} — StreamETH` };
+  return buildMetadata({
+    title: `${group.label} — StreamETH`,
+    image: group.sessions[0]?.coverImage,
+  });
 }
 
 export default async function OrphanSessionGroupPage({

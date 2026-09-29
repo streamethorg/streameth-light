@@ -2,6 +2,7 @@ import "server-only";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { lazy } from "./lazy";
+import { HIDDEN_ORG_SLUGS, isJunkSession } from "./curation";
 import type { Event, Organization, Session, Speaker, Stage } from "./types";
 import { cleanAutoLabels } from "./autoLabels.mjs";
 
@@ -78,7 +79,55 @@ export function getDownloadUrl(session: Session): string | undefined {
   return getResolvedDownloads()[session.playbackId] ?? undefined;
 }
 
+// Literal upload-test recordings ("test", "test clip", "TEsting") — not real
+// conference content, just noise left over from testing the recording setup.
+const TEST_TITLE_RE = /^test(ing)?(\s+(clip|live))?$/i;
+// A raw device/export filename with no real title ever set (e.g. "IMG_4887.MOV",
+// "9M78AK.mp4", "1003 (1)(1).mp4") — unlike "Fund Tokenization.mp4" (a real
+// title that just kept its extension), these have no recoverable talk name.
+const RAW_FILENAME_RE = /^(img_\d+|[0-9a-z]{4,10}|\d+\s*(\(\d+\))*)\.(mp4|mov|mkv|m4v)$/i;
+
+// An organizing team credited as if it were an individual speaker (e.g.
+// "ETHBerlin Team", "Zuzalu Team", or the platform name "StreamETH" itself)
+// — a real artifact in the source data, not a person.
+function isPlaceholderSpeakerName(name: string | undefined): boolean {
+  const n = (name ?? "").trim();
+  return /\bteam$/i.test(n) || /^streameth$/i.test(n);
+}
+
+function isJunkTitle(title: string | undefined): boolean {
+  const t = (title ?? "").trim();
+  return TEST_TITLE_RE.test(t) || RAW_FILENAME_RE.test(t);
+}
+
+// A real title that just kept its file extension (e.g. "Fund Tokenization.mp4")
+// — strip it so the display title reads like every other session's.
+function cleanTitle(title: string | undefined): string {
+  return (title ?? "").trim().replace(/\.(mp4|mov|mkv|m4v)$/i, "");
+}
+
+// Transcripts live in their own file, keyed by session _id, rather than
+// inline on each session — inline, they made data/sessions.json a 58MB
+// single blob (mostly transcript text plus ~22MB of a legacy export bug
+// where subtitleUrl held the raw WEBVTT body instead of a URL). See
+// scripts/build-db.mjs's identical loader and scripts/remote-export.mjs,
+// which produces this split at the source.
+const getTranscripts = lazy(() => {
+  try {
+    return load<Record<string, Session["transcripts"]>>("transcripts.json");
+  } catch {
+    return {};
+  }
+});
+
+// `published: "private"` sessions are internal review copies, failed/pending
+// processing clips, or unlisted draft segments — often sharing the exact
+// same generic talk title as a real public session (e.g. Devcon 7 SEA has
+// 1,667 private sessions vs. 459 public ones), which made every real talk
+// look duplicated once both showed up as browsable tiles.
 const HAS_VIDEO = (s: Session) => {
+  if (s.published === "private") return false;
+  if (isJunkTitle(s.name)) return false;
   const videoUrl = s.videoUrl || s.playback?.videoUrl;
   if (videoUrl && !isDeadVideoHost(videoUrl)) return true;
   return Boolean(resolvedUrlForSession(s));
@@ -98,7 +147,7 @@ function cleanImageUrl<T extends string | undefined>(url: T): T {
 
 export const getStore = lazy(() => {
   const organizations = load<Organization[]>("organizations.json")
-    .filter((o) => o.slug)
+    .filter((o) => o.slug && !HIDDEN_ORG_SLUGS.has(o.slug))
     .map((o) => ({
       ...o,
       logo: cleanImageUrl(o.logo),
@@ -117,17 +166,27 @@ export const getStore = lazy(() => {
     ...sp,
     photo: cleanImageUrl(sp.photo),
   }));
+  const hiddenOrgIds = new Set(
+    load<Organization[]>("organizations.json")
+      .filter((o) => o.slug && HIDDEN_ORG_SLUGS.has(o.slug))
+      .map((o) => o._id)
+  );
   const sessions = load<Session[]>("sessions.json")
     .filter(HAS_VIDEO)
+    .filter((s) => !hiddenOrgIds.has(s.organizationId) && !isJunkSession(s))
     .map(
       (s): Session => ({
         ...s,
+        name: cleanTitle(s.name),
         coverImage: cleanImageUrl(s.coverImage) ?? resolvedThumbnailForSession(s),
         autoLabels: cleanAutoLabels(s.autoLabels),
-        speakers: (s.speakers ?? []).map((sp) => ({
-          ...sp,
-          photo: cleanImageUrl(sp.photo),
-        })),
+        transcripts: getTranscripts()[s._id] ?? undefined,
+        speakers: (s.speakers ?? [])
+          .filter((sp) => !isPlaceholderSpeakerName(sp.name))
+          .map((sp) => ({
+            ...sp,
+            photo: cleanImageUrl(sp.photo),
+          })),
       })
     )
     .sort((a, b) => b.start - a.start);

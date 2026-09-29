@@ -2,7 +2,7 @@ import "server-only";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { lazy } from "./lazy";
-import type { YoutubeVideo } from "./directory";
+import { getDirectoryEntry, type YoutubeVideo } from "./directory";
 
 export interface YoutubeVideoWithChannel extends YoutubeVideo {
   channelSlug: string;
@@ -71,24 +71,72 @@ const getEventGroupClassification = lazy((): Record<string, ClassifiedGroup[]> =
  * "Storage" because "protocol"/"berg" appeared in literally every title and
  * got excluded as "too common to be a signal").
  */
+// A single unclassified bucket of a few hundred to a few thousand videos is
+// unbrowsable and unusably slow to render as one flat grid (e.g. ETHDenver's
+// "More uploads" held 2,394 videos in one page). Split it by upload year
+// instead — still not a real event grouping, but a fallback that keeps each
+// resulting group to a sane size.
+const UNGROUPED_SPLIT_THRESHOLD = 60;
+
+function splitLargeGroupByYear(
+  label: string,
+  videos: YoutubeVideo[]
+): InferredEventGroup[] {
+  if (videos.length <= UNGROUPED_SPLIT_THRESHOLD) {
+    return [{ label, slug: slugifyGroupLabel(label), videos }];
+  }
+  const byYear = new Map<string, YoutubeVideo[]>();
+  for (const v of videos) {
+    const year = v.publishedAt ? v.publishedAt.slice(0, 4) : "Undated";
+    const list = byYear.get(year) ?? [];
+    list.push(v);
+    byYear.set(year, list);
+  }
+  return [...byYear.entries()]
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([year, yearVideos]) => ({
+      label: `${label} — ${year}`,
+      slug: slugifyGroupLabel(`${label}-${year}`),
+      videos: yearVideos,
+    }));
+}
+
 export function groupVideosByInferredEvent(
   videos: YoutubeVideo[],
   channelSlug: string
 ): InferredEventGroup[] {
   const byId = new Map(videos.map((v) => [v.videoId, v]));
   const classified = getEventGroupClassification()[channelSlug];
+  // "More uploads"/"Recent uploads" told the reader nothing real — a channel's
+  // own org name (e.g. "ETHBerlin", "Funding the Commons", "Base") is a real,
+  // verified label that's always available and never claims to be a specific
+  // sub-event it isn't classified into.
+  const orgName = getDirectoryEntry(channelSlug)?.name;
 
   let groups: InferredEventGroup[];
   if (classified && classified.length > 0) {
+    const usedIds = new Set<string>();
     groups = classified
       .map((g) => {
         const groupVideos = g.videoIds
           .map((id) => byId.get(id))
           .filter((v): v is YoutubeVideo => Boolean(v))
           .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
+        for (const v of groupVideos) usedIds.add(v.videoId);
         return { label: g.label, slug: slugifyGroupLabel(g.label), videos: groupVideos };
       })
       .filter((g) => g.videos.length > 0);
+
+    // The classification pass only covers the videos a channel had at the
+    // time it ran (e.g. capped at 15 by the old unpaginated pull) — later
+    // pulls surface thousands more per channel that were never classified.
+    // Rather than silently dropping them, surface them as their own bucket.
+    const unclassified = videos
+      .filter((v) => !usedIds.has(v.videoId))
+      .sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
+    if (unclassified.length > 0) {
+      groups.push(...splitLargeGroupByYear(orgName ?? "More uploads", unclassified));
+    }
   } else if (videos.length <= 1) {
     groups = videos.map((v) => ({
       label: v.title || "Video",
@@ -99,7 +147,7 @@ export function groupVideosByInferredEvent(
     // Not yet classified (e.g. a channel added after the classification
     // pass ran) — safe fallback so the page still works, not a claim about
     // event identity.
-    groups = [{ label: "Recent uploads", slug: "recent-uploads", videos }];
+    groups = splitLargeGroupByYear(orgName ?? "Recent uploads", videos);
   }
 
   const latestTime = (g: InferredEventGroup) =>

@@ -1,15 +1,16 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import { getDirectory, type DirectoryEntry } from "@/lib/directory";
 import { getOrganization, getOrgSessionCount } from "@/lib/data";
 import Avatar from "@/components/Avatar";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import { getLiveYoutubeVideoCount } from "@/lib/youtube";
+import { buildMetadata } from "@/lib/social";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Channels — StreamETH",
-};
+  description: "Every organization and channel archived by StreamETH.",
+});
 
 function coverageLabel(entry: DirectoryEntry): string {
   const videos = entry.sessionCount + entry.youtubeVideoCount;

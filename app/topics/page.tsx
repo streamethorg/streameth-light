@@ -1,12 +1,12 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { listTopics } from "@/lib/topics";
+import { buildMetadata } from "@/lib/social";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Topics — StreamETH",
   description: "Browse sessions by autodetected topic.",
-};
+});
 
 export default function TopicsPage() {
   const topics = listTopics();

@@ -2,6 +2,7 @@ import "server-only";
 import { readFileSync } from "fs";
 import { join } from "path";
 import { lazy } from "./lazy";
+import { HIDDEN_ORG_SLUGS } from "./curation";
 
 export interface DirectoryEntry {
   name: string;
@@ -47,7 +48,9 @@ export interface YoutubeVideo {
 
 export const getDirectory = lazy((): DirectoryEntry[] => {
   const raw = readFileSync(join(process.cwd(), "data", "directory.json"), "utf-8");
-  return (JSON.parse(raw) as { entries: DirectoryEntry[] }).entries;
+  return (JSON.parse(raw) as { entries: DirectoryEntry[] }).entries.filter(
+    (e) => !HIDDEN_ORG_SLUGS.has(e.slug)
+  );
 });
 
 export function getDirectoryEntry(slug: string): DirectoryEntry | undefined {

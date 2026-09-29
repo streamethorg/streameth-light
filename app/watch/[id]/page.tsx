@@ -23,6 +23,7 @@ import { getVideoById, relatedVideos } from "@/lib/videoDb";
 import { slugifyTopic } from "@/lib/topics";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
 import { formatDateLong, formatTimecode } from "@/lib/format";
+import { buildMetadata } from "@/lib/social";
 
 // YouTube-backed watch pages (`yt-<videoId>`) aren't in this list — they're
 // rendered on demand instead of prerendered at build time, since there are
@@ -42,17 +43,19 @@ export async function generateMetadata({
   if (id.startsWith("yt-")) {
     const video = getVideoById(id);
     if (!video) return {};
-    return {
+    return buildMetadata({
       title: `${video.title} — StreamETH`,
       description: video.description?.slice(0, 200),
-    };
+      image: video.coverImage ?? undefined,
+    });
   }
   const session = getSession(id);
   if (!session) return {};
-  return {
+  return buildMetadata({
     title: `${session.name} — StreamETH`,
     description: session.description?.slice(0, 200),
-  };
+    image: session.coverImage,
+  });
 }
 
 export default async function WatchPage({
@@ -202,6 +205,15 @@ function YoutubeWatchPage({ id }: { id: string }) {
       metaLine={video.publishedAt ? formatDateLong(video.publishedAt) : undefined}
       description={video.description}
       transcript={video.transcript}
+      speakers={
+        video.speakers.length > 0 && (
+          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
+            {video.speakers.map((name) => (
+              <SpeakerCard key={name} speaker={{ _id: name, name }} />
+            ))}
+          </div>
+        )
+      }
       relatedLabel={`More from ${video.orgName}`}
       related={related.map((v) => (
         <UnifiedVideoCard key={v.id} video={v} layout="compact" />
