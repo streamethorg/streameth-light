@@ -5,6 +5,7 @@ import VideoCard from "@/components/VideoCard";
 import Avatar from "@/components/Avatar";
 import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
 import { getEventById } from "@/lib/data";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return listSpeakers().map((sp) => ({ speaker: sp.slug }));
@@ -18,10 +19,11 @@ export async function generateMetadata({
   const { speaker: slug } = await params;
   const speaker = getSpeakerBySlug(slug);
   if (!speaker) return {};
-  return {
-    title: `${speaker.name} — StreamETH Light`,
+  return buildMetadata({
+    title: `${speaker.name} — StreamETH`,
     description: speaker.bio?.slice(0, 200),
-  };
+    image: speaker.photo,
+  });
 }
 
 export default async function SpeakerPage({

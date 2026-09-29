@@ -23,6 +23,7 @@ import {
   groupSessionsByInferredEvent,
 } from "@/lib/orphanSessions";
 import { accentStyle, callSign, formatDateShort } from "@/lib/format";
+import { buildMetadata } from "@/lib/social";
 import type { Session, Stage } from "@/lib/types";
 
 export function generateStaticParams() {
@@ -42,10 +43,11 @@ export async function generateMetadata({
   const { event: eventSlug } = await params;
   const event = getEvent(eventSlug);
   if (!event) return {};
-  return {
-    title: `${event.name} — StreamETH Light`,
+  return buildMetadata({
+    title: `${event.name} — StreamETH`,
     description: event.description?.slice(0, 200),
-  };
+    image: event.eventCover ?? event.banner ?? event.logo,
+  });
 }
 
 export default async function EventPage({

@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import SignInForm from "@/components/SignInForm";
 
 export const metadata = {
-  title: "Sign in — StreamETH Light",
+  title: "Sign in — StreamETH",
 };
 
 export default function SignInPage() {

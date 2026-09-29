@@ -5,7 +5,7 @@ import CoverPlaceholder from "@/components/CoverPlaceholder";
 import { formatDateShort } from "@/lib/format";
 
 export const metadata = {
-  title: "Saved — StreamETH Light",
+  title: "Saved — StreamETH",
 };
 
 export default async function SavedPage() {
