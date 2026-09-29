@@ -2,6 +2,8 @@ import Link from "next/link";
 import BrowseControls from "@/components/BrowseControls";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import ChipBar from "@/components/ChipBar";
+import EventShelf from "@/components/EventShelf";
+import { listRecentEvents } from "@/lib/events";
 import { browseVideos, listChannelOptions, topTopics } from "@/lib/videoDb";
 import { EMPTY_FILTERS, filtersFromParams, isIdleFilters, paramsFromFilters } from "@/lib/browseParams";
 import { listAllEvents, listOrganizations } from "@/lib/data";
@@ -42,9 +44,20 @@ export default async function Home({
             <EmptyState />
           ) : (
             <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-              {shown.map((v) => (
-                <UnifiedVideoCard key={v.id} video={v} />
+              {shown.map((v, i) => (
+                // Even `order` slots for videos leave odd slots for the shelf.
+                <div key={v.id} style={{ order: i * 2 }}>
+                  <UnifiedVideoCard video={v} />
+                </div>
               ))}
+              {!filters.topic && (
+                // After two rows at every column count: 4 videos on 1–2
+                // columns, 6 on 3, 8 on 4.
+                <EventShelf
+                  events={listRecentEvents(8)}
+                  className="order-[7] lg:order-[11] 2xl:order-[15]"
+                />
+              )}
             </div>
           )}
           {shown.length < feed.length && <ShowMore href={`/?${moreParams.toString()}`} />}

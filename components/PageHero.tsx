@@ -34,18 +34,27 @@ export default function PageHero({
           {back.label}
         </Link>
       )}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-        {leading}
-        <div className="flex min-w-0 flex-col gap-2">
-          <h1 className="text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold leading-tight tracking-[-0.02em] text-ink">
+      {/* Avatar beside the name on every screen; on phones the description
+          and buttons drop below at full width (YouTube's mobile channel
+          header), on wider screens they stay in the column beside it. */}
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-4 gap-y-3 sm:gap-x-6">
+        {leading && <div className="row-span-1 sm:row-span-3 sm:self-center">{leading}</div>}
+        <div className={`flex min-w-0 flex-col gap-1 ${leading ? "" : "col-span-2"}`}>
+          <h1 className="text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold leading-tight tracking-[-0.02em] text-ink">
             {title}
           </h1>
           {meta && <div className="text-sm text-ink-dim">{meta}</div>}
-          {description && (
-            <div className="line-clamp-2 max-w-[70ch] text-sm leading-relaxed text-ink-dim">{description}</div>
-          )}
-          {actions && <div className="flex flex-wrap items-center gap-2 pt-1">{actions}</div>}
         </div>
+        {description && (
+          <div className="col-span-2 line-clamp-2 max-w-[70ch] text-sm leading-relaxed text-ink-dim sm:col-span-1 sm:col-start-2">
+            {description}
+          </div>
+        )}
+        {actions && (
+          <div className="col-span-2 flex flex-wrap items-center gap-2 sm:col-span-1 sm:col-start-2">
+            {actions}
+          </div>
+        )}
       </div>
       {tabs && tabs.length > 0 ? (
         <nav className="mt-4 flex gap-6 overflow-x-auto border-b border-line [scrollbar-width:none]">

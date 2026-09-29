@@ -45,7 +45,7 @@ export default async function SpeakerPage({
           <Avatar
             name={speaker.name}
             photo={speaker.photo}
-            className="h-20 w-20 text-2xl sm:h-32 sm:w-32 sm:text-4xl"
+            className="h-16 w-16 text-xl sm:h-32 sm:w-32 sm:text-4xl"
           />
         }
         title={speaker.name}

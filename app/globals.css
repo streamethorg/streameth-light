@@ -48,18 +48,22 @@
   --font-mono: var(--font-inter);
 }
 
-* {
-  border-color: var(--line);
-}
+/* In the base layer so Tailwind's border-color utilities (layered) can
+   override it — an unlayered rule here would beat every one of them. */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
 
-html {
-  color-scheme: light;
-}
+  html {
+    color-scheme: light;
+  }
 
-body {
-  background: var(--void);
-  color: var(--ink);
-  font-family: var(--font-sans);
+  body {
+    background: var(--void);
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
 }
 
 ::selection {

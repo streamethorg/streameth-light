@@ -155,7 +155,7 @@ export default async function OrgPage({
     return (
       <div style={accentStyle(org.accentColor) as CSSProperties | undefined} className="flex flex-1 flex-col">
         <PageHero
-          leading={<Avatar name={org.name} channel className="h-20 w-20 text-2xl sm:h-32 sm:w-32 sm:text-4xl" />}
+          leading={<Avatar name={org.name} channel className="h-16 w-16 text-xl sm:h-32 sm:w-32 sm:text-4xl" />}
           title={org.name}
           meta={
             <>
@@ -229,7 +229,7 @@ export default async function OrgPage({
   return (
     <div className="flex flex-1 flex-col">
       <PageHero
-        leading={<Avatar name={entry.name} channel className="h-20 w-20 text-2xl sm:h-32 sm:w-32 sm:text-4xl" />}
+        leading={<Avatar name={entry.name} channel className="h-16 w-16 text-xl sm:h-32 sm:w-32 sm:text-4xl" />}
         title={entry.name}
         meta={[
           `@${entry.slug}`,

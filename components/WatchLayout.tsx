@@ -76,7 +76,7 @@ export default function WatchLayout({
                 </div>
               </div>
             )}
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="-mx-3 flex w-[calc(100%+1.5rem)] items-center gap-2 overflow-x-auto px-3 [scrollbar-width:none] sm:mx-0 sm:w-auto sm:flex-wrap sm:overflow-visible sm:px-0">
               <div id={WATCH_ACTIONS_SLOT_ID} className="contents" />
               {actions}
             </div>

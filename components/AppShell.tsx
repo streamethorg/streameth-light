@@ -12,6 +12,7 @@ import MiniPlayerBar from "@/components/MiniPlayerBar";
 import {
   BackIcon,
   ChannelsIcon,
+  EventsIcon,
   HomeIcon,
   MenuIcon,
   SavedIcon,
@@ -24,6 +25,7 @@ type NavItem = { href: string; label: string; Icon: ComponentType<{ filled?: boo
 
 const PRIMARY_NAV: NavItem[] = [
   { href: "/", label: "Home", Icon: HomeIcon },
+  { href: "/events", label: "Events", Icon: EventsIcon },
   { href: "/channels", label: "Channels", Icon: ChannelsIcon },
   { href: "/speakers", label: "Speakers", Icon: SpeakersIcon },
   { href: "/topics", label: "Topics", Icon: TopicsIcon },
