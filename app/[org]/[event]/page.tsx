@@ -138,7 +138,7 @@ export default async function EventPage({
         }
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-14 px-4 py-10 sm:px-6 sm:py-12">
+      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-14 px-4 py-10 sm:px-6 sm:py-12">
         {totalVideoCount === 0 ? (
           <div className="flex flex-col items-center gap-3 rounded-2xl bg-panel px-6 py-14 text-center ring-1 ring-line">
             <p className="text-lg font-bold tracking-[-0.01em] text-ink">No public videos yet</p>

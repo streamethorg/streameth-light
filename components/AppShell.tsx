@@ -138,17 +138,11 @@ function SiteFooter() {
   return (
     <footer className="bg-stage text-stage-dim">
       <div className="brand-gradient h-[3px] w-full" />
-      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 px-4 py-12 sm:flex-row sm:items-end sm:justify-between sm:px-6">
-        <div className="flex max-w-sm flex-col gap-3">
-          <Link href="/" className="flex w-fit items-center gap-2.5 rounded-md">
-            <StreamethLogo className="h-7 w-auto" />
-            <span className="display text-lg tracking-[-0.03em] text-stage-ink">StreamETH</span>
-          </Link>
-          <p className="text-sm leading-relaxed">
-            Talks, panels and workshops from Ethereum conferences and meetups, recorded and
-            searchable in one place.
-          </p>
-        </div>
+      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <Link href="/" className="flex w-fit items-center gap-2.5 rounded-md">
+          <StreamethLogo className="h-6 w-auto" />
+          <span className="display text-base tracking-[-0.03em] text-stage-ink">StreamETH</span>
+        </Link>
         <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="hover:text-stage-ink">

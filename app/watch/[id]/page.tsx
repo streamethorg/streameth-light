@@ -138,7 +138,7 @@ export default async function WatchPage({
       speakers={
         session.speakers &&
         session.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2">
             {session.speakers.map((sp) => (
               <SpeakerCard key={sp._id} speaker={sp} />
             ))}

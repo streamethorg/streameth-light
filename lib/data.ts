@@ -227,10 +227,6 @@ export function usableImage(url: string | undefined | null): string | undefined 
   return cleaned;
 }
 
-export function getOrgLogo(slug: string): string | undefined {
-  return usableImage(getStore().orgBySlug.get(slug)?.logo);
-}
-
 export function getOrgSessionCount(orgId: string): number {
   return getStore().sessionCountByOrg.get(orgId) ?? 0;
 }

@@ -23,7 +23,7 @@ export default function TopicsPage() {
         title="Topics"
         meta={`${topics.length} subjects, detected from the talks themselves`}
       />
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-10 sm:px-6 sm:py-12">
+      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col px-4 py-10 sm:px-6 sm:py-12">
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-3">
           {topics.map((t) => {
             const n = t.sessionIds.length;

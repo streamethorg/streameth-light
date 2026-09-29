@@ -1,9 +1,7 @@
 import Link from "next/link";
 import BrowseControls from "@/components/BrowseControls";
-import SessionCarousel from "@/components/SessionCarousel";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import StageHero from "@/components/StageHero";
-import Avatar from "@/components/Avatar";
 import {
   archiveStats,
   browseVideos,
@@ -18,9 +16,11 @@ import {
   paramsFromFilters,
 } from "@/lib/browseParams";
 import { listAllEvents, listOrganizations } from "@/lib/data";
+import { formatDateShort } from "@/lib/format";
 
 const PAGE_SIZE = 48;
-const CAROUSEL_SIZE = 16;
+const LATEST_SIZE = 5;
+const LEAD_MIN_SECONDS = 10 * 60;
 
 export default async function Home({
   searchParams,
@@ -40,58 +40,73 @@ export default async function Home({
   const orgIdBySlug = Object.fromEntries(listOrganizations().map((o) => [o.slug, o._id]));
 
   if (isIdleFilters(filters)) {
-    const recent = browseVideos(EMPTY_FILTERS).slice(0, CAROUSEL_SIZE);
-    // Feature a full-length talk (not a short clip/teaser) with a real cover.
-    const featured = browseVideos({ ...EMPTY_FILTERS, duration: "long" }).find(
-      (v) => v.coverImage
-    );
-    const shelves = channelShelves(5, 12);
+    const recent = browseVideos(EMPTY_FILTERS)
+      .filter((v) => v.coverImage)
+      .slice(0, 40);
+    // Lead with a full-length talk rather than a short clip or teaser.
+    const lead =
+      recent.find((v) => (v.durationSeconds ?? 0) >= LEAD_MIN_SECONDS) ?? recent[0];
+    const latest = recent.filter((v) => v !== lead).slice(0, LATEST_SIZE - 1);
+    const channelRows = channelShelves(6, 4, { order: "recent" });
     const stats = archiveStats();
 
     return (
       <div className="flex flex-col">
-        <StageHero featured={featured} stats={stats} />
+        <StageHero stats={stats} />
 
-        <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-14 px-4 py-12 sm:px-6 sm:py-16">
-          <SessionCarousel
-            title="Just added"
-            detail="The newest recordings across every channel"
-            videos={recent.filter((v) => v.id !== featured?.id)}
-          />
-          {shelves.map((shelf) => (
-            <SessionCarousel
-              key={shelf.slug}
-              title={shelf.name}
-              href={`/${shelf.slug}`}
-              linkLabel="Open channel"
-              detail={`${shelf.total.toLocaleString()} videos`}
-              leading={
-                <Avatar
-                  name={shelf.name}
-                  photo={shelf.logo}
-                  shape="square"
-                  className="h-11 w-11 text-sm"
-                />
-              }
-              videos={shelf.videos}
-            />
-          ))}
-          <div className="flex flex-col items-start justify-between gap-4 rounded-2xl bg-panel p-6 ring-1 ring-line sm:flex-row sm:items-center sm:p-8">
-            <div>
-              <p className="text-lg font-bold tracking-[-0.01em] text-ink">
-                Looking for a specific event?
-              </p>
-              <p className="text-sm text-ink-dim">
-                Browse all {stats.channels} channels, from Devcon to your local meetup.
-              </p>
+        <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-20 px-4 py-14 sm:px-6 sm:py-20">
+          {lead && (
+            <section className="flex flex-col gap-6">
+              <h2 className="text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl">
+                Latest talks
+              </h2>
+              <div className="grid grid-cols-1 gap-x-6 gap-y-10 min-[480px]:grid-cols-2 lg:grid-cols-4">
+                <div className="min-[480px]:col-span-2 lg:row-span-2">
+                  <UnifiedVideoCard video={lead} lead />
+                </div>
+                {latest.map((v) => (
+                  <UnifiedVideoCard key={v.id} video={v} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className="flex flex-col gap-2">
+            <div className="flex items-baseline justify-between gap-4 pb-4">
+              <h2 className="text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl">
+                Recently active channels
+              </h2>
+              <Link
+                href="/channels"
+                className="shrink-0 rounded-sm text-[15px] font-semibold text-accent underline-offset-4 hover:underline"
+              >
+                All {stats.channels} channels
+              </Link>
             </div>
-            <Link
-              href="/channels"
-              className="rounded-full bg-stage px-5 py-2.5 text-sm font-semibold text-stage-ink transition-colors hover:bg-accent"
-            >
-              Browse channels
-            </Link>
-          </div>
+            {channelRows.map((row) => (
+              <div
+                key={row.slug}
+                className="grid gap-6 border-t border-line py-8 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-10"
+              >
+                <div className="flex flex-col gap-1">
+                  <Link
+                    href={`/${row.slug}`}
+                    className="w-fit rounded-sm text-xl font-bold tracking-[-0.02em] text-ink decoration-accent decoration-2 underline-offset-[5px] hover:underline sm:text-2xl"
+                  >
+                    {row.name}
+                  </Link>
+                  <p className="text-sm text-ink-faint">
+                    {row.total.toLocaleString()} talks, latest {formatDateShort(row.latest)}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4">
+                  {row.videos.map((v) => (
+                    <UnifiedVideoCard key={v.id} video={v} hideSource />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </section>
         </div>
       </div>
     );

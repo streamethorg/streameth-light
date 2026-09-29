@@ -15,7 +15,6 @@ export default function SpeakersPage() {
     <div className="flex flex-1 flex-col">
       <PageHero
         title="Speakers"
-        width="max-w-[1600px]"
         meta={`${speakers.length.toLocaleString()} people who've spoken on a recorded stage`}
       />
       <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col px-4 py-10 sm:px-6 sm:py-12">

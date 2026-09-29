@@ -61,8 +61,8 @@ export default async function SpeakerPage({
         actions={twitterHandle && <HeroLink href={`https://x.com/${twitterHandle}`}>@{twitterHandle}</HeroLink>}
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
-        <SectionHeader title="Talks" detail="Newest first" />
+      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
+        <SectionHeader title="Talks" />
         <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {sessions.map((s) => {
             const event = getEventById(s.eventId);

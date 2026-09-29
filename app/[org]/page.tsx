@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Avatar from "@/components/Avatar";
 import PageHero, { HeroLink } from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import type { CSSProperties } from "react";
@@ -147,7 +146,6 @@ export default async function OrgPage({
       <div style={accentStyle(org.accentColor) as CSSProperties | undefined} className="flex flex-1 flex-col">
         <PageHero
           back={{ href: "/channels", label: "All channels" }}
-          leading={<Avatar name={org.name} shape="square" className="h-20 w-20 text-2xl sm:h-24 sm:w-24" />}
           title={org.name}
           meta={
             <>
@@ -163,15 +161,15 @@ export default async function OrgPage({
           }
         />
 
-        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
-          <SectionHeader title="Events" detail="Newest first" />
+        <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
+          <SectionHeader title="Events" />
 
           {tiles.length === 0 ? (
             <p className="rounded-2xl bg-panel py-12 text-center text-sm text-ink-faint ring-1 ring-line">
               No events here yet.
             </p>
           ) : (
-            <div className="grid grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
               {tiles.map((tile) => {
                 if (tile.kind === "streameth") {
                   const extraCount =
@@ -219,7 +217,6 @@ export default async function OrgPage({
     <div className="flex flex-1 flex-col">
       <PageHero
         back={{ href: "/channels", label: "All channels" }}
-        leading={<Avatar name={entry.name} shape="square" className="h-20 w-20 text-2xl sm:h-24 sm:w-24" />}
         title={entry.name}
         meta={
           [
@@ -246,11 +243,11 @@ export default async function OrgPage({
         }
       />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-12 px-4 py-10 sm:px-6 sm:py-12">
+      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-12 px-4 py-10 sm:px-6 sm:py-12">
         {videoGroups.length > 0 && (
           <div className="flex flex-col gap-6">
             <SectionHeader title="Events" detail={`${videoGroups.length} grouped from the channel's uploads`} />
-            <div className="grid grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
               {videoGroups.map((group) => (
                 <YoutubeEventTile key={group.slug} orgSlug={entry.slug} group={group} />
               ))}

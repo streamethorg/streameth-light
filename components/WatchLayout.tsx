@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import TranscriptPanel from "@/components/TranscriptPanel";
-import Avatar from "@/components/Avatar";
 import SectionHeader from "@/components/SectionHeader";
 import { accentStyle } from "@/lib/format";
 
@@ -54,7 +53,6 @@ export default function WatchLayout({
                 href={`/${orgSlug}`}
                 className="flex items-center gap-2 rounded-md font-semibold text-stage-ink transition-colors hover:text-peach"
               >
-                <Avatar name={orgName} shape="square" className="h-6 w-6 text-[9px]" />
                 {orgName}
               </Link>
               {crumb && (

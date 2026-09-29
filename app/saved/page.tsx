@@ -28,7 +28,6 @@ export default async function SavedPage() {
     <div className="flex flex-1 flex-col">
       <PageHero
         title="Saved"
-        width="max-w-[1600px]"
         meta={
           saved && saved.length > 0
             ? `${saved.length} ${saved.length === 1 ? "talk" : "talks"} to watch later`
@@ -59,7 +58,7 @@ export default async function SavedPage() {
                 coverImage={v.video_cover_image}
                 coverLabel={v.video_title}
                 title={v.video_title}
-                metaLine={`Saved ${formatDateShort(v.created_at)}`}
+                source={`Saved ${formatDateShort(v.created_at)}`}
               />
             ))}
           </div>

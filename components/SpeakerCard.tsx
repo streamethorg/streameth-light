@@ -22,7 +22,7 @@ export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
   );
 
   return (
-    <div className="flex gap-4 rounded-2xl bg-panel p-5 ring-1 ring-line">
+    <div className="flex gap-4 border-t border-line pt-5">
       <Avatar name={speaker.name} photo={photo} className="h-16 w-16 shrink-0 text-base" />
       <div className="flex min-w-0 flex-col gap-1.5">
         <div className="flex flex-col">

@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getDirectory, type DirectoryEntry } from "@/lib/directory";
 import { getOrganization, getOrgSessionCount } from "@/lib/data";
-import Avatar from "@/components/Avatar";
 import CoverImage from "@/components/CoverImage";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
@@ -52,9 +51,7 @@ export default function ChannelsPage() {
     <div className="flex flex-1 flex-col">
       <PageHero
         title="Channels"
-        width="max-w-[1600px]"
         meta={`${active.length} with recordings, ${tracked.length} more tracked`}
-        description="Every conference, meetup and community with talks in the archive, biggest first."
       />
 
       <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-14 px-4 py-10 sm:px-6 sm:py-12">
@@ -67,18 +64,11 @@ export default function ChannelsPage() {
                   <CoverImage
                     src={cover}
                     label={entry.name}
-                    className="opacity-90 transition duration-500 ease-out group-hover:scale-[1.04] group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stage/80 via-transparent to-transparent" />
-                  <span className="brand-gradient absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
-                  <Avatar
-                    name={entry.name}
-                    shape="square"
-                    className="absolute bottom-3 left-3 h-12 w-12 text-sm shadow-lg"
+                    className="transition duration-300 ease-out group-hover:scale-[1.02]"
                   />
                 </div>
                 <div className="flex min-w-0 flex-col">
-                  <h2 className="truncate text-base font-bold tracking-[-0.01em] text-ink transition-colors group-hover:text-accent">
+                  <h2 className="truncate text-lg font-bold tracking-[-0.02em] text-ink decoration-accent decoration-2 underline-offset-[5px] group-hover:underline">
                     {entry.name}
                   </h2>
                   <p className="text-sm text-ink-faint">{coverageLabel(entry)}</p>

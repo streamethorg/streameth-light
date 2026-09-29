@@ -3,7 +3,6 @@ import { DatabaseSync } from "node:sqlite";
 import { join } from "node:path";
 import { lazy } from "./lazy";
 import type { BrowseFilters, DurationBucket } from "./browseParams";
-import { getOrgLogo } from "./data";
 
 export interface UnifiedVideo {
   id: string;
@@ -12,7 +11,6 @@ export interface UnifiedVideo {
   description: string;
   orgName: string;
   orgSlug: string;
-  orgLogo: string | null;
   eventName: string;
   publishedAt: number;
   durationSeconds: number | null;
@@ -56,7 +54,6 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     description: row.description,
     orgName: row.org_name,
     orgSlug: row.org_slug,
-    orgLogo: getOrgLogo(row.org_slug) ?? null,
     eventName: row.event_name,
     publishedAt: row.published_at,
     durationSeconds: row.duration_seconds,
@@ -216,27 +213,38 @@ export function listChannelOptions(): OrgOption[] {
 export interface ChannelShelf {
   slug: string;
   name: string;
-  logo: string | null;
   total: number;
+  /** Newest video's published_at (ms). */
+  latest: number;
   videos: UnifiedVideo[];
 }
 
-/** The biggest channels (the flagship conferences), each with its latest
- * videos — the homepage's per-channel rows. Ordered by archive size rather
- * than recency so they don't repeat the "Just added" row above them. */
-export function channelShelves(shelves = 4, perShelf = 12, minVideos = 12): ChannelShelf[] {
+/** Channels with their latest videos — the homepage's channel index.
+ * Channels with only a handful of videos are skipped so a row is never a
+ * lonely one-card strip. `order` picks the flagship conferences ("size") or
+ * whoever published most recently ("recent"). */
+export function channelShelves(
+  shelves = 4,
+  perShelf = 12,
+  { minVideos = 12, order = "size" }: { minVideos?: number; order?: "size" | "recent" } = {}
+): ChannelShelf[] {
   const db = getDb();
   const channels = db
     .prepare(
-      `SELECT org_slug AS slug, org_name AS name, COUNT(*) AS total
+      `SELECT org_slug AS slug, org_name AS name, COUNT(*) AS total, MAX(published_at) AS latest
        FROM videos
        WHERE org_slug != ''
        GROUP BY org_slug
        HAVING SUM(cover_image IS NOT NULL) >= ?
-       ORDER BY total DESC
+       ORDER BY ${order === "recent" ? "latest" : "total"} DESC
        LIMIT ?`
     )
-    .all(minVideos, shelves) as unknown as { slug: string; name: string; total: number }[];
+    .all(minVideos, shelves) as unknown as {
+    slug: string;
+    name: string;
+    total: number;
+    latest: number;
+  }[];
 
   const latest = db.prepare(
     `SELECT * FROM videos WHERE org_slug = ? AND cover_image IS NOT NULL
@@ -246,8 +254,8 @@ export function channelShelves(shelves = 4, perShelf = 12, minVideos = 12): Chan
   return channels.map((c) => ({
     slug: c.slug,
     name: c.name,
-    logo: getOrgLogo(c.slug) ?? null,
     total: c.total,
+    latest: c.latest,
     videos: (latest.all(c.slug, perShelf) as unknown as VideoRow[]).map(rowToVideo),
   }));
 }
@@ -260,15 +268,19 @@ export function archiveStats(): { videos: number; channels: number } {
   return { videos: row.videos, channels: row.channels };
 }
 
-/** Each channel's newest video cover, for channel tiles that would otherwise
- * have no imagery (the orgs' own logos are gone with the old CDN). */
+/** A cover per channel, for channel tiles that would otherwise have no
+ * imagery (the orgs' own logos are gone with the old CDN). Prefers YouTube
+ * thumbnails, which are designed title cards, over frames auto-grabbed from
+ * StreamETH recordings (often a blank slide or an empty stage), then the
+ * newest. */
 export function latestCoverByChannel(): Map<string, string> {
   const db = getDb();
   const rows = db
     .prepare(
       // SQLite's bare-column rule: with MAX(), the other selected columns
-      // come from the row holding that max — i.e. the newest video's cover.
-      `SELECT org_slug AS slug, cover_image AS cover, MAX(published_at)
+      // come from the row holding that max.
+      `SELECT org_slug AS slug, cover_image AS cover,
+              MAX((source = 'youtube') * 10000000000000 + published_at)
        FROM videos WHERE cover_image IS NOT NULL GROUP BY org_slug`
     )
     .all() as unknown as { slug: string; cover: string }[];

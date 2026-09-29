@@ -2,9 +2,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 /** Title band for every browse/detail page (channel, event, speaker, topic,
- * the index pages): the same dark stage surface as the header and home
- * hero, with a softer version of its gradient light and the gradient edge
- * underneath. Keeps page openings consistent and on-brand. */
+ * the index pages): the same flat stage surface as the header and home
+ * hero, with the logo-gradient edge underneath. */
 export default function PageHero({
   back,
   leading,
@@ -12,7 +11,6 @@ export default function PageHero({
   description,
   meta,
   actions,
-  width = "max-w-6xl",
 }: {
   back?: { href: string; label: string };
   leading?: ReactNode;
@@ -20,15 +18,10 @@ export default function PageHero({
   description?: ReactNode;
   meta?: ReactNode;
   actions?: ReactNode;
-  width?: string;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-stage text-stage-ink">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -bottom-2/3 left-[-5%] h-full w-1/2 rounded-full bg-accent/35 blur-[110px]" />
-        <div className="absolute -bottom-2/3 right-0 h-full w-2/5 rounded-full bg-peach/20 blur-[110px]" />
-      </div>
-      <div className={`mx-auto flex w-full ${width} flex-col gap-5 px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-8`}>
+    <section className="bg-stage text-stage-ink">
+      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-5 px-4 pb-10 pt-8 sm:px-6 sm:pb-14 sm:pt-10">
         {back && (
           <Link
             href={back.href}

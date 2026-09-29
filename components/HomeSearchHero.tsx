@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import SearchSuggestions from "@/components/SearchSuggestions";
 import { useSearchSuggestions } from "@/lib/useSearchSuggestions";
 
-/** The homepage's big search field, sitting on the dark stage hero. */
+/** The homepage's search, set as the page headline: the query is typed in
+ * display-size type directly on the stage band, underlined by the logo
+ * gradient — the search box *is* the hero, not a widget under a slogan. */
 export default function HomeSearchHero() {
   const router = useRouter();
   const [value, setValue] = useState("");
@@ -33,38 +35,34 @@ export default function HomeSearchHero() {
       }}
       className="relative w-full"
     >
-      <div className="flex w-full items-center gap-3 rounded-2xl bg-white py-2 pl-5 pr-2 shadow-[0_20px_60px_-20px_rgb(100_38_239/0.6)] ring-1 ring-white/20 transition-shadow focus-within:ring-4 focus-within:ring-accent/40">
-        <svg
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          className="h-5 w-5 shrink-0 text-ink-faint"
-        >
-          <circle cx="9" cy="9" r="6.5" />
-          <path d="M18 18l-4-4" strokeLinecap="round" />
-        </svg>
+      <div className="flex items-end gap-4">
         <input
           type="search"
           value={value}
-          aria-label="Search talks"
+          aria-label="Search the archive"
           onFocus={() => setDropdownOpen(true)}
           onChange={(e) => {
             setValue(e.target.value);
             setDropdownOpen(true);
           }}
-          placeholder="Search talks, speakers, topics"
-          className="min-w-0 flex-1 bg-transparent py-2 text-base text-ink placeholder:text-ink-faint focus:outline-none sm:text-lg"
+          placeholder="Search the archive"
+          className="display min-w-0 flex-1 bg-transparent pb-3 text-[clamp(2.5rem,7vw,6.5rem)] text-stage-ink caret-peach placeholder:text-stage-ink/30 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
         />
         <button
           type="submit"
-          className="shrink-0 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-stage sm:px-5"
+          aria-label="Search"
+          className="mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-stage transition-colors hover:bg-peach sm:h-16 sm:w-16"
         >
-          Search
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 sm:h-6 sm:w-6">
+            <path d="M4 10h12m0 0l-5-5m5 5l-5 5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </button>
       </div>
+      <div className="brand-gradient h-[3px] w-full rounded-full" />
       {dropdownOpen && (
-        <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
+        <div className="relative max-w-3xl">
+          <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
+        </div>
       )}
     </form>
   );

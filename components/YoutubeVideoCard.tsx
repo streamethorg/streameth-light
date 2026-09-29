@@ -24,11 +24,8 @@ export default function YoutubeVideoCard({
       coverImage={video.thumbnail}
       coverLabel={video.title}
       title={video.title}
-      metaLine={
-        [video.publishedAt ? formatDateShort(video.publishedAt) : "", internal ? "" : "Opens on YouTube"]
-          .filter(Boolean)
-          .join(" · ")
-      }
+      source={internal ? undefined : "Opens on YouTube"}
+      date={video.publishedAt ? formatDateShort(video.publishedAt) : undefined}
     />
   );
 }
