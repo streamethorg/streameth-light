@@ -1,0 +1,86 @@
+name: Refresh video data
+
+# Discovers new/upcoming events from Mira and ethereum.org, finds YouTube
+# channels for newly-tracked orgs, pulls videos for every tracked channel,
+# classifies them into real event editions and speaker names, rebuilds the
+# unified DB, and opens a PR with the diff for review — see
+# scripts/fetch-mira-events.py, scripts/fetch-ethereum-org-communities.py,
+# scripts/sync-new-orgs.py, scripts/find-youtube-channels.py,
+# scripts/guess-youtube-handles.py, scripts/merge-found-channels.py,
+# scripts/pull-youtube-videos.py, scripts/pull-youtube-metadata.py,
+# scripts/pull-youtube-transcripts.py, scripts/classify-youtube-events.py,
+# scripts/extract-youtube-speakers.py, scripts/build-db.mjs.
+#
+# Does NOT re-run scripts/remote-export.mjs (the StreamETH session export) —
+# that needs VPS SSH access and isn't wired up here.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # every Monday 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install yt-dlp
+        run: pip install -U yt-dlp
+
+      - name: Discover new events (Mira + ethereum.org)
+        run: |
+          python3 scripts/fetch-mira-events.py
+          python3 scripts/fetch-ethereum-org-communities.py
+          python3 scripts/sync-new-orgs.py
+
+      - name: Find YouTube channels for newly-tracked orgs
+        run: |
+          python3 scripts/find-youtube-channels.py
+          python3 scripts/guess-youtube-handles.py
+          python3 scripts/merge-found-channels.py
+
+      - name: Pull YouTube videos, metadata, transcripts
+        run: |
+          python3 scripts/pull-youtube-videos.py
+          python3 scripts/pull-youtube-metadata.py
+          python3 scripts/pull-youtube-transcripts.py
+
+      - name: Classify events and speakers
+        run: |
+          python3 scripts/classify-youtube-events.py
+          python3 scripts/extract-youtube-speakers.py
+
+      - name: Rebuild DB
+        run: node scripts/build-db.mjs
+
+      - name: Open PR with refreshed data
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Refresh video data (automated)"
+          title: "Refresh video data (automated)"
+          body: |
+            Weekly automated refresh: new events/orgs discovered from Mira and
+            ethereum.org, YouTube channels found where possible, videos pulled
+            for every tracked channel, events/speakers reclassified, DB rebuilt.
+
+            Review before merging — a scrape run can occasionally misclassify
+            an event or channel match.
+          branch: automated/refresh-video-data
+          delete-branch: true
+          add-paths: |
+            data/directory.json
+            data/sources/*.json
