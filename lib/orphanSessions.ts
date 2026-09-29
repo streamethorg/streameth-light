@@ -195,6 +195,9 @@ export function groupSessionsByInferredEvent(
 }
 
 export const getOrphanSessionsForOrg = memoize1((orgId: string): Session[] => {
+  // getStore().sessions is already filtered to sessions with a real,
+  // public video (see HAS_VIDEO in lib/data.ts) — private/failed/pending
+  // clips never reach here.
   const { sessions, eventById } = getStore();
   return sessions.filter(
     (s) => s.organizationId === orgId && !eventById.has(s.eventId)
