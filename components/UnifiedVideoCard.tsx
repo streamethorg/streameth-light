@@ -14,9 +14,12 @@ export default function UnifiedVideoCard({ video }: { video: UnifiedVideo }) {
       sourceBadge={video.source === "youtube" ? "YouTube" : undefined}
       orgName={video.orgName}
       title={video.title}
-      metaLine={`${video.eventName || (video.source === "youtube" ? "YouTube" : "")}${
-        video.publishedAt ? ` · ${formatDateShort(video.publishedAt)}` : ""
-      }`}
+      metaLine={[
+        video.eventName || (video.source === "youtube" ? "YouTube" : ""),
+        video.publishedAt ? formatDateShort(video.publishedAt) : "",
+      ]
+        .filter(Boolean)
+        .join(" · ")}
       extraLine={video.speakers.length > 0 ? video.speakers.join(", ") : undefined}
     />
   );

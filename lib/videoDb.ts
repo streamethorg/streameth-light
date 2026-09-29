@@ -160,17 +160,24 @@ export function topTopics(limit = 16): string[] {
   const rows = db
     .prepare("SELECT topics FROM videos WHERE topics != ''")
     .all() as unknown as { topics: string }[];
-  const counts = new Map<string, number>();
+  // Tags come from many uploaders with inconsistent casing ("ethereum" vs
+  // "Ethereum"), so group case-insensitively and label each group with its
+  // most common spelling — otherwise the chip row shows near-duplicates.
+  const groups = new Map<string, { total: number; spellings: Map<string, number> }>();
   for (const row of rows) {
     for (const topic of row.topics.split(", ")) {
       if (!topic) continue;
-      counts.set(topic, (counts.get(topic) ?? 0) + 1);
+      const key = topic.toLowerCase();
+      const group = groups.get(key) ?? { total: 0, spellings: new Map<string, number>() };
+      group.total += 1;
+      group.spellings.set(topic, (group.spellings.get(topic) ?? 0) + 1);
+      groups.set(key, group);
     }
   }
-  return [...counts.entries()]
-    .sort((a, b) => b[1] - a[1])
+  return [...groups.values()]
+    .sort((a, b) => b.total - a.total)
     .slice(0, limit)
-    .map(([topic]) => topic);
+    .map(({ spellings }) => [...spellings.entries()].sort((a, b) => b[1] - a[1])[0][0]);
 }
 
 export function getVideoById(id: string): UnifiedVideo | undefined {

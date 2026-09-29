@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import Avatar from "@/components/Avatar";
 
 export default function AuthStatus() {
   const router = useRouter();
@@ -37,12 +38,9 @@ export default function AuthStatus() {
 
   return (
     <div className="flex shrink-0 items-center gap-2">
-      <Link
-        href="/saved"
-        className="whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm font-medium text-ink-dim hover:bg-panel hover:text-ink"
-      >
-        Saved
-      </Link>
+      <span title={`Signed in as ${email}`} className="hidden sm:flex">
+        <Avatar name={email} className="h-8 w-8 text-[11px]" />
+      </span>
       <button
         type="button"
         onClick={async () => {

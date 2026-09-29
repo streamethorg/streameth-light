@@ -22,8 +22,8 @@ export default function Avatar({
     <div
       className={`flex shrink-0 items-center justify-center rounded-full font-display font-bold ${className}`}
       style={{
-        backgroundColor: `color-mix(in srgb, var(--color-${color}) 18%, var(--color-panel-raised))`,
-        color: `var(--color-${color})`,
+        backgroundColor: `color-mix(in srgb, var(--${color}) 18%, var(--panel-raised))`,
+        color: `var(--${color})`,
       }}
     >
       {initials(name)}

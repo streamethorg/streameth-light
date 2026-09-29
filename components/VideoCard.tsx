@@ -23,7 +23,9 @@ export default function VideoCard({
       durationLabel={duration !== undefined ? formatTimecode(duration) : undefined}
       orgName={org?.name}
       title={session.name}
-      metaLine={`${event?.name ?? session.eventSlug}${session.start ? ` · ${formatDateShort(session.start)}` : ""}`}
+      metaLine={[event?.name ?? session.eventSlug, session.start ? formatDateShort(session.start) : ""]
+        .filter(Boolean)
+        .join(" · ")}
       extraLine={speakerNames.length > 0 ? speakerNames.join(", ") : undefined}
     />
   );

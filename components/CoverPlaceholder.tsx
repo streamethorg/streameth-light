@@ -42,7 +42,7 @@ export default function CoverPlaceholder({
           <span
             key={i}
             className="w-full max-w-[3px] rounded-t-[1px]"
-            style={{ height: `${h}%`, backgroundColor: `var(--color-${color})` }}
+            style={{ height: `${h}%`, backgroundColor: `var(--${color})` }}
           />
         ))}
       </div>

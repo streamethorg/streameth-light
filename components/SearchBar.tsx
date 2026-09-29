@@ -55,7 +55,7 @@ export default function SearchBar() {
       }}
       className="relative w-full max-w-xl"
     >
-      <div className="flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2 focus-within:border-ink-faint">
+      <div className="flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2 transition-shadow focus-within:border-accent focus-within:shadow-[0_0_0_3px_hsl(250_75%_45%/0.15)]">
         <svg
           viewBox="0 0 20 20"
           fill="none"
