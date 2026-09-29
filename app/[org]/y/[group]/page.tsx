@@ -32,7 +32,7 @@ export async function generateMetadata({
   const { org, group: groupSlug } = await params;
   const group = getInferredEventGroup(org, groupSlug);
   if (!group) return {};
-  return { title: `${group.label} — StreamETH Light` };
+  return { title: `${group.label} — StreamETH` };
 }
 
 export default async function YoutubeEventPage({

@@ -17,7 +17,7 @@ export default function TranscriptPanel({ text }: { text: string }) {
         {expanded ? "Hide transcript" : "Show transcript"}
       </button>
       {expanded && (
-        <div className="order-last max-h-96 w-full max-w-3xl overflow-y-auto whitespace-pre-line rounded-md border border-line bg-panel p-4 text-sm leading-relaxed text-ink-dim">
+        <div className="order-last max-h-96 w-full max-w-3xl overflow-y-auto whitespace-pre-line rounded-xl bg-panel p-5 text-[15px] leading-relaxed text-ink-dim ring-1 ring-line">
           {text}
         </div>
       )}

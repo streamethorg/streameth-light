@@ -35,10 +35,10 @@ export default function SessionPlayer({
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
+    <div className="flex flex-col gap-3">
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-[0_30px_80px_-30px_rgb(0_0_0/0.9)] ring-1 ring-stage-line">
         {isListening ? (
-          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-panel px-4 text-center">
+          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-stage-raised px-4 text-center">
             <div className="absolute inset-0">
               {track.coverImage ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -77,14 +77,14 @@ export default function SessionPlayer({
               )}
 
               <div>
-                <p className="line-clamp-1 max-w-xs text-sm font-medium text-ink">{track.title}</p>
-                <p className="text-xs text-ink-faint">Playing audio-only</p>
+                <p className="line-clamp-1 max-w-xs text-sm font-semibold text-stage-ink">{track.title}</p>
+                <p className="text-xs text-stage-dim">Playing audio only</p>
               </div>
 
               <button
                 type="button"
                 onClick={switchToVideo}
-                className={`mt-1 ${actionButtonClass()} bg-panel hover:bg-panel-raised`}
+                className={`mt-1 ${actionButtonClass(false, "stage")}`}
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
                   <path d="M4 4.5A1.5 1.5 0 015.5 3h2A1.5 1.5 0 019 4.5v11A1.5 1.5 0 017.5 17h-2A1.5 1.5 0 014 15.5v-11zM11 4.5A1.5 1.5 0 0112.5 3h2A1.5 1.5 0 0116 4.5v11a1.5 1.5 0 01-1.5 1.5h-2a1.5 1.5 0 01-1.5-1.5v-11z" opacity=".4" />
@@ -103,7 +103,7 @@ export default function SessionPlayer({
             poster={poster}
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center font-mono text-xs text-ink-faint">
+          <div className="flex h-full w-full items-center justify-center text-sm text-stage-dim">
             No playable video source for this session.
           </div>
         )}
@@ -113,7 +113,7 @@ export default function SessionPlayer({
         <button
           type="button"
           onClick={startListening}
-          className={actionButtonClass()}
+          className={actionButtonClass(false, "stage")}
         >
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4">
             <path

@@ -14,27 +14,29 @@ export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
   const talkCount = full ? getSpeakerSessions(full).length : 1;
 
   const nameEl = slug ? (
-    <Link href={`/speakers/${slug}`} className="font-medium text-ink hover:text-accent">
+    <Link href={`/speakers/${slug}`} className="rounded-sm font-semibold text-ink hover:text-accent">
       {speaker.name}
     </Link>
   ) : (
-    <span className="font-medium text-ink">{speaker.name}</span>
+    <span className="font-semibold text-ink">{speaker.name}</span>
   );
 
   return (
-    <div className="flex gap-3 rounded-md border border-line bg-panel p-4 transition-shadow duration-200 hover:shadow-md">
-      <Avatar name={speaker.name} photo={photo} className="h-14 w-14 shrink-0 text-sm" />
-      <div className="flex min-w-0 flex-col gap-1">
-        <div className="text-sm">{nameEl}</div>
-        {company && <p className="text-xs text-ink-faint">{company}</p>}
-        {bio && <p className="line-clamp-3 text-xs leading-relaxed text-ink-dim">{bio}</p>}
-        <div className="mt-1 flex flex-wrap items-center gap-3">
+    <div className="flex gap-4 rounded-2xl bg-panel p-5 ring-1 ring-line">
+      <Avatar name={speaker.name} photo={photo} className="h-16 w-16 shrink-0 text-base" />
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <div className="flex flex-col">
+          <div className="text-base leading-tight">{nameEl}</div>
+          {company && <p className="text-sm text-ink-faint">{company}</p>}
+        </div>
+        {bio && <p className="line-clamp-3 text-sm leading-relaxed text-ink-dim">{bio}</p>}
+        <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1">
           {twitterHandle && (
             <a
               href={`https://x.com/${twitterHandle}`}
               target="_blank"
               rel="noreferrer"
-              className="text-xs text-ink-faint hover:text-ink"
+              className="text-[13px] font-medium text-ink-faint hover:text-accent"
             >
               X / Twitter
             </a>
@@ -44,7 +46,7 @@ export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
               href={`https://github.com/${speaker.github.replace(/^@/, "")}`}
               target="_blank"
               rel="noreferrer"
-              className="text-xs text-ink-faint hover:text-ink"
+              className="text-[13px] font-medium text-ink-faint hover:text-accent"
             >
               GitHub
             </a>
@@ -54,14 +56,14 @@ export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
               href={speaker.website}
               target="_blank"
               rel="noreferrer"
-              className="text-xs text-ink-faint hover:text-ink"
+              className="text-[13px] font-medium text-ink-faint hover:text-accent"
             >
               Website
             </a>
           )}
           {slug && talkCount > 1 && (
-            <Link href={`/speakers/${slug}`} className="text-xs text-ink-faint hover:text-ink">
-              {talkCount} talks →
+            <Link href={`/speakers/${slug}`} className="text-[13px] font-semibold text-accent hover:underline">
+              All {talkCount} talks
             </Link>
           )}
         </div>

@@ -25,8 +25,8 @@ export default function SignInForm() {
 
   if (status === "sent") {
     return (
-      <p className="text-sm text-ink-dim">
-        Check <span className="text-ink">{email}</span> for a sign-in link.
+      <p className="rounded-xl bg-accent/10 px-4 py-3 text-center text-sm text-ink-dim">
+        Check <span className="font-semibold text-ink">{email}</span> for your sign-in link.
       </p>
     );
   }
@@ -39,17 +39,18 @@ export default function SignInForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="you@example.com"
-        className="w-full rounded-md border border-line bg-panel px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-1 focus:ring-ink-faint"
+        aria-label="Email address"
+        className="h-12 w-full rounded-xl bg-panel px-4 text-[15px] text-ink shadow-sm ring-1 ring-line placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-accent"
       />
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-ink hover:opacity-90 disabled:opacity-60"
+        className="h-12 w-full rounded-xl bg-accent px-4 text-[15px] font-semibold text-accent-ink transition-colors hover:bg-stage disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send sign-in link"}
       </button>
       {status === "error" && (
-        <p className="text-sm text-error">Couldn&apos;t send that link — try again.</p>
+        <p className="text-sm text-error">Couldn&apos;t send the link. Check the address and try again.</p>
       )}
     </form>
   );

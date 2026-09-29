@@ -54,16 +54,14 @@ function AppBody({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-30 flex flex-col border-b border-line bg-void/95 backdrop-blur">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-3 py-2.5 sm:gap-x-4 sm:px-4">
-          <Link href="/" className="flex shrink-0 items-center gap-2">
-            <StreamethLogo className="h-6 w-auto" />
-            <span className="font-display text-[15px] font-bold tracking-tight text-ink sm:text-base">
-              StreamETH
-            </span>
+      <header className="sticky top-0 z-30 flex flex-col bg-stage text-stage-ink">
+        <div className="mx-auto flex w-full max-w-[1600px] flex-wrap items-center gap-x-3 gap-y-2.5 px-4 py-3 sm:gap-x-6 sm:px-6">
+          <Link href="/" className="flex shrink-0 items-center gap-2.5 rounded-md">
+            <StreamethLogo className="h-7 w-auto" />
+            <span className="display text-lg tracking-[-0.03em] text-stage-ink">StreamETH</span>
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-5 md:flex">
             {NAV.map((item) => {
               const active = isActive(pathname, item.href);
               return (
@@ -71,11 +69,14 @@ function AppBody({ children }: { children: React.ReactNode }) {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors ${
-                    active ? "bg-panel text-ink shadow-sm" : "text-ink-dim hover:bg-panel hover:text-ink"
+                  className={`relative whitespace-nowrap py-1.5 text-sm font-medium transition-colors ${
+                    active ? "text-stage-ink" : "text-stage-dim hover:text-stage-ink"
                   }`}
                 >
                   {item.label}
+                  {active && (
+                    <span className="brand-gradient absolute inset-x-0 -bottom-[13px] h-[3px] rounded-full" />
+                  )}
                 </Link>
               );
             })}
@@ -94,7 +95,7 @@ function AppBody({ children }: { children: React.ReactNode }) {
             onClick={() => setNavOpen((v) => !v)}
             aria-label="Toggle navigation"
             aria-expanded={navOpen}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-ink-dim hover:bg-panel md:hidden"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-stage-dim hover:bg-white/10 hover:text-stage-ink md:hidden"
           >
             <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
               <path d="M2.5 5.5h15a.75.75 0 000-1.5h-15a.75.75 0 000 1.5zm0 5.25h15a.75.75 0 000-1.5h-15a.75.75 0 000 1.5zm0 5.25h15a.75.75 0 000-1.5h-15a.75.75 0 000 1.5z" />
@@ -103,7 +104,7 @@ function AppBody({ children }: { children: React.ReactNode }) {
         </div>
 
         {navOpen && (
-          <nav className="flex flex-col gap-0.5 border-t border-line px-3 py-2 md:hidden">
+          <nav className="flex flex-col gap-0.5 border-t border-stage-line px-3 py-2 md:hidden">
             {NAV.map((item) => {
               const active = isActive(pathname, item.href);
               return (
@@ -112,8 +113,8 @@ function AppBody({ children }: { children: React.ReactNode }) {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   onClick={() => setNavOpen(false)}
-                  className={`rounded-md px-2.5 py-2 text-sm font-medium ${
-                    active ? "bg-panel text-ink" : "text-ink-dim hover:bg-panel hover:text-ink"
+                  className={`rounded-md px-3 py-2.5 text-[15px] font-medium ${
+                    active ? "bg-white/10 text-stage-ink" : "text-stage-dim hover:bg-white/5 hover:text-stage-ink"
                   }`}
                 >
                   {item.label}
@@ -126,7 +127,39 @@ function AppBody({ children }: { children: React.ReactNode }) {
 
       <main className={`min-w-0 flex-1 ${track ? "pb-20" : ""}`}>{children}</main>
 
+      <SiteFooter />
+
       <MiniPlayerBar />
     </div>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="bg-stage text-stage-dim">
+      <div className="brand-gradient h-[3px] w-full" />
+      <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 px-4 py-12 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+        <div className="flex max-w-sm flex-col gap-3">
+          <Link href="/" className="flex w-fit items-center gap-2.5 rounded-md">
+            <StreamethLogo className="h-7 w-auto" />
+            <span className="display text-lg tracking-[-0.03em] text-stage-ink">StreamETH</span>
+          </Link>
+          <p className="text-sm leading-relaxed">
+            Talks, panels and workshops from Ethereum conferences and meetups, recorded and
+            searchable in one place.
+          </p>
+        </div>
+        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          {NAV.map((item) => (
+            <Link key={item.href} href={item.href} className="hover:text-stage-ink">
+              {item.label}
+            </Link>
+          ))}
+          <a href="https://streameth.org" className="hover:text-stage-ink">
+            streameth.org
+          </a>
+        </nav>
+      </div>
+    </footer>
   );
 }

@@ -3,21 +3,23 @@ import type { Metadata } from "next";
 import { getDirectory, type DirectoryEntry } from "@/lib/directory";
 import { getOrganization, getOrgSessionCount } from "@/lib/data";
 import Avatar from "@/components/Avatar";
+import CoverImage from "@/components/CoverImage";
+import PageHero from "@/components/PageHero";
+import SectionHeader from "@/components/SectionHeader";
+import { latestCoverByChannel } from "@/lib/videoDb";
 import { getLiveYoutubeVideoCount } from "@/lib/youtube";
 
 export const metadata: Metadata = {
-  title: "Channels — StreamETH Light",
+  title: "Channels — StreamETH",
 };
 
 function coverageLabel(entry: DirectoryEntry): string {
-  if (entry.sessionCount > 0) {
-    return `${entry.sessionCount} video${entry.sessionCount === 1 ? "" : "s"}`;
-  }
-  if (entry.youtubeVideoCount > 0) return `${entry.youtubeVideoCount} on YouTube`;
+  const videos = entry.sessionCount + entry.youtubeVideoCount;
+  if (videos > 0) return `${videos.toLocaleString()} ${videos === 1 ? "video" : "videos"}`;
   if (entry.miraEventCount > 0) {
-    return `${entry.miraEventCount} tracked event${entry.miraEventCount === 1 ? "" : "s"}`;
+    return `${entry.miraEventCount} tracked ${entry.miraEventCount === 1 ? "event" : "events"}`;
   }
-  return "no video yet";
+  return "No recordings yet";
 }
 
 export default function ChannelsPage() {
@@ -44,55 +46,68 @@ export default function ChannelsPage() {
     .filter((e) => !(e.sessionCount > 0 || e.youtubeVideoCount > 0 || e.miraEventCount > 0))
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const covers = latestCoverByChannel();
+
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6">
-      <header className="flex flex-col gap-2">
-        <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">Channels</h1>
-        <p className="max-w-2xl text-sm text-ink-dim">
-          {active.length} channels with a video archive, plus {tracked.length} more
-          Ethereum-ecosystem organizations and conferences tracked here.
-        </p>
-      </header>
+    <div className="flex flex-1 flex-col">
+      <PageHero
+        title="Channels"
+        width="max-w-[1600px]"
+        meta={`${active.length} with recordings, ${tracked.length} more tracked`}
+        description="Every conference, meetup and community with talks in the archive, biggest first."
+      />
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-        {active.map((entry) => (
-          <Link
-            key={entry.slug}
-            href={`/${entry.slug}`}
-            className="group flex flex-col gap-3 rounded-lg border border-line bg-panel p-4 transition-all duration-200 hover:border-accent/50 hover:shadow-md"
-          >
-            <span className="relative w-fit">
-              <Avatar name={entry.name} className="h-12 w-12 text-sm" />
-              <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/5 transition-colors group-hover:ring-accent/40" />
-            </span>
-            <div>
-              <h2 className="text-sm font-medium text-ink group-hover:text-accent">
-                {entry.name}
-              </h2>
-              <p className="text-xs text-ink-faint">{coverageLabel(entry)}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {tracked.length > 0 && (
-        <div className="flex flex-col gap-3 border-t border-line pt-6">
-          <p className="text-xs uppercase tracking-wide text-ink-faint">
-            Tracked — no video yet
-          </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-2">
-            {tracked.map((entry) => (
-              <Link
-                key={entry.slug}
-                href={`/${entry.slug}`}
-                className="text-xs text-ink-faint hover:text-ink-dim"
-              >
-                {entry.name}
+      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-14 px-4 py-10 sm:px-6 sm:py-12">
+        <div className="grid grid-cols-1 gap-x-5 gap-y-8 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {active.map((entry) => {
+            const cover = covers.get(entry.slug);
+            return (
+              <Link key={entry.slug} href={`/${entry.slug}`} className="group flex flex-col gap-3 rounded-xl outline-offset-4">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-stage">
+                  <CoverImage
+                    src={cover}
+                    label={entry.name}
+                    className="opacity-90 transition duration-500 ease-out group-hover:scale-[1.04] group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stage/80 via-transparent to-transparent" />
+                  <span className="brand-gradient absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                  <Avatar
+                    name={entry.name}
+                    shape="square"
+                    className="absolute bottom-3 left-3 h-12 w-12 text-sm shadow-lg"
+                  />
+                </div>
+                <div className="flex min-w-0 flex-col">
+                  <h2 className="truncate text-base font-bold tracking-[-0.01em] text-ink transition-colors group-hover:text-accent">
+                    {entry.name}
+                  </h2>
+                  <p className="text-sm text-ink-faint">{coverageLabel(entry)}</p>
+                </div>
               </Link>
-            ))}
-          </div>
+            );
+          })}
         </div>
-      )}
+
+        {tracked.length > 0 && (
+          <div className="flex flex-col gap-5">
+            <SectionHeader
+              title="Tracked, not recorded yet"
+              detail="Ethereum organizations and conferences we follow that don't have public talks here."
+            />
+            <div className="flex flex-wrap gap-2">
+              {tracked.map((entry) => (
+                <Link
+                  key={entry.slug}
+                  href={`/${entry.slug}`}
+                  className="rounded-full bg-panel px-3.5 py-1.5 text-sm font-medium text-ink-dim ring-1 ring-line transition-colors hover:bg-stage hover:text-stage-ink hover:ring-stage"
+                >
+                  {entry.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

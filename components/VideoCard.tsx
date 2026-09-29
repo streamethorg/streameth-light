@@ -1,6 +1,7 @@
 import type { Session, Event, Organization } from "@/lib/types";
 import { formatDateShort, formatTimecode } from "@/lib/format";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
+import { usableImage } from "@/lib/data";
 import VideoTile from "./VideoTile";
 
 export default function VideoCard({
@@ -22,6 +23,7 @@ export default function VideoCard({
       coverLabel={session.name}
       durationLabel={duration !== undefined ? formatTimecode(duration) : undefined}
       orgName={org?.name}
+      orgLogo={usableImage(org?.logo)}
       title={session.name}
       metaLine={[event?.name ?? session.eventSlug, session.start ? formatDateShort(session.start) : ""]
         .filter(Boolean)

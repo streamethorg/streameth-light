@@ -3,6 +3,7 @@ import { DatabaseSync } from "node:sqlite";
 import { join } from "node:path";
 import { lazy } from "./lazy";
 import type { BrowseFilters, DurationBucket } from "./browseParams";
+import { getOrgLogo } from "./data";
 
 export interface UnifiedVideo {
   id: string;
@@ -11,6 +12,7 @@ export interface UnifiedVideo {
   description: string;
   orgName: string;
   orgSlug: string;
+  orgLogo: string | null;
   eventName: string;
   publishedAt: number;
   durationSeconds: number | null;
@@ -54,6 +56,7 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     description: row.description,
     orgName: row.org_name,
     orgSlug: row.org_slug,
+    orgLogo: getOrgLogo(row.org_slug) ?? null,
     eventName: row.event_name,
     publishedAt: row.published_at,
     durationSeconds: row.duration_seconds,
@@ -208,4 +211,66 @@ export function listChannelOptions(): OrgOption[] {
   // node:sqlite rows are null-prototype objects, which RSC can't serialize
   // across the client-component boundary — copy into plain objects.
   return rows.map((r) => ({ slug: r.slug, name: r.name }));
+}
+
+export interface ChannelShelf {
+  slug: string;
+  name: string;
+  logo: string | null;
+  total: number;
+  videos: UnifiedVideo[];
+}
+
+/** The biggest channels (the flagship conferences), each with its latest
+ * videos — the homepage's per-channel rows. Ordered by archive size rather
+ * than recency so they don't repeat the "Just added" row above them. */
+export function channelShelves(shelves = 4, perShelf = 12, minVideos = 12): ChannelShelf[] {
+  const db = getDb();
+  const channels = db
+    .prepare(
+      `SELECT org_slug AS slug, org_name AS name, COUNT(*) AS total
+       FROM videos
+       WHERE org_slug != ''
+       GROUP BY org_slug
+       HAVING SUM(cover_image IS NOT NULL) >= ?
+       ORDER BY total DESC
+       LIMIT ?`
+    )
+    .all(minVideos, shelves) as unknown as { slug: string; name: string; total: number }[];
+
+  const latest = db.prepare(
+    `SELECT * FROM videos WHERE org_slug = ? AND cover_image IS NOT NULL
+     ORDER BY published_at DESC LIMIT ?`
+  );
+
+  return channels.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    logo: getOrgLogo(c.slug) ?? null,
+    total: c.total,
+    videos: (latest.all(c.slug, perShelf) as unknown as VideoRow[]).map(rowToVideo),
+  }));
+}
+
+export function archiveStats(): { videos: number; channels: number } {
+  const db = getDb();
+  const row = db
+    .prepare("SELECT COUNT(*) AS videos, COUNT(DISTINCT org_slug) AS channels FROM videos")
+    .get() as unknown as { videos: number; channels: number };
+  return { videos: row.videos, channels: row.channels };
+}
+
+/** Each channel's newest video cover, for channel tiles that would otherwise
+ * have no imagery (the orgs' own logos are gone with the old CDN). */
+export function latestCoverByChannel(): Map<string, string> {
+  const db = getDb();
+  const rows = db
+    .prepare(
+      // SQLite's bare-column rule: with MAX(), the other selected columns
+      // come from the row holding that max — i.e. the newest video's cover.
+      `SELECT org_slug AS slug, cover_image AS cover, MAX(published_at)
+       FROM videos WHERE cover_image IS NOT NULL GROUP BY org_slug`
+    )
+    .all() as unknown as { slug: string; cover: string }[];
+  return new Map(rows.map((row) => [row.slug, row.cover]));
 }

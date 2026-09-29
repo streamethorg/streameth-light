@@ -43,14 +43,14 @@ export async function generateMetadata({
     const video = getVideoById(id);
     if (!video) return {};
     return {
-      title: `${video.title} — StreamETH Light`,
+      title: `${video.title} — StreamETH`,
       description: video.description?.slice(0, 200),
     };
   }
   const session = getSession(id);
   if (!session) return {};
   return {
-    title: `${session.name} — StreamETH Light`,
+    title: `${session.name} — StreamETH`,
     description: session.description?.slice(0, 200),
   };
 }
@@ -125,7 +125,7 @@ export default async function WatchPage({
               <Link
                 key={topic}
                 href={`/topics/${slugifyTopic(topic)}`}
-                className="rounded-sm border border-line px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-ink-faint transition-colors hover:border-accent/50 hover:text-ink"
+                className="rounded-full bg-panel-raised px-3 py-1 text-[13px] font-medium text-ink-dim transition-colors hover:bg-accent/10 hover:text-accent"
               >
                 {topic}
               </Link>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import TranscriptPanel from "@/components/TranscriptPanel";
 import Avatar from "@/components/Avatar";
+import SectionHeader from "@/components/SectionHeader";
 import { accentStyle } from "@/lib/format";
 
 /** The one shell every video-detail page renders through — StreamETH-hosted
@@ -44,54 +45,67 @@ export default function WatchLayout({
   related: ReactNode;
 }) {
   return (
-    <div
-      style={accentStyle(accentColor) as CSSProperties | undefined}
-      className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6"
-    >
-      {orgName && orgSlug && (
-        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-xs uppercase tracking-wide text-ink-faint">
-          <Link href={`/${orgSlug}`} className="flex items-center gap-2 transition-colors hover:text-accent">
-            <Avatar name={orgName} className="h-5 w-5 text-[9px] normal-case" />
-            {orgName}
-          </Link>
-          {crumb && (
-            <>
-              <span>/</span>
-              <span className="normal-case tracking-normal">{crumb}</span>
-            </>
+    <div style={accentStyle(accentColor) as CSSProperties | undefined} className="flex flex-1 flex-col">
+      <section className="bg-stage text-stage-ink">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 pb-6 pt-5 sm:px-6 sm:pb-8">
+          {orgName && orgSlug && (
+            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stage-dim">
+              <Link
+                href={`/${orgSlug}`}
+                className="flex items-center gap-2 rounded-md font-semibold text-stage-ink transition-colors hover:text-peach"
+              >
+                <Avatar name={orgName} shape="square" className="h-6 w-6 text-[9px]" />
+                {orgName}
+              </Link>
+              {crumb && (
+                <>
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-3.5 w-3.5 opacity-60" aria-hidden="true">
+                    <path d="M7.5 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span>{crumb}</span>
+                </>
+              )}
+            </nav>
+          )}
+
+          {player}
+        </div>
+      </section>
+
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-12 px-4 py-8 sm:px-6 sm:py-10">
+        <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2">
+            <h1 className="display max-w-4xl text-[clamp(1.75rem,3.4vw,2.75rem)] leading-[1.05] text-ink">
+              {title}
+            </h1>
+            {metaLine && <p className="tabular text-sm font-medium text-ink-faint">{metaLine}</p>}
+          </div>
+          {(actions || transcript) && (
+            <div className="flex flex-wrap items-center gap-2">
+              {actions}
+              {transcript && <TranscriptPanel text={transcript} />}
+            </div>
+          )}
+          {topics}
+          {description && (
+            <p className="max-w-[70ch] whitespace-pre-line text-[15px] leading-relaxed text-ink-dim">
+              {description}
+            </p>
           )}
         </div>
-      )}
 
-      {player}
-
-      <div className="flex flex-col gap-3 border-b border-line pb-6">
-        <h1 className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
-          {title}
-        </h1>
-        {(actions || transcript) && (
-          <div className="flex flex-wrap items-center gap-2">
-            {actions}
-            {transcript && <TranscriptPanel text={transcript} />}
+        {speakers && (
+          <div className="flex flex-col gap-4">
+            <SectionHeader title="Speakers" />
+            {speakers}
           </div>
         )}
-        {metaLine && <p className="font-mono text-xs tabular text-ink-faint">{metaLine}</p>}
-        {topics}
-        {description && (
-          <p className="max-w-3xl whitespace-pre-line text-sm leading-relaxed text-ink-dim">
-            {description}
-          </p>
-        )}
-      </div>
 
-      {speakers}
-
-      <div className="flex flex-col gap-4">
-        <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-          {relatedLabel}
-        </h2>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {related}
+        <div className="flex flex-col gap-5">
+          <SectionHeader title={relatedLabel} href={orgSlug ? `/${orgSlug}` : undefined} linkLabel="Open channel" />
+          <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {related}
+          </div>
         </div>
       </div>
     </div>

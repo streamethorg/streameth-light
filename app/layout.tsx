@@ -6,12 +6,13 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  axes: ["opsz"],
 });
 
 export const metadata: Metadata = {
-  title: "StreamETH Light",
+  title: "StreamETH — every talk from the Ethereum stage",
   description:
-    "A read-only archive of the StreamETH video library — talks, panels and livestreams from Ethereum ecosystem events.",
+    "Search and watch talks, panels and workshops from Ethereum conferences and meetups, down to the transcript.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

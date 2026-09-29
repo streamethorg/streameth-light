@@ -55,13 +55,13 @@ export default function SearchBar() {
       }}
       className="relative w-full max-w-xl"
     >
-      <div className="flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2 transition-shadow focus-within:border-accent focus-within:shadow-[0_0_0_3px_hsl(250_75%_45%/0.15)]">
+      <div className="group/search flex items-center gap-2.5 rounded-full bg-white/[0.08] px-4 py-2 ring-1 ring-inset ring-stage-line transition-colors hover:bg-white/[0.12] focus-within:bg-white focus-within:ring-white">
         <svg
           viewBox="0 0 20 20"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.75"
-          className="h-4 w-4 shrink-0 text-ink-faint"
+          className="h-4 w-4 shrink-0 text-stage-dim group-focus-within/search:text-ink-faint"
         >
           <circle cx="9" cy="9" r="6.5" />
           <path d="M18 18l-4-4" strokeLinecap="round" />
@@ -78,7 +78,7 @@ export default function SearchBar() {
             if (debounceRef.current) clearTimeout(debounceRef.current);
             debounceRef.current = setTimeout(() => push(next), 250);
           }}
-          className="w-full bg-transparent text-sm text-ink placeholder:text-ink-faint focus:outline-none"
+          className="w-full bg-transparent text-sm text-stage-ink placeholder:text-stage-dim focus:outline-none group-focus-within/search:text-ink group-focus-within/search:placeholder:text-ink-faint"
         />
       </div>
       {dropdownOpen && (

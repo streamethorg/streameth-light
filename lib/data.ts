@@ -3,6 +3,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import { lazy } from "./lazy";
 import type { Event, Organization, Session, Speaker, Stage } from "./types";
+import { cleanAutoLabels } from "./autoLabels.mjs";
 
 function load<T>(file: string): T {
   const raw = readFileSync(join(process.cwd(), "data", file), "utf-8");
@@ -122,6 +123,7 @@ export const getStore = lazy(() => {
       (s): Session => ({
         ...s,
         coverImage: cleanImageUrl(s.coverImage) ?? resolvedThumbnailForSession(s),
+        autoLabels: cleanAutoLabels(s.autoLabels),
         speakers: (s.speakers ?? []).map((sp) => ({
           ...sp,
           photo: cleanImageUrl(sp.photo),
@@ -213,6 +215,20 @@ export function listAllEvents(): Event[] {
 
 export function getOrganization(slug: string): Organization | undefined {
   return getStore().orgBySlug.get(slug);
+}
+
+/** An image URL, or undefined when missing or unusable: a dead-bucket URL
+ * (see cleanImageUrl) or an export placeholder like ".../events/undefined". */
+export function usableImage(url: string | undefined | null): string | undefined {
+  const cleaned = cleanImageUrl(url ?? undefined)?.trim();
+  if (!cleaned || !/^https?:\/\//.test(cleaned) || /\/(undefined|null)$/.test(cleaned)) {
+    return undefined;
+  }
+  return cleaned;
+}
+
+export function getOrgLogo(slug: string): string | undefined {
+  return usableImage(getStore().orgBySlug.get(slug)?.logo);
 }
 
 export function getOrgSessionCount(orgId: string): number {

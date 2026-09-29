@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import StreamethLogo from "@/components/StreamethLogo";
 import SearchSuggestions from "@/components/SearchSuggestions";
 import { useSearchSuggestions } from "@/lib/useSearchSuggestions";
 
+/** The homepage's big search field, sitting on the dark stage hero. */
 export default function HomeSearchHero() {
   const router = useRouter();
   const [value, setValue] = useState("");
@@ -26,50 +26,46 @@ export default function HomeSearchHero() {
   return (
     <form
       ref={containerRef}
+      role="search"
       onSubmit={(e) => {
         e.preventDefault();
-        if (value.trim()) router.push(`/?q=${encodeURIComponent(value)}`);
+        if (value.trim()) router.push(`/?q=${encodeURIComponent(value.trim())}`);
       }}
-      className="flex w-full max-w-xl flex-col items-center gap-6"
+      className="relative w-full"
     >
-      <div className="flex items-center gap-2.5">
-        <StreamethLogo className="h-8 w-auto" />
-        <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-          StreamETH
-        </h1>
+      <div className="flex w-full items-center gap-3 rounded-2xl bg-white py-2 pl-5 pr-2 shadow-[0_20px_60px_-20px_rgb(100_38_239/0.6)] ring-1 ring-white/20 transition-shadow focus-within:ring-4 focus-within:ring-accent/40">
+        <svg
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          className="h-5 w-5 shrink-0 text-ink-faint"
+        >
+          <circle cx="9" cy="9" r="6.5" />
+          <path d="M18 18l-4-4" strokeLinecap="round" />
+        </svg>
+        <input
+          type="search"
+          value={value}
+          aria-label="Search talks"
+          onFocus={() => setDropdownOpen(true)}
+          onChange={(e) => {
+            setValue(e.target.value);
+            setDropdownOpen(true);
+          }}
+          placeholder="Search talks, speakers, topics"
+          className="min-w-0 flex-1 bg-transparent py-2 text-base text-ink placeholder:text-ink-faint focus:outline-none sm:text-lg"
+        />
+        <button
+          type="submit"
+          className="shrink-0 rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-stage sm:px-5"
+        >
+          Search
+        </button>
       </div>
-      <div className="relative w-full">
-        <div className="flex w-full items-center gap-3 rounded-full border border-line bg-panel px-5 py-3.5 shadow-sm transition-shadow focus-within:border-accent focus-within:shadow-[0_0_0_3px_hsl(250_75%_45%/0.15)]">
-          <svg
-            viewBox="0 0 20 20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            className="h-5 w-5 shrink-0 text-ink-faint"
-          >
-            <circle cx="9" cy="9" r="6.5" />
-            <path d="M18 18l-4-4" strokeLinecap="round" />
-          </svg>
-          <input
-            autoFocus
-            type="search"
-            value={value}
-            onFocus={() => setDropdownOpen(true)}
-            onChange={(e) => {
-              setValue(e.target.value);
-              setDropdownOpen(true);
-            }}
-            placeholder="Search talks, speakers, topics..."
-            className="w-full bg-transparent text-base text-ink placeholder:text-ink-faint focus:outline-none"
-          />
-        </div>
-        {dropdownOpen && (
-          <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
-        )}
-      </div>
-      <p className="font-mono text-xs text-ink-faint">
-        Every talk, panel and livestream from the Ethereum events world.
-      </p>
+      {dropdownOpen && (
+        <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
+      )}
     </form>
   );
 }

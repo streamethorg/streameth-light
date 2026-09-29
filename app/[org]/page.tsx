@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Avatar from "@/components/Avatar";
+import PageHero, { HeroLink } from "@/components/PageHero";
+import SectionHeader from "@/components/SectionHeader";
 import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -8,6 +11,7 @@ import YoutubeEventTile from "@/components/YoutubeEventTile";
 import StreamethOrphanTile from "@/components/StreamethOrphanTile";
 import {
   getOrganization,
+  getOrgSessionCount,
   listEventsForOrg,
   listSessionsForEvent,
 } from "@/lib/data";
@@ -36,13 +40,13 @@ export async function generateMetadata({
   const org = getOrganization(orgSlug);
   if (org) {
     return {
-      title: `${org.name} — StreamETH Light`,
+      title: `${org.name} — StreamETH`,
       description: org.description?.slice(0, 200),
     };
   }
   const entry = getDirectoryEntry(orgSlug);
   if (!entry) return {};
-  return { title: `${entry.name} — StreamETH Light` };
+  return { title: `${entry.name} — StreamETH` };
 }
 
 export default async function OrgPage({
@@ -137,93 +141,68 @@ export default async function OrgPage({
       })),
     ].sort((a, b) => b.date - a.date);
 
+    const totalVideos = getOrgSessionCount(org._id) + extraVideos.length;
+
     return (
-      <div
-        style={accentStyle(org.accentColor) as CSSProperties | undefined}
-        className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-12 sm:px-6"
-      >
-        <div className="flex flex-col gap-4">
-          <Link
-            href="/"
-            className="w-fit font-mono text-xs uppercase tracking-wide text-ink-faint transition-colors hover:text-ink-dim"
-          >
-            ← All channels
-          </Link>
-          <div className="flex items-center gap-4">
-            {org.logo && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={org.logo}
-                alt=""
-                className="h-12 w-auto max-w-[160px] object-contain object-left"
-              />
-            )}
-            <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">
-              {org.name}
-            </h1>
-          </div>
-          {org.description && (
-            <p className="max-w-2xl text-sm leading-relaxed text-ink-dim">
-              {org.description}
+      <div style={accentStyle(org.accentColor) as CSSProperties | undefined} className="flex flex-1 flex-col">
+        <PageHero
+          back={{ href: "/channels", label: "All channels" }}
+          leading={<Avatar name={org.name} shape="square" className="h-20 w-20 text-2xl sm:h-24 sm:w-24" />}
+          title={org.name}
+          meta={
+            <>
+              {totalVideos.toLocaleString()} videos, {tiles.length}{" "}
+              {tiles.length === 1 ? "event" : "events"}
+            </>
+          }
+          description={org.description}
+          actions={
+            directoryEntry?.youtubeChannel && (
+              <HeroLink href={directoryEntry.youtubeChannel}>YouTube channel</HeroLink>
+            )
+          }
+        />
+
+        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
+          <SectionHeader title="Events" detail="Newest first" />
+
+          {tiles.length === 0 ? (
+            <p className="rounded-2xl bg-panel py-12 text-center text-sm text-ink-faint ring-1 ring-line">
+              No events here yet.
             </p>
-          )}
-          {directoryEntry?.youtubeChannel && (
-            <a
-              href={directoryEntry.youtubeChannel}
-              target="_blank"
-              rel="noreferrer"
-              className="w-fit rounded-sm border border-line px-3 py-1.5 font-mono text-xs text-ink-dim transition-colors hover:border-accent/50 hover:text-ink"
-            >
-              YouTube ↗
-            </a>
+          ) : (
+            <div className="grid grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+              {tiles.map((tile) => {
+                if (tile.kind === "streameth") {
+                  const extraCount =
+                    (tile.extraGroup?.videos.length ?? 0) +
+                    (tile.extraSessionGroup?.sessions.length ?? 0);
+                  return (
+                    <EventCard
+                      key={tile.key}
+                      event={events.find((e) => e._id === tile.key)!}
+                      orgSlug={org.slug}
+                      count={listSessionsForEvent(tile.key).length}
+                      extraVideoCount={extraCount}
+                      fallbackCover={
+                        tile.extraGroup?.videos[0]?.thumbnail ??
+                        tile.extraSessionGroup?.sessions[0]?.coverImage
+                      }
+                    />
+                  );
+                }
+                if (tile.kind === "youtube") {
+                  return (
+                    <YoutubeEventTile key={tile.key} orgSlug={org.slug} group={tile.group} />
+                  );
+                }
+                return (
+                  <StreamethOrphanTile key={tile.key} orgSlug={org.slug} group={tile.group} />
+                );
+              })}
+            </div>
           )}
         </div>
-
-        <div className="flex items-baseline justify-between border-b border-line pb-3">
-          <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-            Events
-          </h2>
-          <span className="font-mono text-xs tabular text-ink-faint">
-            {String(tiles.length).padStart(2, "0")} total
-          </span>
-        </div>
-
-        {tiles.length === 0 ? (
-          <p className="py-12 text-center font-mono text-sm text-ink-faint">
-            No events found.
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {tiles.map((tile) => {
-              if (tile.kind === "streameth") {
-                const extraCount =
-                  (tile.extraGroup?.videos.length ?? 0) +
-                  (tile.extraSessionGroup?.sessions.length ?? 0);
-                return (
-                  <EventCard
-                    key={tile.key}
-                    event={events.find((e) => e._id === tile.key)!}
-                    orgSlug={org.slug}
-                    count={listSessionsForEvent(tile.key).length}
-                    extraVideoCount={extraCount}
-                    fallbackCover={
-                      tile.extraGroup?.videos[0]?.thumbnail ??
-                      tile.extraSessionGroup?.sessions[0]?.coverImage
-                    }
-                  />
-                );
-              }
-              if (tile.kind === "youtube") {
-                return (
-                  <YoutubeEventTile key={tile.key} orgSlug={org.slug} group={tile.group} />
-                );
-              }
-              return (
-                <StreamethOrphanTile key={tile.key} orgSlug={org.slug} group={tile.group} />
-              );
-            })}
-          </div>
-        )}
       </div>
     );
   }
@@ -237,97 +216,77 @@ export default async function OrgPage({
   const hasAnyContent = videos.length > 0 || trackedEvents.length > 0;
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-4 py-12 sm:px-6">
-      <div className="flex flex-col gap-4">
-        <Link
-          href="/"
-          className="w-fit font-mono text-xs uppercase tracking-wide text-ink-faint transition-colors hover:text-ink-dim"
-        >
-          ← All channels
-        </Link>
-        <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">
-          {entry.name}
-        </h1>
-        {entry.location && (
-          <p className="font-mono text-xs uppercase tracking-wide text-ink-faint">
-            {entry.location}
-          </p>
+    <div className="flex flex-1 flex-col">
+      <PageHero
+        back={{ href: "/channels", label: "All channels" }}
+        leading={<Avatar name={entry.name} shape="square" className="h-20 w-20 text-2xl sm:h-24 sm:w-24" />}
+        title={entry.name}
+        meta={
+          [
+            entry.location,
+            videos.length > 0 ? `${videos.length.toLocaleString()} videos` : "",
+          ]
+            .filter(Boolean)
+            .join(", ") || undefined
+        }
+        description={
+          entry.onStreamETH && videos.length === 0
+            ? "Has a StreamETH page, but no public sessions yet."
+            : undefined
+        }
+        actions={
+          (entry.website || entry.youtubeChannel) && (
+            <>
+              {entry.website && <HeroLink href={entry.website}>Website</HeroLink>}
+              {entry.youtubeChannel && (
+                <HeroLink href={entry.youtubeChannel}>YouTube channel</HeroLink>
+              )}
+            </>
+          )
+        }
+      />
+
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-12 px-4 py-10 sm:px-6 sm:py-12">
+        {videoGroups.length > 0 && (
+          <div className="flex flex-col gap-6">
+            <SectionHeader title="Events" detail={`${videoGroups.length} grouped from the channel's uploads`} />
+            <div className="grid grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+              {videoGroups.map((group) => (
+                <YoutubeEventTile key={group.slug} orgSlug={entry.slug} group={group} />
+              ))}
+            </div>
+          </div>
         )}
-        <div className="flex flex-wrap items-center gap-3 pt-1">
-          {entry.website && (
-            <a
-              href={entry.website}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-sm border border-line px-3 py-1.5 font-mono text-xs text-ink-dim transition-colors hover:border-accent/50 hover:text-ink"
+
+        {trackedEvents.length > 0 && (
+          <div className="flex flex-col gap-4">
+            <SectionHeader
+              title="Side events"
+              detail={`Community-tracked events around ${entry.name}. Not official programming, and not recorded.`}
+            />
+            <div className="overflow-hidden rounded-2xl bg-panel ring-1 ring-line">
+              {trackedEvents.map((e) => (
+                <TrackedEventRow key={e.id} event={e} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {!hasAnyContent && (
+          <div className="flex flex-col items-center gap-3 rounded-2xl bg-panel px-6 py-14 text-center ring-1 ring-line">
+            <p className="text-lg font-bold tracking-[-0.01em] text-ink">No recordings yet</p>
+            <p className="max-w-md text-sm text-ink-dim">
+              We track {entry.name}, but haven&apos;t found any published talks or side events for it.
+            </p>
+            <Link
+              href="/channels"
+              className="mt-2 rounded-full bg-stage px-5 py-2.5 text-sm font-semibold text-stage-ink transition-colors hover:bg-accent"
             >
-              Website ↗
-            </a>
-          )}
-          {entry.youtubeChannel && (
-            <a
-              href={entry.youtubeChannel}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-sm border border-line px-3 py-1.5 font-mono text-xs text-ink-dim transition-colors hover:border-accent/50 hover:text-ink"
-            >
-              YouTube ↗
-            </a>
-          )}
-          {entry.onStreamETH && (
-            <span className="rounded-sm border border-accent/40 px-3 py-1.5 font-mono text-xs text-accent">
-              Has a StreamETH page — no public sessions yet
-            </span>
-          )}
-        </div>
+              Browse other channels
+            </Link>
+          </div>
+        )}
       </div>
-
-      {videoGroups.length > 0 && (
-        <div className="flex flex-col gap-4">
-          <div className="flex items-baseline justify-between border-b border-line pb-3">
-            <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-              Events
-            </h2>
-            <span className="font-mono text-xs tabular text-ink-faint">
-              {String(videoGroups.length).padStart(2, "0")} total
-            </span>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {videoGroups.map((group) => (
-              <YoutubeEventTile key={group.slug} orgSlug={entry.slug} group={group} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {trackedEvents.length > 0 && (
-        <div className="flex flex-col gap-4">
-          <div className="flex items-baseline justify-between border-b border-line pb-3">
-            <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-              Side events
-            </h2>
-            <span className="font-mono text-xs tabular text-ink-faint">
-              {String(trackedEvents.length).padStart(2, "0")} total
-            </span>
-          </div>
-          <p className="font-mono text-xs text-ink-faint">
-            Community-tracked side events happening around {entry.name}, via
-            Mira — not official programming, no video.
-          </p>
-          <div>
-            {trackedEvents.map((e) => (
-              <TrackedEventRow key={e.id} event={e} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {!hasAnyContent && (
-        <p className="py-12 text-center font-mono text-sm text-ink-faint">
-          No video archive here yet — no sessions on StreamETH, no YouTube
-          channel found, and no side events tracked from other sources.
-        </p>
-      )}
     </div>
   );
 }

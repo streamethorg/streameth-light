@@ -11,11 +11,11 @@ export default function UnifiedVideoCard({ video }: { video: UnifiedVideo }) {
       durationLabel={
         video.durationSeconds !== null ? formatTimecode(video.durationSeconds) : undefined
       }
-      sourceBadge={video.source === "youtube" ? "YouTube" : undefined}
       orgName={video.orgName}
+      orgLogo={video.orgLogo}
       title={video.title}
       metaLine={[
-        video.eventName || (video.source === "youtube" ? "YouTube" : ""),
+        video.eventName,
         video.publishedAt ? formatDateShort(video.publishedAt) : "",
       ]
         .filter(Boolean)

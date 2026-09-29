@@ -1,16 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ComponentProps } from "react";
+import SectionHeader from "@/components/SectionHeader";
 
 /** Horizontal scroll track with prev/next buttons for pointer users (a
  * mouse wheel can't scroll sideways, so without these the off-screen cards
  * are effectively unreachable on desktop). Touch users just swipe; the
  * buttons are hidden below `sm` and whenever there's nothing to scroll to. */
 export default function CarouselTrack({
-  title,
   children,
-}: {
-  title: string;
+  ...header
+}: Omit<ComponentProps<typeof SectionHeader>, "action"> & {
   children: React.ReactNode;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -44,18 +44,20 @@ export default function CarouselTrack({
   }
 
   return (
-    <div className="flex w-full flex-col gap-3">
-      <div className="flex items-center justify-between gap-3">
-        <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">{title}</h2>
-        <div className="hidden items-center gap-1.5 sm:flex">
-          <ArrowButton label="Scroll back" disabled={!canPrev} onClick={() => scrollByPage(-1)}>
-            <path d="M12.5 15l-5-5 5-5" />
-          </ArrowButton>
-          <ArrowButton label="Scroll forward" disabled={!canNext} onClick={() => scrollByPage(1)}>
-            <path d="M7.5 5l5 5-5 5" />
-          </ArrowButton>
-        </div>
-      </div>
+    <div className="flex w-full flex-col gap-4">
+      <SectionHeader
+        {...header}
+        action={
+          <div className="hidden items-center gap-1.5 sm:flex">
+            <ArrowButton label="Scroll back" disabled={!canPrev} onClick={() => scrollByPage(-1)}>
+              <path d="M12.5 15l-5-5 5-5" />
+            </ArrowButton>
+            <ArrowButton label="Scroll forward" disabled={!canNext} onClick={() => scrollByPage(1)}>
+              <path d="M7.5 5l5 5-5 5" />
+            </ArrowButton>
+          </div>
+        }
+      />
       <div
         ref={trackRef}
         className="-mx-4 flex snap-x gap-4 overflow-x-auto scroll-px-4 px-4 pb-2 [scrollbar-width:none] sm:-mx-6 sm:scroll-px-6 sm:px-6"
@@ -83,7 +85,7 @@ function ArrowButton({
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
-      className="flex h-8 w-8 items-center justify-center rounded-full border border-line bg-panel text-ink-dim transition-colors hover:text-ink enabled:hover:border-ink-faint disabled:cursor-default disabled:opacity-40"
+      className="flex h-9 w-9 items-center justify-center rounded-full bg-panel text-ink shadow-sm ring-1 ring-line transition-colors enabled:hover:bg-stage enabled:hover:text-stage-ink enabled:hover:ring-stage disabled:cursor-default disabled:opacity-35"
     >
       <svg
         viewBox="0 0 20 20"

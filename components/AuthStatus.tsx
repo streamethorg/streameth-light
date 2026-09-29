@@ -22,14 +22,14 @@ export default function AuthStatus() {
   }, [supabase]);
 
   if (email === undefined) {
-    return <div className="h-9 w-16 shrink-0" />;
+    return <div className="h-9 w-20 shrink-0" />;
   }
 
   if (!email) {
     return (
       <Link
         href="/signin"
-        className="shrink-0 whitespace-nowrap rounded-md border border-line px-3 py-1.5 text-sm font-medium text-ink-dim hover:bg-panel hover:text-ink"
+        className="shrink-0 whitespace-nowrap rounded-full bg-white px-4 py-2 text-sm font-semibold text-stage transition-colors hover:bg-peach"
       >
         Sign in
       </Link>
@@ -47,7 +47,7 @@ export default function AuthStatus() {
           await supabase.auth.signOut();
           router.refresh();
         }}
-        className="whitespace-nowrap rounded-md border border-line px-3 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
+        className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-stage-dim transition-colors hover:bg-white/10 hover:text-stage-ink"
       >
         Sign out
       </button>

@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
-/* Ported from the real streameth-platform brand
-   (packages/app/app/globals.css + tailwind.config.js in streameth-platform):
-   light, off-white background, Inter, and the actual primary purple —
-   not an invented look for this archive. */
+/* The streameth-platform brand (light UI, Inter, purple primary), pushed
+   further: the logo's own purple→peach gradient (#6426EF → #FF9976) is the
+   signature, and a deep indigo "stage" color carries the dark hero/footer
+   bands — the look of a conference stage under lights, which is what every
+   video here was recorded on. Neutrals are tinted violet, not generic slate. */
 :root {
-  --void: hsl(210 40% 98%);
-  --panel: hsl(0 0% 100%);
-  --panel-raised: hsl(210 40% 96%);
-  --line: hsl(214.3 31.8% 91.4%);
-  --ink: #334155;
-  --ink-dim: hsl(215 19% 35%);
-  --ink-faint: hsl(215 20% 65%);
-  --accent: hsl(250 75% 45%);
-  --accent-ink: hsl(0 0% 100%);
-  --tag-cyan: hsl(190 70% 45%);
-  --tag-yellow: hsl(42 90% 50%);
-  --tag-magenta: hsl(330 70% 50%);
-  --tag-green: hsl(150 55% 40%);
-  --error: hsl(0 65% 45%);
+  --void: #f6f5fb;
+  --panel: #ffffff;
+  --panel-raised: #eeecf6;
+  --line: #e4e1ef;
+  --ink: #1b1537;
+  --ink-dim: #4e4969;
+  --ink-faint: #85819e;
+  --accent: #6426ef;
+  --accent-ink: #ffffff;
+  --peach: #ff9976;
+  --stage: #140b36;
+  --stage-raised: #211650;
+  --stage-line: rgb(255 255 255 / 0.12);
+  --stage-ink: #f4f1ff;
+  --stage-dim: #b7afd8;
+  --error: #c2352b;
 }
 
 @theme inline {
@@ -31,10 +34,12 @@
   --color-ink-faint: var(--ink-faint);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
-  --color-tag-cyan: var(--tag-cyan);
-  --color-tag-yellow: var(--tag-yellow);
-  --color-tag-magenta: var(--tag-magenta);
-  --color-tag-green: var(--tag-green);
+  --color-peach: var(--peach);
+  --color-stage: var(--stage);
+  --color-stage-raised: var(--stage-raised);
+  --color-stage-line: var(--stage-line);
+  --color-stage-ink: var(--stage-ink);
+  --color-stage-dim: var(--stage-dim);
   --color-error: var(--error);
   --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
@@ -60,6 +65,33 @@ body {
   color: var(--accent-ink);
 }
 
+/* Headline voice: Inter at its display optical size, heavy and tightly set.
+   Used for page titles and the home hero — the one place type gets loud. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "opsz" 32;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+/* The logo's gradient, as text or as a hairline. */
+.brand-gradient {
+  background-image: linear-gradient(90deg, #6426ef 0%, #b35fd0 55%, #ff9976 100%);
+}
+.brand-gradient-text {
+  background-image: linear-gradient(90deg, #8c5bff 0%, #d27bc4 55%, #ff9976 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .tabular {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
@@ -82,7 +114,7 @@ body {
   height: 12px;
   width: 12px;
   border-radius: 9999px;
-  background: var(--accent);
+  background: var(--peach);
   opacity: 0;
   transition: opacity 0.15s;
 }
@@ -95,7 +127,7 @@ body {
   width: 12px;
   border: none;
   border-radius: 9999px;
-  background: var(--accent);
+  background: var(--peach);
   opacity: 0;
   transition: opacity 0.15s;
 }

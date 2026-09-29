@@ -1,12 +1,14 @@
 /** Shared visual language for the small action buttons that sit around a
  * video (Save, Download, Show transcript, Listen, Switch to video), so they
- * read as one consistent button system instead of a mix of ad-hoc styles. */
-export function actionButtonClass(active = false) {
+ * read as one consistent button system instead of a mix of ad-hoc styles.
+ * `stage` tone is for buttons sitting on the dark band behind the player. */
+export function actionButtonClass(active = false, tone: "light" | "stage" = "light") {
   const base =
-    "flex w-fit shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm transition-colors";
-  return active
-    ? `${base} border-accent bg-accent/10 text-accent`
-    : `${base} border-line text-ink-dim hover:bg-panel hover:text-ink`;
+    "flex w-fit shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors";
+  if (active) return `${base} bg-accent text-accent-ink hover:bg-accent/90`;
+  return tone === "stage"
+    ? `${base} bg-white/10 text-stage-ink ring-1 ring-inset ring-stage-line hover:bg-white hover:text-stage`
+    : `${base} bg-panel text-ink shadow-sm ring-1 ring-line hover:bg-stage hover:text-stage-ink hover:ring-stage`;
 }
 
 export function BookmarkIcon({ filled = false }: { filled?: boolean }) {
