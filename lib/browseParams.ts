@@ -73,6 +73,21 @@ export function filtersFromParams(params: URLSearchParams): BrowseFilters {
   };
 }
 
+/** True when no search/filter is applied — the homepage shows its search
+ * hero instead of a results grid (sort alone doesn't count as a search). */
+export function isIdleFilters(filters: BrowseFilters): boolean {
+  return (
+    !filters.q.trim() &&
+    filters.orgIds.length === 0 &&
+    filters.eventIds.length === 0 &&
+    !filters.speaker &&
+    !filters.topic &&
+    !filters.duration &&
+    !filters.dateFrom &&
+    !filters.dateTo
+  );
+}
+
 export function paramsFromFilters(filters: BrowseFilters): URLSearchParams {
   const params = new URLSearchParams();
   if (filters.q) params.set("q", filters.q);

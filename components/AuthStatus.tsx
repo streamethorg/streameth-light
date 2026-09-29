@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import Avatar from "@/components/Avatar";
 
 export default function AuthStatus() {
   const router = useRouter();
@@ -21,15 +22,20 @@ export default function AuthStatus() {
   }, [supabase]);
 
   if (email === undefined) {
-    return <div className="h-9 w-16 shrink-0" />;
+    return <div className="h-9 w-20 shrink-0" />;
   }
 
   if (!email) {
     return (
       <Link
         href="/signin"
-        className="shrink-0 whitespace-nowrap rounded-md border border-line px-3 py-1.5 text-sm font-medium text-ink-dim hover:bg-panel hover:text-ink"
+        className="flex h-9 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-line pl-2 pr-3 text-sm font-semibold text-accent transition-colors hover:border-accent/20 hover:bg-accent/10"
       >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="10" r="3" />
+          <path d="M6.5 18.2a6.5 6.5 0 0111 0" strokeLinecap="round" />
+        </svg>
         Sign in
       </Link>
     );
@@ -37,19 +43,16 @@ export default function AuthStatus() {
 
   return (
     <div className="flex shrink-0 items-center gap-2">
-      <Link
-        href="/saved"
-        className="whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm font-medium text-ink-dim hover:bg-panel hover:text-ink"
-      >
-        Saved
-      </Link>
+      <span title={`Signed in as ${email}`} className="hidden sm:flex">
+        <Avatar name={email} channel className="h-8 w-8 text-[11px]" />
+      </span>
       <button
         type="button"
         onClick={async () => {
           await supabase.auth.signOut();
           router.refresh();
         }}
-        className="whitespace-nowrap rounded-md border border-line px-3 py-1.5 text-sm text-ink-dim hover:bg-panel hover:text-ink"
+        className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-ink-dim transition-colors hover:bg-panel-raised hover:text-ink"
       >
         Sign out
       </button>

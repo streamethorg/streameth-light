@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getDirectory, type DirectoryEntry } from "@/lib/directory";
 import { getOrganization, getOrgSessionCount } from "@/lib/data";
 import Avatar from "@/components/Avatar";
+import PageHero from "@/components/PageHero";
+import SectionHeader from "@/components/SectionHeader";
 import { getLiveYoutubeVideoCount } from "@/lib/youtube";
 import { buildMetadata } from "@/lib/social";
 
@@ -11,14 +13,12 @@ export const metadata = buildMetadata({
 });
 
 function coverageLabel(entry: DirectoryEntry): string {
-  if (entry.sessionCount > 0) {
-    return `${entry.sessionCount} video${entry.sessionCount === 1 ? "" : "s"}`;
-  }
-  if (entry.youtubeVideoCount > 0) return `${entry.youtubeVideoCount} on YouTube`;
+  const videos = entry.sessionCount + entry.youtubeVideoCount;
+  if (videos > 0) return `${videos.toLocaleString()} ${videos === 1 ? "video" : "videos"}`;
   if (entry.miraEventCount > 0) {
-    return `${entry.miraEventCount} tracked event${entry.miraEventCount === 1 ? "" : "s"}`;
+    return `${entry.miraEventCount} tracked ${entry.miraEventCount === 1 ? "event" : "events"}`;
   }
-  return "no video yet";
+  return "No recordings yet";
 }
 
 export default function ChannelsPage() {
@@ -46,54 +46,55 @@ export default function ChannelsPage() {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6">
-      <header className="flex flex-col gap-2">
-        <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">Channels</h1>
-        <p className="max-w-2xl text-sm text-ink-dim">
-          {active.length} channels with a video archive, plus {tracked.length} more
-          Ethereum-ecosystem organizations and conferences tracked here.
-        </p>
-      </header>
+    <div className="flex flex-1 flex-col">
+      <PageHero
+        title="Channels"
+        meta={`${active.length} with recordings • ${tracked.length} more tracked`}
+      />
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-        {active.map((entry) => (
-          <Link
-            key={entry.slug}
-            href={`/${entry.slug}`}
-            className="group flex flex-col gap-3 rounded-lg border border-line bg-panel p-4 transition-all duration-200 hover:border-accent/50 hover:shadow-md"
-          >
-            <span className="relative w-fit">
-              <Avatar name={entry.name} className="h-12 w-12 text-sm" />
-              <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/5 transition-colors group-hover:ring-accent/40" />
-            </span>
-            <div>
-              <h2 className="text-sm font-medium text-ink group-hover:text-accent">
-                {entry.name}
-              </h2>
-              <p className="text-xs text-ink-faint">{coverageLabel(entry)}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {tracked.length > 0 && (
-        <div className="flex flex-col gap-3 border-t border-line pt-6">
-          <p className="text-xs uppercase tracking-wide text-ink-faint">
-            Tracked — no video yet
-          </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-2">
-            {tracked.map((entry) => (
-              <Link
-                key={entry.slug}
-                href={`/${entry.slug}`}
-                className="text-xs text-ink-faint hover:text-ink-dim"
-              >
-                {entry.name}
-              </Link>
-            ))}
-          </div>
+      <div className="flex flex-1 flex-col gap-10 px-4 py-8 sm:px-6">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+          {active.map((entry) => (
+            <Link
+              key={entry.slug}
+              href={`/${entry.slug}`}
+              className="group flex flex-col items-center gap-3 rounded-xl p-2 text-center outline-offset-4"
+            >
+              <Avatar
+                name={entry.name}
+                channel
+                className="h-24 w-24 text-2xl transition-transform duration-200 group-hover:scale-105 sm:h-32 sm:w-32 sm:text-3xl"
+              />
+              <div className="flex min-w-0 max-w-full flex-col gap-0.5">
+                <h2 className="truncate text-base font-semibold text-ink">{entry.name}</h2>
+                <p className="truncate text-xs text-ink-dim">
+                  @{entry.slug} • {coverageLabel(entry)}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
-      )}
+
+        {tracked.length > 0 && (
+          <div className="flex flex-col gap-5">
+            <SectionHeader
+              title="Tracked, not recorded yet"
+              detail="Ethereum organizations and conferences we follow that don't have public talks here."
+            />
+            <div className="flex flex-wrap gap-2">
+              {tracked.map((entry) => (
+                <Link
+                  key={entry.slug}
+                  href={`/${entry.slug}`}
+                  className="flex h-8 items-center rounded-lg bg-panel-raised px-3 text-sm font-medium text-ink transition-colors hover:bg-panel-hover"
+                >
+                  {entry.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

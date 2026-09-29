@@ -4,6 +4,7 @@ import { join } from "path";
 import { lazy } from "./lazy";
 import { HIDDEN_ORG_SLUGS, isJunkSession } from "./curation";
 import type { Event, Organization, Session, Speaker, Stage } from "./types";
+import { cleanAutoLabels } from "./autoLabels.mjs";
 
 function load<T>(file: string): T {
   const raw = readFileSync(join(process.cwd(), "data", file), "utf-8");
@@ -178,6 +179,7 @@ export const getStore = lazy(() => {
         ...s,
         name: cleanTitle(s.name),
         coverImage: cleanImageUrl(s.coverImage) ?? resolvedThumbnailForSession(s),
+        autoLabels: cleanAutoLabels(s.autoLabels),
         transcripts: getTranscripts()[s._id] ?? undefined,
         speakers: (s.speakers ?? [])
           .filter((sp) => !isPlaceholderSpeakerName(sp.name))
@@ -272,6 +274,16 @@ export function listAllEvents(): Event[] {
 
 export function getOrganization(slug: string): Organization | undefined {
   return getStore().orgBySlug.get(slug);
+}
+
+/** An image URL, or undefined when missing or unusable: a dead-bucket URL
+ * (see cleanImageUrl) or an export placeholder like ".../events/undefined". */
+export function usableImage(url: string | undefined | null): string | undefined {
+  const cleaned = cleanImageUrl(url ?? undefined)?.trim();
+  if (!cleaned || !/^https?:\/\//.test(cleaned) || /\/(undefined|null)$/.test(cleaned)) {
+    return undefined;
+  }
+  return cleaned;
 }
 
 export function getOrgSessionCount(orgId: string): number {

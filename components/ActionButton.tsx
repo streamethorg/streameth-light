@@ -1,12 +1,16 @@
 /** Shared visual language for the small action buttons that sit around a
  * video (Save, Download, Show transcript, Listen, Switch to video), so they
- * read as one consistent button system instead of a mix of ad-hoc styles. */
+ * read as one consistent button system — YouTube's grey pills. */
+/** Element id of the watch page's actions row, which player components
+ * portal their Listen button into. */
+export const WATCH_ACTIONS_SLOT_ID = "watch-actions-slot";
+
 export function actionButtonClass(active = false) {
   const base =
-    "flex w-fit shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm transition-colors";
+    "flex h-9 w-fit shrink-0 items-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors";
   return active
-    ? `${base} border-accent bg-accent/10 text-accent`
-    : `${base} border-line text-ink-dim hover:bg-panel hover:text-ink`;
+    ? `${base} bg-stage text-stage-ink hover:bg-stage-raised`
+    : `${base} bg-panel-raised text-ink hover:bg-panel-hover`;
 }
 
 export function BookmarkIcon({ filled = false }: { filled?: boolean }) {

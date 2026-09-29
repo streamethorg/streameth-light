@@ -7,6 +7,7 @@
 import { DatabaseSync } from "node:sqlite";
 import { readFileSync, existsSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
+import { cleanAutoLabels } from "../lib/autoLabels.mjs";
 
 const DATA_DIR = join(process.cwd(), "data");
 const DB_PATH = join(DATA_DIR, "streameth.db");
@@ -327,7 +328,7 @@ for (const s of sessions) {
   // extract (speaker bios, track/talk type, stage, event & org context) so
   // a query can match on it without it cluttering the video card/detail UI.
   const speakerNames = speakerList.map((sp) => sp.name).filter(Boolean).join(", ");
-  const topicsDisplay = (s.autoLabels ?? []).join(", ");
+  const topicsDisplay = cleanAutoLabels(s.autoLabels).join(", ");
   const description = [s.description, s.aiDescription].filter(Boolean).join(" ");
   const duration =
     s.playback?.duration ??

@@ -1,4 +1,4 @@
-import { initials, tagColorFor } from "@/lib/format";
+import { initials } from "@/lib/format";
 
 // Deterministic per-label "waveform" so the same session/event always
 // renders the same pattern (no layout shift, no client JS needed).
@@ -15,6 +15,9 @@ function barHeights(seed: string, count: number): number[] {
   return bars;
 }
 
+/** Stand-in cover for a talk with no thumbnail: the dark stage color with
+ * an audio-waveform in the brand gradient, so missing covers still look
+ * like part of the archive rather than a broken image. */
 export default function CoverPlaceholder({
   label,
   className = "",
@@ -23,30 +26,22 @@ export default function CoverPlaceholder({
   className?: string;
 }) {
   const seed = label || "streameth";
-  const bars = barHeights(seed, 28);
-  const color = tagColorFor(seed);
+  const bars = barHeights(seed, 32);
 
   return (
     <div
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-panel-raised ${className}`}
+      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-stage ${className}`}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(135deg, var(--ink) 0px, var(--ink) 1px, transparent 1px, transparent 14px)",
-        }}
-      />
-      <div className="absolute inset-x-0 bottom-0 flex h-1/2 items-end justify-center gap-[3px] px-4 pb-4 opacity-35">
+      <div className="absolute inset-x-0 bottom-0 flex h-3/5 items-end justify-center gap-[3px] px-5 pb-5">
         {bars.map((h, i) => (
           <span
             key={i}
-            className="w-full max-w-[3px] rounded-t-[1px]"
-            style={{ height: `${h}%`, backgroundColor: `var(--color-${color})` }}
+            className="brand-gradient w-full max-w-[4px] rounded-full opacity-50"
+            style={{ height: `${h}%`, backgroundSize: `${bars.length * 7}px 100%`, backgroundPosition: `${-i * 7}px 0` }}
           />
         ))}
       </div>
-      <span className="relative font-display text-lg font-bold tracking-tight text-ink-faint">
+      <span className="relative font-display text-xl font-extrabold tracking-tight text-stage-ink/80">
         {initials(label)}
       </span>
     </div>

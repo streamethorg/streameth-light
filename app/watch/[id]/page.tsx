@@ -123,14 +123,14 @@ export default async function WatchPage({
       topics={
         session.autoLabels &&
         session.autoLabels.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-x-2">
             {session.autoLabels.map((topic) => (
               <Link
                 key={topic}
                 href={`/topics/${slugifyTopic(topic)}`}
-                className="rounded-sm border border-line px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-ink-faint transition-colors hover:border-accent/50 hover:text-ink"
+                className="rounded-sm font-medium text-accent hover:underline"
               >
-                {topic}
+                #{topic.replace(/\s+/g, "")}
               </Link>
             ))}
           </div>
@@ -141,7 +141,7 @@ export default async function WatchPage({
       speakers={
         session.speakers &&
         session.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
             {session.speakers.map((sp) => (
               <SpeakerCard key={sp._id} speaker={sp} />
             ))}
@@ -157,6 +157,7 @@ export default async function WatchPage({
             session={s}
             event={relatedEvent}
             org={getOrgForEvent(relatedEvent)}
+            layout="compact"
           />
         );
       })}
@@ -206,7 +207,7 @@ function YoutubeWatchPage({ id }: { id: string }) {
       transcript={video.transcript}
       speakers={
         video.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
             {video.speakers.map((name) => (
               <SpeakerCard key={name} speaker={{ _id: name, name }} />
             ))}
@@ -215,7 +216,7 @@ function YoutubeWatchPage({ id }: { id: string }) {
       }
       relatedLabel={`More from ${video.orgName}`}
       related={related.map((v) => (
-        <UnifiedVideoCard key={v.id} video={v} />
+        <UnifiedVideoCard key={v.id} video={v} layout="compact" />
       ))}
     />
   );

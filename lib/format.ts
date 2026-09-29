@@ -30,20 +30,6 @@ export function formatDateLong(input: string | number): string {
   });
 }
 
-export function callSign(name: string, length = 3): string {
-  const words = name
-    .replace(/[^a-zA-Z0-9\s]/g, "")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-  if (words.length === 0) return "SIG";
-  if (words.length === 1) {
-    return words[0].slice(0, length).toUpperCase().padEnd(length, "X");
-  }
-  const letters = words.map((w) => w[0]).join("").slice(0, length);
-  return letters.toUpperCase().padEnd(length, "X");
-}
-
 function hexToHsl(hex: string): { s: number; l: number } | undefined {
   const m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(hex.trim());
   if (!m) return undefined;
@@ -79,20 +65,13 @@ export function accentStyle(
   return isUsableAccent(color) ? { "--accent": color! } : undefined;
 }
 
-const TAG_COLORS = ["accent", "tag-cyan", "tag-yellow", "tag-magenta", "tag-green"] as const;
-export type TagColor = (typeof TAG_COLORS)[number];
-
-/** Deterministic tag color per string — same channel/event always gets the
- * same color, but the set as a whole reads as varied rather than one accent
- * hue repeated on every tile. */
-export function tagColorFor(seed: string): TagColor {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
-  return TAG_COLORS[h % TAG_COLORS.length];
-}
-
 export function initials(name: string): string {
-  const words = name.trim().split(/\s+/).filter(Boolean);
+  // Letters/digits only, so "Pragma (ETHGlobal)" gives "PE", not "P(".
+  const words = name
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
   if (words.length === 0) return "?";
   if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
   return (words[0][0] + words[words.length - 1][0]).toUpperCase();

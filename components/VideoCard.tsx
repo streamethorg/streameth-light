@@ -1,16 +1,20 @@
 import type { Session, Event, Organization } from "@/lib/types";
 import { formatDateShort, formatTimecode } from "@/lib/format";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
-import VideoTile from "./VideoTile";
+import VideoTile, { type VideoTileLayout } from "./VideoTile";
 
 export default function VideoCard({
   session,
   event,
   org,
+  layout = "grid",
+  hideChannel = false,
 }: {
   session: Session;
   event?: Event;
   org?: Organization;
+  layout?: VideoTileLayout;
+  hideChannel?: boolean;
 }) {
   const duration = getSessionDurationSeconds(session);
   const speakerNames = (session.speakers ?? []).map((sp) => sp.name).filter(Boolean);
@@ -21,10 +25,13 @@ export default function VideoCard({
       coverImage={session.coverImage}
       coverLabel={session.name}
       durationLabel={duration !== undefined ? formatTimecode(duration) : undefined}
-      orgName={org?.name}
       title={session.name}
-      metaLine={`${event?.name ?? session.eventSlug}${session.start ? ` · ${formatDateShort(session.start)}` : ""}`}
-      extraLine={speakerNames.length > 0 ? speakerNames.join(", ") : undefined}
+      channel={hideChannel || !org ? undefined : { name: org.name, href: `/${org.slug}` }}
+      speakers={layout !== "compact" && speakerNames.length > 0 ? speakerNames.join(", ") : undefined}
+      event={event?.name}
+      date={session.start ? formatDateShort(session.start) : undefined}
+      description={layout === "row" ? session.description : undefined}
+      layout={layout}
     />
   );
 }
