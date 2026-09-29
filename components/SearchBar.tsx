@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import SearchSuggestions from "@/components/SearchSuggestions";
+import { SearchIcon } from "@/components/NavIcons";
 import { useSearchSuggestions } from "@/lib/useSearchSuggestions";
 
-export default function SearchBar() {
+export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -53,23 +54,15 @@ export default function SearchBar() {
         setDropdownOpen(false);
         push(value);
       }}
-      className="relative w-full max-w-xl"
+      className="relative flex w-full max-w-[640px]"
     >
-      <div className="group/search flex items-center gap-2.5 rounded-full bg-white/[0.08] px-4 py-2 ring-1 ring-inset ring-stage-line transition-colors hover:bg-white/[0.12] focus-within:bg-white focus-within:ring-white">
-        <svg
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          className="h-4 w-4 shrink-0 text-stage-dim group-focus-within/search:text-ink-faint"
-        >
-          <circle cx="9" cy="9" r="6.5" />
-          <path d="M18 18l-4-4" strokeLinecap="round" />
-        </svg>
+      <div className="flex h-10 min-w-0 flex-1 items-center rounded-l-full border border-line bg-void pl-4 pr-2 shadow-[inset_0_1px_2px_rgb(0_0_0/0.04)] focus-within:border-accent focus-within:shadow-[inset_0_1px_2px_rgb(0_0_0/0.08)]">
         <input
           type="search"
           value={value}
-          placeholder="Search talks, speakers, topics..."
+          autoFocus={autoFocus}
+          aria-label="Search"
+          placeholder="Search talks, speakers, topics"
           onFocus={() => setDropdownOpen(true)}
           onChange={(e) => {
             const next = e.target.value;
@@ -78,9 +71,16 @@ export default function SearchBar() {
             if (debounceRef.current) clearTimeout(debounceRef.current);
             debounceRef.current = setTimeout(() => push(next), 250);
           }}
-          className="w-full bg-transparent text-sm text-stage-ink placeholder:text-stage-dim focus:outline-none group-focus-within/search:text-ink group-focus-within/search:placeholder:text-ink-faint"
+          className="w-full min-w-0 bg-transparent text-base text-ink placeholder:text-ink-faint focus:outline-none"
         />
       </div>
+      <button
+        type="submit"
+        aria-label="Search"
+        className="flex h-10 w-16 shrink-0 items-center justify-center rounded-r-full border border-l-0 border-line bg-panel-raised text-ink transition-colors hover:bg-panel-hover"
+      >
+        <SearchIcon />
+      </button>
       {dropdownOpen && (
         <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
       )}

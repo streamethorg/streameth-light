@@ -45,13 +45,13 @@ export default async function SpeakerPage({
           <Avatar
             name={speaker.name}
             photo={speaker.photo}
-            className="h-24 w-24 text-2xl ring-4 ring-white/10 sm:h-28 sm:w-28"
+            className="h-20 w-20 text-2xl sm:h-32 sm:w-32 sm:text-4xl"
           />
         }
         title={speaker.name}
         meta={
           <span className="flex flex-wrap gap-x-4 gap-y-1">
-            {speaker.company && <span className="text-stage-ink">{speaker.company}</span>}
+            {speaker.company && <span className="font-medium text-ink">{speaker.company}</span>}
             <span>
               {sessions.length} {sessions.length === 1 ? "talk" : "talks"}
             </span>
@@ -61,9 +61,9 @@ export default async function SpeakerPage({
         actions={twitterHandle && <HeroLink href={`https://x.com/${twitterHandle}`}>@{twitterHandle}</HeroLink>}
       />
 
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
+      <div className="flex flex-1 flex-col gap-6 px-4 py-6 sm:px-6">
         <SectionHeader title="Talks" />
-        <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {sessions.map((s) => {
             const event = getEventById(s.eventId);
             return <VideoCard key={s._id} session={s} event={event} org={getOrgForEvent(event)} />;

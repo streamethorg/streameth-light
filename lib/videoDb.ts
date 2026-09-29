@@ -268,21 +268,28 @@ export function archiveStats(): { videos: number; channels: number } {
   return { videos: row.videos, channels: row.channels };
 }
 
-/** A cover per channel, for channel tiles that would otherwise have no
- * imagery (the orgs' own logos are gone with the old CDN). Prefers YouTube
- * thumbnails, which are designed title cards, over frames auto-grabbed from
- * StreamETH recordings (often a blank slide or an empty stage), then the
- * newest. */
-export function latestCoverByChannel(): Map<string, string> {
+/** The biggest channels by archive size, for the sidebar's channel list. */
+export function topChannels(limit = 8): { slug: string; name: string }[] {
   const db = getDb();
   const rows = db
     .prepare(
-      // SQLite's bare-column rule: with MAX(), the other selected columns
-      // come from the row holding that max.
-      `SELECT org_slug AS slug, cover_image AS cover,
-              MAX((source = 'youtube') * 10000000000000 + published_at)
-       FROM videos WHERE cover_image IS NOT NULL GROUP BY org_slug`
+      `SELECT org_slug AS slug, org_name AS name FROM videos
+       WHERE org_slug != '' GROUP BY org_slug ORDER BY COUNT(*) DESC LIMIT ?`
     )
-    .all() as unknown as { slug: string; cover: string }[];
-  return new Map(rows.map((row) => [row.slug, row.cover]));
+    .all(limit) as unknown as { slug: string; name: string }[];
+  // Plain objects: node:sqlite rows are null-prototype and can't cross into
+  // a client component as props.
+  return rows.map((r) => ({ slug: r.slug, name: r.name }));
+}
+
+/** A channel's videos, newest first, for its "Videos" tab. */
+export function channelVideos(slug: string, limit: number): { videos: UnifiedVideo[]; total: number } {
+  const db = getDb();
+  const rows = db
+    .prepare(`SELECT * FROM videos WHERE org_slug = ? ORDER BY published_at DESC LIMIT ?`)
+    .all(slug, limit) as unknown as VideoRow[];
+  const { total } = db
+    .prepare(`SELECT COUNT(*) AS total FROM videos WHERE org_slug = ?`)
+    .get(slug) as unknown as { total: number };
+  return { videos: rows.map(rowToVideo), total };
 }

@@ -120,14 +120,14 @@ export default async function WatchPage({
       topics={
         session.autoLabels &&
         session.autoLabels.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-x-2">
             {session.autoLabels.map((topic) => (
               <Link
                 key={topic}
                 href={`/topics/${slugifyTopic(topic)}`}
-                className="rounded-full bg-panel-raised px-3 py-1 text-[13px] font-medium text-ink-dim transition-colors hover:bg-accent/10 hover:text-accent"
+                className="rounded-sm font-medium text-accent hover:underline"
               >
-                {topic}
+                #{topic.replace(/\s+/g, "")}
               </Link>
             ))}
           </div>
@@ -138,7 +138,7 @@ export default async function WatchPage({
       speakers={
         session.speakers &&
         session.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
             {session.speakers.map((sp) => (
               <SpeakerCard key={sp._id} speaker={sp} />
             ))}
@@ -154,6 +154,7 @@ export default async function WatchPage({
             session={s}
             event={relatedEvent}
             org={getOrgForEvent(relatedEvent)}
+            layout="compact"
           />
         );
       })}
@@ -203,7 +204,7 @@ function YoutubeWatchPage({ id }: { id: string }) {
       transcript={video.transcript}
       relatedLabel={`More from ${video.orgName}`}
       related={related.map((v) => (
-        <UnifiedVideoCard key={v.id} video={v} />
+        <UnifiedVideoCard key={v.id} video={v} layout="compact" />
       ))}
     />
   );

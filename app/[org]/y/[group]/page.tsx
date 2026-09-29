@@ -107,7 +107,13 @@ export default async function YoutubeEventPage({
       transcript={unified?.transcript}
       relatedLabel={`More from ${group.label}`}
       related={others.map((vid) => (
-        <YoutubeVideoCard key={vid.videoId} video={vid} orgSlug={orgSlug} groupSlug={groupSlug} />
+        <YoutubeVideoCard
+          key={vid.videoId}
+          video={vid}
+          orgSlug={orgSlug}
+          groupSlug={groupSlug}
+          layout="compact"
+        />
       ))}
     />
   );

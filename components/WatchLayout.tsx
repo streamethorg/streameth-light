@@ -1,17 +1,17 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import TranscriptPanel from "@/components/TranscriptPanel";
-import SectionHeader from "@/components/SectionHeader";
+import Avatar from "@/components/Avatar";
+import DescriptionBox from "@/components/DescriptionBox";
+import { WATCH_ACTIONS_SLOT_ID } from "@/components/ActionButton";
 import { accentStyle } from "@/lib/format";
 
-/** The one shell every video-detail page renders through — StreamETH-hosted
- * sessions, standalone YouTube videos, and YouTube videos browsed inside an
- * inferred event group all use this, so the underlying data source never
- * produces a visually different page (breadcrumb, player, title/meta,
- * description, related grid). Only the player and data lookup differ.
- * `player` must supply its own aspect-video/border/bg-black chrome (see
- * SessionPlayer/YoutubeSessionPlayer), since those also render a
- * "Listen (audio only)" control below the video box itself. */
+/** The one watch-page shell every video-detail page renders through —
+ * StreamETH-hosted sessions, standalone YouTube videos, and YouTube videos
+ * browsed inside an inferred event group — laid out like YouTube's: player,
+ * title, channel row with actions, grey description box and speakers on
+ * the left; a compact "Up next" column on the right (below on mobile).
+ * `player` supplies its own aspect-video chrome (see SessionPlayer /
+ * YoutubeSessionPlayer), since those also render the Listen control. */
 export default function WatchLayout({
   accentColor,
   orgName,
@@ -44,68 +44,59 @@ export default function WatchLayout({
   related: ReactNode;
 }) {
   return (
-    <div style={accentStyle(accentColor) as CSSProperties | undefined} className="flex flex-1 flex-col">
-      <section className="bg-stage text-stage-ink">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 pb-6 pt-5 sm:px-6 sm:pb-8">
-          {orgName && orgSlug && (
-            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-stage-dim">
-              <Link
-                href={`/${orgSlug}`}
-                className="flex items-center gap-2 rounded-md font-semibold text-stage-ink transition-colors hover:text-peach"
-              >
-                {orgName}
-              </Link>
-              {crumb && (
-                <>
-                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-3.5 w-3.5 opacity-60" aria-hidden="true">
-                    <path d="M7.5 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span>{crumb}</span>
-                </>
-              )}
-            </nav>
-          )}
+    <div
+      style={accentStyle(accentColor) as CSSProperties | undefined}
+      className="mx-auto flex w-full max-w-[1760px] flex-col gap-6 px-0 pb-12 sm:px-6 sm:pt-6 lg:flex-row"
+    >
+      <div className="flex min-w-0 flex-1 flex-col gap-3">
+        {player}
 
-          {player}
-        </div>
-      </section>
+        <div className="flex flex-col gap-3 px-3 sm:px-0">
+          <h1 className="text-xl font-bold leading-7 tracking-[-0.01em] text-ink">{title}</h1>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-12 px-4 py-8 sm:px-6 sm:py-10">
-        <div className="flex flex-col gap-5">
-          <div className="flex flex-col gap-2">
-            <h1 className="display max-w-4xl text-[clamp(1.75rem,3.4vw,2.75rem)] leading-[1.05] text-ink">
-              {title}
-            </h1>
-            {metaLine && <p className="tabular text-sm font-medium text-ink-faint">{metaLine}</p>}
-          </div>
-          {(actions || transcript) && (
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            {orgName && (
+              <div className="flex min-w-0 items-center gap-3">
+                {orgSlug ? (
+                  <Link href={`/${orgSlug}`} tabIndex={-1} aria-hidden="true">
+                    <Avatar name={orgName} channel className="h-10 w-10 text-sm" />
+                  </Link>
+                ) : (
+                  <Avatar name={orgName} channel className="h-10 w-10 text-sm" />
+                )}
+                <div className="flex min-w-0 flex-col">
+                  {orgSlug ? (
+                    <Link href={`/${orgSlug}`} className="truncate rounded-sm text-base font-semibold text-ink">
+                      {orgName}
+                    </Link>
+                  ) : (
+                    <span className="truncate text-base font-semibold text-ink">{orgName}</span>
+                  )}
+                  {crumb && <span className="truncate text-xs text-ink-dim">{crumb}</span>}
+                </div>
+              </div>
+            )}
             <div className="flex flex-wrap items-center gap-2">
+              <div id={WATCH_ACTIONS_SLOT_ID} className="contents" />
               {actions}
-              {transcript && <TranscriptPanel text={transcript} />}
+            </div>
+          </div>
+
+          <DescriptionBox meta={metaLine} topics={topics} description={description} transcript={transcript} />
+
+          {speakers && (
+            <div className="flex flex-col gap-4 pt-4">
+              <h2 className="text-xl font-bold text-ink">Speakers</h2>
+              {speakers}
             </div>
           )}
-          {topics}
-          {description && (
-            <p className="max-w-[70ch] whitespace-pre-line text-[15px] leading-relaxed text-ink-dim">
-              {description}
-            </p>
-          )}
-        </div>
-
-        {speakers && (
-          <div className="flex flex-col gap-4">
-            <SectionHeader title="Speakers" />
-            {speakers}
-          </div>
-        )}
-
-        <div className="flex flex-col gap-5">
-          <SectionHeader title={relatedLabel} href={orgSlug ? `/${orgSlug}` : undefined} linkLabel="Open channel" />
-          <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {related}
-          </div>
         </div>
       </div>
+
+      <aside className="flex w-full shrink-0 flex-col gap-3 px-3 sm:px-0 lg:w-[400px]">
+        <h2 className="text-base font-semibold text-ink">{relatedLabel}</h2>
+        <div className="flex flex-col gap-3">{related}</div>
+      </aside>
     </div>
   );
 }

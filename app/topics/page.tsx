@@ -23,7 +23,7 @@ export default function TopicsPage() {
         title="Topics"
         meta={`${topics.length} subjects, detected from the talks themselves`}
       />
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col px-4 py-10 sm:px-6 sm:py-12">
+      <div className="flex flex-1 flex-col px-4 py-6 sm:px-6">
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-3">
           {topics.map((t) => {
             const n = t.sessionIds.length;
@@ -37,10 +37,10 @@ export default function TopicsPage() {
               <Link
                 key={t.slug}
                 href={`/topics/${t.slug}`}
-                className={`group flex items-baseline gap-2 rounded-full bg-panel text-ink ring-1 ring-line transition-colors hover:bg-stage hover:text-stage-ink hover:ring-stage ${size}`}
+                className={`group flex items-baseline gap-2 rounded-lg bg-panel-raised text-ink transition-colors hover:bg-panel-hover ${size}`}
               >
                 {t.name}
-                <span className="tabular text-xs font-medium text-ink-faint group-hover:text-stage-dim">
+                <span className="tabular text-xs font-medium text-ink-faint">
                   {n}
                 </span>
               </Link>

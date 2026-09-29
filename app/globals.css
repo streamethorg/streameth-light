@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
-/* The streameth-platform brand (light UI, Inter, purple primary), pushed
-   further: the logo's own purple→peach gradient (#6426EF → #FF9976) is the
-   signature, and a deep indigo "stage" color carries the dark hero/footer
-   bands — the look of a conference stage under lights, which is what every
-   video here was recorded on. Neutrals are tinted violet, not generic slate. */
+/* YouTube's layout conventions (white canvas, grey chips/pills, near-black
+   for "selected") in the streameth-platform brand: Inter, the purple
+   primary, and the logo's deep indigo standing in for YouTube's black.
+   The dark "stage" tokens remain for the few dark surfaces (active chips,
+   the mini player, video letterboxing). */
 :root {
-  --void: #f6f5fb;
+  --void: #ffffff;
   --panel: #ffffff;
-  --panel-raised: #eeecf6;
-  --line: #e4e1ef;
-  --ink: #1b1537;
-  --ink-dim: #4e4969;
-  --ink-faint: #85819e;
+  --panel-raised: #f2f1f6;
+  --panel-hover: #e6e4ee;
+  --line: #e6e4ee;
+  --ink: #140f2e;
+  --ink-dim: #55516b;
+  --ink-faint: #827e97;
   --accent: #6426ef;
   --accent-ink: #ffffff;
   --peach: #ff9976;
@@ -28,6 +29,7 @@
   --color-void: var(--void);
   --color-panel: var(--panel);
   --color-panel-raised: var(--panel-raised);
+  --color-panel-hover: var(--panel-hover);
   --color-line: var(--line);
   --color-ink: var(--ink);
   --color-ink-dim: var(--ink-dim);

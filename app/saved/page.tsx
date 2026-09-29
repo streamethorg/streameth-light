@@ -35,7 +35,7 @@ export default async function SavedPage() {
         }
       />
 
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col px-4 py-10 sm:px-6 sm:py-12">
+      <div className="flex flex-1 flex-col px-4 py-6 sm:px-6">
         {!saved || saved.length === 0 ? (
           <div className="flex flex-col items-center gap-3 rounded-2xl bg-panel px-6 py-14 text-center ring-1 ring-line">
             <p className="text-lg font-bold tracking-[-0.01em] text-ink">Nothing saved yet</p>
@@ -50,7 +50,7 @@ export default async function SavedPage() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {saved.map((v) => (
               <VideoTile
                 key={v.video_id}
@@ -58,7 +58,7 @@ export default async function SavedPage() {
                 coverImage={v.video_cover_image}
                 coverLabel={v.video_title}
                 title={v.video_title}
-                source={`Saved ${formatDateShort(v.created_at)}`}
+                date={`Saved ${formatDateShort(v.created_at)}`}
               />
             ))}
           </div>

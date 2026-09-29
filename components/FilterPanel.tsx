@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { Event } from "@/lib/types";
 import type { OrgOption } from "@/lib/videoDb";
 import type { BrowseFilters, DurationBucket, SortMode } from "@/lib/browseParams";
@@ -35,6 +36,15 @@ export default function FilterPanel({
   hasQuery: boolean;
   onChange: (patch: Partial<BrowseFilters>) => void;
 }) {
+  const hasAdvanced = Boolean(
+    filters.orgIds.length ||
+      filters.eventIds.length ||
+      filters.duration ||
+      filters.dateFrom ||
+      filters.dateTo ||
+      (filters.sort !== "relevance" && hasQuery)
+  );
+  const [open, setOpen] = useState(hasAdvanced);
   const selectedOrgIds = filters.orgIds.map((slug) => orgIdBySlug[slug]).filter(Boolean);
   const eventOptions =
     selectedOrgIds.length > 0
@@ -43,100 +53,113 @@ export default function FilterPanel({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
-        <select
-          value={filters.orgIds[0] ?? ""}
-          onChange={(e) => onChange({ orgIds: e.target.value ? [e.target.value] : [], eventIds: [] })}
-          className="h-10 max-w-[16rem] shrink-0 cursor-pointer rounded-full bg-panel pl-4 pr-3 text-sm font-medium text-ink shadow-sm ring-1 ring-line transition-colors hover:ring-ink-faint focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      <div className="-mx-4 flex items-center gap-3 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:px-0">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className={`flex h-8 shrink-0 items-center gap-2 rounded-lg px-3 text-sm font-medium transition-colors ${
+            open ? "bg-stage text-stage-ink" : "bg-panel-raised text-ink hover:bg-panel-hover"
+          }`}
         >
-          <option value="">All channels</option>
-          {channels.map((channel) => (
-            <option key={channel.slug} value={channel.slug}>
-              {channel.name}
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={filters.eventIds[0] ?? ""}
-          onChange={(e) => onChange({ eventIds: e.target.value ? [e.target.value] : [] })}
-          className="h-10 max-w-[16rem] shrink-0 cursor-pointer rounded-full bg-panel pl-4 pr-3 text-sm font-medium text-ink shadow-sm ring-1 ring-line transition-colors hover:ring-ink-faint focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-        >
-          <option value="">All events</option>
-          {eventOptions.map((e) => (
-            <option key={e._id} value={e._id}>
-              {e.name}
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={filters.duration}
-          onChange={(e) => onChange({ duration: e.target.value as DurationBucket | "" })}
-          className="h-10 max-w-[16rem] shrink-0 cursor-pointer rounded-full bg-panel pl-4 pr-3 text-sm font-medium text-ink shadow-sm ring-1 ring-line transition-colors hover:ring-ink-faint focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-        >
-          <option value="">Any length</option>
-          {(Object.keys(DURATION_LABELS) as DurationBucket[]).map((bucket) => (
-            <option key={bucket} value={bucket}>
-              {DURATION_LABELS[bucket]}
-            </option>
-          ))}
-        </select>
-
-        <label className="flex h-10 shrink-0 items-center gap-2 rounded-full bg-panel px-4 text-sm font-medium text-ink-faint shadow-sm ring-1 ring-line focus-within:ring-2 focus-within:ring-accent">
-          From
-          <input
-            type="date"
-            value={filters.dateFrom}
-            onChange={(e) => onChange({ dateFrom: e.target.value })}
-            className="bg-transparent text-ink focus:outline-none [color-scheme:light]"
-          />
-        </label>
-        <label className="flex h-10 shrink-0 items-center gap-2 rounded-full bg-panel px-4 text-sm font-medium text-ink-faint shadow-sm ring-1 ring-line focus-within:ring-2 focus-within:ring-accent">
-          To
-          <input
-            type="date"
-            value={filters.dateTo}
-            onChange={(e) => onChange({ dateTo: e.target.value })}
-            className="bg-transparent text-ink focus:outline-none [color-scheme:light]"
-          />
-        </label>
-
-        <select
-          value={filters.sort}
-          onChange={(e) => onChange({ sort: e.target.value as SortMode })}
-          disabled={!hasQuery && filters.sort === "relevance"}
-          className="h-10 shrink-0 cursor-pointer rounded-full bg-stage pl-4 pr-4 text-sm font-semibold text-stage-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-default disabled:opacity-60 sm:ml-auto"
-        >
-          {SORT_OPTIONS.filter((o) => o.value !== "relevance" || hasQuery).map((o) => (
-            <option key={o.value} value={o.value}>
-              Sort: {o.label}
-            </option>
-          ))}
-        </select>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5" aria-hidden="true">
+            <path d="M4 7h10m4 0h2M4 17h4m4 0h8" strokeLinecap="round" />
+            <circle cx="16" cy="7" r="2" />
+            <circle cx="10" cy="17" r="2" />
+          </svg>
+          Filters
+        </button>
+        {topics.length > 0 && <span className="h-6 w-px shrink-0 bg-line" aria-hidden="true" />}
+        {topics.map((topic) => {
+          const active = filters.topic.toLowerCase() === topic.toLowerCase();
+          return (
+            <button
+              key={topic}
+              type="button"
+              onClick={() => onChange({ topic: active ? "" : topic })}
+              aria-pressed={active}
+              className={`flex h-8 shrink-0 items-center whitespace-nowrap rounded-lg px-3 text-sm font-medium transition-colors ${
+                active ? "bg-stage text-stage-ink" : "bg-panel-raised text-ink hover:bg-panel-hover"
+              }`}
+            >
+              {topic}
+            </button>
+          );
+        })}
       </div>
 
-      {topics.length > 0 && (
+      {open && (
         <div className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
-          <span className="mr-1 shrink-0 text-sm font-medium text-ink-faint">Topics</span>
-          {topics.map((topic) => {
-            const active = filters.topic.toLowerCase() === topic.toLowerCase();
-            return (
-              <button
-                key={topic}
-                type="button"
-                onClick={() => onChange({ topic: active ? "" : topic })}
-                aria-pressed={active}
-                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1 text-[13px] font-medium transition-colors ${
-                  active
-                    ? "bg-accent text-accent-ink"
-                    : "bg-panel-raised text-ink-dim hover:bg-accent/10 hover:text-accent"
-                }`}
-              >
-                {topic}
-              </button>
-            );
-          })}
+          <select
+            value={filters.orgIds[0] ?? ""}
+            onChange={(e) => onChange({ orgIds: e.target.value ? [e.target.value] : [], eventIds: [] })}
+            className="h-8 max-w-[16rem] shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <option value="">All channels</option>
+            {channels.map((channel) => (
+              <option key={channel.slug} value={channel.slug}>
+                {channel.name}
+              </option>
+            ))}
+          </select>
+  
+          <select
+            value={filters.eventIds[0] ?? ""}
+            onChange={(e) => onChange({ eventIds: e.target.value ? [e.target.value] : [] })}
+            className="h-8 max-w-[16rem] shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <option value="">All events</option>
+            {eventOptions.map((e) => (
+              <option key={e._id} value={e._id}>
+                {e.name}
+              </option>
+            ))}
+          </select>
+  
+          <select
+            value={filters.duration}
+            onChange={(e) => onChange({ duration: e.target.value as DurationBucket | "" })}
+            className="h-8 max-w-[16rem] shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <option value="">Any length</option>
+            {(Object.keys(DURATION_LABELS) as DurationBucket[]).map((bucket) => (
+              <option key={bucket} value={bucket}>
+                {DURATION_LABELS[bucket]}
+              </option>
+            ))}
+          </select>
+  
+          <label className="flex h-8 shrink-0 items-center gap-2 rounded-lg bg-panel-raised px-3 text-sm font-medium text-ink-dim focus-within:ring-2 focus-within:ring-accent">
+            From
+            <input
+              type="date"
+              value={filters.dateFrom}
+              onChange={(e) => onChange({ dateFrom: e.target.value })}
+              className="bg-transparent text-ink focus:outline-none [color-scheme:light]"
+            />
+          </label>
+          <label className="flex h-8 shrink-0 items-center gap-2 rounded-lg bg-panel-raised px-3 text-sm font-medium text-ink-dim focus-within:ring-2 focus-within:ring-accent">
+            To
+            <input
+              type="date"
+              value={filters.dateTo}
+              onChange={(e) => onChange({ dateTo: e.target.value })}
+              className="bg-transparent text-ink focus:outline-none [color-scheme:light]"
+            />
+          </label>
+  
+          <select
+            value={filters.sort}
+            onChange={(e) => onChange({ sort: e.target.value as SortMode })}
+            disabled={!hasQuery && filters.sort === "relevance"}
+            className="h-8 shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-default disabled:opacity-60 sm:ml-auto"
+          >
+            {SORT_OPTIONS.filter((o) => o.value !== "relevance" || hasQuery).map((o) => (
+              <option key={o.value} value={o.value}>
+                Sort: {o.label}
+              </option>
+            ))}
+          </select>
         </div>
       )}
 
@@ -201,7 +224,7 @@ function ActiveFilterChips({
           key={`${chip.label}-${i}`}
           type="button"
           onClick={chip.clear}
-          className="flex items-center gap-1.5 rounded-full bg-accent/10 py-1 pl-3 pr-2 text-[13px] font-medium text-accent transition-colors hover:bg-accent hover:text-accent-ink"
+          className="flex h-8 items-center gap-1.5 rounded-lg bg-stage pl-3 pr-2 text-sm font-medium text-stage-ink transition-colors hover:bg-stage-raised"
         >
           {chip.label}
           <span aria-hidden className="text-base leading-none">×</span>

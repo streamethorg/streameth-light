@@ -120,7 +120,7 @@ export default async function EventPage({
         title={event.name}
         meta={
           <span className="flex flex-wrap gap-x-4 gap-y-1">
-            {event.start && <span className="text-stage-ink">{formatDateShort(event.start)}</span>}
+            {event.start && <span className="font-medium text-ink">{formatDateShort(event.start)}</span>}
             {event.location && <span>{event.location}</span>}
             <span>
               {totalVideoCount.toLocaleString()} {totalVideoCount === 1 ? "video" : "videos"}
@@ -138,7 +138,7 @@ export default async function EventPage({
         }
       />
 
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-14 px-4 py-10 sm:px-6 sm:py-12">
+      <div className="flex flex-1 flex-col gap-10 px-4 py-6 sm:px-6">
         {totalVideoCount === 0 ? (
           <div className="flex flex-col items-center gap-3 rounded-2xl bg-panel px-6 py-14 text-center ring-1 ring-line">
             <p className="text-lg font-bold tracking-[-0.01em] text-ink">No public videos yet</p>
@@ -161,7 +161,7 @@ export default async function EventPage({
                   title={`From ${directoryEntry?.name ?? org.name}'s YouTube channel`}
                   detail={`${matchedYoutubeGroup.videos.length} videos`}
                 />
-                <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                   {matchedYoutubeGroup.videos.map((v) => (
                     <YoutubeVideoCard
                       key={v.videoId}
@@ -181,7 +181,7 @@ export default async function EventPage({
                     title={stage.name}
                     detail={`${stageSessions.length} ${stageSessions.length === 1 ? "talk" : "talks"}`}
                   />
-                  <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                  <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                     {stageSessions.map((s) => (
                       <VideoCard key={s._id} session={s} event={event} org={org} />
                     ))}

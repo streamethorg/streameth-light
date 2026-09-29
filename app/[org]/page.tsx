@@ -1,5 +1,8 @@
 import Link from "next/link";
+import Avatar from "@/components/Avatar";
 import PageHero, { HeroLink } from "@/components/PageHero";
+import UnifiedVideoCard from "@/components/UnifiedVideoCard";
+import { channelVideos } from "@/lib/videoDb";
 import SectionHeader from "@/components/SectionHeader";
 import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
@@ -48,12 +51,19 @@ export async function generateMetadata({
   return { title: `${entry.name} — StreamETH` };
 }
 
+const VIDEOS_PAGE_SIZE = 36;
+
 export default async function OrgPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ org: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { org: orgSlug } = await params;
+  const query = await searchParams;
+  const tab = query.tab === "videos" ? "videos" : "events";
+  const page = Math.max(1, Number(query.page) || 1);
   const org = getOrganization(orgSlug);
 
   if (org) {
@@ -145,11 +155,11 @@ export default async function OrgPage({
     return (
       <div style={accentStyle(org.accentColor) as CSSProperties | undefined} className="flex flex-1 flex-col">
         <PageHero
-          back={{ href: "/channels", label: "All channels" }}
+          leading={<Avatar name={org.name} channel className="h-20 w-20 text-2xl sm:h-32 sm:w-32 sm:text-4xl" />}
           title={org.name}
           meta={
             <>
-              {totalVideos.toLocaleString()} videos, {tiles.length}{" "}
+              @{org.slug} • {totalVideos.toLocaleString()} videos • {tiles.length}{" "}
               {tiles.length === 1 ? "event" : "events"}
             </>
           }
@@ -159,17 +169,19 @@ export default async function OrgPage({
               <HeroLink href={directoryEntry.youtubeChannel}>YouTube channel</HeroLink>
             )
           }
+          tabs={channelTabs(org.slug, tab)}
         />
 
-        <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-6 px-4 py-10 sm:px-6 sm:py-12">
-          <SectionHeader title="Events" />
-
+        {tab === "videos" ? (
+          <ChannelVideos slug={org.slug} page={page} />
+        ) : (
+        <div className="flex flex-1 flex-col gap-6 px-4 py-6 sm:px-6">
           {tiles.length === 0 ? (
             <p className="rounded-2xl bg-panel py-12 text-center text-sm text-ink-faint ring-1 ring-line">
               No events here yet.
             </p>
           ) : (
-            <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
               {tiles.map((tile) => {
                 if (tile.kind === "streameth") {
                   const extraCount =
@@ -201,6 +213,7 @@ export default async function OrgPage({
             </div>
           )}
         </div>
+        )}
       </div>
     );
   }
@@ -216,16 +229,15 @@ export default async function OrgPage({
   return (
     <div className="flex flex-1 flex-col">
       <PageHero
-        back={{ href: "/channels", label: "All channels" }}
+        leading={<Avatar name={entry.name} channel className="h-20 w-20 text-2xl sm:h-32 sm:w-32 sm:text-4xl" />}
         title={entry.name}
-        meta={
-          [
-            entry.location,
-            videos.length > 0 ? `${videos.length.toLocaleString()} videos` : "",
-          ]
-            .filter(Boolean)
-            .join(", ") || undefined
-        }
+        meta={[
+          `@${entry.slug}`,
+          entry.location,
+          videos.length > 0 ? `${videos.length.toLocaleString()} videos` : "",
+        ]
+          .filter(Boolean)
+          .join(" • ")}
         description={
           entry.onStreamETH && videos.length === 0
             ? "Has a StreamETH page, but no public sessions yet."
@@ -241,13 +253,17 @@ export default async function OrgPage({
             </>
           )
         }
+        tabs={videos.length > 0 ? channelTabs(entry.slug, tab) : undefined}
       />
 
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-12 px-4 py-10 sm:px-6 sm:py-12">
+      {tab === "videos" && videos.length > 0 ? (
+        <ChannelVideos slug={entry.slug} page={page} />
+      ) : (
+      <div className="flex flex-1 flex-col gap-12 px-4 py-6 sm:px-6">
         {videoGroups.length > 0 && (
           <div className="flex flex-col gap-6">
             <SectionHeader title="Events" detail={`${videoGroups.length} grouped from the channel's uploads`} />
-            <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
               {videoGroups.map((group) => (
                 <YoutubeEventTile key={group.slug} orgSlug={entry.slug} group={group} />
               ))}
@@ -284,6 +300,38 @@ export default async function OrgPage({
           </div>
         )}
       </div>
+      )}
+    </div>
+  );
+}
+
+function channelTabs(slug: string, tab: "events" | "videos") {
+  return [
+    { label: "Events", href: `/${slug}`, active: tab === "events" },
+    { label: "Videos", href: `/${slug}?tab=videos`, active: tab === "videos" },
+  ];
+}
+
+function ChannelVideos({ slug, page }: { slug: string; page: number }) {
+  const { videos, total } = channelVideos(slug, page * VIDEOS_PAGE_SIZE);
+  return (
+    <div className="flex flex-col px-4 pb-12 pt-6 sm:px-6">
+      <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        {videos.map((v) => (
+          <UnifiedVideoCard key={v.id} video={v} hideChannel />
+        ))}
+      </div>
+      {videos.length < total && (
+        <div className="flex justify-center pt-10">
+          <Link
+            href={`/${slug}?tab=videos&page=${page + 1}`}
+            scroll={false}
+            className="rounded-full bg-panel-raised px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+          >
+            Show more
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

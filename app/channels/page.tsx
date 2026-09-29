@@ -2,10 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getDirectory, type DirectoryEntry } from "@/lib/directory";
 import { getOrganization, getOrgSessionCount } from "@/lib/data";
-import CoverImage from "@/components/CoverImage";
+import Avatar from "@/components/Avatar";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
-import { latestCoverByChannel } from "@/lib/videoDb";
 import { getLiveYoutubeVideoCount } from "@/lib/youtube";
 
 export const metadata: Metadata = {
@@ -45,37 +44,34 @@ export default function ChannelsPage() {
     .filter((e) => !(e.sessionCount > 0 || e.youtubeVideoCount > 0 || e.miraEventCount > 0))
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  const covers = latestCoverByChannel();
-
   return (
     <div className="flex flex-1 flex-col">
       <PageHero
         title="Channels"
-        meta={`${active.length} with recordings, ${tracked.length} more tracked`}
+        meta={`${active.length} with recordings • ${tracked.length} more tracked`}
       />
 
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col gap-14 px-4 py-10 sm:px-6 sm:py-12">
-        <div className="grid grid-cols-1 gap-x-5 gap-y-8 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {active.map((entry) => {
-            const cover = covers.get(entry.slug);
-            return (
-              <Link key={entry.slug} href={`/${entry.slug}`} className="group flex flex-col gap-3 rounded-xl outline-offset-4">
-                <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-stage">
-                  <CoverImage
-                    src={cover}
-                    label={entry.name}
-                    className="transition duration-300 ease-out group-hover:scale-[1.02]"
-                  />
-                </div>
-                <div className="flex min-w-0 flex-col">
-                  <h2 className="truncate text-lg font-bold tracking-[-0.02em] text-ink decoration-accent decoration-2 underline-offset-[5px] group-hover:underline">
-                    {entry.name}
-                  </h2>
-                  <p className="text-sm text-ink-faint">{coverageLabel(entry)}</p>
-                </div>
-              </Link>
-            );
-          })}
+      <div className="flex flex-1 flex-col gap-10 px-4 py-8 sm:px-6">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+          {active.map((entry) => (
+            <Link
+              key={entry.slug}
+              href={`/${entry.slug}`}
+              className="group flex flex-col items-center gap-3 rounded-xl p-2 text-center outline-offset-4"
+            >
+              <Avatar
+                name={entry.name}
+                channel
+                className="h-24 w-24 text-2xl transition-transform duration-200 group-hover:scale-105 sm:h-32 sm:w-32 sm:text-3xl"
+              />
+              <div className="flex min-w-0 max-w-full flex-col gap-0.5">
+                <h2 className="truncate text-base font-semibold text-ink">{entry.name}</h2>
+                <p className="truncate text-xs text-ink-dim">
+                  @{entry.slug} • {coverageLabel(entry)}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
 
         {tracked.length > 0 && (
@@ -89,7 +85,7 @@ export default function ChannelsPage() {
                 <Link
                   key={entry.slug}
                   href={`/${entry.slug}`}
-                  className="rounded-full bg-panel px-3.5 py-1.5 text-sm font-medium text-ink-dim ring-1 ring-line transition-colors hover:bg-stage hover:text-stage-ink hover:ring-stage"
+                  className="flex h-8 items-center rounded-lg bg-panel-raised px-3 text-sm font-medium text-ink transition-colors hover:bg-panel-hover"
                 >
                   {entry.name}
                 </Link>

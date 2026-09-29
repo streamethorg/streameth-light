@@ -1,26 +1,13 @@
 import Link from "next/link";
 import BrowseControls from "@/components/BrowseControls";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
-import StageHero from "@/components/StageHero";
-import {
-  archiveStats,
-  browseVideos,
-  listChannelOptions,
-  channelShelves,
-  topTopics,
-} from "@/lib/videoDb";
-import {
-  EMPTY_FILTERS,
-  filtersFromParams,
-  isIdleFilters,
-  paramsFromFilters,
-} from "@/lib/browseParams";
+import ChipBar from "@/components/ChipBar";
+import { browseVideos, listChannelOptions, topTopics } from "@/lib/videoDb";
+import { EMPTY_FILTERS, filtersFromParams, isIdleFilters, paramsFromFilters } from "@/lib/browseParams";
 import { listAllEvents, listOrganizations } from "@/lib/data";
-import { formatDateShort } from "@/lib/format";
 
-const PAGE_SIZE = 48;
-const LATEST_SIZE = 5;
-const LEAD_MIN_SECONDS = 10 * 60;
+const HOME_PAGE_SIZE = 36;
+const RESULTS_PAGE_SIZE = 30;
 
 export default async function Home({
   searchParams,
@@ -34,148 +21,101 @@ export default async function Home({
   }
   const filters = filtersFromParams(urlSearchParams);
   const page = Math.max(1, Number(rawParams.page) || 1);
+  const topics = topTopics(14);
 
-  const channels = listChannelOptions();
-  const events = listAllEvents();
-  const orgIdBySlug = Object.fromEntries(listOrganizations().map((o) => [o.slug, o._id]));
-
-  if (isIdleFilters(filters)) {
-    const recent = browseVideos(EMPTY_FILTERS)
-      .filter((v) => v.coverImage)
-      .slice(0, 40);
-    // Lead with a full-length talk rather than a short clip or teaser.
-    const lead =
-      recent.find((v) => (v.durationSeconds ?? 0) >= LEAD_MIN_SECONDS) ?? recent[0];
-    const latest = recent.filter((v) => v !== lead).slice(0, LATEST_SIZE - 1);
-    const channelRows = channelShelves(6, 4, { order: "recent" });
-    const stats = archiveStats();
+  // YouTube's home: a topic chip bar over a grid of the newest videos. A
+  // chip narrows the grid in place; only a typed search (or the advanced
+  // filters) switches to the results list below.
+  const onlyTopic = isIdleFilters({ ...filters, topic: "" });
+  if (onlyTopic) {
+    const feed = browseVideos({ ...EMPTY_FILTERS, topic: filters.topic }).filter((v) => v.coverImage);
+    const shown = feed.slice(0, page * HOME_PAGE_SIZE);
+    const moreParams = new URLSearchParams();
+    if (filters.topic) moreParams.set("topic", filters.topic);
+    moreParams.set("page", String(page + 1));
 
     return (
       <div className="flex flex-col">
-        <StageHero stats={stats} />
-
-        <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-20 px-4 py-14 sm:px-6 sm:py-20">
-          {lead && (
-            <section className="flex flex-col gap-6">
-              <h2 className="text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl">
-                Latest talks
-              </h2>
-              <div className="grid grid-cols-1 gap-x-6 gap-y-10 min-[480px]:grid-cols-2 lg:grid-cols-4">
-                <div className="min-[480px]:col-span-2 lg:row-span-2">
-                  <UnifiedVideoCard video={lead} lead />
-                </div>
-                {latest.map((v) => (
-                  <UnifiedVideoCard key={v.id} video={v} />
-                ))}
-              </div>
-            </section>
-          )}
-
-          <section className="flex flex-col gap-2">
-            <div className="flex items-baseline justify-between gap-4 pb-4">
-              <h2 className="text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl">
-                Recently active channels
-              </h2>
-              <Link
-                href="/channels"
-                className="shrink-0 rounded-sm text-[15px] font-semibold text-accent underline-offset-4 hover:underline"
-              >
-                All {stats.channels} channels
-              </Link>
+        <ChipBar topics={topics} active={filters.topic} />
+        <div className="px-4 pb-12 pt-6 sm:px-6">
+          {shown.length === 0 ? (
+            <EmptyState />
+          ) : (
+            <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+              {shown.map((v) => (
+                <UnifiedVideoCard key={v.id} video={v} />
+              ))}
             </div>
-            {channelRows.map((row) => (
-              <div
-                key={row.slug}
-                className="grid gap-6 border-t border-line py-8 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-10"
-              >
-                <div className="flex flex-col gap-1">
-                  <Link
-                    href={`/${row.slug}`}
-                    className="w-fit rounded-sm text-xl font-bold tracking-[-0.02em] text-ink decoration-accent decoration-2 underline-offset-[5px] hover:underline sm:text-2xl"
-                  >
-                    {row.name}
-                  </Link>
-                  <p className="text-sm text-ink-faint">
-                    {row.total.toLocaleString()} talks, latest {formatDateShort(row.latest)}
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4">
-                  {row.videos.map((v) => (
-                    <UnifiedVideoCard key={v.id} video={v} hideSource />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </section>
+          )}
+          {shown.length < feed.length && <ShowMore href={`/?${moreParams.toString()}`} />}
         </div>
       </div>
     );
   }
 
-  const topics = topTopics();
+  const channels = listChannelOptions();
+  const events = listAllEvents();
+  const orgIdBySlug = Object.fromEntries(listOrganizations().map((o) => [o.slug, o._id]));
   const results = browseVideos(filters);
-  const shown = results.slice(0, page * PAGE_SIZE);
-  const hasMore = shown.length < results.length;
-
+  const shown = results.slice(0, page * RESULTS_PAGE_SIZE);
   const moreParams = paramsFromFilters(filters);
   moreParams.set("page", String(page + 1));
 
-  const query = filters.q.trim();
-
   return (
-    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-8 px-4 py-8 sm:px-6 sm:py-10">
-      <header className="flex flex-col gap-6">
-        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
-          <h1 className="display text-[clamp(2rem,4vw,3.25rem)] text-ink">
-            {query ? `“${query}”` : "All talks"}
-          </h1>
-          <p className="pb-1 text-sm font-medium text-ink-faint">
-            <span className="tabular text-ink">{results.length.toLocaleString()}</span>{" "}
-            {results.length === 1 ? "talk" : "talks"}
-          </p>
-        </div>
-        <BrowseControls
-          filters={filters}
-          channels={channels}
-          events={events}
-          orgIdBySlug={orgIdBySlug}
-          topics={topics}
-        />
-      </header>
+    <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-4 py-6 sm:px-6">
+      <BrowseControls
+        filters={filters}
+        channels={channels}
+        events={events}
+        orgIdBySlug={orgIdBySlug}
+        topics={topics}
+      />
+      <p className="text-sm text-ink-dim">
+        About {results.length.toLocaleString()} {results.length === 1 ? "result" : "results"}
+      </p>
 
       {shown.length === 0 ? (
-        <div className="flex flex-col items-center gap-3 rounded-2xl bg-panel px-6 py-16 text-center ring-1 ring-line">
-          <p className="text-lg font-bold tracking-[-0.01em] text-ink">No talks match that.</p>
-          <p className="max-w-sm text-sm text-ink-dim">
-            Try fewer words, a different spelling, or remove a filter.
-          </p>
-          <Link
-            href="/"
-            className="mt-2 rounded-full bg-stage px-5 py-2.5 text-sm font-semibold text-stage-ink transition-colors hover:bg-accent"
-          >
-            Start over
-          </Link>
-        </div>
+        <EmptyState />
       ) : (
-        <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <div className="flex flex-col gap-6 sm:gap-4">
           {shown.map((v) => (
-            <UnifiedVideoCard key={v.id} video={v} />
+            <UnifiedVideoCard key={v.id} video={v} layout="row" />
           ))}
         </div>
       )}
 
-      {hasMore && (
-        <Link
-          href={`/?${moreParams.toString()}`}
-          scroll={false}
-          className="mx-auto rounded-full bg-panel px-6 py-3 text-sm font-semibold text-ink shadow-sm ring-1 ring-line transition-colors hover:bg-stage hover:text-stage-ink hover:ring-stage"
-        >
-          Show more talks
-          <span className="ml-2 font-medium text-ink-faint">
-            {(results.length - shown.length).toLocaleString()} left
-          </span>
-        </Link>
-      )}
+      {shown.length < results.length && <ShowMore href={`/?${moreParams.toString()}`} />}
+    </div>
+  );
+}
+
+function ShowMore({ href }: { href: string }) {
+  return (
+    <div className="flex justify-center pt-10">
+      <Link
+        href={href}
+        scroll={false}
+        className="rounded-full bg-panel-raised px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+      >
+        Show more
+      </Link>
+    </div>
+  );
+}
+
+function EmptyState() {
+  return (
+    <div className="flex flex-col items-center gap-2 py-24 text-center">
+      <p className="text-xl font-semibold text-ink">No results found</p>
+      <p className="max-w-sm text-sm text-ink-dim">
+        Try different keywords, or remove search filters.
+      </p>
+      <Link
+        href="/"
+        className="mt-3 rounded-full bg-panel-raised px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+      >
+        Back to home
+      </Link>
     </div>
   );
 }

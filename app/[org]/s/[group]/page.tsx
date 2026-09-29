@@ -53,8 +53,8 @@ export default async function OrphanSessionGroupPage({
         meta={`${group.sessions.length} ${group.sessions.length === 1 ? "video" : "videos"}`}
         description="These talks aren't linked to an official event record, so they're grouped by the event their titles point to."
       />
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col px-4 py-10 sm:px-6 sm:py-12">
-        <div className="grid grid-cols-1 gap-x-5 gap-y-10 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="flex flex-1 flex-col px-4 py-6 sm:px-6">
+        <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {group.sessions.map((s) => (
             <VideoCard key={s._id} session={s} org={org} />
           ))}
