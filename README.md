@@ -35,6 +35,29 @@ automatically via `predev`/`prebuild`. Uses Node's built-in `node:sqlite`
 (Node 22.5+, no native compilation), so it runs anywhere the app's Node
 runtime does.
 
+## MCP server
+
+`/api/mcp` is a read-only [MCP](https://modelcontextprotocol.io) endpoint
+(Streamable HTTP, `app/api/mcp/route.ts`) over the same search index, so AI
+agents can search the archive and read transcripts. Tools: `search_videos`,
+`get_video`, `get_transcript` (paged), `list_channels`, `list_topics`.
+
+```bash
+claude mcp add --transport http streameth https://<your-domain>/api/mcp
+```
+
+It requires a signed-in account (a wallet, via the normal sign-in). Supabase Auth's OAuth 2.1 server is the
+authorization server: `/.well-known/oauth-protected-resource/api/mcp` points
+clients at it, the client registers itself (dynamic client registration),
+and the user signs in with their wallet and approves on `/oauth/consent`. The MCP route then
+verifies the Supabase access token (`lib/supabase/mcpAuth.ts`).
+
+On the hosted project, in **Authentication → OAuth Server**: enable it, set
+the authorization path to `/oauth/consent`, and allow dynamic client
+registration. The project's Site URL must be this app's domain, since
+Supabase builds the consent URL from it. Locally, `supabase/config.toml`
+already has these set.
+
 ## Accounts (wallet sign-in, saved videos)
 
 Accounts are Ethereum wallets: sign-in is Sign in with Ethereum (EIP-4361)
