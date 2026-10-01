@@ -2,6 +2,7 @@ import "server-only";
 import { createClient } from "@supabase/supabase-js";
 import type { AuthInfo } from "@modelcontextprotocol/server";
 import { lazy } from "../lazy";
+import { hashMcpToken, isMcpToken } from "../mcpTokens";
 
 /** Supabase Auth's OAuth 2.1 server issues the MCP access tokens; its issuer
  * is the project's `/auth/v1` URL. */
@@ -17,9 +18,11 @@ const getClient = lazy(() =>
   })
 );
 
-/** Verifies a Supabase access token (signature + expiry) and maps it to the
- * MCP SDK's AuthInfo. Returns undefined for anything that isn't a signed-in
- * user's token, so `withMcpAuth` answers 401 with the OAuth challenge. */
+/** Verifies an MCP bearer token — either a personal token generated on
+ * /connect, or a Supabase OAuth access token (signature + expiry) — and maps
+ * it to the MCP SDK's AuthInfo. Returns undefined for anything that isn't a
+ * signed-in user's token, so `withMcpAuth` answers 401 with the OAuth
+ * challenge. */
 export async function verifySupabaseToken(
   _req: Request,
   bearerToken?: string
@@ -27,6 +30,18 @@ export async function verifySupabaseToken(
   if (!bearerToken) return undefined;
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
     return undefined;
+  }
+
+  if (isMcpToken(bearerToken)) {
+    const { data: userId, error } = await getClient().rpc("verify_mcp_token", {
+      p_token_hash: hashMcpToken(bearerToken),
+    });
+    if (error) {
+      console.error("[mcp] personal token lookup failed:", error);
+      return undefined;
+    }
+    if (typeof userId !== "string") return undefined;
+    return { token: bearerToken, clientId: "personal-token", scopes: [], extra: { userId } };
   }
 
   const { data, error } = await getClient().auth.getClaims(bearerToken);

@@ -12,6 +12,7 @@ import MiniPlayerBar from "@/components/MiniPlayerBar";
 import {
   BackIcon,
   ChannelsIcon,
+  ConnectIcon,
   EventsIcon,
   HomeIcon,
   MenuIcon,
@@ -30,7 +31,10 @@ const PRIMARY_NAV: NavItem[] = [
   { href: "/speakers", label: "Speakers", Icon: SpeakersIcon },
   { href: "/topics", label: "Topics", Icon: TopicsIcon },
 ];
-const YOU_NAV: NavItem[] = [{ href: "/saved", label: "Saved", Icon: SavedIcon }];
+const YOU_NAV: NavItem[] = [
+  { href: "/saved", label: "Saved", Icon: SavedIcon },
+  { href: "/connect", label: "Connect to MCP", Icon: ConnectIcon },
+];
 
 const RAIL_STORAGE_KEY = "streameth:sidebar-collapsed";
 const RAIL_CHANGE_EVENT = "streameth:sidebar-collapsed-change";

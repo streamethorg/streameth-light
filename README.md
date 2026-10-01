@@ -46,11 +46,19 @@ agents can search the archive and read transcripts. Tools: `search_videos`,
 claude mcp add --transport http streameth https://<your-domain>/api/mcp
 ```
 
-It requires a signed-in account (a wallet, via the normal sign-in). Supabase Auth's OAuth 2.1 server is the
-authorization server: `/.well-known/oauth-protected-resource/api/mcp` points
-clients at it, the client registers itself (dynamic client registration),
-and the user signs in with their wallet and approves on `/oauth/consent`. The MCP route then
-verifies the Supabase access token (`lib/supabase/mcpAuth.ts`).
+Signed-in users can generate a personal token on `/connect` ("Connect to
+MCP" in the sidebar) and pass it as `Authorization: Bearer smcp_…`. Only a
+SHA-256 hash is stored (`mcp_tokens`, `supabase/migrations/`); `/api/mcp`
+checks it through the `verify_mcp_token` database function. Users can revoke
+tokens on the same page.
+
+Apps that support OAuth (e.g. Claude.ai connectors) can connect without a
+token, still as a signed-in wallet account. Supabase Auth's OAuth 2.1 server
+is the authorization server: `/.well-known/oauth-protected-resource/api/mcp`
+points clients at it, the client registers itself (dynamic client
+registration), and the user signs in with their wallet and approves on
+`/oauth/consent`. The MCP route then verifies the Supabase access token
+(`lib/supabase/mcpAuth.ts`).
 
 On the hosted project, in **Authentication → OAuth Server**: enable it, set
 the authorization path to `/oauth/consent`, and allow dynamic client
