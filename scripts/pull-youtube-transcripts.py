@@ -18,6 +18,13 @@ session (the exact issue pull-youtube-metadata.py already worked around with
 `player_client=android`), and nearly every request after that point was
 misrecorded as "no captions" before this fix.
 
+Capped to BATCH_LIMIT videos per invocation (env var, default 2000) and
+bails out early if the first 30 requests are mostly failures — same
+reasoning as pull-youtube-metadata.py: the calling workflow only commits
+after this step finishes, so an uncapped run against a 10,000+ video cold
+backlog that gets killed by the job timeout saves nothing, and hammering a
+blocked/rate-limited session harder doesn't unblock it.
+
 Run with: python3 scripts/pull-youtube-transcripts.py
 """
 import json
@@ -35,6 +42,9 @@ CONCURRENCY = 5
 TIMEOUT_S = 45
 MAX_ATTEMPTS = 3
 RETRY_BACKOFF_S = 5
+BATCH_LIMIT = int(os.environ.get("BATCH_LIMIT", "2000"))
+CIRCUIT_BREAKER_AFTER = 30
+CIRCUIT_BREAKER_FAIL_RATE = 0.8
 
 
 class FetchFailed(Exception):
@@ -133,12 +143,17 @@ def main():
     if os.path.exists(OUT_PATH):
         existing = json.load(open(OUT_PATH))
 
-    todo = [vid for vid in all_ids if vid not in existing]
-    print(f"{len(all_ids)} total videos, {len(existing)} already done, {len(todo)} to fetch")
+    todo_all = [vid for vid in all_ids if vid not in existing]
+    todo = todo_all[:BATCH_LIMIT]
+    print(
+        f"{len(all_ids)} total videos, {len(existing)} already done, "
+        f"{len(todo_all)} remaining, processing {len(todo)} this run"
+    )
 
     done_count = 0
     ok_count = 0
     failed_count = 0
+    breaker_tripped = False
 
     def save():
         json.dump(existing, open(OUT_PATH, "w"), indent=2, ensure_ascii=False)
@@ -153,16 +168,28 @@ def main():
             except FetchFailed as e:
                 failed_count += 1
                 print(f"[{done_count}/{len(todo)}] {vid} FAILED, left for next run: {e}")
-                continue
-            if text:
-                existing[vid] = text
-                ok_count += 1
-                print(f"[{done_count}/{len(todo)}] {vid} OK ({len(text)} chars)")
             else:
-                existing[vid] = None
-                print(f"[{done_count}/{len(todo)}] {vid} no captions")
+                if text:
+                    existing[vid] = text
+                    ok_count += 1
+                    print(f"[{done_count}/{len(todo)}] {vid} OK ({len(text)} chars)")
+                else:
+                    existing[vid] = None
+                    print(f"[{done_count}/{len(todo)}] {vid} no captions")
             if done_count % 10 == 0:
                 save()
+            if (
+                not breaker_tripped
+                and done_count == CIRCUIT_BREAKER_AFTER
+                and failed_count / done_count >= CIRCUIT_BREAKER_FAIL_RATE
+            ):
+                breaker_tripped = True
+                cancelled = sum(1 for f in futures if f.cancel())
+                print(
+                    f"{failed_count}/{done_count} of the first {CIRCUIT_BREAKER_AFTER} requests failed — "
+                    f"session looks blocked/rate-limited, not going to recover by retrying harder. "
+                    f"Cancelled {cancelled} not-yet-started requests; leaving them for the next run."
+                )
 
     save()
     print(f"done: {ok_count}/{len(todo)} fetched with real transcript text, {failed_count} failed (left for next run)")

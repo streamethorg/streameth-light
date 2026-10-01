@@ -26,7 +26,17 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    # scripts/pull-youtube-metadata.py and pull-youtube-transcripts.py are
+    # capped at BATCH_LIMIT videos each per run specifically so the whole
+    # job finishes comfortably inside this budget — a run that hits this
+    # timeout gets cancelled by GitHub with nothing committed (confirmed in
+    # CI on 2026-09-29/30, before the cap existed: two ~5-hour runs against
+    # the uncapped ~14k-video cold-start backlog were each killed here and
+    # saved none of their work). The daily schedule works through a large
+    # backlog a batch at a time instead of needing one run to finish it.
+    timeout-minutes: 120
+    env:
+      BATCH_LIMIT: "2000"
     steps:
       - uses: actions/checkout@v4
 
@@ -73,9 +83,13 @@ jobs:
           commit-message: "Refresh video data (automated)"
           title: "Refresh video data (automated)"
           body: |
-            Weekly automated refresh: new events/orgs discovered from Mira and
+            Daily automated refresh: new events/orgs discovered from Mira and
             ethereum.org, YouTube channels found where possible, videos pulled
             for every tracked channel, events/speakers reclassified, DB rebuilt.
+
+            Video metadata/transcript pulls are capped at ${{ env.BATCH_LIMIT }}
+            videos each per run — a large backlog is worked through a batch at
+            a time across multiple days rather than in one run.
 
             Review before merging — a scrape run can occasionally misclassify
             an event or channel match.
