@@ -2,30 +2,35 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import type { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
+import { getUserAddress, shortAddress } from "@/lib/userAddress";
+import { useEnsName } from "@/lib/useEnsName";
 import Avatar from "@/components/Avatar";
+import SignOutButton from "@/components/SignOutButton";
 
 export default function AuthStatus() {
-  const router = useRouter();
   const [supabase] = useState(() => createClient());
-  const [email, setEmail] = useState<string | null | undefined>(undefined);
+  // Keyed on the user, not their email — wallet accounts have an empty email.
+  const [user, setUser] = useState<User | null | undefined>(undefined);
+  const address = getUserAddress(user);
+  const ensName = useEnsName(address);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setEmail(data.user?.email ?? null));
+    supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setEmail(session?.user?.email ?? null);
+      setUser(session?.user ?? null);
     });
     return () => subscription.unsubscribe();
   }, [supabase]);
 
-  if (email === undefined) {
+  if (user === undefined) {
     return <div className="h-9 w-20 shrink-0" />;
   }
 
-  if (!email) {
+  if (!user) {
     return (
       <Link
         href="/signin"
@@ -41,21 +46,22 @@ export default function AuthStatus() {
     );
   }
 
+  const label = ensName ?? (address ? shortAddress(address) : "Account");
+
   return (
     <div className="flex shrink-0 items-center gap-2">
-      <span title={`Signed in as ${email}`} className="hidden sm:flex">
-        <Avatar name={email} channel className="h-8 w-8 text-[11px]" />
-      </span>
-      <button
-        type="button"
-        onClick={async () => {
-          await supabase.auth.signOut();
-          router.refresh();
-        }}
-        className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-ink-dim transition-colors hover:bg-panel-raised hover:text-ink"
+      <Link
+        href="/settings"
+        title={address ? `Signed in as ${address}` : "Account settings"}
+        className="flex items-center gap-2 rounded-full p-0.5 transition-colors hover:bg-panel-raised sm:pr-3"
       >
-        Sign out
-      </button>
+        <Avatar name={label} channel className="h-8 w-8 text-[11px]" />
+        <span className="hidden max-w-[9rem] truncate text-sm font-medium text-ink-dim sm:block">
+          {label}
+        </span>
+      </Link>
+      {/* On phones the header only has room for the avatar; Sign out is on /settings. */}
+      <SignOutButton className="hidden whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-ink-dim transition-colors hover:bg-panel-raised hover:text-ink sm:block" />
     </div>
   );
 }
