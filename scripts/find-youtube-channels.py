@@ -45,6 +45,40 @@ def search(query: str) -> list[dict]:
     return data.get("entries", [])
 
 
+CONTENT_KEYWORDS = {
+    "ethereum", "web3", "blockchain", "crypto", "defi", "nft", "solidity",
+    "devcon", "hackathon", "dao", "dapp", "smart contract", "layer 2",
+    "rollup", "zk", "token", "metamask", "wallet", "staking", "validator",
+    "l2", "evm", "consensus", "decentralized", "decentralised",
+}
+
+
+def looks_crypto_related(channel_url: str) -> bool:
+    # A name/token match alone isn't enough — a generic or city-name org
+    # ("Austin Ethereum Meetup", "Seattle") can coincidentally match an
+    # entirely unrelated channel that just happens to share that word
+    # (confirmed by hand: "Austin Ethereum Meetup" name-matched "Austin Tech
+    # Live", a channel with no crypto content at all). Require at least one
+    # of the channel's actual recent video titles to mention something
+    # crypto/Ethereum-related.
+    proc = subprocess.run(
+        ["yt-dlp", "--flat-playlist", "--playlist-end", "8", "--dump-single-json", "--no-warnings",
+         channel_url.rstrip("/") + "/videos"],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    if proc.returncode != 0:
+        return False
+    try:
+        data = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        return False
+    titles = " ".join((e.get("title") or "") for e in data.get("entries", []) if e)
+    titles = titles.lower()
+    return any(kw in titles for kw in CONTENT_KEYWORDS)
+
+
 def main() -> None:
     directory = json.loads(DIRECTORY_PATH.read_text())["entries"]
     orgs = json.loads((ROOT / "data" / "organizations.json").read_text())
@@ -89,7 +123,7 @@ def main() -> None:
         # require at least one shared distinctive token (e.g. a city name),
         # not just the generic "ethereum"/"meetup" words both sides share
         name_match = bool(target_tokens & channel_tokens)
-        confident = top_count >= 2 and name_match
+        confident = top_count >= 2 and name_match and looks_crypto_related(top_url)
         status = "CONFIDENT" if confident else "weak"
         print(f"[{i}/{len(targets)}] {name}: {top_channel_name} ({top_url}) count={top_count}/{len(channels)} [{status}]")
         if confident:
