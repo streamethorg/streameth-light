@@ -36,6 +36,10 @@ export async function verifySupabaseToken(
   // The anon key is itself a valid project JWT (role "anon", no user) —
   // only accept tokens minted for an actual signed-in user.
   if (claims.role !== "authenticated" || !claims.sub) return undefined;
+  // Accounts are wallets: reject leftover email-only accounts. app_metadata
+  // is set by Supabase Auth (not user-writable) and signed into the token.
+  const providers: unknown = claims.app_metadata?.providers;
+  if (!Array.isArray(providers) || !providers.includes("web3")) return undefined;
 
   const clientId = typeof claims.client_id === "string" ? claims.client_id : "";
   const scopes = typeof claims.scope === "string" ? claims.scope.split(" ").filter(Boolean) : [];
@@ -45,6 +49,6 @@ export async function verifySupabaseToken(
     clientId,
     scopes,
     expiresAt: claims.exp,
-    extra: { userId: claims.sub, email: claims.email },
+    extra: { userId: claims.sub },
   };
 }

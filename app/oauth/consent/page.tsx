@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { lookupEnsName } from "@/lib/ens";
+import { getUserAddress, shortAddress } from "@/lib/userAddress";
 
 export const metadata = {
   title: "Connect an app — StreamETH",
@@ -48,7 +50,16 @@ export default async function ConsentPage({
     redirect(`/signin?next=${encodeURIComponent(`/oauth/consent?authorization_id=${authorizationId}`)}`);
   }
 
-  const { data, error } = await supabase.auth.oauth.getAuthorizationDetails(authorizationId);
+  // Accounts are wallets — a leftover email-only account can't connect apps.
+  const address = getUserAddress(user);
+  if (!address) {
+    return <ConsentError message="This account isn't linked to a wallet. Sign out and sign in with your wallet, then connect again from your app." />;
+  }
+
+  const [{ data, error }, ensName] = await Promise.all([
+    supabase.auth.oauth.getAuthorizationDetails(authorizationId),
+    lookupEnsName(address),
+  ]);
 
   if (error || !data) {
     return <ConsentError message="This connection request has expired or is no longer valid. Start connecting again from your app." />;
@@ -72,7 +83,10 @@ export default async function ConsentPage({
         <h1 className="display text-4xl text-ink">Connect {client.name || "this app"}</h1>
         <p className="text-[15px] text-ink-dim">
           {client.name || "This app"} wants to search the StreamETH archive and read transcripts as{" "}
-          <span className="font-semibold text-ink">{data.user.email}</span>.
+          <span className="font-semibold text-ink" title={address}>
+            {ensName ?? shortAddress(address)}
+          </span>
+          .
         </p>
         {client.uri ? (
           <a href={client.uri} target="_blank" rel="noreferrer" className="text-sm text-ink-faint underline">
