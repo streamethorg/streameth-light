@@ -1,56 +1,119 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { useInjectedWallets, type InjectedWallet } from "@/lib/useInjectedWallets";
+
+type Status =
+  | { kind: "idle" }
+  | { kind: "connecting"; walletId: string }
+  | { kind: "cancelled" }
+  | { kind: "error"; message: string };
+
+// Only same-origin paths — `next` comes from the URL, so "//evil.com" or
+// "https://…" must not become a post-sign-in redirect.
+function safeNext(raw: string | null): string {
+  return raw && raw.startsWith("/") && !raw.startsWith("//") ? raw : "/";
+}
+
+function isUserRejection(err: unknown): boolean {
+  return typeof err === "object" && err !== null && "code" in err && (err as { code: unknown }).code === 4001;
+}
 
 export default function SignInForm() {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") ?? "/";
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const next = safeNext(searchParams.get("next"));
+  const wallets = useInjectedWallets();
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    const supabase = createClient();
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
-      },
-    });
-    setStatus(error ? "error" : "sent");
+  async function signIn(wallet: InjectedWallet) {
+    setStatus({ kind: "connecting", walletId: wallet.id });
+    try {
+      // Connect first ourselves: supabase-js turns a rejected connect into a
+      // generic "method missing" error, which would read as a bug to the user.
+      await wallet.provider.request({ method: "eth_requestAccounts" });
+
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithWeb3({
+        chain: "ethereum",
+        wallet: wallet.provider,
+        statement: "Sign in to StreamETH.",
+        // Pin mainnet in the signed message regardless of the network the
+        // wallet happens to be on — the signature itself is chain-agnostic.
+        options: { signInWithEthereum: { chainId: 1 } },
+      });
+
+      if (error) {
+        console.error("[signin] web3 sign-in rejected by auth server:", error);
+        setStatus({ kind: "error", message: "Couldn't sign you in — try again." });
+        return;
+      }
+
+      router.replace(next);
+      router.refresh();
+    } catch (err) {
+      if (isUserRejection(err)) {
+        setStatus({ kind: "cancelled" });
+        return;
+      }
+      console.error("[signin] wallet sign-in failed:", err);
+      setStatus({ kind: "error", message: "Your wallet couldn't complete sign-in — try again." });
+    }
   }
 
-  if (status === "sent") {
+  if (wallets === null) {
+    return <div className="h-10 w-full max-w-sm" />;
+  }
+
+  if (wallets.length === 0) {
     return (
-      <p className="text-sm text-ink-dim">
-        Check <span className="text-ink">{email}</span> for a sign-in link.
-      </p>
+      <div className="flex w-full max-w-sm flex-col items-center gap-3 text-center">
+        <p className="text-sm text-ink-dim">
+          No Ethereum wallet found in this browser.
+        </p>
+        <a
+          href="https://ethereum.org/en/wallets/find-wallet/"
+          target="_blank"
+          rel="noreferrer"
+          className="w-full rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-ink hover:opacity-90"
+        >
+          Get a wallet ↗
+        </a>
+      </div>
     );
   }
 
+  const busy = status.kind === "connecting";
+
   return (
-    <form onSubmit={handleSubmit} className="flex w-full max-w-sm flex-col gap-3">
-      <input
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="you@example.com"
-        className="w-full rounded-md border border-line bg-panel px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-1 focus:ring-ink-faint"
-      />
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="w-full rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-ink hover:opacity-90 disabled:opacity-60"
-      >
-        {status === "sending" ? "Sending…" : "Send sign-in link"}
-      </button>
-      {status === "error" && (
-        <p className="text-sm text-error">Couldn&apos;t send that link — try again.</p>
+    <div className="flex w-full max-w-sm flex-col gap-3">
+      {wallets.map((wallet) => (
+        <button
+          key={wallet.id}
+          type="button"
+          onClick={() => signIn(wallet)}
+          disabled={busy}
+          className="flex w-full items-center justify-center gap-2 rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-ink hover:opacity-90 disabled:opacity-60"
+        >
+          {wallet.icon && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={wallet.icon} alt="" className="h-4 w-4 rounded-sm" />
+          )}
+          {status.kind === "connecting" && status.walletId === wallet.id
+            ? "Check your wallet…"
+            : wallets.length === 1
+              ? "Connect wallet"
+              : `Connect ${wallet.name}`}
+        </button>
+      ))}
+      {status.kind === "cancelled" && (
+        <p className="text-center text-sm text-ink-faint">Signature cancelled.</p>
       )}
-    </form>
+      {status.kind === "error" && (
+        <p className="text-center text-sm text-error">{status.message}</p>
+      )}
+    </div>
   );
 }

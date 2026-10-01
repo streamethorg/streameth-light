@@ -11,7 +11,7 @@ export default function SignInPage() {
       <div className="flex flex-col items-center gap-1 text-center">
         <h1 className="font-display text-xl font-bold text-ink">Sign in</h1>
         <p className="text-sm text-ink-dim">
-          We&apos;ll email you a link — no password needed.
+          Sign a message with your Ethereum wallet. It&apos;s free — no transaction, no gas.
         </p>
       </div>
       <Suspense fallback={null}>

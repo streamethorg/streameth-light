@@ -35,23 +35,34 @@ automatically via `predev`/`prebuild`. Uses Node's built-in `node:sqlite`
 (Node 22.5+, no native compilation), so it runs anywhere the app's Node
 runtime does.
 
-## Accounts (saved videos)
+## Accounts (wallet sign-in, saved videos)
 
-Sign-in (magic link/email OTP) and "Save" are backed by a Supabase project
-(Postgres + Auth) — the one persistent, writable piece of an otherwise
-read-only/static app. Schema lives in `supabase/migrations/`; `saved_videos`
-rows are protected by row-level security so a user can only see/write their
-own. Requires env vars (see `.env.example`):
+Accounts are Ethereum wallets: sign-in is Sign in with Ethereum (EIP-4361)
+through Supabase's native Web3 auth — the user signs a message, no
+transaction or gas. There is no email sign-in. Supabase (Postgres + Auth) is
+the one persistent, writable piece of an otherwise read-only/static app.
+Schema lives in `supabase/migrations/`; `saved_videos` rows are protected by
+row-level security so a user can only see/write their own.
 
-```bash
-cp .env.example .env.local  # fill in your Supabase project's URL + anon key
-```
+Environment variables (`.env.local`, and the Vercel project):
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | yes | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | yes | Supabase anon/publishable key |
+| `ETH_RPC_URL` | production | Mainnet RPC for ENS names; falls back to viem's rate-limited public RPC |
 
 New environment (e.g. a fresh Supabase project): `supabase link --project-ref
-<ref>` then `supabase db push` to apply the migrations. If deploying to a
-new domain, also add `<domain>/auth/callback` to that project's
-Authentication → URL Configuration → Redirect URLs, or magic links won't
-redirect back correctly.
+<ref>` then `supabase db push` to apply the migrations. Then in the dashboard:
+
+- Authentication → Sign In / Providers → **Web3 Wallet → Ethereum: on**.
+- Authentication → Sign In / Providers → **Email: off** (no email accounts).
+- Authentication → URL Configuration: the site URL (and any preview domains)
+  must be allowed, or signatures are rejected with "message was signed for
+  another app".
+
+Local stack: `supabase start` uses `supabase/config.toml`, which already
+enables Ethereum sign-in and disables email signup.
 
 ## Development
 
@@ -64,5 +75,5 @@ pnpm dev
 
 Deployed on Vercel. `data/*.json` is committed to git, so the video archive
 itself needs no environment variables or database — `data/streameth.db` is
-rebuilt from it during `pnpm build`. Accounts/saved-videos need the Supabase
-env vars above set in the Vercel project.
+rebuilt from it during `pnpm build`. Accounts need the env vars above set in the
+Vercel project.
