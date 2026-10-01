@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import SearchSuggestions from "@/components/SearchSuggestions";
+import { SearchIcon } from "@/components/NavIcons";
 import { useSearchSuggestions } from "@/lib/useSearchSuggestions";
 
-export default function SearchBar() {
+export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -53,23 +54,15 @@ export default function SearchBar() {
         setDropdownOpen(false);
         push(value);
       }}
-      className="relative w-full max-w-xl"
+      className="relative flex w-full max-w-[640px]"
     >
-      <div className="flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2 focus-within:border-ink-faint">
-        <svg
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          className="h-4 w-4 shrink-0 text-ink-faint"
-        >
-          <circle cx="9" cy="9" r="6.5" />
-          <path d="M18 18l-4-4" strokeLinecap="round" />
-        </svg>
+      <div className="flex h-10 min-w-0 flex-1 items-center rounded-l-full border border-line bg-void pl-4 pr-2 shadow-[inset_0_1px_2px_rgb(0_0_0/0.04)] focus-within:border-accent focus-within:shadow-[inset_0_1px_2px_rgb(0_0_0/0.08)]">
         <input
           type="search"
           value={value}
-          placeholder="Search talks, speakers, topics..."
+          autoFocus={autoFocus}
+          aria-label="Search"
+          placeholder="Search talks, speakers, topics"
           onFocus={() => setDropdownOpen(true)}
           onChange={(e) => {
             const next = e.target.value;
@@ -78,9 +71,16 @@ export default function SearchBar() {
             if (debounceRef.current) clearTimeout(debounceRef.current);
             debounceRef.current = setTimeout(() => push(next), 250);
           }}
-          className="w-full bg-transparent text-sm text-ink placeholder:text-ink-faint focus:outline-none"
+          className="w-full min-w-0 bg-transparent text-base text-ink placeholder:text-ink-faint focus:outline-none"
         />
       </div>
+      <button
+        type="submit"
+        aria-label="Search"
+        className="flex h-10 w-16 shrink-0 items-center justify-center rounded-r-full border border-l-0 border-line bg-panel-raised text-ink transition-colors hover:bg-panel-hover"
+      >
+        <SearchIcon />
+      </button>
       {dropdownOpen && (
         <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
       )}

@@ -160,17 +160,24 @@ export function topTopics(limit = 16): string[] {
   const rows = db
     .prepare("SELECT topics FROM videos WHERE topics != ''")
     .all() as unknown as { topics: string }[];
-  const counts = new Map<string, number>();
+  // Tags come from many uploaders with inconsistent casing ("ethereum" vs
+  // "Ethereum"), so group case-insensitively and label each group with its
+  // most common spelling — otherwise the chip row shows near-duplicates.
+  const groups = new Map<string, { total: number; spellings: Map<string, number> }>();
   for (const row of rows) {
     for (const topic of row.topics.split(", ")) {
       if (!topic) continue;
-      counts.set(topic, (counts.get(topic) ?? 0) + 1);
+      const key = topic.toLowerCase();
+      const group = groups.get(key) ?? { total: 0, spellings: new Map<string, number>() };
+      group.total += 1;
+      group.spellings.set(topic, (group.spellings.get(topic) ?? 0) + 1);
+      groups.set(key, group);
     }
   }
-  return [...counts.entries()]
-    .sort((a, b) => b[1] - a[1])
+  return [...groups.values()]
+    .sort((a, b) => b.total - a.total)
     .slice(0, limit)
-    .map(([topic]) => topic);
+    .map(({ spellings }) => [...spellings.entries()].sort((a, b) => b[1] - a[1])[0][0]);
 }
 
 export function getVideoById(id: string): UnifiedVideo | undefined {
@@ -201,4 +208,88 @@ export function listChannelOptions(): OrgOption[] {
   // node:sqlite rows are null-prototype objects, which RSC can't serialize
   // across the client-component boundary — copy into plain objects.
   return rows.map((r) => ({ slug: r.slug, name: r.name }));
+}
+
+export interface ChannelShelf {
+  slug: string;
+  name: string;
+  total: number;
+  /** Newest video's published_at (ms). */
+  latest: number;
+  videos: UnifiedVideo[];
+}
+
+/** Channels with their latest videos — the homepage's channel index.
+ * Channels with only a handful of videos are skipped so a row is never a
+ * lonely one-card strip. `order` picks the flagship conferences ("size") or
+ * whoever published most recently ("recent"). */
+export function channelShelves(
+  shelves = 4,
+  perShelf = 12,
+  { minVideos = 12, order = "size" }: { minVideos?: number; order?: "size" | "recent" } = {}
+): ChannelShelf[] {
+  const db = getDb();
+  const channels = db
+    .prepare(
+      `SELECT org_slug AS slug, org_name AS name, COUNT(*) AS total, MAX(published_at) AS latest
+       FROM videos
+       WHERE org_slug != ''
+       GROUP BY org_slug
+       HAVING SUM(cover_image IS NOT NULL) >= ?
+       ORDER BY ${order === "recent" ? "latest" : "total"} DESC
+       LIMIT ?`
+    )
+    .all(minVideos, shelves) as unknown as {
+    slug: string;
+    name: string;
+    total: number;
+    latest: number;
+  }[];
+
+  const latest = db.prepare(
+    `SELECT * FROM videos WHERE org_slug = ? AND cover_image IS NOT NULL
+     ORDER BY published_at DESC LIMIT ?`
+  );
+
+  return channels.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    total: c.total,
+    latest: c.latest,
+    videos: (latest.all(c.slug, perShelf) as unknown as VideoRow[]).map(rowToVideo),
+  }));
+}
+
+export function archiveStats(): { videos: number; channels: number } {
+  const db = getDb();
+  const row = db
+    .prepare("SELECT COUNT(*) AS videos, COUNT(DISTINCT org_slug) AS channels FROM videos")
+    .get() as unknown as { videos: number; channels: number };
+  return { videos: row.videos, channels: row.channels };
+}
+
+/** The biggest channels by archive size, for the sidebar's channel list. */
+export function topChannels(limit = 8): { slug: string; name: string }[] {
+  const db = getDb();
+  const rows = db
+    .prepare(
+      `SELECT org_slug AS slug, org_name AS name FROM videos
+       WHERE org_slug != '' GROUP BY org_slug ORDER BY COUNT(*) DESC LIMIT ?`
+    )
+    .all(limit) as unknown as { slug: string; name: string }[];
+  // Plain objects: node:sqlite rows are null-prototype and can't cross into
+  // a client component as props.
+  return rows.map((r) => ({ slug: r.slug, name: r.name }));
+}
+
+/** A channel's videos, newest first, for its "Videos" tab. */
+export function channelVideos(slug: string, limit: number): { videos: UnifiedVideo[]; total: number } {
+  const db = getDb();
+  const rows = db
+    .prepare(`SELECT * FROM videos WHERE org_slug = ? ORDER BY published_at DESC LIMIT ?`)
+    .all(slug, limit) as unknown as VideoRow[];
+  const { total } = db
+    .prepare(`SELECT COUNT(*) AS total FROM videos WHERE org_slug = ?`)
+    .get(slug) as unknown as { total: number };
+  return { videos: rows.map(rowToVideo), total };
 }

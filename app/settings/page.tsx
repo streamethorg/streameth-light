@@ -2,12 +2,14 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { lookupEnsName } from "@/lib/ens";
-import { getUserAddress } from "@/lib/userAddress";
+import { getUserAddress, shortAddress } from "@/lib/userAddress";
 import { formatDateShort } from "@/lib/format";
+import PageHero from "@/components/PageHero";
+import Avatar from "@/components/Avatar";
 import SignOutButton from "@/components/SignOutButton";
 
 export const metadata = {
-  title: "Settings — StreamETH Light",
+  title: "Settings — StreamETH",
 };
 
 export default async function SettingsPage() {
@@ -25,60 +27,61 @@ export default async function SettingsPage() {
     address ? lookupEnsName(address) : Promise.resolve(null),
     supabase.from("saved_videos").select("video_id", { count: "exact", head: true }),
   ]);
+  const label = ensName ?? (address ? shortAddress(address) : "Your account");
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-4 py-10 sm:px-6">
-      <header className="flex flex-col gap-2">
-        <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">Settings</h1>
-        <p className="text-sm text-ink-dim">Your StreamETH account.</p>
-      </header>
-
-      <section className="flex flex-col gap-4 rounded-md border border-line bg-panel p-5">
-        <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">Wallet</h2>
-        {address ? (
-          <dl className="flex flex-col gap-3 text-sm">
-            {ensName && (
-              <div className="flex flex-col gap-0.5">
-                <dt className="text-xs text-ink-faint">ENS name</dt>
-                <dd className="font-medium text-ink">{ensName}</dd>
-              </div>
-            )}
-            <div className="flex flex-col gap-0.5">
-              <dt className="text-xs text-ink-faint">Address</dt>
-              <dd className="break-all font-mono text-ink">{address}</dd>
-            </div>
-            <div className="flex flex-col gap-0.5">
-              <dt className="text-xs text-ink-faint">Member since</dt>
-              <dd className="text-ink">{formatDateShort(user.created_at)}</dd>
-            </div>
-            <a
-              href={`https://etherscan.io/address/${address}`}
-              target="_blank"
-              rel="noreferrer"
-              className="w-fit font-mono text-xs text-ink-dim transition-colors hover:text-accent"
-            >
-              View on Etherscan ↗
-            </a>
-          </dl>
-        ) : (
-          <p className="text-sm text-ink-dim">
-            This account isn&apos;t linked to a wallet. Sign out and sign in with your wallet to
-            use StreamETH.
-          </p>
-        )}
-      </section>
-
-      <section className="flex flex-col gap-3 rounded-md border border-line bg-panel p-5">
-        <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">Library</h2>
-        <Link href="/saved" className="w-fit text-sm text-ink hover:text-accent">
-          {savedCount ?? 0} saved {savedCount === 1 ? "video" : "videos"} →
-        </Link>
-      </section>
-
-      <SignOutButton
-        redirectTo="/"
-        className="w-fit rounded-md border border-line px-4 py-2 text-sm text-ink-dim hover:bg-panel hover:text-ink"
+    <div className="flex flex-1 flex-col">
+      <PageHero
+        leading={<Avatar name={label} channel className="h-16 w-16 text-lg sm:h-20 sm:w-20 sm:text-xl" />}
+        title={label}
+        meta={`Member since ${formatDateShort(user.created_at)}`}
+        actions={
+          <SignOutButton
+            redirectTo="/"
+            className="rounded-full bg-panel-raised px-4 py-2 text-sm font-semibold text-ink transition-colors hover:bg-line"
+          />
+        }
       />
+
+      <div className="flex max-w-2xl flex-col gap-4 px-4 py-6 sm:px-6">
+        <section className="flex flex-col gap-3 rounded-2xl bg-panel p-5 ring-1 ring-line">
+          <h2 className="text-base font-bold text-ink">Wallet</h2>
+          {address ? (
+            <dl className="flex flex-col gap-3 text-sm">
+              {ensName && (
+                <div className="flex flex-col gap-0.5">
+                  <dt className="text-xs text-ink-faint">ENS name</dt>
+                  <dd className="font-medium text-ink">{ensName}</dd>
+                </div>
+              )}
+              <div className="flex flex-col gap-0.5">
+                <dt className="text-xs text-ink-faint">Address</dt>
+                <dd className="break-all font-mono text-ink">{address}</dd>
+              </div>
+              <a
+                href={`https://etherscan.io/address/${address}`}
+                target="_blank"
+                rel="noreferrer"
+                className="w-fit text-sm font-medium text-accent hover:underline"
+              >
+                View on Etherscan ↗
+              </a>
+            </dl>
+          ) : (
+            <p className="text-sm text-ink-dim">
+              This account isn&apos;t linked to a wallet. Sign out and sign in with your wallet to
+              use StreamETH.
+            </p>
+          )}
+        </section>
+
+        <section className="flex flex-col gap-2 rounded-2xl bg-panel p-5 ring-1 ring-line">
+          <h2 className="text-base font-bold text-ink">Library</h2>
+          <Link href="/saved" className="w-fit text-sm font-medium text-accent hover:underline">
+            {savedCount ?? 0} saved {savedCount === 1 ? "talk" : "talks"} →
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

@@ -23,6 +23,7 @@ import { getVideoById, relatedVideos } from "@/lib/videoDb";
 import { slugifyTopic } from "@/lib/topics";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
 import { formatDateLong, formatTimecode } from "@/lib/format";
+import { buildMetadata } from "@/lib/social";
 
 // YouTube-backed watch pages (`yt-<videoId>`) aren't in this list — they're
 // rendered on demand instead of prerendered at build time, since there are
@@ -42,17 +43,19 @@ export async function generateMetadata({
   if (id.startsWith("yt-")) {
     const video = getVideoById(id);
     if (!video) return {};
-    return {
-      title: `${video.title} — StreamETH Light`,
+    return buildMetadata({
+      title: `${video.title} — StreamETH`,
       description: video.description?.slice(0, 200),
-    };
+      image: video.coverImage ?? undefined,
+    });
   }
   const session = getSession(id);
   if (!session) return {};
-  return {
-    title: `${session.name} — StreamETH Light`,
+  return buildMetadata({
+    title: `${session.name} — StreamETH`,
     description: session.description?.slice(0, 200),
-  };
+    image: session.coverImage,
+  });
 }
 
 export default async function WatchPage({
@@ -120,14 +123,14 @@ export default async function WatchPage({
       topics={
         session.autoLabels &&
         session.autoLabels.length > 0 && (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-x-2">
             {session.autoLabels.map((topic) => (
               <Link
                 key={topic}
                 href={`/topics/${slugifyTopic(topic)}`}
-                className="rounded-sm border border-line px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-ink-faint transition-colors hover:border-accent/50 hover:text-ink"
+                className="rounded-sm font-medium text-accent hover:underline"
               >
-                {topic}
+                #{topic.replace(/\s+/g, "")}
               </Link>
             ))}
           </div>
@@ -138,7 +141,7 @@ export default async function WatchPage({
       speakers={
         session.speakers &&
         session.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
             {session.speakers.map((sp) => (
               <SpeakerCard key={sp._id} speaker={sp} />
             ))}
@@ -154,6 +157,7 @@ export default async function WatchPage({
             session={s}
             event={relatedEvent}
             org={getOrgForEvent(relatedEvent)}
+            layout="compact"
           />
         );
       })}
@@ -203,7 +207,7 @@ function YoutubeWatchPage({ id }: { id: string }) {
       transcript={video.transcript}
       speakers={
         video.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
             {video.speakers.map((name) => (
               <SpeakerCard key={name} speaker={{ _id: name, name }} />
             ))}
@@ -212,7 +216,7 @@ function YoutubeWatchPage({ id }: { id: string }) {
       }
       relatedLabel={`More from ${video.orgName}`}
       related={related.map((v) => (
-        <UnifiedVideoCard key={v.id} video={v} />
+        <UnifiedVideoCard key={v.id} video={v} layout="compact" />
       ))}
     />
   );

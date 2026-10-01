@@ -1,4 +1,6 @@
 import Link from "next/link";
+import PageHero, { HeroLink } from "@/components/PageHero";
+import SectionHeader from "@/components/SectionHeader";
 import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -22,7 +24,8 @@ import {
   getOrphanSessionsForOrg,
   groupSessionsByInferredEvent,
 } from "@/lib/orphanSessions";
-import { accentStyle, callSign, formatDateShort } from "@/lib/format";
+import { accentStyle, formatDateShort } from "@/lib/format";
+import { buildMetadata } from "@/lib/social";
 import type { Session, Stage } from "@/lib/types";
 
 export function generateStaticParams() {
@@ -42,10 +45,11 @@ export async function generateMetadata({
   const { event: eventSlug } = await params;
   const event = getEvent(eventSlug);
   if (!event) return {};
-  return {
-    title: `${event.name} — StreamETH Light`,
+  return buildMetadata({
+    title: `${event.name} — StreamETH`,
     description: event.description?.slice(0, 200),
-  };
+    image: event.eventCover ?? event.banner ?? event.logo,
+  });
 }
 
 export default async function EventPage({
@@ -105,90 +109,91 @@ export default async function EventPage({
     (matchedYoutubeGroup?.videos.length ?? 0) +
     (matchedOrphanGroup?.sessions.length ?? 0);
 
+  const visibleStages = orderedStages.filter((stage) => (groups.get(stage._id)?.length ?? 0) > 0);
+  const stageAnchor = (id: string) => `stage-${id}`;
+
   return (
     <div
       style={accentStyle(event.accentColor ?? org.accentColor) as CSSProperties | undefined}
-      className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-10 px-4 py-12 sm:px-6"
+      className="flex flex-1 flex-col"
     >
-      <div className="flex flex-col gap-4">
-        <Link
-          href={`/${org.slug}`}
-          className="w-fit font-mono text-xs uppercase tracking-wide text-ink-faint transition-colors hover:text-ink-dim"
-        >
-          ← {org.name}
-        </Link>
-        <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">
-          {event.name}
-        </h1>
-        <p className="font-mono text-xs tabular text-ink-faint">
-          {event.start ? formatDateShort(event.start) : ""}
-          {event.location ? ` · ${event.location}` : ""}
-          {` · ${totalVideoCount} video${totalVideoCount === 1 ? "" : "s"}`}
-        </p>
-        {event.description && (
-          <p className="max-w-2xl text-sm leading-relaxed text-ink-dim">
-            {event.description}
-          </p>
-        )}
-      </div>
+      <PageHero
+        back={{ href: `/${org.slug}`, label: org.name }}
+        title={event.name}
+        meta={
+          <span className="flex flex-wrap gap-x-4 gap-y-1">
+            {event.start && <span className="font-medium text-ink">{formatDateShort(event.start)}</span>}
+            {event.location && <span>{event.location}</span>}
+            <span>
+              {totalVideoCount.toLocaleString()} {totalVideoCount === 1 ? "video" : "videos"}
+            </span>
+          </span>
+        }
+        description={event.description}
+        actions={
+          visibleStages.length > 1 &&
+          visibleStages.map((stage) => (
+            <HeroLink key={stage._id} href={`#${stageAnchor(stage._id)}`}>
+              {stage.name}
+            </HeroLink>
+          ))
+        }
+      />
 
-      {totalVideoCount === 0 ? (
-        <p className="py-12 text-center font-mono text-sm text-ink-faint">
-          No public videos found for this event.
-        </p>
-      ) : (
-        <div className="flex flex-col gap-10">
-          {matchedYoutubeGroup && (
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-2.5 border-b border-line pb-3">
-                <span className="rounded-sm border border-accent/40 px-1.5 py-0.5 font-mono text-[10px] font-medium tracking-wide text-accent">
-                  {callSign("YouTube")}
-                </span>
-                <h2 className="font-mono text-xs uppercase tracking-[0.14em] text-ink-dim">
-                  From {directoryEntry?.name ?? org.name}&apos;s YouTube channel
-                </h2>
-                <span className="ml-auto font-mono text-xs tabular text-ink-faint">
-                  {matchedYoutubeGroup.videos.length}
-                </span>
-              </div>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                {matchedYoutubeGroup.videos.map((v) => (
-                  <YoutubeVideoCard
-                    key={v.videoId}
-                    video={v}
-                    orgSlug={org.slug}
-                    groupSlug={matchedYoutubeGroup.slug}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-          {orderedStages.map((stage) => {
-            const stageSessions = groups.get(stage._id) ?? [];
-            if (stageSessions.length === 0) return null;
-            return (
-              <div key={stage._id} className="flex flex-col gap-4">
-                <div className="flex items-center gap-2.5 border-b border-line pb-3">
-                  <span className="rounded-sm border border-accent/40 px-1.5 py-0.5 font-mono text-[10px] font-medium tracking-wide text-accent">
-                    {callSign(stage.name)}
-                  </span>
-                  <h2 className="font-mono text-xs uppercase tracking-[0.14em] text-ink-dim">
-                    {stage.name}
-                  </h2>
-                  <span className="ml-auto font-mono text-xs tabular text-ink-faint">
-                    {stageSessions.length}
-                  </span>
-                </div>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                  {stageSessions.map((s) => (
-                    <VideoCard key={s._id} session={s} event={event} />
+      <div className="flex flex-1 flex-col gap-10 px-4 py-6 sm:px-6">
+        {totalVideoCount === 0 ? (
+          <div className="flex flex-col items-center gap-3 rounded-2xl bg-panel px-6 py-14 text-center ring-1 ring-line">
+            <p className="text-lg font-bold tracking-[-0.01em] text-ink">No public videos yet</p>
+            <p className="max-w-md text-sm text-ink-dim">
+              Nothing from {event.name} has been published. Other {org.name} events may have
+              recordings.
+            </p>
+            <Link
+              href={`/${org.slug}`}
+              className="mt-2 rounded-full bg-stage px-5 py-2.5 text-sm font-semibold text-stage-ink transition-colors hover:bg-accent"
+            >
+              See all {org.name} events
+            </Link>
+          </div>
+        ) : (
+          <>
+            {matchedYoutubeGroup && (
+              <div className="flex flex-col gap-5">
+                <SectionHeader
+                  title={`From ${directoryEntry?.name ?? org.name}'s YouTube channel`}
+                  detail={`${matchedYoutubeGroup.videos.length} videos`}
+                />
+                <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                  {matchedYoutubeGroup.videos.map((v) => (
+                    <YoutubeVideoCard
+                      key={v.videoId}
+                      video={v}
+                      orgSlug={org.slug}
+                      groupSlug={matchedYoutubeGroup.slug}
+                    />
                   ))}
                 </div>
               </div>
-            );
-          })}
-        </div>
-      )}
+            )}
+            {visibleStages.map((stage) => {
+              const stageSessions = groups.get(stage._id) ?? [];
+              return (
+                <div key={stage._id} id={stageAnchor(stage._id)} className="flex scroll-mt-24 flex-col gap-5">
+                  <SectionHeader
+                    title={stage.name}
+                    detail={`${stageSessions.length} ${stageSessions.length === 1 ? "talk" : "talks"}`}
+                  />
+                  <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                    {stageSessions.map((s) => (
+                      <VideoCard key={s._id} session={s} event={event} org={org} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        )}
+      </div>
     </div>
   );
 }

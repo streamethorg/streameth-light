@@ -5,6 +5,19 @@ data/sources/youtube-videos.json via yt-dlp, cleans the rolling-caption VTT
 format into plain continuous text, and writes data/sources/youtube-transcripts.json
 keyed by videoId. Writes incrementally so a partial/interrupted run isn't lost.
 
+Only a *confirmed* absence of captions (yt-dlp succeeded but wrote no .vtt
+file) is persisted as null — a failed/blocked/timed-out request is left out
+of the output entirely so the next run retries it, the same guarantee
+pull-youtube-metadata.py already makes. Getting this wrong is a real data
+corruption risk: `existing`/`todo` below treats any key present — including
+null — as permanently resolved, so persisting a transient failure as null
+would silently and irreversibly mark a video as caption-less forever. This
+bit in CI on 2026-09-29: the default "web" yt-dlp client hits YouTube's
+"Sign in to confirm you're not a bot" wall after a few hundred requests in a
+session (the exact issue pull-youtube-metadata.py already worked around with
+`player_client=android`), and nearly every request after that point was
+misrecorded as "no captions" before this fix.
+
 Run with: python3 scripts/pull-youtube-transcripts.py
 """
 import json
@@ -12,6 +25,7 @@ import os
 import re
 import subprocess
 import tempfile
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,6 +33,14 @@ VIDEOS_PATH = os.path.join(REPO, "data", "sources", "youtube-videos.json")
 OUT_PATH = os.path.join(REPO, "data", "sources", "youtube-transcripts.json")
 CONCURRENCY = 5
 TIMEOUT_S = 45
+MAX_ATTEMPTS = 3
+RETRY_BACKOFF_S = 5
+
+
+class FetchFailed(Exception):
+    """The request itself failed/was blocked — distinct from a confirmed
+    absence of captions. Never persisted; the video stays eligible for the
+    next run."""
 
 
 def clean_vtt(path: str) -> str:
@@ -50,7 +72,7 @@ def clean_vtt(path: str) -> str:
     return full
 
 
-def fetch_transcript(video_id: str) -> str | None:
+def fetch_transcript_once(video_id: str) -> str | None:
     with tempfile.TemporaryDirectory() as tmp:
         out_template = os.path.join(tmp, "sub")
         try:
@@ -62,6 +84,10 @@ def fetch_transcript(video_id: str) -> str | None:
                     "--skip-download",
                     "--sub-format", "vtt",
                     "--no-warnings",
+                    "--sleep-requests", "1.5",
+                    # see module docstring — the default "web" client hits a
+                    # bot-check wall after enough requests in a session.
+                    "--extractor-args", "youtube:player_client=android",
                     f"https://www.youtube.com/watch?v={video_id}",
                     "-o", out_template,
                 ],
@@ -70,13 +96,28 @@ def fetch_transcript(video_id: str) -> str | None:
                 timeout=TIMEOUT_S,
             )
         except subprocess.TimeoutExpired:
-            return None
+            raise FetchFailed("timeout")
+
+        if proc.returncode != 0:
+            raise FetchFailed(proc.stderr.strip()[:200])
 
         vtt_path = out_template + ".en.vtt"
         if not os.path.exists(vtt_path):
-            return None
+            return None  # confirmed: request succeeded, no captions exist
         text = clean_vtt(vtt_path)
         return text if text else None
+
+
+def fetch_transcript(video_id: str) -> str | None:
+    last_error: FetchFailed | None = None
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        try:
+            return fetch_transcript_once(video_id)
+        except FetchFailed as e:
+            last_error = e
+            if attempt < MAX_ATTEMPTS:
+                time.sleep(RETRY_BACKOFF_S * attempt)
+    raise last_error
 
 
 def main():
@@ -97,6 +138,7 @@ def main():
 
     done_count = 0
     ok_count = 0
+    failed_count = 0
 
     def save():
         json.dump(existing, open(OUT_PATH, "w"), indent=2, ensure_ascii=False)
@@ -108,9 +150,10 @@ def main():
             done_count += 1
             try:
                 text = fut.result()
-            except Exception as e:
-                text = None
-                print(f"[{done_count}/{len(todo)}] {vid} ERROR {e}")
+            except FetchFailed as e:
+                failed_count += 1
+                print(f"[{done_count}/{len(todo)}] {vid} FAILED, left for next run: {e}")
+                continue
             if text:
                 existing[vid] = text
                 ok_count += 1
@@ -122,7 +165,7 @@ def main():
                 save()
 
     save()
-    print(f"done: {ok_count}/{len(todo)} fetched with real transcript text")
+    print(f"done: {ok_count}/{len(todo)} fetched with real transcript text, {failed_count} failed (left for next run)")
 
 
 if __name__ == "__main__":

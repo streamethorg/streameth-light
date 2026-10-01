@@ -1,17 +1,17 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import TranscriptPanel from "@/components/TranscriptPanel";
 import Avatar from "@/components/Avatar";
+import DescriptionBox from "@/components/DescriptionBox";
+import { WATCH_ACTIONS_SLOT_ID } from "@/components/ActionButton";
 import { accentStyle } from "@/lib/format";
 
-/** The one shell every video-detail page renders through — StreamETH-hosted
- * sessions, standalone YouTube videos, and YouTube videos browsed inside an
- * inferred event group all use this, so the underlying data source never
- * produces a visually different page (breadcrumb, player, title/meta,
- * description, related grid). Only the player and data lookup differ.
- * `player` must supply its own aspect-video/border/bg-black chrome (see
- * SessionPlayer/YoutubeSessionPlayer), since those also render a
- * "Listen (audio only)" control below the video box itself. */
+/** The one watch-page shell every video-detail page renders through —
+ * StreamETH-hosted sessions, standalone YouTube videos, and YouTube videos
+ * browsed inside an inferred event group — laid out like YouTube's: player,
+ * title, channel row with actions, grey description box and speakers on
+ * the left; a compact "Up next" column on the right (below on mobile).
+ * `player` supplies its own aspect-video chrome (see SessionPlayer /
+ * YoutubeSessionPlayer), since those also render the Listen control. */
 export default function WatchLayout({
   accentColor,
   orgName,
@@ -46,54 +46,57 @@ export default function WatchLayout({
   return (
     <div
       style={accentStyle(accentColor) as CSSProperties | undefined}
-      className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6"
+      className="mx-auto flex w-full max-w-[1760px] flex-col gap-6 px-0 pb-12 sm:px-6 sm:pt-6 lg:flex-row"
     >
-      {orgName && orgSlug && (
-        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 font-mono text-xs uppercase tracking-wide text-ink-faint">
-          <Link href={`/${orgSlug}`} className="flex items-center gap-2 transition-colors hover:text-accent">
-            <Avatar name={orgName} className="h-5 w-5 text-[9px] normal-case" />
-            {orgName}
-          </Link>
-          {crumb && (
-            <>
-              <span>/</span>
-              <span className="normal-case tracking-normal">{crumb}</span>
-            </>
+      <div className="flex min-w-0 flex-1 flex-col gap-3">
+        {player}
+
+        <div className="flex flex-col gap-3 px-3 sm:px-0">
+          <h1 className="text-xl font-bold leading-7 tracking-[-0.01em] text-ink">{title}</h1>
+
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            {orgName && (
+              <div className="flex min-w-0 items-center gap-3">
+                {orgSlug ? (
+                  <Link href={`/${orgSlug}`} tabIndex={-1} aria-hidden="true">
+                    <Avatar name={orgName} channel className="h-10 w-10 text-sm" />
+                  </Link>
+                ) : (
+                  <Avatar name={orgName} channel className="h-10 w-10 text-sm" />
+                )}
+                <div className="flex min-w-0 flex-col">
+                  {orgSlug ? (
+                    <Link href={`/${orgSlug}`} className="truncate rounded-sm text-base font-semibold text-ink">
+                      {orgName}
+                    </Link>
+                  ) : (
+                    <span className="truncate text-base font-semibold text-ink">{orgName}</span>
+                  )}
+                  {crumb && <span className="truncate text-xs text-ink-dim">{crumb}</span>}
+                </div>
+              </div>
+            )}
+            <div className="-mx-3 flex w-[calc(100%+1.5rem)] items-center gap-2 overflow-x-auto px-3 [scrollbar-width:none] sm:mx-0 sm:w-auto sm:flex-wrap sm:overflow-visible sm:px-0">
+              <div id={WATCH_ACTIONS_SLOT_ID} className="contents" />
+              {actions}
+            </div>
+          </div>
+
+          <DescriptionBox meta={metaLine} topics={topics} description={description} transcript={transcript} />
+
+          {speakers && (
+            <div className="flex flex-col gap-4 pt-4">
+              <h2 className="text-xl font-bold text-ink">Speakers</h2>
+              {speakers}
+            </div>
           )}
         </div>
-      )}
-
-      {player}
-
-      <div className="flex flex-col gap-3 border-b border-line pb-6">
-        <h1 className="font-display text-xl font-bold leading-snug text-ink sm:text-2xl">
-          {title}
-        </h1>
-        {(actions || transcript) && (
-          <div className="flex flex-wrap items-center gap-2">
-            {actions}
-            {transcript && <TranscriptPanel text={transcript} />}
-          </div>
-        )}
-        {metaLine && <p className="font-mono text-xs tabular text-ink-faint">{metaLine}</p>}
-        {topics}
-        {description && (
-          <p className="max-w-3xl whitespace-pre-line text-sm leading-relaxed text-ink-dim">
-            {description}
-          </p>
-        )}
       </div>
 
-      {speakers}
-
-      <div className="flex flex-col gap-4">
-        <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-          {relatedLabel}
-        </h2>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {related}
-        </div>
-      </div>
+      <aside className="flex w-full shrink-0 flex-col gap-3 px-3 sm:px-0 lg:w-[400px]">
+        <h2 className="text-base font-semibold text-ink">{relatedLabel}</h2>
+        <div className="flex flex-col gap-3">{related}</div>
+      </aside>
     </div>
   );
 }

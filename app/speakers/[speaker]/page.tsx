@@ -1,10 +1,12 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import VideoCard from "@/components/VideoCard";
 import Avatar from "@/components/Avatar";
+import PageHero, { HeroLink } from "@/components/PageHero";
+import SectionHeader from "@/components/SectionHeader";
 import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
-import { getEventById } from "@/lib/data";
+import { getEventById, getOrgForEvent } from "@/lib/data";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return listSpeakers().map((sp) => ({ speaker: sp.slug }));
@@ -18,10 +20,11 @@ export async function generateMetadata({
   const { speaker: slug } = await params;
   const speaker = getSpeakerBySlug(slug);
   if (!speaker) return {};
-  return {
-    title: `${speaker.name} — StreamETH Light`,
+  return buildMetadata({
+    title: `${speaker.name} — StreamETH`,
     description: speaker.bio?.slice(0, 200),
-  };
+    image: speaker.photo,
+  });
 }
 
 export default async function SpeakerPage({
@@ -37,57 +40,37 @@ export default async function SpeakerPage({
   const twitterHandle = speaker.twitter?.trim().replace(/^@/, "");
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-12 sm:px-6">
-      <Link
-        href="/speakers"
-        className="w-fit font-mono text-xs uppercase tracking-wide text-ink-faint transition-colors hover:text-ink-dim"
-      >
-        ← All speakers
-      </Link>
+    <div className="flex flex-1 flex-col">
+      <PageHero
+        back={{ href: "/speakers", label: "All speakers" }}
+        leading={
+          <Avatar
+            name={speaker.name}
+            photo={speaker.photo}
+            className="h-16 w-16 text-xl sm:h-32 sm:w-32 sm:text-4xl"
+          />
+        }
+        title={speaker.name}
+        meta={
+          <span className="flex flex-wrap gap-x-4 gap-y-1">
+            {speaker.company && <span className="font-medium text-ink">{speaker.company}</span>}
+            <span>
+              {sessions.length} {sessions.length === 1 ? "talk" : "talks"}
+            </span>
+          </span>
+        }
+        description={speaker.bio && <p className="whitespace-pre-line">{speaker.bio}</p>}
+        actions={twitterHandle && <HeroLink href={`https://x.com/${twitterHandle}`}>@{twitterHandle}</HeroLink>}
+      />
 
-      <div className="flex items-center gap-5">
-        <Avatar name={speaker.name} photo={speaker.photo} className="h-20 w-20 text-xl" />
-        <div className="flex flex-col gap-1.5">
-          <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">
-            {speaker.name}
-          </h1>
-          {speaker.company && (
-            <p className="font-mono text-xs text-ink-faint">
-              {speaker.company}
-            </p>
-          )}
-          {twitterHandle && (
-            <a
-              href={`https://x.com/${twitterHandle}`}
-              target="_blank"
-              rel="noreferrer"
-              className="w-fit font-mono text-xs text-ink-dim transition-colors hover:text-accent"
-            >
-              @{twitterHandle} ↗
-            </a>
-          )}
+      <div className="flex flex-1 flex-col gap-6 px-4 py-6 sm:px-6">
+        <SectionHeader title="Talks" />
+        <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+          {sessions.map((s) => {
+            const event = getEventById(s.eventId);
+            return <VideoCard key={s._id} session={s} event={event} org={getOrgForEvent(event)} />;
+          })}
         </div>
-      </div>
-
-      {speaker.bio && (
-        <p className="max-w-2xl whitespace-pre-line text-sm leading-relaxed text-ink-dim">
-          {speaker.bio}
-        </p>
-      )}
-
-      <div className="flex items-baseline justify-between border-b border-line pb-3">
-        <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-ink-dim">
-          Talks
-        </h2>
-        <span className="font-mono text-xs tabular text-ink-faint">
-          {String(sessions.length).padStart(2, "0")} total
-        </span>
-      </div>
-
-      <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {sessions.map((s) => (
-          <VideoCard key={s._id} session={s} event={getEventById(s.eventId)} />
-        ))}
       </div>
     </div>
   );

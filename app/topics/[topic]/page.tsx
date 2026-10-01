@@ -1,9 +1,10 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import PageHero, { HeroLink } from "@/components/PageHero";
 import VideoCard from "@/components/VideoCard";
 import { listTopics, getTopicBySlug, getTopicSessions } from "@/lib/topics";
-import { getEventById } from "@/lib/data";
+import { getEventById, getOrgForEvent } from "@/lib/data";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return listTopics().map((t) => ({ topic: t.slug }));
@@ -17,7 +18,10 @@ export async function generateMetadata({
   const { topic: slug } = await params;
   const topic = getTopicBySlug(slug);
   if (!topic) return {};
-  return { title: `${topic.name} — StreamETH Light` };
+  return buildMetadata({
+    title: `${topic.name} — StreamETH`,
+    description: `Talks tagged “${topic.name}” from the StreamETH video archive.`,
+  });
 }
 
 export default async function TopicPage({
@@ -32,25 +36,24 @@ export default async function TopicPage({
   const sessions = getTopicSessions(topic);
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-12 sm:px-6">
-      <Link
-        href="/topics"
-        className="w-fit font-mono text-xs uppercase tracking-wide text-ink-faint transition-colors hover:text-ink-dim"
-      >
-        ← All topics
-      </Link>
-      <div className="flex flex-col gap-2">
-        <h1 className="font-display text-2xl font-bold text-ink sm:text-3xl">
-          {topic.name}
-        </h1>
-        <p className="font-mono text-xs tabular text-ink-faint">
-          {String(sessions.length).padStart(2, "0")} sessions
-        </p>
-      </div>
-      <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {sessions.map((s) => (
-          <VideoCard key={s._id} session={s} event={getEventById(s.eventId)} />
-        ))}
+    <div className="flex flex-1 flex-col">
+      <PageHero
+        back={{ href: "/topics", label: "All topics" }}
+        title={topic.name}
+        meta={`${sessions.length} ${sessions.length === 1 ? "talk" : "talks"}`}
+        actions={
+          <HeroLink href={`/?topic=${encodeURIComponent(topic.name)}`}>
+            Search within this topic
+          </HeroLink>
+        }
+      />
+      <div className="flex flex-1 flex-col px-4 py-6 sm:px-6">
+        <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+          {sessions.map((s) => {
+            const event = getEventById(s.eventId);
+            return <VideoCard key={s._id} session={s} event={event} org={getOrgForEvent(event)} />;
+          })}
+        </div>
       </div>
     </div>
   );

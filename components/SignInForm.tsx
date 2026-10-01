@@ -64,20 +64,20 @@ export default function SignInForm() {
   }
 
   if (wallets === null) {
-    return <div className="h-10 w-full max-w-sm" />;
+    return <div className="h-12 w-full max-w-sm" />;
   }
 
   if (wallets.length === 0) {
     return (
       <div className="flex w-full max-w-sm flex-col items-center gap-3 text-center">
-        <p className="text-sm text-ink-dim">
+        <p className="rounded-xl bg-accent/10 px-4 py-3 text-sm text-ink-dim">
           No Ethereum wallet found in this browser.
         </p>
         <a
           href="https://ethereum.org/en/wallets/find-wallet/"
           target="_blank"
           rel="noreferrer"
-          className="w-full rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-ink hover:opacity-90"
+          className="flex h-12 w-full items-center justify-center rounded-xl bg-accent px-4 text-[15px] font-semibold text-accent-ink transition-colors hover:bg-stage"
         >
           Get a wallet ↗
         </a>
@@ -95,11 +95,11 @@ export default function SignInForm() {
           type="button"
           onClick={() => signIn(wallet)}
           disabled={busy}
-          className="flex w-full items-center justify-center gap-2 rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-ink hover:opacity-90 disabled:opacity-60"
+          className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-accent px-4 text-[15px] font-semibold text-accent-ink transition-colors hover:bg-stage disabled:opacity-60"
         >
           {wallet.icon && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={wallet.icon} alt="" className="h-4 w-4 rounded-sm" />
+            <img src={wallet.icon} alt="" className="h-5 w-5 rounded" />
           )}
           {status.kind === "connecting" && status.walletId === wallet.id
             ? "Check your wallet…"

@@ -1,8 +1,17 @@
 import type { UnifiedVideo } from "@/lib/videoDb";
 import { formatDateShort, formatTimecode } from "@/lib/format";
-import VideoTile from "./VideoTile";
+import VideoTile, { type VideoTileLayout } from "./VideoTile";
 
-export default function UnifiedVideoCard({ video }: { video: UnifiedVideo }) {
+export default function UnifiedVideoCard({
+  video,
+  layout = "grid",
+  hideChannel = false,
+}: {
+  video: UnifiedVideo;
+  layout?: VideoTileLayout;
+  /** Omit the channel, e.g. on that channel's own page. */
+  hideChannel?: boolean;
+}) {
   return (
     <VideoTile
       href={video.watchUrl}
@@ -11,13 +20,17 @@ export default function UnifiedVideoCard({ video }: { video: UnifiedVideo }) {
       durationLabel={
         video.durationSeconds !== null ? formatTimecode(video.durationSeconds) : undefined
       }
-      sourceBadge={video.source === "youtube" ? "YouTube" : undefined}
-      orgName={video.orgName}
       title={video.title}
-      metaLine={`${video.eventName || (video.source === "youtube" ? "YouTube" : "")}${
-        video.publishedAt ? ` · ${formatDateShort(video.publishedAt)}` : ""
-      }`}
-      extraLine={video.speakers.length > 0 ? video.speakers.join(", ") : undefined}
+      channel={
+        hideChannel || !video.orgName
+          ? undefined
+          : { name: video.orgName, href: video.orgSlug ? `/${video.orgSlug}` : undefined }
+      }
+      speakers={layout !== "compact" && video.speakers.length > 0 ? video.speakers.join(", ") : undefined}
+      event={video.eventName || undefined}
+      date={video.publishedAt ? formatDateShort(video.publishedAt) : undefined}
+      description={layout === "row" ? video.description : undefined}
+      layout={layout}
     />
   );
 }

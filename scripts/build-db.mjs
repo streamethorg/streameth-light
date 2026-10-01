@@ -7,6 +7,7 @@
 import { DatabaseSync } from "node:sqlite";
 import { readFileSync, existsSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
+import { cleanAutoLabels } from "../lib/autoLabels.mjs";
 
 const DATA_DIR = join(process.cwd(), "data");
 const DB_PATH = join(DATA_DIR, "streameth.db");
@@ -68,9 +69,92 @@ function isReuploadOfSession(orgSlug, rawTitle) {
   return false;
 }
 
-const organizationsRaw = load("organizations.json").filter((o) => o.slug);
+// Curated by hand while auditing data/organizations.json + data/sessions.json
+// (2026-09) — test/dev tenants, personal test accounts, and content
+// unrelated to the Ethereum ecosystem. Kept in sync by hand with the
+// identical list in lib/curation.ts (this script runs via plain `node`, not
+// the TS toolchain, so it can't import that file — see cleanImageUrl above
+// for the same constraint).
+const HIDDEN_ORG_SLUGS = new Set([
+  "test",
+  "pablo",
+  "pablo_one",
+  "pablo_test",
+  "pablos_org",
+  "pblvrt",
+  "demo_org",
+  "testy",
+  "manad",
+  "tanda_takon",
+  "farmer",
+  "supportvideos",
+  "streameth_support_videos",
+  "streameth",
+  "letsgethai",
+  "omotayo_wardaddy",
+  "the_sound_of_the_crown",
+  "grafica_directa_sl",
+  "virtual_wingme",
+  "virtual_wingmen",
+  "hfdxgj",
+  "pebels",
+  "sebas",
+  "john_pham",
+  "ace_mansion",
+  "scope_productions",
+  "lost_laing",
+  "nottv",
+  "peregrinev2",
+]);
+
+function isJunkDescription(raw) {
+  const d = (raw ?? "").trim().toLowerCase();
+  if (!d) return true;
+  if (["no description", "clip", "test", "few"].includes(d)) return true;
+  if (/^video\+[a-z0-9]+$/i.test(d)) return true;
+  return false;
+}
+
+const JUNK_WORDS = [
+  "test", "testing", "demo", "sample", "untitled", "no name", "no title",
+  "testung", "testy", "testcaps",
+];
+const SUFFIX_WORDS = "clip|demo|live|recording|prod|caps|bypass|export";
+const JUNK_WHOLE_TITLE_RE = new RegExp(
+  `^(${JUNK_WORDS.join("|")})([ _.-]+(${SUFFIX_WORDS}))?([ _.-]*\\d+)?$`,
+  "i"
+);
+
+// See the identical (documented) version in lib/curation.ts.
+function isJunkSession(s) {
+  const t = (s.name ?? "").trim();
+  if (!t) return true;
+  if (/^\d+$/.test(t)) return true;
+  if (/^video\+[a-z0-9]+$/i.test(t)) return true;
+  if (/\.(mp4|mov|mkv|m4v)$/i.test(t)) return true;
+  if (/^\d{3,5}(\s*\(\d+\))*\.[a-z0-9]+$/i.test(t)) return true;
+  const bare = t.replace(/[\s_.-]+/g, " ").trim();
+  if (JUNK_WHOLE_TITLE_RE.test(bare)) return true;
+  if (/^test/i.test(t) && !t.includes(":") && t.split(/\s+/).length <= 6) {
+    if (isJunkDescription(s.description)) return true;
+  }
+  if (/-Recording \d+$/i.test(t) && isJunkDescription(s.description)) return true;
+  return false;
+}
+
+const organizationsRaw = load("organizations.json").filter(
+  (o) => o.slug && !HIDDEN_ORG_SLUGS.has(o.slug)
+);
+const hiddenOrgIds = new Set(
+  load("organizations.json")
+    .filter((o) => o.slug && HIDDEN_ORG_SLUGS.has(o.slug))
+    .map((o) => o._id)
+);
 const events = load("events.json").filter((e) => e.slug && !e.unlisted);
 const sessions = load("sessions.json");
+// Kept in its own file, keyed by session _id — see the identical note in
+// lib/data.ts's getTranscripts.
+const transcriptsById = load("transcripts.json");
 const stages = load("stages.json");
 const directory = load("directory.json").entries;
 const livepeerResolved = loadSource("livepeer-resolved.json") ?? {};
@@ -222,6 +306,7 @@ let streamethCount = 0;
 const seenIds = new Set();
 for (const s of sessions) {
   if (!sessionHasVideo(s)) continue;
+  if (hiddenOrgIds.has(s.organizationId) || isJunkSession(s)) continue;
   if (seenIds.has(s._id)) {
     console.warn(`Skipping duplicate session id: ${s._id}`);
     continue;
@@ -243,12 +328,12 @@ for (const s of sessions) {
   // extract (speaker bios, track/talk type, stage, event & org context) so
   // a query can match on it without it cluttering the video card/detail UI.
   const speakerNames = speakerList.map((sp) => sp.name).filter(Boolean).join(", ");
-  const topicsDisplay = (s.autoLabels ?? []).join(", ");
+  const topicsDisplay = cleanAutoLabels(s.autoLabels).join(", ");
   const description = [s.description, s.aiDescription].filter(Boolean).join(" ");
   const duration =
     s.playback?.duration ??
     (s.start && s.end && s.end > s.start ? (s.end - s.start) / 1000 : null);
-  const transcript = s.transcripts?.text ?? "";
+  const transcript = transcriptsById[s._id]?.text ?? "";
 
   const speakerSearchText = speakerList
     .map((sp) => [sp.name, sp.company, sp.bio].filter(Boolean).join(" — "))

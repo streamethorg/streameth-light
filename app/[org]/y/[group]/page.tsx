@@ -13,6 +13,7 @@ import {
 } from "@/lib/youtube";
 import { getVideoById } from "@/lib/videoDb";
 import { formatDateLong } from "@/lib/format";
+import { buildMetadata } from "@/lib/social";
 
 export function generateStaticParams() {
   return getDirectory().flatMap((entry) => {
@@ -32,7 +33,10 @@ export async function generateMetadata({
   const { org, group: groupSlug } = await params;
   const group = getInferredEventGroup(org, groupSlug);
   if (!group) return {};
-  return { title: `${group.label} — StreamETH Light` };
+  return buildMetadata({
+    title: `${group.label} — StreamETH`,
+    image: group.videos[0]?.thumbnail ?? undefined,
+  });
 }
 
 export default async function YoutubeEventPage({
@@ -107,7 +111,13 @@ export default async function YoutubeEventPage({
       transcript={unified?.transcript}
       relatedLabel={`More from ${group.label}`}
       related={others.map((vid) => (
-        <YoutubeVideoCard key={vid.videoId} video={vid} orgSlug={orgSlug} groupSlug={groupSlug} />
+        <YoutubeVideoCard
+          key={vid.videoId}
+          video={vid}
+          orgSlug={orgSlug}
+          groupSlug={groupSlug}
+          layout="compact"
+        />
       ))}
     />
   );

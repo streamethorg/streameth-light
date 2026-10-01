@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "plyr/dist/plyr.css";
 import CoverPlaceholder from "@/components/CoverPlaceholder";
 import { usePodcastPlayer, type PodcastTrack } from "@/components/PodcastPlayerProvider";
 import { YOUTUBE_PLYR_OPTIONS, loadPlyr, type PlyrInstance } from "@/lib/plyrYoutube";
-import { actionButtonClass } from "@/components/ActionButton";
+import { actionButtonClass, WATCH_ACTIONS_SLOT_ID } from "@/components/ActionButton";
 
 export default function YoutubeSessionPlayer({
   videoId,
@@ -22,6 +23,7 @@ export default function YoutubeSessionPlayer({
   const inlinePlayerRef = useRef<PlyrInstance | null>(null);
   const [inlineReady, setInlineReady] = useState(false);
   const player = usePodcastPlayer();
+  const [actionsSlot, setActionsSlot] = useState<HTMLElement | null>(null);
   const isListening = player.track?.id === track.id;
 
   useEffect(() => {
@@ -57,20 +59,27 @@ export default function YoutubeSessionPlayer({
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
+    <div
+      ref={(el) => {
+        // The Listen button renders into the watch page's actions row (next
+        // to Save/Download), which lives outside this component.
+        if (el && !actionsSlot) setActionsSlot(document.getElementById(WATCH_ACTIONS_SLOT_ID));
+      }}
+      className="flex flex-col"
+    >
+      <div className="relative aspect-video w-full overflow-hidden bg-black sm:rounded-xl">
         <div className={isListening || !inlineReady ? "h-0 w-0 overflow-hidden" : "h-full w-full"}>
           <div ref={embedRef} data-plyr-provider="youtube" data-plyr-embed-id={videoId} />
         </div>
 
         {!inlineReady && !isListening && (
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-xs text-ink-faint">
+          <div className="absolute inset-0 flex items-center justify-center text-sm text-stage-dim">
             Loading player…
           </div>
         )}
 
         {isListening && (
-          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-panel px-4 text-center">
+          <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-stage-raised px-4 text-center">
             <div className="absolute inset-0">
               {poster ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -105,14 +114,14 @@ export default function YoutubeSessionPlayer({
               )}
 
               <div>
-                <p className="line-clamp-1 max-w-xs text-sm font-medium text-ink">{title}</p>
-                <p className="text-xs text-ink-faint">Playing audio-only</p>
+                <p className="line-clamp-1 max-w-xs text-sm font-semibold text-stage-ink">{title}</p>
+                <p className="text-xs text-stage-dim">Playing audio only</p>
               </div>
 
               <button
                 type="button"
                 onClick={switchToVideo}
-                className={`mt-1 ${actionButtonClass()} bg-panel hover:bg-panel-raised`}
+                className={`mt-1 ${actionButtonClass()}`}
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
                   <path d="M4 4.5A1.5 1.5 0 015.5 3h2A1.5 1.5 0 019 4.5v11A1.5 1.5 0 017.5 17h-2A1.5 1.5 0 014 15.5v-11zM11 4.5A1.5 1.5 0 0112.5 3h2A1.5 1.5 0 0116 4.5v11a1.5 1.5 0 01-1.5 1.5h-2a1.5 1.5 0 01-1.5-1.5v-11z" opacity=".4" />
@@ -125,22 +134,21 @@ export default function YoutubeSessionPlayer({
         )}
       </div>
 
-      {inlineReady && !isListening && (
-        <button
-          type="button"
-          onClick={startListening}
-          className={actionButtonClass()}
-        >
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4">
-            <path
-              d="M4 11v-1a6 6 0 1112 0v1M4 11a2 2 0 00-2 2v1a2 2 0 002 2h1v-5H4zm12 0a2 2 0 012 2v1a2 2 0 01-2 2h-1v-5h1z"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Listen (audio only)
-        </button>
-      )}
+      {actionsSlot &&
+        inlineReady && !isListening &&
+        createPortal(
+          <button type="button" onClick={startListening} className={actionButtonClass()}>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4">
+              <path
+                d="M4 11v-1a6 6 0 1112 0v1M4 11a2 2 0 00-2 2v1a2 2 0 002 2h1v-5H4zm12 0a2 2 0 012 2v1a2 2 0 01-2 2h-1v-5h1z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Listen
+          </button>,
+          actionsSlot
+        )}
     </div>
   );
 }
