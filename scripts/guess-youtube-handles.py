@@ -41,10 +41,42 @@ def slug_variants(name: str, website: str | None) -> list[str]:
     return [v for v in variants if 3 <= len(v) <= 30]
 
 
-def check_handle(handle: str) -> dict | None:
+STOPWORDS = {
+    "ethereum", "eth", "meetup", "meetups", "group", "community", "dev",
+    "developers", "web3", "blockchain", "nft", "crypto", "the", "and", "of",
+    "a", "an", "in", "at", "on", "workshop", "hub",
+}
+
+
+def distinctive_tokens(name: str) -> set[str]:
+    words = re.findall(r"[a-z0-9]+", name.lower())
+    return {w for w in words if w not in STOPWORDS and len(w) >= 3}
+
+
+CONTENT_KEYWORDS = {
+    "ethereum", "web3", "blockchain", "crypto", "defi", "nft", "solidity",
+    "devcon", "hackathon", "dao", "dapp", "smart contract", "layer 2",
+    "rollup", "zk", "token", "metamask", "wallet", "staking", "validator",
+    "l2", "evm", "consensus", "decentralized", "decentralised",
+}
+
+
+def check_handle(handle: str, org_name: str) -> dict | None:
+    # Existence + a name-token match still isn't enough — a generic handle
+    # guess (a city name, a common word) can belong to an entirely unrelated
+    # channel whose own display name coincidentally contains the same word.
+    # Confirmed by hand: "Seattle" guessed @seattle (a weather-forecast
+    # channel named "The Weather Channel: Seattle" — "seattle" matches!),
+    # "Web3 London" guessed @web3london (a PC gaming channel that padded its
+    # name to "Web3 London Gaming evolution team \"Pikachu\"" — both "web3"
+    # and "london" match!), "(San Diego)" guessed @sandiego (a tourism
+    # channel) — all existed, all had tokens that matched by name alone,
+    # none were the actual org. Require the channel's own display name to
+    # share a distinctive word AND at least one of its actual recent videos
+    # to mention something crypto/Ethereum-related.
     url = f"https://www.youtube.com/@{handle}/videos"
     proc = subprocess.run(
-        ["yt-dlp", "--flat-playlist", "--playlist-items", "1", "--dump-single-json", "--no-warnings", url],
+        ["yt-dlp", "--flat-playlist", "--playlist-end", "8", "--dump-single-json", "--no-warnings", url],
         capture_output=True,
         text=True,
         timeout=30,
@@ -55,9 +87,16 @@ def check_handle(handle: str) -> dict | None:
         data = json.loads(proc.stdout)
     except json.JSONDecodeError:
         return None
-    if not data.get("entries"):
+    entries = data.get("entries") or []
+    if not entries:
         return None
-    return {"channel": data.get("channel"), "channel_id": data.get("channel_id"), "follower_count": data.get("channel_follower_count")}
+    channel_name = data.get("channel") or ""
+    if not (distinctive_tokens(org_name) & distinctive_tokens(channel_name)):
+        return None
+    titles = " ".join((e.get("title") or "") for e in entries if e).lower()
+    if not any(kw in titles for kw in CONTENT_KEYWORDS):
+        return None
+    return {"channel": channel_name, "channel_id": data.get("channel_id"), "follower_count": data.get("channel_follower_count")}
 
 
 def main() -> None:
@@ -88,7 +127,7 @@ def main() -> None:
         tried = []
         for v in variants:
             tried.append(v)
-            result = check_handle(v)
+            result = check_handle(v, e["name"])
             if result:
                 hit = (v, result)
                 break

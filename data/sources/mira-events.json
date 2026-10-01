@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-09-29",
+  "importedAt": "2026-10-01",
   "seriesCount": 57,
-  "eventCount": 1552,
+  "eventCount": 1579,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -23102,6 +23102,30 @@
       "seriesName": ""
     },
     {
+      "id": "recsyYobhKIhuiP5d",
+      "kind": "main",
+      "name": "HOOD Summit ‘26",
+      "description": "Watch live as we break orbit and leave traditional finance behind—with revolutionary tools that put elite resources right in your hands. It's a quantum leap for traders everywhere.",
+      "startTime": "2026-09-29",
+      "endTime": "2026-09-30",
+      "location": "Houston, USA 🇺🇸",
+      "city": "Houston",
+      "country": "USA 🇺🇸",
+      "organizer": "Robinhood",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Markets"
+      ],
+      "website": "https://robinhood.com/us/en/campaign/presents/",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/HOODSummit26_2026-09-29T15-17.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "reckTymxA7isFlrMd",
       "kind": "side",
       "name": "Founders & Investors Brunch ✨ (invite only)",
@@ -23521,6 +23545,29 @@
       "seriesName": ""
     },
     {
+      "id": "recaj95vrL6dhnZJb",
+      "kind": "main",
+      "name": "The Cloud & AI Summit 2026",
+      "description": "Cloud conference in St. Charles, United States",
+      "startTime": "2026-09-30",
+      "endTime": "2026-10-02",
+      "location": "Other, USA, USA 🇺🇸",
+      "city": "Other, USA",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.cloudandaisummit.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recFAthv0CKUqCsv7",
       "kind": "side",
       "name": "KPMG Cocktail reception",
@@ -23929,6 +23976,54 @@
         "Community"
       ],
       "website": "https://thebitcoindistrict.com/bitchill/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recMYfhipNuTJtxe6",
+      "kind": "main",
+      "name": "Americas Structured Finance Conference",
+      "description": "Overview\n\nThis event is free of charge, but seats are limited. We encourage you to register early to secure your place. Walk-ins will not be accommodated on the day of the event.\n\n\nLocation\n\nVenue Address:\n\nConvene 360 Madison\n360 Madison Avenue, Sixth Floor\n\nLocation:\n\nClick on the map opposite for street view and directions\n\nEvent FAQ\n\nWill this event be available online?  No, this event will be taking place in-person only. It will not be available for live-stream or replay.\nIs there a cost associated with this event? No, this event is free to all to attend.\nWhat is the dress code for the event?  Business casual.\nCan my colleague(s) come with me to this event? We encourage you to share this event with colleagues who may be interested in attending, but ask that they register ahead of the event. Walk-ins will be considered on a case by case basis. ",
+      "startTime": "2026-10-01",
+      "endTime": "2026-10-01",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "S&P Global Ratings",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "RWA"
+      ],
+      "website": "https://events.spglobal.com/event/76740557-c3a4-4f78-830f-6c4af281f9f5/register",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/AmericasStructuredFinanceConference_2026-09-29T14-35.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "receXuhqYn3qvEbI9",
+      "kind": "main",
+      "name": "Bitcoin++",
+      "description": "Join us in Berlin for our three day hacking and building showcase of payments on bitcoin",
+      "startTime": "2026-10-01",
+      "endTime": "2026-10-03",
+      "location": "Berlin, Germany 🇩🇪",
+      "city": "Berlin",
+      "country": "Germany 🇩🇪",
+      "organizer": "Lisa Neigut",
+      "tags": [
+        "Hack",
+        "Bitcoin"
+      ],
+      "topics": [
+        "Infrastructure",
+        "Other"
+      ],
+      "website": "https://btcpp.dev/berlin26",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -24506,6 +24601,31 @@
       "seriesName": ""
     },
     {
+      "id": "recowlYdDXoqZZsqE",
+      "kind": "main",
+      "name": "Istanbul Fintech Week 2026",
+      "description": "İstanbul Fintech Week 2026 powered by BEX Digital Wallet brings together the leaders building intelligent, embedded and tokenized financial systems shaping the next decade.",
+      "startTime": "2026-10-05",
+      "endTime": "2026-10-07",
+      "location": "Istanbul, Turkey 🇹🇷",
+      "city": "Istanbul",
+      "country": "Turkey 🇹🇷",
+      "organizer": "BEXDigitalWallet",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "AI",
+        "RWA"
+      ],
+      "website": "https://istanbulfintechweek.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recEzolTYKvr9NHqo",
       "kind": "side",
       "name": "THE DEALFLOW",
@@ -24976,6 +25096,27 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recOvxHOfjaEoxohf",
+      "kind": "main",
+      "name": "AFT '26",
+      "description": "No information at this moment",
+      "startTime": "2026-10-06",
+      "endTime": "2026-10-09",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [],
+      "website": "https://aft.ifca.ai/aft26/index.html",
+      "imageUrl": null,
+      "seriesSlug": "LondonOctEvents2026",
+      "seriesName": "London Oct Events"
     },
     {
       "id": "rec64P3Y2mvx4pP3E",
@@ -26684,6 +26825,52 @@
       "seriesName": "SF Tech Week"
     },
     {
+      "id": "rec3Tn16K4oWujpEW",
+      "kind": "main",
+      "name": "Cowork with ETHGlobal in Bengaluru with Zo World + WAGMI Tribe",
+      "description": "Cowork with ETHGlobal in Bengaluru with Zo World + WAGMI Tribe logo",
+      "startTime": "2026-10-08",
+      "endTime": "2026-10-08",
+      "location": "Bengaluru, India 🇮🇳",
+      "city": "Bengaluru",
+      "country": "India 🇮🇳",
+      "organizer": "ETHGlobal",
+      "tags": [
+        "Coliving",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Community"
+      ],
+      "website": "https://ethglobal.com/events/cowork-with-ethglobal-in-bengaluru-with-zo-world-wagmi-tribe-1ed10",
+      "imageUrl": null,
+      "seriesSlug": "Devcon8SideEvents2026",
+      "seriesName": "Devcon 8 Side Events"
+    },
+    {
+      "id": "recDYtjirumBGBsnA",
+      "kind": "main",
+      "name": "6th Annual Digital Banking Summit 2026",
+      "description": "Uniglobal's two-day executive summit for banking leaders. Agenda covers AI-driven finance, core modernisation and real-time payments, open banking and tokenised deposits, post-quantum security, and regulatory readiness for PSD3/PSR, the digital euro and AMLR.",
+      "startTime": "2026-10-08",
+      "endTime": "2026-10-09",
+      "location": "Munich, Germany 🇩🇪",
+      "city": "Munich",
+      "country": "Germany 🇩🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.uni-global.eu/6th-annual-digital-banking-summit/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recJFCHjI4PI7JS2e",
       "kind": "side",
       "name": "HSC Asset Management Singapore",
@@ -27341,6 +27528,77 @@
       "seriesName": "TOKEN2049 SG Side Events"
     },
     {
+      "id": "recn3LPw4AHc5IfEu",
+      "kind": "main",
+      "name": "Cowork with ETHGlobal in Kerala with Web3Kerala",
+      "description": "Join us for the Cowork with ETHGlobal in Kerala with Web3Kerala! 🍻We're gathering all the crypto folks for an evening filled with great conversations, new connections, and plenty of crypto chatter.🔥 See you there!If you'd like to host a future community event with ETHGlobal, please see the links below.Communities, DAOs, Ambassadors:Co-Sponsor, Partners:We can't wait to work with you to grow the largest builder community in the Ethereum ecosystem.Interested in partnering with ETHGlobal? Reach out to partnerships@ethglobal.com.",
+      "startTime": "2026-10-10",
+      "endTime": "2026-10-10",
+      "location": "Other, India, India 🇮🇳",
+      "city": "Other, India",
+      "country": "India 🇮🇳",
+      "organizer": "ETHGlobal, Web3kerala",
+      "tags": [
+        "Coliving",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Community",
+        "DeFi"
+      ],
+      "website": "https://lu.ma/ethglobal-cowork-kerala",
+      "imageUrl": "https://images.lumacdn.com/uploads/yz/01c4bb27-04b5-404e-8e6c-010adda32043.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recIruAqrraooRHix",
+      "kind": "main",
+      "name": "Midnight City: Tokyo",
+      "description": "​Experience Midnight City live in Tokyo.\n\n​Join Charles Hoskinson and the Midnight City team at Happo-en on Saturday, Oct 10, 2026, for an afternoon of live demonstrations, conversation and a look at what comes next for worlds powered by AI agents.\n\n​What is Midnight City?\n\n​Midnight City is a digital world that keeps running as its AI agents work, explore and interact. Their choices and encounters create an evolving city you can watch and take part in.\n\n​At this event, see the city in action, discover how its agents work and meet the people building it. Whether your interests are in AI, gaming, digital culture or blockchain, come explore Midnight City with us.\n\n​Explore the world before the event: midnight.city.\n\n​What to expect\n\n​Hear Charles Hoskinson's vision for Midnight City and the future of worlds powered by AI.\n\n​Watch live demonstrations and learn what you can do in Midnight City today.\n\n​Meet the team, ask questions and get help joining Midnight City and creating your fir...",
+      "startTime": "2026-10-10",
+      "endTime": "2026-10-10",
+      "location": "Tokyo, Japan 🇯🇵",
+      "city": "Tokyo",
+      "country": "Japan 🇯🇵",
+      "organizer": "Midnight",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://lu.ma/xcmetwyw",
+      "imageUrl": "https://images.lumacdn.com/uploads/1v/66596b4c-cdf5-46f1-9d0c-835d233205b7.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "rec6OrJYdThj6F68q",
+      "kind": "main",
+      "name": "Midnight Network - Islamabad Connect",
+      "description": "Step into the future of blockchain privacy! Join us for the official local launch of Midnight Network, where we'll dive into how data-protecting blockchains are bridging the gap between Web3 and real-world compliance. ✨What's in store:Spots are first come first serve only to keep networking highly targeted. RSVP now to grab your seat! 🚀Note: Hereby agrees and consents to the collection, use, and disclosure of personal data in accordance with the personal data and privacy policy of the Foundation as amended from time to time, available at https://midnight.foundation/supplierpa (\"Data Processing Agreement\") and https://midnight.network/static/privacy-policy.pdf (\"Privacy Policy\")",
+      "startTime": "2026-10-10",
+      "endTime": "2026-10-10",
+      "location": "Islamabad, Pakistan 🇵🇰",
+      "city": "Islamabad",
+      "country": "Pakistan 🇵🇰",
+      "organizer": "Midnight",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Community"
+      ],
+      "website": "https://lu.ma/gmt11phq",
+      "imageUrl": "https://images.lumacdn.com/uploads/5i/f0690369-a781-4643-b711-181ddcca8564.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recDRFWIQBVt1pyUL",
       "kind": "main",
       "name": "Edge City India",
@@ -27480,6 +27738,27 @@
       "imageUrl": null,
       "seriesSlug": "LATechWeek2026",
       "seriesName": "LA Tech Week"
+    },
+    {
+      "id": "recxM7hx0LdL7Yf7M",
+      "kind": "main",
+      "name": "LEND360 2026",
+      "description": "LEND360 is an annual summit for the leaders in online lending that explores fintech industry trends and new technologies.",
+      "startTime": "2026-10-12",
+      "endTime": "2026-10-14",
+      "location": "Austin, USA 🇺🇸",
+      "city": "Austin",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [],
+      "website": "https://www.lend360.org/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recs3qQjy5mq4fj8G",
@@ -27815,6 +28094,30 @@
       "seriesName": "SF Tech Week"
     },
     {
+      "id": "recR09zjHQCih6cAK",
+      "kind": "main",
+      "name": "Cowork with ETHGlobal in Jaipur with HackTour India",
+      "description": "Cowork with ETHGlobal in Jaipur with HackTour India",
+      "startTime": "2026-10-16",
+      "endTime": "2026-10-16",
+      "location": "Other, India, India 🇮🇳",
+      "city": "Other, India",
+      "country": "India 🇮🇳",
+      "organizer": "ETHGlobal",
+      "tags": [
+        "Coliving",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Other",
+        "Community"
+      ],
+      "website": "https://ethglobal.com/events/cowork-with-ethglobal-in-jaipur-with-hacktour-india-hhkgd",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recYhQ99uM4apAQrg",
       "kind": "side",
       "name": "Groundwork",
@@ -27999,6 +28302,29 @@
       ],
       "website": "https://islanddao.org/",
       "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recg3KOEuVkXS9whT",
+      "kind": "main",
+      "name": "IslandDAO v5 🇧🇷",
+      "description": "👉 Apply at https://islanddao.org/👈\nRegister ONLY on the link above!For questions, join the islanddao telegram group:https://t.me/+3Ve0uhusm0Q0ZGY8The world class retreat of one month of coworking, connecting and networking with the top developers, founders, builders, investors in the Solana ecosystem is back and for the first time, we're going to LATAM.19 Oct- 11 Nov. 🇧🇷\nFlorianópolis (Floripa), Brazil.and morehttps://x.com/islanddao/status/2085390922171228345?s=20Follow us:",
+      "startTime": "2026-10-19",
+      "endTime": "2026-11-11",
+      "location": "Florianopolis, Brazil 🇧🇷",
+      "city": "Florianopolis",
+      "country": "Brazil 🇧🇷",
+      "organizer": "Takisoul, Superteam Brasil",
+      "tags": [
+        "Coliving",
+        "Solana"
+      ],
+      "topics": [
+        "Community"
+      ],
+      "website": "https://lu.ma/6laijuyn",
+      "imageUrl": "https://images.lumacdn.com/uploads/34/b38401a9-1753-48d5-82e6-da593c2354c9.jpg",
       "seriesSlug": "",
       "seriesName": ""
     },
@@ -28260,6 +28586,53 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "rect0CHV2YILSpeM5",
+      "kind": "main",
+      "name": "NexGen Banking Summit UK 2026",
+      "description": "Two-day summit for senior banking leaders on generative AI, digital transformation and open banking, with keynotes, panels and networking. Organised by TechTrek Events.",
+      "startTime": "2026-10-21",
+      "endTime": "2026-10-22",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.nexgenbanking.com/",
+      "imageUrl": null,
+      "seriesSlug": "LondonOctEvents2026",
+      "seriesName": "London Oct Events"
+    },
+    {
+      "id": "rec2XKx31lLmgk4Rf",
+      "kind": "main",
+      "name": "AI in Finance Summit New York 2026",
+      "description": "RE•WORK summit on applied AI and machine learning in banking, trading and insurance.",
+      "startTime": "2026-10-21",
+      "endTime": "2026-10-22",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "TradFi"
+      ],
+      "website": "https://ny-ai-finance.re-work.co/",
+      "imageUrl": null,
+      "seriesSlug": "Swell2026SideEvents2026",
+      "seriesName": "Swell 2026 Side Events"
     },
     {
       "id": "recB6ds3jGuxb653U",
@@ -28715,6 +29088,26 @@
       "seriesName": "Curaçao Fintech Events"
     },
     {
+      "id": "recTEYZmZG046hLXI",
+      "kind": "main",
+      "name": "SWITCH",
+      "description": "The Singapore Week of Innovation and Technology (SWITCH) brings together leaders, entrepreneurs, creators, accelerators and investors from the Global-Asia innovation ecosystem. Through the open exchange of new ideas, vibrant networks and a line-up of innovation-centric activities, SWITCH provides a global platform to catalyse meaningful collaboration between different fields and markets. The focus industries include healthcare & biomedical sciences, smart cities & urban solutions, trade & connectivity, and emerging sustainable technologies.",
+      "startTime": "2026-10-27",
+      "endTime": "2026-10-29",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [],
+      "website": "https://www.switchsg.org/",
+      "imageUrl": "https://isomer-user-content.by.gov.sg/306/dab84849-2be0-4a37-9d18-53ffe9701b6b/switch_highlight_1.jpg",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "rec1guDhwzJ6pxhr8",
       "kind": "main",
       "name": "Meridian 2026",
@@ -28907,6 +29300,29 @@
       "seriesName": ""
     },
     {
+      "id": "recSplwIaj16NOaXO",
+      "kind": "main",
+      "name": "BFSI Nexus Conference Europe 2026",
+      "description": "European edition of the BFSI Nexus conference for banking, financial services and insurance leaders on digital transformation and AI.",
+      "startTime": "2026-10-29",
+      "endTime": "2026-10-30",
+      "location": "Amsterdam, Netherlands 🇳🇱",
+      "city": "Amsterdam",
+      "country": "Netherlands 🇳🇱",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://nexus-conference.com/bfsieu/",
+      "imageUrl": null,
+      "seriesSlug": "BTCAmsterdamEvents2026",
+      "seriesName": "BTC Amsterdam Events"
+    },
+    {
       "id": "rec1qBxlPHoEX1ypP",
       "kind": "side",
       "name": "Superteam Talent Tour Stop India (tbd)",
@@ -29050,6 +29466,29 @@
       "imageUrl": null,
       "seriesSlug": "Devcon8SideEvents2026",
       "seriesName": "Devcon 8 Side Events"
+    },
+    {
+      "id": "reczCu1EggndN9RlU",
+      "kind": "main",
+      "name": "AI Expo Europe",
+      "description": "TRANSFORMING TOMORROW, TODAY",
+      "startTime": "2026-11-01",
+      "endTime": "2026-11-02",
+      "location": "Bucharest, Romania 🇷🇴",
+      "city": "Bucharest",
+      "country": "Romania 🇷🇴",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://aiexpoeurope.com",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recVLa4xciMTPISqG",
@@ -29846,6 +30285,31 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "rec3IbvA6BTrDPNkM",
+      "kind": "main",
+      "name": "BCVC Founder Summit 2026",
+      "description": "We are pleased to invite you to join the 5th Annual BCVC Founder Summit at the Harvard Club of NYC. This event is a forum for builders on the frontier of tech to come together and discuss the most existential problems in our space.We are bringing together an exclusive, intimate group of 100 leading founders and c-level leaders. Join us at the historic Harvard Club of New York City for this day of high-quality discussions and connections.Founders: share your input and insights here: this will help drive the day's speakers, panels, and other content: https://bcvc.typeform.com/survey2026Last year's event included an incredible lineup of founders, business leaders, regulators, and visionaries, including:- Stephen Miran, Federal Reserve Governor\n- Phong Le, CEO of Microstrategy (NASDAQ: MSTR)\n- Paul Atkins, SEC Chair (Special Guest for the CEO Roundtable)\n- Chris Giancarlo, 13th Chairman of CFTC\n- Michael Shaulov, CEO & Cofounder of Fireblocks\n- Michael Loeb, Co-founder of Priceline.com ...",
+      "startTime": "2026-11-06",
+      "endTime": "2026-11-06",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "Theo Fields, Kate Laurence",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "VC",
+        "Institutional",
+        "TradFi"
+      ],
+      "website": "https://lu.ma/FounderSummit2026",
+      "imageUrl": "https://images.lumacdn.com/uploads/lu/3b922214-50bc-4f1b-8ac1-8ca792dd83ca.jpg",
+      "seriesSlug": "DAFNYCEvents2026",
+      "seriesName": "DAF NYC Events"
     },
     {
       "id": "recQmbbyR6TqFzOWb",
@@ -30893,6 +31357,50 @@
       "seriesName": ""
     },
     {
+      "id": "recWh8LksCe536tDc",
+      "kind": "main",
+      "name": "Africa Fintech Summit Kigali 2026",
+      "description": "The Africa Fintech Summit comes to Rwanda under the theme \"Powering the World from Africa\". Three days connecting investors, banks, regulators and founders, including a startup track where 34 early-stage fintechs from 10 countries pitch on day one.",
+      "startTime": "2026-11-18",
+      "endTime": "2026-11-20",
+      "location": "Kigali, Rwanda 🇷🇼",
+      "city": "Kigali",
+      "country": "Rwanda 🇷🇼",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [],
+      "website": "https://africafintechsummit.com/events/africa-fintech-summit-kigali-2026/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recTaiDFiSTvqE90i",
+      "kind": "main",
+      "name": "Dubai Future Week 2026",
+      "description": "Organised by Dubai Future Foundation. 18–21 November 2026 at Emirates Towers and the Museum of the Future, Dubai.",
+      "startTime": "2026-11-18",
+      "endTime": "2026-11-21",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.dubaifuture.ae/dubai-future-forum-2026/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recUJUCi8YKbImQ1Y",
       "kind": "side",
       "name": "ETHWomen Florida",
@@ -31055,6 +31563,31 @@
       "imageUrl": null,
       "seriesSlug": "AIEvents",
       "seriesName": "AI Events"
+    },
+    {
+      "id": "recaVPuuBD6KRacsC",
+      "kind": "main",
+      "name": "FintechWeek Vienna 2026",
+      "description": "AI. Financializing Energy. RegTech. Crypto",
+      "startTime": "2026-11-23",
+      "endTime": "2026-11-27",
+      "location": "Vienna, Austria 🇦🇹",
+      "city": "Vienna",
+      "country": "Austria 🇦🇹",
+      "organizer": "FintechAustria",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "AI",
+        "Other"
+      ],
+      "website": "https://fintechaustria.org/sample-page/fintechweek-vienna-2026/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recMcebTtnZ66nqnO",
@@ -31695,6 +32228,69 @@
       "seriesName": "Abu Dhabi Finance Week"
     },
     {
+      "id": "rec353RU9ZzILrVwx",
+      "kind": "main",
+      "name": "U.S. BankTech Summit 2026",
+      "description": "Connect with senior banking executives, technology leaders, and fintech partners for three days of strategic dialogue, practical insights, and high-impact",
+      "startTime": "2026-12-07",
+      "endTime": "2026-12-09",
+      "location": "Other, USA, USA 🇺🇸",
+      "city": "Other, USA",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [],
+      "website": "https://usbanktechsummit.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recxKbGLr2B5Ep2bj",
+      "kind": "main",
+      "name": "FTT Fintech Festival North America 2026",
+      "description": "Fintech Talents' North American festival for 450+ fintech and financial services innovators.",
+      "startTime": "2026-12-08",
+      "endTime": "2026-12-09",
+      "location": "Austin, USA 🇺🇸",
+      "city": "Austin",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [],
+      "website": "https://www.fintechtalents.com/events/north-america/ftt-fintech-festival/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recfslQribl8YyFwc",
+      "kind": "main",
+      "name": "CryptoConvergence 2026",
+      "description": "No information at this moment",
+      "startTime": "2026-12-08",
+      "endTime": "2026-12-10",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://cryptoconvergence26.com",
+      "imageUrl": null,
+      "seriesSlug": "DubaiDecEvents2026",
+      "seriesName": "Dubai Dec Events"
+    },
+    {
       "id": "recm6Uuh8OVV5xvGX",
       "kind": "side",
       "name": "HSС Asset Management Abu Dhabi Day 1",
@@ -31713,6 +32309,27 @@
       ],
       "website": "https://lu.ma/HSC_Abu_Dhabi",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/HSAssetManagementAbuDhabi910December_2026-05-14T13-51.png",
+      "seriesSlug": "AbuDhabiFinanceWeek2026",
+      "seriesName": "Abu Dhabi Finance Week"
+    },
+    {
+      "id": "recFSackgwjfdVEkR",
+      "kind": "main",
+      "name": "Global Blockchain Show Abu Dhabi 2026",
+      "description": "Blockchain and Web3 conference for founders, investors and industry leaders, held alongside the Global Trading Show.",
+      "startTime": "2026-12-10",
+      "endTime": "2026-12-11",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://www.globalblockchainshow.com/abu-dhabi/",
+      "imageUrl": null,
       "seriesSlug": "AbuDhabiFinanceWeek2026",
       "seriesName": "Abu Dhabi Finance Week"
     },

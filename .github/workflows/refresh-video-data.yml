@@ -1,18 +1,31 @@
 name: Refresh video data
 
 # Discovers new/upcoming events from Mira and ethereum.org, finds YouTube
-# channels for newly-tracked orgs, pulls videos for every tracked channel,
-# classifies them into real event editions and speaker names, rebuilds the
+# channels for newly-tracked orgs, pulls each tracked channel's current video
+# list, classifies videos into real event editions and matches speaker
+# names (both pure local title-text processing — no network calls, so no
+# timeout risk even though they reprocess the whole catalog), rebuilds the
 # unified DB, and opens a PR with the diff for review — see
 # scripts/fetch-mira-events.py, scripts/fetch-ethereum-org-communities.py,
 # scripts/sync-new-orgs.py, scripts/find-youtube-channels.py,
 # scripts/guess-youtube-handles.py, scripts/merge-found-channels.py,
-# scripts/pull-youtube-videos.py, scripts/pull-youtube-metadata.py,
-# scripts/pull-youtube-transcripts.py, scripts/classify-youtube-events.py,
+# scripts/pull-youtube-videos.py, scripts/classify-youtube-events.py,
 # scripts/extract-youtube-speakers.py, scripts/build-db.mjs.
 #
-# Does NOT re-run scripts/remote-export.mjs (the StreamETH session export) —
-# that needs VPS SSH access and isn't wired up here.
+# Deliberately does NOT run scripts/pull-youtube-metadata.py or
+# scripts/pull-youtube-transcripts.py — those make one real network request
+# per video to backfill extra detail (duration/views/tags, auto-captions)
+# across the *entire* tracked catalog, not just newly-discovered videos, so
+# they don't belong in a "find what's new" daily job (confirmed in CI on
+# 2026-09-29/30: running them here meant the job spent ~5 hours on a
+# ~14k-video historical backlog instead of just the day's new videos, hit
+# the timeout, and — because this workflow only commits in its final step —
+# saved none of that work either time). Run them by hand
+# (`python3 scripts/pull-youtube-metadata.py`, etc.) as a separate, one-off
+# backfill whenever wanted; they're incremental/resumable on their own.
+#
+# Also does NOT re-run scripts/remote-export.mjs (the StreamETH session
+# export) — that needs VPS SSH access and isn't wired up here.
 
 on:
   schedule:
@@ -26,7 +39,7 @@ permissions:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -53,13 +66,10 @@ jobs:
           python3 scripts/guess-youtube-handles.py
           python3 scripts/merge-found-channels.py
 
-      - name: Pull YouTube videos, metadata, transcripts
-        run: |
-          python3 scripts/pull-youtube-videos.py
-          python3 scripts/pull-youtube-metadata.py
-          python3 scripts/pull-youtube-transcripts.py
+      - name: Pull each tracked channel's current video list
+        run: python3 scripts/pull-youtube-videos.py
 
-      - name: Classify events and speakers
+      - name: Classify events and match speaker names
         run: |
           python3 scripts/classify-youtube-events.py
           python3 scripts/extract-youtube-speakers.py
@@ -73,9 +83,14 @@ jobs:
           commit-message: "Refresh video data (automated)"
           title: "Refresh video data (automated)"
           body: |
-            Weekly automated refresh: new events/orgs discovered from Mira and
-            ethereum.org, YouTube channels found where possible, videos pulled
-            for every tracked channel, events/speakers reclassified, DB rebuilt.
+            Daily automated refresh: new events/orgs discovered from Mira and
+            ethereum.org, YouTube channels found where possible, each tracked
+            channel's current video list pulled, classified into real event
+            editions, speaker names matched, DB rebuilt.
+
+            Does not pull per-video metadata/transcripts (duration, views,
+            auto-captions) — see the workflow file's header comment for why.
+            Run those by hand as a separate backfill.
 
             Review before merging — a scrape run can occasionally misclassify
             an event or channel match.

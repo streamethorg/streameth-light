@@ -17,6 +17,22 @@ with backoff, and if it still fails is simply left out of the output file
 so the *next* run retries it too, rather than being permanently recorded
 as null.
 
+Capped to BATCH_LIMIT videos per invocation (env var, default 2000) — a
+cold backlog (e.g. this script's first-ever run against the full catalog,
+or against several newly-discovered channels at once) can be 10,000+
+videos, which doesn't fit in a CI job's time budget in one go regardless of
+fetch speed. The calling workflow commits after every run, so a capped run
+still makes real, saved forward progress; an uncapped run that times out
+mid-way saves nothing, because nothing gets committed until the step
+finishes (confirmed in CI on 2026-09-29/30: two consecutive ~5-hour runs
+against an uncapped ~14k-video backlog were each killed by the job timeout
+before reaching the commit step, so neither saved any of that work).
+
+Also bails out early if the first 30 attempts are mostly failures (a
+blocked/rate-limited session recovers on its own time, not by retrying
+harder) rather than burning the rest of the run's time budget on a session
+that isn't going to start succeeding.
+
 Run with: python3 scripts/pull-youtube-metadata.py
 """
 import json
@@ -28,6 +44,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VIDEOS_PATH = os.path.join(REPO, "data", "sources", "youtube-videos.json")
 OUT_PATH = os.path.join(REPO, "data", "sources", "youtube-metadata.json")
+BATCH_LIMIT = int(os.environ.get("BATCH_LIMIT", "2000"))
+CIRCUIT_BREAKER_AFTER = 30
+CIRCUIT_BREAKER_FAIL_RATE = 0.8
 CONCURRENCY = 5
 TIMEOUT_S = 30
 SAVE_EVERY = 25
@@ -104,12 +123,18 @@ def main() -> None:
         # failed fetches, so this run retries them instead of skipping.
         existing = {k: v for k, v in json.load(open(OUT_PATH)).items() if v}
 
-    todo = [vid for vid in all_ids if vid not in existing]
-    print(f"{len(all_ids)} total videos, {len(existing)} already done, {len(todo)} to fetch", flush=True)
+    todo_all = [vid for vid in all_ids if vid not in existing]
+    todo = todo_all[:BATCH_LIMIT]
+    print(
+        f"{len(all_ids)} total videos, {len(existing)} already done, "
+        f"{len(todo_all)} remaining, processing {len(todo)} this run",
+        flush=True,
+    )
 
     done_count = 0
     ok_count = 0
     fail_count = 0
+    breaker_tripped = False
 
     def save():
         json.dump(existing, open(OUT_PATH, "w"), indent=None, separators=(",", ":"), ensure_ascii=False)
@@ -133,6 +158,19 @@ def main() -> None:
                 print(f"[{done_count}/{len(todo)}] {vid} failed after {MAX_ATTEMPTS} attempts", flush=True)
             if done_count % SAVE_EVERY == 0:
                 save()
+            if (
+                not breaker_tripped
+                and done_count == CIRCUIT_BREAKER_AFTER
+                and fail_count / done_count >= CIRCUIT_BREAKER_FAIL_RATE
+            ):
+                breaker_tripped = True
+                cancelled = sum(1 for f in futures if f.cancel())
+                print(
+                    f"{fail_count}/{done_count} of the first {CIRCUIT_BREAKER_AFTER} requests failed — "
+                    f"session looks blocked/rate-limited, not going to recover by retrying harder. "
+                    f"Cancelled {cancelled} not-yet-started requests; leaving them for the next run.",
+                    flush=True,
+                )
 
     save()
     print(f"done: {ok_count} fetched, {fail_count} still failing (left out for next run)", flush=True)
