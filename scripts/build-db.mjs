@@ -290,15 +290,19 @@ db.exec(`
   CREATE INDEX idx_videos_published ON videos(published_at);
   CREATE INDEX idx_videos_duration ON videos(duration_seconds);
 
+  -- Contentless (content=''): only the search index is stored, not a second
+  -- copy of every column. Transcripts are most of the data, and storing them
+  -- twice pushed the database past Vercel's 250 MB function size limit.
+  -- Each row's rowid is its videos.rowid; queries join on that.
   CREATE VIRTUAL TABLE videos_fts USING fts5(
-    id UNINDEXED,
     title,
     description,
     speakers,
     topics,
     org_name,
     event_name,
-    transcript
+    transcript,
+    content=''
   );
 `);
 
@@ -316,7 +320,7 @@ const insertVideo = db.prepare(`
   ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertFts = db.prepare(`
-  INSERT INTO videos_fts (id, title, description, speakers, topics, org_name, event_name, transcript)
+  INSERT INTO videos_fts (rowid, title, description, speakers, topics, org_name, event_name, transcript)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
@@ -370,7 +374,7 @@ for (const s of sessions) {
     .filter(Boolean)
     .join(" ");
 
-  insertVideo.run(
+  const { lastInsertRowid: streamethRowid } = insertVideo.run(
     s._id,
     "streameth",
     cleanTitle(s.name),
@@ -392,7 +396,7 @@ for (const s of sessions) {
     resolvedContentUrl(s)
   );
   insertFts.run(
-    s._id,
+    streamethRowid,
     cleanTitle(s.name),
     descriptionSearchText,
     speakerSearchText,
@@ -433,7 +437,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
     const descriptionSearchText = [description, entry?.location].filter(Boolean).join(" ");
     const speakerNames = (youtubeSpeakersBySlug[channelSlug]?.[v.videoId] ?? []).join(", ");
 
-    insertVideo.run(
+    const { lastInsertRowid: youtubeRowid } = insertVideo.run(
       id,
       "youtube",
       v.title ?? "",
@@ -454,7 +458,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       null,
       null
     );
-    insertFts.run(id, v.title ?? "", descriptionSearchText, speakerNames, topics, orgName, "", transcript);
+    insertFts.run(youtubeRowid, v.title ?? "", descriptionSearchText, speakerNames, topics, orgName, "", transcript ?? "");
     youtubeCount++;
   }
 }
