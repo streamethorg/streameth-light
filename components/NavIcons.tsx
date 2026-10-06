@@ -66,6 +66,15 @@ export function SavedIcon({ filled, className = "h-6 w-6" }: IconProps) {
   );
 }
 
+export function ConnectIcon({ filled, className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M7 9.5h10v3a5 5 0 01-10 0v-3z" fill={filled ? "currentColor" : "none"} />
+      <path d="M9.5 9.5V4.5M14.5 9.5V4.5M12 17.5V21" />
+    </svg>
+  );
+}
+
 export function MenuIcon({ className = "h-6 w-6" }: IconProps) {
   return (
     <svg {...base} className={className}>

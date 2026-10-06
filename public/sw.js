@@ -27,8 +27,9 @@ const MAX_STATIC = 400;
 const MAX_IMAGES = 300;
 
 // Pages that must never be served from cache: they set or depend on a fresh
-// auth state, and a stale copy would be wrong rather than merely old.
-const NO_CACHE_PREFIXES = ["/auth/", "/signin", "/api/"];
+// auth state (a stale copy would be wrong rather than merely old), or show
+// account secrets like MCP access tokens that shouldn't sit on disk.
+const NO_CACHE_PREFIXES = ["/auth/", "/signin", "/api/", "/settings", "/connect", "/oauth/"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(precache());

@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "StreamETH";
 
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+
 // Builds a page's `openGraph`/`twitter` metadata. Next.js doesn't deep-merge
 // `openGraph`/`twitter` objects between a layout and a page — a page that
 // sets either one replaces the parent's wholesale — so every generateMetadata

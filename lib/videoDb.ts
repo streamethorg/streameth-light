@@ -79,7 +79,7 @@ const DURATION_BOUNDS: Record<DurationBucket, [number, number]> = {
 
 const MAX_RESULTS = 4000;
 
-export function browseVideos(filters: BrowseFilters): UnifiedVideo[] {
+export function browseVideos(filters: BrowseFilters, limit = MAX_RESULTS): UnifiedVideo[] {
   const db = getDb();
   const where: string[] = [];
   const params: (string | number)[] = [];
@@ -126,7 +126,7 @@ export function browseVideos(filters: BrowseFilters): UnifiedVideo[] {
          ORDER BY ${filters.sort === "newest" ? "v.published_at DESC" : filters.sort === "oldest" ? "v.published_at ASC" : "bm25(videos_fts)"}
          LIMIT ?`
       )
-      .all(matchQuery(q), ...params, MAX_RESULTS) as unknown as VideoRow[];
+      .all(matchQuery(q), ...params, limit) as unknown as VideoRow[];
     return rows.map(rowToVideo);
   }
 
@@ -141,7 +141,7 @@ export function browseVideos(filters: BrowseFilters): UnifiedVideo[] {
 
   const rows = db
     .prepare(`SELECT v.* FROM videos v ${whereSql} ORDER BY ${orderBy} LIMIT ?`)
-    .all(...params, MAX_RESULTS) as unknown as VideoRow[];
+    .all(...params, limit) as unknown as VideoRow[];
   return rows.map(rowToVideo);
 }
 
@@ -292,4 +292,24 @@ export function channelVideos(slug: string, limit: number): { videos: UnifiedVid
     .prepare(`SELECT COUNT(*) AS total FROM videos WHERE org_slug = ?`)
     .get(slug) as unknown as { total: number };
   return { videos: rows.map(rowToVideo), total };
+}
+
+export interface ChannelSummary {
+  slug: string;
+  name: string;
+  videos: number;
+  /** Newest video's published_at (ms). */
+  latest: number;
+}
+
+/** Every channel with its archive size, biggest first. */
+export function listChannelSummaries(): ChannelSummary[] {
+  const db = getDb();
+  const rows = db
+    .prepare(
+      `SELECT org_slug AS slug, org_name AS name, COUNT(*) AS videos, MAX(published_at) AS latest
+       FROM videos WHERE org_slug != '' GROUP BY org_slug ORDER BY videos DESC`
+    )
+    .all() as unknown as ChannelSummary[];
+  return rows.map((r) => ({ slug: r.slug, name: r.name, videos: r.videos, latest: r.latest }));
 }

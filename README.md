@@ -35,23 +35,67 @@ automatically via `predev`/`prebuild`. Uses Node's built-in `node:sqlite`
 (Node 22.5+, no native compilation), so it runs anywhere the app's Node
 runtime does.
 
-## Accounts (saved videos)
+## MCP server
 
-Sign-in (magic link/email OTP) and "Save" are backed by a Supabase project
-(Postgres + Auth) — the one persistent, writable piece of an otherwise
-read-only/static app. Schema lives in `supabase/migrations/`; `saved_videos`
-rows are protected by row-level security so a user can only see/write their
-own. Requires env vars (see `.env.example`):
+`/api/mcp` is a read-only [MCP](https://modelcontextprotocol.io) endpoint
+(Streamable HTTP, `app/api/mcp/route.ts`) over the same search index, so AI
+agents can search the archive and read transcripts. Tools: `search_videos`,
+`get_video`, `get_transcript` (paged), `list_channels`, `list_topics`.
 
 ```bash
-cp .env.example .env.local  # fill in your Supabase project's URL + anon key
+claude mcp add --transport http streameth https://<your-domain>/api/mcp
 ```
 
+Signed-in users get a personal token on `/connect` ("Connect to MCP" in the
+sidebar) and pass it as `Authorization: Bearer smcp_…`. A user with no
+tokens gets one created automatically on their visit, since the page is the
+only place a token can be shown; they can add more per app. Only a
+SHA-256 hash is stored (`mcp_tokens`, `supabase/migrations/`); `/api/mcp`
+checks it through the `verify_mcp_token` database function. Users can revoke
+tokens on the same page.
+
+Apps that support OAuth (e.g. Claude.ai connectors) can connect without a
+token, still as a signed-in wallet account. Supabase Auth's OAuth 2.1 server
+is the authorization server: `/.well-known/oauth-protected-resource/api/mcp`
+points clients at it, the client registers itself (dynamic client
+registration), and the user signs in with their wallet and approves on
+`/oauth/consent`. The MCP route then verifies the Supabase access token
+(`lib/supabase/mcpAuth.ts`).
+
+On the hosted project, in **Authentication → OAuth Server**: enable it, set
+the authorization path to `/oauth/consent`, and allow dynamic client
+registration. The project's Site URL must be this app's domain, since
+Supabase builds the consent URL from it. Locally, `supabase/config.toml`
+already has these set.
+
+## Accounts (wallet sign-in, saved videos)
+
+Accounts are Ethereum wallets: sign-in is Sign in with Ethereum (EIP-4361)
+through Supabase's native Web3 auth — the user signs a message, no
+transaction or gas. There is no email sign-in. Supabase (Postgres + Auth) is
+the one persistent, writable piece of an otherwise read-only/static app.
+Schema lives in `supabase/migrations/`; `saved_videos` rows are protected by
+row-level security so a user can only see/write their own.
+
+Environment variables (`.env.local`, and the Vercel project):
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | yes | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | yes | Supabase anon/publishable key |
+| `ETH_RPC_URL` | production | Mainnet RPC for ENS names; falls back to viem's rate-limited public RPC |
+
 New environment (e.g. a fresh Supabase project): `supabase link --project-ref
-<ref>` then `supabase db push` to apply the migrations. If deploying to a
-new domain, also add `<domain>/auth/callback` to that project's
-Authentication → URL Configuration → Redirect URLs, or magic links won't
-redirect back correctly.
+<ref>` then `supabase db push` to apply the migrations. Then in the dashboard:
+
+- Authentication → Sign In / Providers → **Web3 Wallet → Ethereum: on**.
+- Authentication → Sign In / Providers → **Email: off** (no email accounts).
+- Authentication → URL Configuration: the site URL (and any preview domains)
+  must be allowed, or signatures are rejected with "message was signed for
+  another app".
+
+Local stack: `supabase start` uses `supabase/config.toml`, which already
+enables Ethereum sign-in and disables email signup.
 
 ## Development
 
@@ -64,5 +108,5 @@ pnpm dev
 
 Deployed on Vercel. `data/*.json` is committed to git, so the video archive
 itself needs no environment variables or database — `data/streameth.db` is
-rebuilt from it during `pnpm build`. Accounts/saved-videos need the Supabase
-env vars above set in the Vercel project.
+rebuilt from it during `pnpm build`. Accounts need the env vars above set in the
+Vercel project.
