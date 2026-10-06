@@ -7,10 +7,12 @@
     "dev": "next dev",
     "prebuild": "pnpm build-db",
     "build": "next build",
+    "postbuild": "node scripts/check-seo.mjs",
     "start": "next start",
     "lint": "eslint",
     "export-db": "bash scripts/export-db.sh",
-    "build-db": "node scripts/build-db.mjs"
+    "build-db": "node scripts/build-db.mjs",
+    "check-seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.2.0",

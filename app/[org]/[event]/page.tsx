@@ -26,6 +26,8 @@ import {
 } from "@/lib/orphanSessions";
 import { accentStyle, formatDateShort } from "@/lib/format";
 import { buildMetadata } from "@/lib/social";
+import { breadcrumbJsonLd, eventJsonLd, itemListJsonLd, truncate } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import type { Session, Stage } from "@/lib/types";
 
 export function generateStaticParams() {
@@ -42,13 +44,19 @@ export async function generateMetadata({
 }: {
   params: Promise<{ org: string; event: string }>;
 }): Promise<Metadata> {
-  const { event: eventSlug } = await params;
+  const { org: orgSlug, event: eventSlug } = await params;
   const event = getEvent(eventSlug);
   if (!event) return {};
+  const count = listSessionsForEvent(event._id).length;
   return buildMetadata({
     title: `${event.name} — StreamETH`,
-    description: event.description?.slice(0, 200),
+    description: truncate(
+      event.description ||
+        `${count} recorded ${count === 1 ? "talk" : "talks"} from ${event.name}${event.location ? ` in ${event.location}` : ""}.`,
+      200
+    ),
     image: event.eventCover ?? event.banner ?? event.logo,
+    path: `/${orgSlug}/${event.slug}`,
   });
 }
 
@@ -117,6 +125,29 @@ export default async function EventPage({
       style={accentStyle(event.accentColor ?? org.accentColor) as CSSProperties | undefined}
       className="flex flex-1 flex-col"
     >
+      <JsonLd
+        data={[
+          eventJsonLd({
+            name: event.name,
+            path: `/${org.slug}/${event.slug}`,
+            description: event.description,
+            start: event.start || undefined,
+            end: event.end || undefined,
+            location: event.location || undefined,
+            image: event.eventCover ?? event.banner ?? event.logo,
+            organizer: { name: org.name, path: `/${org.slug}` },
+          }),
+          itemListJsonLd(
+            `Talks from ${event.name}`,
+            sessions.map((s) => `/watch/${s._id}`)
+          ),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: org.name, path: `/${org.slug}` },
+            { name: event.name, path: `/${org.slug}/${event.slug}` },
+          ]),
+        ]}
+      />
       <PageHero
         back={{ href: `/${org.slug}`, label: org.name }}
         title={event.name}

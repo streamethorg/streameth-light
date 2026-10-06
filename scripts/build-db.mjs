@@ -180,6 +180,16 @@ function resolvedCoverImage(s) {
   return null;
 }
 
+// The playable stream/file URL, resolved the same way as lib/data.ts's
+// buildPlaybackSrc — what the video sitemap and VideoObject JSON-LD hand to
+// search engines as `contentUrl`.
+function resolvedContentUrl(s) {
+  const videoUrl = s.videoUrl || s.playback?.videoUrl;
+  if (videoUrl && !isDeadVideoHost(videoUrl)) return videoUrl;
+  if (s.playbackId) return livepeerResolved[s.playbackId] ?? null;
+  return null;
+}
+
 function resolvedDownloadUrl(s) {
   const videoUrl = s.videoUrl || s.playback?.videoUrl;
   if (videoUrl && !isDeadVideoHost(videoUrl) && videoUrl.endsWith(".mp4")) {
@@ -220,6 +230,13 @@ function isJunkTitle(title) {
 function cleanTitle(title) {
   const t = (title ?? "").trim();
   return t.replace(/\.(mp4|mov|mkv|m4v)$/i, "");
+}
+
+// Same fallback as lib/data.ts's sessionStart: a missing or near-zero
+// start (a 1970 date) falls back to when the session record was created.
+const MIN_PLAUSIBLE_START = Date.UTC(2000, 0, 1);
+function sessionStart(s) {
+  return s.start >= MIN_PLAUSIBLE_START ? s.start : Date.parse(s.createdAt ?? "") || s.start || 0;
 }
 
 function sessionHasVideo(s) {
@@ -264,7 +281,8 @@ db.exec(`
     topics TEXT NOT NULL DEFAULT '',
     has_transcript INTEGER NOT NULL DEFAULT 0,
     transcript TEXT,
-    download_url TEXT
+    download_url TEXT,
+    content_url TEXT
   );
 
   CREATE INDEX idx_videos_org ON videos(org_id);
@@ -294,8 +312,8 @@ const insertVideo = db.prepare(`
   INSERT INTO videos (
     id, source, title, description, org_id, org_name, org_slug, event_id,
     event_name, published_at, duration_seconds, cover_image, watch_url,
-    speakers, topics, has_transcript, transcript, download_url
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    speakers, topics, has_transcript, transcript, download_url, content_url
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertFts = db.prepare(`
   INSERT INTO videos_fts (id, title, description, speakers, topics, org_name, event_name, transcript)
@@ -362,7 +380,7 @@ for (const s of sessions) {
     org?.slug ?? "",
     event?._id ?? null,
     event?.name ?? s.eventSlug ?? "",
-    s.start ?? 0,
+    sessionStart(s),
     duration,
     resolvedCoverImage(s),
     `/watch/${s._id}`,
@@ -370,7 +388,8 @@ for (const s of sessions) {
     topicsDisplay,
     transcript ? 1 : 0,
     transcript || null,
-    resolvedDownloadUrl(s)
+    resolvedDownloadUrl(s),
+    resolvedContentUrl(s)
   );
   insertFts.run(
     s._id,
@@ -432,6 +451,7 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       topics,
       transcript ? 1 : 0,
       transcript || null,
+      null,
       null
     );
     insertFts.run(id, v.title ?? "", descriptionSearchText, speakerNames, topics, orgName, "", transcript);

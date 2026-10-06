@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 
 const SENTENCES_PER_PARAGRAPH = 5;
 
@@ -29,6 +28,14 @@ function toParagraphs(transcript: string): string[] {
   return paragraphs;
 }
 
+function noopSubscribe() {
+  return () => {};
+}
+
+function readUrlQuery(): string {
+  return new URLSearchParams(window.location.search).get("q") ?? "";
+}
+
 function escapeRegExp(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -37,8 +44,12 @@ function escapeRegExp(text: string): string {
  * Arriving from a search (`?q=` on the watch URL) pre-fills the find box,
  * so the passage that matched is one click away. */
 export default function TranscriptPanel({ transcript }: { transcript: string }) {
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("q") ?? "");
+  // `?q=` from the URL, read without useSearchParams so the transcript is
+  // in the server-rendered HTML (search engines and AI crawlers read it);
+  // the server and first client render see "" and the client then fills in.
+  const urlQuery = useSyncExternalStore(noopSubscribe, readUrlQuery, () => "");
+  const [typed, setQuery] = useState<string | null>(null);
+  const query = typed ?? urlQuery;
   const [current, setCurrent] = useState(0);
   const bodyRef = useRef<HTMLDivElement>(null);
   const paragraphs = useMemo(() => toParagraphs(transcript), [transcript]);
@@ -82,10 +93,11 @@ export default function TranscriptPanel({ transcript }: { transcript: string }) 
     scrollToMatch(next, "smooth");
   }
 
-  // Arriving with ?q=: bring the first match into view.
+  // Arriving with ?q=: once the client has read it, bring the first match
+  // into view.
   useEffect(() => {
-    scrollToMatch(0, "auto");
-  }, []);
+    if (urlQuery) scrollToMatch(0, "auto");
+  }, [urlQuery]);
 
   return (
     <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-line">

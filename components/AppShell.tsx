@@ -9,6 +9,7 @@ import AccountMenu from "@/components/AccountMenu";
 import { DigestBanner, SubscribeButton } from "@/components/DigestSignup";
 import PodcastPlayerProvider, { usePodcastPlayer } from "@/components/PodcastPlayerProvider";
 import MiniPlayerBar from "@/components/MiniPlayerBar";
+import OfflineSupport from "@/components/OfflineSupport";
 import { BackIcon, CloseIcon, McpIcon, MenuIcon, SearchIcon } from "@/components/NavIcons";
 
 const NAV = [
@@ -148,6 +149,8 @@ function AppBody({ children }: { children: React.ReactNode }) {
           </nav>
         )}
       </header>
+
+      <OfflineSupport />
 
       {/* Same max width as the top bar, so page content lines up with it. */}
       <main className={`mx-auto w-full min-w-0 max-w-[1760px] flex-1 ${track ? "pb-20" : ""}`}>{children}</main>

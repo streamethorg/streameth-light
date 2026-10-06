@@ -6,6 +6,7 @@ import { getUserAddress, shortAddress } from "@/lib/userAddress";
 
 export const metadata = {
   title: "Connect an app — StreamETH",
+  robots: { index: false },
 };
 
 // Supabase Auth's OAuth server sends MCP clients (Claude, Cursor, …) here

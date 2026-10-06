@@ -7,6 +7,7 @@ import McpConnect, { type McpTokenRow } from "@/components/McpConnect";
 
 export const metadata = {
   title: "Connect to MCP — StreamETH",
+  robots: { index: false },
 };
 
 export default async function ConnectPage() {

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { clearCachedPages } from "@/lib/offline";
 
 export default function SignOutButton({
   className,
@@ -21,6 +22,7 @@ export default function SignOutButton({
       onClick={async () => {
         setBusy(true);
         await createClient().auth.signOut();
+        await clearCachedPages().catch(() => {});
         if (redirectTo) router.replace(redirectTo);
         router.refresh();
         setBusy(false);

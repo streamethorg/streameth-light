@@ -46,8 +46,10 @@ agents can search the archive and read transcripts. Tools: `search_videos`,
 claude mcp add --transport http streameth https://<your-domain>/api/mcp
 ```
 
-Signed-in users can generate a personal token on `/connect` ("Connect to
-MCP" — the "Connect with MCP" button in the top bar) and pass it as `Authorization: Bearer smcp_…`. Only a
+Signed-in users get a personal token on `/connect` ("Connect with MCP"
+in the top bar) and pass it as `Authorization: Bearer smcp_…`. A user with no
+tokens gets one created automatically on their visit, since the page is the
+only place a token can be shown; they can add more per app. Only a
 SHA-256 hash is stored (`mcp_tokens`, `supabase/migrations/`); `/api/mcp`
 checks it through the `verify_mcp_token` database function. Users can revoke
 tokens on the same page.
@@ -146,6 +148,27 @@ New environment (e.g. a fresh Supabase project): `supabase link --project-ref
 
 Local stack: `supabase start` uses `supabase/config.toml`, which already
 enables Ethereum sign-in and disables email signup.
+
+## Search engines and AI crawlers
+
+Every video should be indexable by Google and quotable by AI answer engines:
+
+- `/sitemap.xml` lists channels, events, speakers and topics; `/watch/sitemap/<n>.xml`
+  are video sitemaps covering every watch page (5,000 per file). `/robots.txt`
+  lists them all and explicitly allows the major AI crawlers.
+- Watch pages carry `VideoObject` + `BreadcrumbList` JSON-LD, a canonical URL,
+  and the full transcript in the server-rendered HTML. Videos without a cover
+  image get a generated thumbnail at `/watch/<id>/poster.png`.
+- `/llms.txt` maps the archive for AI assistants, and `/watch/<id>.md` is a
+  plain-markdown copy of any talk (metadata, description, transcript).
+- `pnpm build` runs `scripts/check-seo.mjs` afterwards and fails if any watch
+  page or sitemap entry is missing what indexing needs.
+
+Set `NEXT_PUBLIC_SITE_URL` to the production domain if it differs from Vercel's
+production URL — canonical URLs, sitemaps and JSON-LD are built from it. Set
+`GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` to verify the site in
+Google Search Console / Bing Webmaster Tools, then submit `/robots.txt`'s
+sitemaps there and watch the Video indexing report.
 
 ## Development
 

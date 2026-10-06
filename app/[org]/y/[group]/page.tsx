@@ -36,7 +36,10 @@ export async function generateMetadata({
   if (!group) return {};
   return buildMetadata({
     title: `${group.label} — StreamETH`,
+    description: `${group.videos.length} recorded ${group.videos.length === 1 ? "talk" : "talks"} from ${group.label}.`,
     image: group.videos[0]?.thumbnail ?? undefined,
+    // ?v=<video> only switches the player; the group page is the canonical.
+    path: `/${org}/y/${groupSlug}`,
   });
 }
 

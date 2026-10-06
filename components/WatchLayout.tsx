@@ -140,11 +140,9 @@ export default function WatchLayout({
           )}
 
           {readableTranscript && (
-            <Suspense fallback={<div className="h-[520px] rounded-xl border border-line" />}>
-              <div className="flex h-[520px] flex-col">
-                <TranscriptPanel transcript={readableTranscript} />
-              </div>
-            </Suspense>
+            <div className="flex h-[520px] flex-col">
+              <TranscriptPanel transcript={readableTranscript} />
+            </div>
           )}
         </div>
       </div>

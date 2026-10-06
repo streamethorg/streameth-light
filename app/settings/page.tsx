@@ -10,6 +10,7 @@ import SignOutButton from "@/components/SignOutButton";
 
 export const metadata = {
   title: "Settings — StreamETH",
+  robots: { index: false },
 };
 
 export default async function SettingsPage() {
