@@ -35,7 +35,10 @@ export type AskEvent =
 // of each request is input: search results and transcripts).
 const DEFAULT_MODEL = "deepseek/deepseek-v4-flash";
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
-const MAX_SEARCHES = 4;
+// Rounds of searching (a round may run a few queries in parallel), then a
+// final turn with no tools that has to answer.
+const MAX_SEARCH_ROUNDS = 4;
+const MAX_QUERIES_PER_ROUND = 3;
 const VIDEOS_PER_SEARCH = 6;
 const PASSAGES_PER_VIDEO = 2;
 const PASSAGE_CHARS = 900;
@@ -212,6 +215,63 @@ async function runSearch(
   return { text: blocks.join("\n\n---\n\n"), added };
 }
 
+const FINAL_TURN_INSTRUCTION =
+  "No more searches are available. Answer the question now using only the search results above, citing passages as [n]. If they don't cover it, say so plainly in a sentence or two and mention the closest talks found, if any.";
+
+// Some models (seen with DeepSeek) occasionally write a tool call into the
+// text in their native markup — "<｜DSML｜tool_calls>…", "<|tool▁calls…" —
+// instead of a real tool call. None of it belongs in an answer.
+const TOOL_MARKUP = /<\s*[|｜]|<\/?tool_call/;
+
+function stripToolMarkup(text: string): string {
+  const at = text.search(TOOL_MARKUP);
+  return at === -1 ? text : text.slice(0, at).trimEnd();
+}
+
+/** Streams text through while holding back anything that might be the
+ * start of tool-call markup ("<"); once markup is confirmed, everything
+ * after it is dropped. */
+class MarkupGuard {
+  private pending = "";
+  private blocked = false;
+  sawMarkup = false;
+
+  push(chunk: string): string {
+    if (this.blocked) return "";
+    this.pending += chunk;
+    let out = "";
+    for (;;) {
+      const lt = this.pending.indexOf("<");
+      if (lt === -1) {
+        out += this.pending;
+        this.pending = "";
+        return out;
+      }
+      out += this.pending.slice(0, lt);
+      this.pending = this.pending.slice(lt);
+      if (TOOL_MARKUP.test(this.pending.slice(0, 12))) {
+        this.blocked = true;
+        this.sawMarkup = true;
+        this.pending = "";
+        return out;
+      }
+      // Not enough characters yet to tell: wait for more.
+      if (this.pending.length < 12) return out;
+      // An ordinary "<": let it through and keep scanning.
+      out += "<";
+      this.pending = this.pending.slice(1);
+    }
+  }
+
+  flush(): string {
+    if (this.blocked) return "";
+    const rest = stripToolMarkup(this.pending);
+    if (rest !== this.pending) this.sawMarkup = true;
+    this.pending = "";
+    return rest;
+  }
+}
+
 /** The model provider is out of capacity or credits for now. */
 export class AskBusyError extends Error {}
 
@@ -310,10 +370,10 @@ async function* streamTurn(
       max_tokens: 4000,
       reasoning: { effort: "low" },
       messages,
-      // The tool stays declared (the history has tool calls in it); out of
-      // searches, tool_choice "none" makes the model answer with what it has.
-      tools: [SEARCH_TOOL],
-      tool_choice: withTools ? "auto" : "none",
+      // On the final turn the tool is left out entirely (plus an explicit
+      // "answer now" instruction): with it merely disabled, some models write
+      // their next tool call into the text instead of answering.
+      ...(withTools ? { tools: [SEARCH_TOOL], tool_choice: "auto" } : {}),
     }),
   });
   if (!res.ok || !res.body) {
@@ -396,36 +456,56 @@ export async function* answerQuestion(
     { role: "system", content: SYSTEM },
     { role: "user", content: userContent },
   ];
-  let searches = 0;
   let answered = false;
 
-  for (let turn = 0; turn <= MAX_SEARCHES; turn++) {
-    const turnStream = streamTurn(messages, searches < MAX_SEARCHES, signal);
+  for (let round = 0; round <= MAX_SEARCH_ROUNDS; round++) {
+    const final = round === MAX_SEARCH_ROUNDS;
+    if (final) messages.push({ role: "user", content: FINAL_TURN_INSTRUCTION });
+
+    const turnStream = streamTurn(messages, !final, signal);
+    const guard = new MarkupGuard();
     let step = await turnStream.next();
     while (!step.done) {
-      yield { type: "text", text: step.value };
+      const visible = guard.push(step.value);
+      if (visible) yield { type: "text", text: visible };
       step = await turnStream.next();
     }
-    const { text, toolCalls, finishReason } = step.value;
+    const tail = guard.flush();
+    if (tail) yield { type: "text", text: tail };
+    const { toolCalls, finishReason } = step.value;
+    const text = stripToolMarkup(step.value.text);
 
     if (finishReason === "content_filter") {
       yield { type: "error", message: "This question can't be answered here." };
       return;
     }
     if (toolCalls.length === 0) {
-      answered = Boolean(text.trim());
+      if (text.trim()) {
+        answered = true;
+        break;
+      }
+      // Nothing usable (empty, or only leaked tool-call markup): go straight
+      // to the final, tool-less turn.
+      if (guard.sawMarkup) yield { type: "discard" };
+      if (!final) {
+        round = MAX_SEARCH_ROUNDS - 1;
+        continue;
+      }
       break;
     }
-    if (text) yield { type: "discard" };
+    if (text || guard.sawMarkup) yield { type: "discard" };
 
     messages.push({ role: "assistant", content: text || null, tool_calls: toolCalls });
-    for (const call of toolCalls) {
+    for (const [i, call] of toolCalls.entries()) {
       const query = call.function.name === "search_archive" ? parseSearchArgs(call.function.arguments) : null;
       if (!query) {
         messages.push({ role: "tool", tool_call_id: call.id, content: "Invalid call: pass {\"query\": \"keywords\"}." });
         continue;
       }
-      searches += 1;
+      if (i >= MAX_QUERIES_PER_ROUND) {
+        messages.push({ role: "tool", tool_call_id: call.id, content: "Skipped: at most 3 searches per round." });
+        continue;
+      }
       yield { type: "search", query };
       const result = await runSearch(query, question, sources, seen);
       if (result.added.length) yield { type: "sources", sources: result.added };

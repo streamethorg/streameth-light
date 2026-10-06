@@ -128,7 +128,7 @@ export function browseVideos(filters: BrowseFilters, limit = MAX_RESULTS): Unifi
     const rows = db
       .prepare(
         `SELECT v.* FROM videos_fts
-         JOIN videos v ON v.id = videos_fts.id
+         JOIN videos v ON v.rowid = videos_fts.rowid
          WHERE videos_fts MATCH ? ${where.length ? `AND ${where.join(" AND ")}` : ""}
          ORDER BY ${filters.sort === "newest" ? "v.published_at DESC" : filters.sort === "oldest" ? "v.published_at ASC" : "bm25(videos_fts)"}
          LIMIT ?`
@@ -192,9 +192,9 @@ export function searchForAnswers(query: string, limit = 8): UnifiedVideo[] {
   const rows = getDb()
     .prepare(
       `SELECT v.* FROM videos_fts
-       JOIN videos v ON v.id = videos_fts.id
+       JOIN videos v ON v.rowid = videos_fts.rowid
        WHERE videos_fts MATCH ?
-       ORDER BY bm25(videos_fts, 0, 4, 1, 3, 1, 1, 1, 2)
+       ORDER BY bm25(videos_fts, 4, 1, 3, 1, 1, 1, 2)
        LIMIT ?`
     )
     .all(match, limit * 3) as unknown as VideoRow[];
