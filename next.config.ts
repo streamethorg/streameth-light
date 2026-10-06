@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return {
+      // /watch/<id>.md → the markdown copy of a watch page for AI crawlers
+      // (app/watch/[id]/md/route.ts). Before the filesystem check, so it
+      // isn't swallowed by the /watch/[id] page as an id ending in ".md".
+      beforeFiles: [{ source: "/watch/:id.md", destination: "/watch/:id/md" }],
+    };
+  },
   async headers() {
     return [
       {

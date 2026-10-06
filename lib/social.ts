@@ -19,20 +19,38 @@ export function buildMetadata({
   title,
   description,
   image,
+  path,
+  type = "website",
+  alternateMarkdown,
 }: {
   title: string;
   description?: string;
   image?: string;
+  /** The page's own path — becomes its canonical URL and og:url, so query
+   * string variants (filters, pagination, ?v=) don't compete as duplicates. */
+  path?: string;
+  type?: "website" | "video.other" | "profile";
+  /** A plain-markdown copy of the page for AI crawlers (see /watch/[id].md). */
+  alternateMarkdown?: string;
 }): Metadata {
   return {
     title,
     description,
+    ...(path
+      ? {
+          alternates: {
+            canonical: path,
+            ...(alternateMarkdown ? { types: { "text/markdown": alternateMarkdown } } : {}),
+          },
+        }
+      : {}),
     openGraph: {
       title,
       description,
       siteName: SITE_NAME,
-      type: "website",
-      ...(image ? { images: [{ url: image, width: 1200, height: 630 }] } : {}),
+      type,
+      ...(path ? { url: path } : {}),
+      ...(image ? { images: [{ url: image }] } : {}),
     },
     twitter: {
       card: image ? "summary_large_image" : "summary",

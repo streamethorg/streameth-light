@@ -6,6 +6,7 @@ import { buildMetadata } from "@/lib/social";
 export const metadata = buildMetadata({
   title: "Speakers — StreamETH",
   description: "Every speaker with a public session in the archive.",
+  path: "/speakers",
 });
 
 export default function SpeakersPage() {

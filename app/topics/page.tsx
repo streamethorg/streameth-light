@@ -6,6 +6,7 @@ import { buildMetadata } from "@/lib/social";
 export const metadata = buildMetadata({
   title: "Topics — StreamETH",
   description: "Browse sessions by autodetected topic.",
+  path: "/topics",
 });
 
 export default function TopicsPage() {

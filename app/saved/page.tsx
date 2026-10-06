@@ -7,6 +7,7 @@ import { formatDateShort } from "@/lib/format";
 
 export const metadata = {
   title: "Saved — StreamETH",
+  robots: { index: false },
 };
 
 export default async function SavedPage() {

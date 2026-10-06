@@ -29,6 +29,8 @@ import {
 } from "@/lib/orphanSessions";
 import { accentStyle } from "@/lib/format";
 import { buildMetadata } from "@/lib/social";
+import { organizationJsonLd, truncate } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return getDirectory().map((entry) => ({ org: entry.slug }));
@@ -44,13 +46,21 @@ export async function generateMetadata({
   if (org) {
     return buildMetadata({
       title: `${org.name} — StreamETH`,
-      description: org.description?.slice(0, 200),
+      description: truncate(
+        org.description || `Talks, panels and livestreams from ${org.name} events in the StreamETH video archive.`,
+        200
+      ),
       image: org.banner ?? org.logo,
+      path: `/${org.slug}`,
     });
   }
   const entry = getDirectoryEntry(orgSlug);
   if (!entry) return {};
-  return buildMetadata({ title: `${entry.name} — StreamETH` });
+  return buildMetadata({
+    title: `${entry.name} — StreamETH`,
+    description: `Talks, panels and livestreams from ${entry.name} in the StreamETH video archive.`,
+    path: `/${entry.slug}`,
+  });
 }
 
 const VIDEOS_PAGE_SIZE = 36;
@@ -156,6 +166,16 @@ export default async function OrgPage({
 
     return (
       <div style={accentStyle(org.accentColor) as CSSProperties | undefined} className="flex flex-1 flex-col">
+        <JsonLd
+          data={organizationJsonLd({
+            name: org.name,
+            path: `/${org.slug}`,
+            description: org.description,
+            logo: org.logo,
+            location: org.location,
+            website: org.url,
+          })}
+        />
         <PageHero
           leading={<Avatar name={org.name} channel className="h-16 w-16 text-xl sm:h-32 sm:w-32 sm:text-4xl" />}
           title={org.name}
@@ -230,6 +250,14 @@ export default async function OrgPage({
 
   return (
     <div className="flex flex-1 flex-col">
+      <JsonLd
+        data={organizationJsonLd({
+          name: entry.name,
+          path: `/${entry.slug}`,
+          location: entry.location ?? undefined,
+          website: entry.website ?? undefined,
+        })}
+      />
       <PageHero
         leading={<Avatar name={entry.name} channel className="h-16 w-16 text-xl sm:h-32 sm:w-32 sm:text-4xl" />}
         title={entry.name}

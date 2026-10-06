@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import BrowseControls from "@/components/BrowseControls";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
 import ChipBar from "@/components/ChipBar";
@@ -7,6 +8,26 @@ import { listRecentEvents } from "@/lib/events";
 import { browseVideos, listChannelOptions, topTopics } from "@/lib/videoDb";
 import { EMPTY_FILTERS, filtersFromParams, isIdleFilters, paramsFromFilters } from "@/lib/browseParams";
 import { listAllEvents, listOrganizations } from "@/lib/data";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}): Promise<Metadata> {
+  const rawParams = await searchParams;
+  const urlSearchParams = new URLSearchParams();
+  for (const [key, value] of Object.entries(rawParams)) {
+    if (typeof value === "string") urlSearchParams.set(key, value);
+  }
+  const filters = filtersFromParams(urlSearchParams);
+  // Every filter/search/page variant canonicalizes to the homepage; search
+  // results themselves stay out of the index (thin, endless permutations)
+  // while their links are still followed.
+  return {
+    alternates: { canonical: "/" },
+    ...(isIdleFilters({ ...filters, topic: "" }) ? {} : { robots: { index: false, follow: true } }),
+  };
+}
 
 const HOME_PAGE_SIZE = 36;
 const RESULTS_PAGE_SIZE = 30;
