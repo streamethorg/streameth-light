@@ -3,6 +3,7 @@ import SignInForm from "@/components/SignInForm";
 
 export const metadata = {
   title: "Sign in — StreamETH",
+  robots: { index: false },
 };
 
 export default function SignInPage() {

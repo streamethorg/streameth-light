@@ -78,6 +78,7 @@ export interface Session {
     text?: string;
   };
   published?: string;
+  createdAt?: string;
 }
 
 export interface Speaker {

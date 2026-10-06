@@ -1,14 +1,16 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/social";
 import PageHero from "@/components/PageHero";
 import EventTile from "@/components/EventTile";
 import { listRecentEvents } from "@/lib/events";
 import { formatDateShort } from "@/lib/format";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Events — StreamETH",
   description: "Conferences and meetups in the archive, newest first.",
-};
+  path: "/events",
+});
 
 const PAGE_SIZE = 48;
 

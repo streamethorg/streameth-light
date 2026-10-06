@@ -33,7 +33,9 @@ export async function generateMetadata({
   if (!group) return {};
   return buildMetadata({
     title: `${group.label} — StreamETH`,
+    description: `${group.sessions.length} recorded ${group.sessions.length === 1 ? "talk" : "talks"} from ${group.label} (${org.name}).`,
     image: group.sessions[0]?.coverImage,
+    path: `/${org.slug}/s/${groupSlug}`,
   });
 }
 

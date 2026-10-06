@@ -20,7 +20,8 @@ export async function generateMetadata({
   if (!topic) return {};
   return buildMetadata({
     title: `${topic.name} — StreamETH`,
-    description: `Talks tagged “${topic.name}” from the StreamETH video archive.`,
+    description: `${topic.sessionIds.length} ${topic.sessionIds.length === 1 ? "talk" : "talks"} about ${topic.name} from Ethereum conferences and meetups in the StreamETH video archive.`,
+    path: `/topics/${topic.slug}`,
   });
 }
 

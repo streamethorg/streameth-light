@@ -106,6 +106,16 @@ function cleanTitle(title: string | undefined): string {
   return (title ?? "").trim().replace(/\.(mp4|mov|mkv|m4v)$/i, "");
 }
 
+// ~170 public sessions were exported with `start: 0` (uploaded clips that
+// never had a scheduled slot) and a few with a tiny offset like 5577 —
+// both rendered as "Jan 1, 1970" and gave search engines a 1970 upload
+// date. Fall back to when the session record was created.
+// scripts/build-db.mjs applies the same fallback.
+const MIN_PLAUSIBLE_START = Date.UTC(2000, 0, 1);
+function sessionStart(s: Session): number {
+  return s.start >= MIN_PLAUSIBLE_START ? s.start : Date.parse(s.createdAt ?? "") || s.start || 0;
+}
+
 // Transcripts live in their own file, keyed by session _id, rather than
 // inline on each session — inline, they made data/sessions.json a 58MB
 // single blob (mostly transcript text plus ~22MB of a legacy export bug
@@ -178,6 +188,7 @@ export const getStore = lazy(() => {
       (s): Session => ({
         ...s,
         name: cleanTitle(s.name),
+        start: sessionStart(s),
         coverImage: cleanImageUrl(s.coverImage) ?? resolvedThumbnailForSession(s),
         autoLabels: cleanAutoLabels(s.autoLabels),
         transcripts: getTranscripts()[s._id] ?? undefined,

@@ -43,11 +43,14 @@ export default function DescriptionBox({
           ...more
         </button>
       )}
-      {expanded && (
-        <div className="mt-4 flex flex-col items-start gap-4">
+      {/* Always in the server-rendered HTML, only hidden with CSS until
+          expanded, so search engines and AI crawlers read the full
+          transcript — it's the richest text on the page. */}
+      {(expanded || transcript) && (
+        <div className={`mt-4 flex-col items-start gap-4 ${expanded ? "flex" : "hidden"}`}>
           {transcript && (
             <div className="flex w-full flex-col gap-3">
-              <p className="text-base font-semibold">Transcript</p>
+              <h2 className="text-base font-semibold">Transcript</h2>
               <button
                 type="button"
                 onClick={() => setShowTranscript((v) => !v)}
@@ -55,11 +58,13 @@ export default function DescriptionBox({
               >
                 {showTranscript ? "Hide transcript" : "Show transcript"}
               </button>
-              {showTranscript && (
-                <div className="max-h-96 w-full overflow-y-auto whitespace-pre-line rounded-lg bg-void p-4 leading-relaxed text-ink-dim">
-                  {transcript}
-                </div>
-              )}
+              <div
+                className={`max-h-96 w-full overflow-y-auto whitespace-pre-line rounded-lg bg-void p-4 leading-relaxed text-ink-dim ${
+                  showTranscript ? "" : "hidden"
+                }`}
+              >
+                {transcript}
+              </div>
             </div>
           )}
           {hasMore && (

@@ -7,6 +7,8 @@ import SectionHeader from "@/components/SectionHeader";
 import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
 import { getEventById, getOrgForEvent } from "@/lib/data";
 import { buildMetadata } from "@/lib/social";
+import { speakerJsonLd, truncate } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return listSpeakers().map((sp) => ({ speaker: sp.slug }));
@@ -21,9 +23,15 @@ export async function generateMetadata({
   const speaker = getSpeakerBySlug(slug);
   if (!speaker) return {};
   return buildMetadata({
-    title: `${speaker.name} — StreamETH`,
-    description: speaker.bio?.slice(0, 200),
+    title: `${speaker.name} — Talks — StreamETH`,
+    description: truncate(
+      speaker.bio ||
+        `${speaker.sessionIds.length} ${speaker.sessionIds.length === 1 ? "talk" : "talks"} by ${speaker.name}${speaker.company ? ` (${speaker.company})` : ""} at Ethereum conferences.`,
+      200
+    ),
     image: speaker.photo,
+    path: `/speakers/${speaker.slug}`,
+    type: "profile",
   });
 }
 
@@ -41,6 +49,16 @@ export default async function SpeakerPage({
 
   return (
     <div className="flex flex-1 flex-col">
+      <JsonLd
+        data={speakerJsonLd({
+          name: speaker.name,
+          path: `/speakers/${speaker.slug}`,
+          bio: speaker.bio,
+          photo: speaker.photo,
+          company: speaker.company,
+          twitter: twitterHandle,
+        })}
+      />
       <PageHero
         back={{ href: "/speakers", label: "All speakers" }}
         leading={

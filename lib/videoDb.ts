@@ -20,6 +20,8 @@ export interface UnifiedVideo {
   topics: string[];
   transcript: string | null;
   downloadUrl: string | null;
+  /** Playable stream/file URL for StreamETH sessions; null for YouTube. */
+  contentUrl: string | null;
 }
 
 export interface OrgOption {
@@ -44,6 +46,7 @@ interface VideoRow {
   topics: string;
   transcript: string | null;
   download_url: string | null;
+  content_url: string | null;
 }
 
 function rowToVideo(row: VideoRow): UnifiedVideo {
@@ -63,6 +66,7 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     topics: row.topics ? row.topics.split(", ").filter(Boolean) : [],
     transcript: row.transcript,
     downloadUrl: row.download_url,
+    contentUrl: row.content_url,
   };
 }
 
@@ -312,4 +316,55 @@ export function listChannelSummaries(): ChannelSummary[] {
     )
     .all() as unknown as ChannelSummary[];
   return rows.map((r) => ({ slug: r.slug, name: r.name, videos: r.videos, latest: r.latest }));
+}
+
+export interface SitemapVideo {
+  id: string;
+  source: "streameth" | "youtube";
+  title: string;
+  description: string;
+  orgName: string;
+  orgSlug: string;
+  eventName: string;
+  speakers: string[];
+  topics: string[];
+  publishedAt: number;
+  durationSeconds: number | null;
+  coverImage: string | null;
+  contentUrl: string | null;
+}
+
+export function countVideos(): number {
+  const { total } = getDb().prepare("SELECT COUNT(*) AS total FROM videos").get() as unknown as {
+    total: number;
+  };
+  return total;
+}
+
+/** One page of the catalog in a stable order (oldest first, then id), for
+ * the chunked video sitemaps — skips the transcript column, which would be
+ * hundreds of MB across the whole table. */
+export function listVideosForSitemap(offset: number, limit: number): SitemapVideo[] {
+  const rows = getDb()
+    .prepare(
+      `SELECT id, source, title, description, org_name, org_slug, event_name, speakers, topics,
+              published_at, duration_seconds, cover_image, content_url
+       FROM videos ORDER BY published_at ASC, id ASC LIMIT ? OFFSET ?`
+    )
+    .all(limit, offset) as unknown as (Omit<VideoRow, "transcript" | "watch_url" | "event_id" | "download_url">)[];
+  return rows.map((r) => ({
+    id: r.id,
+    source: r.source,
+    title: r.title,
+    description: r.description,
+    orgName: r.org_name,
+    orgSlug: r.org_slug,
+    eventName: r.event_name,
+    speakers: r.speakers ? r.speakers.split(", ").filter(Boolean) : [],
+    topics: r.topics ? r.topics.split(", ").filter(Boolean) : [],
+    publishedAt: r.published_at,
+    durationSeconds: r.duration_seconds,
+    coverImage: r.cover_image,
+    contentUrl: r.content_url,
+  }));
 }

@@ -10,6 +10,7 @@ import { buildMetadata } from "@/lib/social";
 export const metadata = buildMetadata({
   title: "Channels — StreamETH",
   description: "Every organization and channel archived by StreamETH.",
+  path: "/channels",
 });
 
 function coverageLabel(entry: DirectoryEntry): string {
