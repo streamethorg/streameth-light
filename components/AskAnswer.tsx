@@ -24,9 +24,12 @@ export default function AskAnswer({
   const sourceByN = new Map(sources.map((s) => [s.n, s]));
   // Once done, show only the talks the answer cites, in citation order.
   const citedSources = [...cited].map((n) => sourceByN.get(n)).filter((s): s is AskSource => Boolean(s));
-  const shownSources = (
-    status === "done" && citedSources.length > 0 ? dedupeByVideo(citedSources) : dedupeByVideo(sources)
-  ).filter((s) => s.videoId !== currentVideoId);
+  // While answering, show what's been found so far; once done, only the
+  // talks the answer actually cites (none if it cites nothing — the search
+  // hits alone are often unrelated).
+  const shownSources = (status === "done" ? dedupeByVideo(citedSources) : dedupeByVideo(sources)).filter(
+    (s) => s.videoId !== currentVideoId
+  );
 
   if (status === "signin") return <SignInToAsk question={state.asked} />;
 
