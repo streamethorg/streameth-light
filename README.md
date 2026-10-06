@@ -183,3 +183,7 @@ Deployed on Vercel. `data/*.json` is committed to git, so the video archive
 itself needs no environment variables or database — `data/streameth.db` is
 rebuilt from it during `pnpm build`. Accounts need the env vars above set in the
 Vercel project.
+
+## License
+
+[MIT](LICENSE)
