@@ -9,6 +9,7 @@ import AuthStatus from "@/components/AuthStatus";
 import Avatar from "@/components/Avatar";
 import PodcastPlayerProvider, { usePodcastPlayer } from "@/components/PodcastPlayerProvider";
 import MiniPlayerBar from "@/components/MiniPlayerBar";
+import OfflineSupport from "@/components/OfflineSupport";
 import {
   BackIcon,
   ChannelsIcon,
@@ -178,6 +179,8 @@ function AppBody({ channels, children }: { channels: SidebarChannel[]; children:
           </>
         )}
       </header>
+
+      <OfflineSupport />
 
       <div className="flex flex-1">
         {!isWatch && (

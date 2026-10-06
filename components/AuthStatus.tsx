@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import Avatar from "@/components/Avatar";
+import { clearCachedPages } from "@/lib/offline";
 
 export default function AuthStatus() {
   const router = useRouter();
@@ -50,6 +51,7 @@ export default function AuthStatus() {
         type="button"
         onClick={async () => {
           await supabase.auth.signOut();
+          await clearCachedPages().catch(() => {});
           router.refresh();
         }}
         className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium text-ink-dim transition-colors hover:bg-panel-raised hover:text-ink"
