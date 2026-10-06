@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
-/* YouTube's layout conventions (white canvas, grey chips/pills, near-black
-   for "selected") in the streameth-platform brand: Inter, the purple
-   primary, and the logo's deep indigo standing in for YouTube's black.
-   The dark "stage" tokens remain for the few dark surfaces (active chips,
-   the mini player, video letterboxing). */
+/* The streameth-platform brand: Inter, the purple primary, and the logo's
+   deep indigo as ink. White canvas, hairline borders, square-ish corners.
+   The dark "stage" tokens remain for the few dark surfaces (the mini
+   player, video letterboxing). */
 :root {
   --void: #ffffff;
   --panel: #ffffff;

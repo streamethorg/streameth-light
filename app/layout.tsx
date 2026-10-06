@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import AppShell from "@/components/AppShell";
-import { topChannels } from "@/lib/videoDb";
 import { SITE_NAME, SITE_URL } from "@/lib/social";
 import "./globals.css";
 
@@ -38,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-void text-ink">
-        <AppShell channels={topChannels(8)}>{children}</AppShell>
+        <AppShell>{children}</AppShell>
         <Analytics />
         <SpeedInsights />
       </body>

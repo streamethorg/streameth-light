@@ -47,7 +47,7 @@ claude mcp add --transport http streameth https://<your-domain>/api/mcp
 ```
 
 Signed-in users can generate a personal token on `/connect` ("Connect to
-MCP" in the sidebar) and pass it as `Authorization: Bearer smcp_…`. Only a
+MCP" — the "Connect with MCP" button in the top bar) and pass it as `Authorization: Bearer smcp_…`. Only a
 SHA-256 hash is stored (`mcp_tokens`, `supabase/migrations/`); `/api/mcp`
 checks it through the `verify_mcp_token` database function. Users can revoke
 tokens on the same page.
@@ -65,6 +65,58 @@ the authorization path to `/oauth/consent`, and allow dynamic client
 registration. The project's Site URL must be this app's domain, since
 Supabase builds the consent URL from it. Locally, `supabase/config.toml`
 already has these set.
+
+## Ask the archive (AI answers)
+
+The home page's question box (`components/AskBox.tsx`) posts to `/api/ask`,
+which runs a model through [OpenRouter](https://openrouter.ai) (default
+`deepseek/deepseek-v4-flash`, `lib/ask.ts`) with one tool,
+`search_archive`: an any-term FTS5 search over the same index that returns
+the best-matching talks (transcripts first) with numbered passages. The model
+searches a few times, then writes an answer citing passages as `[n]`; the
+route streams search steps, sources and answer text as NDJSON, and the UI
+turns `[n]` into links to the talks. `/?ask=<question>` links ask on open.
+
+With `JEV_API_KEY` set, each search's passages first go through TypeSafe
+AI's Jev decision model (`lib/jev.ts`): one yes/no question per passage —
+does it help answer the question? — and passages below the threshold are
+dropped before the answering model sees them. If Jev is unset, slow (>5s) or
+errors, all passages are kept.
+
+Asking requires signing in (the boxes show for everyone; asking while signed
+out shows a sign-in prompt that returns to the question). `/api/ask` is rate
+limited through Supabase (`consume_ask_quota`, migration
+`…03_ask_rate_limit.sql`): per user per hour and site-wide per day. In production the route refuses to answer
+if the limit can't be checked.
+
+| Env var | |
+| --- | --- |
+| `OPENROUTER_API_KEY` | Required — Ask is disabled without it |
+| `OPENROUTER_MODEL` | Any OpenRouter model with tool calling (default `deepseek/deepseek-v4-flash`) |
+| `JEV_API_KEY` | Optional — [BeatAPI](https://beatapi.io/jev-api) key for the Jev relevance filter |
+| `JEV_MODEL` | Jev model (default `jev-1.13`; `jev-1.13-free` is limited to 1 request/min) |
+| `JEV_THRESHOLD` | Minimum relevance probability to keep a passage (default 0.3) |
+| `ASK_HOURLY_LIMIT` | Questions per user per hour (default 20) |
+| `ASK_DAILY_LIMIT` | Questions per day across the site (default 2000) |
+
+## Weekly email digest
+
+Visitors can subscribe on the home page to a Monday email of the past week's
+new talks, grouped by event (`lib/digest.ts`). It's double opt-in: the
+confirmation link opens `/digest/confirm`, where a button (not the page load,
+so link-scanning mail filters can't confirm) activates the subscription.
+Every email has an unsubscribe link and RFC 8058 one-click
+`List-Unsubscribe` headers. Subscribers live in `digest_subscribers`
+(migration `…04_digest_subscribers.sql`), readable only with the service-role
+key. A Vercel cron (`vercel.json`, Mondays 09:00 UTC) calls
+`/api/digest/send`; mail goes out through [Resend](https://resend.com).
+
+| Env var | |
+| --- | --- |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only, for `digest_subscribers` |
+| `RESEND_API_KEY` | Resend API key |
+| `DIGEST_FROM` | Sender, e.g. `StreamETH <digest@streameth.org>` (domain verified in Resend) |
+| `CRON_SECRET` | Vercel sends it with cron requests; `/api/digest/send` rejects anything else |
 
 ## Accounts (wallet sign-in, saved videos)
 

@@ -54,9 +54,10 @@ export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }
         setDropdownOpen(false);
         push(value);
       }}
-      className="relative flex w-full max-w-[640px]"
+      className="relative flex w-full"
     >
-      <div className="flex h-10 min-w-0 flex-1 items-center rounded-l-full border border-line bg-void pl-4 pr-2 shadow-[inset_0_1px_2px_rgb(0_0_0/0.04)] focus-within:border-accent focus-within:shadow-[inset_0_1px_2px_rgb(0_0_0/0.08)]">
+      <div className="flex h-9 min-w-0 flex-1 items-center gap-2 rounded-lg border border-line bg-panel-raised/60 px-3 transition-colors focus-within:border-accent focus-within:bg-void">
+        <SearchIcon className="h-4 w-4 shrink-0 text-ink-faint" />
         <input
           type="search"
           value={value}
@@ -71,16 +72,9 @@ export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }
             if (debounceRef.current) clearTimeout(debounceRef.current);
             debounceRef.current = setTimeout(() => push(next), 250);
           }}
-          className="w-full min-w-0 bg-transparent text-base text-ink placeholder:text-ink-faint focus:outline-none"
+          className="w-full min-w-0 bg-transparent text-sm text-ink placeholder:text-ink-faint focus:outline-none"
         />
       </div>
-      <button
-        type="submit"
-        aria-label="Search"
-        className="flex h-10 w-16 shrink-0 items-center justify-center rounded-r-full border border-l-0 border-line bg-panel-raised text-ink transition-colors hover:bg-panel-hover"
-      >
-        <SearchIcon />
-      </button>
       {dropdownOpen && (
         <SearchSuggestions results={suggestions} onSelect={() => setDropdownOpen(false)} />
       )}

@@ -38,7 +38,7 @@ export default async function SettingsPage() {
         actions={
           <SignOutButton
             redirectTo="/"
-            className="rounded-full bg-panel-raised px-4 py-2 text-sm font-semibold text-ink transition-colors hover:bg-line"
+            className="rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/40"
           />
         }
       />

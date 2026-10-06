@@ -86,6 +86,8 @@ export default async function WatchPage({
       orgName={org?.name}
       orgSlug={org?.slug}
       crumb={event?.name}
+      crumbHref={event && org ? `/${org.slug}/${event.slug}` : undefined}
+      speakerNames={(session.speakers ?? []).map((sp) => sp.name).filter(Boolean)}
       player={
         <SessionPlayer
           playback={playback}
@@ -141,13 +143,14 @@ export default async function WatchPage({
       speakers={
         session.speakers &&
         session.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
             {session.speakers.map((sp) => (
-              <SpeakerCard key={sp._id} speaker={sp} />
+              <SpeakerCard key={sp._id} speaker={sp} compact />
             ))}
           </div>
         )
       }
+      videoId={session._id}
       relatedLabel={event ? `More from ${event.name}` : org ? `More from ${org.name}` : "More like this"}
       related={related.map((s) => {
         const relatedEvent = getEventById(s.eventId);
@@ -176,7 +179,8 @@ function YoutubeWatchPage({ id }: { id: string }) {
     <WatchLayout
       orgName={video.orgName}
       orgSlug={video.orgSlug}
-      crumb="YouTube"
+      crumb={video.eventName || undefined}
+      speakerNames={video.speakers}
       player={
         <YoutubeSessionPlayer
           videoId={videoId}
@@ -207,13 +211,14 @@ function YoutubeWatchPage({ id }: { id: string }) {
       transcript={video.transcript}
       speakers={
         video.speakers.length > 0 && (
-          <div className="grid grid-cols-1 gap-x-8 gap-y-5 xl:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
             {video.speakers.map((name) => (
-              <SpeakerCard key={name} speaker={{ _id: name, name }} />
+              <SpeakerCard key={name} speaker={{ _id: name, name }} compact />
             ))}
           </div>
         )
       }
+      videoId={video.id}
       relatedLabel={`More from ${video.orgName}`}
       related={related.map((v) => (
         <UnifiedVideoCard key={v.id} video={v} layout="compact" />

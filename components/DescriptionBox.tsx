@@ -2,72 +2,36 @@
 
 import { useState, type ReactNode } from "react";
 
-/** YouTube's grey description box: a bold meta line, then the description
- * clamped to a few lines with "...more" to expand. Expanded, it also
- * offers the transcript, the way YouTube tucks "Show transcript" in here. */
+/** A talk's topics and description, clamped to a few lines
+ * with "Show more" to expand. */
 export default function DescriptionBox({
-  meta,
   topics,
   description,
-  transcript,
 }: {
-  meta?: string;
   topics?: ReactNode;
   description?: string;
-  transcript?: string | null;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const [showTranscript, setShowTranscript] = useState(false);
-  const hasMore = Boolean(transcript) || (description?.length ?? 0) > 180 || (description?.split("\n").length ?? 0) > 3;
+  const hasMore = (description?.length ?? 0) > 280 || (description?.split("\n").length ?? 0) > 4;
 
-  if (!meta && !description && !topics && !transcript) return null;
+  if (!description && !topics) return null;
 
   return (
-    <div
-      className={`rounded-xl bg-panel-raised p-3 text-sm text-ink ${
-        !expanded && hasMore ? "cursor-pointer hover:bg-panel-hover" : ""
-      }`}
-      onClick={() => {
-        if (!expanded && hasMore) setExpanded(true);
-      }}
-    >
-      {meta && <p className="tabular font-semibold">{meta}</p>}
-      {topics && <div className="mt-1">{topics}</div>}
+    <div className="flex flex-col gap-2 text-sm text-ink">
+      {topics && <div>{topics}</div>}
       {description && (
-        <p className={`mt-2 whitespace-pre-line leading-relaxed ${expanded ? "" : "line-clamp-3"}`}>
+        <p className={`max-w-[80ch] whitespace-pre-line leading-relaxed text-ink-dim ${expanded ? "" : "line-clamp-4"}`}>
           {description}
         </p>
       )}
-      {!expanded && hasMore && (
-        <button type="button" className="mt-1 font-semibold" onClick={() => setExpanded(true)}>
-          ...more
+      {hasMore && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="w-fit text-sm font-medium text-ink hover:text-accent"
+        >
+          {expanded ? "Show less" : "Show more"}
         </button>
-      )}
-      {expanded && (
-        <div className="mt-4 flex flex-col items-start gap-4">
-          {transcript && (
-            <div className="flex w-full flex-col gap-3">
-              <p className="text-base font-semibold">Transcript</p>
-              <button
-                type="button"
-                onClick={() => setShowTranscript((v) => !v)}
-                className="w-fit rounded-full border border-line bg-void px-4 py-2 font-semibold text-ink transition-colors hover:bg-panel-hover"
-              >
-                {showTranscript ? "Hide transcript" : "Show transcript"}
-              </button>
-              {showTranscript && (
-                <div className="max-h-96 w-full overflow-y-auto whitespace-pre-line rounded-lg bg-void p-4 leading-relaxed text-ink-dim">
-                  {transcript}
-                </div>
-              )}
-            </div>
-          )}
-          {hasMore && (
-            <button type="button" className="font-semibold" onClick={() => setExpanded(false)}>
-              Show less
-            </button>
-          )}
-        </div>
       )}
     </div>
   );

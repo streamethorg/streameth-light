@@ -294,10 +294,10 @@ export default async function OrgPage({
               We track {entry.name}, but haven&apos;t found any published talks or side events for it.
             </p>
             <Link
-              href="/channels"
-              className="mt-2 rounded-full bg-stage px-5 py-2.5 text-sm font-semibold text-stage-ink transition-colors hover:bg-accent"
+              href="/events"
+              className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90"
             >
-              Browse other channels
+              Browse events
             </Link>
           </div>
         )}
@@ -328,7 +328,7 @@ function ChannelVideos({ slug, page }: { slug: string; page: number }) {
           <Link
             href={`/${slug}?tab=videos&page=${page + 1}`}
             scroll={false}
-            className="rounded-full bg-panel-raised px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+            className="rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/40"
           >
             Show more
           </Link>
