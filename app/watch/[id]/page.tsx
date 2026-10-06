@@ -140,8 +140,10 @@ export default async function WatchPage({
   const related = relatedSessions(session, 12);
   const duration = getSessionDurationSeconds(session);
   const downloadUrl = getDownloadUrl(session);
-  const transcript = session.transcripts?.text;
   const video = getVideoById(session._id);
+  // From the database (built from data/transcripts.json), so the raw JSON
+  // doesn't have to ship with the serverless function.
+  const transcript = video?.transcript ?? null;
 
   return (
     <>
