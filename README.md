@@ -46,8 +46,10 @@ agents can search the archive and read transcripts. Tools: `search_videos`,
 claude mcp add --transport http streameth https://<your-domain>/api/mcp
 ```
 
-Signed-in users can generate a personal token on `/connect` ("Connect to
-MCP" in the sidebar) and pass it as `Authorization: Bearer smcp_…`. Only a
+Signed-in users get a personal token on `/connect` ("Connect to MCP" in the
+sidebar) and pass it as `Authorization: Bearer smcp_…`. A user with no
+tokens gets one created automatically on their visit, since the page is the
+only place a token can be shown; they can add more per app. Only a
 SHA-256 hash is stored (`mcp_tokens`, `supabase/migrations/`); `/api/mcp`
 checks it through the `verify_mcp_token` database function. Users can revoke
 tokens on the same page.

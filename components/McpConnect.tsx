@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { createMcpToken, revokeMcpToken } from "@/app/connect/actions";
 import { formatDateShort } from "@/lib/format";
 
@@ -11,6 +11,8 @@ export interface McpTokenRow {
   created_at: string;
   last_used_at: string | null;
 }
+
+const DEFAULT_TOKEN_NAME = "My AI app";
 
 export default function McpConnect({
   endpoint,
@@ -25,12 +27,20 @@ export default function McpConnect({
   const [created, setCreated] = useState<{ token: string; name: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  // Every user should have a token: one with none gets one created on their
+  // visit. It happens here rather than at sign-in because only the hash is
+  // stored, so this is the one moment the user can see and copy it. The ref
+  // keeps StrictMode's double effect run from creating two.
+  const autoCreateStarted = useRef(false);
+  // Decided once, from the list the page loaded with — revoking every token
+  // later shouldn't put the page back into "creating".
+  const [autoCreating, setAutoCreating] = useState(() => !loadFailed && tokens.length === 0);
 
-  function connect(e: React.FormEvent) {
-    e.preventDefault();
+  function create(tokenName: string) {
     setError(null);
     startTransition(async () => {
-      const result = await createMcpToken(name);
+      const result = await createMcpToken(tokenName);
+      setAutoCreating(false);
       if (result.ok) {
         setCreated({ token: result.token, name: result.name });
         setName("");
@@ -38,6 +48,29 @@ export default function McpConnect({
         setError(result.error);
       }
     });
+  }
+
+  useEffect(() => {
+    if (!autoCreating || autoCreateStarted.current) return;
+    autoCreateStarted.current = true;
+    create(DEFAULT_TOKEN_NAME);
+    // Runs once on mount; later list changes (e.g. revoking every token)
+    // shouldn't silently mint a new one while the user is on the page.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function connect(e: React.FormEvent) {
+    e.preventDefault();
+    create(name);
+  }
+
+  if (autoCreating && !created) {
+    return (
+      <section className="flex flex-col gap-1 rounded-2xl bg-panel p-5 ring-1 ring-line">
+        <h2 className="text-base font-bold text-ink">Creating your token…</h2>
+        <p className="text-sm text-ink-dim">Every account gets a personal token for connecting AI apps.</p>
+      </section>
+    );
   }
 
   return (
