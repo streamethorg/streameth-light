@@ -17,16 +17,21 @@ with backoff, and if it still fails is simply left out of the output file
 so the *next* run retries it too, rather than being permanently recorded
 as null.
 
-Capped to BATCH_LIMIT videos per invocation (env var, default 2000) — a
-cold backlog (e.g. this script's first-ever run against the full catalog,
-or against several newly-discovered channels at once) can be 10,000+
-videos, which doesn't fit in a CI job's time budget in one go regardless of
-fetch speed. The calling workflow commits after every run, so a capped run
-still makes real, saved forward progress; an uncapped run that times out
-mid-way saves nothing, because nothing gets committed until the step
-finishes (confirmed in CI on 2026-09-29/30: two consecutive ~5-hour runs
-against an uncapped ~14k-video backlog were each killed by the job timeout
-before reaching the commit step, so neither saved any of that work).
+If data/sources/new-video-ids.json exists (pull-youtube-videos.py writes it
+every run, listing just the video IDs that run discovered as new), this
+only processes those — so the daily action can run this safely every day,
+backfilling metadata for today's new videos without re-scanning the entire
+tracked catalog. Without that file (e.g. a manual one-off run), it falls
+back to the full catalog, capped to BATCH_LIMIT videos per invocation (env
+var, default 2000) — a cold backlog (this script's first-ever run against
+the full catalog) can be 10,000+ videos, which doesn't fit in a CI job's
+time budget in one go regardless of fetch speed. The calling workflow
+commits after every run, so a capped run still makes real, saved forward
+progress; an uncapped run that times out mid-way saves nothing, because
+nothing gets committed until the step finishes (confirmed in CI on
+2026-09-29/30: two consecutive ~5-hour runs against an uncapped ~14k-video
+backlog were each killed by the job timeout before reaching the commit
+step, so neither saved any of that work).
 
 Also bails out early if the first 30 attempts are mostly failures (a
 blocked/rate-limited session recovers on its own time, not by retrying
@@ -44,6 +49,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VIDEOS_PATH = os.path.join(REPO, "data", "sources", "youtube-videos.json")
 OUT_PATH = os.path.join(REPO, "data", "sources", "youtube-metadata.json")
+NEW_IDS_PATH = os.path.join(REPO, "data", "sources", "new-video-ids.json")
 BATCH_LIMIT = int(os.environ.get("BATCH_LIMIT", "2000"))
 CIRCUIT_BREAKER_AFTER = 30
 CIRCUIT_BREAKER_FAIL_RATE = 0.8
@@ -123,10 +129,21 @@ def main() -> None:
         # failed fetches, so this run retries them instead of skipping.
         existing = {k: v for k, v in json.load(open(OUT_PATH)).items() if v}
 
+    new_only = None
+    if os.path.exists(NEW_IDS_PATH):
+        new_only = set(json.load(open(NEW_IDS_PATH)))
+        all_ids = [vid for vid in all_ids if vid in new_only]
+
     todo_all = [vid for vid in all_ids if vid not in existing]
-    todo = todo_all[:BATCH_LIMIT]
+    todo = todo_all if new_only is not None else todo_all[:BATCH_LIMIT]
+    if new_only is not None:
+        scope = f"{len(new_only)} newly-discovered videos this run"
+        already_done = len(new_only) - len(todo_all)
+    else:
+        scope = f"{len(all_ids)} total videos"
+        already_done = len(existing)
     print(
-        f"{len(all_ids)} total videos, {len(existing)} already done, "
+        f"{scope}, {already_done} already done, "
         f"{len(todo_all)} remaining, processing {len(todo)} this run",
         flush=True,
     )
