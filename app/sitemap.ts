@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entries.push({ url: xmlEscape(absoluteUrl(path)), ...extra });
 
   add("/", { changeFrequency: "daily", priority: 1 });
-  for (const path of ["/events", "/channels", "/speakers", "/topics"]) {
+  for (const path of ["/events", "/speakers", "/topics"]) {
     add(path, { changeFrequency: "daily", priority: 0.8 });
   }
 

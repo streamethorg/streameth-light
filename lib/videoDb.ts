@@ -11,6 +11,8 @@ export interface UnifiedVideo {
   description: string;
   orgName: string;
   orgSlug: string;
+  /** StreamETH event `_id`; null for YouTube uploads. */
+  eventId: string | null;
   eventName: string;
   publishedAt: number;
   durationSeconds: number | null;
@@ -57,6 +59,7 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     description: row.description,
     orgName: row.org_name,
     orgSlug: row.org_slug,
+    eventId: row.event_id,
     eventName: row.event_name,
     publishedAt: row.published_at,
     durationSeconds: row.duration_seconds,
@@ -159,6 +162,47 @@ function matchQuery(q: string): string {
     .join(" ");
 }
 
+// Words that carry no meaning for retrieval — dropped from question-style
+// queries so "what is the roadmap for the merge" searches roadmap/merge.
+const STOPWORDS = new Set(
+  (
+    "a an and are as at be been but by can could did do does for from had has have how i if in into is it its " +
+    "me my of on or our should so than that the their them then there these they this to was we were what " +
+    "when where which who why will with would you your about any some just more most also not no yes vs"
+  ).split(" ")
+);
+
+/** Retrieval for AI answers: any-term (OR) full-text match ranked by BM25,
+ * weighting titles, speakers and transcripts over the rest, so a natural
+ * question still finds talks that cover only part of it. Among the top
+ * matches, talks with a transcript come first — a description alone rarely
+ * says what was actually argued. */
+export function searchForAnswers(query: string, limit = 8): UnifiedVideo[] {
+  const terms = [
+    ...new Set(
+      query
+        .toLowerCase()
+        .split(/[^\p{L}\p{N}-]+/u)
+        .map((t) => t.replace(/^-+|-+$/g, ""))
+        .filter((t) => t.length > 1 && !STOPWORDS.has(t))
+    ),
+  ];
+  if (terms.length === 0) return [];
+  const match = terms.map((t) => `"${t.replace(/"/g, '""')}"*`).join(" OR ");
+  const rows = getDb()
+    .prepare(
+      `SELECT v.* FROM videos_fts
+       JOIN videos v ON v.id = videos_fts.id
+       WHERE videos_fts MATCH ?
+       ORDER BY bm25(videos_fts, 0, 4, 1, 3, 1, 1, 1, 2)
+       LIMIT ?`
+    )
+    .all(match, limit * 3) as unknown as VideoRow[];
+  const withTranscript = rows.filter((r) => r.transcript);
+  const without = rows.filter((r) => !r.transcript);
+  return [...withTranscript, ...without].slice(0, limit).map(rowToVideo);
+}
+
 export function topTopics(limit = 16): string[] {
   const db = getDb();
   const rows = db
@@ -190,6 +234,14 @@ export function getVideoById(id: string): UnifiedVideo | undefined {
     | VideoRow
     | undefined;
   return row ? rowToVideo(row) : undefined;
+}
+
+/** Every video published at or after `since` (ms), newest first. */
+export function videosPublishedSince(since: number): UnifiedVideo[] {
+  const rows = getDb()
+    .prepare("SELECT * FROM videos WHERE published_at >= ? ORDER BY published_at DESC")
+    .all(since) as unknown as VideoRow[];
+  return rows.map(rowToVideo);
 }
 
 export function relatedVideos(video: UnifiedVideo, limit = 12): UnifiedVideo[] {
@@ -264,26 +316,14 @@ export function channelShelves(
   }));
 }
 
-export function archiveStats(): { videos: number; channels: number } {
+export function archiveStats(): { videos: number; channels: number; transcripts: number } {
   const db = getDb();
   const row = db
-    .prepare("SELECT COUNT(*) AS videos, COUNT(DISTINCT org_slug) AS channels FROM videos")
-    .get() as unknown as { videos: number; channels: number };
-  return { videos: row.videos, channels: row.channels };
-}
-
-/** The biggest channels by archive size, for the sidebar's channel list. */
-export function topChannels(limit = 8): { slug: string; name: string }[] {
-  const db = getDb();
-  const rows = db
     .prepare(
-      `SELECT org_slug AS slug, org_name AS name FROM videos
-       WHERE org_slug != '' GROUP BY org_slug ORDER BY COUNT(*) DESC LIMIT ?`
+      "SELECT COUNT(*) AS videos, COUNT(DISTINCT org_slug) AS channels, SUM(has_transcript) AS transcripts FROM videos"
     )
-    .all(limit) as unknown as { slug: string; name: string }[];
-  // Plain objects: node:sqlite rows are null-prototype and can't cross into
-  // a client component as props.
-  return rows.map((r) => ({ slug: r.slug, name: r.name }));
+    .get() as unknown as { videos: number; channels: number; transcripts: number };
+  return { videos: row.videos, channels: row.channels, transcripts: row.transcripts ?? 0 };
 }
 
 /** A channel's videos, newest first, for its "Videos" tab. */

@@ -45,7 +45,7 @@ export default async function SavedPage() {
             </p>
             <Link
               href="/"
-              className="mt-2 rounded-full bg-stage px-5 py-2.5 text-sm font-semibold text-stage-ink transition-colors hover:bg-accent"
+              className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90"
             >
               Find something to watch
             </Link>

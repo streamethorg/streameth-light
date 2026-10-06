@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import BrowseControls from "@/components/BrowseControls";
 import UnifiedVideoCard from "@/components/UnifiedVideoCard";
-import ChipBar from "@/components/ChipBar";
-import EventShelf from "@/components/EventShelf";
-import { listRecentEvents } from "@/lib/events";
+import AskBox from "@/components/AskBox";
+import NewTalks from "@/components/NewTalks";
+import { newTalksByEvent } from "@/lib/events";
 import { browseVideos, listChannelOptions, topTopics } from "@/lib/videoDb";
-import { EMPTY_FILTERS, filtersFromParams, isIdleFilters, paramsFromFilters } from "@/lib/browseParams";
+import { filtersFromParams, isIdleFilters, paramsFromFilters } from "@/lib/browseParams";
 import { listAllEvents, listOrganizations } from "@/lib/data";
 
 export async function generateMetadata({
@@ -25,12 +25,12 @@ export async function generateMetadata({
   // while their links are still followed.
   return {
     alternates: { canonical: "/" },
-    ...(isIdleFilters({ ...filters, topic: "" }) ? {} : { robots: { index: false, follow: true } }),
+    ...(isIdleFilters(filters) ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
-const HOME_PAGE_SIZE = 36;
 const RESULTS_PAGE_SIZE = 30;
+const NEW_GROUPS = 12;
 
 export default async function Home({
   searchParams,
@@ -44,49 +44,50 @@ export default async function Home({
   }
   const filters = filtersFromParams(urlSearchParams);
   const page = Math.max(1, Number(rawParams.page) || 1);
-  const topics = topTopics(14);
 
-  // YouTube's home: a topic chip bar over a grid of the newest videos. A
-  // chip narrows the grid in place; only a typed search (or the advanced
-  // filters) switches to the results list below.
-  const onlyTopic = isIdleFilters({ ...filters, topic: "" });
-  if (onlyTopic) {
-    const feed = browseVideos({ ...EMPTY_FILTERS, topic: filters.topic }).filter((v) => v.coverImage);
-    const shown = feed.slice(0, page * HOME_PAGE_SIZE);
-    const moreParams = new URLSearchParams();
-    if (filters.topic) moreParams.set("topic", filters.topic);
-    moreParams.set("page", String(page + 1));
+  // Home: ask the archive, then what's new. A typed search (or any filter)
+  // switches to the keyword results list below.
+  if (isIdleFilters(filters)) {
+    const ask = typeof rawParams.ask === "string" ? rawParams.ask.slice(0, 500) : "";
+    const { days, since, groups } = newTalksByEvent();
+    const totalNew = groups.reduce((n, g) => n + g.videos.length, 0);
 
     return (
-      <div className="flex flex-col">
-        <ChipBar topics={topics} active={filters.topic} />
-        <div className="px-4 pb-12 pt-6 sm:px-6">
-          {shown.length === 0 ? (
-            <EmptyState />
+      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10 px-4 pb-16 sm:px-6">
+        <AskBox key={ask} initialQuestion={ask} />
+
+        <section className="flex flex-col gap-5">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+            <h2 className="text-lg font-bold text-ink">
+              New {days === 7 ? "this week" : "this month"}
+              <span className="tabular ml-2 text-sm font-normal text-ink-faint">
+                {totalNew.toLocaleString()} {totalNew === 1 ? "talk" : "talks"} from {groups.length}{" "}
+                {groups.length === 1 ? "event" : "events"}
+              </span>
+            </h2>
+            <Link href="/events" className="shrink-0 text-sm font-medium text-ink-dim hover:text-accent">
+              All events →
+            </Link>
+          </div>
+          {groups.length === 0 ? (
+            <p className="py-10 text-center text-sm text-ink-dim">Nothing new in the past month.</p>
           ) : (
-            <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-              {shown.map((v, i) => (
-                // Even `order` slots for videos leave odd slots for the shelf.
-                <div key={v.id} style={{ order: i * 2 }}>
-                  <UnifiedVideoCard video={v} />
-                </div>
-              ))}
-              {!filters.topic && (
-                // After two rows at every column count: 4 videos on 1–2
-                // columns, 6 on 3, 8 on 4.
-                <EventShelf
-                  events={listRecentEvents(8)}
-                  className="order-[7] lg:order-[11] 2xl:order-[15]"
-                />
-              )}
-            </div>
+            <NewTalks groups={groups.slice(0, NEW_GROUPS)} />
           )}
-          {shown.length < feed.length && <ShowMore href={`/?${moreParams.toString()}`} />}
-        </div>
+          {groups.length > NEW_GROUPS && (
+            <Link
+              href={`/?from=${new Date(since).toISOString().slice(0, 10)}`}
+              className="self-center rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink hover:border-accent/40"
+            >
+              See all new talks
+            </Link>
+          )}
+        </section>
       </div>
     );
   }
 
+  const topics = topTopics(14);
   const channels = listChannelOptions();
   const events = listAllEvents();
   const orgIdBySlug = Object.fromEntries(listOrganizations().map((o) => [o.slug, o._id]));
@@ -96,7 +97,7 @@ export default async function Home({
   moreParams.set("page", String(page + 1));
 
   return (
-    <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-4 py-6 sm:px-6">
+    <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-6 px-4 py-6 sm:px-6">
       <BrowseControls
         filters={filters}
         channels={channels}
@@ -104,9 +105,19 @@ export default async function Home({
         orgIdBySlug={orgIdBySlug}
         topics={topics}
       />
-      <p className="text-sm text-ink-dim">
-        About {results.length.toLocaleString()} {results.length === 1 ? "result" : "results"}
-      </p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-ink-dim">
+          About {results.length.toLocaleString()} {results.length === 1 ? "result" : "results"}
+        </p>
+        {filters.q.trim().length >= 3 && (
+          <Link
+            href={`/?ask=${encodeURIComponent(filters.q.trim())}`}
+            className="rounded-lg border border-accent/30 px-3 py-1.5 text-sm font-medium text-accent hover:bg-accent/5"
+          >
+            Ask AI about “{filters.q.trim()}” →
+          </Link>
+        )}
+      </div>
 
       {shown.length === 0 ? (
         <EmptyState />
@@ -129,7 +140,7 @@ function ShowMore({ href }: { href: string }) {
       <Link
         href={href}
         scroll={false}
-        className="rounded-full bg-panel-raised px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+        className="rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/40"
       >
         Show more
       </Link>
@@ -146,7 +157,7 @@ function EmptyState() {
       </p>
       <Link
         href="/"
-        className="mt-3 rounded-full bg-panel-raised px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+        className="mt-3 rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/40"
       >
         Back to home
       </Link>

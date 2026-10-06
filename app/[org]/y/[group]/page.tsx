@@ -4,6 +4,7 @@ import WatchLayout from "@/components/WatchLayout";
 import YoutubeVideoCard from "@/components/YoutubeVideoCard";
 import YoutubeSessionPlayer from "@/components/YoutubeSessionPlayer";
 import SaveButton from "@/components/SaveButton";
+import SpeakerCard from "@/components/SpeakerCard";
 import { getOrganization } from "@/lib/data";
 import { getDirectory, getDirectoryEntry } from "@/lib/directory";
 import {
@@ -68,6 +69,7 @@ export default async function YoutubeEventPage({
       orgName={orgName}
       orgSlug={orgSlug}
       crumb={group.label}
+      speakerNames={unified?.speakers}
       player={
         unified ? (
           <YoutubeSessionPlayer
@@ -112,6 +114,17 @@ export default async function YoutubeEventPage({
       metaLine={selected.publishedAt ? formatDateLong(selected.publishedAt) : undefined}
       description={selected.description || unified?.description}
       transcript={unified?.transcript}
+      speakers={
+        unified &&
+        unified.speakers.length > 0 && (
+          <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
+            {unified.speakers.map((name) => (
+              <SpeakerCard key={name} speaker={{ _id: name, name }} compact />
+            ))}
+          </div>
+        )
+      }
+      videoId={unified?.id}
       relatedLabel={`More from ${group.label}`}
       related={others.map((vid) => (
         <YoutubeVideoCard

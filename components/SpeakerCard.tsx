@@ -3,7 +3,14 @@ import type { SessionSpeaker } from "@/lib/types";
 import Avatar from "@/components/Avatar";
 import { findSpeakerSlugForName, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
 
-export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
+export default function SpeakerCard({
+  speaker,
+  compact = false,
+}: {
+  speaker: SessionSpeaker;
+  /** Avatar, name and company only — for the watch page's session info. */
+  compact?: boolean;
+}) {
   const slug = findSpeakerSlugForName(speaker.name);
   const full = slug ? getSpeakerBySlug(slug) : undefined;
 
@@ -21,8 +28,30 @@ export default function SpeakerCard({ speaker }: { speaker: SessionSpeaker }) {
     <span className="font-semibold text-ink">{speaker.name}</span>
   );
 
+  if (compact) {
+    return (
+      <div className="flex min-w-0 items-center gap-3">
+        <Avatar name={speaker.name} photo={photo} className="h-10 w-10 shrink-0 text-xs" />
+        <div className="flex min-w-0 flex-col">
+          <div className="truncate text-sm leading-tight">{nameEl}</div>
+          {(company || (slug && talkCount > 1)) && (
+            <p className="truncate text-xs text-ink-faint">
+              {company}
+              {company && slug && talkCount > 1 && " · "}
+              {slug && talkCount > 1 && (
+                <Link href={`/speakers/${slug}`} className="text-accent hover:underline">
+                  {talkCount} talks
+                </Link>
+              )}
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex gap-4 border-t border-line pt-5">
+    <div className="flex gap-4">
       <Avatar name={speaker.name} photo={photo} className="h-16 w-16 shrink-0 text-base" />
       <div className="flex min-w-0 flex-col gap-1.5">
         <div className="flex flex-col">

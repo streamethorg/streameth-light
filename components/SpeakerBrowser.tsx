@@ -20,7 +20,7 @@ export default function SpeakerBrowser({ speakers }: { speakers: Speaker[] }) {
 
   return (
     <div className="flex flex-col gap-8">
-      <label className="flex h-12 w-full items-center gap-3 rounded-full bg-panel px-5 shadow-sm ring-1 ring-line focus-within:ring-2 focus-within:ring-accent sm:max-w-md">
+      <label className="flex h-11 w-full items-center gap-3 rounded-lg bg-panel px-4 ring-1 ring-line focus-within:ring-2 focus-within:ring-accent sm:max-w-md">
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4 shrink-0 text-ink-faint" aria-hidden="true">
           <circle cx="9" cy="9" r="6.5" />
           <path d="M18 18l-4-4" strokeLinecap="round" />

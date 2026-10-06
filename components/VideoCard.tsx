@@ -9,12 +9,15 @@ export default function VideoCard({
   org,
   layout = "grid",
   hideChannel = false,
+  hideEvent = false,
 }: {
   session: Session;
   event?: Event;
   org?: Organization;
   layout?: VideoTileLayout;
   hideChannel?: boolean;
+  /** Omit the event, e.g. in a row already headed by that event. */
+  hideEvent?: boolean;
 }) {
   const duration = getSessionDurationSeconds(session);
   const speakerNames = (session.speakers ?? []).map((sp) => sp.name).filter(Boolean);
@@ -27,8 +30,8 @@ export default function VideoCard({
       durationLabel={duration !== undefined ? formatTimecode(duration) : undefined}
       title={session.name}
       channel={hideChannel || !org ? undefined : { name: org.name, href: `/${org.slug}` }}
-      speakers={layout !== "compact" && speakerNames.length > 0 ? speakerNames.join(", ") : undefined}
-      event={event?.name}
+      speakers={speakerNames.length > 0 ? speakerNames.join(", ") : undefined}
+      event={hideEvent ? undefined : event?.name}
       date={session.start ? formatDateShort(session.start) : undefined}
       description={layout === "row" ? session.description : undefined}
       layout={layout}

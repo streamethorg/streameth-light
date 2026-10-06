@@ -155,7 +155,7 @@ function NewToken({
       <button
         type="button"
         onClick={onDone}
-        className="h-10 w-fit rounded-full bg-panel-raised px-5 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+        className="h-10 w-fit rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors hover:border-accent/40"
       >
         Done
       </button>
@@ -225,7 +225,7 @@ function TokenItem({ token }: { token: McpTokenRow }) {
             type="button"
             onClick={revoke}
             disabled={pending}
-            className="h-8 rounded-full bg-error px-3 text-xs font-semibold text-white disabled:opacity-60"
+            className="h-8 rounded-lg bg-error px-3 text-xs font-semibold text-white disabled:opacity-60"
           >
             {pending ? "Revoking…" : "Revoke"}
           </button>
@@ -233,7 +233,7 @@ function TokenItem({ token }: { token: McpTokenRow }) {
             type="button"
             onClick={() => setConfirming(false)}
             disabled={pending}
-            className="h-8 rounded-full px-3 text-xs font-semibold text-ink-dim hover:bg-panel-raised"
+            className="h-8 rounded-lg px-3 text-xs font-semibold text-ink-dim hover:bg-panel-raised"
           >
             Cancel
           </button>
@@ -242,7 +242,7 @@ function TokenItem({ token }: { token: McpTokenRow }) {
         <button
           type="button"
           onClick={() => setConfirming(true)}
-          className="h-8 rounded-full bg-panel-raised px-3 text-xs font-semibold text-ink transition-colors hover:bg-panel-hover"
+          className="h-8 rounded-lg border border-line px-3 text-xs font-semibold text-ink transition-colors hover:border-accent/40"
         >
           Revoke
         </button>

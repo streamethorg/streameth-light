@@ -26,7 +26,7 @@ export default function PageHero({
       {back && (
         <Link
           href={back.href}
-          className="mb-4 flex w-fit items-center gap-1 rounded-full py-1 pr-3 text-sm font-medium text-ink-dim transition-colors hover:text-ink"
+          className="mb-4 flex w-fit items-center gap-1 rounded-md py-1 pr-3 text-sm font-medium text-ink-dim transition-colors hover:text-ink"
         >
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4" aria-hidden="true">
             <path d="M12.5 15l-5-5 5-5" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,7 +57,7 @@ export default function PageHero({
         )}
       </div>
       {tabs && tabs.length > 0 ? (
-        <nav className="mt-4 flex gap-6 overflow-x-auto border-b border-line [scrollbar-width:none]">
+        <nav className="mt-4 flex gap-6 overflow-x-auto [scrollbar-width:none]">
           {tabs.map((tab) => (
             <Link
               key={tab.href}
@@ -72,7 +72,7 @@ export default function PageHero({
           ))}
         </nav>
       ) : (
-        <div className="mt-6 border-b border-line" />
+        <div className="mt-6" />
       )}
     </section>
   );
@@ -89,8 +89,8 @@ export function HeroLink({
   primary?: boolean;
 }) {
   const external = /^https?:\/\//.test(href);
-  const className = `flex h-9 items-center gap-1.5 rounded-full px-4 text-sm font-semibold transition-colors ${
-    primary ? "bg-stage text-stage-ink hover:bg-stage-raised" : "bg-panel-raised text-ink hover:bg-panel-hover"
+  const className = `flex h-9 items-center gap-1.5 rounded-lg border px-3.5 text-sm font-medium transition-colors ${
+    primary ? "border-accent bg-accent text-accent-ink hover:opacity-90" : "border-line text-ink hover:border-accent/40"
   }`;
   return external ? (
     <a href={href} target="_blank" rel="noreferrer" className={className}>

@@ -47,7 +47,7 @@ export default async function EventsPage({
             <Link
               href={`/events?page=${page + 1}`}
               scroll={false}
-              className="rounded-full bg-panel-raised px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-panel-hover"
+              className="rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/40"
             >
               Show more
             </Link>
