@@ -21,7 +21,8 @@ function toParagraphs(transcript: string): string[] {
   for (const turn of decodeEntities(transcript).split(/\s*>>\s*/)) {
     const sentences = turn.replace(/\s+/g, " ").trim().match(/[^.!?]+[.!?]+["')\]]*|[^.!?]+$/g) ?? [];
     for (let i = 0; i < sentences.length; i += SENTENCES_PER_PARAGRAPH) {
-      const paragraph = sentences.slice(i, i + SENTENCES_PER_PARAGRAPH).join(" ").trim();
+      // Sentences keep their own leading whitespace, so join without adding any.
+      const paragraph = sentences.slice(i, i + SENTENCES_PER_PARAGRAPH).join("").trim();
       if (paragraph) paragraphs.push(paragraph);
     }
   }

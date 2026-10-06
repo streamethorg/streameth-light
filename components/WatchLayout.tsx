@@ -52,16 +52,20 @@ export default function WatchLayout({
   /** Archive id of the talk, for the "Ask AI about this talk" panel. */
   videoId?: string;
 }) {
-  // Some auto transcripts are only "[music]" — not worth showing.
-  const readableTranscript =
-    transcript && transcript.replace(/\[[^\]]*\]/g, "").trim().length >= 400 ? transcript : null;
+  // Every transcript is rendered (it's in the server HTML for crawlers —
+  // scripts/check-seo.mjs enforces this), but only a substantial one counts
+  // as "something to read" for the Ask panel's wording.
+  const readableTranscript = transcript?.trim() ? transcript : null;
+  const substantialTranscript = Boolean(
+    transcript && transcript.replace(/\[[^\]]*\]/g, "").trim().length >= 400
+  );
 
   const hasRelated = !(Array.isArray(related) && related.length === 0) && related != null;
   const hasAbout = Boolean(description?.trim() || topics);
   const speakerCount = speakerNames?.length ?? 0;
   // Without a transcript, answers lean on the description and the rest of
   // the archive; the panel says so.
-  const talkHasText = Boolean(readableTranscript || (description?.trim().length ?? 0) >= 200);
+  const talkHasText = substantialTranscript || (description?.trim().length ?? 0) >= 200;
 
   return (
     <div
@@ -132,7 +136,7 @@ export default function WatchLayout({
               {videoId && (
                 <div className="rounded-lg bg-void p-4">
                   <Suspense fallback={null}>
-                    <AskTalk videoId={videoId} hasTranscript={Boolean(readableTranscript)} talkHasText={talkHasText} />
+                    <AskTalk videoId={videoId} hasTranscript={substantialTranscript} talkHasText={talkHasText} />
                   </Suspense>
                 </div>
               )}
@@ -140,7 +144,7 @@ export default function WatchLayout({
           )}
 
           {readableTranscript && (
-            <div className="flex h-[520px] flex-col">
+            <div className="flex max-h-[520px] flex-col">
               <TranscriptPanel transcript={readableTranscript} />
             </div>
           )}
