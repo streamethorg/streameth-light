@@ -18,12 +18,18 @@ session (the exact issue pull-youtube-metadata.py already worked around with
 `player_client=android`), and nearly every request after that point was
 misrecorded as "no captions" before this fix.
 
-Capped to BATCH_LIMIT videos per invocation (env var, default 2000) and
-bails out early if the first 30 requests are mostly failures — same
-reasoning as pull-youtube-metadata.py: the calling workflow only commits
-after this step finishes, so an uncapped run against a 10,000+ video cold
-backlog that gets killed by the job timeout saves nothing, and hammering a
-blocked/rate-limited session harder doesn't unblock it.
+If data/sources/new-video-ids.json exists (pull-youtube-videos.py writes it
+every run, listing just the video IDs that run discovered as new), this
+only processes those — so the daily action can run this safely every day,
+backfilling transcripts for today's new videos without re-scanning the
+entire tracked catalog. Without that file (e.g. a manual one-off run), it
+falls back to the full catalog, capped to BATCH_LIMIT videos per invocation
+(env var, default 2000), and bails out early if the first 30 requests are
+mostly failures — same reasoning as pull-youtube-metadata.py: the calling
+workflow only commits after this step finishes, so an uncapped run against
+a 10,000+ video cold backlog that gets killed by the job timeout saves
+nothing, and hammering a blocked/rate-limited session harder doesn't
+unblock it.
 
 Run with: python3 scripts/pull-youtube-transcripts.py
 """
@@ -38,6 +44,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VIDEOS_PATH = os.path.join(REPO, "data", "sources", "youtube-videos.json")
 OUT_PATH = os.path.join(REPO, "data", "sources", "youtube-transcripts.json")
+NEW_IDS_PATH = os.path.join(REPO, "data", "sources", "new-video-ids.json")
 CONCURRENCY = 5
 TIMEOUT_S = 45
 MAX_ATTEMPTS = 3
@@ -143,10 +150,21 @@ def main():
     if os.path.exists(OUT_PATH):
         existing = json.load(open(OUT_PATH))
 
+    new_only = None
+    if os.path.exists(NEW_IDS_PATH):
+        new_only = set(json.load(open(NEW_IDS_PATH)))
+        all_ids = [vid for vid in all_ids if vid in new_only]
+
     todo_all = [vid for vid in all_ids if vid not in existing]
-    todo = todo_all[:BATCH_LIMIT]
+    todo = todo_all if new_only is not None else todo_all[:BATCH_LIMIT]
+    if new_only is not None:
+        scope = f"{len(new_only)} newly-discovered videos this run"
+        already_done = len(new_only) - len(todo_all)
+    else:
+        scope = f"{len(all_ids)} total videos"
+        already_done = len(existing)
     print(
-        f"{len(all_ids)} total videos, {len(existing)} already done, "
+        f"{scope}, {already_done} already done, "
         f"{len(todo_all)} remaining, processing {len(todo)} this run"
     )
 

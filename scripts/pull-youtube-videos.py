@@ -12,6 +12,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DIRECTORY_PATH = ROOT / "data" / "directory.json"
 OUT_PATH = ROOT / "data" / "sources" / "youtube-videos.json"
+# Not committed (see .gitignore) — scratch output consumed by
+# pull-youtube-metadata.py/pull-youtube-transcripts.py in the same run so
+# they only backfill the videos this run actually discovered as new,
+# instead of the whole tracked catalog.
+NEW_IDS_PATH = ROOT / "data" / "sources" / "new-video-ids.json"
 
 
 def channel_videos_url(channel_url: str) -> str:
@@ -73,7 +78,9 @@ def main() -> None:
     print(f"{len(channels)} channels with a known YouTube URL")
 
     existing = json.loads(OUT_PATH.read_text()) if OUT_PATH.exists() else {}
+    existing_ids = {v["videoId"] for vids in existing.values() for v in vids if v.get("videoId")}
     result = dict(existing)
+    new_ids: list[str] = []
 
     for i, entry in enumerate(channels, 1):
         slug = entry["slug"]
@@ -83,12 +90,19 @@ def main() -> None:
         if videos:
             result[slug] = videos
             print(f"  {len(videos)} videos (was {len(existing.get(slug, []))})")
+            new_ids.extend(
+                v["videoId"] for v in videos
+                if v.get("videoId") and v["videoId"] not in existing_ids
+            )
         else:
             print(f"  0 videos fetched, keeping existing {len(existing.get(slug, []))}")
 
     OUT_PATH.write_text(json.dumps(result, indent=None, separators=(",", ":")))
     total = sum(len(v) for v in result.values())
     print(f"\nWrote {OUT_PATH} — {len(result)} channels, {total} videos total")
+
+    NEW_IDS_PATH.write_text(json.dumps(new_ids))
+    print(f"Wrote {NEW_IDS_PATH} — {len(new_ids)} newly-discovered video IDs this run")
 
 
 if __name__ == "__main__":
