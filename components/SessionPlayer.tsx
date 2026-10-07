@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import VideoPlayer from "@/components/VideoPlayer";
 import CoverPlaceholder from "@/components/CoverPlaceholder";
 import { usePodcastPlayer, type PodcastTrack } from "@/components/PodcastPlayerProvider";
 import { actionButtonClass, WATCH_ACTIONS_SLOT_ID } from "@/components/ActionButton";
+import { trackMediaElement } from "@/lib/viewTracking";
 
 export default function SessionPlayer({
   playback,
@@ -20,6 +21,15 @@ export default function SessionPlayer({
   const player = usePodcastPlayer();
   const [actionsSlot, setActionsSlot] = useState<HTMLElement | null>(null);
   const isListening = player.track?.id === track.id;
+  const playbackSrc = playback?.src;
+
+  // Watch analytics for the inline video; Listen mode is tracked by the
+  // podcast player instead.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !playbackSrc || isListening) return;
+    return trackMediaElement(video, { videoId: track.id, source: "streameth", mode: "video" });
+  }, [playbackSrc, isListening, track.id]);
 
   function startListening() {
     const startAt = videoRef.current?.currentTime ?? 0;
