@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-01",
+  "importedAt": "2026-10-07",
   "seriesCount": 57,
-  "eventCount": 1579,
+  "eventCount": 1581,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -30739,29 +30739,6 @@
       "seriesName": "November Singapore Events"
     },
     {
-      "id": "recq3T82CXVA1Vv59",
-      "kind": "main",
-      "name": "AIoT DevFest × SunHacks ASU",
-      "description": "Join GDG on Campus ASU and SunHack for a weekend of developer talks and hands-on learning on November 13–14, 2026. Dive into AI, cloud, Android, and more alongside a hackathon. Perfect for developers eager to learn and innovate. Speaker and session details to follow. Interested in speaking or supporting? Email developerstudentclubasu@gmail.com with your topic.",
-      "startTime": "2026-11-13",
-      "endTime": "2026-11-14",
-      "location": "Tempe, USA 🇺🇸",
-      "city": "Tempe",
-      "country": "USA 🇺🇸",
-      "organizer": "Google AI",
-      "tags": [
-        "Hack",
-        "Other"
-      ],
-      "topics": [
-        "AI"
-      ],
-      "website": "https://gdg.community.dev/events/details/google-gdg-on-campus-arizona-state-university-tempe-united-states-presents-aiot-devfest-x-sunhacks-asu-2026-save-the-date/",
-      "imageUrl": null,
-      "seriesSlug": "AIEvents",
-      "seriesName": "AI Events"
-    },
-    {
       "id": "recIeQ0iry0k8w446",
       "kind": "side",
       "name": "200ms",
@@ -30802,6 +30779,29 @@
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ua/0fe07858-8e6b-4d29-9ae0-0d15ce097583.png",
       "seriesSlug": "Breakpoint2026SideEvents2026",
       "seriesName": "Breakpoint 2026 Side Events"
+    },
+    {
+      "id": "recq3T82CXVA1Vv59",
+      "kind": "main",
+      "name": "AIoT DevFest × SunHacks ASU",
+      "description": "Join GDG on Campus ASU and SunHack for a weekend of developer talks and hands-on learning on November 13–14, 2026. Dive into AI, cloud, Android, and more alongside a hackathon. Perfect for developers eager to learn and innovate. Speaker and session details to follow. Interested in speaking or supporting? Email developerstudentclubasu@gmail.com with your topic.",
+      "startTime": "2026-11-14",
+      "endTime": "2026-11-14",
+      "location": "Tempe, USA 🇺🇸",
+      "city": "Tempe",
+      "country": "USA 🇺🇸",
+      "organizer": "Google AI",
+      "tags": [
+        "Hack",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://gdg.community.dev/events/details/google-gdg-on-campus-arizona-state-university-tempe-united-states-presents-aiot-devfest-x-sunhacks-asu-2026-save-the-date/",
+      "imageUrl": null,
+      "seriesSlug": "AIEvents",
+      "seriesName": "AI Events"
     },
     {
       "id": "reckYkkLeNjnXBeMA",
@@ -31642,7 +31642,7 @@
       "name": "DEAI Summit Malta",
       "description": "🤖 DeAI Summit 2026: Beyond Borders, The Inflection Point of AI November 25–28, 2026 | Malta\n \n🌟20,000+ Tech expo attendees, and 2,500 DEAI Summit participants, including 1,000+ VIP attendees with global leaders in AI, decentralized infrastructure, regulatory institutions, academia, venture capital, enterprise innovation, and public policy shaping the future of compliant, human-centric AI.\n\nKey Themes: \n• Centralized vs decentralized AI architectures \n• EU AI Act compliance & governance \n• AI safety, transparency & accountability \n• Societal impact & labor transformation • Capital allocation in next-gen AI",
       "startTime": "2026-11-25",
-      "endTime": "2026-11-28",
+      "endTime": "2026-11-26",
       "location": "Is-Siġġiewi, Malta 🇲🇹",
       "city": "Is-Siġġiewi",
       "country": "Malta 🇲🇹",
@@ -32041,6 +32041,29 @@
       "seriesName": "AI Events"
     },
     {
+      "id": "rec2Ib3HKhZS5d6Sx",
+      "kind": "main",
+      "name": "DevFest Hackathon",
+      "description": "DevFest 2026 GameJam Hackathon is a thrilling 48-hour event for developers, designers, and engineers to create video game prototypes. Participants receive industry insights and mentorship, turning ideas into games. The event encourages creativity, teamwork, and networking, ending with a showcase judged by experts. Perfect for those seeking innovation and opportunity.",
+      "startTime": "2026-12-03",
+      "endTime": "2026-12-06",
+      "location": "Belgrade, Serbia 🇷🇸",
+      "city": "Belgrade",
+      "country": "Serbia 🇷🇸",
+      "organizer": "Google AI",
+      "tags": [
+        "Hack",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://gdg.community.dev/events/details/google-gdg-on-campus-university-of-belgrade-belgrade-serbia-presents-devfest-2026-gamejam-hackathon/",
+      "imageUrl": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_vCbmEKD",
+      "seriesSlug": "AIEvents",
+      "seriesName": "AI Events"
+    },
+    {
       "id": "recpnV1l2ZdYBvrOO",
       "kind": "main",
       "name": "Art Basel Miami",
@@ -32061,29 +32084,6 @@
       "imageUrl": null,
       "seriesSlug": "ArtBaselMiamiEvents2026",
       "seriesName": "Art Basel Miami Events"
-    },
-    {
-      "id": "rec2Ib3HKhZS5d6Sx",
-      "kind": "main",
-      "name": "DevFest Hackathon",
-      "description": "DevFest 2026 GameJam Hackathon is a thrilling 48-hour event for developers, designers, and engineers to create video game prototypes. Participants receive industry insights and mentorship, turning ideas into games. The event encourages creativity, teamwork, and networking, ending with a showcase judged by experts. Perfect for those seeking innovation and opportunity.",
-      "startTime": "2026-12-04",
-      "endTime": "2026-12-06",
-      "location": "Belgrade, Serbia 🇷🇸",
-      "city": "Belgrade",
-      "country": "Serbia 🇷🇸",
-      "organizer": "Google AI",
-      "tags": [
-        "Hack",
-        "Other"
-      ],
-      "topics": [
-        "AI"
-      ],
-      "website": "https://gdg.community.dev/events/details/google-gdg-on-campus-university-of-belgrade-belgrade-serbia-presents-devfest-2026-gamejam-hackathon/",
-      "imageUrl": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_vCbmEKD",
-      "seriesSlug": "AIEvents",
-      "seriesName": "AI Events"
     },
     {
       "id": "rec3hMj1tAXngi2Lf",
@@ -33364,6 +33364,31 @@
       "seriesName": ""
     },
     {
+      "id": "rec1Zr695NzoJZZlI",
+      "kind": "main",
+      "name": "Dutch Blockchain Week 2027",
+      "description": "One of Europe’s leading Business events for digital assets, blockchain and Web3, Dutch Blockchain Week brings together professionals from exchanges, banks, payment providers, funds, market makers, regulators, infrastructure companies and global technology leaders in Amsterdam.\n\nAt the heart of the week, the DBW Main Summit brings the industry together for two days of high-level content, business development and networking.\n\nThe DBW Summit on May 19 & 20 in the Johan Cruijff ArenA offers two full days of Web3 insights, panels, deep dives, and high-level networking, designed for institutions, founders, policymakers, and professionals shaping the future of digital assets.",
+      "startTime": "2027-05-19",
+      "endTime": "2027-05-20",
+      "location": "Amsterdam, Netherlands 🇳🇱",
+      "city": "Amsterdam",
+      "country": "Netherlands 🇳🇱",
+      "organizer": "Dutch Blockchain Week",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional",
+        "Infrastructure"
+      ],
+      "website": "https://dutchblockchainweek.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recQjy9yJcBjrODf0",
       "kind": "main",
       "name": "Alberta Family Office and High Net Worth Conference",
@@ -33627,6 +33652,29 @@
       ],
       "website": "https://vivatech.com/",
       "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recCqZ0QEKMfYZEhO",
+      "kind": "main",
+      "name": "TOKEN2049 New York",
+      "description": "THE GLOBAL CRYPTO INDUSTRY. NOW IN NEW YORK.\nFollowing Singapore and Dubai, TOKEN2049 arrives at the centre of global finance.\n\nOur inaugural New York edition will bring together 15,000 attendees from around the world. Meet the people building the companies, deploying the capital and defining the future of digital assets.",
+      "startTime": "2027-06-16",
+      "endTime": "2027-06-17",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "token2049",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional"
+      ],
+      "website": "https://www.token2049.com/new-york",
+      "imageUrl": "https://cdn.prod.website-files.com/6756df8f05088bc3e51c64c0/6abe2f6497a70ad6abe776af_9030286fd3ad3cd3661b7bc8c18cd4ac_nyc.png",
       "seriesSlug": "",
       "seriesName": ""
     },
