@@ -11,6 +11,7 @@ import {
 import "plyr/dist/plyr.css";
 import { useHlsSource } from "@/lib/useHlsSource";
 import { YOUTUBE_PLYR_OPTIONS, loadPlyr, type PlyrInstance } from "@/lib/plyrYoutube";
+import { createViewTracker, type ViewTracker } from "@/lib/viewTracking";
 
 interface StreamethTrack {
   source: "streameth";
@@ -69,6 +70,8 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
   const streamethType = track?.source === "streameth" ? track.type : undefined;
   const { ready } = useHlsSource(videoRef, streamethSrc, streamethType);
   const pendingSeekRef = useRef<number | undefined>(undefined);
+  // Watch analytics for whatever track is loaded (mode "audio").
+  const viewsRef = useRef<ViewTracker | null>(null);
 
   // Loads a YouTube video into the one persistent Plyr instance — created on
   // first use (Plyr needs the embed id up front), then reused for every
@@ -91,11 +94,19 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
     mount.setAttribute("data-plyr-embed-id", videoId);
     loadPlyr().then((PlyrCtor) => {
       const plyr = new PlyrCtor(mount, YOUTUBE_PLYR_OPTIONS);
-      plyr.on("playing", () => setPlaying(true));
-      plyr.on("pause", () => setPlaying(false));
+      plyr.on("playing", () => {
+        setPlaying(true);
+        viewsRef.current?.playing();
+      });
+      plyr.on("pause", () => {
+        setPlaying(false);
+        viewsRef.current?.paused();
+      });
+      plyr.on("ended", () => viewsRef.current?.paused());
       plyr.on("timeupdate", () => {
         setCurrentTime(plyr.currentTime);
         setDuration(plyr.duration || 0);
+        viewsRef.current?.progress(plyr.currentTime, plyr.duration);
       });
       plyrRef.current = plyr;
       plyr.once("ready", () => {
@@ -163,6 +174,17 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
     return videoRef.current?.currentTime ?? 0;
   }, [track]);
 
+  // One view per loaded track; switching tracks or stopping ends it.
+  useEffect(() => {
+    if (!track) return;
+    const views = createViewTracker({ videoId: track.id, source: track.source, mode: "audio" });
+    viewsRef.current = views;
+    return () => {
+      views.dispose();
+      if (viewsRef.current === views) viewsRef.current = null;
+    };
+  }, [track]);
+
   // The persistent Plyr instance itself lives for the whole app session —
   // only torn down when the provider unmounts.
   useEffect(() => {
@@ -187,10 +209,18 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    const onPlay = () => setPlaying(true);
-    const onPause = () => setPlaying(false);
+    const onPlay = () => {
+      setPlaying(true);
+      if (track?.source === "streameth") viewsRef.current?.playing();
+    };
+    const onPause = () => {
+      setPlaying(false);
+      if (track?.source === "streameth") viewsRef.current?.paused();
+    };
     const onTimeUpdate = () => {
-      if (track?.source === "streameth") setCurrentTime(video.currentTime);
+      if (track?.source !== "streameth") return;
+      setCurrentTime(video.currentTime);
+      viewsRef.current?.progress(video.currentTime, video.duration);
     };
     const onDuration = () => {
       if (track?.source === "streameth") setDuration(video.duration || 0);

@@ -120,6 +120,16 @@ key. A Vercel cron (`vercel.json`, Mondays 09:00 UTC) calls
 | `DIGEST_FROM` | Sender, e.g. `StreamETH <digest@streameth.org>` (domain verified in Resend) |
 | `CRON_SECRET` | Vercel sends it with cron requests; `/api/digest/send` rejects anything else |
 
+## Watch analytics
+
+The players report plays and watch time to `/api/views` (`lib/viewTracking.ts`):
+one row per playback in `video_views` (migration `…05_video_views.sql`), with
+seconds actually played (seeking excluded), the furthest point reached, and
+the viewer if signed in. `mode` is `video` for the watch page and `audio` for
+Listen mode. Per-video totals are in the `video_view_stats` view. Both are
+readable only with the service-role key (SQL editor or `supabase` CLI); it
+uses the same `SUPABASE_SERVICE_ROLE_KEY` as the digest.
+
 ## Accounts (wallet sign-in, saved videos)
 
 Accounts are Ethereum wallets: sign-in is Sign in with Ethereum (EIP-4361)

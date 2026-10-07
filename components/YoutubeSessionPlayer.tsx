@@ -7,6 +7,7 @@ import CoverPlaceholder from "@/components/CoverPlaceholder";
 import { usePodcastPlayer, type PodcastTrack } from "@/components/PodcastPlayerProvider";
 import { YOUTUBE_PLYR_OPTIONS, loadPlyr, type PlyrInstance } from "@/lib/plyrYoutube";
 import { actionButtonClass, WATCH_ACTIONS_SLOT_ID } from "@/components/ActionButton";
+import { createViewTracker, type ViewTracker } from "@/lib/viewTracking";
 
 export default function YoutubeSessionPlayer({
   videoId,
@@ -29,18 +30,28 @@ export default function YoutubeSessionPlayer({
   useEffect(() => {
     if (!embedRef.current) return;
     let cancelled = false;
+    let tracker: ViewTracker | null = null;
     loadPlyr().then((PlyrCtor) => {
       if (cancelled || !embedRef.current) return;
       const plyr = new PlyrCtor(embedRef.current, YOUTUBE_PLYR_OPTIONS);
       plyr.once("ready", () => setInlineReady(true));
+      // Watch analytics for the inline video; Listen mode is tracked by the
+      // podcast player instead.
+      const views = createViewTracker({ videoId: track.id, source: "youtube", mode: "video" });
+      plyr.on("playing", () => views.playing());
+      plyr.on("pause", () => views.paused());
+      plyr.on("ended", () => views.paused());
+      plyr.on("timeupdate", () => views.progress(plyr.currentTime, plyr.duration));
+      tracker = views;
       inlinePlayerRef.current = plyr;
     });
     return () => {
       cancelled = true;
+      tracker?.dispose();
       inlinePlayerRef.current?.destroy();
       inlinePlayerRef.current = null;
     };
-  }, [videoId]);
+  }, [videoId, track.id]);
 
   function startListening() {
     const startAt = inlinePlayerRef.current?.currentTime ?? 0;
