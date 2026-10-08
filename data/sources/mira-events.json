@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-07",
+  "importedAt": "2026-10-08",
   "seriesCount": 57,
-  "eventCount": 1581,
+  "eventCount": 1582,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -29341,6 +29341,29 @@
       "imageUrl": "https://images.lumacdn.com/event-covers/u4/1394feee-6929-4ff5-9f59-844d9f1eee79.png",
       "seriesSlug": "Devcon8SideEvents2026",
       "seriesName": "Devcon 8 Side Events"
+    },
+    {
+      "id": "rec5mzbr556DTPUhz",
+      "kind": "main",
+      "name": "LABITCONF 2026 Buenos Aires",
+      "description": "Gathers the people, ideas and projects redefining money, technology and the economy through Bitcoin, Blockchain and Artificial Intelligence.",
+      "startTime": "2026-10-30",
+      "endTime": "2026-10-31",
+      "location": "Buenos Aires, Argentina 🇦🇷",
+      "city": "Buenos Aires",
+      "country": "Argentina 🇦🇷",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.labitconf.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "rec85TaMl1nRkjwtK",
