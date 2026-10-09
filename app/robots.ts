@@ -4,7 +4,7 @@ import { absoluteUrl } from "@/lib/seo";
 import { sitemapPaths } from "@/lib/sitemaps";
 
 // Signed-in and utility pages: nothing there for a search engine.
-const PRIVATE_PATHS = ["/api/", "/saved", "/settings", "/signin", "/connect", "/oauth/", "/offline"];
+const PRIVATE_PATHS = ["/api/", "/saved", "/settings", "/signin", "/connect", "/oauth/", "/auth/", "/offline"];
 
 // AI search and answer engines, named explicitly so the archive can be cited
 // in AI answers even if a host or CDN default ever starts blocking them.

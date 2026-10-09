@@ -55,10 +55,10 @@ checks it through the `verify_mcp_token` database function. Users can revoke
 tokens on the same page.
 
 Apps that support OAuth (e.g. Claude.ai connectors) can connect without a
-token, still as a signed-in wallet account. Supabase Auth's OAuth 2.1 server
+token, as a signed-in account. Supabase Auth's OAuth 2.1 server
 is the authorization server: `/.well-known/oauth-protected-resource/api/mcp`
 points clients at it, the client registers itself (dynamic client
-registration), and the user signs in with their wallet and approves on
+registration), and the user signs in and approves on
 `/oauth/consent`. The MCP route then verifies the Supabase access token
 (`lib/supabase/mcpAuth.ts`).
 
@@ -130,14 +130,17 @@ Listen mode. Per-video totals are in the `video_view_stats` view. Both are
 readable only with the service-role key (SQL editor or `supabase` CLI); it
 uses the same `SUPABASE_SERVICE_ROLE_KEY` as the digest.
 
-## Accounts (wallet sign-in, saved videos)
+## Accounts (email code or Google, saved videos)
 
-Accounts are Ethereum wallets: sign-in is Sign in with Ethereum (EIP-4361)
-through Supabase's native Web3 auth — the user signs a message, no
-transaction or gas. There is no email sign-in. Supabase (Postgres + Auth) is
-the one persistent, writable piece of an otherwise read-only/static app.
-Schema lives in `supabase/migrations/`; `saved_videos` rows are protected by
-row-level security so a user can only see/write their own.
+People sign in with an emailed one-time code (the same email has a magic
+link for the current browser) or with Google, through Supabase Auth
+(`components/SignInForm.tsx`). There are no passwords. Google and magic links
+land on `/auth/callback`, which swaps the code for a session cookie. Supabase
+(Postgres + Auth) is the one persistent, writable piece of an otherwise
+read-only/static app. Schema lives in `supabase/migrations/`; `saved_videos`
+rows are protected by row-level security so a user can only see/write their
+own. Accounts from the earlier wallet sign-in can no longer sign in, and
+their MCP tokens no longer verify.
 
 Environment variables (`.env.local`, and the Vercel project):
 
@@ -145,19 +148,25 @@ Environment variables (`.env.local`, and the Vercel project):
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | yes | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | yes | Supabase anon/publishable key |
-| `ETH_RPC_URL` | production | Mainnet RPC for ENS names; falls back to viem's rate-limited public RPC |
 
 New environment (e.g. a fresh Supabase project): `supabase link --project-ref
 <ref>` then `supabase db push` to apply the migrations. Then in the dashboard:
 
-- Authentication → Sign In / Providers → **Web3 Wallet → Ethereum: on**.
-- Authentication → Sign In / Providers → **Email: off** (no email accounts).
-- Authentication → URL Configuration: the site URL (and any preview domains)
-  must be allowed, or signatures are rejected with "message was signed for
-  another app".
+- Authentication → Sign In / Providers → **Email: on**, signups allowed.
+- Authentication → Emails → **SMTP**: a real sender (we use Resend:
+  `smtp.resend.com`, port 465, user `resend`, the Resend API key). Supabase's
+  built-in mailer only delivers to the project's team and a few per hour.
+- Authentication → Emails → **Magic Link** template: the contents of
+  `supabase/templates/magic_link.html` (it shows `{{ .Token }}`, the code).
+- Authentication → Sign In / Providers → **Google**: a Google Cloud OAuth
+  client ID and secret, with `https://<ref>.supabase.co/auth/v1/callback` as
+  its authorized redirect URI. The Google button appears once this is on.
+- Authentication → URL Configuration: site URL, plus
+  `https://<domain>/auth/callback` (and preview domains) as redirect URLs.
 
-Local stack: `supabase start` uses `supabase/config.toml`, which already
-enables Ethereum sign-in and disables email signup.
+Local stack: `supabase start` uses `supabase/config.toml`, which enables
+email codes with the same template; set `SUPABASE_AUTH_EXTERNAL_GOOGLE_*` and
+turn on `[auth.external.google]` to try Google locally.
 
 ## Search engines and AI crawlers
 

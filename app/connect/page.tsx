@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { getUserAddress } from "@/lib/userAddress";
 import { SITE_URL } from "@/lib/social";
 import PageHero from "@/components/PageHero";
 import McpConnect, { type McpTokenRow } from "@/components/McpConnect";
@@ -20,13 +19,10 @@ export default async function ConnectPage() {
     redirect("/signin?next=/connect");
   }
 
-  const hasWallet = Boolean(getUserAddress(user));
-  const { data: tokens, error } = hasWallet
-    ? await supabase
-        .from("mcp_tokens")
-        .select("id, name, token_hint, created_at, last_used_at")
-        .order("created_at", { ascending: false })
-    : { data: [], error: null };
+  const { data: tokens, error } = await supabase
+    .from("mcp_tokens")
+    .select("id, name, token_hint, created_at, last_used_at")
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error("[connect] loading tokens failed:", error);
@@ -39,18 +35,11 @@ export default async function ConnectPage() {
         meta="Let Claude, Cursor and other AI apps search StreamETH talks and read their transcripts"
       />
       <div className="flex max-w-2xl flex-col gap-4 px-4 py-6 sm:px-6">
-        {hasWallet ? (
-          <McpConnect
-            endpoint={new URL("/api/mcp", SITE_URL).toString()}
-            tokens={(tokens ?? []) as McpTokenRow[]}
-            loadFailed={Boolean(error)}
-          />
-        ) : (
-          <p className="rounded-2xl bg-panel p-5 text-sm text-ink-dim ring-1 ring-line">
-            This account isn&apos;t linked to a wallet. Sign out and sign in with your wallet to
-            connect AI apps.
-          </p>
-        )}
+        <McpConnect
+          endpoint={new URL("/api/mcp", SITE_URL).toString()}
+          tokens={(tokens ?? []) as McpTokenRow[]}
+          loadFailed={Boolean(error)}
+        />
       </div>
     </div>
   );

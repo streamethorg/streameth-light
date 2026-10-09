@@ -84,7 +84,7 @@ function SignInToAsk({ question }: { question: string }) {
       <div className="flex flex-col gap-1">
         <p className="text-sm font-semibold text-ink">Sign in to ask</p>
         <p className="text-sm text-ink-dim">
-          AI answers are free for signed-in users. Sign in with your wallet and we&apos;ll ask your question right away.
+          AI answers are free for signed-in users. Sign in with your email or Google and we&apos;ll ask your question right away.
         </p>
       </div>
       <Link
