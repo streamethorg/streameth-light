@@ -25,6 +25,20 @@ function loadSource(file) {
   }
 }
 
+// data/sources/youtube-transcripts/shard-NN.json (see scripts/transcript_shards.py)
+// — the backfilled dataset outgrew a single committed file (~300MB at full
+// backfill vs. GitHub's 100MB single-file push limit), so it's sharded by a
+// hash of videoId into SHARD_COUNT files, read back here as one merged map.
+const TRANSCRIPT_SHARD_COUNT = 10;
+function loadTranscripts() {
+  const result = { ...(loadSource("youtube-transcripts.json") ?? {}) };
+  for (let i = 0; i < TRANSCRIPT_SHARD_COUNT; i++) {
+    const shard = loadSource(`youtube-transcripts/shard-${String(i).padStart(2, "0")}.json`);
+    if (shard) Object.assign(result, shard);
+  }
+  return result;
+}
+
 const DEAD_VIDEO_HOSTS = new Set(["lp-playback.com"]);
 function isDeadVideoHost(url) {
   try {
@@ -161,7 +175,7 @@ const livepeerResolved = loadSource("livepeer-resolved.json") ?? {};
 const livepeerThumbnails = loadSource("livepeer-thumbnails.json") ?? {};
 const livepeerDownloads = loadSource("livepeer-downloads.json") ?? {};
 const youtubeVideosBySlug = loadSource("youtube-videos.json") ?? {};
-const youtubeTranscripts = loadSource("youtube-transcripts.json") ?? {};
+const youtubeTranscripts = loadTranscripts();
 // Built by scripts/extract-youtube-speakers.py — exact matches of a YouTube
 // title against real speaker names already known from StreamETH's own
 // sessions.json/speakers.json, not an inferred/invented name.

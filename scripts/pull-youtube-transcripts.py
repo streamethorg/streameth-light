@@ -18,6 +18,10 @@ session (the exact issue pull-youtube-metadata.py already worked around with
 `player_client=android`), and nearly every request after that point was
 misrecorded as "no captions" before this fix.
 
+Writes to data/sources/youtube-transcripts/shard-NN.json (see
+transcript_shards.py) instead of one file — the full backfilled dataset is
+~300MB of transcript text, over GitHub's 100MB single-file push limit.
+
 If data/sources/new-video-ids.json exists (pull-youtube-videos.py writes it
 every run, listing just the video IDs that run discovered as new), this
 only processes those — so the daily action can run this safely every day,
@@ -37,15 +41,21 @@ import json
 import os
 import re
 import subprocess
+import sys
 import tempfile
 import time
+from collections import deque
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VIDEOS_PATH = os.path.join(REPO, "data", "sources", "youtube-videos.json")
-OUT_PATH = os.path.join(REPO, "data", "sources", "youtube-transcripts.json")
-NEW_IDS_PATH = os.path.join(REPO, "data", "sources", "new-video-ids.json")
-CONCURRENCY = 5
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import transcript_shards as shards
+
+REPO = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DATA_DIR = REPO / "data"
+VIDEOS_PATH = DATA_DIR / "sources" / "youtube-videos.json"
+NEW_IDS_PATH = DATA_DIR / "sources" / "new-video-ids.json"
+CONCURRENCY = 2
 TIMEOUT_S = 45
 MAX_ATTEMPTS = 3
 RETRY_BACKOFF_S = 5
@@ -146,23 +156,39 @@ def main():
                 all_ids.append(v["videoId"])
     all_ids = list(dict.fromkeys(all_ids))  # dedupe, preserve order
 
-    existing = {}
-    if os.path.exists(OUT_PATH):
-        existing = json.load(open(OUT_PATH))
+    shard_data = [shards.load_shard(DATA_DIR, i) for i in range(shards.SHARD_COUNT)]
+    dirty: set[int] = set()
+
+    # One-time migration: fold the old single-file dataset into shards, then
+    # it's never read again (pull-youtube-videos.py etc. only look at the
+    # sharded directory going forward).
+    legacy_path = DATA_DIR / "sources" / "youtube-transcripts.json"
+    if legacy_path.exists():
+        legacy = json.loads(legacy_path.read_text())
+        for vid, text in legacy.items():
+            s = shards.shard_for(vid)
+            if vid not in shard_data[s]:
+                shard_data[s][vid] = text
+                dirty.add(s)
+        print(f"Migrated {len(legacy)} entries from the legacy single-file dataset into shards")
+
+    existing_keys = set()
+    for sd in shard_data:
+        existing_keys.update(sd.keys())
 
     new_only = None
     if os.path.exists(NEW_IDS_PATH):
         new_only = set(json.load(open(NEW_IDS_PATH)))
         all_ids = [vid for vid in all_ids if vid in new_only]
 
-    todo_all = [vid for vid in all_ids if vid not in existing]
+    todo_all = [vid for vid in all_ids if vid not in existing_keys]
     todo = todo_all if new_only is not None else todo_all[:BATCH_LIMIT]
     if new_only is not None:
         scope = f"{len(new_only)} newly-discovered videos this run"
         already_done = len(new_only) - len(todo_all)
     else:
         scope = f"{len(all_ids)} total videos"
-        already_done = len(existing)
+        already_done = len(existing_keys)
     print(
         f"{scope}, {already_done} already done, "
         f"{len(todo_all)} remaining, processing {len(todo)} this run"
@@ -172,9 +198,24 @@ def main():
     ok_count = 0
     failed_count = 0
     breaker_tripped = False
+    # Sliding window, not just the first N — a session can look fine at the
+    # start of a batch and only get rate-limited partway through (confirmed
+    # in practice: a batch ran 3+ hours grinding through retries after the
+    # first 30 requests looked healthy), and the one-shot check at
+    # done_count==CIRCUIT_BREAKER_AFTER never catches that.
+    recent = deque(maxlen=CIRCUIT_BREAKER_AFTER)
 
     def save():
-        json.dump(existing, open(OUT_PATH, "w"), indent=2, ensure_ascii=False)
+        for i in dirty:
+            shards.save_shard(DATA_DIR, i, shard_data[i])
+        dirty.clear()
+        if legacy_path.exists():
+            legacy_path.unlink()
+
+    def record(vid: str, text: str | None):
+        s = shards.shard_for(vid)
+        shard_data[s][vid] = text
+        dirty.add(s)
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
         futures = {pool.submit(fetch_transcript, vid): vid for vid in todo}
@@ -185,26 +226,28 @@ def main():
                 text = fut.result()
             except FetchFailed as e:
                 failed_count += 1
+                recent.append(False)
                 print(f"[{done_count}/{len(todo)}] {vid} FAILED, left for next run: {e}")
             else:
+                recent.append(True)
                 if text:
-                    existing[vid] = text
+                    record(vid, text)
                     ok_count += 1
                     print(f"[{done_count}/{len(todo)}] {vid} OK ({len(text)} chars)")
                 else:
-                    existing[vid] = None
+                    record(vid, None)
                     print(f"[{done_count}/{len(todo)}] {vid} no captions")
             if done_count % 10 == 0:
                 save()
             if (
                 not breaker_tripped
-                and done_count == CIRCUIT_BREAKER_AFTER
-                and failed_count / done_count >= CIRCUIT_BREAKER_FAIL_RATE
+                and len(recent) == CIRCUIT_BREAKER_AFTER
+                and (1 - sum(recent) / len(recent)) >= CIRCUIT_BREAKER_FAIL_RATE
             ):
                 breaker_tripped = True
                 cancelled = sum(1 for f in futures if f.cancel())
                 print(
-                    f"{failed_count}/{done_count} of the first {CIRCUIT_BREAKER_AFTER} requests failed — "
+                    f"{failed_count}/{done_count} failed overall, last {CIRCUIT_BREAKER_AFTER} mostly failing — "
                     f"session looks blocked/rate-limited, not going to recover by retrying harder. "
                     f"Cancelled {cancelled} not-yet-started requests; leaving them for the next run."
                 )
