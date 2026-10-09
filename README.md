@@ -148,16 +148,18 @@ Environment variables (`.env.local`, and the Vercel project):
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | yes | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | yes | Supabase anon/publishable key |
+| `SEND_EMAIL_HOOK_SECRET` | production | Verifies Supabase's Send Email hook calls (sign-in codes) |
 
 New environment (e.g. a fresh Supabase project): `supabase link --project-ref
 <ref>` then `supabase db push` to apply the migrations. Then in the dashboard:
 
 - Authentication → Sign In / Providers → **Email: on**, signups allowed.
-- Authentication → Emails → **SMTP**: a real sender (we use Resend:
-  `smtp.resend.com`, port 465, user `resend`, the Resend API key). Supabase's
-  built-in mailer only delivers to the project's team and a few per hour.
-- Authentication → Emails → **Magic Link** template: the contents of
-  `supabase/templates/magic_link.html` (it shows `{{ .Token }}`, the code).
+- Authentication → Hooks → **Send Email** (HTTPS):
+  `https://<domain>/api/auth/send-email`. Supabase then hands every auth
+  email to the app, which sends it through Resend with the digest's
+  `RESEND_API_KEY` and `DIGEST_FROM` (`lib/authEmail.ts`). Put the hook's
+  secret (`v1,whsec_…`) in `SEND_EMAIL_HOOK_SECRET`. Without the hook,
+  Supabase's built-in mailer only delivers to the project's team.
 - Authentication → Sign In / Providers → **Google**: a Google Cloud OAuth
   client ID and secret, with `https://<ref>.supabase.co/auth/v1/callback` as
   its authorized redirect URI. The Google button appears once this is on.
@@ -165,7 +167,8 @@ New environment (e.g. a fresh Supabase project): `supabase link --project-ref
   `https://<domain>/auth/callback` (and preview domains) as redirect URLs.
 
 Local stack: `supabase start` uses `supabase/config.toml`, which enables
-email codes with the same template; set `SUPABASE_AUTH_EXTERNAL_GOOGLE_*` and
+email codes (with `supabase/templates/magic_link.html`, through the local
+mail catcher rather than the hook); set `SUPABASE_AUTH_EXTERNAL_GOOGLE_*` and
 turn on `[auth.external.google]` to try Google locally.
 
 ## Search engines and AI crawlers
