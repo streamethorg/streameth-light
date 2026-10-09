@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import type { AuthInfo } from "@modelcontextprotocol/server";
 import { lazy } from "../lazy";
 import { hashMcpToken, isMcpToken } from "../mcpTokens";
+import { hasSignInProvider } from "../account";
 
 /** Supabase Auth's OAuth 2.1 server issues the MCP access tokens; its issuer
  * is the project's `/auth/v1` URL. */
@@ -51,10 +52,9 @@ export async function verifySupabaseToken(
   // The anon key is itself a valid project JWT (role "anon", no user) —
   // only accept tokens minted for an actual signed-in user.
   if (claims.role !== "authenticated" || !claims.sub) return undefined;
-  // Accounts are wallets: reject leftover email-only accounts. app_metadata
-  // is set by Supabase Auth (not user-writable) and signed into the token.
-  const providers: unknown = claims.app_metadata?.providers;
-  if (!Array.isArray(providers) || !providers.includes("web3")) return undefined;
+  // Reject leftover accounts from the old wallet sign-in. app_metadata is
+  // set by Supabase Auth (not user-writable) and signed into the token.
+  if (!hasSignInProvider(claims.app_metadata?.providers)) return undefined;
 
   const clientId = typeof claims.client_id === "string" ? claims.client_id : "";
   const scopes = typeof claims.scope === "string" ? claims.scope.split(" ").filter(Boolean) : [];

@@ -3,13 +3,13 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { lazy } from "./lazy";
 import { newTalksSince, type NewTalksGroup } from "./events";
 import { SITE_NAME, SITE_URL } from "./social";
+import { absolute, emailLayout, escapeHtml, sendEmail, sendEmailBatch } from "./email";
 
 /** Weekly "new talks" email: subscribers (double opt-in) in Supabase's
  * digest_subscribers table, mail sent through Resend's HTTP API. Needs
  * SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY and DIGEST_FROM. */
 
 const DAY = 24 * 60 * 60 * 1000;
-const RESEND_URL = "https://api.resend.com";
 const RESEND_BATCH_SIZE = 100;
 // Don't resend a confirmation to the same address more often than this.
 const CONFIRM_RESEND_MS = 10 * 60 * 1000;
@@ -37,66 +37,6 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function normalizeEmail(input: string): string | null {
   const email = input.trim().toLowerCase();
   return email.length <= 254 && EMAIL_RE.test(email) ? email : null;
-}
-
-function absolute(path: string): string {
-  return new URL(path, SITE_URL).toString();
-}
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-interface OutgoingEmail {
-  to: string;
-  subject: string;
-  html: string;
-  text: string;
-  headers?: Record<string, string>;
-}
-
-function resendPayload(email: OutgoingEmail) {
-  return {
-    from: process.env.DIGEST_FROM!,
-    to: [email.to],
-    subject: email.subject,
-    html: email.html,
-    text: email.text,
-    headers: email.headers,
-  };
-}
-
-async function sendOne(email: OutgoingEmail): Promise<void> {
-  const res = await fetch(`${RESEND_URL}/emails`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify(resendPayload(email)),
-  });
-  if (!res.ok) throw new Error(`Resend ${res.status}: ${await res.text()}`);
-}
-
-async function sendBatch(emails: OutgoingEmail[]): Promise<void> {
-  const res = await fetch(`${RESEND_URL}/emails/batch`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify(emails.map(resendPayload)),
-  });
-  if (!res.ok) throw new Error(`Resend batch ${res.status}: ${await res.text()}`);
-}
-
-function layout(body: string, footer: string): string {
-  return `<!doctype html><html><body style="margin:0;background:#f2f1f6;font-family:Inter,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#140f2e">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:12px">
-<tr><td style="padding:24px 28px 8px"><a href="${absolute("/")}" style="font-size:18px;font-weight:700;color:#140f2e;text-decoration:none">${SITE_NAME}</a></td></tr>
-<tr><td style="padding:8px 28px 24px;font-size:15px;line-height:1.5">${body}</td></tr>
-</table>
-<p style="max-width:600px;font-size:12px;line-height:1.5;color:#827e97;margin:16px auto 0">${footer}</p>
-</td></tr></table></body></html>`;
 }
 
 // ── Subscribing ─────────────────────────────────────────────────────────
@@ -130,10 +70,10 @@ export async function requestSubscription(email: string): Promise<void> {
   }
 
   const link = absolute(`/digest/confirm?token=${token}`);
-  await sendOne({
+  await sendEmail({
     to: email,
     subject: `Confirm your ${SITE_NAME} weekly digest`,
-    html: layout(
+    html: emailLayout(
       `<p style="margin:0 0 16px">Confirm you'd like a weekly email of new talks from Ethereum conferences and meetups.</p>
 <p style="margin:0 0 16px"><a href="${link}" style="display:inline-block;background:#6426ef;color:#ffffff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px">Confirm subscription</a></p>
 <p style="margin:0;color:#55516b;font-size:13px">If you didn't ask for this, ignore this email and nothing will be sent.</p>`,
@@ -205,7 +145,7 @@ ${more > 0 ? `<a href="${absolute(g.href)}" style="font-size:13px;color:#6426ef;
     .join("");
   const otherEvents = groups.length - shown.length;
 
-  const html = layout(
+  const html = emailLayout(
     `<p style="margin:0 0 8px;font-size:20px;font-weight:700">${total} new ${total === 1 ? "talk" : "talks"} this week</p>
 <p style="margin:0 0 8px;color:#55516b">From ${groups.length} ${groups.length === 1 ? "event" : "events"}. Got a question? <a href="${absolute("/")}" style="color:#6426ef">Ask the archive</a>.</p>
 ${htmlGroups}
@@ -266,7 +206,7 @@ export async function sendWeeklyDigest(now = Date.now()): Promise<{ talks: numbe
 
     const ids = recipients.map((r) => r.id as string);
     try {
-      await sendBatch(recipients.map((r) => ({ to: r.email as string, ...digestEmail(groups, r.token as string) })));
+      await sendEmailBatch(recipients.map((r) => ({ to: r.email as string, ...digestEmail(groups, r.token as string) })));
       sent += recipients.length;
     } catch (err) {
       console.error("[digest] batch failed:", err);

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { lookupEnsName } from "@/lib/ens";
-import { getUserAddress, shortAddress } from "@/lib/userAddress";
+import { accountName, hasSignInProvider } from "@/lib/account";
 
 export const metadata = {
   title: "Connect an app — StreamETH",
@@ -51,16 +50,12 @@ export default async function ConsentPage({
     redirect(`/signin?next=${encodeURIComponent(`/oauth/consent?authorization_id=${authorizationId}`)}`);
   }
 
-  // Accounts are wallets — a leftover email-only account can't connect apps.
-  const address = getUserAddress(user);
-  if (!address) {
-    return <ConsentError message="This account isn't linked to a wallet. Sign out and sign in with your wallet, then connect again from your app." />;
+  // A leftover account from the old wallet sign-in can't connect apps.
+  if (!hasSignInProvider(user.app_metadata?.providers)) {
+    return <ConsentError message="This account uses the old wallet sign-in, which is no longer supported. Sign out, sign in with email or Google, then connect again from your app." />;
   }
 
-  const [{ data, error }, ensName] = await Promise.all([
-    supabase.auth.oauth.getAuthorizationDetails(authorizationId),
-    lookupEnsName(address),
-  ]);
+  const { data, error } = await supabase.auth.oauth.getAuthorizationDetails(authorizationId);
 
   if (error || !data) {
     return <ConsentError message="This connection request has expired or is no longer valid. Start connecting again from your app." />;
@@ -84,8 +79,8 @@ export default async function ConsentPage({
         <h1 className="display text-4xl text-ink">Connect {client.name || "this app"}</h1>
         <p className="text-[15px] text-ink-dim">
           {client.name || "This app"} wants to search the StreamETH archive and read transcripts as{" "}
-          <span className="font-semibold text-ink" title={address}>
-            {ensName ?? shortAddress(address)}
+          <span className="font-semibold text-ink" title={user.email}>
+            {accountName(user)}
           </span>
           .
         </p>
