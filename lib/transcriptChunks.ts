@@ -1,0 +1,97 @@
+import "server-only";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { lazy } from "./lazy";
+
+/** Transcript text and its embeddings, in Supabase Postgres (pgvector) —
+ * not data/streameth.db, which stopped scaling once the YouTube backfill's
+ * transcript text pushed it past Vercel's 250MB function size limit. See
+ * supabase/migrations/00000000000006_transcript_chunks.sql and
+ * scripts/embed-transcripts.mjs (the ingestion side). */
+
+const OPENAI_EMBEDDINGS_URL = "https://api.openai.com/v1/embeddings";
+export const EMBEDDING_MODEL = "text-embedding-3-small";
+
+export interface ChunkMatch {
+  videoId: string;
+  source: "streameth" | "youtube";
+  chunkIndex: number;
+  content: string;
+  similarity: number;
+}
+
+const getAdmin = lazy(
+  (): SupabaseClient =>
+    createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    })
+);
+
+function supabaseConfigured(): boolean {
+  return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+}
+
+export function ragConfigured(): boolean {
+  return supabaseConfigured() && Boolean(process.env.OPENAI_API_KEY);
+}
+
+/** Embeds a single query string for similarity search. */
+export async function embedQuery(text: string): Promise<number[]> {
+  const res = await fetch(OPENAI_EMBEDDINGS_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ model: EMBEDDING_MODEL, input: text }),
+  });
+  if (!res.ok) throw new Error(`OpenAI embeddings ${res.status}: ${await res.text().catch(() => "")}`);
+  const body = (await res.json()) as { data: { embedding: number[] }[] };
+  return body.data[0].embedding;
+}
+
+/** The chunks whose embeddings are closest to `queryEmbedding`, ranked by
+ * cosine similarity (highest first); empty when Supabase isn't configured,
+ * matching lib/jev.ts's "fall back to keeping everything" shape for an
+ * optional integration. */
+export async function matchChunks(queryEmbedding: number[], matchCount: number): Promise<ChunkMatch[]> {
+  if (!supabaseConfigured()) return [];
+  const { data, error } = await getAdmin().rpc("match_transcript_chunks", {
+    query_embedding: queryEmbedding,
+    match_count: matchCount,
+  });
+  if (error) throw error;
+  return (data as { video_id: string; source: "streameth" | "youtube"; chunk_index: number; content: string; similarity: number }[]).map(
+    (row) => ({
+      videoId: row.video_id,
+      source: row.source,
+      chunkIndex: row.chunk_index,
+      content: row.content,
+      similarity: row.similarity,
+    })
+  );
+}
+
+/** A video's chunks in reading order; empty when Supabase isn't
+ * configured, so a watch page without SUPABASE_SERVICE_ROLE_KEY set (e.g.
+ * local dev) renders without a transcript panel instead of 500ing. */
+export async function getTranscriptChunks(videoId: string): Promise<{ chunkIndex: number; content: string }[]> {
+  if (!supabaseConfigured()) return [];
+  const { data, error } = await getAdmin()
+    .from("transcript_chunks")
+    .select("chunk_index, content")
+    .eq("video_id", videoId)
+    .order("chunk_index", { ascending: true });
+  if (error) throw error;
+  return (data as { chunk_index: number; content: string }[]).map((row) => ({
+    chunkIndex: row.chunk_index,
+    content: row.content,
+  }));
+}
+
+/** The full transcript text for one video, reassembled from its chunks;
+ * null if it has none. */
+export async function getFullTranscript(videoId: string): Promise<string | null> {
+  const chunks = await getTranscriptChunks(videoId);
+  if (chunks.length === 0) return null;
+  return chunks.map((c) => c.content).join(" ");
+}

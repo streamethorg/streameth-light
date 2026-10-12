@@ -7,6 +7,7 @@ import {
   topTopics,
   type UnifiedVideo,
 } from "@/lib/videoDb";
+import { getFullTranscript } from "@/lib/transcriptChunks";
 import { EMPTY_FILTERS, type SortMode } from "@/lib/browseParams";
 import { SITE_NAME, SITE_URL } from "@/lib/social";
 import { verifySupabaseToken } from "@/lib/supabase/mcpAuth";
@@ -39,7 +40,7 @@ function summarize(v: UnifiedVideo) {
     speakers: v.speakers,
     publishedAt: isoDate(v.publishedAt),
     durationSeconds: v.durationSeconds === null ? null : Math.round(v.durationSeconds),
-    hasTranscript: Boolean(v.transcript),
+    hasTranscript: v.hasTranscript,
     url: absoluteUrl(v.watchUrl),
   };
 }
@@ -105,7 +106,7 @@ const handler = createMcpHandler(
       {
         title: "Get video",
         description:
-          "Full details for one video by id: description, speakers, topics, channel, event, watch and download links, and transcript length.",
+          "Full details for one video by id: description, speakers, topics, channel, event, watch and download links, and whether it has a transcript.",
         inputSchema: z.object({
           id: z.string().min(1).describe("Video id from search_videos"),
         }),
@@ -121,7 +122,6 @@ const handler = createMcpHandler(
           source: video.source,
           coverImage: video.coverImage,
           downloadUrl: video.downloadUrl,
-          transcriptChars: video.transcript?.length ?? 0,
         });
       }
     );
@@ -148,8 +148,9 @@ const handler = createMcpHandler(
       async ({ id, offset = 0, maxChars = DEFAULT_TRANSCRIPT_CHARS }) => {
         const video = getVideoById(id);
         if (!video) return error(`No video with id "${id}".`);
-        if (!video.transcript) return error(`"${video.title}" has no transcript.`);
-        const total = video.transcript.length;
+        const transcript = await getFullTranscript(id);
+        if (!transcript) return error(`"${video.title}" has no transcript.`);
+        const total = transcript.length;
         if (offset >= total) return error(`offset ${offset} is past the end (transcript is ${total} chars).`);
         const end = Math.min(offset + maxChars, total);
         return json({
@@ -158,7 +159,7 @@ const handler = createMcpHandler(
           totalChars: total,
           offset,
           nextOffset: end < total ? end : null,
-          text: video.transcript.slice(offset, end),
+          text: transcript.slice(offset, end),
         });
       }
     );

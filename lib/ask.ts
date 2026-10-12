@@ -1,6 +1,7 @@
 import "server-only";
 import { z } from "zod";
-import { getVideoById, searchForAnswers, type UnifiedVideo } from "./videoDb";
+import { getVideoById, getVideosByIds, type UnifiedVideo } from "./videoDb";
+import { embedQuery, getTranscriptChunks, matchChunks } from "./transcriptChunks";
 import { formatDateShort } from "./format";
 import { SITE_NAME, SITE_URL } from "./social";
 import { relevanceThreshold, scorePassages } from "./jev";
@@ -41,7 +42,6 @@ const MAX_SEARCH_ROUNDS = 4;
 const MAX_QUERIES_PER_ROUND = 3;
 const VIDEOS_PER_SEARCH = 6;
 const PASSAGES_PER_VIDEO = 2;
-const PASSAGE_CHARS = 900;
 export const MAX_QUESTION_CHARS = 500;
 // How much of a talk's transcript goes in when asking about that talk.
 const TALK_CONTEXT_CHARS = 40_000;
@@ -92,56 +92,6 @@ function decodeEntities(text: string): string {
     .replace(/&amp;/g, "&");
 }
 
-function queryTerms(query: string): string[] {
-  return query
-    .toLowerCase()
-    .split(/[^\p{L}\p{N}]+/u)
-    .filter((t) => t.length > 2);
-}
-
-/** The transcript windows that mention the query's terms most, in reading
- * order; falls back to the description when there's no transcript. */
-function bestPassages(video: UnifiedVideo, terms: string[]): string[] {
-  const text = decodeEntities(video.transcript || video.description || "").replace(/\s+/g, " ").trim();
-  if (!text) return [];
-  if (text.length <= PASSAGE_CHARS) return [text];
-
-  const step = Math.floor(PASSAGE_CHARS / 2);
-  const windows: { start: number; score: number }[] = [];
-  const lower = text.toLowerCase();
-  for (let start = 0; start < text.length; start += step) {
-    const chunk = lower.slice(start, start + PASSAGE_CHARS);
-    let score = 0;
-    for (const term of terms) {
-      let i = chunk.indexOf(term);
-      while (i !== -1) {
-        score += 1;
-        i = chunk.indexOf(term, i + term.length);
-      }
-    }
-    windows.push({ start, score });
-  }
-
-  const picked: number[] = [];
-  for (const w of [...windows].sort((a, b) => b.score - a.score)) {
-    if (picked.length >= PASSAGES_PER_VIDEO) break;
-    if (w.score === 0 && picked.length > 0) break;
-    // Skip windows overlapping one already taken.
-    if (picked.some((p) => Math.abs(p - w.start) < PASSAGE_CHARS)) continue;
-    picked.push(w.start);
-  }
-
-  return picked
-    .sort((a, b) => a - b)
-    .map((start) => {
-      // Widen to word boundaries so passages don't start mid-word.
-      const from = start === 0 ? 0 : text.indexOf(" ", start) + 1;
-      const toSpace = text.lastIndexOf(" ", start + PASSAGE_CHARS);
-      const to = toSpace > from ? toSpace : start + PASSAGE_CHARS;
-      return `${from > 0 ? "…" : ""}${text.slice(from, to)}${to < text.length ? "…" : ""}`;
-    });
-}
-
 function talkHeader(v: UnifiedVideo): string {
   return [
     `Talk: ${v.title}`,
@@ -149,25 +99,52 @@ function talkHeader(v: UnifiedVideo): string {
     v.eventName ? `Event: ${v.eventName}` : "",
     v.orgName ? `Channel: ${v.orgName}` : "",
     v.publishedAt ? `Date: ${new Date(v.publishedAt).toISOString().slice(0, 10)}` : "",
-    v.transcript ? "" : "(no transcript — passage is from the description)",
+    v.hasTranscript ? "" : "(no transcript — passage is from the description)",
   ]
     .filter(Boolean)
     .join("\n");
 }
 
-/** Runs one search, drops passages Jev judges irrelevant to the user's
- * question (when configured), and registers the rest as citable sources. */
+// Overfetches chunks beyond VIDEOS_PER_SEARCH × PASSAGES_PER_VIDEO so there's
+// enough similarity-ranked material to fill that many distinct videos even
+// when the top matches cluster on just a few talks.
+const CHUNK_MATCH_COUNT = VIDEOS_PER_SEARCH * PASSAGES_PER_VIDEO * 5;
+
+/** Runs one semantic search over transcript chunks (via Supabase pgvector),
+ * drops passages Jev judges irrelevant to the user's question (when
+ * configured), and registers the rest as citable sources. */
 async function runSearch(
   query: string,
   question: string,
   sources: AskSource[],
   seen: Map<string, number>
 ): Promise<{ text: string; added: AskSource[] }> {
-  const terms = queryTerms(query);
-  const videos = searchForAnswers(query, VIDEOS_PER_SEARCH);
-  if (videos.length === 0) return { text: `No talks matched "${query}".`, added: [] };
+  const queryEmbedding = await embedQuery(query);
+  const matches = await matchChunks(queryEmbedding, CHUNK_MATCH_COUNT);
+  if (matches.length === 0) return { text: `No talks matched "${query}".`, added: [] };
 
-  const candidates = videos.flatMap((video) => bestPassages(video, terms).map((excerpt) => ({ video, excerpt })));
+  // Group by video in similarity order, capped at VIDEOS_PER_SEARCH distinct
+  // videos and PASSAGES_PER_VIDEO chunks each.
+  const byVideo = new Map<string, typeof matches>();
+  for (const m of matches) {
+    if (!byVideo.has(m.videoId) && byVideo.size >= VIDEOS_PER_SEARCH) continue;
+    const list = byVideo.get(m.videoId) ?? [];
+    if (list.length >= PASSAGES_PER_VIDEO) continue;
+    list.push(m);
+    byVideo.set(m.videoId, list);
+  }
+
+  const videoIds = [...byVideo.keys()];
+  const videoById = new Map(getVideosByIds(videoIds).map((v) => [v.id, v]));
+  const candidates = videoIds.flatMap((id) => {
+    const video = videoById.get(id);
+    if (!video) return [];
+    // Reading order within the talk, not similarity order.
+    const chunks = [...byVideo.get(id)!].sort((a, b) => a.chunkIndex - b.chunkIndex);
+    return chunks.map((c) => ({ video, excerpt: c.content }));
+  });
+  if (candidates.length === 0) return { text: `No talks matched "${query}".`, added: [] };
+
   const scores = await scorePassages(
     question,
     candidates.map((c) => `${talkHeader(c.video)}\n${c.excerpt}`)
@@ -182,7 +159,8 @@ async function runSearch(
   }
 
   const added: AskSource[] = [];
-  const blocks = videos.flatMap((v) => {
+  const orderedVideos = videoIds.map((id) => videoById.get(id)).filter((v): v is UnifiedVideo => Boolean(v));
+  const blocks = orderedVideos.flatMap((v) => {
     const passages = kept.filter((c) => c.video === v).map((c) => c.excerpt);
     if (passages.length === 0) return [];
 
@@ -275,51 +253,64 @@ class MarkupGuard {
 /** The model provider is out of capacity or credits for now. */
 export class AskBusyError extends Error {}
 
+function registerSource(
+  video: UnifiedVideo,
+  excerpt: string,
+  sources: AskSource[],
+  seen: Map<string, number>
+): AskSource {
+  const key = `${video.id}:${excerpt.slice(0, 80)}`;
+  const n = sources.length + 1;
+  seen.set(key, n);
+  const source: AskSource = {
+    n,
+    videoId: video.id,
+    title: video.title,
+    speakers: video.speakers,
+    event: video.eventName,
+    channel: video.orgName,
+    date: video.publishedAt ? formatDateShort(video.publishedAt) : null,
+    watchUrl: video.watchUrl,
+    coverImage: video.coverImage,
+    excerpt,
+  };
+  sources.push(source);
+  return source;
+}
+
 /** The talk a question is about, split into numbered, citable passages:
- * its transcript in reading order (capped, ~10k tokens), or its
- * description when there's no transcript. */
-function talkContext(
+ * its transcript in reading order (capped, ~40k chars), read from its
+ * precomputed chunks (lib/transcriptChunks.ts) — or its description when
+ * there's no transcript. */
+async function talkContext(
   video: UnifiedVideo,
   sources: AskSource[],
   seen: Map<string, number>
-): { text: string; added: AskSource[] } {
-  const body = decodeEntities(video.transcript || video.description || "").replace(/\s+/g, " ").trim();
-  if (!body) return { text: `${talkHeader(video)}\n(no transcript or description)`, added: [] };
+): Promise<{ text: string; added: AskSource[] }> {
+  const chunks = video.hasTranscript ? await getTranscriptChunks(video.id) : [];
 
-  const chunks: string[] = [];
-  let start = 0;
-  while (start < Math.min(body.length, TALK_CONTEXT_CHARS)) {
-    let end = Math.min(start + PASSAGE_CHARS, body.length);
-    // End on a word boundary.
-    if (end < body.length) {
-      const space = body.lastIndexOf(" ", end);
-      if (space > start) end = space;
-    }
-    chunks.push(body.slice(start, end).trim());
-    start = end + 1;
+  if (chunks.length === 0) {
+    const body = decodeEntities(video.description || "").replace(/\s+/g, " ").trim();
+    if (!body) return { text: `${talkHeader(video)}\n(no transcript or description)`, added: [] };
+    const source = registerSource(video, body, sources, seen);
+    return { text: `${talkHeader(video)}\n[${source.n}] ${body}`, added: [source] };
+  }
+
+  let totalChars = 0;
+  const included: typeof chunks = [];
+  for (const c of chunks) {
+    if (totalChars + c.content.length > TALK_CONTEXT_CHARS && included.length > 0) break;
+    included.push(c);
+    totalChars += c.content.length;
   }
 
   const added: AskSource[] = [];
-  const numbered = chunks.map((excerpt) => {
-    const n = sources.length + 1;
-    seen.set(`${video.id}:${excerpt.slice(0, 80)}`, n);
-    const source: AskSource = {
-      n,
-      videoId: video.id,
-      title: video.title,
-      speakers: video.speakers,
-      event: video.eventName,
-      channel: video.orgName,
-      date: video.publishedAt ? formatDateShort(video.publishedAt) : null,
-      watchUrl: video.watchUrl,
-      coverImage: video.coverImage,
-      excerpt,
-    };
-    sources.push(source);
+  const numbered = included.map(({ content: excerpt }) => {
+    const source = registerSource(video, excerpt, sources, seen);
     added.push(source);
-    return `[${n}] ${excerpt}`;
+    return `[${source.n}] ${excerpt}`;
   });
-  const truncated = body.length > TALK_CONTEXT_CHARS ? "\n(transcript continues; later parts not shown)" : "";
+  const truncated = included.length < chunks.length ? "\n(transcript continues; later parts not shown)" : "";
   return { text: `${talkHeader(video)}\n${numbered.join("\n")}${truncated}`, added };
 }
 
@@ -448,7 +439,7 @@ export async function* answerQuestion(
   const talk = videoId ? getVideoById(videoId) : undefined;
   let userContent = question;
   if (talk) {
-    const { text, added } = talkContext(talk, sources, seen);
+    const { text, added } = await talkContext(talk, sources, seen);
     if (added.length) yield { type: "sources", sources: added };
     userContent = `I'm watching this talk:\n\n${text}\n\nMy question: ${question}\n\nAnswer from this talk first, citing its passages. Only search the archive if the talk doesn't cover the question, or the question asks about other talks.`;
   }

@@ -20,6 +20,7 @@ import {
   relatedSessions,
 } from "@/lib/data";
 import { getVideoById, relatedVideos } from "@/lib/videoDb";
+import { getFullTranscript } from "@/lib/transcriptChunks";
 import { slugifyTopic } from "@/lib/topics";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
 import { formatDateLong, formatTimecode } from "@/lib/format";
@@ -141,9 +142,9 @@ export default async function WatchPage({
   const duration = getSessionDurationSeconds(session);
   const downloadUrl = getDownloadUrl(session);
   const video = getVideoById(session._id);
-  // From the database (built from data/transcripts.json), so the raw JSON
-  // doesn't have to ship with the serverless function.
-  const transcript = video?.transcript ?? null;
+  // From Supabase (lib/transcriptChunks.ts), not the SQLite DB — see its
+  // module comment for why transcript text lives there now.
+  const transcript = video ? await getFullTranscript(video.id) : null;
 
   return (
     <>
@@ -236,12 +237,13 @@ export default async function WatchPage({
   );
 }
 
-function YoutubeWatchPage({ id }: { id: string }) {
+async function YoutubeWatchPage({ id }: { id: string }) {
   const video = getVideoById(id);
   if (!video) notFound();
 
   const videoId = id.slice("yt-".length);
   const related = relatedVideos(video, 12);
+  const transcript = await getFullTranscript(video.id);
 
   return (
     <>
@@ -278,7 +280,7 @@ function YoutubeWatchPage({ id }: { id: string }) {
         }
         metaLine={video.publishedAt ? formatDateLong(video.publishedAt) : undefined}
         description={video.description}
-        transcript={video.transcript}
+        transcript={transcript}
         speakers={
           video.speakers.length > 0 && (
             <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">

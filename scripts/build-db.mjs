@@ -294,7 +294,6 @@ db.exec(`
     speakers TEXT NOT NULL DEFAULT '',
     topics TEXT NOT NULL DEFAULT '',
     has_transcript INTEGER NOT NULL DEFAULT 0,
-    transcript TEXT,
     download_url TEXT,
     content_url TEXT
   );
@@ -305,8 +304,10 @@ db.exec(`
   CREATE INDEX idx_videos_duration ON videos(duration_seconds);
 
   -- Contentless (content=''): only the search index is stored, not a second
-  -- copy of every column. Transcripts are most of the data, and storing them
-  -- twice pushed the database past Vercel's 250 MB function size limit.
+  -- copy of every column. Transcript text lives in Supabase's
+  -- transcript_chunks table (see lib/transcriptChunks.ts) instead of here —
+  -- storing it in this DB at all, even just for the FTS index, is what
+  -- pushed it past Vercel's 250 MB function size limit as the backfill grew.
   -- Each row's rowid is its videos.rowid; queries join on that.
   CREATE VIRTUAL TABLE videos_fts USING fts5(
     title,
@@ -315,7 +316,6 @@ db.exec(`
     topics,
     org_name,
     event_name,
-    transcript,
     content=''
   );
 `);
@@ -330,12 +330,12 @@ const insertVideo = db.prepare(`
   INSERT INTO videos (
     id, source, title, description, org_id, org_name, org_slug, event_id,
     event_name, published_at, duration_seconds, cover_image, watch_url,
-    speakers, topics, has_transcript, transcript, download_url, content_url
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    speakers, topics, has_transcript, download_url, content_url
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertFts = db.prepare(`
-  INSERT INTO videos_fts (rowid, title, description, speakers, topics, org_name, event_name, transcript)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO videos_fts (rowid, title, description, speakers, topics, org_name, event_name)
+  VALUES (?, ?, ?, ?, ?, ?, ?)
 `);
 
 let streamethCount = 0;
@@ -405,7 +405,6 @@ for (const s of sessions) {
     speakerNames,
     topicsDisplay,
     transcript ? 1 : 0,
-    transcript || null,
     resolvedDownloadUrl(s),
     resolvedContentUrl(s)
   );
@@ -416,8 +415,7 @@ for (const s of sessions) {
     speakerSearchText,
     topicsSearchText,
     org?.name ?? "",
-    event?.name ?? "",
-    transcript
+    event?.name ?? ""
   );
   streamethCount++;
 }
@@ -468,11 +466,10 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       speakerNames,
       topics,
       transcript ? 1 : 0,
-      transcript || null,
       null,
       null
     );
-    insertFts.run(youtubeRowid, v.title ?? "", descriptionSearchText, speakerNames, topics, orgName, "", transcript ?? "");
+    insertFts.run(youtubeRowid, v.title ?? "", descriptionSearchText, speakerNames, topics, orgName, "");
     youtubeCount++;
   }
 }

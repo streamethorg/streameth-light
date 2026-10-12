@@ -1,4 +1,5 @@
 import { getVideoById } from "@/lib/videoDb";
+import { getFullTranscript } from "@/lib/transcriptChunks";
 import { getEventById, getOrgForSession, getSession } from "@/lib/data";
 import { findSpeakerSlugForName } from "@/lib/people";
 import { formatTimecode } from "@/lib/format";
@@ -60,8 +61,9 @@ export async function GET(_request: Request, ctx: RouteContext<"/watch/[id]/md">
     }
   }
 
-  if (video.transcript?.trim()) {
-    sections.push("", "## Transcript", "", video.transcript.trim());
+  const transcript = await getFullTranscript(video.id);
+  if (transcript?.trim()) {
+    sections.push("", "## Transcript", "", transcript.trim());
   }
 
   return new Response(`${sections.join("\n").trimEnd()}\n`, {
