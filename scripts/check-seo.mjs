@@ -39,22 +39,29 @@ const videoById = new Map(videos.map((v) => [v.id, v]));
 // DB — read each video's first chunk straight from there instead of the
 // dropped `transcript` column. Only videos actually embedded there are
 // checked, so this doesn't fail the build while the one-time
-// scripts/embed-transcripts.mjs backfill is still in progress.
+// scripts/embed-transcripts.mjs backfill is still in progress. A Supabase
+// error here just skips the check (with a warning) rather than failing the
+// whole build over one optional, best-effort verification.
 const transcriptHeads = new Map();
 if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-  const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
-    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
-  });
-  const pageSize = 1000;
-  for (let offset = 0; ; offset += pageSize) {
-    const { data, error } = await supabase
-      .from("transcript_chunks")
-      .select("video_id, content")
-      .eq("chunk_index", 0)
-      .range(offset, offset + pageSize - 1);
-    if (error) throw error;
-    for (const row of data) transcriptHeads.set(row.video_id, row.content.slice(0, 200));
-    if (data.length < pageSize) break;
+  try {
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    });
+    const pageSize = 1000;
+    for (let offset = 0; ; offset += pageSize) {
+      const { data, error } = await supabase
+        .from("transcript_chunks")
+        .select("video_id, content")
+        .eq("chunk_index", 0)
+        .range(offset, offset + pageSize - 1);
+      if (error) throw error;
+      for (const row of data) transcriptHeads.set(row.video_id, row.content.slice(0, 200));
+      if (data.length < pageSize) break;
+    }
+  } catch (err) {
+    console.warn("check-seo: failed to read transcript_chunks from Supabase, skipping the transcript-in-HTML check:", err);
+    transcriptHeads.clear();
   }
 } else {
   console.warn("check-seo: SUPABASE_SERVICE_ROLE_KEY not set — skipping the transcript-in-HTML check");

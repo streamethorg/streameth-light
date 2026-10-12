@@ -71,21 +71,29 @@ export async function matchChunks(queryEmbedding: number[], matchCount: number):
   );
 }
 
-/** A video's chunks in reading order; empty when Supabase isn't
- * configured, so a watch page without SUPABASE_SERVICE_ROLE_KEY set (e.g.
- * local dev) renders without a transcript panel instead of 500ing. */
+/** A video's chunks in reading order; empty when Supabase isn't configured
+ * or the request fails, so a watch page renders without a transcript panel
+ * instead of 500ing — and, since 2000+ StreamETH watch pages call this
+ * during `next build`'s static generation, a single transient Supabase
+ * error can't take down the whole build the way it did once here (a bad
+ * key turned into a build-wide crash instead of one missing transcript). */
 export async function getTranscriptChunks(videoId: string): Promise<{ chunkIndex: number; content: string }[]> {
   if (!supabaseConfigured()) return [];
-  const { data, error } = await getAdmin()
-    .from("transcript_chunks")
-    .select("chunk_index, content")
-    .eq("video_id", videoId)
-    .order("chunk_index", { ascending: true });
-  if (error) throw error;
-  return (data as { chunk_index: number; content: string }[]).map((row) => ({
-    chunkIndex: row.chunk_index,
-    content: row.content,
-  }));
+  try {
+    const { data, error } = await getAdmin()
+      .from("transcript_chunks")
+      .select("chunk_index, content")
+      .eq("video_id", videoId)
+      .order("chunk_index", { ascending: true });
+    if (error) throw error;
+    return (data as { chunk_index: number; content: string }[]).map((row) => ({
+      chunkIndex: row.chunk_index,
+      content: row.content,
+    }));
+  } catch (err) {
+    console.error(`[transcriptChunks] failed to load chunks for ${videoId}:`, err);
+    return [];
+  }
 }
 
 /** The full transcript text for one video, reassembled from its chunks;
