@@ -20,7 +20,9 @@ export interface UnifiedVideo {
   watchUrl: string;
   speakers: string[];
   topics: string[];
-  transcript: string | null;
+  /** Transcript text lives in Supabase's transcript_chunks table, not here
+   * — see lib/transcriptChunks.ts's getFullTranscript(). */
+  hasTranscript: boolean;
   downloadUrl: string | null;
   /** Playable stream/file URL for StreamETH sessions; null for YouTube. */
   contentUrl: string | null;
@@ -46,7 +48,7 @@ interface VideoRow {
   watch_url: string;
   speakers: string;
   topics: string;
-  transcript: string | null;
+  has_transcript: number;
   download_url: string | null;
   content_url: string | null;
 }
@@ -67,7 +69,7 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     watchUrl: row.watch_url,
     speakers: row.speakers ? row.speakers.split(", ").filter(Boolean) : [],
     topics: row.topics ? row.topics.split(", ").filter(Boolean) : [],
-    transcript: row.transcript,
+    hasTranscript: Boolean(row.has_transcript),
     downloadUrl: row.download_url,
     contentUrl: row.content_url,
   };
@@ -162,45 +164,15 @@ function matchQuery(q: string): string {
     .join(" ");
 }
 
-// Words that carry no meaning for retrieval — dropped from question-style
-// queries so "what is the roadmap for the merge" searches roadmap/merge.
-const STOPWORDS = new Set(
-  (
-    "a an and are as at be been but by can could did do does for from had has have how i if in into is it its " +
-    "me my of on or our should so than that the their them then there these they this to was we were what " +
-    "when where which who why will with would you your about any some just more most also not no yes vs"
-  ).split(" ")
-);
-
-/** Retrieval for AI answers: any-term (OR) full-text match ranked by BM25,
- * weighting titles, speakers and transcripts over the rest, so a natural
- * question still finds talks that cover only part of it. Among the top
- * matches, talks with a transcript come first — a description alone rarely
- * says what was actually argued. */
-export function searchForAnswers(query: string, limit = 8): UnifiedVideo[] {
-  const terms = [
-    ...new Set(
-      query
-        .toLowerCase()
-        .split(/[^\p{L}\p{N}-]+/u)
-        .map((t) => t.replace(/^-+|-+$/g, ""))
-        .filter((t) => t.length > 1 && !STOPWORDS.has(t))
-    ),
-  ];
-  if (terms.length === 0) return [];
-  const match = terms.map((t) => `"${t.replace(/"/g, '""')}"*`).join(" OR ");
+/** Video metadata for a set of ids, in no particular order — used to
+ * hydrate chunk matches from lib/transcriptChunks.ts's matchChunks() with
+ * title/speakers/event/etc. Missing ids are silently skipped. */
+export function getVideosByIds(ids: string[]): UnifiedVideo[] {
+  if (ids.length === 0) return [];
   const rows = getDb()
-    .prepare(
-      `SELECT v.* FROM videos_fts
-       JOIN videos v ON v.rowid = videos_fts.rowid
-       WHERE videos_fts MATCH ?
-       ORDER BY bm25(videos_fts, 4, 1, 3, 1, 1, 1, 2)
-       LIMIT ?`
-    )
-    .all(match, limit * 3) as unknown as VideoRow[];
-  const withTranscript = rows.filter((r) => r.transcript);
-  const without = rows.filter((r) => !r.transcript);
-  return [...withTranscript, ...without].slice(0, limit).map(rowToVideo);
+    .prepare(`SELECT * FROM videos WHERE id IN (${ids.map(() => "?").join(",")})`)
+    .all(...ids) as unknown as VideoRow[];
+  return rows.map(rowToVideo);
 }
 
 export function topTopics(limit = 16): string[] {
@@ -382,8 +354,7 @@ export function countVideos(): number {
 }
 
 /** One page of the catalog in a stable order (oldest first, then id), for
- * the chunked video sitemaps — skips the transcript column, which would be
- * hundreds of MB across the whole table. */
+ * the chunked video sitemaps. */
 export function listVideosForSitemap(offset: number, limit: number): SitemapVideo[] {
   const rows = getDb()
     .prepare(
@@ -391,7 +362,7 @@ export function listVideosForSitemap(offset: number, limit: number): SitemapVide
               published_at, duration_seconds, cover_image, content_url
        FROM videos ORDER BY published_at ASC, id ASC LIMIT ? OFFSET ?`
     )
-    .all(limit, offset) as unknown as (Omit<VideoRow, "transcript" | "watch_url" | "event_id" | "download_url">)[];
+    .all(limit, offset) as unknown as (Omit<VideoRow, "watch_url" | "event_id" | "download_url" | "has_transcript">)[];
   return rows.map((r) => ({
     id: r.id,
     source: r.source,

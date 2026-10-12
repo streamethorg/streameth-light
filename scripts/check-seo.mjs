@@ -13,6 +13,7 @@
 import { DatabaseSync } from "node:sqlite";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { createClient } from "@supabase/supabase-js";
 
 const APP_DIR = join(process.cwd(), ".next", "server", "app");
 const WATCH_DIR = join(APP_DIR, "watch");
@@ -33,7 +34,38 @@ if (!existsSync(WATCH_DIR) || !existsSync(DB_PATH)) {
 const db = new DatabaseSync(DB_PATH, { readOnly: true });
 const videos = db.prepare("SELECT id, source, has_transcript FROM videos").all();
 const videoById = new Map(videos.map((v) => [v.id, v]));
-const transcriptStart = db.prepare("SELECT substr(transcript, 1, 200) AS head FROM videos WHERE id = ?");
+
+// Transcript text lives in Supabase now (lib/transcriptChunks.ts), not this
+// DB — read each video's first chunk straight from there instead of the
+// dropped `transcript` column. Only videos actually embedded there are
+// checked, so this doesn't fail the build while the one-time
+// scripts/embed-transcripts.mjs backfill is still in progress. A Supabase
+// error here just skips the check (with a warning) rather than failing the
+// whole build over one optional, best-effort verification.
+const transcriptHeads = new Map();
+if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  try {
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    });
+    const pageSize = 1000;
+    for (let offset = 0; ; offset += pageSize) {
+      const { data, error } = await supabase
+        .from("transcript_chunks")
+        .select("video_id, content")
+        .eq("chunk_index", 0)
+        .range(offset, offset + pageSize - 1);
+      if (error) throw error;
+      for (const row of data) transcriptHeads.set(row.video_id, row.content.slice(0, 200));
+      if (data.length < pageSize) break;
+    }
+  } catch (err) {
+    console.warn("check-seo: failed to read transcript_chunks from Supabase, skipping the transcript-in-HTML check:", err);
+    transcriptHeads.clear();
+  }
+} else {
+  console.warn("check-seo: SUPABASE_SERVICE_ROLE_KEY not set — skipping the transcript-in-HTML check");
+}
 
 function decodeEntities(text) {
   return text
@@ -97,10 +129,10 @@ for (const file of pageFiles) {
   const row = videoById.get(id);
   if (!row) {
     fail(where, "prerendered but not in data/streameth.db (sitemap and page data disagree)");
-  } else if (row.has_transcript) {
+  } else if (transcriptHeads.has(id)) {
     // Compare on the first words, whitespace-normalized, since React escapes
     // the text node.
-    const head = (transcriptStart.get(id)?.head ?? "").replace(/\s+/g, " ").trim().split(" ").slice(0, 8).join(" ");
+    const head = transcriptHeads.get(id).replace(/\s+/g, " ").trim().split(" ").slice(0, 8).join(" ");
     const text = decodeEntities(html.replace(/<!-- -->/g, "")).replace(/\s+/g, " ");
     if (head && !text.includes(head)) fail(where, "transcript is not in the server-rendered HTML");
   }

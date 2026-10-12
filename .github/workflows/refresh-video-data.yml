@@ -11,7 +11,8 @@ name: Refresh video data
 # scripts/guess-youtube-handles.py, scripts/merge-found-channels.py,
 # scripts/pull-youtube-videos.py, scripts/pull-youtube-metadata.py,
 # scripts/pull-youtube-transcripts.py, scripts/classify-youtube-events.py,
-# scripts/extract-youtube-speakers.py, scripts/build-db.mjs.
+# scripts/extract-youtube-speakers.py, scripts/build-db.mjs,
+# scripts/embed-transcripts.mjs.
 #
 # scripts/pull-youtube-videos.py writes data/sources/new-video-ids.json every
 # run — just the video IDs it discovered that weren't already tracked.
@@ -79,6 +80,13 @@ jobs:
         run: |
           python3 scripts/classify-youtube-events.py
           python3 scripts/extract-youtube-speakers.py
+
+      - name: Embed new transcripts for semantic search
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/embed-transcripts.mjs
 
       - name: Rebuild DB
         run: node scripts/build-db.mjs

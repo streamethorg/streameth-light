@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
     "*": [
       "./data/transcripts.json",
       "./data/sources/youtube-transcripts.json",
+      // The sharded backfill dataset (scripts/transcript_shards.py) — same
+      // reason as its legacy single-file predecessor above, just bigger
+      // (~270MB across the 10 shards). Its content lives in Supabase
+      // (lib/transcriptChunks.ts) now, read over the network, not bundled.
+      "./data/sources/youtube-transcripts/**",
       "./data/sources/youtube-metadata.json",
       "./data/sources/youtube-speakers.json",
       "./data/sources/mira-ethdenver-2025.json",

@@ -13,6 +13,7 @@ import {
   groupVideosByInferredEvent,
 } from "@/lib/youtube";
 import { getVideoById } from "@/lib/videoDb";
+import { getFullTranscript } from "@/lib/transcriptChunks";
 import { formatDateLong } from "@/lib/format";
 import { buildMetadata } from "@/lib/social";
 
@@ -63,6 +64,7 @@ export default async function YoutubeEventPage({
   const selected = (v && group.videos.find((vid) => vid.videoId === v)) || group.videos[0];
   const others = group.videos.filter((vid) => vid.videoId !== selected.videoId);
   const unified = getVideoById(`yt-${selected.videoId}`);
+  const transcript = unified?.hasTranscript ? await getFullTranscript(unified.id) : null;
 
   return (
     <WatchLayout
@@ -113,7 +115,7 @@ export default async function YoutubeEventPage({
       }
       metaLine={selected.publishedAt ? formatDateLong(selected.publishedAt) : undefined}
       description={selected.description || unified?.description}
-      transcript={unified?.transcript}
+      transcript={transcript}
       speakers={
         unified &&
         unified.speakers.length > 0 && (

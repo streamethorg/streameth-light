@@ -17,6 +17,7 @@
 # work where the two overlap, but no coordination needed and no risk of
 # missing a video.
 import json
+import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -28,9 +29,12 @@ from youtube_transcript_api._errors import (
 )
 
 ROOT = Path(__file__).resolve().parent.parent
-VIDEOS_PATH = ROOT / "data" / "sources" / "youtube-videos.json"
-MAIN_OUT_PATH = ROOT / "data" / "sources" / "youtube-transcripts.json"
-OUT_PATH = ROOT / "data" / "sources" / "youtube-transcripts-ytapi.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import transcript_shards as shards
+
+DATA_DIR = ROOT / "data"
+VIDEOS_PATH = DATA_DIR / "sources" / "youtube-videos.json"
+OUT_PATH = DATA_DIR / "sources" / "youtube-transcripts-ytapi.json"
 CONCURRENCY = 8
 
 api = YouTubeTranscriptApi()
@@ -56,9 +60,7 @@ def main() -> None:
                 all_ids.append(v["videoId"])
     all_ids = list(dict.fromkeys(all_ids))
 
-    done_already = {}
-    if MAIN_OUT_PATH.exists():
-        done_already.update(json.load(open(MAIN_OUT_PATH)))
+    done_already = shards.load_all(DATA_DIR)
     if OUT_PATH.exists():
         done_already.update(json.load(open(OUT_PATH)))
 
