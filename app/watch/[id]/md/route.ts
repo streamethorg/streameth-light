@@ -61,7 +61,7 @@ export async function GET(_request: Request, ctx: RouteContext<"/watch/[id]/md">
     }
   }
 
-  const transcript = await getFullTranscript(video.id);
+  const transcript = video.hasTranscript ? await getFullTranscript(video.id) : null;
   if (transcript?.trim()) {
     sections.push("", "## Transcript", "", transcript.trim());
   }

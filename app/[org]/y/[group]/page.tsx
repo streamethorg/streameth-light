@@ -64,7 +64,7 @@ export default async function YoutubeEventPage({
   const selected = (v && group.videos.find((vid) => vid.videoId === v)) || group.videos[0];
   const others = group.videos.filter((vid) => vid.videoId !== selected.videoId);
   const unified = getVideoById(`yt-${selected.videoId}`);
-  const transcript = unified ? await getFullTranscript(unified.id) : null;
+  const transcript = unified?.hasTranscript ? await getFullTranscript(unified.id) : null;
 
   return (
     <WatchLayout

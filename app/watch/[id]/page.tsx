@@ -143,8 +143,12 @@ export default async function WatchPage({
   const downloadUrl = getDownloadUrl(session);
   const video = getVideoById(session._id);
   // From Supabase (lib/transcriptChunks.ts), not the SQLite DB — see its
-  // module comment for why transcript text lives there now.
-  const transcript = video ? await getFullTranscript(video.id) : null;
+  // module comment for why transcript text lives there now. Gated on the
+  // local has_transcript flag so the ~800 StreamETH videos without one
+  // skip the network round-trip entirely — this page is prerendered for
+  // every session at build time, so that's ~800 wasted Supabase calls
+  // otherwise.
+  const transcript = video?.hasTranscript ? await getFullTranscript(video.id) : null;
 
   return (
     <>
@@ -243,7 +247,7 @@ async function YoutubeWatchPage({ id }: { id: string }) {
 
   const videoId = id.slice("yt-".length);
   const related = relatedVideos(video, 12);
-  const transcript = await getFullTranscript(video.id);
+  const transcript = video.hasTranscript ? await getFullTranscript(video.id) : null;
 
   return (
     <>
