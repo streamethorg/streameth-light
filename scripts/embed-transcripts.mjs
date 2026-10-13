@@ -29,10 +29,10 @@ const CHUNK_CHARS = 900;
 // Embedding calls are batched at 100 for API efficiency, but writes are
 // split much smaller (see WRITE_BATCH) — the two don't need to match.
 const EMBED_BATCH = 100;
-// Each insert also updates the HNSW index (transcript_chunks_embedding_idx).
-// At halfvec(512) the index fits in memory, so incremental daily runs write
-// fine with it live; for a full re-embed of the whole archive, drop it first
-// and rebuild once afterward (see the 00000000000008 migration).
+// Inserts also update the IVFFlat index (transcript_chunks_embedding_idx),
+// which is cheap — daily incremental runs write fine with it live. Its
+// cluster centroids come from the data at build time, so after a full
+// re-embed of the archive, rebuild it (see the 00000000000008 migration).
 const WRITE_BATCH = 100;
 // Batches are independent (each upserts its own rows), so running several
 // in parallel is safe — sequential was clocked at ~40s/(100-chunk) batch,

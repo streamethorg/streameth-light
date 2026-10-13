@@ -10,7 +10,13 @@
 -- re-normalized, is itself a valid lower-dimension embedding (the same thing
 -- its `dimensions` API parameter does), so the existing vectors are cut down
 -- in place — no re-embedding. halfvec halves the storage again. ~1KB per row
--- instead of ~6KB, small enough for an HNSW index to build and stay cached.
+-- instead of ~6KB.
+--
+-- The index is IVFFlat, not HNSW: even at 512 dims an HNSW build on this
+-- instance (~1GB RAM, one shared vCPU) ran out of maintenance memory a third
+-- of the way in and slowed to ~20 rows/s on disk — hours for 330k rows.
+-- IVFFlat builds in minutes here. lists ≈ sqrt(rows); probes is set on the
+-- search function below to trade a little recall for speed.
 --
 -- Copies into a new table rather than ALTER COLUMN TYPE so the old table's
 -- space is released by a plain DROP instead of needing a VACUUM FULL. On the
@@ -44,10 +50,14 @@ alter table public.transcript_chunks rename constraint transcript_chunks_new_vid
 
 create index if not exists transcript_chunks_video_idx on public.transcript_chunks (video_id);
 create index if not exists transcript_chunks_embedding_idx
-  on public.transcript_chunks using hnsw (embedding halfvec_cosine_ops);
+  on public.transcript_chunks using ivfflat (embedding halfvec_cosine_ops) with (lists = 600);
 
 alter table public.transcript_chunks enable row level security;
 
+-- plpgsql so ivfflat.probes can be set per call with set_config(): a
+-- `set ivfflat.probes = ...` clause on the function is refused for the
+-- migration role ("permission denied to set parameter"). probes = 20 of the
+-- 600 lists keeps recall high at ~3% of the table scanned.
 create or replace function public.match_transcript_chunks(
   query_embedding halfvec(512),
   match_count int default 20
@@ -59,13 +69,17 @@ returns table (
   content text,
   similarity float
 )
-language sql stable
+language plpgsql stable
 as $$
-  select video_id, source, chunk_index, content,
-         1 - (embedding <=> query_embedding) as similarity
-  from public.transcript_chunks
-  order by embedding <=> query_embedding
-  limit match_count;
+begin
+  perform set_config('ivfflat.probes', '20', true);
+  return query
+    select c.video_id, c.source, c.chunk_index, c.content,
+           (1 - (c.embedding <=> query_embedding))::float as similarity
+    from public.transcript_chunks c
+    order by c.embedding <=> query_embedding
+    limit match_count;
+end;
 $$;
 
 revoke all on function public.match_transcript_chunks(halfvec, int) from public, anon, authenticated;
