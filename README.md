@@ -186,6 +186,10 @@ Every video should be indexable by Google and quotable by AI answer engines:
 - `pnpm build` runs `scripts/check-seo.mjs` afterwards and fails if any watch
   page or sitemap entry is missing what indexing needs.
 
+Set `NEXT_PUBLIC_GA_ID` (a GA4 measurement ID, `G-…`) to load Google
+Analytics on every page; it's inlined at build time, so redeploy after
+changing it.
+
 Set `NEXT_PUBLIC_SITE_URL` to the production domain — canonical URLs, sitemaps and JSON-LD are built from it. Set
 `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` to verify the site in
 Google Search Console / Bing Webmaster Tools, then submit `/robots.txt`'s
@@ -206,7 +210,7 @@ archive itself needs no database — `data/streameth.db` is rebuilt from it duri
 `pnpm build`.
 
 ```bash
-scripts/deploy-vps.sh            # deploys origin/main
+scripts/deploy-vps.sh            # deploys origin/main (CI does this on every push to main)
 scripts/deploy-vps.sh my-branch  # deploys another branch
 ```
 

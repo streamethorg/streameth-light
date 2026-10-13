@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.2.0",
+    "@next/third-parties": "16.3.3",
     "@supabase/ssr": "^0.12.5",
     "@supabase/supabase-js": "^2.112.4",
     "hls.js": "^1.7.1",
