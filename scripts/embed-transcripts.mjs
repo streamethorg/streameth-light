@@ -29,19 +29,24 @@ const CHUNK_CHARS = 900;
 // Embedding calls are batched at 100 for API efficiency, but writes are
 // split much smaller (see WRITE_BATCH) — the two don't need to match.
 const EMBED_BATCH = 100;
-// Bulk-loading into a table with a live HNSW index is the actual problem
-// (each insert does a graph search that gets slower as the index grows) —
-// shrinking the write batch only delayed the timeout, it didn't fix it.
-// transcript_chunks_embedding_idx is dropped for the initial bulk load and
-// rebuilt once afterward with `supabase db query` (this script doesn't do
-// DDL — it only has the data API), so plain inserts don't need to be small.
+// Each insert also updates the HNSW index (transcript_chunks_embedding_idx).
+// At halfvec(512) the index fits in memory, so incremental daily runs write
+// fine with it live; for a full re-embed of the whole archive, drop it first
+// and rebuild once afterward (see the 00000000000008 migration).
 const WRITE_BATCH = 100;
 // Batches are independent (each upserts its own rows), so running several
 // in parallel is safe — sequential was clocked at ~40s/(100-chunk) batch,
-// which would have taken ~38 hours for the full backlog.
-const CONCURRENCY = 4;
+// which would have taken ~38 hours for the full backlog. Dropped from 4 to
+// 2 after a run at 4 coincided with the project's Postgres instance
+// becoming unresponsive for ~an hour (REST and direct connections both
+// timing out) — lower sustained write concurrency to go easier on it.
+const CONCURRENCY = 2;
 const EMBEDDING_MODEL = "openai/text-embedding-3-small";
 const EMBEDDINGS_URL = "https://openrouter.ai/api/v1/embeddings";
+// transcript_chunks.embedding is halfvec(512) — see
+// supabase/migrations/00000000000008_transcript_chunks_halfvec512.sql.
+// Same reduction as lib/transcriptChunks.ts's toStoredEmbedding().
+const EMBEDDING_DIMENSIONS = 512;
 const MAX_ATTEMPTS = 3;
 const RETRY_BACKOFF_MS = 2000;
 
@@ -132,6 +137,14 @@ async function loadDoneVideoIds() {
   return done;
 }
 
+/** First EMBEDDING_DIMENSIONS values of a text-embedding-3 vector,
+ * re-normalized to unit length. */
+function toStoredEmbedding(embedding) {
+  const prefix = embedding.slice(0, EMBEDDING_DIMENSIONS);
+  const norm = Math.sqrt(prefix.reduce((sum, x) => sum + x * x, 0));
+  return norm > 0 ? prefix.map((x) => x / norm) : prefix;
+}
+
 async function embedBatch(texts) {
   let lastError;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
@@ -146,7 +159,7 @@ async function embedBatch(texts) {
       });
       if (!res.ok) throw new Error(`OpenRouter embeddings ${res.status}: ${await res.text().catch(() => "")}`);
       const body = await res.json();
-      return body.data.map((d) => d.embedding);
+      return body.data.map((d) => toStoredEmbedding(d.embedding));
     } catch (err) {
       lastError = err;
       console.error(`  embed batch failed (attempt ${attempt}/${MAX_ATTEMPTS}): ${err.message}`);

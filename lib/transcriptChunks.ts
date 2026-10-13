@@ -13,6 +13,20 @@ import { lazy } from "./lazy";
 // so no separate OpenAI account/key is needed.
 const EMBEDDINGS_URL = "https://openrouter.ai/api/v1/embeddings";
 export const EMBEDDING_MODEL = "openai/text-embedding-3-small";
+// Stored embeddings are halfvec(512), not the model's native 1536 — see
+// supabase/migrations/00000000000008_transcript_chunks_halfvec512.sql.
+// scripts/embed-transcripts.mjs applies the same reduction on the write side.
+export const EMBEDDING_DIMENSIONS = 512;
+
+/** Cuts a text-embedding-3 vector down to its first EMBEDDING_DIMENSIONS
+ * values and re-normalizes it to unit length — what the model's own
+ * `dimensions` parameter does, done client-side so it doesn't depend on
+ * OpenRouter forwarding that parameter. */
+export function toStoredEmbedding(embedding: number[]): number[] {
+  const prefix = embedding.slice(0, EMBEDDING_DIMENSIONS);
+  const norm = Math.sqrt(prefix.reduce((sum, x) => sum + x * x, 0));
+  return norm > 0 ? prefix.map((x) => x / norm) : prefix;
+}
 
 export interface ChunkMatch {
   videoId: string;
@@ -37,7 +51,8 @@ export function ragConfigured(): boolean {
   return supabaseConfigured() && Boolean(process.env.OPENROUTER_API_KEY);
 }
 
-/** Embeds a single query string for similarity search. */
+/** Embeds a single query string for similarity search, reduced to the
+ * stored dimensionality (see toStoredEmbedding). */
 export async function embedQuery(text: string): Promise<number[]> {
   const res = await fetch(EMBEDDINGS_URL, {
     method: "POST",
@@ -49,7 +64,7 @@ export async function embedQuery(text: string): Promise<number[]> {
   });
   if (!res.ok) throw new Error(`OpenRouter embeddings ${res.status}: ${await res.text().catch(() => "")}`);
   const body = (await res.json()) as { data: { embedding: number[] }[] };
-  return body.data[0].embedding;
+  return toStoredEmbedding(body.data[0].embedding);
 }
 
 /** The chunks whose embeddings are closest to `queryEmbedding`, ranked by
