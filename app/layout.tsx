@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import AppShell from "@/components/AppShell";
 import { SITE_NAME, SITE_URL } from "@/lib/social";
 import JsonLd from "@/components/JsonLd";
@@ -85,9 +84,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           ]}
         />
         <AppShell>{children}</AppShell>
-        <Analytics />
-        <SpeedInsights />
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
     </html>
   );
 }

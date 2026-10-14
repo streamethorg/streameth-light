@@ -110,15 +110,15 @@ so link-scanning mail filters can't confirm) activates the subscription.
 Every email has an unsubscribe link and RFC 8058 one-click
 `List-Unsubscribe` headers. Subscribers live in `digest_subscribers`
 (migration `…04_digest_subscribers.sql`), readable only with the service-role
-key. A Vercel cron (`vercel.json`, Mondays 09:00 UTC) calls
-`/api/digest/send`; mail goes out through [Resend](https://resend.com).
+key. A crontab entry on the VPS (Mondays 09:00 UTC, installed by
+`scripts/deploy-vps.sh`) calls `/api/digest/send`; mail goes out through [Resend](https://resend.com).
 
 | Env var | |
 | --- | --- |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server-only, for `digest_subscribers` |
 | `RESEND_API_KEY` | Resend API key |
 | `DIGEST_FROM` | Sender, e.g. `StreamETH <digest@streameth.org>` (domain verified in Resend) |
-| `CRON_SECRET` | Vercel sends it with cron requests; `/api/digest/send` rejects anything else |
+| `CRON_SECRET` | The VPS cron sends it as a bearer token; `/api/digest/send` rejects anything else |
 
 ## Watch analytics
 
@@ -186,8 +186,11 @@ Every video should be indexable by Google and quotable by AI answer engines:
 - `pnpm build` runs `scripts/check-seo.mjs` afterwards and fails if any watch
   page or sitemap entry is missing what indexing needs.
 
-Set `NEXT_PUBLIC_SITE_URL` to the production domain if it differs from Vercel's
-production URL — canonical URLs, sitemaps and JSON-LD are built from it. Set
+Set `NEXT_PUBLIC_GA_ID` (a GA4 measurement ID, `G-…`) to load Google
+Analytics on every page; it's inlined at build time, so redeploy after
+changing it.
+
+Set `NEXT_PUBLIC_SITE_URL` to the production domain — canonical URLs, sitemaps and JSON-LD are built from it. Set
 `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` to verify the site in
 Google Search Console / Bing Webmaster Tools, then submit `/robots.txt`'s
 sitemaps there and watch the Video indexing report.
@@ -201,10 +204,20 @@ pnpm dev
 
 ## Deploy
 
-Deployed on Vercel. `data/*.json` is committed to git, so the video archive
-itself needs no environment variables or database — `data/streameth.db` is
-rebuilt from it during `pnpm build`. Accounts need the env vars above set in the
-Vercel project.
+Self-hosted on the StreamETH VPS (`streameth@pblvrt.com`) as a Docker
+container behind Traefik. `data/*.json` is committed to git, so the video
+archive itself needs no database — `data/streameth.db` is rebuilt from it during
+`pnpm build`.
+
+```bash
+scripts/deploy-vps.sh            # deploys origin/main (CI does this on every push to main)
+scripts/deploy-vps.sh my-branch  # deploys another branch
+```
+
+The script pulls the branch on the VPS, builds the image, swaps the container
+and installs the weekly digest cron. Env vars live in
+`/home/streameth/streameth-light.env` on the VPS (needed at build time too,
+since `NEXT_PUBLIC_*` values are inlined into the client bundle).
 
 ## License
 
