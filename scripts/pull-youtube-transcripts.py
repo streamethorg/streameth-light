@@ -220,6 +220,12 @@ def main():
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
         futures = {pool.submit(fetch_transcript, vid): vid for vid in todo}
         for fut in as_completed(futures):
+            # Requests the circuit breaker below cancelled still come back
+            # through as_completed — fut.result() would raise CancelledError
+            # and crash the run (and the rest of the daily workflow) instead
+            # of leaving them for the next run as intended.
+            if fut.cancelled():
+                continue
             vid = futures[fut]
             done_count += 1
             try:
