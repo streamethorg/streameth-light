@@ -10,7 +10,10 @@ BRANCH="${1:-main}"
 HOST="streameth@pblvrt.com"
 REPO="https://github.com/streamethorg/streameth-light.git"
 
-ssh "$HOST" BRANCH="$BRANCH" REPO="$REPO" bash -s <<'REMOTE'
+# Keep-alives: build-db runs for minutes without printing anything, and the
+# idle connection was being dropped mid-build ("client_loop: send
+# disconnect: Broken pipe"), failing the deploy before the container swap.
+ssh -o ServerAliveInterval=30 -o ServerAliveCountMax=10 "$HOST" BRANCH="$BRANCH" REPO="$REPO" bash -s <<'REMOTE'
 set -euo pipefail
 APP=streameth-light
 DIR="$HOME/$APP"
