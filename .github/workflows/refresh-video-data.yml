@@ -49,6 +49,12 @@ jobs:
         with:
           node-version: "22"
 
+      # embed-transcripts.mjs imports @supabase/supabase-js.
+      - name: Install Node dependencies
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
