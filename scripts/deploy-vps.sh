@@ -31,8 +31,10 @@ DOCKER_BUILDKIT=1 docker build --secret id=env,src="$ENV_FILE" \
   -t "$APP:$SHA" -t "$APP:latest" .
 
 docker rm -f "$APP" >/dev/null 2>&1 || true
-# Two routers so each gets its own certificate: a Let's Encrypt request for a
-# host that doesn't point here yet would otherwise fail for every host on it.
+# Plain http (port 80) only redirects to https — the proxy has no global
+# redirect. Two https routers so each gets its own certificate: a Let's
+# Encrypt request for a host that doesn't point here yet would otherwise fail
+# for every host on it.
 docker run -d \
   --name "$APP" \
   --restart unless-stopped \
@@ -48,6 +50,12 @@ docker run -d \
   -l "traefik.http.middlewares.$APP-www.redirectregex.regex=^https://www\\.streameth\\.org/(.*)" \
   -l "traefik.http.middlewares.$APP-www.redirectregex.replacement=https://streameth.org/\${1}" \
   -l "traefik.http.middlewares.$APP-www.redirectregex.permanent=true" \
+  -l "traefik.http.routers.$APP-http.rule=Host(\`streameth.org\`) || Host(\`www.streameth.org\`) || Host(\`$APP.pblvrt.com\`)" \
+  -l "traefik.http.routers.$APP-http.entrypoints=http" \
+  -l "traefik.http.routers.$APP-http.service=$APP" \
+  -l "traefik.http.routers.$APP-http.middlewares=$APP-https" \
+  -l "traefik.http.middlewares.$APP-https.redirectscheme.scheme=https" \
+  -l "traefik.http.middlewares.$APP-https.redirectscheme.permanent=true" \
   -l "traefik.http.routers.$APP-pblvrt.rule=Host(\`$APP.pblvrt.com\`)" \
   -l "traefik.http.routers.$APP-pblvrt.entrypoints=https" \
   -l "traefik.http.routers.$APP-pblvrt.tls.certresolver=letsencrypt" \
