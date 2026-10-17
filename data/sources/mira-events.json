@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-08",
-  "seriesCount": 57,
-  "eventCount": 1582,
+  "importedAt": "2026-10-17",
+  "seriesCount": 61,
+  "eventCount": 1599,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -364,6 +364,26 @@
       "id": "recti9MkpxNdRs1E0",
       "title": "Toronto Tech Week",
       "slug": "TorontoTechWeek2027"
+    },
+    {
+      "id": "rec7FoyldGbU780cc",
+      "title": "NVIDIA GTC Side Events",
+      "slug": "NVIDIAGTCSideEvents2026"
+    },
+    {
+      "id": "recsKQ0hZMrmzDAMT",
+      "title": "Plan B Week",
+      "slug": "PlanBWeek2026"
+    },
+    {
+      "id": "recUFNp7euXkwwWPz",
+      "title": "Web Summit Side Events",
+      "slug": "WebSummitSideEvents2026"
+    },
+    {
+      "id": "recps4n3bcmqbtpS6",
+      "title": "Binance Blockchain Week",
+      "slug": "BinanceBlockchainWeek2026"
     }
   ],
   "events": [
@@ -22106,31 +22126,6 @@
       "seriesName": "Elevate Tech Week"
     },
     {
-      "id": "recEfgjVO3BQPmgqX",
-      "kind": "main",
-      "name": "Australia FIX Conference",
-      "description": "Where Market Evolution Meets Real-World Insight\nIn a market known for its depth and durability, change often comes in quiet steps rather than loud leaps. Australia’s institutional trading scene is no exception. With every shift in regulation, each tweak in technology, and a constant evolution in trading methods, the region is steadily reshaping how liquidity is approached and managed.\n\nThis is where the Australia FIX Conference steps in—not just as a meeting, but as a touchstone for those navigating this landscape. Each year, professionals from every corner of the market gather to discuss where things are heading and how they’re navigating the journey.\n\nWhat sets this conference apart is its practicality. Designed by and for market participants, it drills into what’s happening on the ground: trading systems, infrastructure needs, compliance realities, and how markets are run day to day.\n\nFor many, the Australia FIX Conference is more than a date on the calendar. It’s a moment to ste...",
-      "startTime": "2026-09-22",
-      "endTime": "2026-10-22",
-      "location": "Sydney, Australia 🇦🇺",
-      "city": "Sydney",
-      "country": "Australia 🇦🇺",
-      "organizer": "FIXTradingCommunity",
-      "tags": [
-        "Conference",
-        "Other"
-      ],
-      "topics": [
-        "TradFi",
-        "Infrastructure",
-        "Markets"
-      ],
-      "website": "https://www.fix-events.com/australia/",
-      "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
-    },
-    {
       "id": "reccg6aErwQdckJND",
       "kind": "side",
       "name": "GBBC's 9th Annual Blockchain Central UNGA",
@@ -28118,6 +28113,52 @@
       "seriesName": ""
     },
     {
+      "id": "recMMERrVf0iwqEfg",
+      "kind": "main",
+      "name": "Solana Accelerate Shanghai",
+      "description": "Solana Accelerate China 2026一场为科技创造而来的四城巡回之旅。10 月 16 日至 22 日，Solana 将来到上海、杭州、深圳和北京，与开发者、创业者和投资人一起交流、演示，探索中外新趋势，创造国际交流新范式。活动介绍中国正在持续定义下一代科技产品如何被研发、制造和规模化。从 AI、机器人和硬件，到支付与消费科技，许多面向全球的新产品正在这里加速出现。这个十月，Solana Accelerate China 将来到上海、杭州、深圳和北京。我们希望把中国的开发者、创业者和技术团队，与全球 Solana 生态中的建设者连接起来：不只讨论趋势，也分享产品、真实应用，全球化，以及从 0 到 1 的经验。Accelerate China 是一场以前沿科技与技术创新为核心的活动。内容将围绕高性能区块链基础设施、开发工具、AI 与数字应用、消费产品，以及如何让一个产品从本地走向全球展开。Accelerate China 是一个高效的全球化交流平台，让世界听到中国创业者的声音，从中国的规模化经验中学习，并与大家一起探索：当高性能、低成本、全球可用的基础设施遇见中国的产品能力，会诞生怎样的奇迹？如果你好奇全球创新市场在发生什么，中国的创新前沿是什么，或者你正在构建一个产品、带领一支技术团队，或对下一代互联网应用保持好奇，欢迎加入我们。活动亮点摄影提示温馨提示：活动现场将进行摄影及摄像。报名或出席本活动，即表示您知悉并同意活动主办方在与活动相关的传播中使用现场影像。Solana Accelerate China 2026Four cities. One week. The builders shaping what's next.From October 16–22, Solana lands in Shanghai, Hangzhou, Shenzhen, and Beijing for a week of demos, conversations, and connections between China's builders and the global Solana ecosystem.About the conference:China keeps setting the pace for how the next generation...",
+      "startTime": "2026-10-16",
+      "endTime": "2026-10-16",
+      "location": "Shanghai, China 🇨🇳",
+      "city": "Shanghai",
+      "country": "China 🇨🇳",
+      "organizer": "Solana Foundation",
+      "tags": [
+        "Conference",
+        "Solana"
+      ],
+      "topics": [
+        "Infrastructure",
+        "AI",
+        "Community"
+      ],
+      "website": "https://lu.ma/acc-shanghai-26",
+      "imageUrl": "https://images.lumacdn.com/uploads/8c/3a48fa54-3285-4d9c-9689-fe4820e62c8e.jpg",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recn2MbEBIZOeLX4r",
+      "kind": "main",
+      "name": "Busselton Bitcoin WA 2026",
+      "description": "A weekend of Bitcoin talks, workshops, education, and socialising in Western Australia.",
+      "startTime": "2026-10-16",
+      "endTime": "2026-10-18",
+      "location": "Cancún, Mexico 🇲🇽",
+      "city": "Cancún",
+      "country": "Mexico 🇲🇽",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [],
+      "website": "https://bitcoinbushbash.info/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recYhQ99uM4apAQrg",
       "kind": "side",
       "name": "Groundwork",
@@ -28206,6 +28247,31 @@
       ],
       "website": "https://abseast.com/",
       "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "reckNx03ODPcyvZmp",
+      "kind": "main",
+      "name": "Solana Accelerate Hangzhou",
+      "description": "Solana Accelerate China 2026一场为科技创造而来的四城巡回之旅。10 月 16 日至 22 日，Solana 将来到上海、杭州、深圳和北京，与开发者、创业者和投资人一起交流、演示，探索中外新趋势，创造国际交流新范式。活动介绍中国正在持续定义下一代科技产品如何被研发、制造和规模化。从 AI、机器人和硬件，到支付与消费科技，许多面向全球的新产品正在这里加速出现。这个十月，Solana Accelerate China 将来到上海、杭州、深圳和北京。我们希望把中国的开发者、创业者和技术团队，与全球 Solana 生态中的建设者连接起来：不只讨论趋势，也分享产品、真实应用，全球化，以及从 0 到 1 的经验。Accelerate China 是一场以前沿科技与技术创新为核心的活动。内容将围绕高性能区块链基础设施、开发工具、AI 与数字应用、消费产品，以及如何让一个产品从本地走向全球展开。Accelerate China 是一个高效的全球化交流平台，让世界听到中国创业者的声音，从中国的规模化经验中学习，并与大家一起探索：当高性能、低成本、全球可用的基础设施遇见中国的产品能力，会诞生怎样的奇迹？如果你好奇全球创新市场在发生什么，中国的创新前沿是什么，或者你正在构建一个产品、带领一支技术团队，或对下一代互联网应用保持好奇，欢迎加入我们。活动亮点摄影提示温馨提示：活动现场将进行摄影及摄像。报名或出席本活动，即表示您知悉并同意活动主办方在与活动相关的传播中使用现场影像。Solana Accelerate China 2026Four cities. One week. The builders shaping what's next.From October 16–22, Solana lands in Shanghai, Hangzhou, Shenzhen, and Beijing for a week of demos, conversations, and connections between China's builders and the global Solana ecosystem.About the conference:China keeps setting the pace for how the next generation...",
+      "startTime": "2026-10-18",
+      "endTime": "2026-10-18",
+      "location": "Shanghai, China 🇨🇳",
+      "city": "Shanghai",
+      "country": "China 🇨🇳",
+      "organizer": "Solana Foundation",
+      "tags": [
+        "Conference",
+        "Solana"
+      ],
+      "topics": [
+        "Infrastructure",
+        "AI",
+        "Community"
+      ],
+      "website": "https://lu.ma/acc-hangzhou-26",
+      "imageUrl": "https://images.lumacdn.com/uploads/v8/00fddf62-6e4e-4e4f-b6f1-d1aaf302f2d6.jpg",
       "seriesSlug": "",
       "seriesName": ""
     },
@@ -28416,6 +28482,31 @@
       ],
       "website": "https://www.nvidia.com/en-eu/gtc/",
       "imageUrl": null,
+      "seriesSlug": "NVIDIAGTCSideEvents2026",
+      "seriesName": "NVIDIA GTC Side Events"
+    },
+    {
+      "id": "recDBYdEem9uhtRPC",
+      "kind": "main",
+      "name": "Solana Accelerate Shenzhen",
+      "description": "Solana Accelerate China 2026一场为科技创造而来的四城巡回之旅。10 月 16 日至 22 日，Solana 将来到上海、杭州、深圳和北京，与开发者、创业者和投资人一起交流、演示，探索中外新趋势，创造国际交流新范式。活动介绍中国正在持续定义下一代科技产品如何被研发、制造和规模化。从 AI、机器人和硬件，到支付与消费科技，许多面向全球的新产品正在这里加速出现。这个十月，Solana Accelerate China 将来到上海、杭州、深圳和北京。我们希望把中国的开发者、创业者和技术团队，与全球 Solana 生态中的建设者连接起来：不只讨论趋势，也分享产品、真实应用，全球化，以及从 0 到 1 的经验。Accelerate China 是一场以前沿科技与技术创新为核心的活动。内容将围绕高性能区块链基础设施、开发工具、AI 与数字应用、消费产品，以及如何让一个产品从本地走向全球展开。Accelerate China 是一个高效的全球化交流平台，让世界听到中国创业者的声音，从中国的规模化经验中学习，并与大家一起探索：当高性能、低成本、全球可用的基础设施遇见中国的产品能力，会诞生怎样的奇迹？如果你好奇全球创新市场在发生什么，中国的创新前沿是什么，或者你正在构建一个产品、带领一支技术团队，或对下一代互联网应用保持好奇，欢迎加入我们。活动亮点摄影提示温馨提示：活动现场将进行摄影及摄像。报名或出席本活动，即表示您知悉并同意活动主办方在与活动相关的传播中使用现场影像。Solana Accelerate China 2026Four cities. One week. The builders shaping what's next.From October 16–22, Solana lands in Shanghai, Hangzhou, Shenzhen, and Beijing for a week of demos, conversations, and connections between China's builders and the global Solana ecosystem.About the conference:China keeps setting the pace for how the next generation...",
+      "startTime": "2026-10-20",
+      "endTime": "2026-10-20",
+      "location": "Shanghai, China 🇨🇳",
+      "city": "Shanghai",
+      "country": "China 🇨🇳",
+      "organizer": "Solana Foundation",
+      "tags": [
+        "Conference",
+        "Solana"
+      ],
+      "topics": [
+        "Infrastructure",
+        "AI",
+        "Community"
+      ],
+      "website": "https://lu.ma/acc-shenzhen-26",
+      "imageUrl": "https://images.lumacdn.com/uploads/3v/27556ff1-13b7-4624-b53f-9079991b53a1.jpg",
       "seriesSlug": "",
       "seriesName": ""
     },
@@ -28635,6 +28726,31 @@
       "seriesName": "Swell 2026 Side Events"
     },
     {
+      "id": "recEfgjVO3BQPmgqX",
+      "kind": "main",
+      "name": "Australia FIX Conference",
+      "description": "Where Market Evolution Meets Real-World Insight\nIn a market known for its depth and durability, change often comes in quiet steps rather than loud leaps. Australia’s institutional trading scene is no exception. With every shift in regulation, each tweak in technology, and a constant evolution in trading methods, the region is steadily reshaping how liquidity is approached and managed.\n\nThis is where the Australia FIX Conference steps in—not just as a meeting, but as a touchstone for those navigating this landscape. Each year, professionals from every corner of the market gather to discuss where things are heading and how they’re navigating the journey.\n\nWhat sets this conference apart is its practicality. Designed by and for market participants, it drills into what’s happening on the ground: trading systems, infrastructure needs, compliance realities, and how markets are run day to day.\n\nFor many, the Australia FIX Conference is more than a date on the calendar. It’s a moment to ste...",
+      "startTime": "2026-10-22",
+      "endTime": "2026-10-22",
+      "location": "Sydney, Australia 🇦🇺",
+      "city": "Sydney",
+      "country": "Australia 🇦🇺",
+      "organizer": "FIXTradingCommunity",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Infrastructure",
+        "Markets"
+      ],
+      "website": "https://www.fix-events.com/australia/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recB6ds3jGuxb653U",
       "kind": "main",
       "name": "Texas Private Markets Meeting",
@@ -28685,6 +28801,55 @@
       "seriesName": ""
     },
     {
+      "id": "recH5hqFyZ63xB2PT",
+      "kind": "main",
+      "name": "Solana Accelerate Beijing",
+      "description": "Solana Accelerate China 2026一场为科技创造而来的四城巡回之旅。10 月 16 日至 22 日，Solana 将来到上海、杭州、深圳和北京，与开发者、创业者和投资人一起交流、演示，探索中外新趋势，创造国际交流新范式。活动介绍中国正在持续定义下一代科技产品如何被研发、制造和规模化。从 AI、机器人和硬件，到支付与消费科技，许多面向全球的新产品正在这里加速出现。这个十月，Solana Accelerate China 将来到上海、杭州、深圳和北京。我们希望把中国的开发者、创业者和技术团队，与全球 Solana 生态中的建设者连接起来：不只讨论趋势，也分享产品、真实应用，全球化，以及从 0 到 1 的经验。Accelerate China 是一场以前沿科技与技术创新为核心的活动。内容将围绕高性能区块链基础设施、开发工具、AI 与数字应用、消费产品，以及如何让一个产品从本地走向全球展开。Accelerate China 是一个高效的全球化交流平台，让世界听到中国创业者的声音，从中国的规模化经验中学习，并与大家一起探索：当高性能、低成本、全球可用的基础设施遇见中国的产品能力，会诞生怎样的奇迹？如果你好奇全球创新市场在发生什么，中国的创新前沿是什么，或者你正在构建一个产品、带领一支技术团队，或对下一代互联网应用保持好奇，欢迎加入我们。活动亮点摄影提示温馨提示：活动现场将进行摄影及摄像。报名或出席本活动，即表示您知悉并同意活动主办方在与活动相关的传播中使用现场影像。Solana Accelerate China 2026Four cities. One week. The builders shaping what's next.From October 16–22, Solana lands in Shanghai, Hangzhou, Shenzhen, and Beijing for a week of demos, conversations, and connections between China's builders and the global Solana ecosystem.About the conference:China keeps setting the pace for how the next generation...",
+      "startTime": "2026-10-22",
+      "endTime": "2026-10-22",
+      "location": "Shanghai, China 🇨🇳",
+      "city": "Shanghai",
+      "country": "China 🇨🇳",
+      "organizer": "Solana Foundation",
+      "tags": [
+        "Conference",
+        "Solana"
+      ],
+      "topics": [
+        "Infrastructure",
+        "AI",
+        "Community"
+      ],
+      "website": "https://lu.ma/acc-beijing-26",
+      "imageUrl": "https://images.lumacdn.com/uploads/mb/7797c047-0eb3-4a0d-bdfc-826f02a7e23d.jpg",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "rec2Lhy4LuaCjs1FF",
+      "kind": "main",
+      "name": "UnBundled (Autumn Edition)",
+      "description": "On 22 October, the same day as UnBundled, Engaged Investments and The FinTechers will be running a startup showcase.\n\nSelected startups will have the opportunity to deliver a 3-minute pitch live to international investors with one clear goal: securing funding.\n\nStartups at any stage, from angel to Series A, can apply to the fintech track.\n\nIf you’re building fintech in CEE and raising now or within the next six months, then this is the room to be in.",
+      "startTime": "2026-10-22",
+      "endTime": "2026-10-22",
+      "location": "Prague, Czech Republic 🇨🇿",
+      "city": "Prague",
+      "country": "Czech Republic 🇨🇿",
+      "organizer": "TheFinTechers",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "VC"
+      ],
+      "website": "https://luma.com/the-gcwt",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "rec4hioLaQL80lS2Y",
       "kind": "main",
       "name": "Encode London Hackathon and Conference",
@@ -28729,8 +28894,8 @@
       ],
       "website": "https://planb.lugano.ch/planb-forum/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "PlanBWeek2026",
+      "seriesName": "Plan B Week"
     },
     {
       "id": "recD6jjHvLXPKd1a8",
@@ -28762,9 +28927,9 @@
       "description": "HACK-O-OCTO 4.0 is a 24-hour hackathon by GDG Chandigarh University, inviting university students across India to solve real-world challenges through technology. Participants will ideate, prototype, and pitch to industry experts for prizes and recognition. Round 1 is online, while Round 2 requires onsite attendance for a continuous build and pitch on October 23-24, 2026. Beginners are welcome.",
       "startTime": "2026-10-23",
       "endTime": "2026-10-24",
-      "location": null,
-      "city": null,
-      "country": null,
+      "location": "Chandigarh, India 🇮🇳",
+      "city": "Chandigarh",
+      "country": "India 🇮🇳",
       "organizer": "Google AI",
       "tags": [
         "Hack",
@@ -29108,6 +29273,27 @@
       "seriesName": ""
     },
     {
+      "id": "recnVRRBZgfP3nWGj",
+      "kind": "main",
+      "name": "Zcon 7 Cancún",
+      "description": "Zcash Foundation's annual event focused on Zcash & privacy-preserving technologies.",
+      "startTime": "2026-10-27",
+      "endTime": "2026-10-29",
+      "location": "Cancún, Mexico 🇲🇽",
+      "city": "Cancún",
+      "country": "Mexico 🇲🇽",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://zfnd.org/zcon7/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "rec1guDhwzJ6pxhr8",
       "kind": "main",
       "name": "Meridian 2026",
@@ -29323,6 +29509,48 @@
       "seriesName": "BTC Amsterdam Events"
     },
     {
+      "id": "reckz7OSoYtrHsyny",
+      "kind": "main",
+      "name": "TUM Blockchain Conference 2026",
+      "description": "Germany's leading student-run conference exploring the frontiers of blockchain technology.",
+      "startTime": "2026-10-29",
+      "endTime": "2026-10-31",
+      "location": "Munich, Germany 🇩🇪",
+      "city": "Munich",
+      "country": "Germany 🇩🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://conference26.tum-blockchain.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recQrzEZW4lsOMVEf",
+      "kind": "main",
+      "name": "Crafting the Cryptoeconomy Conference 2026",
+      "description": "Research and debate on stablecoins, tokenization, quantum computing, and DeFi regulation.",
+      "startTime": "2026-10-29",
+      "endTime": "2026-10-30",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://cber-forum.org/ctce-2026",
+      "imageUrl": null,
+      "seriesSlug": "Swell2026SideEvents2026",
+      "seriesName": "Swell 2026 Side Events"
+    },
+    {
       "id": "rec1qBxlPHoEX1ypP",
       "kind": "side",
       "name": "Superteam Talent Tour Stop India (tbd)",
@@ -29387,6 +29615,28 @@
       ],
       "website": "https://bitcoinalive.io/",
       "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recI3dn7VoyW3SJT2",
+      "kind": "main",
+      "name": "PROMPT: KL",
+      "description": "Learn the foundations with two workshops aimed at different levels of experience with AI. In the afternoon, hear how AI workflows are applied to real-life contexts in curated conversations with business owners, operators and creatives.\n\nWorkshop tickets are not on sale yet. Join the free ticket-alert list → ✨ Get notified when tickets drop ✨\n\nOn the next page, click Join under the free PROMPT:CITY membership. No payment is required; joining does not reserve a workshop seat.Saturday, 31 October · 10:00 AM–12:30 PM\nKongsi Kreatif · RM350 per workshopGo beyond chatting with AI: build agents that turn everyday business tasks, from quotations to messy spreadsheets, into a working process. In this hands-on workshop, you’ll test it, fix its mistakes and set clear boundaries for human approval. No programming required. This workshop is led by Colin Charles, an applied AI practitioner who helps teams use LLMs to solve everyday business problems. He's a veteran of open source: a founding memb...",
+      "startTime": "2026-10-31",
+      "endTime": "2026-10-31",
+      "location": "Kuala Lumpur, Malaysia 🇲🇾",
+      "city": "Kuala Lumpur",
+      "country": "Malaysia 🇲🇾",
+      "organizer": "JoonIanWong",
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://prmpt.city",
+      "imageUrl": "https://images.lumacdn.com/uploads/l5/9015caa8-5faa-4c3a-b222-938e33fc6ac1.jpg",
       "seriesSlug": "",
       "seriesName": ""
     },
@@ -29953,9 +30203,9 @@
       "description": "DevFest Santiago de Compostela 2026 invites tech enthusiasts to a two-day event featuring talks on AI and web development by leading experts, including Google Experts. Enjoy hands-on workshops, networking opportunities, and exciting giveaways. Held at the Escuela Técnica Superior de Ingeniería, the event is free to attend. For the latest agenda and to secure your spot, visit the official website.",
       "startTime": "2026-11-04",
       "endTime": "2026-11-05",
-      "location": null,
-      "city": null,
-      "country": null,
+      "location": "Santiago de Compostela, Spain 🇪🇸",
+      "city": "Santiago de Compostela",
+      "country": "Spain 🇪🇸",
       "organizer": "Google AI",
       "tags": [
         "Conference",
@@ -30419,8 +30669,8 @@
       ],
       "website": "https://websummit.com/web-summit-2026/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "WebSummitSideEvents2026",
+      "seriesName": "Web Summit Side Events"
     },
     {
       "id": "recZFTt7zvj5vNRCM",
@@ -30762,6 +31012,54 @@
       "seriesName": "November Singapore Events"
     },
     {
+      "id": "rec1QhvWxjpWbsFPF",
+      "kind": "main",
+      "name": "Stable Summit IV: London",
+      "description": "Stable Summit is the world's leading conference series dedicated to stablecoins and programmable money.\n\nSince 2023, Stable Summit has convened senior builders, protocol teams, stablecoin issuers, financial institutions, and policymakers across multiple continents.\n\nThe summit operates as a neutral, technically rigorous forum focused on real-world deployment, risk, and infrastructure.",
+      "startTime": "2026-11-13",
+      "endTime": "2026-11-13",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": "CurveFinance",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Stablecoins"
+      ],
+      "website": "https://www.stablesummit.xyz/",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/StableSummitIVLondon_2026-10-13T12-37.png",
+      "seriesSlug": "Breakpoint2026SideEvents2026",
+      "seriesName": "Breakpoint 2026 Side Events"
+    },
+    {
+      "id": "recohOdfllJ93YPvi",
+      "kind": "main",
+      "name": "Capital Summit: London",
+      "description": "The Capital Summit convenes the people allocating capital onchain at a moment when institutional participation is moving from mandates and pilots to live deployment. \n\nVenture funds, asset managers, LPs, market makers and treasury allocators are working out how to hold, price and manage positions onchain, while infrastructure teams build the execution, privacy and settlement guarantees they need before committing at size.\n\nThe London edition, held alongside Stable Summit, brings these two groups into the same room. \n\nThe programme focuses on the work actually underway rather than the case for institutional adoption: the infrastructure giving institutions execution certainty and dedicated block space, the privacy and compliance conditions regulated allocators require, how onchain issuance and settlement change capital markets economics, and where risk standards, collateral terms and market making practice still fall short of institutional expectations.\n",
+      "startTime": "2026-11-13",
+      "endTime": "2026-11-13",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": "ETHGAS",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Stablecoins",
+        "Infrastructure",
+        "Institutional"
+      ],
+      "website": "https://www.capitalsummit.io/",
+      "imageUrl": null,
+      "seriesSlug": "Breakpoint2026SideEvents2026",
+      "seriesName": "Breakpoint 2026 Side Events"
+    },
+    {
       "id": "recIeQ0iry0k8w446",
       "kind": "side",
       "name": "200ms",
@@ -30809,7 +31107,7 @@
       "name": "AIoT DevFest × SunHacks ASU",
       "description": "Join GDG on Campus ASU and SunHack for a weekend of developer talks and hands-on learning on November 13–14, 2026. Dive into AI, cloud, Android, and more alongside a hackathon. Perfect for developers eager to learn and innovate. Speaker and session details to follow. Interested in speaking or supporting? Email developerstudentclubasu@gmail.com with your topic.",
       "startTime": "2026-11-14",
-      "endTime": "2026-11-14",
+      "endTime": "2026-11-15",
       "location": "Tempe, USA 🇺🇸",
       "city": "Tempe",
       "country": "USA 🇺🇸",
@@ -30823,29 +31121,6 @@
       ],
       "website": "https://gdg.community.dev/events/details/google-gdg-on-campus-arizona-state-university-tempe-united-states-presents-aiot-devfest-x-sunhacks-asu-2026-save-the-date/",
       "imageUrl": null,
-      "seriesSlug": "AIEvents",
-      "seriesName": "AI Events"
-    },
-    {
-      "id": "reckYkkLeNjnXBeMA",
-      "kind": "main",
-      "name": "DevFest Catania 2026",
-      "description": "The GDG Catania compiler is back online! Get ready for DevFest Catania 2026: AI, Web, Cloud, Mobile, and pure tech energy. Stay tuned for dates and tickets!",
-      "startTime": "2026-11-14",
-      "endTime": "2026-11-15",
-      "location": "Catania, Italy 🇮🇹",
-      "city": "Catania",
-      "country": "Italy 🇮🇹",
-      "organizer": "Google AI",
-      "tags": [
-        "Conference",
-        "Other"
-      ],
-      "topics": [
-        "AI"
-      ],
-      "website": "https://gdg.community.dev/events/details/google-gdg-catania-presents-devfest-catania-2026/",
-      "imageUrl": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_46Ypuu5",
       "seriesSlug": "AIEvents",
       "seriesName": "AI Events"
     },
@@ -30870,6 +31145,29 @@
       "imageUrl": "https://images.lumacdn.com/uploads/ri/f9d45b67-83fe-4225-9a74-c7a45c627461.png",
       "seriesSlug": "Breakpoint2026SideEvents2026",
       "seriesName": "Breakpoint 2026 Side Events"
+    },
+    {
+      "id": "reckYkkLeNjnXBeMA",
+      "kind": "main",
+      "name": "DevFest Catania 2026",
+      "description": "The GDG Catania compiler is back online! Get ready for DevFest Catania 2026: AI, Web, Cloud, Mobile, and pure tech energy. Stay tuned for dates and tickets!",
+      "startTime": "2026-11-15",
+      "endTime": "2026-11-15",
+      "location": "Catania, Italy 🇮🇹",
+      "city": "Catania",
+      "country": "Italy 🇮🇹",
+      "organizer": "Google AI",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://gdg.community.dev/events/details/google-gdg-catania-presents-devfest-catania-2026/",
+      "imageUrl": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_46Ypuu5",
+      "seriesSlug": "AIEvents",
+      "seriesName": "AI Events"
     },
     {
       "id": "recwTdD83fe3d0ITC",
@@ -31731,6 +32029,31 @@
       "seriesName": ""
     },
     {
+      "id": "reccRufA3A0PdWjkK",
+      "kind": "main",
+      "name": "The Age of Collective Intelligence",
+      "description": "AICA brings engineers, researchers and open-source contributors together for one day to examine the systems behind the agentic future. This deeply technical conference connects rigorous research with AI engineering across chips, compute, models, data and applications. We bring academia and industry together to share code, scrutinize evidence and confront uncertainty. Our purpose is to advance knowledge others can use and inform a regulatory path forward grounded in technical understanding, with privacy, safety and public benefit in view.",
+      "startTime": "2026-11-26",
+      "endTime": "2026-11-26",
+      "location": "Amsterdam, Netherlands 🇳🇱",
+      "city": "Amsterdam",
+      "country": "Netherlands 🇳🇱",
+      "organizer": "aicasummit",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "Infrastructure",
+        "Privacy"
+      ],
+      "website": "https://aica-summit.com/",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/TheAgeofCollectiveIntelligence_2026-10-15T10-04.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recnu9ADV8RdSZAii",
       "kind": "main",
       "name": "Australian Crypto Convention",
@@ -31761,9 +32084,9 @@
       "description": "Le grand rendez-vous tech annuel \"DevFest Antsirabe\" fait son retour ! Rejoignez-nous pour deux journées inoubliables dédiées à l'innovation, au partage de connaissances et au networking.\n\nAu programme :\n- des conférences inspirantes animées par des experts passionnés\n- des ateliers pratiques pour découvrir les dernières technologies, notamment sur l'IA\n- des échanges et discussions",
       "startTime": "2026-11-28",
       "endTime": "2026-11-29",
-      "location": null,
-      "city": null,
-      "country": null,
+      "location": "Antsirabe, Madagascar 🇲🇬",
+      "city": "Antsirabe",
+      "country": "Madagascar 🇲🇬",
       "organizer": "Google AI",
       "tags": [
         "Conference",
@@ -31776,6 +32099,31 @@
       "imageUrl": null,
       "seriesSlug": "AIEvents",
       "seriesName": "AI Events"
+    },
+    {
+      "id": "recpAyNPWblQvxXxT",
+      "kind": "main",
+      "name": "Binance Blockchain Week",
+      "description": "One of the biggest dates in the crypto calendar returns for a special Asia edition live from Bangkok, Thailand, this November.\n\nQUEEN SIRIKIT NATIONAL CONVENTION CENTER | NOVEMBER 28-29\n\nThe world's leading fintech minds. One unmissable event.\n\nLIMITED EARLY-BIRD TICKETS ON SALE NOW AT $29!\n\n(Full ticket price $129)\n\nFinance is making an evolutionary leap and this year's Binance Blockchain Week theme, EVOLVE, is built around it.\n\nTradFi and blockchain are converging, and the markets that once ran on business hours are becoming global, open and always-on. \n\nAt the same time, AI is transforming how freely people move, manage and grow their money carrying us toward a world where financial freedom is effortless and self-directed. \n\nEmpowerment for millions.\n\nThe definition of finance is being rewritten in real time. EVOLVE is our recognition that we're not just watching that happen - we’re part of the evolution.",
+      "startTime": "2026-11-28",
+      "endTime": "2026-11-29",
+      "location": "Bangkok, Thailand 🇹🇭",
+      "city": "Bangkok",
+      "country": "Thailand 🇹🇭",
+      "organizer": "Binance",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "AI",
+        "Markets",
+        "DeFi"
+      ],
+      "website": "https://www.binanceblockchainweek.com/event/Bangkok2026/Home",
+      "imageUrl": null,
+      "seriesSlug": "BinanceBlockchainWeek2026",
+      "seriesName": "Binance Blockchain Week"
     },
     {
       "id": "rec0Y9ehrJaOCTyYg",
@@ -31938,31 +32286,6 @@
         "Markets"
       ],
       "website": "https://banking.live.ft.com/",
-      "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
-    },
-    {
-      "id": "recUU4up4BdMoVH9Y",
-      "kind": "main",
-      "name": "Crypto Polo Cup",
-      "description": "Premier invitation-only event where the world of investment, innovation, and influence converges, attracting the biggest players in venture capital, blockchain, and emerging technology.",
-      "startTime": "2026-12-01",
-      "endTime": "2026-12-01",
-      "location": null,
-      "city": null,
-      "country": null,
-      "organizer": null,
-      "tags": [
-        "Other",
-        "Multichain"
-      ],
-      "topics": [
-        "VC",
-        "Institutional",
-        "Markets"
-      ],
-      "website": "https://www.lunapr.com/our-events",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -32132,6 +32455,31 @@
       "seriesName": "AI Events"
     },
     {
+      "id": "recwmn7Af3cgAqk6Z",
+      "kind": "main",
+      "name": "Gamma Prime Investing Summit 2026 Abu Dhabi 🇦🇪",
+      "description": "​​💬 Join the official Gamma Investing Summit Telegram group:\nhttps://t.me/GammaInvestingSummit\n​​​Interested in Becoming a Sponsor or a Speaker?\n​WhatsApp: +41 76 446 29 00\nEmail: i@gammaprime.com\nTelegram: Illia M",
+      "startTime": "2026-12-06",
+      "endTime": "2026-12-06",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": "Gamma Prime",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "VC",
+        "Institutional",
+        "Markets"
+      ],
+      "website": "https://lu.ma/investingsummit2026AbuDhabi",
+      "imageUrl": "https://images.lumacdn.com/uploads/if/11388bb3-517a-4596-ad58-6f3ead828a7b.jpg",
+      "seriesSlug": "AbuDhabiFinanceWeek2026",
+      "seriesName": "Abu Dhabi Finance Week"
+    },
+    {
       "id": "reck2biN2XX9ar202",
       "kind": "main",
       "name": "GITEX Global",
@@ -32257,8 +32605,8 @@
       "description": "Connect with senior banking executives, technology leaders, and fintech partners for three days of strategic dialogue, practical insights, and high-impact",
       "startTime": "2026-12-07",
       "endTime": "2026-12-09",
-      "location": "Other, USA, USA 🇺🇸",
-      "city": "Other, USA",
+      "location": "Chicago, USA 🇺🇸",
+      "city": "Chicago",
       "country": "USA 🇺🇸",
       "organizer": null,
       "tags": [
@@ -32312,6 +32660,27 @@
       "imageUrl": null,
       "seriesSlug": "DubaiDecEvents2026",
       "seriesName": "Dubai Dec Events"
+    },
+    {
+      "id": "recJfVbTQ09oTRrpb",
+      "kind": "main",
+      "name": "Expand North Star 2026",
+      "description": "No information at this moment",
+      "startTime": "2026-12-08",
+      "endTime": "2026-12-10",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://expandnorthstar.com",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recm6Uuh8OVV5xvGX",
@@ -32379,6 +32748,31 @@
       "seriesName": "Abu Dhabi Finance Week"
     },
     {
+      "id": "recUU4up4BdMoVH9Y",
+      "kind": "main",
+      "name": "Crypto Polo Cup",
+      "description": "Premier invitation-only event where the world of investment, innovation, and influence converges, attracting the biggest players in venture capital, blockchain, and emerging technology.",
+      "startTime": "2026-12-11",
+      "endTime": "2026-12-11",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Multichain"
+      ],
+      "topics": [
+        "VC",
+        "Institutional",
+        "Markets"
+      ],
+      "website": "https://www.lunapr.com/our-events",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "rec3HURNk7kgrtQfU",
       "kind": "main",
       "name": "Family Office Super Summit",
@@ -32424,6 +32818,27 @@
       "imageUrl": null,
       "seriesSlug": "CESSideEvents2027",
       "seriesName": "CES Side Events"
+    },
+    {
+      "id": "rec7UmTouFCMFugWQ",
+      "kind": "main",
+      "name": "IC3 Winter Retreat 2027",
+      "description": "The Winter Retreat will look and feel a little different in 2027 as it heads to Cascais, Portugal.",
+      "startTime": "2027-01-12",
+      "endTime": "2027-01-14",
+      "location": "Lisbon, Portugal 🇵🇹",
+      "city": "Lisbon",
+      "country": "Portugal 🇵🇹",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://initc3.org/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recB1XOkWCtblxbSb",
@@ -32671,7 +33086,7 @@
       "kind": "main",
       "name": "Peaks ",
       "description": "An alpine summit for 120 founders & investors building crypto, fintech & AI. Three days on the mountain, off the record.\n\n",
-      "startTime": "2027-02-09",
+      "startTime": "2027-02-10",
       "endTime": "2027-02-12",
       "location": "Lake Tahoe, USA 🇺🇸",
       "city": "Lake Tahoe",
@@ -32817,8 +33232,8 @@
       "description": "we will address the most pressing topics on the minds of our community, from financial market outlooks to investments in real estate, technology, and alternatives. From estate planning and preparing the next generation, to women’s entrepreneurship and family business dynamics. From philanthropy and impact investing to art, legacy, and even the complexities of marrying into, or out of, wealth.",
       "startTime": "2027-03-08",
       "endTime": "2027-03-08",
-      "location": "Other, USA, USA 🇺🇸",
-      "city": "Other, USA",
+      "location": "Houston, USA 🇺🇸",
+      "city": "Houston",
       "country": "USA 🇺🇸",
       "organizer": "DCfinance",
       "tags": [
@@ -32831,6 +33246,31 @@
         "Markets"
       ],
       "website": "https://houston-wealth.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recLvGCmLxvjRQUQa",
+      "kind": "main",
+      "name": "MERGE Buenos Aires",
+      "description": "MERGE Buenos Aires is the institutional crypto, blockchain and Web3 conference connecting Southern Europe and Latin America. Where banks, regulators, exchanges, custodians, funds and protocols actually meet to move capital into digital assets. March 16–19 with over 5,000 + attendees, 200+ speakers, 40+ countries.",
+      "startTime": "2027-03-08",
+      "endTime": "2027-03-10",
+      "location": "Buenos Aires, Argentina 🇦🇷",
+      "city": "Buenos Aires",
+      "country": "Argentina 🇦🇷",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Stablecoins",
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://www.mmerge.io/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -32878,31 +33318,6 @@
         "AI"
       ],
       "website": "https://www.nvidia.com/gtc/",
-      "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
-    },
-    {
-      "id": "recLvGCmLxvjRQUQa",
-      "kind": "main",
-      "name": "MERGE Buenos Aires",
-      "description": "MERGE Buenos Aires is the institutional crypto, blockchain and Web3 conference connecting Southern Europe and Latin America. Where banks, regulators, exchanges, custodians, funds and protocols actually meet to move capital into digital assets. March 16–19 with over 5,000 + attendees, 200+ speakers, 40+ countries.",
-      "startTime": "2027-03-16",
-      "endTime": "2027-03-18",
-      "location": "Buenos Aires, Argentina 🇦🇷",
-      "city": "Buenos Aires",
-      "country": "Argentina 🇦🇷",
-      "organizer": null,
-      "tags": [
-        "Conference",
-        "Multichain"
-      ],
-      "topics": [
-        "Stablecoins",
-        "TradFi",
-        "Institutional"
-      ],
-      "website": "https://www.mmerge.io/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -32962,7 +33377,7 @@
       "name": "RWC 2027",
       "description": "RWC 2027 will take place in Seattle, United States on April 5–7, 2027. RWC 2027 is organized by the International Association for Cryptologic Research (IACR).",
       "startTime": "2027-04-05",
-      "endTime": "2027-04-05",
+      "endTime": "2027-04-07",
       "location": "Seattle, USA 🇺🇸",
       "city": "Seattle",
       "country": "USA 🇺🇸",
