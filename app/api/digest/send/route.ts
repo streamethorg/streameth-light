@@ -1,7 +1,9 @@
 import { digestConfigured, sendWeeklyDigest } from "@/lib/digest";
 
-/** Weekly digest send, triggered by a crontab entry on the VPS (see
- * scripts/deploy-vps.sh) that sends `Authorization: Bearer $CRON_SECRET`. */
+export const maxDuration = 300;
+
+/** Weekly digest send, triggered by the Vercel cron in vercel.json. Vercel
+ * sends `Authorization: Bearer $CRON_SECRET` with cron requests. */
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET;
   if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
