@@ -1,0 +1,28 @@
+{
+  "name": "@streameth/fast-consume",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx --no-warnings=ExperimentalWarning --env-file-if-exists=../../.env.local src/index.ts",
+    "test": "tsx --test src/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
+    "@remotion/bundler": "4.0.534",
+    "@remotion/captions": "4.0.534",
+    "@remotion/google-fonts": "4.0.534",
+    "@remotion/media": "4.0.534",
+    "@remotion/renderer": "4.0.534",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.534"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.2.18",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

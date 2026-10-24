@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Workspace packages lint and typecheck on their own.
+    "packages/**",
   ]),
 ]);
 

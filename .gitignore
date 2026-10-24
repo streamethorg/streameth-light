@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -49,3 +49,7 @@ __pycache__/
 # scripts/pull-youtube-videos.py and consumed by pull-youtube-metadata.py/
 # pull-youtube-transcripts.py in the same run — never meant to persist
 /data/sources/new-video-ids.json
+
+# fast-consume output (pnpm fast-consume --video ...): condensed MP4s and
+# their sidecars, too big for git
+/fast/
