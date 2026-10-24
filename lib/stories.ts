@@ -67,7 +67,7 @@ export interface Story {
   reporter: Reporter | null;
 }
 
-interface ReporterRow {
+export interface ReporterRow {
   id: string;
   slug: string;
   name: string;
@@ -98,9 +98,10 @@ interface StoryRow {
   reporters: ReporterRow | null;
 }
 
-const STORY_SELECT = "*, reporters(id, slug, name, bio, website, operator_name, trust, created_at)";
+export const REPORTER_COLUMNS = "id, slug, name, bio, website, operator_name, trust, created_at";
+const STORY_SELECT = `*, reporters(${REPORTER_COLUMNS})`;
 
-function toReporter(row: ReporterRow): Reporter {
+export function toReporter(row: ReporterRow): Reporter {
   return {
     id: row.id,
     slug: row.slug,
@@ -153,7 +154,7 @@ export function storiesConfigured(): boolean {
 // The service-role client: the only writer of these tables (RLS has no
 // write policies), also used for reads so withdrawn/suspended rules are
 // applied here in one place rather than split between RLS and code.
-const getAdmin = lazy(
+export const getAdmin = lazy(
   (): SupabaseClient =>
     createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
       auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },

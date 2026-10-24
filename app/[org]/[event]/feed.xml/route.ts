@@ -69,6 +69,15 @@ function itemFields(item: FeedItem, pageUrl: string): { title: string; link: str
       description: `${item.story.standfirst}${by ? ` — ${by}` : ""}`,
     };
   }
+  if (item.kind === "embed") {
+    const e = item.embed;
+    return {
+      title: `${e.reporter.name} shared: ${e.title || e.url}`,
+      link: e.url,
+      guid: `embed:${e.id}`,
+      description: [e.note, e.authorName ? `By ${e.authorName}.` : "", e.description.slice(0, 400)].filter(Boolean).join(" "),
+    };
+  }
   if (item.kind === "session") {
     const s = item.session;
     return {

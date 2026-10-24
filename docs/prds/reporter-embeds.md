@@ -1,6 +1,6 @@
 # PRD: Reporter embeds in the event feed
 
-> **Status:** Draft · **Author:** Pablo Voorvaart (with Claude) · **Date:** 2026-10-24 · **Slug:** `reporter-embeds`
+> **Status:** Built (v1, 2026-10-24) · **Author:** Pablo Voorvaart (with Claude) · **Date:** 2026-10-24 · **Slug:** `reporter-embeds`
 >
 > Replaces the earlier `livepeer-uploads` draft: we don't host files.
 
@@ -107,7 +107,7 @@ placed by when they were added:
   |---|---|---|
   | DB | `supabase/migrations/00000000000011_event_embeds.sql` | table + RLS |
   | Pure | `lib/embedCore.mjs` + `.test.mjs` | provider registry, URL match/normalize, oEmbed/OG → fields, iframe URL builder, private-IP check |
-  | Server | `lib/embeds.ts` | safe fetch, add/list/remove, cached `listEmbedsForEvents` |
+  | Server | `lib/embeds.ts` | safe fetch, add/list/remove, `listEmbedsForEvents` (read fresh per request — see note) |
   | Page | `app/upload/page.tsx`, `app/upload/actions.ts`, `components/EmbedForm.tsx` | form + list |
   | MCP | `app/api/mcp/route.ts`, `lib/reporterGuide.ts` | 3 tools + docs |
   | Feed | `lib/eventFeed.ts` | new `{ kind: "embed", at, embed }` item |
@@ -171,6 +171,12 @@ placed by when they were added:
   /upload or MCP ─embed_media─▶ checks ─▶ oEmbed (known) / safe OG fetch (link) ─▶ row ─▶ revalidateTag("embeds")
   Event page ─▶ eventFeed(event) ─▶ stories ∪ sessions ∪ videos ∪ listEmbedsForEvents([key]) (cached 60 s)
   ```
+
+  Built note: embeds are read fresh on each event page view (React `cache`,
+  one indexed query) instead of `unstable_cache` + tag — in testing,
+  `revalidateTag` from the MCP route didn't clear the cache, so a removed
+  item lingered up to the TTL. The page is the `/add` route (renamed from
+  `/upload`).
 
   Only `lib/eventFeed.ts` and the feed renderer change — no changes to
   `eventCoverage`, `VideosTab`, `LiveBlock` or `data/streameth.db`.

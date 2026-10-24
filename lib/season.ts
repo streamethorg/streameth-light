@@ -329,6 +329,14 @@ function allCoverageEvents(): SeasonEvent[] {
   return [...getAllSeasonEvents(), ...getArchive().events];
 }
 
+/** Every event with a coverage page — calendar and archive — most recent
+ * first (by end date; upcoming ones first of all). For pickers. */
+export function listCoverageEvents(): SeasonEvent[] {
+  return allCoverageEvents()
+    .filter((e) => e.href)
+    .sort((a, b) => b.to - a.to);
+}
+
 /** The coverage page that a channel's YouTube event group (the old
  * /<channel>/y/<group> page) now lives at. */
 export function youtubeGroupHref(channelSlug: string, groupSlug: string): string | undefined {

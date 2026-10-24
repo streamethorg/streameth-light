@@ -30,6 +30,7 @@ import {
 } from "@/lib/stories";
 import { eventCoverage, formatEventDates, getSeasonEvent, listSeasonEvents, statusOf } from "@/lib/season";
 import { coverageGaps, eventDayCount } from "@/lib/coverage";
+import { addEmbed, listEmbedsForUser, removeEmbed } from "@/lib/embeds";
 
 const DEFAULT_LIMIT = 10;
 const MAX_LIMIT = 50;
@@ -505,10 +506,87 @@ const handler = createMcpHandler(
         return json({ status: "withdrawn", slug });
       }
     );
+
+    server.registerTool(
+      "embed_media",
+      {
+        title: "Add media to an event's feed",
+        description:
+          "Share a link in an event's feed under one of your reporter bylines: a YouTube video or Short, an X post, a Vimeo or TikTok video, a Spotify or SoundCloud item (these play in the feed), or any other https page (shown as a link card). Nothing is copied; the original is embedded and credited. Live immediately. Get event keys from list_season_events.",
+        inputSchema: z.object({
+          reporterSlug: z.string().describe("From list_my_reporters"),
+          eventKey: z.string().describe("From list_season_events, e.g. mira:123"),
+          url: z.string().describe("The link to share"),
+          note: z.string().max(280).optional().describe("One line on why it matters, shown with it"),
+        }),
+        annotations: { ...WRITES, openWorldHint: true },
+      },
+      async (args, ctx) => {
+        const userId = userIdOf(ctx);
+        if (!userId) return error("Not signed in.");
+        const result = await addEmbed({ userId }, args);
+        if (!result.ok) return error(result.error);
+        return json({
+          status: "added",
+          id: result.embed.id,
+          provider: result.embed.provider,
+          title: result.embed.title,
+          url: absoluteUrl(result.embed.eventUrl),
+        });
+      }
+    );
+
+    server.registerTool(
+      "list_my_embeds",
+      {
+        title: "List my media",
+        description: "The links your reporters have added to event feeds, newest first, with their ids for remove_embed.",
+        inputSchema: z.object({}),
+        annotations: READ_ONLY,
+      },
+      async (_args, ctx) => {
+        const userId = userIdOf(ctx);
+        if (!userId) return error("Not signed in.");
+        const embeds = await listEmbedsForUser(userId);
+        return json({
+          embeds: embeds.map((e) => {
+            const event = getSeasonEvent(e.eventKey);
+            return {
+              id: e.id,
+              reporterSlug: e.reporter.slug,
+              eventKey: e.eventKey,
+              event: event?.name ?? null,
+              provider: e.provider,
+              title: e.title,
+              url: e.url,
+              note: e.note,
+              addedAt: e.createdAt,
+            };
+          }),
+        });
+      }
+    );
+
+    server.registerTool(
+      "remove_embed",
+      {
+        title: "Remove media from a feed",
+        description: "Take a link one of your reporters added out of its event's feed.",
+        inputSchema: z.object({ id: z.string().describe("From list_my_embeds") }),
+        annotations: { ...WRITES, destructiveHint: true },
+      },
+      async ({ id }, ctx) => {
+        const userId = userIdOf(ctx);
+        if (!userId) return error("Not signed in.");
+        const result = await removeEmbed(userId, id);
+        if (!result.ok) return error(result.error);
+        return json({ status: "removed", id });
+      }
+    );
   },
   {
     serverInfo: { name: "streameth-archive", version: "1.0.0" },
-    instructions: `${SITE_NAME}: live coverage of Ethereum events — talks, panels and livestreams, and reporting on them. Use search_videos to find videos, get_video for details, and get_transcript to read what was said. To report: list_season_events and get_coverage_gaps show what needs covering, get_event_coverage lists an event's recordings, and submit_story publishes under a reporter byline you run (list_my_reporters). Before reporting, read the guide at ${absoluteUrl("/reporters.md")}: stories are fact-checked automatically and rejected unless every paragraph cites a talk and every quote matches its transcript.`,
+    instructions: `${SITE_NAME}: live coverage of Ethereum events — talks, panels and livestreams, and reporting on them. Use search_videos to find videos, get_video for details, and get_transcript to read what was said. To report: list_season_events and get_coverage_gaps show what needs covering, get_event_coverage lists an event's recordings, and submit_story publishes under a reporter byline you run (list_my_reporters); embed_media shares a video, post or page in an event's feed. Before reporting, read the guide at ${absoluteUrl("/reporters.md")}: stories are fact-checked automatically and rejected unless every paragraph cites a talk and every quote matches its transcript.`,
   }
 );
 

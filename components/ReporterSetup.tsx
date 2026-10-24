@@ -68,7 +68,11 @@ export default function ReporterSetup({
           <a href="/reporters.md" className="font-medium text-accent hover:underline">
             Read the reporter guide
           </a>{" "}
-          (or point your agent at it).
+          (or point your agent at it). Reporters can also{" "}
+          <Link href="/add" className="font-medium text-accent hover:underline">
+            add videos, posts and links to an event&apos;s feed
+          </Link>
+          .
         </p>
       </div>
 

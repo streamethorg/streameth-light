@@ -7,6 +7,7 @@ import Avatar from "./Avatar";
 import EventNowPlaying, { EventAsk, NowPlayingAsk } from "./EventNowPlaying";
 import { sessionTime } from "./LiveBlock";
 import { STORY_KIND_LABELS } from "./StoryCard";
+import EmbedItem, { type EmbedItemData } from "./EmbedItem";
 import { BackIcon, RssIcon } from "./NavIcons";
 import {
   eventCoverage,
@@ -30,6 +31,7 @@ import { findSpeakerSlugForName } from "@/lib/people";
 import { getVideoById } from "@/lib/videoDb";
 import { formatTimecode, withoutEventSuffix } from "@/lib/format";
 import type { Story } from "@/lib/stories";
+import { viewerCanAddMedia, type Embed } from "@/lib/embeds";
 import type { UnifiedVideo, VideoFormat } from "@/lib/videoDb";
 
 export type EventTab = "live" | "info" | "speakers" | "videos" | "livestream";
@@ -132,9 +134,10 @@ export default async function EventCoverage({
 }) {
   const label = tabLabel(tab, event, now);
   const nowPlaying = playing ? getVideoById(playing) : undefined;
+  const canAdd = await viewerCanAddMedia();
   return (
     <div className="grid w-full grid-cols-1 px-0 sm:px-4 lg:grid-cols-[230px_minmax(0,1fr)] lg:px-8 xl:grid-cols-[250px_minmax(0,1fr)_340px]">
-      <Sidebar event={event} now={now} tab={tab} playing={nowPlaying?.id} />
+      <Sidebar event={event} now={now} tab={tab} playing={nowPlaying?.id} canAdd={canAdd} />
 
       <main className="min-w-0 border-line lg:border-x">
         {/* The column's heading; on phones the tab strip right above says it. */}
@@ -180,7 +183,20 @@ function EventStatus({ event, now }: { event: SeasonEvent; now: number }) {
   return <p className="tabular text-sm text-ink-dim">{statusLine(event, now)}</p>;
 }
 
-function Sidebar({ event, now, tab, playing }: { event: SeasonEvent; now: number; tab: EventTab; playing?: string }) {
+function Sidebar({
+  event,
+  now,
+  tab,
+  playing,
+  canAdd,
+}: {
+  event: SeasonEvent;
+  now: number;
+  tab: EventTab;
+  playing?: string;
+  /** The visitor runs a reporter: show "Add to feed". */
+  canAdd: boolean;
+}) {
   const live = statusOf(event, now) === "live";
   return (
     <aside className="border-b border-line px-4 pt-4 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:border-b-0 lg:px-3 lg:pb-3 lg:pt-6">
@@ -265,6 +281,15 @@ function Sidebar({ event, now, tab, playing }: { event: SeasonEvent; now: number
             </a>
           )}
         </div>
+
+        {canAdd && (
+          <Link
+            href={`/add?event=${encodeURIComponent(event.key)}`}
+            className="mb-3 flex h-9 w-fit items-center rounded-sm bg-accent px-3.5 text-sm font-semibold text-accent-ink transition-colors hover:bg-stage lg:mx-1 lg:mb-0"
+          >
+            + Add to feed
+          </Link>
+        )}
       </div>
     </aside>
   );
@@ -454,9 +479,30 @@ function StoryItem({ story }: { story: Story }) {
   );
 }
 
+/** What the client-side embed needs: the embed minus the reporter's
+ * private fields. */
+function embedItemData(e: Embed): EmbedItemData {
+  return {
+    id: e.id,
+    provider: e.provider,
+    externalId: e.externalId,
+    url: e.url,
+    variant: e.variant,
+    title: e.title,
+    description: e.description,
+    authorName: e.authorName,
+    authorUrl: e.authorUrl,
+    siteName: e.siteName,
+    imageUrl: e.imageUrl,
+    note: e.note,
+    reporter: { name: e.reporter.name, slug: e.reporter.slug },
+  };
+}
+
 interface FeedDay {
   key: string;
   stories: Story[];
+  embeds: Embed[];
   videos: UnifiedVideo[];
   sessions: ScheduledSession[];
 }
@@ -475,10 +521,11 @@ function feedDays(feed: FeedItem[], event: SeasonEvent): FeedDay[] {
     const key = dayKeyOf(item.at, item.kind === "video" && item.dayOnly ? "UTC" : zone);
     let day = days.get(key);
     if (!day) {
-      day = { key, stories: [], videos: [], sessions: [] };
+      day = { key, stories: [], embeds: [], videos: [], sessions: [] };
       days.set(key, day);
     }
     if (item.kind === "story") day.stories.push(item.story);
+    else if (item.kind === "embed") day.embeds.push(item.embed);
     else if (item.kind === "video") day.videos.push(item.video);
     else day.sessions.push(item.session);
   }
@@ -520,6 +567,13 @@ function DaySection({ day, event, now }: { day: FeedDay; event: SeasonEvent; now
         <div className="flex flex-col gap-6">
           {day.stories.map((story) => (
             <StoryItem key={story.id} story={story} />
+          ))}
+        </div>
+      )}
+      {day.embeds.length > 0 && (
+        <div className="flex flex-col gap-8">
+          {day.embeds.map((embed) => (
+            <EmbedItem key={embed.id} embed={embedItemData(embed)} />
           ))}
         </div>
       )}
