@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-21",
-  "seriesCount": 63,
-  "eventCount": 1641,
+  "importedAt": "2026-10-24",
+  "seriesCount": 65,
+  "eventCount": 1651,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -394,6 +394,16 @@
       "id": "recczQeU2avVdaz0p",
       "title": "muShenzhen Events",
       "slug": "muShenzhenEvents2026"
+    },
+    {
+      "id": "rectix59qT1ISRyKf",
+      "title": "Blockchain Life Week",
+      "slug": "BlockchainLifeWeek2026"
+    },
+    {
+      "id": "recbyti1WmCR2rr9w",
+      "title": "Davos Events",
+      "slug": "DavosEvents2027"
     }
   ],
   "events": [
@@ -29708,6 +29718,56 @@
       "seriesName": "Swell 2026 Side Events"
     },
     {
+      "id": "recrL51q04Idd3cU4",
+      "kind": "main",
+      "name": "Assets on Blockchain",
+      "description": "Where Wall Street Meets the Future of FinanceThe third edition of the Assets on Blockchain (AOB) Conference returns to the Harvard Club of New York City on October 29, 2026, bringing together leading voices from traditional finance, digital assets, blockchain, artificial intelligence, and regulatory policy.As financial markets undergo one of their most significant transformations in decades, tokenization is moving beyond experimentation and into institutional adoption.From Wall Street institutions integrating blockchain infrastructure to the emergence of AI-powered financial markets, AOB 2026 will explore the technologies, regulations, and investment opportunities redefining how capital is created, managed, and exchanged.Building on previous editions featuring representatives from BlackRock, Coinbase, Franklin Templeton, Deloitte, McKinsey & Company, Circle, Chainlink Labs, and Galaxy, this year's conference will bring together industry leaders shaping the next generation of global ...",
+      "startTime": "2026-10-29",
+      "endTime": "2026-10-29",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "Luna PR, Suresh Nichani",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "DeFi",
+        "VC"
+      ],
+      "website": "https://lu.ma/0dlcm856",
+      "imageUrl": "https://images.lumacdn.com/uploads/67/61fc29cf-79c8-4516-bec1-3f83dc2bdae2.png",
+      "seriesSlug": "Swell2026SideEvents2026",
+      "seriesName": "Swell 2026 Side Events"
+    },
+    {
+      "id": "recgr8ZLyHQt4uWjv",
+      "kind": "main",
+      "name": "Link:NYC",
+      "description": "Your invitation to the new financial system. One day. New York. Oct 29.\nLink:NYC is the convergence point for the senior\nexecutives and industry leaders upgrading\nglobal financial markets: the banks, market\ninfrastructure providers, asset managers, and\ninstitutional allocators deciding how value\nmoves in a digital, AI-driven economy.",
+      "startTime": "2026-10-29",
+      "endTime": "2026-10-29",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "Chainlink",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "RWA",
+        "Stablecoins"
+      ],
+      "website": "https://chain.link/events/linknyc",
+      "imageUrl": null,
+      "seriesSlug": "Swell2026SideEvents2026",
+      "seriesName": "Swell 2026 Side Events"
+    },
+    {
       "id": "rec1qBxlPHoEX1ypP",
       "kind": "side",
       "name": "Superteam Talent Tour Stop India (tbd)",
@@ -31098,6 +31158,31 @@
       "seriesName": ""
     },
     {
+      "id": "recXTm0DrrG72Nps2",
+      "kind": "main",
+      "name": "Cantor Convergence",
+      "description": "Cantor Convergence is a premier conference at the intersection of Digital Assets, Fintech, AI Infrastructure, Energy & Power, Quantum, Robotics, and Space & Defense, bringing together the leaders defining the next era of the global digital economy.\n\nFor more information, please contact your Cantor Representative.",
+      "startTime": "2026-11-10",
+      "endTime": "2026-11-12",
+      "location": "Miami, USA 🇺🇸",
+      "city": "Miami",
+      "country": "USA 🇺🇸",
+      "organizer": "Cantor",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "AI",
+        "Infrastructure"
+      ],
+      "website": "https://www.cantor.com/conference/cantor-convergence/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recD9p4vyQMpO33ki",
       "kind": "main",
       "name": "Edge City Bhutan",
@@ -31190,6 +31275,31 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recO7P8L39c6t2Gad",
+      "kind": "main",
+      "name": "Ethereum Institutional Forum",
+      "description": "An invite-only forum for institutions building on Ethereum.\n\nExploring Ethereum’s roadmap, post-quantum readiness and the infrastructure enabling institutional finance onchain.",
+      "startTime": "2026-11-12",
+      "endTime": "2026-11-12",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": "Ethereum Institutional",
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Institutional",
+        "Infrastructure",
+        "RWA"
+      ],
+      "website": "https://forum.ethereuminstitutional.org/london-2026",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/EthereumInstitutionalForum_2026-10-23T08-13.png",
+      "seriesSlug": "Breakpoint2026SideEvents2026",
+      "seriesName": "Breakpoint 2026 Side Events"
     },
     {
       "id": "recmwQsGWPU5oljr0",
@@ -31910,29 +32020,6 @@
       "seriesName": ""
     },
     {
-      "id": "rec6jotRLNFn5W5HR",
-      "kind": "main",
-      "name": "Global AI Show",
-      "description": "The world's most powerful AI conference in Abu Dhabi. Join 6000+ leaders at the biggest AI summit in 2026. Nov 18-19, UAE.",
-      "startTime": "2026-11-18",
-      "endTime": "2026-11-19",
-      "location": "Abu Dhabi, UAE 🇦🇪",
-      "city": "Abu Dhabi",
-      "country": "UAE 🇦🇪",
-      "organizer": null,
-      "tags": [
-        "Conference",
-        "Other"
-      ],
-      "topics": [
-        "AI"
-      ],
-      "website": "https://www.globalaishow.com/abu-dhabi/",
-      "imageUrl": "https://www.globalaishow.com/wp-content/uploads/2026/07/global-ai-show-abu-dhabi-og.webp",
-      "seriesSlug": "",
-      "seriesName": ""
-    },
-    {
       "id": "recWh8LksCe536tDc",
       "kind": "main",
       "name": "Africa Fintech Summit Kigali 2026",
@@ -32101,9 +32188,9 @@
       "description": "CODELAP Hackathon invites 3rd and 4th-year students and Master's students to transform ideas into solutions through technology and engineering. For three days at Porsche Engineering Romania, teams of four tackle challenges, innovate, and compete while collaborating and learning. Open to those passionate about software, AI, and problem-solving, this is a chance to build and create. November 20-22.",
       "startTime": "2026-11-20",
       "endTime": "2026-11-22",
-      "location": null,
-      "city": null,
-      "country": null,
+      "location": "Other, Romania, Romania 🇷🇴",
+      "city": "Other, Romania",
+      "country": "Romania 🇷🇴",
       "organizer": "Google AI",
       "tags": [
         "Hack",
@@ -32116,6 +32203,31 @@
       "imageUrl": null,
       "seriesSlug": "AIEvents",
       "seriesName": "AI Events"
+    },
+    {
+      "id": "recIHuVMa7upsW6Xx",
+      "kind": "main",
+      "name": "Ethereum Institutional Forum: Singapore",
+      "description": "Public Chains, Private Markets: A Half-Day Institutional Forum\nThe move to public rails: examining the infrastructure, assets, privacy, and utility shaping institutional adoption.",
+      "startTime": "2026-11-20",
+      "endTime": "2026-11-20",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": "Ethereum Institutional",
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Institutional",
+        "RWA",
+        "Privacy"
+      ],
+      "website": "https://forum.ethereuminstitutional.org/singapore-2026",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/EthereumInstitutionalForumSingapore_2026-10-23T08-16.png",
+      "seriesSlug": "NovemberSingaporeEvents2026",
+      "seriesName": "November Singapore Events"
     },
     {
       "id": "reczUHSoFnCdWepgJ",
@@ -32427,6 +32539,30 @@
       "seriesName": "Binance Blockchain Week"
     },
     {
+      "id": "recmDNJBWign5HbYu",
+      "kind": "main",
+      "name": "CryptoCon 2026",
+      "description": "Join us at the Southern Hemisphere’s largest crypto and blockchain event, taking place at ICC Sydney on 28–29 November 2026.\nNow in its fifth year,…",
+      "startTime": "2026-11-28",
+      "endTime": "2026-11-29",
+      "location": "Sydney, Australia 🇦🇺",
+      "city": "Sydney",
+      "country": "Australia 🇦🇺",
+      "organizer": "AusCryptoCon - Australia's largest crypto event",
+      "tags": [
+        "Other",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Markets"
+      ],
+      "website": "https://lu.ma/AusCryptoCon26",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/j0/f039fdfa-a73b-444e-9284-a3d53c651661.png",
+      "seriesSlug": "AusCryptoConEvents2026",
+      "seriesName": "AusCryptoCon Events"
+    },
+    {
       "id": "rec8cMJVk9kg0zrlF",
       "kind": "main",
       "name": "muShenzhen",
@@ -32515,10 +32651,10 @@
       "topics": [
         "Other"
       ],
-      "website": "https://blockchain-life.com/autumn2026/",
+      "website": "https://blockchain-life.com/",
       "imageUrl": null,
-      "seriesSlug": "DubaiDecEvents2026",
-      "seriesName": "Dubai Dec Events"
+      "seriesSlug": "BlockchainLifeWeek2026",
+      "seriesName": "Blockchain Life Week"
     },
     {
       "id": "recS8sxxU5ijggmUY",
@@ -32586,8 +32722,8 @@
       ],
       "website": "https://ai-future.com",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/AIFutureForum2026_2026-07-22T09-27.png",
-      "seriesSlug": "DubaiDecEvents2026",
-      "seriesName": "Dubai Dec Events"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recMhvG2j2SuatN2C",
@@ -32823,32 +32959,8 @@
       ],
       "website": "https://www.gitex.com/",
       "imageUrl": null,
-      "seriesSlug": "DubaiDecEvents2026",
-      "seriesName": "Dubai Dec Events"
-    },
-    {
-      "id": "recME0qe3Pjl1iBRn",
-      "kind": "main",
-      "name": "SEZ Dubai",
-      "description": "Featuring leaders from regulatory, ecosystem, investment, institutional finance, RWA, technical, and global categories.",
-      "startTime": "2026-12-07",
-      "endTime": "2026-12-11",
-      "location": "Dubai, UAE 🇦🇪",
-      "city": "Dubai",
-      "country": "UAE 🇦🇪",
-      "organizer": null,
-      "tags": [
-        "Solana",
-        "Conference"
-      ],
-      "topics": [
-        "RWA",
-        "Institutional"
-      ],
-      "website": "https://sezdubai.com/",
-      "imageUrl": null,
-      "seriesSlug": "DubaiDecEvents2026",
-      "seriesName": "Dubai Dec Events"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recWPyQgzGUBiDv5i",
@@ -33234,8 +33346,8 @@
       ],
       "website": "https://www.futureinvestments.xyz/copy-of-fic-davos-2026",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DavosEvents2027",
+      "seriesName": "Davos Events"
     },
     {
       "id": "recWkA6iFtH2lnOh6",
@@ -33255,8 +33367,33 @@
       "topics": [],
       "website": "https://hubdavos.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DavosEvents2027",
+      "seriesName": "Davos Events"
+    },
+    {
+      "id": "recxpN06s52OZDqjV",
+      "kind": "main",
+      "name": "Pyth at Davos: Finance, Elevated",
+      "description": "Finance, Elevated 🏔️\nAn invitation-only gathering for finance leaders in a private mountain setting above Davos.\n\nDuring WEF week in Davos, Pyth is bringing together a select group of CEOs, principals, investors and senior decision-makers from finance and market infrastructure for a rare gathering above the valley.\n\nSet in a private mountain location, the afternoon offers a chance to step away from the conference circuit and spend time with peers in an exceptional setting  surrounded by panoramic views, thoughtful hospitality and the people shaping what comes next in finance.\n\nGuests will experience:\n\n- A private Pyth terrace with panoramic mountain views\n- Live music followed by a DJ set\n- A select gathering of finance and market infrastructure leaders\n\nGuests will also be among the first to hear a special announcement from Pyth during the afternoon.\n\nThe exact location and arrival details will be shared with approved guests only.\n\nPlaces are limited and attendance is by invitatio...",
+      "startTime": "2027-01-20",
+      "endTime": "2027-01-20",
+      "location": "Davos, Switzerland 🇨🇭",
+      "city": "Davos",
+      "country": "Switzerland 🇨🇭",
+      "organizer": "Pyth Network",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional",
+        "Markets"
+      ],
+      "website": "https://lu.ma/pyth-a5m7",
+      "imageUrl": "https://images.lumacdn.com/uploads/ay/bd03192f-84fe-4545-a0f5-110220f90cb2.png",
+      "seriesSlug": "DavosEvents2027",
+      "seriesName": "Davos Events"
     },
     {
       "id": "recuRkf4ZzyjOjZRf",
@@ -33945,6 +34082,29 @@
       "seriesName": ""
     },
     {
+      "id": "rec6jotRLNFn5W5HR",
+      "kind": "main",
+      "name": "Global AI Show",
+      "description": "The world's most powerful AI conference in Abu Dhabi. Join 6000+ leaders at the biggest AI summit in 2026. Nov 18-19, UAE.",
+      "startTime": "2027-03-23",
+      "endTime": "2027-03-24",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.globalaishow.com/abu-dhabi/",
+      "imageUrl": "https://www.globalaishow.com/wp-content/uploads/2026/07/global-ai-show-abu-dhabi-og.webp",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recI42eh9m0FAc3dK",
       "kind": "main",
       "name": "Next Block Expo 2027",
@@ -34100,6 +34260,30 @@
       "seriesName": ""
     },
     {
+      "id": "recME0qe3Pjl1iBRn",
+      "kind": "main",
+      "name": "SEZ Dubai",
+      "description": "Featuring leaders from regulatory, ecosystem, investment, institutional finance, RWA, technical, and global categories.",
+      "startTime": "2027-04-07",
+      "endTime": "2027-04-15",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Solana",
+        "Conference"
+      ],
+      "topics": [
+        "RWA",
+        "Institutional"
+      ],
+      "website": "https://sezdubai.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "rec7MnG3HVutRKFxQ",
       "kind": "main",
       "name": "FIBE 2027",
@@ -34170,6 +34354,31 @@
       "seriesName": ""
     },
     {
+      "id": "recgWLNJ9ZBvA8sZC",
+      "kind": "main",
+      "name": "The Agora",
+      "description": "Kaiko's institutional forum where digital finance meets open thinking\n\nMission Statement\nDigital asset markets now exceed $3 trillion in value. As capital markets increasingly converge with their blockchain-based counterparts, the conversation around how is growing louder and more tangible. Kaiko built The Agora to focus this conversation and bring the right people together on a neutral platform to shape the future of digital assets in the financial ecosystem. From Standard Chartered, Euronext, and Fidelity, to S&P Global, Bloomberg, and DRW, The Agora brings the biggest players to the table to discuss how these future markets are built, regulated, and traded.\n\nThe event focuses on the key issues defining the future of institutional digital finance, including:\n\nStablecoins and settlement infrastructure\nTokenized collateral\nDerivatives markets\nOnchain capital markets & liquidity\nOnchain regulatory compliance\nHosted by Kaiko, the global leader in digital asset data and infrastructure,...",
+      "startTime": "2027-04-13",
+      "endTime": "2027-04-13",
+      "location": "Cannes, France 🇫🇷",
+      "city": "Cannes",
+      "country": "France 🇫🇷",
+      "organizer": "Kaiko",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "Markets",
+        "Stablecoins"
+      ],
+      "website": "https://agora.kaiko.com/",
+      "imageUrl": null,
+      "seriesSlug": "EthCC10Events2027",
+      "seriesName": "EthCC 10 Events"
+    },
+    {
       "id": "recHg38HueN9FxGg0",
       "kind": "main",
       "name": "Fintech Fest",
@@ -34215,6 +34424,31 @@
         "Community"
       ],
       "website": "https://stablecon.com/emea/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "reclW32FWQml4y9tm",
+      "kind": "main",
+      "name": "Digital Assets Forum Abu Dhabi",
+      "description": "The premier event for the Institutional Digital Assets industry",
+      "startTime": "2027-04-15",
+      "endTime": "2027-04-15",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": "European Blockchain Convention",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "VC",
+        "Markets"
+      ],
+      "website": "https://eblockchainconvention.com/digital-assets-forum-abu-dhabi/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -34501,6 +34735,31 @@
         "Infrastructure"
       ],
       "website": "https://live.ft.com/digital-assets/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recbvQXtbhUWT89Xx",
+      "kind": "main",
+      "name": "ETHCluj 2027",
+      "description": "The internet is changing.\n\nWe are here to help you understand how — through workshops, events, and open resources on Web3, blockchain, and digital freedom.",
+      "startTime": "2027-05-12",
+      "endTime": "2027-05-13",
+      "location": "Cluj, Romania 🇷🇴",
+      "city": "Cluj",
+      "country": "Romania 🇷🇴",
+      "organizer": "ETHCluj",
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Community",
+        "Privacy",
+        "Security"
+      ],
+      "website": "https://www.ethcluj.org/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
