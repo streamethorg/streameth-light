@@ -196,6 +196,20 @@ production URL — canonical URLs, sitemaps and JSON-LD are built from it. Set
 Google Search Console / Bing Webmaster Tools, then submit `/robots.txt`'s
 sitemaps there and watch the Video indexing report.
 
+## Fast consume (condensed talks)
+
+`packages/fast-consume` cuts any talk in the archive down to its shortest
+version that still makes its argument, with captions and a StreamETH name
+strap and closing card:
+
+```bash
+pnpm fast-consume --video yt-bXe3ass7I-o   # or a watch page / YouTube URL
+```
+
+It writes `fast/<id>.fast.mp4` (gitignored). Needs ffmpeg, yt-dlp, Python with
+`faster-whisper`, and `OPENROUTER_API_KEY` in `.env.local`; see
+`docs/prds/fast-consume.md`.
+
 ## Development
 
 ```bash

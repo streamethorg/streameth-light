@@ -12,7 +12,8 @@
     "lint": "eslint",
     "export-db": "bash scripts/export-db.sh",
     "build-db": "node scripts/build-db.mjs",
-    "check-seo": "node scripts/check-seo.mjs"
+    "check-seo": "node scripts/check-seo.mjs",
+    "fast-consume": "pnpm --filter @streameth/fast-consume start"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.2.0",
