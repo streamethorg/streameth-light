@@ -28,7 +28,7 @@ export default async function EventsPage({
     <div className="flex flex-1 flex-col">
       <PageHero title="Events" meta={`${all.length.toLocaleString()} events • newest talks first`} />
       <div className="flex flex-1 flex-col px-4 pb-12 pt-6 sm:px-8">
-        <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3 2xl:grid-cols-4">
           {shown.map((e) => (
             <EventTile
               key={e.key}

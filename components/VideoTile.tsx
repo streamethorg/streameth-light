@@ -2,11 +2,12 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import CoverImage from "./CoverImage";
 
-export type VideoTileLayout = "grid" | "row" | "compact";
+export type VideoTileLayout = "grid" | "card" | "row" | "compact";
 
 /** A talk, the way a conference program lists one: who's speaking first,
  * then the title, then where/when.
- * - `grid`: thumbnail on top, text below
+ * - `grid`: thumbnail on top, text below; a small-thumbnail row on phones
+ * - `card`: thumbnail on top at every width, for swipeable carousels
  * - `row`: search-result row — big thumbnail left, details and snippet right
  * - `compact`: small thumbnail left, for side columns
  * The thumbnail, title and channel are separate links, so the channel name
@@ -57,7 +58,9 @@ export default function VideoTile({
       ? "w-40 rounded-sm sm:w-[168px]"
       : layout === "row"
         ? "w-full rounded-sm sm:w-[320px]"
-        : "w-full rounded-sm";
+        : layout === "card"
+          ? "w-full rounded-sm"
+          : "w-[42%] rounded-sm sm:w-full";
   const thumb = videoLink(
     `relative block aspect-video shrink-0 overflow-hidden bg-panel-raised ${thumbSize}`,
     <>
@@ -76,7 +79,9 @@ export default function VideoTile({
       ? "text-[19px] leading-6"
       : layout === "compact"
         ? "text-[15px] leading-5"
-        : "text-[16px] leading-[1.35rem]";
+        : layout === "card"
+          ? "text-[16px] leading-[1.35rem]"
+          : "text-[15px] leading-5 sm:text-[16px] sm:leading-[1.35rem]";
   const titleEl = videoLink(
     "rounded-sm text-ink transition-colors hover:text-ink-dim",
     <h3 className={`line-clamp-2 font-semibold ${titleSize}`} title={title}>
@@ -118,11 +123,14 @@ export default function VideoTile({
       </p>
     ) : null;
 
-  if (layout === "grid") {
+  // On phones a grid tile is a row (small thumbnail left), so a list of
+  // talks doesn't take a full screen per talk.
+  if (layout === "grid" || layout === "card") {
+    const stack = layout === "card" ? "flex-col gap-2.5" : "gap-3 sm:flex-col sm:gap-2.5";
     return (
-      <div className="flex flex-col gap-2.5">
+      <div className={`flex ${stack}`}>
         {thumb}
-        <div className="flex min-w-0 flex-col gap-0.5 pr-2">
+        <div className={`flex min-w-0 flex-col gap-0.5 ${layout === "card" ? "pr-2" : "sm:pr-2"}`}>
           {speakerEl}
           {titleEl}
           <div className="pt-0.5">{metaEl}</div>

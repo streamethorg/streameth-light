@@ -140,7 +140,7 @@ export default async function LiveBlock({
           >
             {title}
           </h2>
-          <p className={`dek text-ink-dim ${lead ? "text-[21px]" : "text-lg"}`}>{where}</p>
+          <p className={`dek text-ink-dim ${lead ? "text-[17px] sm:text-[21px]" : "text-lg"}`}>{where}</p>
         </div>
         {event.href && (
           <Link
@@ -224,7 +224,7 @@ export default async function LiveBlock({
             <span className="tabular ml-2 font-normal normal-case tracking-normal">{talks.length.toLocaleString()} so far</span>
           </h3>
           <div
-            className={`grid grid-cols-1 gap-x-6 gap-y-10 min-[560px]:grid-cols-2 ${lead ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
+            className={`grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 sm:gap-y-10 ${lead ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
           >
             {talks.slice(0, talkCount).map((v) => (
               <UnifiedVideoCard key={v.id} video={v} hideChannel eventName={event.name} />

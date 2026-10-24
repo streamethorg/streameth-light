@@ -188,7 +188,7 @@ function Sidebar({ event, now, tab, playing }: { event: SeasonEvent; now: number
         {event.channelHref && event.channelName && (
           <Link
             href={event.channelHref}
-            className="flex w-fit items-center gap-1 text-[13px] font-medium text-ink-dim transition-colors hover:text-ink"
+            className="-my-2.5 flex w-fit items-center gap-1 py-2.5 text-[13px] font-medium text-ink-dim transition-colors hover:text-ink"
           >
             <BackIcon className="h-4 w-4" />
             {event.channelName}
@@ -767,11 +767,23 @@ function SpeakersTab({ event }: { event: SeasonEvent }) {
                 )}
               </div>
               {sp.bio && <p className="line-clamp-2 text-[15px] leading-6 text-ink-dim">{sp.bio}</p>}
-              {sp.sessions.map((s) => (
-                <p key={s.id} className="text-[13px] text-ink-dim">
-                  <span className="tabular font-semibold text-ink">{sessionTime(s.start, event.timeZone)}</span> · {s.room} · {s.title}
-                </p>
+              {sp.sessions.slice(0, 2).map((s) => (
+                <SpeakerSession key={s.id} session={s} timeZone={event.timeZone} />
               ))}
+              {/* Some speakers run five workshop slots; past two, it's a
+                  wall of text — tuck the rest away. */}
+              {sp.sessions.length > 2 && (
+                <details className="group">
+                  <summary className="w-fit cursor-pointer list-none py-1 text-[13px] font-medium text-accent group-open:hidden [&::-webkit-details-marker]:hidden">
+                    {sp.sessions.length - 2} more {sp.sessions.length - 2 === 1 ? "session" : "sessions"}
+                  </summary>
+                  <div className="flex flex-col gap-1">
+                    {sp.sessions.slice(2).map((s) => (
+                      <SpeakerSession key={s.id} session={s} timeZone={event.timeZone} />
+                    ))}
+                  </div>
+                </details>
+              )}
               {sp.sessions.length === 0 &&
                 sp.videos.map((v) => (
                   <Link key={v.id} href={playHref(event, "speakers", v)} className="text-[13px] text-ink-dim hover:text-accent">
@@ -783,6 +795,26 @@ function SpeakersTab({ event }: { event: SeasonEvent }) {
         );
       })}
     </ul>
+  );
+}
+
+/** One of a speaker's slots: "Nov 3 10:00 AM · Main Stage · Title", in the
+ * event's local time without the zone, which the whole page shares. */
+function SpeakerSession({ session, timeZone }: { session: ScheduledSession; timeZone: string | null }) {
+  const day = new Date(session.start).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    timeZone: timeZone ?? "UTC",
+  });
+  return (
+    <p className="text-[13px] leading-5 text-ink-dim">
+      <span className="tabular font-semibold text-ink">
+        {day} {localTime(session.start, timeZone)}
+      </span>
+      {[session.room, session.title].filter(Boolean).map((part, i) => (
+        <span key={i}> · {part}</span>
+      ))}
+    </p>
   );
 }
 

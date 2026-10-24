@@ -52,7 +52,7 @@ export default function NewTalks({ groups }: { groups: NewTalksGroup[] }) {
             <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 [scrollbar-width:none] min-[560px]:mx-0 min-[560px]:grid min-[560px]:snap-none min-[560px]:grid-cols-2 min-[560px]:overflow-visible min-[560px]:px-0 min-[560px]:max-lg:[&>*:nth-child(n+3)]:hidden lg:grid-cols-3 lg:max-2xl:[&>*:nth-child(n+4)]:hidden 2xl:grid-cols-4 2xl:[&>*:nth-child(n+5)]:hidden">
               {group.videos.slice(0, 4).map((v) => (
                 <div key={v.id} className="w-[78%] shrink-0 snap-start min-[560px]:w-auto">
-                  <UnifiedVideoCard video={v} hideChannel hideEvent />
+                  <UnifiedVideoCard video={v} hideChannel hideEvent layout="card" />
                 </div>
               ))}
             </div>

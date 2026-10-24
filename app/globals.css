@@ -237,6 +237,15 @@
   border-radius: inherit;
 }
 
+/* Phones set volume with their buttons; the slider only crowds the
+   scrubber. Mute stays. */
+@media (max-width: 639px) {
+  /* Outranks Plyr's own `.plyr--full-ui input[type=range]`. */
+  .plyr--full-ui .plyr__volume input[data-plyr="volume"] {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

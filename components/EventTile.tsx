@@ -4,7 +4,7 @@ import CoverImage from "./CoverImage";
 
 /** An event: cover (or the newest talk's thumbnail) with a talk-count
  * badge, then name, channel, and when/where — laid out like a YouTube
- * playlist card. Shared by every event listing so they look like one thing. */
+ * playlist card; on phones, a row with the cover on the left. Shared by every event listing so they look like one thing. */
 export default function EventTile({
   href,
   cover,
@@ -27,8 +27,8 @@ export default function EventTile({
   badge?: ReactNode;
 }) {
   return (
-    <Link href={href} className="group flex flex-col gap-3 outline-offset-4">
-      <div className="relative aspect-video w-full overflow-hidden rounded-sm bg-panel-raised">
+    <Link href={href} className="group flex gap-3 outline-offset-4 sm:flex-col">
+      <div className="relative aspect-video w-[42%] shrink-0 overflow-hidden rounded-sm bg-panel-raised sm:w-full">
         <CoverImage src={cover} label={title} />
         {badge && <span className="absolute left-2 top-2">{badge}</span>}
         {count > 0 && (
@@ -41,10 +41,10 @@ export default function EventTile({
         )}
       </div>
       <div className="flex min-w-0 flex-col gap-1">
-        <h3 className="line-clamp-2 text-[18px] font-semibold leading-6 text-ink transition-colors group-hover:text-ink-dim" title={title}>
+        <h3 className="line-clamp-2 text-[15px] font-semibold leading-5 sm:text-[18px] sm:leading-6 text-ink transition-colors group-hover:text-ink-dim" title={title}>
           {title}
         </h3>
-        <div className="flex min-w-0 flex-col text-sm text-ink-dim">
+        <div className="flex min-w-0 flex-col text-[13px] text-ink-dim sm:text-sm">
           {channel && <span className="truncate">{channel}</span>}
           {(when || where) && (
             <span className="tabular truncate">{[when, where].filter(Boolean).join(" • ")}</span>

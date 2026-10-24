@@ -141,7 +141,7 @@ export default async function Home({
         {moreEvents.length > 0 && (
           <section className="flex flex-col gap-8">
             <SectionHeader title="More events" href="/events" linkLabel="All events" />
-            <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
               {moreEvents.map((e) => {
                 const counts = eventFormatCounts(e);
                 return (

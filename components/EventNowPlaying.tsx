@@ -88,7 +88,7 @@ export default async function EventNowPlaying({
       )}
 
       <div className="flex items-start justify-between gap-3">
-        <h2 className="text-[24px] font-semibold leading-[1.85rem] tracking-[-0.02em] text-ink">{title}</h2>
+        <h2 className="text-[20px] font-semibold leading-[1.6rem] sm:text-[24px] sm:leading-[1.85rem] tracking-[-0.02em] text-ink">{title}</h2>
         <Link
           href={closeHref}
           aria-label="Close video"

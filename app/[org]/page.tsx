@@ -223,7 +223,7 @@ export default async function OrgPage({
           {tiles.length === 0 ? (
             <p className="py-10 text-center text-ink-dim">No editions on the calendar or in the recordings yet.</p>
           ) : (
-            <div className="grid grid-cols-1 gap-x-6 gap-y-10 min-[560px]:grid-cols-2 2xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 sm:gap-y-10 2xl:grid-cols-3">
               {tiles.map((tile) => {
                 if (tile.kind === "season") {
                   return <SeasonEditionTile key={tile.key} event={tile.event} now={now} fallbackCover={coverFor.get(tile.key)} />;
