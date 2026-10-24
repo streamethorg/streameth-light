@@ -5,7 +5,8 @@ name: Refresh video data
 # list, backfills metadata/transcripts for just the videos that pull found as
 # new (not the whole tracked catalog — see the new-video-ids.json note
 # below), classifies videos into real event editions and matches speaker
-# names, rebuilds the unified DB, and opens a PR with the diff for review —
+# names, rebuilds the unified DB, and opens a PR with the diff, merged once
+# its Vercel preview build passes —
 # see scripts/fetch-mira-events.py, scripts/fetch-ethereum-org-communities.py,
 # scripts/sync-new-orgs.py, scripts/find-youtube-channels.py,
 # scripts/guess-youtube-handles.py, scripts/merge-found-channels.py,
@@ -98,6 +99,7 @@ jobs:
         run: node scripts/build-db.mjs
 
       - name: Open PR with refreshed data
+        id: pr
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Refresh video data (automated)"
@@ -109,10 +111,39 @@ jobs:
             backfilled for today's new videos only, classified into real
             event editions, speaker names matched, DB rebuilt.
 
-            Review before merging — a scrape run can occasionally misclassify
-            an event or channel match.
+            Merged automatically once the Vercel preview build passes, so new
+            talks reach the site (and the weekly digest) the same day. A scrape
+            run can occasionally misclassify an event or channel match; fix
+            those with a follow-up PR.
           branch: automated/refresh-video-data
           delete-branch: true
           add-paths: |
             data/directory.json
             data/sources/*.json
+
+      # Left open, these PRs went unmerged for up to 12 days, so the site's
+      # talk list froze and the weekly digest found nothing new. Merge once
+      # Vercel's preview build of the PR succeeds; a failed build leaves the
+      # PR open for a look.
+      - name: Merge PR once the Vercel preview build passes
+        if: steps.pr.outputs.pull-request-number != '' && steps.pr.outputs.pull-request-operation != 'closed'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.pr.outputs.pull-request-number }}
+          SHA: ${{ steps.pr.outputs.pull-request-head-sha }}
+        run: |
+          for _ in $(seq 1 60); do
+            state=$(gh api "repos/$GITHUB_REPOSITORY/commits/$SHA/status" \
+              -q '[.statuses[] | select(.context == "Vercel") | .state][0] // "pending"')
+            case "$state" in
+              success)
+                gh pr merge "$PR" --squash --delete-branch --match-head-commit "$SHA"
+                exit 0 ;;
+              failure|error)
+                echo "::error::Vercel preview build of #$PR ended in '$state'; leaving the PR open."
+                exit 1 ;;
+            esac
+            sleep 20
+          done
+          echo "::error::Vercel preview build of #$PR still pending after 20 minutes; leaving the PR open."
+          exit 1
