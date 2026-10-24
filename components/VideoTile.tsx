@@ -2,11 +2,12 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import CoverImage from "./CoverImage";
 
-export type VideoTileLayout = "grid" | "row" | "compact";
+export type VideoTileLayout = "grid" | "card" | "row" | "compact";
 
 /** A talk, the way a conference program lists one: who's speaking first,
  * then the title, then where/when.
- * - `grid`: thumbnail on top, text below
+ * - `grid`: thumbnail on top, text below; a small-thumbnail row on phones
+ * - `card`: thumbnail on top at every width, for swipeable carousels
  * - `row`: search-result row — big thumbnail left, details and snippet right
  * - `compact`: small thumbnail left, for side columns
  * The thumbnail, title and channel are separate links, so the channel name
@@ -54,16 +55,18 @@ export default function VideoTile({
 
   const thumbSize =
     layout === "compact"
-      ? "w-40 rounded-md sm:w-[168px]"
+      ? "w-40 rounded-sm sm:w-[168px]"
       : layout === "row"
-        ? "w-full rounded-lg sm:w-[320px]"
-        : "w-full rounded-lg";
+        ? "w-full rounded-sm sm:w-[320px]"
+        : layout === "card"
+          ? "w-full rounded-sm"
+          : "w-[42%] rounded-sm sm:w-full";
   const thumb = videoLink(
     `relative block aspect-video shrink-0 overflow-hidden bg-panel-raised ${thumbSize}`,
     <>
       <CoverImage src={coverImage} label={coverLabel} />
       {durationLabel && (
-        <span className="tabular absolute bottom-1.5 right-1.5 rounded bg-black/75 px-1 py-px text-[11px] font-medium text-white">
+        <span className="tabular absolute bottom-1.5 right-1.5 rounded-sm bg-black/70 px-1 py-px text-[11px] font-medium text-white">
           {durationLabel}
         </span>
       )}
@@ -73,12 +76,14 @@ export default function VideoTile({
 
   const titleSize =
     layout === "row"
-      ? "text-lg leading-6"
+      ? "text-[19px] leading-6"
       : layout === "compact"
-        ? "text-sm leading-5"
-        : "text-[15px] leading-[1.3rem]";
+        ? "text-[15px] leading-5"
+        : layout === "card"
+          ? "text-[16px] leading-[1.35rem]"
+          : "text-[15px] leading-5 sm:text-[16px] sm:leading-[1.35rem]";
   const titleEl = videoLink(
-    "rounded-sm text-ink hover:text-accent",
+    "rounded-sm text-ink transition-colors hover:text-ink-dim",
     <h3 className={`line-clamp-2 font-semibold ${titleSize}`} title={title}>
       {title}
     </h3>
@@ -86,7 +91,7 @@ export default function VideoTile({
 
   const speakerSize = layout === "compact" ? "text-xs" : "text-[13px]";
   const speakerEl = speakers ? (
-    <p className={`truncate font-semibold text-accent ${speakerSize}`} title={speakers}>
+    <p className={`truncate font-medium text-ink-dim ${speakerSize}`} title={speakers}>
       {speakers}
     </p>
   ) : null;
@@ -118,11 +123,14 @@ export default function VideoTile({
       </p>
     ) : null;
 
-  if (layout === "grid") {
+  // On phones a grid tile is a row (small thumbnail left), so a list of
+  // talks doesn't take a full screen per talk.
+  if (layout === "grid" || layout === "card") {
+    const stack = layout === "card" ? "flex-col gap-2.5" : "gap-3 sm:flex-col sm:gap-2.5";
     return (
-      <div className="flex flex-col gap-2.5">
+      <div className={`flex ${stack}`}>
         {thumb}
-        <div className="flex min-w-0 flex-col gap-0.5 pr-2">
+        <div className={`flex min-w-0 flex-col gap-0.5 ${layout === "card" ? "pr-2" : "sm:pr-2"}`}>
           {speakerEl}
           {titleEl}
           <div className="pt-0.5">{metaEl}</div>

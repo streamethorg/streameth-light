@@ -197,12 +197,12 @@ export default async function WatchPage({
         topics={
           session.autoLabels &&
           session.autoLabels.length > 0 && (
-            <div className="flex flex-wrap gap-x-2">
+            <div className="flex flex-wrap gap-x-3 sm:gap-x-2">
               {session.autoLabels.map((topic) => (
                 <Link
                   key={topic}
                   href={`/topics/${slugifyTopic(topic)}`}
-                  className="rounded-sm font-medium text-accent hover:underline"
+                  className="rounded-sm py-1.5 font-medium text-accent hover:underline sm:py-0"
                 >
                   #{topic.replace(/\s+/g, "")}
                 </Link>
@@ -257,11 +257,13 @@ async function YoutubeWatchPage({ id }: { id: string }) {
         orgSlug={video.orgSlug}
         crumb={video.eventName || undefined}
         speakerNames={video.speakers}
+        pinPlayer={video.format !== "short"}
         player={
           <YoutubeSessionPlayer
             videoId={videoId}
             title={video.title}
             poster={video.coverImage}
+            vertical={video.format === "short"}
             track={{
               source: "youtube",
               id: video.id,

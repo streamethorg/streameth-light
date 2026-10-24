@@ -22,7 +22,7 @@ export default function NewTalks({ groups }: { groups: NewTalksGroup[] }) {
           <section key={group.key} className="flex flex-col gap-4">
             <div className="flex items-baseline justify-between gap-4">
               <div className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                <Link href={group.href} className="truncate text-base font-semibold text-ink hover:text-accent">
+                <Link href={group.href} className="truncate text-[19px] font-semibold text-ink transition-colors hover:text-ink-dim">
                   {group.name}
                 </Link>
                 <p className="text-sm text-ink-faint">
@@ -40,19 +40,19 @@ export default function NewTalks({ groups }: { groups: NewTalksGroup[] }) {
                       <span aria-hidden="true"> · </span>
                     </>
                   )}
-                  <span className="font-medium text-accent">
+                  <span className="tabular font-medium text-ink-dim">
                     {count} new {count === 1 ? "talk" : "talks"}
                   </span>
                 </p>
               </div>
-              <Link href={group.href} className="shrink-0 text-sm font-medium text-ink-dim hover:text-accent">
+              <Link href={group.href} className="shrink-0 text-sm text-ink-faint transition-colors hover:text-ink">
                 See all →
               </Link>
             </div>
             <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 [scrollbar-width:none] min-[560px]:mx-0 min-[560px]:grid min-[560px]:snap-none min-[560px]:grid-cols-2 min-[560px]:overflow-visible min-[560px]:px-0 min-[560px]:max-lg:[&>*:nth-child(n+3)]:hidden lg:grid-cols-3 lg:max-2xl:[&>*:nth-child(n+4)]:hidden 2xl:grid-cols-4 2xl:[&>*:nth-child(n+5)]:hidden">
               {group.videos.slice(0, 4).map((v) => (
                 <div key={v.id} className="w-[78%] shrink-0 snap-start min-[560px]:w-auto">
-                  <UnifiedVideoCard video={v} hideChannel hideEvent />
+                  <UnifiedVideoCard video={v} hideChannel hideEvent layout="card" />
                 </div>
               ))}
             </div>
@@ -61,7 +61,7 @@ export default function NewTalks({ groups }: { groups: NewTalksGroup[] }) {
       })}
       {pooled.length > 0 && (
         <section className="flex flex-col gap-4">
-          <h3 className="text-base font-semibold text-ink">
+          <h3 className="text-[19px] font-semibold text-ink">
             {big.length > 0 ? "More new talks" : "New talks"}
           </h3>
           <div className="grid grid-cols-1 gap-x-4 gap-y-8 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">

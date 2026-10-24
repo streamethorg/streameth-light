@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 /** Weekly digest signup: email in, confirmation link out (nothing is
- * mailed until it's clicked). One form, shown in two places — the banner
- * above the top bar and the top bar's "Subscribe" popover. */
-function DigestForm({ tone, autoFocus = false }: { tone: "banner" | "panel"; autoFocus?: boolean }) {
+ * mailed until it's clicked). One form, shown in two places — the strip
+ * above the top bar (compact) and the footer. */
+export function DigestForm({ tone, autoFocus = false }: { tone: "banner" | "panel"; autoFocus?: boolean }) {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
@@ -30,14 +30,10 @@ function DigestForm({ tone, autoFocus = false }: { tone: "banner" | "panel"; aut
     }
   }
 
-  const onBanner = tone === "banner";
+  const compact = tone === "banner";
 
   if (state === "sent") {
-    return (
-      <p className={`text-sm font-medium ${onBanner ? "text-white" : "text-ink"}`}>
-        Check your inbox for a confirmation link.
-      </p>
-    );
+    return <p className="text-sm font-medium text-ink">Check your inbox for a confirmation link.</p>;
   }
 
   return (
@@ -57,23 +53,21 @@ function DigestForm({ tone, autoFocus = false }: { tone: "banner" | "panel"; aut
           onChange={(e) => setEmail(e.target.value)}
           aria-label="Email address"
           placeholder="you@example.com"
-          className={`h-8 min-w-0 flex-1 rounded-md px-3 text-sm focus:outline-none ${
-            onBanner
-              ? "border border-white/25 bg-white/10 text-white placeholder:text-white/60 focus:border-white/60 sm:w-56 sm:flex-none"
-              : "border border-line bg-void text-ink placeholder:text-ink-faint focus:border-accent"
+          className={`min-w-0 flex-1 rounded-sm border border-line-strong bg-void px-3 text-sm text-ink placeholder:text-ink-faint focus:border-accent focus:outline-none ${
+            compact ? "h-8 sm:w-56 sm:flex-none" : "h-9"
           }`}
         />
         <button
           type="submit"
           disabled={state === "sending"}
-          className={`h-8 shrink-0 rounded-md px-3 text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50 ${
-            onBanner ? "bg-white text-accent" : "bg-accent text-accent-ink"
+          className={`shrink-0 rounded-sm bg-accent px-3 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90 disabled:opacity-50 ${
+            compact ? "h-8" : "h-9"
           }`}
         >
           {state === "sending" ? "Sending…" : "Subscribe"}
         </button>
       </div>
-      {state === "error" && <p className={`text-xs ${onBanner ? "text-white" : "text-error"}`}>{error}</p>}
+      {state === "error" && <p className="text-xs text-error">{error}</p>}
     </form>
   );
 }
@@ -110,93 +104,41 @@ function dismiss() {
   window.dispatchEvent(new Event(BANNER_EVENT));
 }
 
-/** The strip above the top bar: what the digest is, and the signup form.
- * Closable; the top bar's Subscribe button stays either way. */
+/** The strip above the top bar: one quiet line saying what the digest is,
+ * with the signup form beside it. Closable. On phones it shrinks to a
+ * single link down to the footer's form, so it never pushes the page down
+ * by more than a line. */
 export function DigestBanner() {
   const dismissed = useSyncExternalStore(subscribeDismissed, readDismissed, () => false);
   if (dismissed) return null;
 
   return (
-    <div className="bg-accent text-white">
-      <div className="mx-auto flex w-full max-w-[1760px] flex-wrap items-center gap-x-4 gap-y-2 px-4 py-2 sm:px-6">
-        <p className="text-sm">
-          <span className="font-semibold">New Ethereum talks, every Monday.</span>{" "}
-          <span className="text-white/80">The week&apos;s conference uploads by event, in your inbox.</span>
-        </p>
-        <div className="flex flex-1 items-center justify-end gap-2">
-          <div className="w-full sm:w-auto">
-            <DigestForm tone="banner" />
-          </div>
-          <button
-            type="button"
-            onClick={dismiss}
-            aria-label="Close"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-white/80 hover:bg-white/10 hover:text-white"
-          >
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4" aria-hidden="true">
-              <path d="M5 5l10 10M15 5L5 15" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/** The top bar's always-there "Subscribe" button, opening the signup in a
- * small popover. */
-export function SubscribeButton() {
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    function onPointer(e: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) setOpen(false);
-    }
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-    }
-    document.addEventListener("mousedown", onPointer);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onPointer);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  return (
-    <div ref={containerRef} className="relative">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        title="Weekly email of new talks"
-        className={`flex h-9 items-center gap-1.5 whitespace-nowrap rounded-lg border px-3 text-sm font-medium transition-colors ${
-          open ? "border-accent/40 text-accent" : "border-line text-ink hover:border-accent/40 hover:text-accent"
-        }`}
-      >
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4" aria-hidden="true">
-          <rect x="2.5" y="4.5" width="15" height="11" rx="2" />
-          <path d="M3 6l7 5 7-5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="hidden sm:inline">Subscribe</span>
-      </button>
-
-      {open && (
-        <div
-          role="dialog"
-          aria-label="Weekly email"
-          className="absolute right-0 top-full z-50 mt-2 flex w-80 max-w-[calc(100vw-2rem)] flex-col gap-3 rounded-xl border border-line bg-panel p-4 shadow-lg"
+    <div className="border-b border-line bg-void">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center gap-4 px-4 sm:px-8">
+        <a
+          href="#digest"
+          className="flex h-10 flex-1 items-center text-sm font-medium text-accent hover:underline sm:hidden"
         >
-          <div className="flex flex-col gap-1">
-            <p className="text-sm font-semibold text-ink">New talks every Monday</p>
-            <p className="text-sm text-ink-dim">The week&apos;s Ethereum conference uploads, grouped by event.</p>
-          </div>
-          <DigestForm tone="panel" autoFocus />
+          Get the Monday email →
+        </a>
+        <p className="hidden min-w-0 flex-1 truncate text-sm text-ink-dim sm:block">
+          <span className="font-semibold text-ink">New Ethereum talks, every Monday.</span>{" "}
+          <span className="hidden md:inline">The week&apos;s conference uploads by event, in your inbox.</span>
+        </p>
+        <div className="hidden py-1.5 sm:block">
+          <DigestForm tone="banner" />
         </div>
-      )}
+        <button
+          type="button"
+          onClick={dismiss}
+          aria-label="Close"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-sm text-ink-faint hover:bg-panel-raised hover:text-ink"
+        >
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4" aria-hidden="true">
+            <path d="M5 5l10 10M15 5L5 15" strokeLinecap="round" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }

@@ -19,9 +19,10 @@ export interface AskState {
 const IDLE: AskState = { status: "idle", asked: "", searches: [], sources: [], answer: "", error: "" };
 
 /** Asks /api/ask and follows its NDJSON stream into state. `videoId`
- * scopes questions to one talk (its transcript first, then the archive).
- * A new question aborts the one in flight; so does unmounting. */
-export function useAsk(videoId?: string) {
+ * scopes questions to one talk (its transcript first, then the archive);
+ * `eventKey` to one event's talks. A new question aborts the one in flight;
+ * so does unmounting. */
+export function useAsk(videoId?: string, eventKey?: string) {
   const [state, setState] = useState<AskState>(IDLE);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -40,7 +41,7 @@ export function useAsk(videoId?: string) {
         const res = await fetch("/api/ask", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: q, videoId }),
+          body: JSON.stringify({ question: q, videoId, eventKey }),
           signal: controller.signal,
         });
         if (res.status === 401) {
@@ -90,7 +91,7 @@ export function useAsk(videoId?: string) {
         setState((s) => ({ ...s, status: "error", error: message }));
       }
     },
-    [videoId]
+    [videoId, eventKey]
   );
 
   const clear = useCallback(() => {

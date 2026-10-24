@@ -3,6 +3,10 @@ import { DatabaseSync } from "node:sqlite";
 import { join } from "node:path";
 import { lazy } from "./lazy";
 import type { BrowseFilters, DurationBucket } from "./browseParams";
+import type { VideoFormat } from "./videoFormat.mjs";
+
+export type { VideoFormat };
+export type LiveStatus = "is_live" | "is_upcoming" | "was_live";
 
 export interface UnifiedVideo {
   id: string;
@@ -26,6 +30,12 @@ export interface UnifiedVideo {
   downloadUrl: string | null;
   /** Playable stream/file URL for StreamETH sessions; null for YouTube. */
   contentUrl: string | null;
+  format: VideoFormat;
+  /** The event page that plays it in its feed, when it belongs to a
+   * season event; links prefer it over watchUrl (see videoLink). */
+  feedUrl: string | null;
+  /** Livestreams only: whether it's on air, scheduled, or a recording. */
+  liveStatus: LiveStatus | null;
 }
 
 export interface OrgOption {
@@ -51,6 +61,9 @@ interface VideoRow {
   has_transcript: number;
   download_url: string | null;
   content_url: string | null;
+  format: VideoFormat;
+  feed_url: string | null;
+  live_status: LiveStatus | null;
 }
 
 function rowToVideo(row: VideoRow): UnifiedVideo {
@@ -72,6 +85,9 @@ function rowToVideo(row: VideoRow): UnifiedVideo {
     hasTranscript: Boolean(row.has_transcript),
     downloadUrl: row.download_url,
     contentUrl: row.content_url,
+    format: row.format,
+    feedUrl: row.feed_url,
+    liveStatus: row.live_status,
   };
 }
 
@@ -298,16 +314,67 @@ export function archiveStats(): { videos: number; channels: number; transcripts:
   return { videos: row.videos, channels: row.channels, transcripts: row.transcripts ?? 0 };
 }
 
-/** A channel's videos, newest first, for its "Videos" tab. */
-export function channelVideos(slug: string, limit: number): { videos: UnifiedVideo[]; total: number } {
+/** A channel's videos, newest first, for its format tabs — optionally just
+ * some formats (e.g. everything but Shorts for "Talks"). */
+export function channelVideos(
+  slug: string,
+  limit: number,
+  formats?: VideoFormat[]
+): { videos: UnifiedVideo[]; total: number } {
   const db = getDb();
+  const formatSql = formats?.length ? `AND format IN (${formats.map(() => "?").join(",")})` : "";
+  const formatParams = formats ?? [];
   const rows = db
-    .prepare(`SELECT * FROM videos WHERE org_slug = ? ORDER BY published_at DESC LIMIT ?`)
-    .all(slug, limit) as unknown as VideoRow[];
+    .prepare(`SELECT * FROM videos WHERE org_slug = ? ${formatSql} ORDER BY published_at DESC LIMIT ?`)
+    .all(slug, ...formatParams, limit) as unknown as VideoRow[];
   const { total } = db
-    .prepare(`SELECT COUNT(*) AS total FROM videos WHERE org_slug = ?`)
-    .get(slug) as unknown as { total: number };
+    .prepare(`SELECT COUNT(*) AS total FROM videos WHERE org_slug = ? ${formatSql}`)
+    .get(slug, ...formatParams) as unknown as { total: number };
   return { videos: rows.map(rowToVideo), total };
+}
+
+/** Videos from some channels published in [from, to) (ms), newest first —
+ * an event's coverage while and after it runs. */
+export function channelVideosBetween(
+  slugs: string[],
+  from: number,
+  to: number,
+  limit = 500
+): UnifiedVideo[] {
+  if (slugs.length === 0) return [];
+  const rows = getDb()
+    .prepare(
+      `SELECT * FROM videos
+       WHERE org_slug IN (${slugs.map(() => "?").join(",")}) AND published_at >= ? AND published_at < ?
+       ORDER BY published_at DESC LIMIT ?`
+    )
+    .all(...slugs, from, to, limit) as unknown as VideoRow[];
+  return rows.map(rowToVideo);
+}
+
+/** How many of a set of channels' videos per format, within [from, to). */
+export function countFormatsBetween(slugs: string[], from: number, to: number): Record<VideoFormat, number> {
+  const counts: Record<VideoFormat, number> = { talk: 0, clip: 0, short: 0, stream: 0 };
+  if (slugs.length === 0) return counts;
+  const rows = getDb()
+    .prepare(
+      `SELECT format, COUNT(*) AS n FROM videos
+       WHERE org_slug IN (${slugs.map(() => "?").join(",")}) AND published_at >= ? AND published_at < ?
+       GROUP BY format`
+    )
+    .all(...slugs, from, to) as unknown as { format: VideoFormat; n: number }[];
+  for (const r of rows) counts[r.format] = r.n;
+  return counts;
+}
+
+/** A channel's livestream that's on air right now, per the last pull. */
+export function liveStreamForChannel(slug: string): UnifiedVideo | undefined {
+  const row = getDb()
+    .prepare(
+      `SELECT * FROM videos WHERE org_slug = ? AND live_status = 'is_live' ORDER BY published_at DESC LIMIT 1`
+    )
+    .get(slug) as VideoRow | undefined;
+  return row ? rowToVideo(row) : undefined;
 }
 
 export interface ChannelSummary {

@@ -12,7 +12,8 @@
     "lint": "eslint",
     "export-db": "bash scripts/export-db.sh",
     "build-db": "node scripts/build-db.mjs",
-    "check-seo": "node scripts/check-seo.mjs"
+    "check-seo": "node scripts/check-seo.mjs",
+    "test": "node --test lib/*.test.mjs && python3 -m unittest discover -s scripts -p 'test_*.py'"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "^2.2.0",

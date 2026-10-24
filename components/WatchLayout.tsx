@@ -31,6 +31,7 @@ export default function WatchLayout({
   relatedLabel,
   related,
   videoId,
+  pinPlayer = true,
 }: {
   accentColor?: string;
   orgName?: string;
@@ -51,6 +52,10 @@ export default function WatchLayout({
   related: ReactNode;
   /** Archive id of the talk, for the "Ask AI about this talk" panel. */
   videoId?: string;
+  /** On phones the player stays pinned under the top bar while the page
+   * scrolls, so the transcript and Ask panel can be read while it plays.
+   * Off for Shorts, whose tall player would cover the screen. */
+  pinPlayer?: boolean;
 }) {
   // Every transcript is rendered (it's in the server HTML for crawlers —
   // scripts/check-seo.mjs enforces this), but only a substantial one counts
@@ -70,15 +75,15 @@ export default function WatchLayout({
   return (
     <div
       style={accentStyle(accentColor) as CSSProperties | undefined}
-      className={`mx-auto grid w-full grid-cols-1 gap-8 pb-16 sm:px-6 sm:pt-6 ${
-        hasRelated ? "max-w-[1760px] lg:grid-cols-[minmax(0,1fr)_400px]" : "max-w-[1200px]"
+      className={`mx-auto grid w-full grid-cols-1 gap-8 pb-16 sm:px-8 sm:pt-8 ${
+        hasRelated ? "lg:grid-cols-[minmax(0,1fr)_400px]" : "max-w-[1200px]"
       }`}
     >
       <div className="flex min-w-0 flex-col">
-        {player}
+        <div className={pinPlayer ? "sticky top-16 z-30 bg-black sm:static sm:bg-transparent" : undefined}>{player}</div>
 
         <div className="flex flex-col gap-3 px-4 pt-5 sm:px-0">
-          <h1 className="text-[22px] font-bold leading-tight tracking-[-0.02em] text-ink sm:text-[26px]">{title}</h1>
+          <h1 className="headline text-[28px] text-ink sm:text-[36px]">{title}</h1>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 text-sm text-ink-dim">
               {crumb &&
@@ -116,13 +121,13 @@ export default function WatchLayout({
         </div>
 
         {/* Session info: who's speaking, what it's about, and asking AI
-            about it, in one card; the transcript follows. */}
+            about it, under one hairline; the transcript follows. */}
         <div className="mt-5 flex flex-col gap-6 px-4 sm:px-0">
           {(speakers || hasAbout || videoId) && (
-            <section className="flex flex-col gap-6 rounded-xl bg-panel-raised/60 p-5">
+            <section className="flex flex-col gap-6 border-t border-line pt-5">
               {speakers && (
                 <div className="flex flex-col gap-3">
-                  <h2 className="text-xs font-semibold uppercase tracking-wide text-ink-faint">
+                  <h2 className="text-[13px] font-semibold uppercase tracking-wide text-ink-dim">
                     {speakerCount === 1 ? "Speaker" : "Speakers"}
                   </h2>
                   {speakers}
@@ -134,7 +139,7 @@ export default function WatchLayout({
                 </div>
               )}
               {videoId && (
-                <div className="rounded-lg bg-void p-4">
+                <div className="rounded-sm border border-line p-4">
                   <Suspense fallback={null}>
                     <AskTalk videoId={videoId} hasTranscript={substantialTranscript} talkHasText={talkHasText} />
                   </Suspense>
@@ -154,7 +159,7 @@ export default function WatchLayout({
       {/* The sidebar, beside the player: more talks from the same event. */}
       {hasRelated && (
         <aside className="flex min-w-0 flex-col gap-3 px-4 sm:px-0">
-          <h2 className="text-sm font-semibold text-ink">{relatedLabel}</h2>
+          <h2 className="text-[13px] font-semibold uppercase tracking-wide text-ink-dim">{relatedLabel}</h2>
           <div className="flex flex-col gap-3">{related}</div>
         </aside>
       )}

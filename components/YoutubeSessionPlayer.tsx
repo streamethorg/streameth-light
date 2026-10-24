@@ -14,11 +14,14 @@ export default function YoutubeSessionPlayer({
   title,
   poster,
   track,
+  vertical = false,
 }: {
   videoId: string;
   title: string;
   poster?: string | null;
   track: Extract<PodcastTrack, { source: "youtube" }>;
+  /** A Short: a 9:16 player, centred and capped to the viewport height. */
+  vertical?: boolean;
 }) {
   const embedRef = useRef<HTMLDivElement>(null);
   const inlinePlayerRef = useRef<PlyrInstance | null>(null);
@@ -33,7 +36,10 @@ export default function YoutubeSessionPlayer({
     let tracker: ViewTracker | null = null;
     loadPlyr().then((PlyrCtor) => {
       if (cancelled || !embedRef.current) return;
-      const plyr = new PlyrCtor(embedRef.current, YOUTUBE_PLYR_OPTIONS);
+      const plyr = new PlyrCtor(
+        embedRef.current,
+        vertical ? { ...YOUTUBE_PLYR_OPTIONS, ratio: "9:16" } : YOUTUBE_PLYR_OPTIONS
+      );
       plyr.once("ready", () => setInlineReady(true));
       // Watch analytics for the inline video; Listen mode is tracked by the
       // podcast player instead.
@@ -51,7 +57,7 @@ export default function YoutubeSessionPlayer({
       inlinePlayerRef.current?.destroy();
       inlinePlayerRef.current = null;
     };
-  }, [videoId, track.id]);
+  }, [videoId, track.id, vertical]);
 
   function startListening() {
     const startAt = inlinePlayerRef.current?.currentTime ?? 0;
@@ -78,7 +84,11 @@ export default function YoutubeSessionPlayer({
       }}
       className="flex flex-col"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-black sm:rounded-xl">
+      <div
+        className={`relative overflow-hidden bg-black sm:rounded-sm ${
+          vertical ? "mx-auto aspect-[9/16] w-full max-w-[min(100%,calc(78vh*9/16))]" : "aspect-video w-full"
+        }`}
+      >
         <div className={isListening || !inlineReady ? "h-0 w-0 overflow-hidden" : "h-full w-full"}>
           <div ref={embedRef} data-plyr-provider="youtube" data-plyr-embed-id={videoId} />
         </div>
@@ -102,8 +112,8 @@ export default function YoutubeSessionPlayer({
               )}
             </div>
 
-            <div className="relative flex flex-col items-center gap-3">
-              <div className="relative h-24 w-24 overflow-hidden rounded-lg shadow-lg">
+            <div className="relative flex flex-col items-center gap-2 sm:gap-3">
+              <div className="relative h-14 w-14 overflow-hidden rounded-sm sm:h-24 sm:w-24">
                 {poster ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={poster} alt="" className="h-full w-full object-cover" />
@@ -132,7 +142,7 @@ export default function YoutubeSessionPlayer({
               <button
                 type="button"
                 onClick={switchToVideo}
-                className={`mt-1 ${actionButtonClass()}`}
+                className={`mt-1 ${actionButtonClass(true)}`}
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
                   <path d="M4 4.5A1.5 1.5 0 015.5 3h2A1.5 1.5 0 019 4.5v11A1.5 1.5 0 017.5 17h-2A1.5 1.5 0 014 15.5v-11zM11 4.5A1.5 1.5 0 0112.5 3h2A1.5 1.5 0 0116 4.5v11a1.5 1.5 0 01-1.5 1.5h-2a1.5 1.5 0 01-1.5-1.5v-11z" opacity=".4" />

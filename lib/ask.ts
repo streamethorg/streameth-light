@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getVideoById, getVideosByIds, type UnifiedVideo } from "./videoDb";
 import { embedQuery, getTranscriptChunks, matchChunks } from "./transcriptChunks";
 import { formatDateShort } from "./format";
+import { videoLink } from "./videoLink";
 import { SITE_NAME, SITE_URL } from "./social";
 import { relevanceThreshold, scorePassages } from "./jev";
 
@@ -117,10 +118,12 @@ async function runSearch(
   query: string,
   question: string,
   sources: AskSource[],
-  seen: Map<string, number>
+  seen: Map<string, number>,
+  /** Only search these videos (an event's talks). */
+  scopeIds?: string[]
 ): Promise<{ text: string; added: AskSource[] }> {
   const queryEmbedding = await embedQuery(query);
-  const matches = await matchChunks(queryEmbedding, CHUNK_MATCH_COUNT);
+  const matches = await matchChunks(queryEmbedding, CHUNK_MATCH_COUNT, scopeIds);
   if (matches.length === 0) return { text: `No talks matched "${query}".`, added: [] };
 
   // Group by video in similarity order, capped at VIDEOS_PER_SEARCH distinct
@@ -178,7 +181,7 @@ async function runSearch(
           event: v.eventName,
           channel: v.orgName,
           date: v.publishedAt ? formatDateShort(v.publishedAt) : null,
-          watchUrl: v.watchUrl,
+          watchUrl: videoLink(v),
           coverImage: v.coverImage,
           excerpt,
         };
@@ -270,7 +273,7 @@ function registerSource(
     event: video.eventName,
     channel: video.orgName,
     date: video.publishedAt ? formatDateShort(video.publishedAt) : null,
-    watchUrl: video.watchUrl,
+    watchUrl: videoLink(video),
     coverImage: video.coverImage,
     excerpt,
   };
@@ -427,12 +430,22 @@ function parseSearchArgs(args: string): string | null {
   }
 }
 
+/** Scopes a question to one event: searches only cover its talks. */
+export interface AskEventScope {
+  name: string;
+  /** The event's transcribed recordings. */
+  videoIds: string[];
+}
+
 /** Answers a question from the archive: the model searches (via a tool)
- * and writes a cited answer, streamed as events. */
+ * and writes a cited answer, streamed as events. `videoId` asks about one
+ * talk (its transcript first); `event` limits every search to one event's
+ * talks. */
 export async function* answerQuestion(
   question: string,
   signal?: AbortSignal,
-  videoId?: string
+  videoId?: string,
+  event?: AskEventScope
 ): AsyncGenerator<AskEvent> {
   const sources: AskSource[] = [];
   const seen = new Map<string, number>();
@@ -442,6 +455,8 @@ export async function* answerQuestion(
     const { text, added } = await talkContext(talk, sources, seen);
     if (added.length) yield { type: "sources", sources: added };
     userContent = `I'm watching this talk:\n\n${text}\n\nMy question: ${question}\n\nAnswer from this talk first, citing its passages. Only search the archive if the talk doesn't cover the question, or the question asks about other talks.`;
+  } else if (event) {
+    userContent = `I'm following ${event.name}. search_archive only covers the ${event.videoIds.length} recorded talks from ${event.name}.\n\nMy question: ${question}\n\nAnswer about ${event.name}, from its talks. If its recordings don't cover the question, say so.`;
   }
   const messages: ChatMessage[] = [
     { role: "system", content: SYSTEM },
@@ -498,7 +513,7 @@ export async function* answerQuestion(
         continue;
       }
       yield { type: "search", query };
-      const result = await runSearch(query, question, sources, seen);
+      const result = await runSearch(query, question, sources, seen, event?.videoIds);
       if (result.added.length) yield { type: "sources", sources: result.added };
       messages.push({ role: "tool", tool_call_id: call.id, content: result.text });
     }

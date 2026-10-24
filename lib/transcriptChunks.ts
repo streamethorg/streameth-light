@@ -71,12 +71,24 @@ export async function embedQuery(text: string): Promise<number[]> {
  * cosine similarity (highest first); empty when Supabase isn't configured,
  * matching lib/jev.ts's "fall back to keeping everything" shape for an
  * optional integration. */
-export async function matchChunks(queryEmbedding: number[], matchCount: number): Promise<ChunkMatch[]> {
+export async function matchChunks(
+  queryEmbedding: number[],
+  matchCount: number,
+  /** Only search these videos' chunks (e.g. one event's talks). */
+  videoIds?: string[]
+): Promise<ChunkMatch[]> {
   if (!supabaseConfigured()) return [];
-  const { data, error } = await getAdmin().rpc("match_transcript_chunks", {
-    query_embedding: queryEmbedding,
-    match_count: matchCount,
-  });
+  if (videoIds && videoIds.length === 0) return [];
+  const { data, error } = videoIds
+    ? await getAdmin().rpc("match_transcript_chunks_in", {
+        query_embedding: queryEmbedding,
+        video_ids: videoIds,
+        match_count: matchCount,
+      })
+    : await getAdmin().rpc("match_transcript_chunks", {
+        query_embedding: queryEmbedding,
+        match_count: matchCount,
+      });
   if (error) throw error;
   return (data as { video_id: string; source: "streameth" | "youtube"; chunk_index: number; content: string; similarity: number }[]).map(
     (row) => ({

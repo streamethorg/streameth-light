@@ -1,6 +1,10 @@
 import { answerQuestion, askConfigured, AskBusyError, MAX_QUESTION_CHARS, type AskEvent } from "@/lib/ask";
 import { consumeAskQuota } from "@/lib/askQuota";
 import { createClient } from "@/lib/supabase/server";
+import { eventCoverage, getSeasonEvent } from "@/lib/season";
+
+// Most talks an event-scoped question searches across.
+const MAX_EVENT_VIDEOS = 1000;
 
 // Answers can take a few searches plus generation.
 export const maxDuration = 60;
@@ -22,15 +26,28 @@ export async function POST(request: Request) {
 
   let question = "";
   let videoId: string | undefined;
+  let eventKey: string | undefined;
   try {
-    const body = (await request.json()) as { question?: unknown; videoId?: unknown };
+    const body = (await request.json()) as { question?: unknown; videoId?: unknown; eventKey?: unknown };
     question = typeof body.question === "string" ? body.question.trim() : "";
-    // Optional: scope the question to one talk (the watch page's panel).
+    // Optional: scope the question to one talk (the watch page's panel)…
     if (typeof body.videoId === "string" && /^[\w-]{1,64}$/.test(body.videoId)) videoId = body.videoId;
+    // …or to one event's talks (the event page's panel).
+    if (typeof body.eventKey === "string" && /^mira:[A-Za-z0-9]{1,40}$/.test(body.eventKey)) eventKey = body.eventKey;
   } catch {
     return jsonError("Send JSON: {\"question\": \"…\"}", 400);
   }
   if (question.length < 3) return jsonError("Ask a question.", 400);
+  const seasonEvent = eventKey ? getSeasonEvent(eventKey) : undefined;
+  if (eventKey && !seasonEvent) return jsonError("No such event.", 404);
+  const eventScope = seasonEvent
+    ? {
+        name: seasonEvent.name,
+        videoIds: eventCoverage(seasonEvent, MAX_EVENT_VIDEOS)
+          .filter((v) => v.hasTranscript)
+          .map((v) => v.id),
+      }
+    : undefined;
   if (question.length > MAX_QUESTION_CHARS) {
     return jsonError(`Keep questions under ${MAX_QUESTION_CHARS} characters.`, 400);
   }
@@ -46,7 +63,7 @@ export async function POST(request: Request) {
     async start(controller) {
       const send = (event: AskEvent) => controller.enqueue(encoder.encode(`${JSON.stringify(event)}\n`));
       try {
-        for await (const event of answerQuestion(question, request.signal, videoId)) send(event);
+        for await (const event of answerQuestion(question, request.signal, videoId, eventScope)) send(event);
       } catch (err) {
         if (!request.signal.aborted) {
           console.error("[ask] answer failed:", err);

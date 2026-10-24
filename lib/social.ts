@@ -29,7 +29,7 @@ export function buildMetadata({
   /** The page's own path — becomes its canonical URL and og:url, so query
    * string variants (filters, pagination, ?v=) don't compete as duplicates. */
   path?: string;
-  type?: "website" | "video.other" | "profile";
+  type?: "website" | "video.other" | "profile" | "article";
   /** A plain-markdown copy of the page for AI crawlers (see /watch/[id].md). */
   alternateMarkdown?: string;
 }): Metadata {

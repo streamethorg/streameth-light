@@ -27,6 +27,12 @@ name: Refresh video data
 # (`python3 scripts/pull-youtube-metadata.py`, etc.) to do a manual,
 # BATCH_LIMIT-capped backfill of the historical catalog instead.
 #
+# Also pulls talk schedules for events that publish one
+# (scripts/pull-event-schedules.py) and runs the house story writer
+# (scripts/write-stories.mjs), which publishes verified stories straight to
+# Supabase — stories aren't part of the PR. The hourly refresh-live.yml does
+# the same for events that are on right now.
+#
 # Also does NOT re-run scripts/remote-export.mjs (the StreamETH session
 # export) — that needs VPS SSH access and isn't wired up here.
 
@@ -39,10 +45,17 @@ permissions:
   contents: write
   pull-requests: write
 
+# Shared with refresh-live.yml: both write data/ and open PRs, so they take
+# turns instead of racing each other's branches.
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # Three channel tabs (/videos, /shorts, /streams) per channel now.
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -95,8 +108,20 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: node scripts/embed-transcripts.mjs
 
+      - name: Pull event schedules
+        # A schedule API being down keeps the last good copy; never fails the run.
+        run: python3 scripts/pull-event-schedules.py || true
+
       - name: Rebuild DB
         run: node scripts/build-db.mjs
+
+      - name: Write and publish stories
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+        run: node scripts/write-stories.mjs
 
       - name: Open PR with refreshed data
         id: pr
@@ -117,9 +142,13 @@ jobs:
             those with a follow-up PR.
           branch: automated/refresh-video-data
           delete-branch: true
+          # The transcript shards live one directory down; without them the
+          # day's pulled transcripts were never committed, so the site built
+          # those talks as having no transcript.
           add-paths: |
             data/directory.json
             data/sources/*.json
+            data/sources/youtube-transcripts/*.json
 
       # Left open, these PRs went unmerged for up to 12 days, so the site's
       # talk list froze and the weekly digest found nothing new. Merge once

@@ -56,7 +56,7 @@ export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }
       }}
       className="relative flex w-full"
     >
-      <div className="flex h-9 min-w-0 flex-1 items-center gap-2 rounded-lg border border-line bg-panel-raised/60 px-3 transition-colors focus-within:border-accent focus-within:bg-void">
+      <div className="flex h-9 min-w-0 flex-1 items-center gap-2 rounded-sm border border-line-strong bg-transparent px-3.5 transition-colors focus-within:border-accent">
         <SearchIcon className="h-4 w-4 shrink-0 text-ink-faint" />
         <input
           type="search"

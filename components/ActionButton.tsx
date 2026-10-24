@@ -7,10 +7,10 @@ export const WATCH_ACTIONS_SLOT_ID = "watch-actions-slot";
 
 export function actionButtonClass(active = false) {
   const base =
-    "flex h-9 w-fit shrink-0 items-center gap-2 rounded-lg border px-3.5 text-sm font-medium transition-colors";
+    "flex h-9 w-fit shrink-0 items-center gap-2 rounded-sm border px-3.5 text-sm font-medium transition-colors";
   return active
     ? `${base} border-accent bg-accent text-accent-ink hover:opacity-90`
-    : `${base} border-line text-ink hover:border-accent/40`;
+    : `${base} border-line-strong text-ink hover:border-accent/40`;
 }
 
 export function BookmarkIcon({ filled = false }: { filled?: boolean }) {

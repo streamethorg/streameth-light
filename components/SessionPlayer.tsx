@@ -55,7 +55,7 @@ export default function SessionPlayer({
       }}
       className="flex flex-col"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-black sm:rounded-xl">
+      <div className="relative aspect-video w-full overflow-hidden bg-black sm:rounded-sm">
         {isListening ? (
           <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-stage-raised px-4 text-center">
             <div className="absolute inset-0">
@@ -73,8 +73,8 @@ export default function SessionPlayer({
               )}
             </div>
 
-            <div className="relative flex flex-col items-center gap-3">
-              <div className="relative h-24 w-24 overflow-hidden rounded-lg shadow-lg">
+            <div className="relative flex flex-col items-center gap-2 sm:gap-3">
+              <div className="relative h-14 w-14 overflow-hidden rounded-sm sm:h-24 sm:w-24">
                 {track.coverImage ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={track.coverImage} alt="" className="h-full w-full object-cover" />
@@ -103,7 +103,7 @@ export default function SessionPlayer({
               <button
                 type="button"
                 onClick={switchToVideo}
-                className={`mt-1 ${actionButtonClass()}`}
+                className={`mt-1 ${actionButtonClass(true)}`}
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
                   <path d="M4 4.5A1.5 1.5 0 015.5 3h2A1.5 1.5 0 019 4.5v11A1.5 1.5 0 017.5 17h-2A1.5 1.5 0 014 15.5v-11zM11 4.5A1.5 1.5 0 0112.5 3h2A1.5 1.5 0 0116 4.5v11a1.5 1.5 0 01-1.5 1.5h-2a1.5 1.5 0 01-1.5-1.5v-11z" opacity=".4" />

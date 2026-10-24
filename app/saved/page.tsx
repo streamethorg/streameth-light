@@ -36,16 +36,16 @@ export default async function SavedPage() {
         }
       />
 
-      <div className="flex flex-1 flex-col px-4 py-6 sm:px-6">
+      <div className="flex flex-1 flex-col px-4 py-6 sm:px-8">
         {!saved || saved.length === 0 ? (
-          <div className="flex flex-col items-center gap-3 rounded-2xl bg-panel px-6 py-14 text-center ring-1 ring-line">
-            <p className="text-lg font-bold tracking-[-0.01em] text-ink">Nothing saved yet</p>
+          <div className="flex flex-col items-center gap-3 border-t border-line px-6 py-14 text-center">
+            <p className="text-lg font-semibold tracking-[-0.01em] text-ink">Nothing saved yet</p>
             <p className="max-w-sm text-sm text-ink-dim">
               Press Save under any talk and it will be waiting here.
             </p>
             <Link
               href="/"
-              className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90"
+              className="mt-2 flex h-9 items-center rounded-sm bg-accent px-4 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90"
             >
               Find something to watch
             </Link>

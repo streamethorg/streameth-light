@@ -16,6 +16,7 @@ import {
   groupVideosByInferredEvent,
 } from "./youtube";
 import { videosPublishedSince, type UnifiedVideo } from "./videoDb";
+import { youtubeGroupHref } from "./season";
 
 /** One event across both sources — a StreamETH event, or an event inferred
  * from a channel's YouTube uploads — normalized for listing. */
@@ -80,7 +81,7 @@ const getAllEventSummaries = lazy((): EventSummary[] => {
       summaries.push({
         key: `youtube:${entry.slug}:${group.slug}`,
         name: group.label,
-        href: `/${entry.slug}/y/${group.slug}`,
+        href: youtubeGroupHref(entry.slug, group.slug) ?? `/${entry.slug}/y/${group.slug}`,
         channelName,
         channelHref: `/${entry.slug}`,
         cover: group.videos.find((v) => v.thumbnail)?.thumbnail ?? null,

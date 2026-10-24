@@ -58,8 +58,8 @@ export default function FilterPanel({
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className={`flex h-8 shrink-0 items-center gap-2 rounded-lg px-3 text-sm font-medium transition-colors ${
-            open ? "bg-stage text-stage-ink" : "bg-panel-raised text-ink hover:bg-panel-hover"
+          className={`flex h-9 shrink-0 items-center gap-2 rounded-sm border px-3 text-sm font-medium transition-colors ${
+            open ? "border-accent text-accent" : "border-line-strong text-ink hover:border-ink-faint"
           }`}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5" aria-hidden="true">
@@ -78,8 +78,8 @@ export default function FilterPanel({
               type="button"
               onClick={() => onChange({ topic: active ? "" : topic })}
               aria-pressed={active}
-              className={`flex h-8 shrink-0 items-center whitespace-nowrap rounded-lg px-3 text-sm font-medium transition-colors ${
-                active ? "bg-stage text-stage-ink" : "bg-panel-raised text-ink hover:bg-panel-hover"
+              className={`flex h-9 shrink-0 items-center whitespace-nowrap rounded-sm border px-3 text-sm font-medium transition-colors ${
+                active ? "border-accent text-accent" : "border-line-strong text-ink hover:border-ink-faint"
               }`}
             >
               {topic}
@@ -93,7 +93,7 @@ export default function FilterPanel({
           <select
             value={filters.orgIds[0] ?? ""}
             onChange={(e) => onChange({ orgIds: e.target.value ? [e.target.value] : [], eventIds: [] })}
-            className="h-8 max-w-[16rem] shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="h-9 max-w-[16rem] shrink-0 cursor-pointer rounded-sm border border-line-strong bg-void pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus:border-accent focus:outline-none"
           >
             <option value="">All channels</option>
             {channels.map((channel) => (
@@ -106,7 +106,7 @@ export default function FilterPanel({
           <select
             value={filters.eventIds[0] ?? ""}
             onChange={(e) => onChange({ eventIds: e.target.value ? [e.target.value] : [] })}
-            className="h-8 max-w-[16rem] shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="h-9 max-w-[16rem] shrink-0 cursor-pointer rounded-sm border border-line-strong bg-void pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus:border-accent focus:outline-none"
           >
             <option value="">All events</option>
             {eventOptions.map((e) => (
@@ -119,7 +119,7 @@ export default function FilterPanel({
           <select
             value={filters.duration}
             onChange={(e) => onChange({ duration: e.target.value as DurationBucket | "" })}
-            className="h-8 max-w-[16rem] shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="h-9 max-w-[16rem] shrink-0 cursor-pointer rounded-sm border border-line-strong bg-void pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus:border-accent focus:outline-none"
           >
             <option value="">Any length</option>
             {(Object.keys(DURATION_LABELS) as DurationBucket[]).map((bucket) => (
@@ -129,7 +129,7 @@ export default function FilterPanel({
             ))}
           </select>
   
-          <label className="flex h-8 shrink-0 items-center gap-2 rounded-lg bg-panel-raised px-3 text-sm font-medium text-ink-dim focus-within:ring-2 focus-within:ring-accent">
+          <label className="flex h-9 shrink-0 items-center gap-2 rounded-sm border border-line-strong px-3 text-sm font-medium text-ink-dim focus-within:border-accent">
             From
             <input
               type="date"
@@ -138,7 +138,7 @@ export default function FilterPanel({
               className="bg-transparent text-ink focus:outline-none [color-scheme:light]"
             />
           </label>
-          <label className="flex h-8 shrink-0 items-center gap-2 rounded-lg bg-panel-raised px-3 text-sm font-medium text-ink-dim focus-within:ring-2 focus-within:ring-accent">
+          <label className="flex h-9 shrink-0 items-center gap-2 rounded-sm border border-line-strong px-3 text-sm font-medium text-ink-dim focus-within:border-accent">
             To
             <input
               type="date"
@@ -152,7 +152,7 @@ export default function FilterPanel({
             value={filters.sort}
             onChange={(e) => onChange({ sort: e.target.value as SortMode })}
             disabled={!hasQuery && filters.sort === "relevance"}
-            className="h-8 shrink-0 cursor-pointer rounded-lg bg-panel-raised pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:bg-panel-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-default disabled:opacity-60 sm:ml-auto"
+            className="h-9 shrink-0 cursor-pointer rounded-sm border border-line-strong bg-void pl-3 pr-2 text-sm font-medium text-ink transition-colors hover:border-ink-faint focus:border-accent focus:outline-none disabled:cursor-default disabled:opacity-60 sm:ml-auto"
           >
             {SORT_OPTIONS.filter((o) => o.value !== "relevance" || hasQuery).map((o) => (
               <option key={o.value} value={o.value}>
@@ -224,7 +224,7 @@ function ActiveFilterChips({
           key={`${chip.label}-${i}`}
           type="button"
           onClick={chip.clear}
-          className="flex h-8 items-center gap-1.5 rounded-lg bg-stage pl-3 pr-2 text-sm font-medium text-stage-ink transition-colors hover:bg-stage-raised"
+          className="flex h-9 items-center gap-1.5 rounded-sm border border-accent pl-3 pr-2 text-sm font-medium text-accent transition-colors hover:bg-panel-raised"
         >
           {chip.label}
           <span aria-hidden className="text-base leading-none">×</span>

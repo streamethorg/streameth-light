@@ -31,7 +31,7 @@ export default function SpeakerCard({
   if (compact) {
     return (
       <div className="flex min-w-0 items-center gap-3">
-        <Avatar name={speaker.name} photo={photo} className="h-10 w-10 shrink-0 text-xs" />
+        <Avatar name={speaker.name} photo={photo} className="h-10 w-10 text-xs" />
         <div className="flex min-w-0 flex-col">
           <div className="truncate text-sm leading-tight">{nameEl}</div>
           {(company || (slug && talkCount > 1)) && (
@@ -52,7 +52,7 @@ export default function SpeakerCard({
 
   return (
     <div className="flex gap-4">
-      <Avatar name={speaker.name} photo={photo} className="h-16 w-16 shrink-0 text-base" />
+      <Avatar name={speaker.name} photo={photo} className="h-16 w-16 text-base" />
       <div className="flex min-w-0 flex-col gap-1.5">
         <div className="flex flex-col">
           <div className="text-base leading-tight">{nameEl}</div>

@@ -65,6 +65,11 @@ const getMiraEvents = lazy((): MiraEvent[] => {
   return (JSON.parse(raw) as { events: MiraEvent[] }).events;
 });
 
+/** Every Mira event, main and side, in file order. */
+export function listMiraEvents(): MiraEvent[] {
+  return getMiraEvents();
+}
+
 export function getTrackedEvents(miraSeriesSlug: string | null): MiraEvent[] {
   if (!miraSeriesSlug) return [];
   const target = miraSeriesSlug.replace(/^\//, "");

@@ -74,7 +74,7 @@ export default async function ConsentPage({
       <div className="flex flex-col items-center gap-3 text-center">
         {client.logo_uri ? (
           // eslint-disable-next-line @next/next/no-img-element -- arbitrary third-party logo host
-          <img src={client.logo_uri} alt="" className="h-14 w-14 rounded-xl object-contain ring-1 ring-line" />
+          <img src={client.logo_uri} alt="" className="h-14 w-14 rounded-sm border border-line object-contain" />
         ) : null}
         <h1 className="display text-4xl text-ink">Connect {client.name || "this app"}</h1>
         <p className="text-[15px] text-ink-dim">
@@ -92,7 +92,7 @@ export default async function ConsentPage({
       </div>
 
       {scopes.length > 0 && (
-        <div className="w-full max-w-sm rounded-xl bg-panel px-4 py-3 text-sm text-ink-dim ring-1 ring-line">
+        <div className="w-full max-w-sm rounded-sm border border-line px-4 py-3 text-sm text-ink-dim">
           <p className="mb-1 font-semibold text-ink">Requested access</p>
           <ul className="list-inside list-disc">
             {scopes.map((s) => (
@@ -108,7 +108,7 @@ export default async function ConsentPage({
           type="submit"
           name="decision"
           value="approve"
-          className="h-12 w-full rounded-xl bg-accent px-4 text-[15px] font-semibold text-accent-ink transition-colors hover:bg-stage"
+          className="h-9 w-full rounded-sm bg-accent px-4 text-[15px] font-semibold text-accent-ink transition-opacity hover:opacity-90"
         >
           Allow
         </button>
@@ -116,7 +116,7 @@ export default async function ConsentPage({
           type="submit"
           name="decision"
           value="deny"
-          className="h-12 w-full rounded-xl bg-panel px-4 text-[15px] font-semibold text-ink ring-1 ring-line transition-colors hover:bg-panel-hover"
+          className="h-9 w-full rounded-sm border border-line-strong bg-void px-4 text-[15px] font-semibold text-ink transition-colors hover:border-ink-faint"
         >
           Deny
         </button>
@@ -135,7 +135,7 @@ function ConsentError({ message }: { message: string }) {
       <p className="text-sm text-ink-dim">{message}</p>
       <Link
         href="/"
-        className="mt-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90"
+        className="mt-2 flex h-9 items-center rounded-sm bg-accent px-4 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90"
       >
         Back to StreamETH
       </Link>

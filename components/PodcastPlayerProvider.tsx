@@ -287,8 +287,10 @@ export default function PodcastPlayerProvider({ children }: { children: React.Re
           otherwise; the element itself is never unmounted so the same Plyr
           instance survives navigation. */}
       <div
-        className={`fixed z-40 overflow-hidden rounded-md shadow-lg transition-all ${
-          isYoutube ? "bottom-20 right-4 h-24 w-40 border border-line" : "h-0 w-0"
+        className={`fixed z-40 overflow-hidden rounded-sm shadow-lg transition-all ${
+          isYoutube
+            ? "bottom-[calc(var(--tabbar-h)+env(safe-area-inset-bottom)+5rem)] right-4 h-24 w-40 border border-line md:bottom-20"
+            : "h-0 w-0"
         }`}
       >
         <div ref={ytMountRef} className="h-full w-full" />

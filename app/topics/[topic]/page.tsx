@@ -48,7 +48,7 @@ export default async function TopicPage({
           </HeroLink>
         }
       />
-      <div className="flex flex-1 flex-col px-4 py-6 sm:px-6">
+      <div className="flex flex-1 flex-col px-4 py-6 sm:px-8">
         <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {sessions.map((s) => {
             const event = getEventById(s.eventId);

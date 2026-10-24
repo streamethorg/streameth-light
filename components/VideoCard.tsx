@@ -1,5 +1,5 @@
 import type { Session, Event, Organization } from "@/lib/types";
-import { formatDateShort, formatTimecode } from "@/lib/format";
+import { formatDateShort, formatTimecode, withoutEventSuffix } from "@/lib/format";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
 import VideoTile, { type VideoTileLayout } from "./VideoTile";
 
@@ -28,7 +28,8 @@ export default function VideoCard({
       coverImage={session.coverImage}
       coverLabel={session.name}
       durationLabel={duration !== undefined ? formatTimecode(duration) : undefined}
-      title={session.name}
+      // The meta line (or the page around the card) already names the event.
+      title={withoutEventSuffix(session.name, event?.name, org?.name)}
       channel={hideChannel || !org ? undefined : { name: org.name, href: `/${org.slug}` }}
       speakers={speakerNames.length > 0 ? speakerNames.join(", ") : undefined}
       event={hideEvent ? undefined : event?.name}

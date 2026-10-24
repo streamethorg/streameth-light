@@ -101,7 +101,7 @@ export default function TranscriptPanel({ transcript }: { transcript: string }) 
   }, [urlQuery]);
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-line">
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-sm border border-line">
       <div className="flex items-center gap-2 px-4 pb-1 pt-3">
         <h2 className="text-sm font-semibold text-ink">Transcript</h2>
         <form
@@ -121,7 +121,7 @@ export default function TranscriptPanel({ transcript }: { transcript: string }) 
             }}
             aria-label="Find in transcript"
             placeholder="Find in transcript"
-            className="h-8 w-40 min-w-0 rounded-md border border-line bg-void px-2 text-sm text-ink placeholder:text-ink-faint focus:border-accent focus:outline-none"
+            className="h-8 w-40 min-w-0 rounded-sm border border-line bg-void px-2 text-sm text-ink placeholder:text-ink-faint focus:border-accent focus:outline-none"
           />
           {pattern && (
             <>
@@ -133,7 +133,7 @@ export default function TranscriptPanel({ transcript }: { transcript: string }) 
                 onClick={() => goTo(current - 1)}
                 disabled={total === 0}
                 aria-label="Previous match"
-                className="flex h-7 w-7 items-center justify-center rounded-md text-ink-dim hover:bg-panel-raised disabled:opacity-40"
+                className="flex h-7 w-7 items-center justify-center rounded-sm text-ink-dim hover:bg-panel-raised disabled:opacity-40"
               >
                 ↑
               </button>
@@ -141,7 +141,7 @@ export default function TranscriptPanel({ transcript }: { transcript: string }) 
                 type="submit"
                 disabled={total === 0}
                 aria-label="Next match"
-                className="flex h-7 w-7 items-center justify-center rounded-md text-ink-dim hover:bg-panel-raised disabled:opacity-40"
+                className="flex h-7 w-7 items-center justify-center rounded-sm text-ink-dim hover:bg-panel-raised disabled:opacity-40"
               >
                 ↓
               </button>

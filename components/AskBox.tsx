@@ -63,7 +63,7 @@ export default function AskBox({ initialQuestion = "" }: { initialQuestion?: str
         {!asked && (
           <div className="flex items-center gap-2.5">
             <StreamethLogo className="h-8 w-auto" />
-            <h1 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">StreamETH</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">StreamETH</h1>
           </div>
         )}
         <form
@@ -73,7 +73,7 @@ export default function AskBox({ initialQuestion = "" }: { initialQuestion?: str
           }}
           className="w-full max-w-2xl"
         >
-          <div className="flex w-full items-center gap-3 rounded-full border border-line bg-panel py-2 pl-5 pr-2 shadow-sm transition-shadow focus-within:border-accent focus-within:shadow-[0_0_0_3px_rgb(100_38_239/0.15)]">
+          <div className="flex w-full items-center gap-3 rounded-sm border border-line-strong bg-panel py-1.5 pl-4 pr-1.5 focus-within:border-accent">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5 shrink-0 text-ink-faint" aria-hidden="true">
               <circle cx="9" cy="9" r="6.5" />
               <path d="M18 18l-4-4" strokeLinecap="round" />
@@ -91,7 +91,7 @@ export default function AskBox({ initialQuestion = "" }: { initialQuestion?: str
             <button
               type="submit"
               disabled={busy || input.trim().length < 3}
-              className="flex h-9 shrink-0 items-center rounded-full bg-accent px-4 text-sm font-semibold text-accent-ink transition-opacity disabled:opacity-40"
+              className="flex h-9 shrink-0 items-center rounded-sm bg-accent px-4 text-sm font-semibold text-accent-ink transition-opacity disabled:opacity-40"
             >
               {busy ? "Working…" : "Ask"}
             </button>
@@ -108,7 +108,7 @@ export default function AskBox({ initialQuestion = "" }: { initialQuestion?: str
                   key={q}
                   type="button"
                   onClick={() => ask(q)}
-                  className="rounded-full border border-line px-3 py-1 text-[13px] text-ink-dim transition-colors hover:border-accent/40 hover:text-ink"
+                  className="rounded-sm border border-line-strong px-3 py-1 text-[13px] text-ink-dim transition-colors hover:border-ink-faint hover:text-ink"
                 >
                   {q}
                 </button>
@@ -126,7 +126,7 @@ export default function AskBox({ initialQuestion = "" }: { initialQuestion?: str
                 <>
                   <span>Searched</span>
                   {searches.map((s, i) => (
-                    <span key={i} className="rounded bg-panel-raised px-1.5 py-0.5 text-ink-dim">
+                    <span key={i} className="rounded-sm bg-panel-raised px-1.5 py-0.5 text-ink-dim">
                       {s}
                     </span>
                   ))}
@@ -138,7 +138,7 @@ export default function AskBox({ initialQuestion = "" }: { initialQuestion?: str
             <button
               type="button"
               onClick={clear}
-              className="-mt-1 shrink-0 rounded-md px-2 py-1 text-sm text-ink-dim hover:bg-panel-raised hover:text-ink"
+              className="-mt-1 shrink-0 rounded-sm px-2 py-1 text-sm text-ink-dim hover:bg-panel-raised hover:text-ink"
             >
               Clear
             </button>

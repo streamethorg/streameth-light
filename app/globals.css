@@ -2,14 +2,17 @@
 
 /* The streameth-platform brand: Inter, the purple primary, and the logo's
    deep indigo as ink. White canvas, hairline borders, square-ish corners.
-   The dark "stage" tokens remain for the few dark surfaces (the mini
-   player, video letterboxing). */
+   Laid out editorially: stories lead, the page headline is big and heavy,
+   small grey kickers sit above titles, and columns are divided by hairlines
+   rather than boxes. The dark "stage" tokens remain for the few dark
+   surfaces (the mini player, video letterboxing). */
 :root {
   --void: #ffffff;
   --panel: #ffffff;
   --panel-raised: #f2f1f6;
   --panel-hover: #e6e4ee;
   --line: #e6e4ee;
+  --line-strong: #d3d0de;
   --ink: #140f2e;
   --ink-dim: #55516b;
   --ink-faint: #827e97;
@@ -22,6 +25,9 @@
   --stage-ink: #f4f1ff;
   --stage-dim: #b7afd8;
   --error: #c2352b;
+  --live: #d92d20;
+  /* The phone tab bar's height, without the home-indicator inset. */
+  --tabbar-h: 56px;
 }
 
 @theme inline {
@@ -42,6 +48,8 @@
   --color-stage-ink: var(--stage-ink);
   --color-stage-dim: var(--stage-dim);
   --color-error: var(--error);
+  --color-live: var(--live);
+  --color-line-strong: var(--line-strong);
   --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-inter);
@@ -56,12 +64,40 @@
 
   html {
     color-scheme: light;
+    /* No grey flash over every tapped link on iOS/Android, and no
+       double-tap-to-zoom delay on taps. */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     background: var(--void);
     color: var(--ink);
     font-family: var(--font-sans);
+    /* viewport-fit=cover: keep content out of the notch in landscape. */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* iOS zooms the page into any focused field set under 16px and leaves it
+   zoomed. Unlayered so it beats the text-sm/text-xs utilities on inputs;
+   phones only, so desktop keeps the compact sizes. */
+@media (max-width: 639px) {
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Room for the phone tab bar (and the home indicator under it) so the
+   last thing on a page never sits behind it. */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
   }
 }
 
@@ -70,15 +106,45 @@
   color: var(--accent-ink);
 }
 
-/* Headline voice: Inter at its display optical size, heavy and tightly set.
-   Used for page titles and the home hero — the one place type gets loud. */
-.display {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-variation-settings: "opsz" 32;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
-  text-wrap: balance;
+/* In the components layer so Tailwind utilities (text size, leading,
+   color) on the same element still win. */
+@layer components {
+  /* Headline voice: Inter at its display optical size, heavy and tightly
+     set — only the one page-level headline (h1) and the homepage lead.
+     Everything else is 600 (font-semibold). */
+  .display,
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 750;
+    font-variation-settings: "opsz" 32;
+    letter-spacing: -0.028em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  /* Standfirsts and summaries. */
+  .dek {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Story body text. */
+  .story-body {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  /* The small label above a headline ("Day report", "Recap"). Grey, not
+     purple: purple is for things you can click. */
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-dim);
+  }
 }
 
 /* The logo's gradient, as text or as a hairline. */
@@ -119,7 +185,7 @@
   height: 12px;
   width: 12px;
   border-radius: 9999px;
-  background: var(--peach);
+  background: var(--stage-ink);
   opacity: 0;
   transition: opacity 0.15s;
 }
@@ -132,7 +198,7 @@
   width: 12px;
   border: none;
   border-radius: 9999px;
-  background: var(--peach);
+  background: var(--stage-ink);
   opacity: 0;
   transition: opacity 0.15s;
 }
@@ -169,6 +235,15 @@
   --plyr-tooltip-color: var(--ink);
   --plyr-font-family: var(--font-sans);
   border-radius: inherit;
+}
+
+/* Phones set volume with their buttons; the slider only crowds the
+   scrubber. Mute stays. */
+@media (max-width: 639px) {
+  /* Outranks Plyr's own `.plyr--full-ui input[type=range]`. */
+  .plyr--full-ui .plyr__volume input[data-plyr="volume"] {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
