@@ -4,6 +4,7 @@ import { lazy } from "./lazy";
 import { newTalksSince, type NewTalksGroup } from "./events";
 import { SITE_NAME, SITE_URL } from "./social";
 import { absolute, emailLayout, escapeHtml, sendEmail, sendEmailBatch } from "./email";
+import { videoLink } from "./videoLink";
 
 /** Weekly "new talks" email: subscribers (double opt-in) in Supabase's
  * digest_subscribers table, mail sent through Resend's HTTP API. Needs
@@ -129,7 +130,7 @@ function digestEmail(groups: NewTalksGroup[], token: string) {
         .slice(0, TALKS_PER_EVENT)
         .map(
           (v) => `<tr><td style="padding:6px 0">
-<a href="${absolute(v.watchUrl)}" style="color:#140f2e;font-weight:600;text-decoration:none">${escapeHtml(v.title)}</a>
+<a href="${absolute(videoLink(v))}" style="color:#140f2e;font-weight:600;text-decoration:none">${escapeHtml(v.title)}</a>
 ${v.speakers.length ? `<div style="font-size:13px;color:#6426ef">${escapeHtml(v.speakers.join(", "))}</div>` : ""}
 </td></tr>`
         )
@@ -160,7 +161,7 @@ ${otherEvents > 0 ? `<p style="margin:16px 0 0"><a href="${absolute("/events")}"
       `${g.name} (${g.videos.length} new) — ${absolute(g.href)}`,
       ...g.videos
         .slice(0, TALKS_PER_EVENT)
-        .map((v) => `- ${v.title}${v.speakers.length ? ` — ${v.speakers.join(", ")}` : ""}\n  ${absolute(v.watchUrl)}`),
+        .map((v) => `- ${v.title}${v.speakers.length ? ` — ${v.speakers.join(", ")}` : ""}\n  ${absolute(videoLink(v))}`),
       "",
     ]),
     `Unsubscribe: ${unsubscribeUrl}`,

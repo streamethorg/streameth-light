@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import WatchLayout from "@/components/WatchLayout";
 import YoutubeVideoCard from "@/components/YoutubeVideoCard";
@@ -16,6 +16,7 @@ import { getVideoById } from "@/lib/videoDb";
 import { getFullTranscript } from "@/lib/transcriptChunks";
 import { formatDateLong } from "@/lib/format";
 import { buildMetadata } from "@/lib/social";
+import { youtubeGroupHref } from "@/lib/season";
 
 export function generateStaticParams() {
   return getDirectory().flatMap((entry) => {
@@ -54,6 +55,10 @@ export default async function YoutubeEventPage({
   const { org: orgSlug, group: groupSlug } = await params;
   const { v } = await searchParams;
 
+  // Groups that are an event have a coverage page; ?v= plays that video there.
+  const coverage = youtubeGroupHref(orgSlug, groupSlug);
+  if (coverage) permanentRedirect(v ? `${coverage}?v=${encodeURIComponent(`yt-${v}`)}` : coverage);
+
   const group = getInferredEventGroup(orgSlug, groupSlug);
   if (!group) notFound();
 
@@ -90,7 +95,7 @@ export default async function YoutubeEventPage({
             }}
           />
         ) : (
-          <div className="aspect-video w-full overflow-hidden rounded-md border border-line bg-black">
+          <div className="aspect-video w-full overflow-hidden rounded-sm border border-line bg-black">
             <iframe
               key={selected.videoId}
               src={`https://www.youtube-nocookie.com/embed/${selected.videoId}`}

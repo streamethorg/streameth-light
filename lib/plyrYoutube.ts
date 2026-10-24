@@ -19,6 +19,8 @@ export interface PlyrInstance {
 
 export interface PlyrOptions {
   controls?: string[];
+  /** "16:9" by default; "9:16" for Shorts. */
+  ratio?: string;
   youtube?: Record<string, number | string | boolean>;
 }
 

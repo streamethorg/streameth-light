@@ -24,7 +24,7 @@ export default function OfflinePageList() {
     return (
       <div className="flex flex-col gap-2" aria-busy="true">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="h-12 animate-pulse rounded-xl bg-panel-raised" />
+          <div key={i} className="h-9 animate-pulse rounded-sm bg-panel-raised" />
         ))}
       </div>
     );
@@ -39,7 +39,7 @@ export default function OfflinePageList() {
   }
 
   return (
-    <ul className="flex flex-col divide-y divide-line overflow-hidden rounded-xl ring-1 ring-line">
+    <ul className="flex flex-col divide-y divide-line border-y border-line">
       {pages.map((page) => (
         <li key={page.path}>
           <a href={page.path} className="flex flex-col gap-0.5 px-4 py-3 transition-colors hover:bg-panel-raised">

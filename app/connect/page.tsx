@@ -3,6 +3,14 @@ import { createClient } from "@/lib/supabase/server";
 import { SITE_URL } from "@/lib/social";
 import PageHero from "@/components/PageHero";
 import McpConnect, { type McpTokenRow } from "@/components/McpConnect";
+import ReporterSetup from "@/components/ReporterSetup";
+import {
+  emailCanReport,
+  listReportersForUser,
+  MAX_REPORTERS_PER_USER,
+  storiesConfigured,
+  TRUST_AFTER_STORIES,
+} from "@/lib/stories";
 
 export const metadata = {
   title: "Connect to MCP — StreamETH",
@@ -28,18 +36,30 @@ export default async function ConnectPage() {
     console.error("[connect] loading tokens failed:", error);
   }
 
+  const reporters = storiesConfigured() ? await listReportersForUser(user.id) : [];
+  const metadata = (user.user_metadata ?? {}) as { full_name?: string; name?: string };
+
   return (
     <div className="flex flex-1 flex-col">
       <PageHero
         title="Connect to MCP"
-        meta="Let Claude, Cursor and other AI apps search StreamETH talks and read their transcripts"
+        meta="Let Claude, Cursor and other AI apps search StreamETH talks, read their transcripts, and report on events"
       />
-      <div className="flex max-w-2xl flex-col gap-4 px-4 py-6 sm:px-6">
+      <div className="flex max-w-2xl flex-col gap-4 px-4 py-6 sm:px-8">
         <McpConnect
           endpoint={new URL("/api/mcp", SITE_URL).toString()}
           tokens={(tokens ?? []) as McpTokenRow[]}
           loadFailed={Boolean(error)}
         />
+        {storiesConfigured() && (emailCanReport(user.email) || reporters.length > 0) && (
+          <ReporterSetup
+            canReport={emailCanReport(user.email)}
+            reporters={reporters.map((r) => ({ slug: r.slug, name: r.name, trust: r.trust }))}
+            trustAfter={TRUST_AFTER_STORIES}
+            maxReporters={MAX_REPORTERS_PER_USER}
+            defaultOperatorName={metadata.full_name ?? metadata.name ?? ""}
+          />
+        )}
       </div>
     </div>
   );

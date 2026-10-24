@@ -1,5 +1,3 @@
-import { initials } from "@/lib/format";
-
 // Deterministic per-label "waveform" so the same session/event always
 // renders the same pattern (no layout shift, no client JS needed).
 function barHeights(seed: string, count: number): number[] {
@@ -16,8 +14,9 @@ function barHeights(seed: string, count: number): number[] {
 }
 
 /** Stand-in cover for a talk with no thumbnail: the dark stage color with
- * an audio-waveform in the brand gradient, so missing covers still look
- * like part of the archive rather than a broken image. */
+ * a flat audio-waveform, so missing covers still look like part of the
+ * archive rather than a broken image. No initials: a monogram reads as a
+ * logo the event or channel doesn't have. */
 export default function CoverPlaceholder({
   label,
   className = "",
@@ -30,20 +29,18 @@ export default function CoverPlaceholder({
 
   return (
     <div
-      className={`relative flex h-full w-full items-center justify-center overflow-hidden bg-stage ${className}`}
+      className={`relative h-full w-full overflow-hidden bg-stage ${className}`}
+      aria-hidden="true"
     >
       <div className="absolute inset-x-0 bottom-0 flex h-3/5 items-end justify-center gap-[3px] px-5 pb-5">
         {bars.map((h, i) => (
           <span
             key={i}
-            className="brand-gradient w-full max-w-[4px] rounded-full opacity-50"
-            style={{ height: `${h}%`, backgroundSize: `${bars.length * 7}px 100%`, backgroundPosition: `${-i * 7}px 0` }}
+            className="w-full max-w-[4px] rounded-full bg-stage-dim/35"
+            style={{ height: `${h}%` }}
           />
         ))}
       </div>
-      <span className="relative font-display text-xl font-extrabold tracking-tight text-stage-ink/80">
-        {initials(label)}
-      </span>
     </div>
   );
 }

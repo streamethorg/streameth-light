@@ -13,18 +13,18 @@ export default function SearchSuggestions({
   if (results.length === 0) return null;
 
   return (
-    <div className="absolute inset-x-0 top-full z-40 mt-2 overflow-hidden rounded-xl bg-panel p-1.5 text-left shadow-2xl ring-1 ring-black/5">
+    <div className="absolute inset-x-0 top-full z-40 mt-2 overflow-hidden rounded-sm border border-line bg-panel p-1.5 text-left shadow-lg">
       {results.map((r) => (
         <Link
           key={r.id}
           href={r.watchUrl}
           onClick={onSelect}
-          className="flex items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-panel-raised focus-visible:bg-panel-raised"
+          className="flex items-center gap-3 rounded-sm px-2 py-1.5 hover:bg-panel-raised focus-visible:bg-panel-raised"
         >
-          <div className="relative aspect-video w-20 shrink-0 overflow-hidden rounded-md bg-stage">
+          <div className="relative aspect-video w-20 shrink-0 overflow-hidden rounded-sm bg-stage">
             <CoverImage src={r.coverImage} label={r.title} />
             {r.durationSeconds !== null && (
-              <span className="absolute bottom-0.5 right-0.5 rounded bg-black/75 px-1 py-px text-[9px] font-semibold tabular text-white">
+              <span className="absolute bottom-0.5 right-0.5 rounded-sm bg-black/75 px-1 py-px text-[9px] font-semibold tabular text-white">
                 {formatTimecode(r.durationSeconds)}
               </span>
             )}

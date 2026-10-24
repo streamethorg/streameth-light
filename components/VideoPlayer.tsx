@@ -23,8 +23,8 @@ export default function VideoPlayer({
   return (
     <div className="relative h-full w-full">
       {!ready && !error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-panel">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-panel">
+          <span className="h-2 w-2 animate-pulse rounded-full bg-ink-faint" />
         </div>
       )}
       {error && (
@@ -36,6 +36,7 @@ export default function VideoPlayer({
         ref={videoRef}
         controls
         playsInline
+        preload="none"
         poster={poster}
         className="h-full w-full bg-black"
         onLoadedData={() => setReady(true)}

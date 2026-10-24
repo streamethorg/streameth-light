@@ -66,8 +66,8 @@ export default function McpConnect({
 
   if (autoCreating && !created) {
     return (
-      <section className="flex flex-col gap-1 rounded-2xl bg-panel p-5 ring-1 ring-line">
-        <h2 className="text-base font-bold text-ink">Creating your token…</h2>
+      <section className="flex flex-col gap-1 border-t border-line pt-5">
+        <h2 className="text-base font-semibold text-ink">Creating your token…</h2>
         <p className="text-sm text-ink-dim">Every account gets a personal token for connecting AI apps.</p>
       </section>
     );
@@ -78,8 +78,8 @@ export default function McpConnect({
       {created ? (
         <NewToken endpoint={endpoint} token={created.token} name={created.name} onDone={() => setCreated(null)} />
       ) : (
-        <section className="flex flex-col gap-3 rounded-2xl bg-panel p-5 ring-1 ring-line">
-          <h2 className="text-base font-bold text-ink">New connection</h2>
+        <section className="flex flex-col gap-3 border-t border-line pt-5">
+          <h2 className="text-base font-semibold text-ink">New connection</h2>
           <p className="text-sm text-ink-dim">
             Creates a personal token for one AI app. Anyone with the token can use the archive as you,
             so keep it private and revoke it if it leaks.
@@ -91,12 +91,12 @@ export default function McpConnect({
               maxLength={60}
               placeholder="App name, e.g. Claude Code on my laptop"
               aria-label="App name"
-              className="h-11 min-w-0 flex-1 rounded-xl bg-panel-raised px-4 text-sm text-ink ring-1 ring-line placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-accent"
+              className="h-9 min-w-0 flex-1 rounded-sm border border-line-strong bg-void px-4 text-sm text-ink placeholder:text-ink-faint focus:border-accent focus:outline-none"
             />
             <button
               type="submit"
               disabled={pending}
-              className="h-11 shrink-0 rounded-xl bg-accent px-5 text-sm font-semibold text-accent-ink transition-colors hover:bg-stage disabled:opacity-60"
+              className="h-9 shrink-0 rounded-sm bg-accent px-5 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90 disabled:opacity-60"
             >
               {pending ? "Creating…" : "Connect to MCP"}
             </button>
@@ -105,8 +105,8 @@ export default function McpConnect({
         </section>
       )}
 
-      <section className="flex flex-col gap-3 rounded-2xl bg-panel p-5 ring-1 ring-line">
-        <h2 className="text-base font-bold text-ink">Connected apps</h2>
+      <section className="flex flex-col gap-3 border-t border-line pt-5">
+        <h2 className="text-base font-semibold text-ink">Connected apps</h2>
         {loadFailed ? (
           <p className="text-sm text-error">Couldn&apos;t load your tokens. Refresh to try again.</p>
         ) : tokens.length === 0 ? (
@@ -142,9 +142,9 @@ function NewToken({
   );
 
   return (
-    <section className="flex flex-col gap-4 rounded-2xl bg-panel p-5 ring-2 ring-accent">
+    <section className="flex flex-col gap-4 rounded-sm bg-panel p-5 ring-2 ring-accent">
       <div className="flex flex-col gap-1">
-        <h2 className="text-base font-bold text-ink">Token for {name}</h2>
+        <h2 className="text-base font-semibold text-ink">Token for {name}</h2>
         <p className="text-sm text-ink-dim">
           Copy it now. It won&apos;t be shown again; if you lose it, revoke it and create a new one.
         </p>
@@ -155,7 +155,7 @@ function NewToken({
       <button
         type="button"
         onClick={onDone}
-        className="h-10 w-fit rounded-lg border border-line px-4 text-sm font-medium text-ink transition-colors hover:border-accent/40"
+        className="h-9 w-fit rounded-sm border border-line-strong px-4 text-sm font-medium text-ink transition-colors hover:border-ink-faint"
       >
         Done
       </button>
@@ -186,7 +186,7 @@ function CopyBlock({ label, value }: { label: string; value: string }) {
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre className="select-all overflow-x-auto whitespace-pre-wrap break-all rounded-xl bg-panel-raised p-3 font-mono text-xs text-ink ring-1 ring-line">
+      <pre className="select-all overflow-x-auto whitespace-pre-wrap break-all rounded-sm bg-panel-raised p-3 font-mono text-xs text-ink ring-1 ring-line">
         {value}
       </pre>
     </div>
@@ -225,7 +225,7 @@ function TokenItem({ token }: { token: McpTokenRow }) {
             type="button"
             onClick={revoke}
             disabled={pending}
-            className="h-8 rounded-lg bg-error px-3 text-xs font-semibold text-white disabled:opacity-60"
+            className="h-8 rounded-sm bg-error px-3 text-xs font-semibold text-white disabled:opacity-60"
           >
             {pending ? "Revoking…" : "Revoke"}
           </button>
@@ -233,7 +233,7 @@ function TokenItem({ token }: { token: McpTokenRow }) {
             type="button"
             onClick={() => setConfirming(false)}
             disabled={pending}
-            className="h-8 rounded-lg px-3 text-xs font-semibold text-ink-dim hover:bg-panel-raised"
+            className="h-8 rounded-sm px-3 text-xs font-semibold text-ink-dim hover:bg-panel-raised"
           >
             Cancel
           </button>
@@ -242,7 +242,7 @@ function TokenItem({ token }: { token: McpTokenRow }) {
         <button
           type="button"
           onClick={() => setConfirming(true)}
-          className="h-8 rounded-lg border border-line px-3 text-xs font-semibold text-ink transition-colors hover:border-accent/40"
+          className="h-8 rounded-sm border border-line px-3 text-xs font-semibold text-ink transition-colors hover:border-ink-faint"
         >
           Revoke
         </button>

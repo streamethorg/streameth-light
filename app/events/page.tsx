@@ -27,7 +27,7 @@ export default async function EventsPage({
   return (
     <div className="flex flex-1 flex-col">
       <PageHero title="Events" meta={`${all.length.toLocaleString()} events • newest talks first`} />
-      <div className="flex flex-1 flex-col px-4 pb-12 pt-6 sm:px-6">
+      <div className="flex flex-1 flex-col px-4 pb-12 pt-6 sm:px-8">
         <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {shown.map((e) => (
             <EventTile
@@ -47,7 +47,7 @@ export default async function EventsPage({
             <Link
               href={`/events?page=${page + 1}`}
               scroll={false}
-              className="rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/40"
+              className="inline-flex h-9 items-center rounded-sm border border-line-strong px-4 text-sm font-medium text-ink transition-colors hover:border-ink-faint"
             >
               Show more
             </Link>

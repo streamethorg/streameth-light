@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { browseVideos } from "@/lib/videoDb";
 import { EMPTY_FILTERS } from "@/lib/browseParams";
+import { videoLink } from "@/lib/videoLink";
 
 const LIMIT = 8;
 
@@ -23,7 +24,7 @@ export async function GET(request: Request) {
       orgName: v.orgName,
       coverImage: v.coverImage,
       durationSeconds: v.durationSeconds,
-      watchUrl: v.watchUrl,
+      watchUrl: videoLink(v),
     }));
 
   return NextResponse.json({ results });

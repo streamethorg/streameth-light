@@ -1,0 +1,151 @@
+name: Refresh live events
+
+# Hourly while an event is on: re-pulls just the channels of events that are
+# live (or start/end within a day) — their /videos, /shorts and /streams tabs
+# — backfills metadata and transcripts for what's new, refreshes talk
+# schedules, writes day reports, and opens the same auto-merging data PR as
+# refresh-video-data.yml (on its own branch) so new recordings reach the site
+# within the hour instead of the next morning.
+#
+# Most hours nothing is on: scripts/live-channels.mjs prints nothing and the
+# run stops after a few seconds.
+#
+# Run by hand with a pretend time to try it before an event:
+#   gh workflow run refresh-live.yml -f now=2026-11-04T08:00:00Z
+
+on:
+  schedule:
+    - cron: "15 * * * *" # hourly, off the top of the hour
+  workflow_dispatch:
+    inputs:
+      now:
+        description: "Pretend it's this time (ISO, e.g. 2026-11-04T08:00:00Z) when picking live events"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# Shared with refresh-video-data.yml — see the note there.
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Find live events' channels
+        id: live
+        run: |
+          channels=$(node scripts/live-channels.mjs ${{ inputs.now }})
+          echo "channels=$channels" >> "$GITHUB_OUTPUT"
+          if [ -z "$channels" ]; then
+            echo "Nothing is live; stopping."
+          else
+            echo "Live channels: $channels"
+          fi
+
+      - name: Install Node dependencies
+        if: steps.live.outputs.channels != ''
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
+      - uses: actions/setup-python@v5
+        if: steps.live.outputs.channels != ''
+        with:
+          python-version: "3.13"
+
+      - name: Install yt-dlp
+        if: steps.live.outputs.channels != ''
+        run: pip install -U yt-dlp
+
+      - name: Pull the live channels' videos, Shorts and streams
+        if: steps.live.outputs.channels != ''
+        run: python3 scripts/pull-youtube-videos.py --channels "${{ steps.live.outputs.channels }}"
+
+      - name: Backfill metadata/transcripts for the new videos
+        if: steps.live.outputs.channels != ''
+        run: |
+          python3 scripts/pull-youtube-metadata.py
+          python3 scripts/pull-youtube-transcripts.py
+
+      - name: Match speaker names
+        if: steps.live.outputs.channels != ''
+        run: python3 scripts/extract-youtube-speakers.py
+
+      - name: Pull event schedules
+        if: steps.live.outputs.channels != ''
+        run: python3 scripts/pull-event-schedules.py || true
+
+      - name: Embed new transcripts for semantic search
+        if: steps.live.outputs.channels != ''
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node scripts/embed-transcripts.mjs
+
+      - name: Rebuild DB
+        if: steps.live.outputs.channels != ''
+        run: node scripts/build-db.mjs
+
+      - name: Write and publish day reports
+        if: steps.live.outputs.channels != ''
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+        run: node scripts/write-stories.mjs --only=day,preview
+
+      - name: Open PR with refreshed data
+        if: steps.live.outputs.channels != ''
+        id: pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Refresh live event data (automated)"
+          title: "Refresh live event data (automated)"
+          body: |
+            Hourly refresh of the channels covering events that are on now
+            (${{ steps.live.outputs.channels }}): new uploads, Shorts and
+            streams, their metadata and transcripts, and talk schedules.
+
+            Merged automatically once the Vercel preview build passes.
+          branch: automated/refresh-live
+          delete-branch: true
+          add-paths: |
+            data/sources/*.json
+            data/sources/youtube-transcripts/*.json
+
+      - name: Merge PR once the Vercel preview build passes
+        if: steps.live.outputs.channels != '' && steps.pr.outputs.pull-request-number != '' && steps.pr.outputs.pull-request-operation != 'closed'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.pr.outputs.pull-request-number }}
+          SHA: ${{ steps.pr.outputs.pull-request-head-sha }}
+        run: |
+          for _ in $(seq 1 60); do
+            state=$(gh api "repos/$GITHUB_REPOSITORY/commits/$SHA/status" \
+              -q '[.statuses[] | select(.context == "Vercel") | .state][0] // "pending"')
+            case "$state" in
+              success)
+                gh pr merge "$PR" --squash --delete-branch --match-head-commit "$SHA"
+                exit 0 ;;
+              failure|error)
+                echo "::error::Vercel preview build of #$PR ended in '$state'; leaving the PR open."
+                exit 1 ;;
+            esac
+            sleep 20
+          done
+          echo "::error::Vercel preview build of #$PR still pending after 20 minutes; leaving the PR open."
+          exit 1

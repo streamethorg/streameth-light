@@ -33,7 +33,7 @@ export default function DigestTokenAction({
 
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-4 px-4 py-20">
-      <h1 className="text-2xl font-bold tracking-[-0.02em] text-ink">{title}</h1>
+      <h1 className="headline text-3xl text-ink">{title}</h1>
       {state === "done" ? (
         <p className="text-sm text-ink-dim">{done}</p>
       ) : state === "invalid" ? (
@@ -45,7 +45,7 @@ export default function DigestTokenAction({
             type="button"
             onClick={run}
             disabled={state === "working"}
-            className="w-fit rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90 disabled:opacity-50"
+            className="h-9 w-fit rounded-sm bg-accent px-4 text-sm font-semibold text-accent-ink transition-opacity hover:opacity-90 disabled:opacity-50"
           >
             {state === "working" ? "Working…" : button}
           </button>

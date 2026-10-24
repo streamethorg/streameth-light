@@ -65,6 +65,24 @@ export function accentStyle(
   return isUsableAccent(color) ? { "--accent": color! } : undefined;
 }
 
+// Uploaders append the event to every title ("Memecoins - TOKEN2049
+// Singapore 2026"). Where the event is already on screen, drop that tail.
+// Any of the given names may match; the title is kept whole if nothing
+// would be left.
+export function withoutEventSuffix(
+  title: string,
+  ...names: (string | null | undefined)[]
+): string {
+  for (const name of names) {
+    if (!name?.trim()) continue;
+    const escaped = name.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(`\\s*[-–—|:·]\\s*${escaped}\\s*$`, "i");
+    const stripped = title.replace(re, "").trim();
+    if (stripped && stripped !== title) return stripped;
+  }
+  return title;
+}
+
 export function initials(name: string): string {
   // Letters/digits only, so "Pragma (ETHGlobal)" gives "PE", not "P(".
   const words = name

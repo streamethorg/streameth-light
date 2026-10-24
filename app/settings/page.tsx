@@ -32,20 +32,20 @@ export default async function SettingsPage() {
   return (
     <div className="flex flex-1 flex-col">
       <PageHero
-        leading={<Avatar name={label} photo={accountPhoto(user)} channel className="h-16 w-16 text-lg sm:h-20 sm:w-20 sm:text-xl" />}
+        leading={<Avatar name={label} photo={accountPhoto(user)} className="h-16 w-16 text-lg sm:h-20 sm:w-20 sm:text-xl" />}
         title={label}
         meta={`Member since ${formatDateShort(user.created_at)}`}
         actions={
           <SignOutButton
             redirectTo="/"
-            className="rounded-lg border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-accent/40"
+            className="rounded-sm border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-ink-faint"
           />
         }
       />
 
-      <div className="flex max-w-2xl flex-col gap-4 px-4 py-6 sm:px-6">
-        <section className="flex flex-col gap-3 rounded-2xl bg-panel p-5 ring-1 ring-line">
-          <h2 className="text-base font-bold text-ink">Account</h2>
+      <div className="flex max-w-2xl flex-col gap-4 px-4 py-6 sm:px-8">
+        <section className="flex flex-col gap-3 border-t border-line pt-5">
+          <h2 className="text-base font-semibold text-ink">Account</h2>
           <dl className="flex flex-col gap-3 text-sm">
             <div className="flex flex-col gap-0.5">
               <dt className="text-xs text-ink-faint">Email</dt>
@@ -58,8 +58,8 @@ export default async function SettingsPage() {
           </dl>
         </section>
 
-        <section className="flex flex-col gap-2 rounded-2xl bg-panel p-5 ring-1 ring-line">
-          <h2 className="text-base font-bold text-ink">Library</h2>
+        <section className="flex flex-col gap-2 border-t border-line pt-5">
+          <h2 className="text-base font-semibold text-ink">Library</h2>
           <Link href="/saved" className="w-fit text-sm font-medium text-accent hover:underline">
             {savedCount ?? 0} saved {savedCount === 1 ? "talk" : "talks"} →
           </Link>

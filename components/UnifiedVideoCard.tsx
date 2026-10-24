@@ -1,12 +1,15 @@
 import type { UnifiedVideo } from "@/lib/videoDb";
-import { formatDateShort, formatTimecode } from "@/lib/format";
+import { formatDateShort, formatTimecode, withoutEventSuffix } from "@/lib/format";
 import VideoTile, { type VideoTileLayout } from "./VideoTile";
+import { videoLink } from "@/lib/videoLink";
 
 export default function UnifiedVideoCard({
   video,
   layout = "grid",
   hideChannel = false,
   hideEvent = false,
+  href,
+  eventName,
 }: {
   video: UnifiedVideo;
   layout?: VideoTileLayout;
@@ -14,16 +17,23 @@ export default function UnifiedVideoCard({
   hideChannel?: boolean;
   /** Omit the event, e.g. in a row already headed by that event. */
   hideEvent?: boolean;
+  /** Where the card opens, when not the watch page (e.g. playing it in
+   * place on an event page). */
+  href?: string;
+  /** The event the surrounding page or section is about; a title ending in
+   * its name ("… - TOKEN2049 Singapore 2026") drops that suffix. */
+  eventName?: string;
 }) {
   return (
     <VideoTile
-      href={video.watchUrl}
+      href={href ?? videoLink(video)}
       coverImage={video.coverImage}
       coverLabel={video.title}
       durationLabel={
         video.durationSeconds !== null ? formatTimecode(video.durationSeconds) : undefined
       }
-      title={video.title}
+      // The meta line (or the page around the card) already names the event.
+      title={withoutEventSuffix(video.title, eventName, video.eventName, video.orgName)}
       channel={
         hideChannel || !video.orgName
           ? undefined

@@ -4,6 +4,7 @@ import { getDirectory } from "@/lib/directory";
 import { getOrphanSessionsForOrg, groupSessionsByInferredEvent } from "@/lib/orphanSessions";
 import { getYoutubeVideosForChannel, groupVideosByInferredEvent } from "@/lib/youtube";
 import { listSpeakers } from "@/lib/people";
+import { youtubeGroupHref } from "@/lib/season";
 import { listTopics } from "@/lib/topics";
 import { absoluteUrl, xmlEscape } from "@/lib/seo";
 
@@ -19,11 +20,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     add(path, { changeFrequency: "daily", priority: 0.8 });
   }
 
+  const streamethEventPaths = new Set(
+    listAllEvents().flatMap((event) => {
+      const org = getOrgForEvent(event);
+      return org ? [`/${org.slug}/${event.slug}`] : [];
+    })
+  );
+  const covered = new Set<string>();
   for (const entry of getDirectory()) {
     add(`/${entry.slug}`, { changeFrequency: "weekly", priority: 0.7 });
     for (const group of groupVideosByInferredEvent(getYoutubeVideosForChannel(entry.slug), entry.slug)) {
-      add(`/${entry.slug}/y/${group.slug}`, { changeFrequency: "monthly", priority: 0.5 });
+      // Groups with a coverage page redirect there; that page is listed once.
+      const href = youtubeGroupHref(entry.slug, group.slug);
+      if (href) covered.add(href);
+      else add(`/${entry.slug}/y/${group.slug}`, { changeFrequency: "monthly", priority: 0.5 });
     }
+  }
+  for (const href of covered) {
+    if (!streamethEventPaths.has(href)) add(href, { changeFrequency: "monthly", priority: 0.6 });
   }
 
   // Events with no playable session are empty shells — not worth a crawl.

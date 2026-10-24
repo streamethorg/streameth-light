@@ -8,6 +8,9 @@ import { DatabaseSync } from "node:sqlite";
 import { readFileSync, existsSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
 import { cleanAutoLabels } from "../lib/autoLabels.mjs";
+import { videoFormat } from "../lib/videoFormat.mjs";
+import { inCoverage } from "../lib/seasonCore.mjs";
+import { loadSeasonEvents } from "./seasonData.mjs";
 
 const DATA_DIR = join(process.cwd(), "data");
 const DB_PATH = join(DATA_DIR, "streameth.db");
@@ -295,13 +298,24 @@ db.exec(`
     topics TEXT NOT NULL DEFAULT '',
     has_transcript INTEGER NOT NULL DEFAULT 0,
     download_url TEXT,
-    content_url TEXT
+    content_url TEXT,
+    -- lib/videoFormat.mjs: 'short' | 'clip' | 'talk' | 'stream'
+    format TEXT NOT NULL,
+    -- The event page that plays it in its feed (/<channel>/<event>?v=<id>),
+    -- when the video belongs to a season event; else NULL and links fall
+    -- back to watch_url.
+    feed_url TEXT,
+    -- yt-dlp live_status for /streams entries: 'is_live' | 'is_upcoming' |
+    -- 'was_live' | NULL
+    live_status TEXT
   );
 
   CREATE INDEX idx_videos_org ON videos(org_id);
   CREATE INDEX idx_videos_event ON videos(event_id);
   CREATE INDEX idx_videos_published ON videos(published_at);
   CREATE INDEX idx_videos_duration ON videos(duration_seconds);
+  CREATE INDEX idx_videos_format ON videos(format);
+  CREATE INDEX idx_videos_org_slug_published ON videos(org_slug, published_at);
 
   -- Contentless (content=''): only the search index is stored, not a second
   -- copy of every column. Transcript text lives in Supabase's
@@ -330,13 +344,34 @@ const insertVideo = db.prepare(`
   INSERT INTO videos (
     id, source, title, description, org_id, org_name, org_slug, event_id,
     event_name, published_at, duration_seconds, cover_image, watch_url,
-    speakers, topics, has_transcript, download_url, content_url
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    speakers, topics, has_transcript, download_url, content_url, format,
+    feed_url, live_status
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertFts = db.prepare(`
   INSERT INTO videos_fts (rowid, title, description, speakers, topics, org_name, event_name)
   VALUES (?, ?, ?, ?, ?, ?, ?)
 `);
+
+// Season events by channel, to send each recording to the event page whose
+// feed it belongs to — same channel, uploaded within the event's coverage
+// window (lib/seasonCore.mjs). The newest matching edition wins.
+const seasonEventsByChannel = new Map();
+for (const event of loadSeasonEvents().events) {
+  if (!event.channelSlug || !event.href) continue;
+  const list = seasonEventsByChannel.get(event.channelSlug) ?? [];
+  list.push(event);
+  seasonEventsByChannel.set(event.channelSlug, list);
+}
+for (const list of seasonEventsByChannel.values()) list.sort((a, b) => b.from - a.from);
+let feedLinkedCount = 0;
+function feedUrlFor(channelSlug, publishedAt, id) {
+  if (!channelSlug || !publishedAt) return null;
+  const event = seasonEventsByChannel.get(channelSlug)?.find((e) => inCoverage(e, publishedAt));
+  if (!event) return null;
+  feedLinkedCount++;
+  return `${event.href}?v=${encodeURIComponent(id)}`;
+}
 
 let streamethCount = 0;
 const seenIds = new Set();
@@ -406,7 +441,10 @@ for (const s of sessions) {
     topicsDisplay,
     transcript ? 1 : 0,
     resolvedDownloadUrl(s),
-    resolvedContentUrl(s)
+    resolvedContentUrl(s),
+    videoFormat({ source: "streameth" }),
+    feedUrlFor(org?.slug ?? "", sessionStart(s), s._id),
+    null
   );
   insertFts.run(
     streamethRowid,
@@ -420,6 +458,14 @@ for (const s of sessions) {
   streamethCount++;
 }
 
+// meta.upload_date is "YYYYMMDD" — the only date a /shorts listing entry gets.
+function uploadDateMs(meta) {
+  const d = meta?.upload_date;
+  if (!d || !/^\d{8}$/.test(d)) return 0;
+  return Date.UTC(Number(d.slice(0, 4)), Number(d.slice(4, 6)) - 1, Number(d.slice(6, 8)));
+}
+
+const formatCounts = {};
 let youtubeCount = 0;
 let youtubeDupeCount = 0;
 let youtubeReuploadCount = 0;
@@ -441,10 +487,17 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
     seenVideoIds.add(v.videoId);
     const meta = youtubeMetadata[v.videoId];
     const transcript = youtubeTranscripts[v.videoId] ?? "";
-    const publishedAt = v.publishedAt ? new Date(v.publishedAt).getTime() : 0;
+    const publishedAt = v.publishedAt ? new Date(v.publishedAt).getTime() : uploadDateMs(meta);
     const id = `yt-${v.videoId}`;
     const description = meta?.description || v.description || "";
-    const duration = meta?.duration ?? null;
+    const duration = meta?.duration ?? v.duration ?? null;
+    const format = videoFormat({
+      source: "youtube",
+      tab: v.tab,
+      liveStatus: v.liveStatus,
+      durationSeconds: duration,
+    });
+    formatCounts[format] = (formatCounts[format] ?? 0) + 1;
     const topics = [...(meta?.tags ?? []), ...(meta?.categories ?? [])].join(", ");
     const descriptionSearchText = [description, entry?.location].filter(Boolean).join(" ");
     const speakerNames = (youtubeSpeakersBySlug[channelSlug]?.[v.videoId] ?? []).join(", ");
@@ -467,7 +520,10 @@ for (const [channelSlug, videos] of Object.entries(youtubeVideosBySlug)) {
       topics,
       transcript ? 1 : 0,
       null,
-      null
+      null,
+      format,
+      feedUrlFor(channelSlug, publishedAt, id),
+      v.liveStatus ?? null
     );
     insertFts.run(youtubeRowid, v.title ?? "", descriptionSearchText, speakerNames, topics, orgName, "");
     youtubeCount++;
@@ -483,3 +539,9 @@ console.log(
   `  youtube videos:   ${youtubeCount} (skipped ${youtubeDupeCount} cross-channel dupes, ${youtubeReuploadCount} re-uploads of a StreamETH session)`
 );
 console.log(`  total:            ${streamethCount + youtubeCount}`);
+console.log(`  in an event feed: ${feedLinkedCount}`);
+console.log(
+  `  youtube formats:  ${Object.entries(formatCounts)
+    .map(([f, n]) => `${n} ${f}`)
+    .join(", ")}`
+);

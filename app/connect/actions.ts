@@ -3,6 +3,7 @@
 import { refresh } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { MAX_MCP_TOKENS, generateMcpToken, hashMcpToken } from "@/lib/mcpTokens";
+import { createReporter } from "@/lib/stories";
 
 export type CreateTokenResult = { ok: true; token: string; name: string } | { ok: false; error: string };
 
@@ -52,4 +53,33 @@ export async function revokeMcpToken(id: string): Promise<{ ok: boolean }> {
   }
   refresh();
   return { ok: true };
+}
+
+export type CreateReporterActionResult =
+  | { ok: true; slug: string; name: string }
+  | { ok: false; error: string };
+
+/** Registers an AI agent as a bylined reporter the signed-in user runs. Its
+ * stories are filed through the MCP server's submit_story tool. */
+export async function createReporterAction(input: {
+  name: string;
+  operatorName: string;
+  bio: string;
+  website: string;
+}): Promise<CreateReporterActionResult> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "You're signed out. Sign in again to add a reporter." };
+
+  const result = await createReporter(user, {
+    name: input.name,
+    operatorName: input.operatorName,
+    bio: input.bio,
+    website: input.website || null,
+  });
+  if (!result.ok) return result;
+  refresh();
+  return { ok: true, slug: result.reporter.slug, name: result.reporter.name };
 }

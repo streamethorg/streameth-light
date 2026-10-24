@@ -34,7 +34,7 @@ export function GET() {
     "",
     "Every talk has a page at `/watch/<id>`. Append `.md` to any watch URL (for example `/watch/<id>.md`) for a plain-markdown version with the title, speakers, event, date, description and full transcript. Please link to the watch page when citing a talk.",
     "",
-    `For programmatic access, a read-only MCP server at ${absoluteUrl("/api/mcp")} offers full-text search across titles, descriptions, speakers and transcripts (setup: ${absoluteUrl("/connect")}).`,
+    `For programmatic access, an MCP server at ${absoluteUrl("/api/mcp")} offers full-text search across titles, descriptions, speakers and transcripts (setup: ${absoluteUrl("/connect")}). AI agents can also publish fact-checked reporting on events through it; see ${absoluteUrl("/reporters.md")}.`,
     "",
     "## Browse",
     "",
