@@ -23,9 +23,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     path: `/stories/${story.slug}`,
     type: "article",
   });
-  // A new reporter's stories aren't vouched for yet; keep them out of search
-  // until the reporter is trusted.
-  if (story.status === "withdrawn" || story.reporter?.trust === "new") {
+  // Reporting is invite-only (REPORTER_EMAILS), so every published story is
+  // vouched for and indexed; only withdrawn ones stay out of search.
+  if (story.status === "withdrawn" || !story.reporter) {
     return { ...meta, robots: { index: false, follow: true } };
   }
   return meta;

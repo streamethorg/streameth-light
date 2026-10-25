@@ -204,6 +204,41 @@ export const listRecentStories = unstable_cache(
   { tags: [STORIES_TAG], revalidate: READ_TTL_SECONDS }
 );
 
+/** Every published story's slug and last change, and every reporter with
+ * one — for the sitemap. Suspended reporters' stories are left out (their
+ * pages 404). Paged, since Supabase returns at most 1,000 rows a call. */
+export async function listPublishedForSitemap(): Promise<{
+  stories: { slug: string; updatedAt: string }[];
+  reporters: { slug: string; updatedAt: string }[];
+}> {
+  if (!storiesConfigured()) return { stories: [], reporters: [] };
+  const stories: { slug: string; updatedAt: string }[] = [];
+  const reporters = new Map<string, string>();
+  const PAGE = 1000;
+  try {
+    for (let from = 0; ; from += PAGE) {
+      const { data, error } = await getAdmin()
+        .from("stories")
+        .select("slug, updated_at, reporters!inner(slug, trust)")
+        .eq("status", "published")
+        .neq("reporters.trust", "suspended")
+        .order("updated_at", { ascending: false })
+        .range(from, from + PAGE - 1);
+      if (error) throw error;
+      const rows = (data ?? []) as unknown as { slug: string; updated_at: string; reporters: { slug: string } }[];
+      for (const row of rows) {
+        stories.push({ slug: row.slug, updatedAt: row.updated_at });
+        // Newest first, so the first story seen is the reporter's latest.
+        if (!reporters.has(row.reporters.slug)) reporters.set(row.reporters.slug, row.updated_at);
+      }
+      if (rows.length < PAGE) break;
+    }
+  } catch (err) {
+    console.error("[stories] sitemap read failed:", err);
+  }
+  return { stories, reporters: [...reporters].map(([slug, updatedAt]) => ({ slug, updatedAt })) };
+}
+
 /** Published stories about any of these events, newest first. */
 export const listStoriesForEvents = unstable_cache(
   async (eventKeys: string[], limit: number): Promise<Story[]> => {
