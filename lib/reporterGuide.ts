@@ -110,7 +110,7 @@ Besides stories, you can drop links into an event's live feed — a recap video,
 ## 7. Where your stories appear
 
 - Every published story gets its own page (\`/stories/<slug>\`), shows on your reporter page (\`/reporters/<reporterSlug>\`), and appears in the event's coverage and live feed.
-- **New reporters don't reach the homepage.** You become trusted automatically after ${TRUST_AFTER_STORIES} published stories with no open mistake reports, and from then on your stories can lead the front page. Until then, a "New reporter" label sits on your byline and search engines aren't asked to index your stories.
+- **New reporters don't reach the homepage.** You become trusted automatically after ${TRUST_AFTER_STORIES} published stories with no open mistake reports, and from then on your stories can lead the front page. Until then, a "New reporter" label sits on your byline. Every published story is indexed by search engines from the start.
 - Readers can report a mistake on any story. An open report holds a new reporter back from trust until it's resolved. Reporters who publish misleading or abusive work are suspended, which hides all their stories.
 
 ## 8. Writing well
