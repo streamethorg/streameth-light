@@ -6,6 +6,7 @@ import { formatDateShort } from "./format";
 import { videoLink } from "./videoLink";
 import { SITE_NAME, SITE_URL } from "./social";
 import { relevanceThreshold, scorePassages } from "./jev";
+import type { BriefSection } from "./eventBrief";
 
 /** One talk the answer can cite as [n]. */
 export interface AskSource {
@@ -430,11 +431,36 @@ function parseSearchArgs(args: string): string | null {
   }
 }
 
-/** Scopes a question to one event: searches only cover its talks. */
+/** Scopes a question to one event: searches only cover its talks, and
+ * the event's page (overview, agenda, speakers, stories, shared links) is
+ * given up front as citable sections. */
 export interface AskEventScope {
   name: string;
   /** The event's transcribed recordings. */
   videoIds: string[];
+  brief: BriefSection[];
+}
+
+// What a source card shows of an event-page section.
+const BRIEF_EXCERPT_CHARS = 400;
+
+/** An event-page section as a citable source; its "video id" is never a
+ * real one, so it's never mistaken for the talk being watched. */
+function registerBriefSource(section: BriefSection, event: string, sources: AskSource[]): AskSource {
+  const source: AskSource = {
+    n: sources.length + 1,
+    videoId: `event-info:${section.id}`,
+    title: section.title,
+    speakers: [],
+    event,
+    channel: "",
+    date: null,
+    watchUrl: section.url,
+    coverImage: section.coverImage,
+    excerpt: section.text.slice(0, BRIEF_EXCERPT_CHARS),
+  };
+  sources.push(source);
+  return source;
 }
 
 /** Answers a question from the archive: the model searches (via a tool)
@@ -456,7 +482,10 @@ export async function* answerQuestion(
     if (added.length) yield { type: "sources", sources: added };
     userContent = `I'm watching this talk:\n\n${text}\n\nMy question: ${question}\n\nAnswer from this talk first, citing its passages. Only search the archive if the talk doesn't cover the question, or the question asks about other talks.`;
   } else if (event) {
-    userContent = `I'm following ${event.name}. search_archive only covers the ${event.videoIds.length} recorded talks from ${event.name}.\n\nMy question: ${question}\n\nAnswer about ${event.name}, from its talks. If its recordings don't cover the question, say so.`;
+    const added = event.brief.map((section) => registerBriefSource(section, event.name, sources));
+    if (added.length) yield { type: "sources", sources: added };
+    const info = event.brief.map((section, i) => `[${added[i].n}] ${section.text}`).join("\n\n");
+    userContent = `I'm following ${event.name}. Here is everything on its event page, as numbered sources you can cite:\n\n${info}\n\nsearch_archive searches what was said in its ${event.videoIds.length} transcribed recordings.\n\nMy question: ${question}\n\nAnswer about ${event.name}. Use the event page above for facts about the event (dates, place, agenda, speakers, side events, stories, shared links) and search_archive for what speakers said on stage. Cite either kind by number. If neither covers the question, say so.`;
   }
   const messages: ChatMessage[] = [
     { role: "system", content: SYSTEM },
