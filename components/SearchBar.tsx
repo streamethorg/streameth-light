@@ -13,6 +13,10 @@ export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }
   const urlValue = pathname === "/" ? searchParams.get("q") ?? "" : "";
   const [value, setValue] = useState(urlValue);
   const [syncedUrlValue, setSyncedUrlValue] = useState(urlValue);
+  // The query we last pushed to the URL and are still waiting on. Typing
+  // pushes on every pause, and those navigations land after the user has
+  // typed more — syncing the box to them would wipe the newer keystrokes.
+  const [pendingValue, setPendingValue] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const containerRef = useRef<HTMLFormElement>(null);
@@ -20,7 +24,11 @@ export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }
 
   if (urlValue !== syncedUrlValue) {
     setSyncedUrlValue(urlValue);
-    setValue(urlValue);
+    if (pendingValue === null) {
+      setValue(urlValue);
+    } else if (urlValue === pendingValue) {
+      setPendingValue(null);
+    }
   }
 
   useEffect(() => {
@@ -41,6 +49,14 @@ export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }
       params.delete("q");
     }
     params.delete("page");
+    // Read the live URL: this can run from a debounce timer, after
+    // earlier pushes have already moved it past this render's urlValue.
+    const currentUrlValue =
+      window.location.pathname === "/"
+        ? new URLSearchParams(window.location.search).get("q") ?? ""
+        : "";
+    const nextUrlValue = nextValue.trim() ? nextValue : "";
+    setPendingValue(nextUrlValue === currentUrlValue ? null : nextUrlValue);
     router.push(`/?${params.toString()}`, { scroll: false });
   }
 
@@ -70,7 +86,7 @@ export default function SearchBar({ autoFocus = false }: { autoFocus?: boolean }
             setValue(next);
             setDropdownOpen(true);
             if (debounceRef.current) clearTimeout(debounceRef.current);
-            debounceRef.current = setTimeout(() => push(next), 250);
+            debounceRef.current = setTimeout(() => push(next), 400);
           }}
           className="w-full min-w-0 bg-transparent text-sm text-ink placeholder:text-ink-faint focus:outline-none"
         />
