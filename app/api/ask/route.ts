@@ -1,7 +1,8 @@
 import { answerQuestion, askConfigured, AskBusyError, MAX_QUESTION_CHARS, type AskEvent } from "@/lib/ask";
 import { consumeAskQuota } from "@/lib/askQuota";
 import { createClient } from "@/lib/supabase/server";
-import { eventCoverage, getSeasonEvent } from "@/lib/season";
+import { eventCoverage, getSeasonEvent, requestTime } from "@/lib/season";
+import { eventBrief } from "@/lib/eventBrief";
 
 // Most talks an event-scoped question searches across.
 const MAX_EVENT_VIDEOS = 1000;
@@ -32,25 +33,32 @@ export async function POST(request: Request) {
     question = typeof body.question === "string" ? body.question.trim() : "";
     // Optional: scope the question to one talk (the watch page's panel)…
     if (typeof body.videoId === "string" && /^[\w-]{1,64}$/.test(body.videoId)) videoId = body.videoId;
-    // …or to one event's talks (the event page's panel).
-    if (typeof body.eventKey === "string" && /^mira:[A-Za-z0-9]{1,40}$/.test(body.eventKey)) eventKey = body.eventKey;
+    // …or to one event (the event page's panel): calendar events
+    // ("mira:…") and archive events ("streameth:…", "youtube:<channel>:<group>").
+    if (
+      typeof body.eventKey === "string" &&
+      /^(mira:[A-Za-z0-9]{1,40}|streameth:[A-Za-z0-9]{1,40}|youtube:[a-z0-9_-]{1,80}:[a-z0-9-]{1,160})$/.test(body.eventKey)
+    ) {
+      eventKey = body.eventKey;
+    }
   } catch {
     return jsonError("Send JSON: {\"question\": \"…\"}", 400);
   }
   if (question.length < 3) return jsonError("Ask a question.", 400);
   const seasonEvent = eventKey ? getSeasonEvent(eventKey) : undefined;
   if (eventKey && !seasonEvent) return jsonError("No such event.", 404);
+  if (question.length > MAX_QUESTION_CHARS) {
+    return jsonError(`Keep questions under ${MAX_QUESTION_CHARS} characters.`, 400);
+  }
   const eventScope = seasonEvent
     ? {
         name: seasonEvent.name,
         videoIds: eventCoverage(seasonEvent, MAX_EVENT_VIDEOS)
           .filter((v) => v.hasTranscript)
           .map((v) => v.id),
+        brief: await eventBrief(seasonEvent, requestTime()),
       }
     : undefined;
-  if (question.length > MAX_QUESTION_CHARS) {
-    return jsonError(`Keep questions under ${MAX_QUESTION_CHARS} characters.`, 400);
-  }
 
   const quota = await consumeAskQuota(user.id);
   if (quota === "limited") {

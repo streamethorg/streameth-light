@@ -9,12 +9,13 @@ const SUGGESTIONS = ["Summarize this talk", "What are the key takeaways?", "What
 // With nothing from the talk itself, ask about its subject instead.
 const NO_TEXT_SUGGESTIONS = ["What is this topic about?", "Find related talks", "Who else has spoken on this?"];
 
-const EVENT_SUGGESTIONS = ["What were the big themes?", "What got announced?", "Which talks should I watch?"];
+const EVENT_SUGGESTIONS = ["What were the big themes?", "Who's speaking, and when?", "Which talks should I watch?"];
 
 /** The "Ask AI" panel. About one talk (the watch page, an opened video):
  * answered from its transcript, falling back to the rest of the archive;
  * without a transcript it says where answers come from instead. About an
- * event (`event`): every search covers only that event's talks. Given
+ * event (`event`): answered from the event's page (agenda, speakers,
+ * stories, shared links) plus searches over only that event's talks. Given
  * both, it opens on the talk with a switch to ask about the whole event.
  * Answers cite their passages either way. */
 export default function AskTalk({
@@ -122,7 +123,7 @@ export default function AskTalk({
           onChange={(e) => setInput(e.target.value)}
           maxLength={500}
           aria-label={aboutEvent && event ? `Ask a question about ${event.name}` : "Ask a question about this talk"}
-          placeholder={aboutEvent ? "What did speakers say about…" : "What does the speaker say about…"}
+          placeholder={aboutEvent ? "Ask about the agenda, speakers, talks…" : "What does the speaker say about…"}
           className="h-10 min-w-0 flex-1 rounded-sm border border-line-strong bg-void px-3 text-sm text-ink placeholder:text-ink-faint focus:border-accent focus:outline-none sm:h-9"
         />
         <button
@@ -137,8 +138,8 @@ export default function AskTalk({
       {aboutEvent && event ? (
         <p className="text-xs leading-5 text-ink-faint">
           {event.transcribedTalks > 0
-            ? `Answers come from the ${event.transcribedTalks} transcribed ${event.transcribedTalks === 1 ? "talk" : "talks"} of ${event.name}, with citations.`
-            : `No talks from ${event.name} are transcribed yet — answers start once recordings are up.`}
+            ? `Answers come from ${event.name}'s page — agenda, speakers, stories, shared links — and its ${event.transcribedTalks} transcribed ${event.transcribedTalks === 1 ? "talk" : "talks"}, with citations.`
+            : `Answers come from ${event.name}'s page — agenda, speakers, stories, shared links — with citations. Talks are added as they're transcribed.`}
         </p>
       ) : !hasTranscript && (
         <p className="text-xs leading-5 text-ink-faint">
