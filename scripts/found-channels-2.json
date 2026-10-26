@@ -1,0 +1,27 @@
+{
+  "blockchain-and-brews-san-diego": {
+    "name": "Blockchain and Brews (San Diego)",
+    "channelName": "San Diego",
+    "channelUrl": "https://www.youtube.com/@sandiego"
+  },
+  "ethereum-research-symposium-ethres-2026": {
+    "name": "Ethereum Research Symposium (ETHReS) 2026",
+    "channelName": "Ethres",
+    "channelUrl": "https://www.youtube.com/@ethres"
+  },
+  "napuleth-meetup": {
+    "name": "NapulETH Meetup",
+    "channelName": "NapulETH",
+    "channelUrl": "https://www.youtube.com/@napuleth"
+  },
+  "seattle": {
+    "name": "Seattle",
+    "channelName": "The Weather Channel: Seattle",
+    "channelUrl": "https://www.youtube.com/@seattle"
+  },
+  "web3-london": {
+    "name": "Web3 London",
+    "channelName": "Web3 London Gaming evolution team \"Pikachu\"",
+    "channelUrl": "https://www.youtube.com/@web3london"
+  }
+}

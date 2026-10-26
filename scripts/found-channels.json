@@ -1,0 +1,17 @@
+{
+  "chiang-mai-dapps": {
+    "name": "Chiang Mai Dapps",
+    "channelName": "Chiang mai Dapps",
+    "channelUrl": "https://www.youtube.com/channel/UCSVcz7bvGohWKfy1Hxx18iA"
+  },
+  "chicago-ethereum-meetup": {
+    "name": "Chicago Ethereum Meetup",
+    "channelName": "Chicago Ethereum Meetup",
+    "channelUrl": "https://www.youtube.com/channel/UCr5nn2JG66xfe3KHawndr0Q"
+  },
+  "ethereum-madrid": {
+    "name": "Ethereum Madrid",
+    "channelName": "Ethereum Madrid",
+    "channelUrl": "https://www.youtube.com/channel/UCt04PNeNExD5Ug0Z5q3hbgA"
+  }
+}
