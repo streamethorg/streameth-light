@@ -122,6 +122,13 @@ const getCoveredChannels = lazy((): Channel[] =>
     .map((e) => ({ name: getOrganization(e.slug)?.name ?? e.name, slug: e.slug }))
 );
 
+const getChannelOverrides = lazy((): Record<string, string> => {
+  const path = join(process.cwd(), "data", "season-channel-overrides.json");
+  if (!existsSync(path)) return {};
+  const raw = JSON.parse(readFileSync(path, "utf-8")) as Record<string, string>;
+  return Object.fromEntries(Object.entries(raw).filter(([k]) => !k.startsWith("_")));
+});
+
 const getSchedules = lazy((): Record<string, EventSchedule> => {
   const path = join(process.cwd(), "data", "sources", "event-schedules.json");
   if (!existsSync(path)) return {};
@@ -137,6 +144,7 @@ const getAllSeasonEvents = lazy((): SeasonEvent[] =>
     miraEvents: listMiraEvents(),
     channels: getCoveredChannels(),
     scheduledEventNames: new Set(Object.keys(getSchedules())),
+    channelOverrides: getChannelOverrides(),
   })
 );
 
