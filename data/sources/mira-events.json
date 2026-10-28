@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-27",
-  "seriesCount": 65,
-  "eventCount": 1651,
+  "importedAt": "2026-10-28",
+  "seriesCount": 108,
+  "eventCount": 1695,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -404,6 +404,221 @@
       "id": "recbyti1WmCR2rr9w",
       "title": "Davos Events",
       "slug": "DavosEvents2027"
+    },
+    {
+      "id": "recFRcTMBPskHOPbx",
+      "title": "DGFI 2026-Digital Finance Conference",
+      "slug": "DGFI2026-DigitalFinanceConference2026"
+    },
+    {
+      "id": "recdOvd7J5Y6B1RXo",
+      "title": "GEC Session N°14",
+      "slug": "GECSessionN°142026"
+    },
+    {
+      "id": "recRBQMgC0WqscvPG",
+      "title": "Crypto Fest 2026",
+      "slug": "CryptoFest2026"
+    },
+    {
+      "id": "reccyIyiCLticiHqo",
+      "title": "PEER Summit 2027",
+      "slug": "PEERSummit2027"
+    },
+    {
+      "id": "recKAysuxtJTxpjmh",
+      "title": "W3N 2027",
+      "slug": "W3N2027"
+    },
+    {
+      "id": "recpkCaVYRLyeeFJU",
+      "title": "Davos Innovation Week 2027",
+      "slug": "DavosInnovationWeek2027"
+    },
+    {
+      "id": "recguOv9V0YFJZr9q",
+      "title": "Web3 Hub Davos 2027",
+      "slug": "Web3HubDavos2027"
+    },
+    {
+      "id": "recFIYGoHrpH7uJJc",
+      "title": "Web Summit Qatar 2027",
+      "slug": "WebSummitQatar2027"
+    },
+    {
+      "id": "recUVDu1NVOMfzhpm",
+      "title": "Generative AI Expo 2027",
+      "slug": "GenerativeAIExpo2027"
+    },
+    {
+      "id": "recFLRFKghbW6XeQa",
+      "title": "Africa Tech Summit Nairobi 2027",
+      "slug": "AfricaTechSummitNairobi2027"
+    },
+    {
+      "id": "recfHiHwxSNiRsvxl",
+      "title": "Adopting Bitcoin Cape Town 2027",
+      "slug": "AdoptingBitcoinCapeTown2027"
+    },
+    {
+      "id": "rec5jwT1z9mQUTtTT",
+      "title": "GDC 2027",
+      "slug": "GDC2027"
+    },
+    {
+      "id": "recwZdKWuJipRa8L7",
+      "title": "AIBC Eurasia 2027",
+      "slug": "AIBCEurasia2027"
+    },
+    {
+      "id": "reck0eSNnFqgMIPfv",
+      "title": "SXSW Austin 2027",
+      "slug": "SXSWAustin2027"
+    },
+    {
+      "id": "recwYlq80c4loA3nL",
+      "title": "Mining Disrupt 2027",
+      "slug": "MiningDisrupt2027"
+    },
+    {
+      "id": "recuxSqgeop16lh4z",
+      "title": "Art Basel HK",
+      "slug": "ArtBaselHK2027"
+    },
+    {
+      "id": "rec7qMZRnlE9yE9kH",
+      "title": "BitBlockBoom 2027",
+      "slug": "BitBlockBoom2027"
+    },
+    {
+      "id": "recR0G0BZ1fQSla3f",
+      "title": "Ipê Village 2027",
+      "slug": "IpêVillage2027"
+    },
+    {
+      "id": "recAvhdObEkcBlyFm",
+      "title": "TEAMZ Summit 2027",
+      "slug": "TEAMZSummit2027"
+    },
+    {
+      "id": "recYbXzSPFQCMhv3k",
+      "title": "Digital Euro Conference 2027",
+      "slug": "DigitalEuroConference2027"
+    },
+    {
+      "id": "reckliUhG9aXnVknI",
+      "title": "Unchained Summit Dubai 2027",
+      "slug": "UnchainedSummitDubai2027"
+    },
+    {
+      "id": "recJRG3V6zFl7qC9E",
+      "title": "React Miami 2027",
+      "slug": "ReactMiami2027"
+    },
+    {
+      "id": "recivNxJI1HVXdarF",
+      "title": "BTC Prague 2027",
+      "slug": "BTCPrague2027"
+    },
+    {
+      "id": "recYVeOEy7j8R5Blu",
+      "title": "Digital Money Summit",
+      "slug": "DigitalMoneySummit2027"
+    },
+    {
+      "id": "recNWF493mKGb71XF",
+      "title": "Milano Blockchain Week 2027",
+      "slug": "MilanoBlockchainWeek2027"
+    },
+    {
+      "id": "rec5WHpmIinbIeVyn",
+      "title": "SXSW London 2027",
+      "slug": "SXSWLondon2027"
+    },
+    {
+      "id": "rec7eH3ZBLpZwVk05",
+      "title": "Web Summit Vancouver 2027",
+      "slug": "WebSummitVancouver2027"
+    },
+    {
+      "id": "recKKpFuD58gkh5ZV",
+      "title": "Nordic Blockchain Conference 2027",
+      "slug": "NordicBlockchainConference2027"
+    },
+    {
+      "id": "rec4J8lm30nQw4ENc",
+      "title": "NFC Summit 2027",
+      "slug": "NFCSummit2027"
+    },
+    {
+      "id": "recipmC6jS9MnoMDG",
+      "title": "ETHPrague 2027",
+      "slug": "ETHPrague2027"
+    },
+    {
+      "id": "recrUYGu6nbNSaQoB",
+      "title": "Tech Week NYC 2027",
+      "slug": "TechWeekNYC2027"
+    },
+    {
+      "id": "rectoKVKEPMGDQ7wE",
+      "title": "WAIB Summit Monaco 2027",
+      "slug": "WAIBSummitMonaco2027"
+    },
+    {
+      "id": "recCvpOrAc7CKYpCb",
+      "title": "Web Summit Rio 2027",
+      "slug": "WebSummitRio2027"
+    },
+    {
+      "id": "recK4BEBzabsozTub",
+      "title": "Le Paradigme Bitcoin 2027",
+      "slug": "LeParadigmeBitcoin2027"
+    },
+    {
+      "id": "reczEeqcYx0XH5iyO",
+      "title": "Bitcoin 2027",
+      "slug": "Bitcoin2027"
+    },
+    {
+      "id": "recgztOivfFwVejZ8",
+      "title": "Money Expo India 2027",
+      "slug": "MoneyExpoIndia2027"
+    },
+    {
+      "id": "recAZp1hAmJyEjbyd",
+      "title": "Tech Week LA 2027",
+      "slug": "TechWeekLA2027"
+    },
+    {
+      "id": "recZe1oj3UZu17ZgO",
+      "title": "UN Blockchain Week 2027",
+      "slug": "UNBlockchainWeek2027"
+    },
+    {
+      "id": "recLS6EG382kbdv6m",
+      "title": "Wiki Finance Expo Hong Kong 2027",
+      "slug": "WikiFinanceExpoHongKong2027"
+    },
+    {
+      "id": "recGgbdIIY7tMHGuV",
+      "title": "Stablecon US 2027",
+      "slug": "StableconUS2027"
+    },
+    {
+      "id": "recEvfOFaXm4vhTvw",
+      "title": "Tech Week SF 2027",
+      "slug": "TechWeekSF2027"
+    },
+    {
+      "id": "recrZkSpahxEE940A",
+      "title": "TOKEN2049 Singapore 2027",
+      "slug": "TOKEN2049Singapore2027"
+    },
+    {
+      "id": "recEB3lfq2Rie92q0",
+      "title": "Money 20/20 USA 2027",
+      "slug": "Money2020USA2027"
     }
   ],
   "events": [
@@ -29861,6 +30076,29 @@
       "seriesName": ""
     },
     {
+      "id": "recl8CH2Lvq0Bg28T",
+      "kind": "main",
+      "name": "DGFI 2026-Digital Finance Conference",
+      "description": "DGFI 2026-Digital Finance Conference\nDGFI 2026 is the fifth edition of the Digital Finance Conference, focused on the changes reshaping money, markets and…",
+      "startTime": "2026-10-30",
+      "endTime": "2026-10-31",
+      "location": "Other, Georgia, Georgia 🇬🇪",
+      "city": "Other, Georgia",
+      "country": "Georgia 🇬🇪",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "DeFi",
+        "Infrastructure"
+      ],
+      "website": "https://luma.com/gn09u5i7",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/or/42701d60-d460-411c-9ef5-791025b1179a.png",
+      "seriesSlug": "DGFI2026-DigitalFinanceConference2026",
+      "seriesName": "DGFI 2026-Digital Finance Conference"
+    },
+    {
       "id": "rec85TaMl1nRkjwtK",
       "kind": "main",
       "name": "Bitcoin Alive",
@@ -29906,6 +30144,26 @@
       "imageUrl": "https://images.lumacdn.com/uploads/l5/9015caa8-5faa-4c3a-b222-938e33fc6ac1.jpg",
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recgqiIBjLi6Us4MA",
+      "kind": "main",
+      "name": "GEC Session N°14",
+      "description": "Le Geneva Event Crypto (GEC) organise à Genève des conférences et événements consacrés à la crypto, au bitcoin, à la blockchain et au Web3, depuis 2023.",
+      "startTime": "2026-10-31",
+      "endTime": "2026-10-31",
+      "location": "Geneva, Switzerland 🇨🇭",
+      "city": "Geneva",
+      "country": "Switzerland 🇨🇭",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [],
+      "website": "https://gec-swiss.ch/",
+      "imageUrl": "https://gec-swiss.ch/wp-content/uploads/2026/09/GEC-Session-14-partage-Nicolas-Ducommun.png",
+      "seriesSlug": "GECSessionN°142026",
+      "seriesName": "GEC Session N°14"
     },
     {
       "id": "recz0v0PcQQBwYTJI",
@@ -31553,7 +31811,7 @@
         "Infrastructure",
         "Markets"
       ],
-      "website": "https://lu.ma/breakpoint2026",
+      "website": "https://luma.com/breakpoint2026?coupon=5C9WXB-MIRA",
       "imageUrl": "https://images.lumacdn.com/event-covers/66/6b914a25-469f-47ad-8183-bb46a344de5b.png",
       "seriesSlug": "Breakpoint2026SideEvents2026",
       "seriesName": "Breakpoint 2026 Side Events"
@@ -32230,6 +32488,29 @@
       "seriesName": "November Singapore Events"
     },
     {
+      "id": "recCFQsP09fVNDghW",
+      "kind": "main",
+      "name": "Crypto Fest 2026",
+      "description": "No information at this moment",
+      "startTime": "2026-11-20",
+      "endTime": "2026-11-20",
+      "location": "Cape Town, South Africa 🇿🇦",
+      "city": "Cape Town",
+      "country": "South Africa 🇿🇦",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Other"
+      ],
+      "website": "https://cryptofest.co.za/",
+      "imageUrl": "https://cryptofest.co.za/wp-content/uploads/2026/05/CryptoFest2026-LinkPreview.jpg",
+      "seriesSlug": "CryptoFest2026",
+      "seriesName": "Crypto Fest 2026"
+    },
+    {
       "id": "reczUHSoFnCdWepgJ",
       "kind": "main",
       "name": "Devfest Antananarivo",
@@ -32892,6 +33173,29 @@
       "seriesName": "Art Basel Miami Events"
     },
     {
+      "id": "reccmq7Z8m1BEaF8u",
+      "kind": "main",
+      "name": "DevFest Dijon 2026",
+      "description": "Le DevFest Dijon 2026 est la cinquième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destiné...",
+      "startTime": "2026-12-04",
+      "endTime": "2026-12-22",
+      "location": null,
+      "city": null,
+      "country": null,
+      "organizer": "Google AI",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://gdg.community.dev/events/details/google-gdg-dijon-presents-devfest-dijon-2026/",
+      "imageUrl": null,
+      "seriesSlug": "AIEvents",
+      "seriesName": "AI Events"
+    },
+    {
       "id": "rec3hMj1tAXngi2Lf",
       "kind": "main",
       "name": "NeurIPS 2026: Sydney",
@@ -33256,6 +33560,31 @@
       "seriesName": "CES Side Events"
     },
     {
+      "id": "rectoD2AkQrsXrfte",
+      "kind": "main",
+      "name": "PEER Summit 2027",
+      "description": "An invite-only weekend retreat for leaders, authors, change-makers, and founders.",
+      "startTime": "2027-01-08",
+      "endTime": "2027-01-10",
+      "location": "Sundance, USA 🇺🇸",
+      "city": "Sundance",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Coliving",
+        "Multichain"
+      ],
+      "topics": [
+        "Community",
+        "AI",
+        "DeFi"
+      ],
+      "website": "https://www.peersummit.co/",
+      "imageUrl": null,
+      "seriesSlug": "PEERSummit2027",
+      "seriesName": "PEER Summit 2027"
+    },
+    {
       "id": "rec7UmTouFCMFugWQ",
       "kind": "main",
       "name": "IC3 Winter Retreat 2027",
@@ -33300,6 +33629,30 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recCxx9dcPwVXbORT",
+      "kind": "main",
+      "name": "W3N 2027",
+      "description": "THE ONLY GLOBAL EMERGING TECH GATHERING FOR IMPACT-DRIVEN BUILDERS, CREATORS & DOERS AT THE EDGE OF EUROPE",
+      "startTime": "2027-01-15",
+      "endTime": "2027-01-16",
+      "location": "Narva, Estonia 🇪🇪",
+      "city": "Narva",
+      "country": "Estonia 🇪🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "AI",
+        "DeFi"
+      ],
+      "website": "https://w3n.ee",
+      "imageUrl": null,
+      "seriesSlug": "W3N2027",
+      "seriesName": "W3N 2027"
     },
     {
       "id": "rec6YwmxxVmQdWuLE",
@@ -33369,6 +33722,53 @@
       "imageUrl": null,
       "seriesSlug": "DavosEvents2027",
       "seriesName": "Davos Events"
+    },
+    {
+      "id": "recldWVcYjP8qRwHY",
+      "kind": "main",
+      "name": "Davos Innovation Week 2027",
+      "description": "Davos Innovation Week in Davos, Switzerland, is a premier innovation summit that unites startups, investors, and leaders to explore technology, sustainability, and entrepreneurship worldwide.\n\nWe connect innovators and changemakers to shape the future of technology, sustainability, and global entrepreneurship.\n\nEach year, Davos Innovation Week brings together leaders and entrepreneurs to drive impact through panels, awards, and collaboration.",
+      "startTime": "2027-01-18",
+      "endTime": "2027-01-19",
+      "location": "Davos, Switzerland 🇨🇭",
+      "city": "Davos",
+      "country": "Switzerland 🇨🇭",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "VC",
+        "Other"
+      ],
+      "website": "https://www.davosinnovationweek.com/",
+      "imageUrl": null,
+      "seriesSlug": "DavosInnovationWeek2027",
+      "seriesName": "Davos Innovation Week 2027"
+    },
+    {
+      "id": "recgT0tPpnbL7UEvs",
+      "kind": "main",
+      "name": "Web3 Hub Davos 2027",
+      "description": "WHERE THE FUTURE OF TECHNOLOGY\nMEETS THE LEADERS SHAPING IT",
+      "startTime": "2027-01-18",
+      "endTime": "2027-01-21",
+      "location": "Davos, Switzerland 🇨🇭",
+      "city": "Davos",
+      "country": "Switzerland 🇨🇭",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Community",
+        "Other"
+      ],
+      "website": "https://web3hubdavos.com/",
+      "imageUrl": null,
+      "seriesSlug": "Web3HubDavos2027",
+      "seriesName": "Web3 Hub Davos 2027"
     },
     {
       "id": "recxpN06s52OZDqjV",
@@ -33517,6 +33917,28 @@
       "seriesName": ""
     },
     {
+      "id": "recEA23MFkhkevNhI",
+      "kind": "main",
+      "name": "Web Summit Qatar 2027",
+      "description": "Tech leaders gather at Web Summit Qatar to shape the future of the industry. Join our network and secure access before prices increase.",
+      "startTime": "2027-01-31",
+      "endTime": "2027-02-03",
+      "location": "Doha, Qatar 🇶🇦",
+      "city": "Doha",
+      "country": "Qatar 🇶🇦",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "Other"
+      ],
+      "website": "https://qatar.websummit.com/",
+      "imageUrl": null,
+      "seriesSlug": "WebSummitQatar2027",
+      "seriesName": "Web Summit Qatar 2027"
+    },
+    {
       "id": "reccJYFTGjUYn1ro6",
       "kind": "main",
       "name": "Digital Assets Forum London",
@@ -33660,6 +34082,29 @@
       "seriesName": ""
     },
     {
+      "id": "recVRA0V1P6B2Gn4N",
+      "kind": "main",
+      "name": "Generative AI Expo 2027",
+      "description": "No information at this moment",
+      "startTime": "2027-02-09",
+      "endTime": "2027-02-11",
+      "location": "Florida, USA 🇺🇸",
+      "city": "Florida",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.generativeaiexpo.com/east/",
+      "imageUrl": null,
+      "seriesSlug": "GenerativeAIExpo2027",
+      "seriesName": "Generative AI Expo 2027"
+    },
+    {
       "id": "recsPuGGEJKpsNtlQ",
       "kind": "main",
       "name": "Peaks ",
@@ -33681,6 +34126,30 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "reczDKwkcFlkEYHxR",
+      "kind": "main",
+      "name": "Africa Tech Summit Nairobi 2027",
+      "description": "Africa Tech Summit Nairobi connects African tech corporates, investors, startups, fintech, and climate leaders at the leading Africa tech event.",
+      "startTime": "2027-02-10",
+      "endTime": "2027-02-11",
+      "location": "Nairobi, Kenya 🇰🇪",
+      "city": "Nairobi",
+      "country": "Kenya 🇰🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "DeFi"
+      ],
+      "website": "https://www.africatechsummit.com/nairobi/",
+      "imageUrl": "https://www.africatechsummit.com/wp-content/uploads/2026/10/9th-Editon-LinkedIn.png",
+      "seriesSlug": "AfricaTechSummitNairobi2027",
+      "seriesName": "Africa Tech Summit Nairobi 2027"
     },
     {
       "id": "recaLG1qAmQ1e6tz4",
@@ -33725,6 +34194,30 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "rechxsYq9EoSJ1qZE",
+      "kind": "main",
+      "name": "Adopting Bitcoin Cape Town 2027",
+      "description": "The boots-on-the-ground Bitcoin conference for real-world adoption in Southern Africa.",
+      "startTime": "2027-02-26",
+      "endTime": "2027-02-27",
+      "location": "Cape Town, South Africa 🇿🇦",
+      "city": "Cape Town",
+      "country": "South Africa 🇿🇦",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "Institutional",
+        "TradFi"
+      ],
+      "website": "https://za27.adoptingbitcoin.org/",
+      "imageUrl": "https://cdn.prod.website-files.com/6a048dadc189bf2603d2ee72/6a0d00186853e55e2edd77c3_web-opengraph.webp",
+      "seriesSlug": "AdoptingBitcoinCapeTown2027",
+      "seriesName": "Adopting Bitcoin Cape Town 2027"
     },
     {
       "id": "reco34shmvyypU5E0",
@@ -33772,6 +34265,28 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "rechJs36ktlKRqegY",
+      "kind": "main",
+      "name": "GDC 2027",
+      "description": "Where Ideas Come Alive",
+      "startTime": "2027-03-01",
+      "endTime": "2027-03-04",
+      "location": "San Francisco, USA 🇺🇸",
+      "city": "San Francisco",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "Gaming"
+      ],
+      "website": "https://gdconf.com/",
+      "imageUrl": null,
+      "seriesSlug": "GDC2027",
+      "seriesName": "GDC 2027"
     },
     {
       "id": "rectzt7RK2cboTrxF",
@@ -34012,6 +34527,53 @@
       "seriesName": ""
     },
     {
+      "id": "recdfC6VzjfbeiD04",
+      "kind": "main",
+      "name": "AIBC Eurasia 2027",
+      "description": "No information at this moment",
+      "startTime": "2027-03-15",
+      "endTime": "2027-03-17",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://aibc.world/eurasia/",
+      "imageUrl": null,
+      "seriesSlug": "AIBCEurasia2027",
+      "seriesName": "AIBC Eurasia 2027"
+    },
+    {
+      "id": "recKpfwhZkwscJDyc",
+      "kind": "main",
+      "name": "SXSW Austin 2027",
+      "description": "No information at this moment",
+      "startTime": "2027-03-15",
+      "endTime": "2027-03-21",
+      "location": "Austin, USA 🇺🇸",
+      "city": "Austin",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "VC",
+        "Markets"
+      ],
+      "website": "https://www.sxsw.com/",
+      "imageUrl": "https://sxsw.com/wp-content/uploads/sites/2/2026/08/27_SXSW_og-image.png?quality=99",
+      "seriesSlug": "SXSWAustin2027",
+      "seriesName": "SXSW Austin 2027"
+    },
+    {
       "id": "recxlGdv4NpRQR383",
       "kind": "main",
       "name": "Fintech Americas Miami",
@@ -34082,6 +34644,30 @@
       "seriesName": ""
     },
     {
+      "id": "recXBPqAdzZG1mr9p",
+      "kind": "main",
+      "name": "Mining Disrupt 2027",
+      "description": "The world's largest Bitcoin mining expo, where mining meets AI and HPC. March 22–24, 2027, Irving Convention Center, Dallas. Passes, booths and sponsorships.",
+      "startTime": "2027-03-22",
+      "endTime": "2027-03-24",
+      "location": "Dallas, USA 🇺🇸",
+      "city": "Dallas",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "Infrastructure",
+        "AI"
+      ],
+      "website": "https://miningdisrupt.com/",
+      "imageUrl": "https://miningdisrupt.com/og-md.jpg",
+      "seriesSlug": "MiningDisrupt2027",
+      "seriesName": "Mining Disrupt 2027"
+    },
+    {
       "id": "rec6jotRLNFn5W5HR",
       "kind": "main",
       "name": "Global AI Show",
@@ -34126,6 +34712,28 @@
       "seriesName": ""
     },
     {
+      "id": "rechDXTc0CY8Vqvfz",
+      "kind": "main",
+      "name": "Art Basel HK",
+      "description": "Art Basel in Hong Kong is squarely in the center of Asia's international art scene offering a premier platform for renowned artists and galleries.",
+      "startTime": "2027-03-25",
+      "endTime": "2027-03-27",
+      "location": "Hong Kong, Hong Kong 🇭🇰",
+      "city": "Hong Kong",
+      "country": "Hong Kong 🇭🇰",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "NFTs"
+      ],
+      "website": "https://www.artbasel.com/hong-kong",
+      "imageUrl": "https://dza2a2ql7zktf.cloudfront.net/binaries-cdn/dqzqcuqf9/image/fetch/q_auto,w_500/https://dza2a2ql7zktf.cloudfront.net/binaries-cdn/dqzqcuqf9/image/fetch/ar_16:10,q_auto,dpr_2.0,c_fill,w_378/https://d2u3kfwd92fzu7.cloudfront.net/asset/cms/Art_Basel_Hong_Kong_2022_Visitor_Information-3.jpg",
+      "seriesSlug": "ArtBaselHK2027",
+      "seriesName": "Art Basel HK"
+    },
+    {
       "id": "recuBEcF7SWvX6brV",
       "kind": "main",
       "name": "Digital Asset Summit NYC 2027",
@@ -34166,6 +34774,53 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "reckQxyTcHIm5Fx99",
+      "kind": "main",
+      "name": "BitBlockBoom 2027",
+      "description": "Network with fellow Bitcoiners!\nApril 1st-4th, 2027 | The longest running bitcoin conference and celebrating our 10th year. Pay in bitcoin or fiat",
+      "startTime": "2027-04-01",
+      "endTime": "2027-04-04",
+      "location": "Fort Worth, USA 🇺🇸",
+      "city": "Fort Worth",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "DeFi"
+      ],
+      "website": "https://www.bitblockboom.com/ticket",
+      "imageUrl": "https://static.wixstatic.com/media/f1b84b_39a26f344655495a8846a0607d0bb4dc~mv2.jpg/v1/fill/w_2123,h_1140,al_c/f1b84b_39a26f344655495a8846a0607d0bb4dc~mv2.jpg",
+      "seriesSlug": "BitBlockBoom2027",
+      "seriesName": "BitBlockBoom 2027"
+    },
+    {
+      "id": "rec94B8Xt0av5qrqv",
+      "kind": "main",
+      "name": "Ipê Village 2027",
+      "description": "Learn frontier technology, build alongside talented specialists, access remote job opportunities and earn while collaborating.",
+      "startTime": "2027-04-01",
+      "endTime": "2027-04-30",
+      "location": "Other, Brazil, Brazil 🇧🇷",
+      "city": "Other, Brazil",
+      "country": "Brazil 🇧🇷",
+      "organizer": null,
+      "tags": [
+        "Coliving",
+        "Multichain"
+      ],
+      "topics": [
+        "AI",
+        "Infrastructure"
+      ],
+      "website": "https://www.ipe.city/",
+      "imageUrl": "/ipe-city/og.png",
+      "seriesSlug": "IpêVillage2027",
+      "seriesName": "Ipê Village 2027"
     },
     {
       "id": "recc87VCogb0OMMWJ",
@@ -34260,6 +34915,30 @@
       "seriesName": ""
     },
     {
+      "id": "recFWK59LhMTmNAWQ",
+      "kind": "main",
+      "name": "TEAMZ Summit 2027",
+      "description": "Japan’s Premier AI Conference",
+      "startTime": "2027-04-06",
+      "endTime": "2027-04-07",
+      "location": "Tokyo, Japan 🇯🇵",
+      "city": "Tokyo",
+      "country": "Japan 🇯🇵",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "AI",
+        "Infrastructure"
+      ],
+      "website": "https://www.teamz.co.jp/en",
+      "imageUrl": null,
+      "seriesSlug": "TEAMZSummit2027",
+      "seriesName": "TEAMZ Summit 2027"
+    },
+    {
       "id": "recME0qe3Pjl1iBRn",
       "kind": "main",
       "name": "SEZ Dubai",
@@ -34305,6 +34984,29 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recBn93rkz2DlGlkm",
+      "kind": "main",
+      "name": "Digital Euro Conference 2027",
+      "description": "Join the Digital Euro Conference 2027 in Frankfurt on April 8! Explore CBDCs, stablecoins, and the future of digital money with industry leaders. Register now!",
+      "startTime": "2027-04-08",
+      "endTime": "2027-04-08",
+      "location": "Frankfurt, Germany 🇩🇪",
+      "city": "Frankfurt",
+      "country": "Germany 🇩🇪",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://digital-euro-conference.de/",
+      "imageUrl": "https://digital-euro-conference.de/hubfs/DEC27%20Banner%20-%20gray%20background%20-%20without%20logos.png",
+      "seriesSlug": "DigitalEuroConference2027",
+      "seriesName": "Digital Euro Conference 2027"
     },
     {
       "id": "recdDM5KiU0OfKKwA",
@@ -34502,6 +35204,30 @@
       "seriesName": ""
     },
     {
+      "id": "recdrEw38wBTqoa1U",
+      "kind": "main",
+      "name": "Unchained Summit Dubai 2027",
+      "description": "#1 Web3 & Crypto Event\nfor High-impact Networking and Deal-flow",
+      "startTime": "2027-04-19",
+      "endTime": "2027-04-20",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://unchainedsummit.com/dubai/",
+      "imageUrl": null,
+      "seriesSlug": "UnchainedSummitDubai2027",
+      "seriesName": "Unchained Summit Dubai 2027"
+    },
+    {
       "id": "recwcYSDCBH1Am2dU",
       "kind": "main",
       "name": "TOKEN2049 Dubai 2027",
@@ -34594,6 +35320,29 @@
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/LuganoSummit2027_2026-10-21T07-28.png",
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recvTYhAeNkuj5Ixi",
+      "kind": "main",
+      "name": "React Miami 2027",
+      "description": "The Ultimate\nReact Conference\nin the US",
+      "startTime": "2027-04-29",
+      "endTime": "2027-04-30",
+      "location": "Miami, USA 🇺🇸",
+      "city": "Miami",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Infrastructure"
+      ],
+      "website": "https://www.reactmiami.com/",
+      "imageUrl": null,
+      "seriesSlug": "ReactMiami2027",
+      "seriesName": "React Miami 2027"
     },
     {
       "id": "recN0KW9WQKZVXSkz",
@@ -34716,6 +35465,30 @@
       "seriesName": ""
     },
     {
+      "id": "recAHIr10a4gKwiJ5",
+      "kind": "main",
+      "name": "BTC Prague 2027",
+      "description": "The biggest, most influential bitcoin event in Europe ever, again!",
+      "startTime": "2027-05-06",
+      "endTime": "2027-05-08",
+      "location": "Prague, Czech Republic 🇨🇿",
+      "city": "Prague",
+      "country": "Czech Republic 🇨🇿",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "Community",
+        "Infrastructure"
+      ],
+      "website": "https://btcprague.com/",
+      "imageUrl": "https://2027.btcprague.com/wp-content/uploads/2026/06/27btcprg_og_image.png",
+      "seriesSlug": "BTCPrague2027",
+      "seriesName": "BTC Prague 2027"
+    },
+    {
       "id": "recWoufgEYYvYukja",
       "kind": "main",
       "name": "Digital Assets Summit",
@@ -34835,6 +35608,30 @@
       "seriesName": ""
     },
     {
+      "id": "recezPNUdgvcycbkN",
+      "kind": "main",
+      "name": "Digital Money Summit",
+      "description": "No information at this moment",
+      "startTime": "2027-05-18",
+      "endTime": "2027-05-19",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://www.omfif.org/dms2027/",
+      "imageUrl": null,
+      "seriesSlug": "DigitalMoneySummit2027",
+      "seriesName": "Digital Money Summit"
+    },
+    {
       "id": "rec1Zr695NzoJZZlI",
       "kind": "main",
       "name": "Dutch Blockchain Week 2027",
@@ -34907,6 +35704,30 @@
       "seriesName": ""
     },
     {
+      "id": "rec9G6soeKXPGkEPm",
+      "kind": "main",
+      "name": "Milano Blockchain Week 2027",
+      "description": "The Italian Blockchain Conference.",
+      "startTime": "2027-05-20",
+      "endTime": "2027-05-22",
+      "location": "Milan, Italy 🇮🇹",
+      "city": "Milan",
+      "country": "Italy 🇮🇹",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Community",
+        "Infrastructure"
+      ],
+      "website": "https://milanoblockchainweek.com/",
+      "imageUrl": null,
+      "seriesSlug": "MilanoBlockchainWeek2027",
+      "seriesName": "Milano Blockchain Week 2027"
+    },
+    {
       "id": "recGCirTWLjwUPlnF",
       "kind": "main",
       "name": "Liquidity Summit",
@@ -34932,6 +35753,31 @@
       "seriesName": ""
     },
     {
+      "id": "recgQbI9f5Mbn4V3L",
+      "kind": "main",
+      "name": "SXSW London 2027",
+      "description": "Experience SXSW London in Shoreditch where global music, film, tech, and culture meet for six days of discovery, networking, and inspiration.",
+      "startTime": "2027-05-24",
+      "endTime": "2027-05-29",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Markets",
+        "AI",
+        "Community"
+      ],
+      "website": "https://www.sxswlondon.com/",
+      "imageUrl": "https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png",
+      "seriesSlug": "SXSWLondon2027",
+      "seriesName": "SXSW London 2027"
+    },
+    {
       "id": "recAmGVX5P7wwW3Lh",
       "kind": "main",
       "name": "European Family Office Investment Summit",
@@ -34954,6 +35800,102 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "rec4GBRN2cljmgyOe",
+      "kind": "main",
+      "name": "Web Summit Vancouver 2027",
+      "description": "Tech leaders gather at Web Summit Vancouver to shape the future of the industry.",
+      "startTime": "2027-05-25",
+      "endTime": "2027-05-28",
+      "location": "Vancouver, Canada 🇨🇦",
+      "city": "Vancouver",
+      "country": "Canada 🇨🇦",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Community",
+        "VC"
+      ],
+      "website": "https://vancouver.websummit.com/",
+      "imageUrl": null,
+      "seriesSlug": "WebSummitVancouver2027",
+      "seriesName": "Web Summit Vancouver 2027"
+    },
+    {
+      "id": "recSnr76TBcV1iA7I",
+      "kind": "main",
+      "name": "Nordic Blockchain Conference 2027",
+      "description": "The industry association for blockchain and digital assets in the Nordics.",
+      "startTime": "2027-05-26",
+      "endTime": "2027-05-27",
+      "location": "Stockholm, Sweden 🇸🇪",
+      "city": "Stockholm",
+      "country": "Sweden 🇸🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Infrastructure",
+        "DeFi"
+      ],
+      "website": "https://www.nordicblockchain.com/",
+      "imageUrl": null,
+      "seriesSlug": "NordicBlockchainConference2027",
+      "seriesName": "Nordic Blockchain Conference 2027"
+    },
+    {
+      "id": "rec0EGmchsjS4P2yJ",
+      "kind": "main",
+      "name": "NFC Summit 2027",
+      "description": "Non Fungible Conference is now NFC Summit. Sixth edition, 27–29 May 2027 at the Unicorn Factory, Lisbon. Get your name on the wall of the venue until October 30.",
+      "startTime": "2027-05-27",
+      "endTime": "2027-05-29",
+      "location": "Lisbon, Portugal 🇵🇹",
+      "city": "Lisbon",
+      "country": "Portugal 🇵🇹",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Gaming",
+        "Community"
+      ],
+      "website": "https://www.nonfungibleconference.com/",
+      "imageUrl": "https://cdn.prod.website-files.com/667d843c349d4113343c986f/698d9619c07409c724e7e797_Screenshot%202026-02-12%20at%2009.56.46.png",
+      "seriesSlug": "NFCSummit2027",
+      "seriesName": "NFC Summit 2027"
+    },
+    {
+      "id": "recPNmTM3MGZycbn2",
+      "kind": "main",
+      "name": "ETHPrague 2027",
+      "description": "ETHPrague is an event focused on the future of Ethereum and potential concepts or applications that don't yet exist.",
+      "startTime": "2027-05-28",
+      "endTime": "2027-05-30",
+      "location": "Prague, Czech Republic 🇨🇿",
+      "city": "Prague",
+      "country": "Czech Republic 🇨🇿",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "DeFi",
+        "Privacy"
+      ],
+      "website": "https://ethprague.com/",
+      "imageUrl": null,
+      "seriesSlug": "ETHPrague2027",
+      "seriesName": "ETHPrague 2027"
     },
     {
       "id": "recMdJVreS1oMoxfa",
@@ -35055,6 +35997,31 @@
       "seriesName": ""
     },
     {
+      "id": "recHLgTExoqaOanIt",
+      "kind": "main",
+      "name": "Tech Week NYC 2027",
+      "description": "Top founders, funds, and companies around the globe will be at a16z's Tech Week next year. Will you?",
+      "startTime": "2027-06-07",
+      "endTime": "2027-06-13",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Multichain",
+        "Conference"
+      ],
+      "topics": [
+        "Community",
+        "VC",
+        "AI"
+      ],
+      "website": "https://www.tech-week.com/",
+      "imageUrl": null,
+      "seriesSlug": "TechWeekNYC2027",
+      "seriesName": "Tech Week NYC 2027"
+    },
+    {
       "id": "reclS2eR4Hxu4vY3Y",
       "kind": "main",
       "name": "Money20/20 Europe 2027",
@@ -35076,6 +36043,29 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recgSE9OkVaTGzwDr",
+      "kind": "main",
+      "name": "WAIB Summit Monaco 2027",
+      "description": "The World’s Most Exclusive Summit for Web3, AI, and Digital Assets. Invest the Future.",
+      "startTime": "2027-06-08",
+      "endTime": "2027-06-09",
+      "location": "Monaco, Monaco 🇲🇨",
+      "city": "Monaco",
+      "country": "Monaco 🇲🇨",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.waibsummit.com",
+      "imageUrl": null,
+      "seriesSlug": "WAIBSummitMonaco2027",
+      "seriesName": "WAIB Summit Monaco 2027"
     },
     {
       "id": "rec59bkY8JcFklo9X",
@@ -35150,6 +36140,28 @@
       "seriesName": ""
     },
     {
+      "id": "recjYtrilgGpvXyXO",
+      "kind": "main",
+      "name": "Web Summit Rio 2027",
+      "description": "Meet tech leaders this June at Web Summit Rio. Join our network to secure two tickets for the price of one, only R$995. Don’t miss out!",
+      "startTime": "2027-06-14",
+      "endTime": "2027-06-17",
+      "location": "Rio De Janeiro, Brazil 🇧🇷",
+      "city": "Rio De Janeiro",
+      "country": "Brazil 🇧🇷",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "Other"
+      ],
+      "website": "https://rio.websummit.com/",
+      "imageUrl": null,
+      "seriesSlug": "WebSummitRio2027",
+      "seriesName": "Web Summit Rio 2027"
+    },
+    {
       "id": "recYK6Tp1MQyVkTJP",
       "kind": "main",
       "name": "SBC Summit Canada",
@@ -35218,6 +36230,31 @@
       "imageUrl": "https://cdn.prod.website-files.com/6756df8f05088bc3e51c64c0/6abe2f6497a70ad6abe776af_9030286fd3ad3cd3661b7bc8c18cd4ac_nyc.png",
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recQ6BC3ebB8AHUTF",
+      "kind": "main",
+      "name": "Le Paradigme Bitcoin 2027",
+      "description": "Le Paradigme Bitcoin 2027",
+      "startTime": "2027-06-25",
+      "endTime": "2027-06-26",
+      "location": "Neuchâtel, Switzerland 🇨🇭",
+      "city": "Neuchâtel",
+      "country": "Switzerland 🇨🇭",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "Community",
+        "Infrastructure",
+        "DeFi"
+      ],
+      "website": "https://leparadigmebitcoin.ch/home",
+      "imageUrl": null,
+      "seriesSlug": "LeParadigmeBitcoin2027",
+      "seriesName": "Le Paradigme Bitcoin 2027"
     },
     {
       "id": "recjtnRQ7xEgPUiMJ",
@@ -35292,6 +36329,54 @@
       "seriesName": ""
     },
     {
+      "id": "recQLFb176G0d4kLx",
+      "kind": "main",
+      "name": "Bitcoin 2027",
+      "description": "The Bitcoin Conference returns to Nashville July 15–17, 2027. Bitcoin 2027 is the world's largest Bitcoin event — three days of keynotes, builders, founders, policy, music, and the people defining the protocol's next decade.",
+      "startTime": "2027-07-15",
+      "endTime": "2027-07-17",
+      "location": "Nashville, USA 🇺🇸",
+      "city": "Nashville",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "Infrastructure"
+      ],
+      "website": "https://b.tc/conference/2026",
+      "imageUrl": "https://conference.b.tc/og-image.jpg",
+      "seriesSlug": "Bitcoin2027",
+      "seriesName": "Bitcoin 2027"
+    },
+    {
+      "id": "rec0TyHHaZTw8XQUV",
+      "kind": "main",
+      "name": "Money Expo India 2027",
+      "description": "One Platform. Unlimited Opportunities.",
+      "startTime": "2027-08-14",
+      "endTime": "2027-08-15",
+      "location": "Mumbai, India 🇮🇳",
+      "city": "Mumbai",
+      "country": "India 🇮🇳",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Markets",
+        "Institutional"
+      ],
+      "website": "https://moneyexpoindia.com/",
+      "imageUrl": null,
+      "seriesSlug": "MoneyExpoIndia2027",
+      "seriesName": "Money Expo India 2027"
+    },
+    {
       "id": "recAPAaXfvgAgwI8Z",
       "kind": "main",
       "name": "Bitcoin Asia",
@@ -35336,6 +36421,53 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recy2b7h3bQ1Rqw7x",
+      "kind": "main",
+      "name": "Tech Week LA 2027",
+      "description": "Top founders, funds, and companies around the globe will be at a16z's Tech Week next year. Will you?",
+      "startTime": "2027-09-13",
+      "endTime": "2027-09-19",
+      "location": "Los Angeles, USA 🇺🇸",
+      "city": "Los Angeles",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "VC",
+        "Institutional"
+      ],
+      "website": "https://www.tech-week.com/",
+      "imageUrl": null,
+      "seriesSlug": "TechWeekLA2027",
+      "seriesName": "Tech Week LA 2027"
+    },
+    {
+      "id": "recvADExmCGIfqkBg",
+      "kind": "main",
+      "name": "UN Blockchain Week 2027",
+      "description": "Blockchain Week - UNGA Edition 2027 is a six-day blockchain gathering during the United Nations General Assembly in Times Square, New York.",
+      "startTime": "2027-09-13",
+      "endTime": "2027-09-18",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "DeFi",
+        "AI"
+      ],
+      "website": "https://unblockchainweek.com/",
+      "imageUrl": "https://www.blockchainweek.ai/opengraph-image.png?opengraph-image.1ej6942i6150k.png?dpl=dpl_9vU3VKEh3dzSA4qo4MBRvPF3N66C",
+      "seriesSlug": "UNBlockchainWeek2027",
+      "seriesName": "UN Blockchain Week 2027"
     },
     {
       "id": "rectzWoJ4Jt5zb3CU",
@@ -35411,6 +36543,79 @@
       "seriesName": ""
     },
     {
+      "id": "rec2r7V5df5ZTeYsj",
+      "kind": "main",
+      "name": "Wiki Finance Expo Hong Kong 2027",
+      "description": "WikiEXPO Brand Exhibtion: WikiEXPO is an authoritative platform, gathering KOLs and elites worldwide in various sectors, covering forex,  blackchain, and cryptos.",
+      "startTime": "2027-09-23",
+      "endTime": "2027-09-24",
+      "location": "Hong Kong, Hong Kong 🇭🇰",
+      "city": "Hong Kong",
+      "country": "Hong Kong 🇭🇰",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "TradFi"
+      ],
+      "website": "https://www.wikiexpo.com/en/brandExhibition.html",
+      "imageUrl": null,
+      "seriesSlug": "WikiFinanceExpoHongKong2027",
+      "seriesName": "Wiki Finance Expo Hong Kong 2027"
+    },
+    {
+      "id": "recaQvhimsqdSqM9v",
+      "kind": "main",
+      "name": "Stablecon US 2027",
+      "description": "Stablecon brings together the people building, adopting, and exploring the future of programmable money — all in one place.\n\nFrom infrastructure to institutions, it’s where the stablecoin ecosystem connects and moves forward.",
+      "startTime": "2027-09-29",
+      "endTime": "2027-09-30",
+      "location": "Washington DC, USA 🇺🇸",
+      "city": "Washington DC",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Stablecoins",
+        "DeFi"
+      ],
+      "website": "https://stablecon.com/",
+      "imageUrl": "https://stablecon.com/wp-content/uploads/2026/05/HENR2831.jpg",
+      "seriesSlug": "StableconUS2027",
+      "seriesName": "Stablecon US 2027"
+    },
+    {
+      "id": "recasAUxWmivTQFzu",
+      "kind": "main",
+      "name": "Tech Week SF 2027",
+      "description": "Top founders, funds, and companies around the globe will be at a16z's Tech Week next year. Will you?",
+      "startTime": "2027-10-04",
+      "endTime": "2027-10-10",
+      "location": "San Francisco, USA 🇺🇸",
+      "city": "San Francisco",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "VC",
+        "Institutional"
+      ],
+      "website": "https://www.tech-week.com/",
+      "imageUrl": null,
+      "seriesSlug": "TechWeekSF2027",
+      "seriesName": "Tech Week SF 2027"
+    },
+    {
       "id": "rectwD36CPisfMnhS",
       "kind": "main",
       "name": "Digital Asset Yield Summit Singapore",
@@ -35434,6 +36639,54 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recJNsSZFbldTJgIV",
+      "kind": "main",
+      "name": "TOKEN2049 Singapore 2027",
+      "description": "TOKEN2049 is the world's largest crypto event. Join the ecosystem's decision-makers in Singapore to connect, exchange ideas, network, and shape the industry.",
+      "startTime": "2027-10-06",
+      "endTime": "2027-10-07",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://www.token2049.com/singapore",
+      "imageUrl": "https://cdn.prod.website-files.com/6756df8f05088bc3e51c64c0/6a9e828d9aa96c64f392c993_T2049%20Singapore%20-%20OpenGraph%20(2026)%202%20OCT%202025.jpeg",
+      "seriesSlug": "TOKEN2049Singapore2027",
+      "seriesName": "TOKEN2049 Singapore 2027"
+    },
+    {
+      "id": "recrOFkc0BsIUsxmq",
+      "kind": "main",
+      "name": "Money 20/20 USA",
+      "description": "Join us in Las Vegas, where the industry's leading Financial Services innovators come together to connect and create the future of money. Buy your pass today! ",
+      "startTime": "2027-10-19",
+      "endTime": "2027-10-21",
+      "location": "Las Vegas, USA 🇺🇸",
+      "city": "Las Vegas",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://us.money2020.com/",
+      "imageUrl": "//images.ctfassets.net/zfifjkc7y6ct/4hDO2Qx8wLOVdRQLwZMZH5/683f7d3d182a59786500219d56930f51/Day_1_-_Sunday__October_18_Day_1_Highlights_DJI_20261015210921_0478_D-HDR_Bradley_H.jpg_8019x4511.jpg",
+      "seriesSlug": "Money2020USA2027",
+      "seriesName": "Money 20/20 USA 2027"
     },
     {
       "id": "recAVjnWg7UFCodqX",
