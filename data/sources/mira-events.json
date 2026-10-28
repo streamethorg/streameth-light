@@ -2,7 +2,7 @@
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-10-28",
   "seriesCount": 108,
-  "eventCount": 1695,
+  "eventCount": 1696,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -33358,6 +33358,31 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "reczIT805IL8IvWAH",
+      "kind": "main",
+      "name": "Trust Circle: The Future Of Global Wealth",
+      "description": "Trust Circle: The Future of Global Wealth co-hosted by Plasma. Where Global Capital Meets Global Influence. As global wealth enters a new era, Abu Dhabi is emerging as a key destination for international capital, innovation and financial leadership.During Abu Dhabi Finance Week, TRUST SQUARE, co-hosted by Plasma, and in partnership with Crypto Oasis, brings together an exclusive circle of 60 selected guests - including family offices, institutional investors, entrepreneurs, wealth managers and global decision-makers - for an evening of high-level conversations and meaningful connections.Hosted in the prestigious Al Maryah Island, at the centre of Abu Dhabi's international financial district, TRUST CIRCLE welcomes influential guests from across Europe, the Middle East, Asia and beyond.The evening will explore the forces shaping the future of global wealth - from international capital flows and private markets to digital assets, emerging investment opportunities and the evolving role ...",
+      "startTime": "2026-12-07",
+      "endTime": "2026-12-07",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": "Trust Square, Inacta Ventures, Crypto Oasis",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "Stablecoins",
+        "TradFi"
+      ],
+      "website": "https://lu.ma/trust-circle-wealth-abu-dhabi",
+      "imageUrl": "https://images.lumacdn.com/uploads/63/9b278804-0565-45e1-8b4a-36b018445720.png",
+      "seriesSlug": "AbuDhabiFinanceWeek2026",
+      "seriesName": "Abu Dhabi Finance Week"
     },
     {
       "id": "recxKbGLr2B5Ep2bj",
