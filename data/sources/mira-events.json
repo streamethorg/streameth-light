@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-28",
+  "importedAt": "2026-10-29",
   "seriesCount": 108,
-  "eventCount": 1696,
+  "eventCount": 1698,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -32511,6 +32511,30 @@
       "seriesName": "Crypto Fest 2026"
     },
     {
+      "id": "reclhyt9Cit1yGzkD",
+      "kind": "main",
+      "name": "Trust Summit | Singapore Fintech Festival 2026",
+      "description": "This event is by invitation only. For those with an invitation code, enter your code on the next page to unlock your complimentary ticket. Waitlisted…",
+      "startTime": "2026-11-20",
+      "endTime": "2026-11-20",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": "Terminal 3, GFTN, Web3 Harbour (W3H), Elliptic",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "AI",
+        "Security"
+      ],
+      "website": "https://lu.ma/hpz99yp0",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/m3/9d04a889-8b6d-404f-9afa-7e946191fc63.png",
+      "seriesSlug": "NovemberSingaporeEvents2026",
+      "seriesName": "November Singapore Events"
+    },
+    {
       "id": "reczUHSoFnCdWepgJ",
       "kind": "main",
       "name": "Devfest Antananarivo",
@@ -32915,6 +32939,28 @@
       "seriesName": ""
     },
     {
+      "id": "recFTK0IW25oINfIt",
+      "kind": "main",
+      "name": "dev/ai/nyc",
+      "description": "A technical, hands-on conference for people building with AI in New York City.",
+      "startTime": "2026-11-30",
+      "endTime": "2026-12-01",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://ai-dev.deeplearning.ai/",
+      "imageUrl": "https://framerusercontent.com/images/OraEcpOZuF9pd8v1TkYCJBnTNbI.png",
+      "seriesSlug": "DAFNYCEvents2026",
+      "seriesName": "DAF NYC Events"
+    },
+    {
       "id": "reccaQMV5jICfJBHN",
       "kind": "main",
       "name": "Blockchain Life 2026",
@@ -33179,9 +33225,9 @@
       "description": "Le DevFest Dijon 2026 est la cinquième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destiné...",
       "startTime": "2026-12-04",
       "endTime": "2026-12-22",
-      "location": null,
-      "city": null,
-      "country": null,
+      "location": "Other, France, France 🇫🇷",
+      "city": "Other, France",
+      "country": "France 🇫🇷",
       "organizer": "Google AI",
       "tags": [
         "Conference",
