@@ -32288,6 +32288,29 @@
       "seriesName": ""
     },
     {
+      "id": "recJ4S76XXfjW4wSm",
+      "kind": "main",
+      "name": "DevFest Ghardaia",
+      "description": "Get an exclusive preview of DevFest Ghardaia 2026. Discover tech trends, connect with local developers, and learn how to join this tech celebration. Don't miss the chance to influence the future of technology in Ghardaia. RSVP now.",
+      "startTime": "2026-11-16",
+      "endTime": "2026-11-17",
+      "location": "Ghardaia, Algeria 🇩🇿",
+      "city": "Ghardaia",
+      "country": "Algeria 🇩🇿",
+      "organizer": "Google AI",
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "AI",
+        "Other"
+      ],
+      "website": "https://gdg.community.dev/events/details/google-gdg-ghardaia-presents-devfest-ghardaia-2026/",
+      "imageUrl": null,
+      "seriesSlug": "AIEvents",
+      "seriesName": "AI Events"
+    },
+    {
       "id": "recpa4W3bgzp1eoEf",
       "kind": "side",
       "name": "Money Layer @Breakpoint🇬🇧 Week",
@@ -32814,29 +32837,6 @@
       ],
       "website": "https://gdg.community.dev/events/details/google-gdg-antananarivo-presents-devfest-antananarivo-2026/",
       "imageUrl": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_hwrmJq3",
-      "seriesSlug": "AIEvents",
-      "seriesName": "AI Events"
-    },
-    {
-      "id": "recJ4S76XXfjW4wSm",
-      "kind": "main",
-      "name": "DevFest Ghardaia",
-      "description": "Get an exclusive preview of DevFest Ghardaia 2026. Discover tech trends, connect with local developers, and learn how to join this tech celebration. Don't miss the chance to influence the future of technology in Ghardaia. RSVP now.",
-      "startTime": "2026-11-22",
-      "endTime": "2026-11-26",
-      "location": "Ghardaia, Algeria 🇩🇿",
-      "city": "Ghardaia",
-      "country": "Algeria 🇩🇿",
-      "organizer": "Google AI",
-      "tags": [
-        "Conference"
-      ],
-      "topics": [
-        "AI",
-        "Other"
-      ],
-      "website": "https://gdg.community.dev/events/details/google-gdg-ghardaia-presents-devfest-ghardaia-2026/",
-      "imageUrl": null,
       "seriesSlug": "AIEvents",
       "seriesName": "AI Events"
     },
