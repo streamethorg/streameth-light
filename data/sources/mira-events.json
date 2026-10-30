@@ -1,7 +1,7 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-29",
-  "seriesCount": 108,
+  "importedAt": "2026-10-30",
+  "seriesCount": 160,
   "eventCount": 1698,
   "series": [
     {
@@ -619,6 +619,266 @@
       "id": "recEB3lfq2Rie92q0",
       "title": "Money 20/20 USA 2027",
       "slug": "Money2020USA2027"
+    },
+    {
+      "id": "rec9MfF7EDOnEjHRX",
+      "title": "Mexico Private Markets Meeting\n",
+      "slug": "MexicoPrivateMarketsMeeting2026"
+    },
+    {
+      "id": "recvPTowJwQg4hbW1",
+      "title": "TUM Blockchain Conference 2026",
+      "slug": "TUMBlockchainConference2026"
+    },
+    {
+      "id": "recGsCAwut98eWBij",
+      "title": "LABITCONF 2026 Buenos Aires",
+      "slug": "LABITCONF2026BuenosAires2026"
+    },
+    {
+      "id": "recFZgT57peej2R1B",
+      "title": "Bitcoin Alive",
+      "slug": "BitcoinAlive2026"
+    },
+    {
+      "id": "recb7L8KB3tIDdNVP",
+      "title": "AIBC World + SiGMA World",
+      "slug": "AIBCWorld+SiGMAWorld2026"
+    },
+    {
+      "id": "recyZ73eLFvSy9AWb",
+      "title": "Brazil Private Markets Meeting",
+      "slug": "BrazilPrivateMarketsMeeting2026"
+    },
+    {
+      "id": "recx83tizBLQmE2QX",
+      "title": "Family Office Forum Zurich",
+      "slug": "FamilyOfficeForumZurich2026"
+    },
+    {
+      "id": "recpDRMiI7nslLTo3",
+      "title": "Slush",
+      "slug": "Slush2026"
+    },
+    {
+      "id": "rec113TwAtMHnmuC6",
+      "title": "Chile Private Markets Meeting",
+      "slug": "ChilePrivateMarketsMeeting2026"
+    },
+    {
+      "id": "recTcHxl8YTotBfMb",
+      "title": "Fintech Connect",
+      "slug": "FintechConnect2026"
+    },
+    {
+      "id": "reck9zpLyCnekLcNa",
+      "title": "GITEX Global",
+      "slug": "GITEXGlobal2026"
+    },
+    {
+      "id": "recnYfzCHKPwwVl9t",
+      "title": "Family Office Super Summit",
+      "slug": "FamilyOfficeSuperSummit2026"
+    },
+    {
+      "id": "recCT44u9Wd89V201",
+      "title": "CfC st. Mortiz 2027",
+      "slug": "CfCst.Mortiz2027"
+    },
+    {
+      "id": "recRRtX5DKLKOkNf0",
+      "title": "Monterrey Private Markets Meeting",
+      "slug": "MonterreyPrivateMarketsMeeting2027"
+    },
+    {
+      "id": "rec2SJh1bDIlvu2Iv",
+      "title": "Digital Assets Forum London",
+      "slug": "DigitalAssetsForumLondon2027"
+    },
+    {
+      "id": "recPRxzW9OOIS2F1G",
+      "title": "Consensus Hong Kong 2027",
+      "slug": "ConsensusHongKong2027"
+    },
+    {
+      "id": "reczTBhhIUYGS7wB8",
+      "title": "Developer Week 2027",
+      "slug": "DeveloperWeek2027"
+    },
+    {
+      "id": "rechhAWML8nabNetc",
+      "title": "ETHDenver 2027",
+      "slug": "ETHDenver2027"
+    },
+    {
+      "id": "reckMVGslHi2c9Jjt",
+      "title": "SBC Summit Rio 2027",
+      "slug": "SBCSummitRio2027"
+    },
+    {
+      "id": "recy53E6lHiacDsxh",
+      "title": "CBC Summit Europe",
+      "slug": "CBCSummitEurope2027"
+    },
+    {
+      "id": "recTiH7GcrIIw49CQ",
+      "title": "MERGE Buenos Aires",
+      "slug": "MERGEBuenosAires2027"
+    },
+    {
+      "id": "recIxqSSdtnmILqU5",
+      "title": "NVIDIA GTC ",
+      "slug": "NVIDIAGTC2027"
+    },
+    {
+      "id": "rec9CAb3AfoNeTuwa",
+      "title": "Fintech Americas Miami",
+      "slug": "FintechAmericasMiami2027"
+    },
+    {
+      "id": "recNoQ41rCmokv0Fc",
+      "title": "Crypto Expo Europe 2027",
+      "slug": "CryptoExpoEurope2027"
+    },
+    {
+      "id": "reck6w36O66KxW14a",
+      "title": "Global AI Show",
+      "slug": "GlobalAIShow2027"
+    },
+    {
+      "id": "recBq0spPsFd7lHxW",
+      "title": "Next Block Expo 2027",
+      "slug": "NextBlockExpo2027"
+    },
+    {
+      "id": "recbUVTeVh6rkPr5e",
+      "title": "Building Blocks TLV 2027",
+      "slug": "BuildingBlocksTLV2027"
+    },
+    {
+      "id": "recQufY38GcK4kCEC",
+      "title": "DC Blockchain Summit",
+      "slug": "DCBlockchainSummit2027"
+    },
+    {
+      "id": "recIKsmrcYxYFsfrq",
+      "title": "Hong Kong Web3 Festival 2027",
+      "slug": "HongKongWeb3Festival2027"
+    },
+    {
+      "id": "rec9chG5P4y79KAgC",
+      "title": "SEZ Dubai",
+      "slug": "SEZDubai2027"
+    },
+    {
+      "id": "recRnsk2oxLgOBpDQ",
+      "title": "Stablecon EMEA",
+      "slug": "StableconEMEA2027"
+    },
+    {
+      "id": "recAlACUZYwyqw1bH",
+      "title": "Digital Assets Forum Abu Dhabi",
+      "slug": "DigitalAssetsForumAbuDhabi2027"
+    },
+    {
+      "id": "recbwnVqJ84tkwLXl",
+      "title": "SBC SUMMIT EUROPE",
+      "slug": "SBCSUMMITEUROPE2027"
+    },
+    {
+      "id": "reckvMg91yLHOQHEE",
+      "title": "Money20/20 Asia",
+      "slug": "Money2020Asia2027"
+    },
+    {
+      "id": "recfgGD0NVBHaSkzq",
+      "title": "FinovateSpring",
+      "slug": "FinovateSpring2027"
+    },
+    {
+      "id": "recO8nSvz3KDQcEdr",
+      "title": "Digital Assets Summit",
+      "slug": "DigitalAssetsSummit2027"
+    },
+    {
+      "id": "recw0HkW3tklCDG01",
+      "title": "ETHCluj 2027",
+      "slug": "ETHCluj2027"
+    },
+    {
+      "id": "recyFs6RwHSn5uYCs",
+      "title": "Sohn New York",
+      "slug": "SohnNewYork2027"
+    },
+    {
+      "id": "recWrHcumZ5AIxSXv",
+      "title": "Banking Transformation Summit Europe 2027",
+      "slug": "BankingTransformationSummitEurope2027"
+    },
+    {
+      "id": "receQHD9TOVtEhMM8",
+      "title": "Dutch Blockchain Week 2027",
+      "slug": "DutchBlockchainWeek2027"
+    },
+    {
+      "id": "recXEgoq42lMWI3sd",
+      "title": "Proof of Talk",
+      "slug": "ProofofTalk2027"
+    },
+    {
+      "id": "recmwEK5dtAGh5gLy",
+      "title": "Money20/20 Europe 2027",
+      "slug": "Money2020Europe2027"
+    },
+    {
+      "id": "recIZp0GoD74SQYSW",
+      "title": "ETHConf",
+      "slug": "ETHConf2027"
+    },
+    {
+      "id": "recOAZjXvlyITSLh1",
+      "title": "SBC Summit Canada",
+      "slug": "SBCSummitCanada2027"
+    },
+    {
+      "id": "reclcMgoTZ75CVMfc",
+      "title": "The Family Office Forum London",
+      "slug": "TheFamilyOfficeForumLondon2027"
+    },
+    {
+      "id": "recEyejXiIoebhFIn",
+      "title": "MoneroKon",
+      "slug": "MoneroKon2027"
+    },
+    {
+      "id": "rec74GWE9MlEFqOYx",
+      "title": "Bitcoin Asia",
+      "slug": "BitcoinAsia2027"
+    },
+    {
+      "id": "recVeziTAlByY4WFu",
+      "title": "SuperAI 2027",
+      "slug": "SuperAI2027"
+    },
+    {
+      "id": "recPVnY6VAA6ThIYn",
+      "title": "Money 20/20 Middle East",
+      "slug": "Money2020MiddleEast2027"
+    },
+    {
+      "id": "rec5cKOI6f527fq4D",
+      "title": "Sibos 2027",
+      "slug": "Sibos2027"
+    },
+    {
+      "id": "recb25UYssqLd091r",
+      "title": "European Blockchain\nConvention 13",
+      "slug": "EuropeanBlockchain\nConvention132027"
+    },
+    {
+      "id": "recxFzVvdqZbq0IFX",
+      "title": "Digital Asset Yield Summit Singapore",
+      "slug": "DigitalAssetYieldSummitSingapore2027"
     }
   ],
   "events": [
@@ -29840,8 +30100,8 @@
       ],
       "website": "https://www.carmocompanies.com/mexico-private-markets-meeting",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "MexicoPrivateMarketsMeeting2026",
+      "seriesName": "Mexico Private Markets Meeting\n"
     },
     {
       "id": "recOSZbmZbe2x9hHc",
@@ -29908,8 +30168,8 @@
       "topics": [],
       "website": "https://conference26.tum-blockchain.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "TUMBlockchainConference2026",
+      "seriesName": "TUM Blockchain Conference 2026"
     },
     {
       "id": "recQrzEZW4lsOMVEf",
@@ -30022,8 +30282,8 @@
       ],
       "website": "https://www.labitconf.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "LABITCONF2026BuenosAires2026",
+      "seriesName": "LABITCONF 2026 Buenos Aires"
     },
     {
       "id": "recwRPYeJZrQrURPN",
@@ -30120,8 +30380,8 @@
       ],
       "website": "https://bitcoinalive.io/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BitcoinAlive2026",
+      "seriesName": "Bitcoin Alive"
     },
     {
       "id": "recI3dn7VoyW3SJT2",
@@ -30446,8 +30706,8 @@
       ],
       "website": "https://aibc.world/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "AIBCWorld+SiGMAWorld2026",
+      "seriesName": "AIBC World + SiGMA World"
     },
     {
       "id": "recOTOxif19Lm8U0n",
@@ -31362,8 +31622,8 @@
       ],
       "website": "https://www.carmocompanies.com/brazil-private-markets-meeting26",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BrazilPrivateMarketsMeeting2026",
+      "seriesName": "Brazil Private Markets Meeting"
     },
     {
       "id": "recc4W0bAhcSFjyBK",
@@ -31387,8 +31647,8 @@
       ],
       "website": "https://prestelandpartner.com/familyofficeforumzurich.html",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "FamilyOfficeForumZurich2026",
+      "seriesName": "Family Office Forum Zurich"
     },
     {
       "id": "recBjxOXZTJJMxev2",
@@ -32274,8 +32534,8 @@
       ],
       "website": "https://slush.org/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "Slush2026",
+      "seriesName": "Slush"
     },
     {
       "id": "recWh8LksCe536tDc",
@@ -32386,8 +32646,8 @@
       ],
       "website": "https://www.carmocompanies.com/chile-private-markets-meeting26",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "ChilePrivateMarketsMeeting2026",
+      "seriesName": "Chile Private Markets Meeting"
     },
     {
       "id": "recbASkscQBKbejQV",
@@ -33026,8 +33286,8 @@
       ],
       "website": "https://www.fintechconnect.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "FintechConnect2026",
+      "seriesName": "Fintech Connect"
     },
     {
       "id": "recMX2dK8GtfbpZmk",
@@ -33309,8 +33569,8 @@
       ],
       "website": "https://www.gitex.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "GITEXGlobal2026",
+      "seriesName": "GITEX Global"
     },
     {
       "id": "recWPyQgzGUBiDv5i",
@@ -33603,8 +33863,8 @@
       ],
       "website": "https://familyoffices.com/super/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "FamilyOfficeSuperSummit2026",
+      "seriesName": "Family Office Super Summit"
     },
     {
       "id": "recBHG0C9kQxnrUOt",
@@ -33698,8 +33958,8 @@
       ],
       "website": "https://cfc-stmoritz.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "CfCst.Mortiz2027",
+      "seriesName": "CfC st. Mortiz 2027"
     },
     {
       "id": "recCxx9dcPwVXbORT",
@@ -33888,8 +34148,8 @@
       ],
       "website": "https://www.carmocompanies.com/monterrey-private-markets-meeting",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "MonterreyPrivateMarketsMeeting2027",
+      "seriesName": "Monterrey Private Markets Meeting"
     },
     {
       "id": "recTCfLbHjaTTj2x7",
@@ -34029,8 +34289,8 @@
       ],
       "website": "https://eblockchainconvention.com/digital-assets-forum/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DigitalAssetsForumLondon2027",
+      "seriesName": "Digital Assets Forum London"
     },
     {
       "id": "recqA37otekf6Ickh",
@@ -34053,8 +34313,8 @@
       ],
       "website": "https://consensus-hongkong.coindesk.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "ConsensusHongKong2027",
+      "seriesName": "Consensus Hong Kong 2027"
     },
     {
       "id": "recmNsycVlidSv3e8",
@@ -34149,8 +34409,8 @@
       ],
       "website": "https://www.developerweek.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DeveloperWeek2027",
+      "seriesName": "Developer Week 2027"
     },
     {
       "id": "recVRA0V1P6B2Gn4N",
@@ -34240,8 +34500,8 @@
       "topics": [],
       "website": "https://ethdenver.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "ETHDenver2027",
+      "seriesName": "ETHDenver 2027"
     },
     {
       "id": "reclH5Tek7Kul5p58",
@@ -34405,8 +34665,8 @@
       ],
       "website": "https://sbcevents.com/sbc-summit-rio/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SBCSummitRio2027",
+      "seriesName": "SBC Summit Rio 2027"
     },
     {
       "id": "rec2S776O0W17dWLw",
@@ -34430,8 +34690,8 @@
       ],
       "website": "https://www.cbcsummit.io/europe",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "CBCSummitEurope2027",
+      "seriesName": "CBC Summit Europe"
     },
     {
       "id": "recNdnl0rQDnzdrbx",
@@ -34480,8 +34740,8 @@
       ],
       "website": "https://www.mmerge.io/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "MERGEBuenosAires2027",
+      "seriesName": "MERGE Buenos Aires"
     },
     {
       "id": "rec57hYT8binX1WbJ",
@@ -34594,8 +34854,8 @@
       ],
       "website": "https://www.nvidia.com/gtc/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "NVIDIAGTC2027",
+      "seriesName": "NVIDIA GTC "
     },
     {
       "id": "recdfC6VzjfbeiD04",
@@ -34665,8 +34925,8 @@
       ],
       "website": "https://www.fintechamericas.co/en",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "FintechAmericasMiami2027",
+      "seriesName": "Fintech Americas Miami"
     },
     {
       "id": "recyr3vUs3zLGwcU3",
@@ -34686,8 +34946,8 @@
       "topics": [],
       "website": "https://cryptoexpoeurope.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "CryptoExpoEurope2027",
+      "seriesName": "Crypto Expo Europe 2027"
     },
     {
       "id": "rec83Lv7Qm6wleY3b",
@@ -34758,8 +35018,8 @@
       ],
       "website": "https://www.globalaishow.com/abu-dhabi/",
       "imageUrl": "https://www.globalaishow.com/wp-content/uploads/2026/07/global-ai-show-abu-dhabi-og.webp",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "GlobalAIShow2027",
+      "seriesName": "Global AI Show"
     },
     {
       "id": "recI42eh9m0FAc3dK",
@@ -34779,8 +35039,8 @@
       "topics": [],
       "website": "https://nextblockexpo.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "NextBlockExpo2027",
+      "seriesName": "Next Block Expo 2027"
     },
     {
       "id": "rechDXTc0CY8Vqvfz",
@@ -34843,8 +35103,8 @@
       "topics": [],
       "website": "https://www.buildingblockstlv.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BuildingBlocksTLV2027",
+      "seriesName": "Building Blocks TLV 2027"
     },
     {
       "id": "reckQxyTcHIm5Fx99",
@@ -34961,8 +35221,8 @@
       ],
       "website": "https://www.dcblockchainsummit.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DCBlockchainSummit2027",
+      "seriesName": "DC Blockchain Summit"
     },
     {
       "id": "reckTHd18uPTvfhnh",
@@ -34982,8 +35242,8 @@
       "topics": [],
       "website": "https://www.web3festival.org/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "HongKongWeb3Festival2027",
+      "seriesName": "Hong Kong Web3 Festival 2027"
     },
     {
       "id": "recFWK59LhMTmNAWQ",
@@ -35030,8 +35290,8 @@
       ],
       "website": "https://sezdubai.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SEZDubai2027",
+      "seriesName": "SEZ Dubai"
     },
     {
       "id": "rec7MnG3HVutRKFxQ",
@@ -35198,8 +35458,8 @@
       ],
       "website": "https://stablecon.com/emea/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "StableconEMEA2027",
+      "seriesName": "Stablecon EMEA"
     },
     {
       "id": "reclW32FWQml4y9tm",
@@ -35223,8 +35483,8 @@
       ],
       "website": "https://eblockchainconvention.com/digital-assets-forum-abu-dhabi/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DigitalAssetsForumAbuDhabi2027",
+      "seriesName": "Digital Assets Forum Abu Dhabi"
     },
     {
       "id": "recp2uwHhSgMG2RTS",
@@ -35271,8 +35531,8 @@
       ],
       "website": "https://sbcevents.com/sbc-summit-europe/",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/SBCSUMMITEUROPE_2026-09-28T09-30.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SBCSUMMITEUROPE2027",
+      "seriesName": "SBC SUMMIT EUROPE"
     },
     {
       "id": "recdrEw38wBTqoa1U",
@@ -35364,8 +35624,8 @@
       ],
       "website": "https://asia.money2020.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "Money2020Asia2027",
+      "seriesName": "Money20/20 Asia"
     },
     {
       "id": "recmaOJWz6fdL8Blq",
@@ -35435,8 +35695,8 @@
       ],
       "website": "https://informaconnect.com/finovatespring/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "FinovateSpring2027",
+      "seriesName": "FinovateSpring"
     },
     {
       "id": "recxPgTS11ZiM7r5Q",
@@ -35580,8 +35840,8 @@
       ],
       "website": "https://live.ft.com/digital-assets/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DigitalAssetsSummit2027",
+      "seriesName": "Digital Assets Summit"
     },
     {
       "id": "recbvQXtbhUWT89Xx",
@@ -35605,8 +35865,8 @@
       ],
       "website": "https://www.ethcluj.org/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "ETHCluj2027",
+      "seriesName": "ETHCluj 2027"
     },
     {
       "id": "rec4CVmUNhIQWBhRS",
@@ -35628,8 +35888,8 @@
       ],
       "website": "https://www.sohnconference.org/sohn2026",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SohnNewYork2027",
+      "seriesName": "Sohn New York"
     },
     {
       "id": "recsBAmelXKG593ef",
@@ -35675,8 +35935,8 @@
       ],
       "website": "https://bankingtransformationsummit.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BankingTransformationSummitEurope2027",
+      "seriesName": "Banking Transformation Summit Europe 2027"
     },
     {
       "id": "recezPNUdgvcycbkN",
@@ -35724,8 +35984,8 @@
       ],
       "website": "https://dutchblockchainweek.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DutchBlockchainWeek2027",
+      "seriesName": "Dutch Blockchain Week 2027"
     },
     {
       "id": "recQjy9yJcBjrODf0",
@@ -36014,8 +36274,8 @@
       ],
       "website": "https://proofoftalk.io/paris/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "ProofofTalk2027",
+      "seriesName": "Proof of Talk"
     },
     {
       "id": "rec2Z2TE3zhHjzgMf",
@@ -36112,8 +36372,8 @@
       ],
       "website": "https://europe.money2020.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "Money2020Europe2027",
+      "seriesName": "Money20/20 Europe 2027"
     },
     {
       "id": "recgSE9OkVaTGzwDr",
@@ -36207,8 +36467,8 @@
       ],
       "website": "https://ethconf.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "ETHConf2027",
+      "seriesName": "ETHConf"
     },
     {
       "id": "recjYtrilgGpvXyXO",
@@ -36253,8 +36513,8 @@
       ],
       "website": "https://sbcevents.com/sbc-summit-canada/",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/SBCSummitCanada_2026-09-28T09-34.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SBCSummitCanada2027",
+      "seriesName": "SBC Summit Canada"
     },
     {
       "id": "recc9PSs52YKDMByy",
@@ -36348,8 +36608,8 @@
       ],
       "website": "https://prestelandpartner.com/familyofficeforumlondon.html",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "TheFamilyOfficeForumLondon2027",
+      "seriesName": "The Family Office Forum London"
     },
     {
       "id": "recTC7eN7GDFNcBhQ",
@@ -36396,8 +36656,8 @@
       ],
       "website": "https://www.monerokon.org/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "MoneroKon2027",
+      "seriesName": "MoneroKon"
     },
     {
       "id": "recQLFb176G0d4kLx",
@@ -36467,8 +36727,8 @@
       ],
       "website": "https://asia.b.tc/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BitcoinAsia2027",
+      "seriesName": "Bitcoin Asia"
     },
     {
       "id": "recknqFdw8TTOcYFo",
@@ -36490,8 +36750,8 @@
       ],
       "website": "https://www.superai.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SuperAI2027",
+      "seriesName": "SuperAI 2027"
     },
     {
       "id": "recy2b7h3bQ1Rqw7x",
@@ -36562,8 +36822,8 @@
       ],
       "website": "https://money2020middleeast.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "Money2020MiddleEast2027",
+      "seriesName": "Money 20/20 Middle East"
     },
     {
       "id": "recJMV0wugfij8b4M",
@@ -36585,8 +36845,8 @@
       ],
       "website": "https://www.sibos.com/about/future-sibos",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "Sibos2027",
+      "seriesName": "Sibos 2027"
     },
     {
       "id": "rec14fvgMJsashPw8",
@@ -36610,8 +36870,8 @@
       ],
       "website": "https://eblockchainconvention.com/european-blockchain-convention-13/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "EuropeanBlockchain\nConvention132027",
+      "seriesName": "European Blockchain\nConvention 13"
     },
     {
       "id": "rec2r7V5df5ZTeYsj",
@@ -36708,8 +36968,8 @@
       ],
       "website": "https://daysevent.com/singapore-2027",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DigitalAssetYieldSummitSingapore2027",
+      "seriesName": "Digital Asset Yield Summit Singapore"
     },
     {
       "id": "recJNsSZFbldTJgIV",
