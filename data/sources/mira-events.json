@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-10-30",
+  "importedAt": "2026-10-31",
   "seriesCount": 160,
-  "eventCount": 1698,
+  "eventCount": 1699,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -36824,6 +36824,31 @@
       "imageUrl": null,
       "seriesSlug": "Money2020MiddleEast2027",
       "seriesName": "Money 20/20 Middle East"
+    },
+    {
+      "id": "rectDRy3E0my2a612",
+      "kind": "main",
+      "name": "CBC Summit USA",
+      "description": "CBC Summit is a curated, one-day, annual event comprised of 200+ leading industry executives, regulators, and legislators addressing crypto banking and compliance challenges, together.\n\nJoin us for the 5th annual Summit on September 15th, 2027, at The National Press Club in Washington, D.C.",
+      "startTime": "2027-09-15",
+      "endTime": "2027-09-15",
+      "location": "Washington DC, USA 🇺🇸",
+      "city": "Washington DC",
+      "country": "USA 🇺🇸",
+      "organizer": "PBC Conference",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Stablecoins",
+        "Other"
+      ],
+      "website": "https://www.cbcsummit.io/usa",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recJMV0wugfij8b4M",
