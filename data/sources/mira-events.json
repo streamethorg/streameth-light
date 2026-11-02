@@ -1,7 +1,7 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-02",
-  "seriesCount": 160,
+  "seriesCount": 161,
   "eventCount": 1699,
   "series": [
     {
@@ -879,6 +879,11 @@
       "id": "recxFzVvdqZbq0IFX",
       "title": "Digital Asset Yield Summit Singapore",
       "slug": "DigitalAssetYieldSummitSingapore2027"
+    },
+    {
+      "id": "recs43Dc2yswwXn6r",
+      "title": "Digital Asset Summit NYC 2027",
+      "slug": "DigitalAssetSummitNYC2027"
     }
   ],
   "events": [
@@ -33299,7 +33304,7 @@
       "location": "Dubai, UAE 🇦🇪",
       "city": "Dubai",
       "country": "UAE 🇦🇪",
-      "organizer": null,
+      "organizer": "Emir Han",
       "tags": [
         "Conference",
         "Other"
@@ -33308,7 +33313,7 @@
         "AI"
       ],
       "website": "https://ai-future.com",
-      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/AIFutureForum2026_2026-07-22T09-27.png",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/AIFutureForum2026_2026-11-02T11-44.png",
       "seriesSlug": "",
       "seriesName": ""
     },
@@ -33529,8 +33534,8 @@
       "kind": "main",
       "name": "Gamma Prime Investing Summit 2026 Abu Dhabi 🇦🇪",
       "description": "​​💬 Join the official Gamma Investing Summit Telegram group:\nhttps://t.me/GammaInvestingSummit\n​​​Interested in Becoming a Sponsor or a Speaker?\n​WhatsApp: +41 76 446 29 00\nEmail: i@gammaprime.com\nTelegram: Illia M",
-      "startTime": "2026-12-06",
-      "endTime": "2026-12-06",
+      "startTime": "2026-12-07",
+      "endTime": "2026-12-07",
       "location": "Abu Dhabi, UAE 🇦🇪",
       "city": "Abu Dhabi",
       "country": "UAE 🇦🇪",
@@ -35082,8 +35087,8 @@
       "topics": [],
       "website": "https://blockworks.com/event/digital-asset-summit-nyc",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DigitalAssetSummitNYC2027",
+      "seriesName": "Digital Asset Summit NYC 2027"
     },
     {
       "id": "recKFxkOeafUB0TRk",
