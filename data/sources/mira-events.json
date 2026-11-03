@@ -1,6 +1,6 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-02",
+  "importedAt": "2026-11-03",
   "seriesCount": 161,
   "eventCount": 1699,
   "series": [
@@ -34492,7 +34492,7 @@
       "kind": "main",
       "name": "ETHDenver 2027",
       "description": "ETHDenver is one of the largest Ethereum community gatherings in the world, mixing a builder hackathon with a multi day conference in Colorado. The 2027 edition is expected in February, with official dates still to be announced.",
-      "startTime": "2027-02-17",
+      "startTime": "2027-02-18",
       "endTime": "2027-02-21",
       "location": "Denver, USA 🇺🇸",
       "city": "Denver",
@@ -34503,7 +34503,7 @@
         "Ethereum/EVM"
       ],
       "topics": [],
-      "website": "https://ethdenver.com/",
+      "website": "https://ethdenver2027.com/",
       "imageUrl": null,
       "seriesSlug": "ETHDenver2027",
       "seriesName": "ETHDenver 2027"
