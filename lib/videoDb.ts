@@ -367,11 +367,17 @@ export function countFormatsBetween(slugs: string[], from: number, to: number): 
   return counts;
 }
 
-/** A channel's livestream that's on air right now, per the last pull. */
+/** A channel's livestream that's on air right now, per the last pull. When
+ * none was on air yet at the last pull (it runs hourly at best), one of its
+ * scheduled streams, the main stage first: embedded by id, it plays once it
+ * goes live, where YouTube's live_stream?channel= embed shows "unavailable"
+ * while a channel has several streams scheduled. */
 export function liveStreamForChannel(slug: string): UnifiedVideo | undefined {
   const row = getDb()
     .prepare(
-      `SELECT * FROM videos WHERE org_slug = ? AND live_status = 'is_live' ORDER BY published_at DESC LIMIT 1`
+      `SELECT * FROM videos WHERE org_slug = ? AND live_status IN ('is_live', 'is_upcoming')
+       ORDER BY live_status = 'is_live' DESC, LOWER(title) LIKE '%main stage%' DESC, published_at DESC, id
+       LIMIT 1`
     )
     .get(slug) as VideoRow | undefined;
   return row ? rowToVideo(row) : undefined;
