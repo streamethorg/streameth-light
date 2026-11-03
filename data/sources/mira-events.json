@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-03",
-  "seriesCount": 161,
-  "eventCount": 1699,
+  "seriesCount": 168,
+  "eventCount": 1700,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -432,7 +432,7 @@
     },
     {
       "id": "recpkCaVYRLyeeFJU",
-      "title": "Davos Innovation Week 2027",
+      "title": "Davos Innovation Week",
       "slug": "DavosInnovationWeek2027"
     },
     {
@@ -527,7 +527,7 @@
     },
     {
       "id": "recNWF493mKGb71XF",
-      "title": "Milano Blockchain Week 2027",
+      "title": "Milano Blockchain Week",
       "slug": "MilanoBlockchainWeek2027"
     },
     {
@@ -582,7 +582,7 @@
     },
     {
       "id": "recgztOivfFwVejZ8",
-      "title": "Money Expo India 2027",
+      "title": "Money Expo India",
       "slug": "MoneyExpoIndia2027"
     },
     {
@@ -827,7 +827,7 @@
     },
     {
       "id": "recmwEK5dtAGh5gLy",
-      "title": "Money20/20 Europe 2027",
+      "title": "Money20/20 Europe",
       "slug": "Money2020Europe2027"
     },
     {
@@ -882,8 +882,43 @@
     },
     {
       "id": "recs43Dc2yswwXn6r",
-      "title": "Digital Asset Summit NYC 2027",
+      "title": "Digital Asset Summit NYC",
       "slug": "DigitalAssetSummitNYC2027"
+    },
+    {
+      "id": "rechhAWML8nabNetc",
+      "title": "ETHDenver Side Events",
+      "slug": "ETHDenverSideEvents2027"
+    },
+    {
+      "id": "recw0HkW3tklCDG01",
+      "title": "ETHCluj Side Events",
+      "slug": "ETHClujSideEvents2027"
+    },
+    {
+      "id": "recipmC6jS9MnoMDG",
+      "title": "ETHPrague Side Events",
+      "slug": "ETHPragueSideEvents2027"
+    },
+    {
+      "id": "recIZp0GoD74SQYSW",
+      "title": "ETHConf Events",
+      "slug": "ETHConfEvents2027"
+    },
+    {
+      "id": "reczEeqcYx0XH5iyO",
+      "title": "Bitcoin 2027 Events",
+      "slug": "Bitcoin2027Events2027"
+    },
+    {
+      "id": "recVeziTAlByY4WFu",
+      "title": "SuperAI Side Events",
+      "slug": "SuperAISideEvents2027"
+    },
+    {
+      "id": "recEB3lfq2Rie92q0",
+      "title": "Money 20/20 US Events",
+      "slug": "Money2020USEvents2027"
     }
   ],
   "events": [
@@ -34080,7 +34115,7 @@
       "website": "https://www.davosinnovationweek.com/",
       "imageUrl": null,
       "seriesSlug": "DavosInnovationWeek2027",
-      "seriesName": "Davos Innovation Week 2027"
+      "seriesName": "Davos Innovation Week"
     },
     {
       "id": "recgT0tPpnbL7UEvs",
@@ -34486,27 +34521,6 @@
       "imageUrl": "https://www.africatechsummit.com/wp-content/uploads/2026/10/9th-Editon-LinkedIn.png",
       "seriesSlug": "AfricaTechSummitNairobi2027",
       "seriesName": "Africa Tech Summit Nairobi 2027"
-    },
-    {
-      "id": "recaLG1qAmQ1e6tz4",
-      "kind": "main",
-      "name": "ETHDenver 2027",
-      "description": "ETHDenver is one of the largest Ethereum community gatherings in the world, mixing a builder hackathon with a multi day conference in Colorado. The 2027 edition is expected in February, with official dates still to be announced.",
-      "startTime": "2027-02-18",
-      "endTime": "2027-02-21",
-      "location": "Denver, USA 🇺🇸",
-      "city": "Denver",
-      "country": "USA 🇺🇸",
-      "organizer": null,
-      "tags": [
-        "Conference",
-        "Ethereum/EVM"
-      ],
-      "topics": [],
-      "website": "https://ethdenver2027.com/",
-      "imageUrl": null,
-      "seriesSlug": "ETHDenver2027",
-      "seriesName": "ETHDenver 2027"
     },
     {
       "id": "reclH5Tek7Kul5p58",
@@ -34980,6 +34994,31 @@
       "seriesName": ""
     },
     {
+      "id": "reczxGHSTBmSTHvya",
+      "kind": "main",
+      "name": "Global Blockchain Congress - Dubai",
+      "description": "Where Capital Meets Innovation\n‍\nThe 16th Global Blockchain Congress brings together leading investors, founders, and decision-makers across blockchain, digital assets, and AI for two days of curated discussions, meaningful networking, and high-value business connections.\n‍\nThrough pre-arranged one-to-one meetings and a carefully selected audience, GBC creates an environment where the right people come together to explore opportunities and build lasting relationships.",
+      "startTime": "2027-03-18",
+      "endTime": "2027-03-19",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": "Agora Group",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "VC",
+        "AI",
+        "RWA"
+      ],
+      "website": "https://www.gbc-uae.com",
+      "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/GlobalBlockchainCongressDubai_2026-11-03T11-02.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recXBPqAdzZG1mr9p",
       "kind": "main",
       "name": "Mining Disrupt 2027",
@@ -35025,6 +35064,27 @@
       "imageUrl": "https://www.globalaishow.com/wp-content/uploads/2026/07/global-ai-show-abu-dhabi-og.webp",
       "seriesSlug": "GlobalAIShow2027",
       "seriesName": "Global AI Show"
+    },
+    {
+      "id": "recaLG1qAmQ1e6tz4",
+      "kind": "main",
+      "name": "ETHDenver 2027",
+      "description": "ETHDenver is one of the largest Ethereum community gatherings in the world, mixing a builder hackathon with a multi day conference in Colorado. The 2027 edition is expected in February, with official dates still to be announced.",
+      "startTime": "2027-03-24",
+      "endTime": "2027-03-25",
+      "location": "Denver, USA 🇺🇸",
+      "city": "Denver",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [],
+      "website": "https://ethdenver.com/",
+      "imageUrl": null,
+      "seriesSlug": "ETHDenverSideEvents2027",
+      "seriesName": "ETHDenver Side Events"
     },
     {
       "id": "recI42eh9m0FAc3dK",
@@ -35088,7 +35148,7 @@
       "website": "https://blockworks.com/event/digital-asset-summit-nyc",
       "imageUrl": null,
       "seriesSlug": "DigitalAssetSummitNYC2027",
-      "seriesName": "Digital Asset Summit NYC 2027"
+      "seriesName": "Digital Asset Summit NYC"
     },
     {
       "id": "recKFxkOeafUB0TRk",
@@ -35870,8 +35930,8 @@
       ],
       "website": "https://www.ethcluj.org/",
       "imageUrl": null,
-      "seriesSlug": "ETHCluj2027",
-      "seriesName": "ETHCluj 2027"
+      "seriesSlug": "ETHClujSideEvents2027",
+      "seriesName": "ETHCluj Side Events"
     },
     {
       "id": "rec4CVmUNhIQWBhRS",
@@ -36061,7 +36121,7 @@
       "website": "https://milanoblockchainweek.com/",
       "imageUrl": null,
       "seriesSlug": "MilanoBlockchainWeek2027",
-      "seriesName": "Milano Blockchain Week 2027"
+      "seriesName": "Milano Blockchain Week"
     },
     {
       "id": "recGCirTWLjwUPlnF",
@@ -36230,8 +36290,8 @@
       ],
       "website": "https://ethprague.com/",
       "imageUrl": null,
-      "seriesSlug": "ETHPrague2027",
-      "seriesName": "ETHPrague 2027"
+      "seriesSlug": "ETHPragueSideEvents2027",
+      "seriesName": "ETHPrague Side Events"
     },
     {
       "id": "recMdJVreS1oMoxfa",
@@ -36378,7 +36438,7 @@
       "website": "https://europe.money2020.com/",
       "imageUrl": null,
       "seriesSlug": "Money2020Europe2027",
-      "seriesName": "Money20/20 Europe 2027"
+      "seriesName": "Money20/20 Europe"
     },
     {
       "id": "recgSE9OkVaTGzwDr",
@@ -36472,8 +36532,8 @@
       ],
       "website": "https://ethconf.com/",
       "imageUrl": null,
-      "seriesSlug": "ETHConf2027",
-      "seriesName": "ETHConf"
+      "seriesSlug": "ETHConfEvents2027",
+      "seriesName": "ETHConf Events"
     },
     {
       "id": "recjYtrilgGpvXyXO",
@@ -36684,8 +36744,8 @@
       ],
       "website": "https://b.tc/conference/2026",
       "imageUrl": "https://conference.b.tc/og-image.jpg",
-      "seriesSlug": "Bitcoin2027",
-      "seriesName": "Bitcoin 2027"
+      "seriesSlug": "Bitcoin2027Events2027",
+      "seriesName": "Bitcoin 2027 Events"
     },
     {
       "id": "rec0TyHHaZTw8XQUV",
@@ -36710,7 +36770,7 @@
       "website": "https://moneyexpoindia.com/",
       "imageUrl": null,
       "seriesSlug": "MoneyExpoIndia2027",
-      "seriesName": "Money Expo India 2027"
+      "seriesName": "Money Expo India"
     },
     {
       "id": "recAPAaXfvgAgwI8Z",
@@ -36755,8 +36815,8 @@
       ],
       "website": "https://www.superai.com/",
       "imageUrl": null,
-      "seriesSlug": "SuperAI2027",
-      "seriesName": "SuperAI 2027"
+      "seriesSlug": "SuperAISideEvents2027",
+      "seriesName": "SuperAI Side Events"
     },
     {
       "id": "recy2b7h3bQ1Rqw7x",
@@ -37046,8 +37106,8 @@
       ],
       "website": "https://us.money2020.com/",
       "imageUrl": "//images.ctfassets.net/zfifjkc7y6ct/4hDO2Qx8wLOVdRQLwZMZH5/683f7d3d182a59786500219d56930f51/Day_1_-_Sunday__October_18_Day_1_Highlights_DJI_20261015210921_0478_D-HDR_Bradley_H.jpg_8019x4511.jpg",
-      "seriesSlug": "Money2020USA2027",
-      "seriesName": "Money 20/20 USA 2027"
+      "seriesSlug": "Money2020USEvents2027",
+      "seriesName": "Money 20/20 US Events"
     },
     {
       "id": "recAVjnWg7UFCodqX",
