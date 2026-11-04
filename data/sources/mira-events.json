@@ -1,7 +1,7 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-03",
-  "seriesCount": 168,
+  "importedAt": "2026-11-04",
+  "seriesCount": 169,
   "eventCount": 1700,
   "series": [
     {
@@ -919,6 +919,11 @@
       "id": "recEB3lfq2Rie92q0",
       "title": "Money 20/20 US Events",
       "slug": "Money2020USEvents2027"
+    },
+    {
+      "id": "recIxqSSdtnmILqU5",
+      "title": "NVIDIA GTC Events ",
+      "slug": "NVIDIAGTCEvents2027"
     }
   ],
   "events": [
@@ -31662,8 +31667,8 @@
       ],
       "website": "https://www.carmocompanies.com/brazil-private-markets-meeting26",
       "imageUrl": null,
-      "seriesSlug": "BrazilPrivateMarketsMeeting2026",
-      "seriesName": "Brazil Private Markets Meeting"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recc4W0bAhcSFjyBK",
@@ -31687,8 +31692,8 @@
       ],
       "website": "https://prestelandpartner.com/familyofficeforumzurich.html",
       "imageUrl": null,
-      "seriesSlug": "FamilyOfficeForumZurich2026",
-      "seriesName": "Family Office Forum Zurich"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recBjxOXZTJJMxev2",
@@ -32709,8 +32714,8 @@
       ],
       "website": "https://www.carmocompanies.com/chile-private-markets-meeting26",
       "imageUrl": null,
-      "seriesSlug": "ChilePrivateMarketsMeeting2026",
-      "seriesName": "Chile Private Markets Meeting"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recbASkscQBKbejQV",
@@ -33903,8 +33908,8 @@
       ],
       "website": "https://familyoffices.com/super/",
       "imageUrl": null,
-      "seriesSlug": "FamilyOfficeSuperSummit2026",
-      "seriesName": "Family Office Super Summit"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recBHG0C9kQxnrUOt",
@@ -34188,8 +34193,8 @@
       ],
       "website": "https://www.carmocompanies.com/monterrey-private-markets-meeting",
       "imageUrl": null,
-      "seriesSlug": "MonterreyPrivateMarketsMeeting2027",
-      "seriesName": "Monterrey Private Markets Meeting"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recTCfLbHjaTTj2x7",
@@ -34873,8 +34878,8 @@
       ],
       "website": "https://www.nvidia.com/gtc/",
       "imageUrl": null,
-      "seriesSlug": "NVIDIAGTC2027",
-      "seriesName": "NVIDIA GTC "
+      "seriesSlug": "NVIDIAGTCEvents2027",
+      "seriesName": "NVIDIA GTC Events "
     },
     {
       "id": "recdfC6VzjfbeiD04",
@@ -36673,8 +36678,8 @@
       ],
       "website": "https://prestelandpartner.com/familyofficeforumlondon.html",
       "imageUrl": null,
-      "seriesSlug": "TheFamilyOfficeForumLondon2027",
-      "seriesName": "The Family Office Forum London"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recTC7eN7GDFNcBhQ",
