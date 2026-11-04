@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-04",
-  "seriesCount": 169,
-  "eventCount": 1700,
+  "seriesCount": 191,
+  "eventCount": 1703,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -442,7 +442,7 @@
     },
     {
       "id": "recFIYGoHrpH7uJJc",
-      "title": "Web Summit Qatar 2027",
+      "title": "Web Summit Qatar",
       "slug": "WebSummitQatar2027"
     },
     {
@@ -567,7 +567,7 @@
     },
     {
       "id": "recCvpOrAc7CKYpCb",
-      "title": "Web Summit Rio 2027",
+      "title": "Web Summit Rio",
       "slug": "WebSummitRio2027"
     },
     {
@@ -924,6 +924,116 @@
       "id": "recIxqSSdtnmILqU5",
       "title": "NVIDIA GTC Events ",
       "slug": "NVIDIAGTCEvents2027"
+    },
+    {
+      "id": "recguOv9V0YFJZr9q",
+      "title": "Switzerland Jan Events",
+      "slug": "SwitzerlandJanEvents2027"
+    },
+    {
+      "id": "recPRxzW9OOIS2F1G",
+      "title": "Consensus HK Events",
+      "slug": "ConsensusHKEvents2027"
+    },
+    {
+      "id": "recwZdKWuJipRa8L7",
+      "title": "AIBC Eurasia Events",
+      "slug": "AIBCEurasiaEvents2027"
+    },
+    {
+      "id": "reck0eSNnFqgMIPfv",
+      "title": "SXSW Austin Events",
+      "slug": "SXSWAustinEvents2027"
+    },
+    {
+      "id": "recuxSqgeop16lh4z",
+      "title": "Art Basel HK Events",
+      "slug": "ArtBaselHKEvents2027"
+    },
+    {
+      "id": "recAvhdObEkcBlyFm",
+      "title": "TEAMZ Side Events",
+      "slug": "TEAMZSideEvents2027"
+    },
+    {
+      "id": "recYbXzSPFQCMhv3k",
+      "title": "Frankfurt Blockchain Week",
+      "slug": "FrankfurtBlockchainWeek2027"
+    },
+    {
+      "id": "recRnsk2oxLgOBpDQ",
+      "title": "Stablecon EMEA Events",
+      "slug": "StableconEMEAEvents2027"
+    },
+    {
+      "id": "recIKsmrcYxYFsfrq",
+      "title": "Web3 Festival Side Events",
+      "slug": "Web3FestivalSideEvents2027"
+    },
+    {
+      "id": "reckliUhG9aXnVknI",
+      "title": "Unchained Summit Events",
+      "slug": "UnchainedSummitEvents2027"
+    },
+    {
+      "id": "reclPyi3tmyzXCUwg",
+      "title": "Tech Week Boston",
+      "slug": "TechWeekBoston2027"
+    },
+    {
+      "id": "recYVeOEy7j8R5Blu",
+      "title": "Digital Money Events",
+      "slug": "DigitalMoneyEvents2027"
+    },
+    {
+      "id": "rec5WHpmIinbIeVyn",
+      "title": "SXSW London Events",
+      "slug": "SXSWLondonEvents2027"
+    },
+    {
+      "id": "recrUYGu6nbNSaQoB",
+      "title": "NYC Tech Week",
+      "slug": "NYCTechWeek2027"
+    },
+    {
+      "id": "rectoKVKEPMGDQ7wE",
+      "title": "WAIB Summit Events",
+      "slug": "WAIBSummitEvents2027"
+    },
+    {
+      "id": "recEyejXiIoebhFIn",
+      "title": "MoneroKon Events",
+      "slug": "MoneroKonEvents2027"
+    },
+    {
+      "id": "recAZp1hAmJyEjbyd",
+      "title": "LA Tech Week",
+      "slug": "LATechWeek2027"
+    },
+    {
+      "id": "rec5cKOI6f527fq4D",
+      "title": "Sibos Singapore Events",
+      "slug": "SibosSingaporeEvents2027"
+    },
+    {
+      "id": "recb25UYssqLd091r",
+      "title": "European Blockchain Events",
+      "slug": "EuropeanBlockchainEvents2027"
+    },
+    {
+      "id": "recGgbdIIY7tMHGuV",
+      "title": "Stablecon US Events",
+      "slug": "StableconUSEvents2027"
+    },
+    {
+      "id": "recEvfOFaXm4vhTvw",
+      "title": "SF Tech Week",
+      "slug": "SFTechWeek2027"
+    },
+    {
+      "id": "recrZkSpahxEE940A",
+      "title": "TOKEN2049 SG Side Events",
+      "slug": "TOKEN2049SGSideEvents2027"
     }
   ],
   "events": [
@@ -30963,6 +31073,31 @@
       "seriesName": ""
     },
     {
+      "id": "reckVpSUih0GJjEFl",
+      "kind": "main",
+      "name": "Pro Investor\nSummit 2026.",
+      "description": "We’ve rebuilt the summit from the ground up: higher-calibre speakers, more exclusive access, unforgettable experiences.",
+      "startTime": "2026-11-03",
+      "endTime": "2026-11-05",
+      "location": "Limassol, Cyprus 🇨🇾",
+      "city": "Limassol",
+      "country": "Cyprus 🇨🇾",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://builders.etoro.com/summit",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recs9hbUF5XwlLI0c",
       "kind": "side",
       "name": "AI ECONOMIC FORUM",
@@ -31986,6 +32121,31 @@
       "imageUrl": null,
       "seriesSlug": "Breakpoint2026SideEvents2026",
       "seriesName": "Breakpoint 2026 Side Events"
+    },
+    {
+      "id": "recF4g87QLQeXJw5T",
+      "kind": "main",
+      "name": "Digital Assets Forum New York",
+      "description": "DAF New York is a closed-door, institutional-only gathering bringing together the leaders shaping the future of digital assets. Held alongside the European Blockchain Convention, it convenes over 800 senior decision-makers from asset management, banking, and private wealth for a day of high-signal dialogue on tokenization, institutional adoption, market infrastructure, and regulation. With 100+ speakers across 40 sessions, DAF New York is built for depth over breadth: candid conversations among the people actually building and allocating in this space, away from the noise of the broader conference circuit.",
+      "startTime": "2026-11-13",
+      "endTime": "2026-11-13",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "VictoriaGago, DanielSalmeron",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "VC",
+        "TradFi"
+      ],
+      "website": "https://eblockchainconvention.com/digital-assets-forum-new-york/",
+      "imageUrl": null,
+      "seriesSlug": "DAFNYCEvents2026",
+      "seriesName": "DAF NYC Events"
     },
     {
       "id": "recIeQ0iry0k8w446",
@@ -34143,8 +34303,8 @@
       ],
       "website": "https://web3hubdavos.com/",
       "imageUrl": null,
-      "seriesSlug": "Web3HubDavos2027",
-      "seriesName": "Web3 Hub Davos 2027"
+      "seriesSlug": "SwitzerlandJanEvents2027",
+      "seriesName": "Switzerland Jan Events"
     },
     {
       "id": "recxpN06s52OZDqjV",
@@ -34312,7 +34472,7 @@
       "website": "https://qatar.websummit.com/",
       "imageUrl": null,
       "seriesSlug": "WebSummitQatar2027",
-      "seriesName": "Web Summit Qatar 2027"
+      "seriesName": "Web Summit Qatar"
     },
     {
       "id": "reccJYFTGjUYn1ro6",
@@ -34358,8 +34518,8 @@
       ],
       "website": "https://consensus-hongkong.coindesk.com/",
       "imageUrl": null,
-      "seriesSlug": "ConsensusHongKong2027",
-      "seriesName": "Consensus Hong Kong 2027"
+      "seriesSlug": "ConsensusHKEvents2027",
+      "seriesName": "Consensus HK Events"
     },
     {
       "id": "recmNsycVlidSv3e8",
@@ -34900,8 +35060,8 @@
       ],
       "website": "https://aibc.world/eurasia/",
       "imageUrl": null,
-      "seriesSlug": "AIBCEurasia2027",
-      "seriesName": "AIBC Eurasia 2027"
+      "seriesSlug": "AIBCEurasiaEvents2027",
+      "seriesName": "AIBC Eurasia Events"
     },
     {
       "id": "recKpfwhZkwscJDyc",
@@ -34925,8 +35085,8 @@
       ],
       "website": "https://www.sxsw.com/",
       "imageUrl": "https://sxsw.com/wp-content/uploads/sites/2/2026/08/27_SXSW_og-image.png?quality=99",
-      "seriesSlug": "SXSWAustin2027",
-      "seriesName": "SXSW Austin 2027"
+      "seriesSlug": "SXSWAustinEvents2027",
+      "seriesName": "SXSW Austin Events"
     },
     {
       "id": "recxlGdv4NpRQR383",
@@ -35131,8 +35291,8 @@
       ],
       "website": "https://www.artbasel.com/hong-kong",
       "imageUrl": "https://dza2a2ql7zktf.cloudfront.net/binaries-cdn/dqzqcuqf9/image/fetch/q_auto,w_500/https://dza2a2ql7zktf.cloudfront.net/binaries-cdn/dqzqcuqf9/image/fetch/ar_16:10,q_auto,dpr_2.0,c_fill,w_378/https://d2u3kfwd92fzu7.cloudfront.net/asset/cms/Art_Basel_Hong_Kong_2022_Visitor_Information-3.jpg",
-      "seriesSlug": "ArtBaselHK2027",
-      "seriesName": "Art Basel HK"
+      "seriesSlug": "ArtBaselHKEvents2027",
+      "seriesName": "Art Basel HK Events"
     },
     {
       "id": "recuBEcF7SWvX6brV",
@@ -35295,27 +35455,6 @@
       "seriesName": "DC Blockchain Summit"
     },
     {
-      "id": "reckTHd18uPTvfhnh",
-      "kind": "main",
-      "name": "Hong Kong Web3 Festival 2027",
-      "description": "Hong Kong Web3 Festival is one of Asia’s largest crypto gatherings, filling the convention centre with exchanges, layer one teams, and regional investors. The 2027 edition is expected in April, with official dates still to be announced.",
-      "startTime": "2027-04-06",
-      "endTime": "2027-04-08",
-      "location": "Hong Kong, Hong Kong 🇭🇰",
-      "city": "Hong Kong",
-      "country": "Hong Kong 🇭🇰",
-      "organizer": null,
-      "tags": [
-        "Conference",
-        "Multichain"
-      ],
-      "topics": [],
-      "website": "https://www.web3festival.org/",
-      "imageUrl": null,
-      "seriesSlug": "HongKongWeb3Festival2027",
-      "seriesName": "Hong Kong Web3 Festival 2027"
-    },
-    {
       "id": "recFWK59LhMTmNAWQ",
       "kind": "main",
       "name": "TEAMZ Summit 2027",
@@ -35336,8 +35475,8 @@
       ],
       "website": "https://www.teamz.co.jp/en",
       "imageUrl": null,
-      "seriesSlug": "TEAMZSummit2027",
-      "seriesName": "TEAMZ Summit 2027"
+      "seriesSlug": "TEAMZSideEvents2027",
+      "seriesName": "TEAMZ Side Events"
     },
     {
       "id": "recME0qe3Pjl1iBRn",
@@ -35406,8 +35545,8 @@
       ],
       "website": "https://digital-euro-conference.de/",
       "imageUrl": "https://digital-euro-conference.de/hubfs/DEC27%20Banner%20-%20gray%20background%20-%20without%20logos.png",
-      "seriesSlug": "DigitalEuroConference2027",
-      "seriesName": "Digital Euro Conference 2027"
+      "seriesSlug": "FrankfurtBlockchainWeek2027",
+      "seriesName": "Frankfurt Blockchain Week"
     },
     {
       "id": "recdDM5KiU0OfKKwA",
@@ -35513,9 +35652,9 @@
       "description": "Stablecon EMEA brought together over 500 industry leaders, fintech innovators and policymakers in Amsterdam to map out the future of programmable money.\nBeyond our vibrant on-site community, the event achieved massive global reach with more than 40,000+ digital streams capturing our mainstage panels and deep dives. The energy was palpable throughout the venue, culminating in powerful connection-building as all 500+ attendees engaged in dedicated networking sessions and evening receptions solidifying strategic partnerships that will shape the next era of digital finance.",
       "startTime": "2027-04-14",
       "endTime": "2027-04-15",
-      "location": "Amsterdam, Netherlands 🇳🇱",
-      "city": "Amsterdam",
-      "country": "Netherlands 🇳🇱",
+      "location": "Lisbon, Portugal 🇵🇹",
+      "city": "Lisbon",
+      "country": "Portugal 🇵🇹",
       "organizer": "Stablecon",
       "tags": [
         "Conference",
@@ -35528,8 +35667,8 @@
       ],
       "website": "https://stablecon.com/emea/",
       "imageUrl": null,
-      "seriesSlug": "StableconEMEA2027",
-      "seriesName": "Stablecon EMEA"
+      "seriesSlug": "StableconEMEAEvents2027",
+      "seriesName": "Stablecon EMEA Events"
     },
     {
       "id": "reclW32FWQml4y9tm",
@@ -35555,6 +35694,27 @@
       "imageUrl": null,
       "seriesSlug": "DigitalAssetsForumAbuDhabi2027",
       "seriesName": "Digital Assets Forum Abu Dhabi"
+    },
+    {
+      "id": "reckTHd18uPTvfhnh",
+      "kind": "main",
+      "name": "Hong Kong Web3 Festival",
+      "description": "Hong Kong Web3 Festival is one of Asia’s largest crypto gatherings, filling the convention centre with exchanges, layer one teams, and regional investors. The 2027 edition is expected in April, with official dates still to be announced.",
+      "startTime": "2027-04-19",
+      "endTime": "2027-04-21",
+      "location": "Hong Kong, Hong Kong 🇭🇰",
+      "city": "Hong Kong",
+      "country": "Hong Kong 🇭🇰",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://luma.com/hkweb3festival_2027",
+      "imageUrl": null,
+      "seriesSlug": "Web3FestivalSideEvents2027",
+      "seriesName": "Web3 Festival Side Events"
     },
     {
       "id": "recp2uwHhSgMG2RTS",
@@ -35625,8 +35785,8 @@
       ],
       "website": "https://unchainedsummit.com/dubai/",
       "imageUrl": null,
-      "seriesSlug": "UnchainedSummitDubai2027",
-      "seriesName": "Unchained Summit Dubai 2027"
+      "seriesSlug": "UnchainedSummitEvents2027",
+      "seriesName": "Unchained Summit Events"
     },
     {
       "id": "recwcYSDCBH1Am2dU",
@@ -35671,6 +35831,30 @@
       "imageUrl": "https://cdn.asp.events/CLIENT_Nineteen_F7A1E73F_5056_B725_6BE81DEAAC036B43/sites/pay360-2027/media/PAY360-Global-Open-Graph-Image.png/fit-in/1200x630/filters:no_upscale()",
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recLqgGBAUDzQujMz",
+      "kind": "main",
+      "name": "Tech Week Boston",
+      "description": "a16z is bringing Tech Week back to Boston.",
+      "startTime": "2027-04-26",
+      "endTime": "2027-05-02",
+      "location": "Boston, USA 🇺🇸",
+      "city": "Boston",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "VC"
+      ],
+      "website": "https://www.tech-week.com/boston",
+      "imageUrl": null,
+      "seriesSlug": "TechWeekBoston2027",
+      "seriesName": "Tech Week Boston"
     },
     {
       "id": "recu5oXepIh9ZSl94",
@@ -36029,8 +36213,8 @@
       ],
       "website": "https://www.omfif.org/dms2027/",
       "imageUrl": null,
-      "seriesSlug": "DigitalMoneySummit2027",
-      "seriesName": "Digital Money Summit"
+      "seriesSlug": "DigitalMoneyEvents2027",
+      "seriesName": "Digital Money Events"
     },
     {
       "id": "rec1Zr695NzoJZZlI",
@@ -36175,8 +36359,8 @@
       ],
       "website": "https://www.sxswlondon.com/",
       "imageUrl": "https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png",
-      "seriesSlug": "SXSWLondon2027",
-      "seriesName": "SXSW London 2027"
+      "seriesSlug": "SXSWLondonEvents2027",
+      "seriesName": "SXSW London Events"
     },
     {
       "id": "recAmGVX5P7wwW3Lh",
@@ -36419,8 +36603,8 @@
       ],
       "website": "https://www.tech-week.com/",
       "imageUrl": null,
-      "seriesSlug": "TechWeekNYC2027",
-      "seriesName": "Tech Week NYC 2027"
+      "seriesSlug": "NYCTechWeek2027",
+      "seriesName": "NYC Tech Week"
     },
     {
       "id": "reclS2eR4Hxu4vY3Y",
@@ -36465,8 +36649,8 @@
       ],
       "website": "https://www.waibsummit.com",
       "imageUrl": null,
-      "seriesSlug": "WAIBSummitMonaco2027",
-      "seriesName": "WAIB Summit Monaco 2027"
+      "seriesSlug": "WAIBSummitEvents2027",
+      "seriesName": "WAIB Summit Events"
     },
     {
       "id": "rec59bkY8JcFklo9X",
@@ -36560,7 +36744,7 @@
       "website": "https://rio.websummit.com/",
       "imageUrl": null,
       "seriesSlug": "WebSummitRio2027",
-      "seriesName": "Web Summit Rio 2027"
+      "seriesName": "Web Summit Rio"
     },
     {
       "id": "recYK6Tp1MQyVkTJP",
@@ -36726,8 +36910,8 @@
       ],
       "website": "https://www.monerokon.org/",
       "imageUrl": null,
-      "seriesSlug": "MoneroKon2027",
-      "seriesName": "MoneroKon"
+      "seriesSlug": "MoneroKonEvents2027",
+      "seriesName": "MoneroKon Events"
     },
     {
       "id": "recQLFb176G0d4kLx",
@@ -36826,7 +37010,7 @@
     {
       "id": "recy2b7h3bQ1Rqw7x",
       "kind": "main",
-      "name": "Tech Week LA 2027",
+      "name": "LA Tech Week",
       "description": "Top founders, funds, and companies around the globe will be at a16z's Tech Week next year. Will you?",
       "startTime": "2027-09-13",
       "endTime": "2027-09-19",
@@ -36843,8 +37027,8 @@
       ],
       "website": "https://www.tech-week.com/",
       "imageUrl": null,
-      "seriesSlug": "TechWeekLA2027",
-      "seriesName": "Tech Week LA 2027"
+      "seriesSlug": "LATechWeek2027",
+      "seriesName": "LA Tech Week"
     },
     {
       "id": "recvADExmCGIfqkBg",
@@ -36940,8 +37124,8 @@
       ],
       "website": "https://www.sibos.com/about/future-sibos",
       "imageUrl": null,
-      "seriesSlug": "Sibos2027",
-      "seriesName": "Sibos 2027"
+      "seriesSlug": "SibosSingaporeEvents2027",
+      "seriesName": "Sibos Singapore Events"
     },
     {
       "id": "rec14fvgMJsashPw8",
@@ -36965,8 +37149,8 @@
       ],
       "website": "https://eblockchainconvention.com/european-blockchain-convention-13/",
       "imageUrl": null,
-      "seriesSlug": "EuropeanBlockchain\nConvention132027",
-      "seriesName": "European Blockchain\nConvention 13"
+      "seriesSlug": "EuropeanBlockchainEvents2027",
+      "seriesName": "European Blockchain Events"
     },
     {
       "id": "rec2r7V5df5ZTeYsj",
@@ -37014,8 +37198,8 @@
       ],
       "website": "https://stablecon.com/",
       "imageUrl": "https://stablecon.com/wp-content/uploads/2026/05/HENR2831.jpg",
-      "seriesSlug": "StableconUS2027",
-      "seriesName": "Stablecon US 2027"
+      "seriesSlug": "StableconUSEvents2027",
+      "seriesName": "Stablecon US Events"
     },
     {
       "id": "recasAUxWmivTQFzu",
@@ -37038,8 +37222,8 @@
       ],
       "website": "https://www.tech-week.com/",
       "imageUrl": null,
-      "seriesSlug": "TechWeekSF2027",
-      "seriesName": "Tech Week SF 2027"
+      "seriesSlug": "SFTechWeek2027",
+      "seriesName": "SF Tech Week"
     },
     {
       "id": "rectwD36CPisfMnhS",
@@ -37087,8 +37271,8 @@
       ],
       "website": "https://www.token2049.com/singapore",
       "imageUrl": "https://cdn.prod.website-files.com/6756df8f05088bc3e51c64c0/6a9e828d9aa96c64f392c993_T2049%20Singapore%20-%20OpenGraph%20(2026)%202%20OCT%202025.jpeg",
-      "seriesSlug": "TOKEN2049Singapore2027",
-      "seriesName": "TOKEN2049 Singapore 2027"
+      "seriesSlug": "TOKEN2049SGSideEvents2027",
+      "seriesName": "TOKEN2049 SG Side Events"
     },
     {
       "id": "recrOFkc0BsIUsxmq",
