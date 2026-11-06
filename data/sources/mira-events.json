@@ -1,7 +1,7 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-06",
-  "seriesCount": 191,
+  "seriesCount": 206,
   "eventCount": 1703,
   "series": [
     {
@@ -817,7 +817,7 @@
     },
     {
       "id": "receQHD9TOVtEhMM8",
-      "title": "Dutch Blockchain Week 2027",
+      "title": "Dutch Blockchain Week",
       "slug": "DutchBlockchainWeek2027"
     },
     {
@@ -1034,6 +1034,81 @@
       "id": "recrZkSpahxEE940A",
       "title": "TOKEN2049 SG Side Events",
       "slug": "TOKEN2049SGSideEvents2027"
+    },
+    {
+      "id": "reckMVGslHi2c9Jjt",
+      "title": "SBC Rio Events",
+      "slug": "SBCRioEvents2027"
+    },
+    {
+      "id": "recTiH7GcrIIw49CQ",
+      "title": "Merge BA Events",
+      "slug": "MergeBAEvents2027"
+    },
+    {
+      "id": "recNoQ41rCmokv0Fc",
+      "title": "Crypto Expo Events",
+      "slug": "CryptoExpoEvents2027"
+    },
+    {
+      "id": "recBq0spPsFd7lHxW",
+      "title": "Next Block Events",
+      "slug": "NextBlockEvents2027"
+    },
+    {
+      "id": "recQufY38GcK4kCEC",
+      "title": "DC Blockchain Week",
+      "slug": "DCBlockchainWeek2027"
+    },
+    {
+      "id": "rec9chG5P4y79KAgC",
+      "title": "SEZ Dubai Events",
+      "slug": "SEZDubaiEvents2027"
+    },
+    {
+      "id": "recAlACUZYwyqw1bH",
+      "title": "DAF Abu Dhabi Events",
+      "slug": "DAFAbuDhabiEvents2027"
+    },
+    {
+      "id": "recbwnVqJ84tkwLXl",
+      "title": "SBC Europe Events",
+      "slug": "SBCEuropeEvents2027"
+    },
+    {
+      "id": "recJRG3V6zFl7qC9E",
+      "title": "React Miami Events",
+      "slug": "ReactMiamiEvents2027"
+    },
+    {
+      "id": "recyFs6RwHSn5uYCs",
+      "title": "NYC May Events",
+      "slug": "NYCMayEvents2027"
+    },
+    {
+      "id": "recKKpFuD58gkh5ZV",
+      "title": "Nordic Blockchain Events",
+      "slug": "NordicBlockchainEvents2027"
+    },
+    {
+      "id": "rec4J8lm30nQw4ENc",
+      "title": "NFC Side Events",
+      "slug": "NFCSideEvents2027"
+    },
+    {
+      "id": "recXEgoq42lMWI3sd",
+      "title": "Proof of Talk Events",
+      "slug": "ProofofTalkEvents2027"
+    },
+    {
+      "id": "recOAZjXvlyITSLh1",
+      "title": "SBC Canada Events",
+      "slug": "SBCCanadaEvents2027"
+    },
+    {
+      "id": "rec74GWE9MlEFqOYx",
+      "title": "Bitcoin Asia Events",
+      "slug": "BitcoinAsiaEvents2027"
     }
   ],
   "events": [
@@ -34849,8 +34924,8 @@
       ],
       "website": "https://sbcevents.com/sbc-summit-rio/",
       "imageUrl": null,
-      "seriesSlug": "SBCSummitRio2027",
-      "seriesName": "SBC Summit Rio 2027"
+      "seriesSlug": "SBCRioEvents2027",
+      "seriesName": "SBC Rio Events"
     },
     {
       "id": "rec2S776O0W17dWLw",
@@ -34924,8 +34999,8 @@
       ],
       "website": "https://www.mmerge.io/",
       "imageUrl": null,
-      "seriesSlug": "MERGEBuenosAires2027",
-      "seriesName": "MERGE Buenos Aires"
+      "seriesSlug": "MergeBAEvents2027",
+      "seriesName": "Merge BA Events"
     },
     {
       "id": "rec57hYT8binX1WbJ",
@@ -35130,8 +35205,8 @@
       "topics": [],
       "website": "https://cryptoexpoeurope.com/",
       "imageUrl": null,
-      "seriesSlug": "CryptoExpoEurope2027",
-      "seriesName": "Crypto Expo Europe 2027"
+      "seriesSlug": "CryptoExpoEvents2027",
+      "seriesName": "Crypto Expo Events"
     },
     {
       "id": "rec83Lv7Qm6wleY3b",
@@ -35269,8 +35344,8 @@
       "topics": [],
       "website": "https://nextblockexpo.com/",
       "imageUrl": null,
-      "seriesSlug": "NextBlockExpo2027",
-      "seriesName": "Next Block Expo 2027"
+      "seriesSlug": "NextBlockEvents2027",
+      "seriesName": "Next Block Events"
     },
     {
       "id": "rechDXTc0CY8Vqvfz",
@@ -35451,8 +35526,8 @@
       ],
       "website": "https://www.dcblockchainsummit.com/",
       "imageUrl": null,
-      "seriesSlug": "DCBlockchainSummit2027",
-      "seriesName": "DC Blockchain Summit"
+      "seriesSlug": "DCBlockchainWeek2027",
+      "seriesName": "DC Blockchain Week"
     },
     {
       "id": "recFWK59LhMTmNAWQ",
@@ -35499,8 +35574,8 @@
       ],
       "website": "https://sezdubai.com/",
       "imageUrl": null,
-      "seriesSlug": "SEZDubai2027",
-      "seriesName": "SEZ Dubai"
+      "seriesSlug": "SEZDubaiEvents2027",
+      "seriesName": "SEZ Dubai Events"
     },
     {
       "id": "rec7MnG3HVutRKFxQ",
@@ -35692,8 +35767,8 @@
       ],
       "website": "https://eblockchainconvention.com/digital-assets-forum-abu-dhabi/",
       "imageUrl": null,
-      "seriesSlug": "DigitalAssetsForumAbuDhabi2027",
-      "seriesName": "Digital Assets Forum Abu Dhabi"
+      "seriesSlug": "DAFAbuDhabiEvents2027",
+      "seriesName": "DAF Abu Dhabi Events"
     },
     {
       "id": "reckTHd18uPTvfhnh",
@@ -35761,8 +35836,8 @@
       ],
       "website": "https://sbcevents.com/sbc-summit-europe/",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/SBCSUMMITEUROPE_2026-09-28T09-30.png",
-      "seriesSlug": "SBCSUMMITEUROPE2027",
-      "seriesName": "SBC SUMMIT EUROPE"
+      "seriesSlug": "SBCEuropeEvents2027",
+      "seriesName": "SBC Europe Events"
     },
     {
       "id": "recdrEw38wBTqoa1U",
@@ -35926,8 +36001,8 @@
       ],
       "website": "https://www.reactmiami.com/",
       "imageUrl": null,
-      "seriesSlug": "ReactMiami2027",
-      "seriesName": "React Miami 2027"
+      "seriesSlug": "ReactMiamiEvents2027",
+      "seriesName": "React Miami Events"
     },
     {
       "id": "recN0KW9WQKZVXSkz",
@@ -36142,8 +36217,8 @@
       ],
       "website": "https://www.sohnconference.org/sohn2026",
       "imageUrl": null,
-      "seriesSlug": "SohnNewYork2027",
-      "seriesName": "Sohn New York"
+      "seriesSlug": "NYCMayEvents2027",
+      "seriesName": "NYC May Events"
     },
     {
       "id": "recsBAmelXKG593ef",
@@ -36239,7 +36314,7 @@
       "website": "https://dutchblockchainweek.com/",
       "imageUrl": null,
       "seriesSlug": "DutchBlockchainWeek2027",
-      "seriesName": "Dutch Blockchain Week 2027"
+      "seriesName": "Dutch Blockchain Week"
     },
     {
       "id": "recQjy9yJcBjrODf0",
@@ -36431,8 +36506,8 @@
       ],
       "website": "https://www.nordicblockchain.com/",
       "imageUrl": null,
-      "seriesSlug": "NordicBlockchainConference2027",
-      "seriesName": "Nordic Blockchain Conference 2027"
+      "seriesSlug": "NordicBlockchainEvents2027",
+      "seriesName": "Nordic Blockchain Events"
     },
     {
       "id": "rec0EGmchsjS4P2yJ",
@@ -36455,8 +36530,8 @@
       ],
       "website": "https://www.nonfungibleconference.com/",
       "imageUrl": "https://cdn.prod.website-files.com/667d843c349d4113343c986f/698d9619c07409c724e7e797_Screenshot%202026-02-12%20at%2009.56.46.png",
-      "seriesSlug": "NFCSummit2027",
-      "seriesName": "NFC Summit 2027"
+      "seriesSlug": "NFCSideEvents2027",
+      "seriesName": "NFC Side Events"
     },
     {
       "id": "recPNmTM3MGZycbn2",
@@ -36528,8 +36603,8 @@
       ],
       "website": "https://proofoftalk.io/paris/",
       "imageUrl": null,
-      "seriesSlug": "ProofofTalk2027",
-      "seriesName": "Proof of Talk"
+      "seriesSlug": "ProofofTalkEvents2027",
+      "seriesName": "Proof of Talk Events"
     },
     {
       "id": "rec2Z2TE3zhHjzgMf",
@@ -36767,8 +36842,8 @@
       ],
       "website": "https://sbcevents.com/sbc-summit-canada/",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/SBCSummitCanada_2026-09-28T09-34.png",
-      "seriesSlug": "SBCSummitCanada2027",
-      "seriesName": "SBC Summit Canada"
+      "seriesSlug": "SBCCanadaEvents2027",
+      "seriesName": "SBC Canada Events"
     },
     {
       "id": "recc9PSs52YKDMByy",
@@ -36981,8 +37056,8 @@
       ],
       "website": "https://asia.b.tc/",
       "imageUrl": null,
-      "seriesSlug": "BitcoinAsia2027",
-      "seriesName": "Bitcoin Asia"
+      "seriesSlug": "BitcoinAsiaEvents2027",
+      "seriesName": "Bitcoin Asia Events"
     },
     {
       "id": "recknqFdw8TTOcYFo",
