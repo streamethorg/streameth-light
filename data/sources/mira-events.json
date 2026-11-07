@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-06",
-  "seriesCount": 206,
-  "eventCount": 1703,
+  "importedAt": "2026-11-07",
+  "seriesCount": 207,
+  "eventCount": 1704,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1109,6 +1109,11 @@
       "id": "rec74GWE9MlEFqOYx",
       "title": "Bitcoin Asia Events",
       "slug": "BitcoinAsiaEvents2027"
+    },
+    {
+      "id": "recgM1FKrPSZnO2BI",
+      "title": "MoneyLIVE Events",
+      "slug": "MoneyLIVEEvents2027"
     }
   ],
   "events": [
@@ -31100,30 +31105,6 @@
       "seriesName": "Dubai Future Finance Week"
     },
     {
-      "id": "recndJleBceDXDJCz",
-      "kind": "main",
-      "name": "SuperReturn Europe",
-      "description": "Explore opportunities across Europe, including a focus on the lower mid-market, cross-border fundraising and co-investments.\nLatest agenda\n",
-      "startTime": "2026-11-03",
-      "endTime": "2026-11-06",
-      "location": "Amsterdam, Netherlands 🇳🇱",
-      "city": "Amsterdam",
-      "country": "Netherlands 🇳🇱",
-      "organizer": null,
-      "tags": [
-        "Conference",
-        "Other"
-      ],
-      "topics": [
-        "Institutional",
-        "VC"
-      ],
-      "website": "https://informaconnect.com/superreturneurope/",
-      "imageUrl": null,
-      "seriesSlug": "BTCAmsterdamEvents2026",
-      "seriesName": "BTC Amsterdam Events"
-    },
-    {
       "id": "rec99kcXpNeUFNYSS",
       "kind": "main",
       "name": "CAASA Conference ",
@@ -32441,6 +32422,30 @@
       "seriesName": "Breakpoint 2026 Side Events"
     },
     {
+      "id": "recndJleBceDXDJCz",
+      "kind": "main",
+      "name": "SuperReturn Europe",
+      "description": "Explore opportunities across Europe, including a focus on the lower mid-market, cross-border fundraising and co-investments.\nLatest agenda\n",
+      "startTime": "2026-11-16",
+      "endTime": "2026-11-18",
+      "location": "Amsterdam, Netherlands 🇳🇱",
+      "city": "Amsterdam",
+      "country": "Netherlands 🇳🇱",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "VC"
+      ],
+      "website": "https://informaconnect.com/superreturneurope/",
+      "imageUrl": null,
+      "seriesSlug": "BTCAmsterdamEvents2026",
+      "seriesName": "BTC Amsterdam Events"
+    },
+    {
       "id": "rec4vzMmIWtP7wN4S",
       "kind": "main",
       "name": "CrossTech World",
@@ -33473,7 +33478,7 @@
       "topics": [
         "AI"
       ],
-      "website": "https://www.nvidia.com/gtc/",
+      "website": "https://www.nvidia.com/gtc/dc/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -34928,6 +34933,27 @@
       "seriesName": "SBC Rio Events"
     },
     {
+      "id": "rech4SYxhacjRfhYD",
+      "kind": "main",
+      "name": "MoneyLIVE",
+      "description": "Meet 2000+ industry leaders at the top of their game at Europe’s most senior payments and banking event | 2-3 March, London.",
+      "startTime": "2027-03-02",
+      "endTime": "2027-03-03",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://moneylive-insights.com/events/summit/",
+      "imageUrl": "https://moneylive-insights.com/wp-content/uploads/2024/03/230308-MoneyLiveSummit-owenbphoto-161-2-1.jpg",
+      "seriesSlug": "MoneyLIVEEvents2027",
+      "seriesName": "MoneyLIVE Events"
+    },
+    {
       "id": "rec2S776O0W17dWLw",
       "kind": "main",
       "name": "CBC Summit Europe",
@@ -35045,27 +35071,6 @@
         "Institutional"
       ],
       "website": "https://dallas-wealth.com/",
-      "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
-    },
-    {
-      "id": "rec5uELwCkioNiykR",
-      "kind": "main",
-      "name": "UN:BLOCK 2027",
-      "description": "Blockchain and Web3 conference in Riga connecting builders, investors and regulators from the Baltics and Europe.",
-      "startTime": "2027-03-10",
-      "endTime": "2027-03-11",
-      "location": "Riga, Latvia 🇱🇻",
-      "city": "Riga",
-      "country": "Latvia 🇱🇻",
-      "organizer": null,
-      "tags": [
-        "Conference",
-        "Multichain"
-      ],
-      "topics": [],
-      "website": "https://unblockeurope.com/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -35552,6 +35557,27 @@
       "imageUrl": null,
       "seriesSlug": "TEAMZSideEvents2027",
       "seriesName": "TEAMZ Side Events"
+    },
+    {
+      "id": "rec5uELwCkioNiykR",
+      "kind": "main",
+      "name": "UN:BLOCK 2027",
+      "description": "Blockchain and Web3 conference in Riga connecting builders, investors and regulators from the Baltics and Europe.",
+      "startTime": "2027-04-07",
+      "endTime": "2027-04-08",
+      "location": "Riga, Latvia 🇱🇻",
+      "city": "Riga",
+      "country": "Latvia 🇱🇻",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [],
+      "website": "https://unblockeurope.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recME0qe3Pjl1iBRn",
