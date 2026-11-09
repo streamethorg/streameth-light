@@ -2,7 +2,7 @@
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-09",
   "seriesCount": 207,
-  "eventCount": 1704,
+  "eventCount": 1705,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -32422,30 +32422,6 @@
       "seriesName": "Breakpoint 2026 Side Events"
     },
     {
-      "id": "recndJleBceDXDJCz",
-      "kind": "main",
-      "name": "SuperReturn Europe",
-      "description": "Explore opportunities across Europe, including a focus on the lower mid-market, cross-border fundraising and co-investments.\nLatest agenda\n",
-      "startTime": "2026-11-16",
-      "endTime": "2026-11-18",
-      "location": "Amsterdam, Netherlands 🇳🇱",
-      "city": "Amsterdam",
-      "country": "Netherlands 🇳🇱",
-      "organizer": null,
-      "tags": [
-        "Conference",
-        "Other"
-      ],
-      "topics": [
-        "Institutional",
-        "VC"
-      ],
-      "website": "https://informaconnect.com/superreturneurope/",
-      "imageUrl": null,
-      "seriesSlug": "BTCAmsterdamEvents2026",
-      "seriesName": "BTC Amsterdam Events"
-    },
-    {
       "id": "rec4vzMmIWtP7wN4S",
       "kind": "main",
       "name": "CrossTech World",
@@ -33101,6 +33077,30 @@
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/m3/9d04a889-8b6d-404f-9afa-7e946191fc63.png",
       "seriesSlug": "NovemberSingaporeEvents2026",
       "seriesName": "November Singapore Events"
+    },
+    {
+      "id": "recbveNOCclNE081I",
+      "kind": "main",
+      "name": "University Blockchain Conference",
+      "description": "Built by students",
+      "startTime": "2026-11-20",
+      "endTime": "2026-11-21",
+      "location": "Austin, USA 🇺🇸",
+      "city": "Austin",
+      "country": "USA 🇺🇸",
+      "organizer": "UBC_Conference",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "VC"
+      ],
+      "website": "https://www.universityblockchain.org/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "reczUHSoFnCdWepgJ",
@@ -34342,7 +34342,7 @@
     {
       "id": "recldWVcYjP8qRwHY",
       "kind": "main",
-      "name": "Davos Innovation Week 2027",
+      "name": "Davos Innovation Week",
       "description": "Davos Innovation Week in Davos, Switzerland, is a premier innovation summit that unites startups, investors, and leaders to explore technology, sustainability, and entrepreneurship worldwide.\n\nWe connect innovators and changemakers to shape the future of technology, sustainability, and global entrepreneurship.\n\nEach year, Davos Innovation Week brings together leaders and entrepreneurs to drive impact through panels, awards, and collaboration.",
       "startTime": "2027-01-18",
       "endTime": "2027-01-19",
@@ -34359,8 +34359,8 @@
       ],
       "website": "https://www.davosinnovationweek.com/",
       "imageUrl": null,
-      "seriesSlug": "DavosInnovationWeek2027",
-      "seriesName": "Davos Innovation Week"
+      "seriesSlug": "DavosEvents2027",
+      "seriesName": "Davos Events"
     },
     {
       "id": "recgT0tPpnbL7UEvs",
@@ -34383,8 +34383,8 @@
       ],
       "website": "https://web3hubdavos.com/",
       "imageUrl": null,
-      "seriesSlug": "SwitzerlandJanEvents2027",
-      "seriesName": "Switzerland Jan Events"
+      "seriesSlug": "DavosEvents2027",
+      "seriesName": "Davos Events"
     },
     {
       "id": "recxpN06s52OZDqjV",
@@ -37398,6 +37398,30 @@
       "imageUrl": "//images.ctfassets.net/zfifjkc7y6ct/4hDO2Qx8wLOVdRQLwZMZH5/683f7d3d182a59786500219d56930f51/Day_1_-_Sunday__October_18_Day_1_Highlights_DJI_20261015210921_0478_D-HDR_Bradley_H.jpg_8019x4511.jpg",
       "seriesSlug": "Money2020USEvents2027",
       "seriesName": "Money 20/20 US Events"
+    },
+    {
+      "id": "recndJleBceDXDJCz",
+      "kind": "main",
+      "name": "SuperReturn Europe",
+      "description": "Explore opportunities across Europe, including a focus on the lower mid-market, cross-border fundraising and co-investments.\nLatest agenda\n",
+      "startTime": "2027-11-16",
+      "endTime": "2027-11-18",
+      "location": "Amsterdam, Netherlands 🇳🇱",
+      "city": "Amsterdam",
+      "country": "Netherlands 🇳🇱",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "VC"
+      ],
+      "website": "https://informaconnect.com/superreturneurope/",
+      "imageUrl": null,
+      "seriesSlug": "BTCAmsterdamEvents2026",
+      "seriesName": "BTC Amsterdam Events"
     },
     {
       "id": "recAVjnWg7UFCodqX",
