@@ -1,7 +1,7 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-09",
-  "seriesCount": 207,
+  "importedAt": "2026-11-10",
+  "seriesCount": 208,
   "eventCount": 1705,
   "series": [
     {
@@ -1114,6 +1114,11 @@
       "id": "recgM1FKrPSZnO2BI",
       "title": "MoneyLIVE Events",
       "slug": "MoneyLIVEEvents2027"
+    },
+    {
+      "id": "rec2SJh1bDIlvu2Iv",
+      "title": "DAF London Events",
+      "slug": "DAFLondonEvents2027"
     }
   ],
   "events": [
@@ -34216,7 +34221,7 @@
         "Multichain"
       ],
       "topics": [],
-      "website": "https://initc3.org/",
+      "website": "https://ic3research.org/ic3-winter-retreat-2027/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -34574,8 +34579,8 @@
       ],
       "website": "https://eblockchainconvention.com/digital-assets-forum/",
       "imageUrl": null,
-      "seriesSlug": "DigitalAssetsForumLondon2027",
-      "seriesName": "Digital Assets Forum London"
+      "seriesSlug": "DAFLondonEvents2027",
+      "seriesName": "DAF London Events"
     },
     {
       "id": "recqA37otekf6Ickh",
