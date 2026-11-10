@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-10",
-  "seriesCount": 208,
-  "eventCount": 1705,
+  "seriesCount": 210,
+  "eventCount": 1710,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -656,8 +656,8 @@
       "slug": "FamilyOfficeForumZurich2026"
     },
     {
-      "id": "recpDRMiI7nslLTo3",
-      "title": "Slush",
+      "id": "rectpA29G7Xnpq0Nk",
+      "title": "Slush 2026",
       "slug": "Slush2026"
     },
     {
@@ -1119,6 +1119,16 @@
       "id": "rec2SJh1bDIlvu2Iv",
       "title": "DAF London Events",
       "slug": "DAFLondonEvents2027"
+    },
+    {
+      "id": "recCiX1lf4sozCu9F",
+      "title": "SG Fintech Fest Events",
+      "slug": "SGFintechFestEvents2026"
+    },
+    {
+      "id": "recrZkSpahxEE940A",
+      "title": "TOKEN2049 SG Events",
+      "slug": "TOKEN2049SGEvents2027"
     }
   ],
   "events": [
@@ -32107,8 +32117,8 @@
       ],
       "website": "https://singaporeblockchainweek.org/",
       "imageUrl": null,
-      "seriesSlug": "NovemberSingaporeEvents2026",
-      "seriesName": "November Singapore Events"
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
     },
     {
       "id": "recu77ElMEnYDEzUO",
@@ -32132,8 +32142,8 @@
       ],
       "website": "https://convergencesummit.ai/",
       "imageUrl": null,
-      "seriesSlug": "NovemberSingaporeEvents2026",
-      "seriesName": "November Singapore Events"
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
     },
     {
       "id": "rec1QhvWxjpWbsFPF",
@@ -32272,6 +32282,31 @@
       "imageUrl": null,
       "seriesSlug": "AIEvents",
       "seriesName": "AI Events"
+    },
+    {
+      "id": "recoJRvc2qUxqPCZv",
+      "kind": "main",
+      "name": "THE MONEY SHIFT",
+      "description": "Half powerful talks. Half hands-on workshops. One day to create real progress.",
+      "startTime": "2026-11-14",
+      "endTime": "2026-11-14",
+      "location": "Toronto, Canada 🇨🇦",
+      "city": "Toronto",
+      "country": "Canada 🇨🇦",
+      "organizer": "Ashley Wright",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "AI",
+        "Markets",
+        "VC"
+      ],
+      "website": "https://www.thewrightsuccess.com/themoneyshift",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recfpPdbigK4hzTtR",
@@ -32577,6 +32612,30 @@
       "seriesName": "AI Events"
     },
     {
+      "id": "rec6pS6JcGWth9zIK",
+      "kind": "main",
+      "name": "Insights2040 Annual Meetings",
+      "description": "The Annual Meetings for senior public and private sector leaders on the priorities shaping financial services.",
+      "startTime": "2026-11-16",
+      "endTime": "2026-11-17",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": "GFTN",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://gftn.co/insights2040annualmeetings",
+      "imageUrl": null,
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
+    },
+    {
       "id": "recpa4W3bgzp1eoEf",
       "kind": "side",
       "name": "Money Layer @Breakpoint🇬🇧 Week",
@@ -32800,8 +32859,8 @@
       ],
       "website": "https://www.fintechfestival.sg/",
       "imageUrl": null,
-      "seriesSlug": "NovemberSingaporeEvents2026",
-      "seriesName": "November Singapore Events"
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
     },
     {
       "id": "recfz0VjHG14S4qIX",
@@ -32824,7 +32883,7 @@
       "website": "https://slush.org/",
       "imageUrl": null,
       "seriesSlug": "Slush2026",
-      "seriesName": "Slush"
+      "seriesName": "Slush 2026"
     },
     {
       "id": "recWh8LksCe536tDc",
@@ -33033,8 +33092,8 @@
       ],
       "website": "https://forum.ethereuminstitutional.org/singapore-2026",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/EthereumInstitutionalForumSingapore_2026-10-23T08-16.png",
-      "seriesSlug": "NovemberSingaporeEvents2026",
-      "seriesName": "November Singapore Events"
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
     },
     {
       "id": "recCFQsP09fVNDghW",
@@ -33080,8 +33139,8 @@
       ],
       "website": "https://lu.ma/hpz99yp0",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/m3/9d04a889-8b6d-404f-9afa-7e946191fc63.png",
-      "seriesSlug": "NovemberSingaporeEvents2026",
-      "seriesName": "November Singapore Events"
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
     },
     {
       "id": "recbveNOCclNE081I",
@@ -33318,6 +33377,31 @@
       ],
       "website": "https://hack.dev3pack.xyz/",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/Dev3packHackathon_2026-10-19T17-55.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recPZifaBh1nfQnc0",
+      "kind": "main",
+      "name": "ScaleUp FinTech Breakfast: From Pilot to Profit",
+      "description": "How FinTech Startups Win Enterprise CustomersWhat's next for Swiss FinTech — and what does it take to turn innovation into real business?Join Amazon Web Services, Snowflake and Tenity, for a FinTech Breakfast bringing together startups, scaleups, founders, enterprise leaders, investors, and technology innovators shaping the future of financial services.From AI-powered financial products to the next generation of FinTech infrastructure, innovation is moving fast. But building great technology is only half the battle. How do startups break into the enterprise market, navigate complex buying processes, and turn promising pilots into long-term commercial partnerships?Under the theme \"From Pilot to Profit,\" our fireside chat brings together experienced founders, investors, and technology executives to share real-world insights on what it takes to win enterprise customers and scale in financial services.Beyond the discussion, expect great coffee, breakfast, and an opportunity to connect w...",
+      "startTime": "2026-11-27",
+      "endTime": "2026-11-27",
+      "location": "Zurich, Switzerland 🇨🇭",
+      "city": "Zurich",
+      "country": "Switzerland 🇨🇭",
+      "organizer": "AWS",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "AI",
+        "Infrastructure"
+      ],
+      "website": "https://lu.ma/u4ykka8r",
+      "imageUrl": "https://images.lumacdn.com/uploads/xu/61e055e4-308f-46bf-9e44-1b4a9ffe24cd.png",
       "seriesSlug": "",
       "seriesName": ""
     },
@@ -36535,10 +36619,33 @@
         "Infrastructure",
         "DeFi"
       ],
-      "website": "https://www.nordicblockchain.com/",
+      "website": "https://www.nordicblockchain.com/conference-2026",
       "imageUrl": null,
       "seriesSlug": "NordicBlockchainEvents2027",
       "seriesName": "Nordic Blockchain Events"
+    },
+    {
+      "id": "rec9BmLsSLRPEZ8Nj",
+      "kind": "main",
+      "name": "SuperAI London",
+      "description": "Where AI meets the world",
+      "startTime": "2027-05-26",
+      "endTime": "2027-05-27",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": "SuperAI",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.superai.com/london",
+      "imageUrl": null,
+      "seriesSlug": "SXSWLondonEvents2027",
+      "seriesName": "SXSW London Events"
     },
     {
       "id": "rec0EGmchsjS4P2yJ",
@@ -37377,8 +37484,8 @@
       ],
       "website": "https://www.token2049.com/singapore",
       "imageUrl": "https://cdn.prod.website-files.com/6756df8f05088bc3e51c64c0/6a9e828d9aa96c64f392c993_T2049%20Singapore%20-%20OpenGraph%20(2026)%202%20OCT%202025.jpeg",
-      "seriesSlug": "TOKEN2049SGSideEvents2027",
-      "seriesName": "TOKEN2049 SG Side Events"
+      "seriesSlug": "TOKEN2049SGEvents2027",
+      "seriesName": "TOKEN2049 SG Events"
     },
     {
       "id": "recrOFkc0BsIUsxmq",
@@ -37403,6 +37510,30 @@
       "imageUrl": "//images.ctfassets.net/zfifjkc7y6ct/4hDO2Qx8wLOVdRQLwZMZH5/683f7d3d182a59786500219d56930f51/Day_1_-_Sunday__October_18_Day_1_Highlights_DJI_20261015210921_0478_D-HDR_Bradley_H.jpg_8019x4511.jpg",
       "seriesSlug": "Money2020USEvents2027",
       "seriesName": "Money 20/20 US Events"
+    },
+    {
+      "id": "recBmDrCcwHOEsjlm",
+      "kind": "main",
+      "name": "Dubai 2027 Venture Capital World Summit",
+      "description": "Venture Capital World Summit, World Series Seasons of Investment Conferences\nGlobal community for investors and investees\nHere to help businesses get more…",
+      "startTime": "2027-10-19",
+      "endTime": "2027-10-19",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": "Elio Assuncao",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "VC",
+        "TradFi"
+      ],
+      "website": "https://lu.ma/loawlhnc",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ac/f40ec087-7261-46d3-a02a-18f41beb2105.png",
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recndJleBceDXDJCz",
