@@ -2,7 +2,7 @@
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-11",
   "seriesCount": 210,
-  "eventCount": 1711,
+  "eventCount": 1713,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -32772,6 +32772,29 @@
       "seriesName": ""
     },
     {
+      "id": "recXmySLs7DOauh5B",
+      "kind": "main",
+      "name": "TiEcon SG 2026",
+      "description": "No information at this moment",
+      "startTime": "2026-11-17",
+      "endTime": "2026-11-17",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Multichain"
+      ],
+      "topics": [
+        "Markets"
+      ],
+      "website": "https://events.tie.org/TiEconSG2026",
+      "imageUrl": "https://events.tie.org/thumbnail/TiEconSG2026?_=1794278913409",
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
+    },
+    {
       "id": "recb8LYY3yWPtlyMZ",
       "kind": "side",
       "name": "Founder x VC Summit | VIP Dinner | Breakpoint Week 🇬🇧",
@@ -34474,6 +34497,30 @@
       "imageUrl": null,
       "seriesSlug": "DavosEvents2027",
       "seriesName": "Davos Events"
+    },
+    {
+      "id": "rec4vEGMRjZvDxDpQ",
+      "kind": "main",
+      "name": "World Economic Forum Annual Meeting 2027",
+      "description": "Under the theme Deliberate Conversations on the Future, leaders from over 100 governments, 1,000 leading global companies, major international organizations, civil society, academia and media will come together to support ambitious thinking and decisive action on the priorities that will shape our future.",
+      "startTime": "2027-01-18",
+      "endTime": "2027-01-22",
+      "location": "Davos, Switzerland 🇨🇭",
+      "city": "Davos",
+      "country": "Switzerland 🇨🇭",
+      "organizer": "wef",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "TradFi"
+      ],
+      "website": "https://events.weforum.org/en/events/world-economic-forum-annual-meeting-2027/home",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recxpN06s52OZDqjV",
