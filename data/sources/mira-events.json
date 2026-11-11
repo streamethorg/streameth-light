@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-10",
+  "importedAt": "2026-11-11",
   "seriesCount": 210,
-  "eventCount": 1710,
+  "eventCount": 1711,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -37486,6 +37486,29 @@
       "imageUrl": "https://cdn.prod.website-files.com/6756df8f05088bc3e51c64c0/6a9e828d9aa96c64f392c993_T2049%20Singapore%20-%20OpenGraph%20(2026)%202%20OCT%202025.jpeg",
       "seriesSlug": "TOKEN2049SGEvents2027",
       "seriesName": "TOKEN2049 SG Events"
+    },
+    {
+      "id": "recLE008gupGbXbzO",
+      "kind": "main",
+      "name": "Devcon",
+      "description": "Building on Mumbai, we're bringing Ethereum's builders together with more friends and allies working toward a freer, more open internet.",
+      "startTime": "2027-10-11",
+      "endTime": "2027-10-13",
+      "location": "Lisbon, Portugal 🇵🇹",
+      "city": "Lisbon",
+      "country": "Portugal 🇵🇹",
+      "organizer": "EFDevcon",
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Infrastructure"
+      ],
+      "website": "https://devcon.org/lisbon/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recrOFkc0BsIUsxmq",
