@@ -7,7 +7,7 @@ import SectionHeader from "@/components/SectionHeader";
 import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
 import { getEventById, getOrgForEvent } from "@/lib/data";
 import { buildMetadata } from "@/lib/social";
-import { speakerJsonLd, truncate } from "@/lib/seo";
+import { joinNames, speakerJsonLd, truncate } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -22,11 +22,22 @@ export async function generateMetadata({
   const { speaker: slug } = await params;
   const speaker = getSpeakerBySlug(slug);
   if (!speaker) return {};
+  // The bio alone (e.g. /speakers/vlad-zamfir: 193 impressions, 0 clicks)
+  // doesn't say there are talks to watch here; lead with the count and where.
+  const count = speaker.sessionIds.length;
+  const talks = count === 1 ? "talk" : "talks";
+  const events = [
+    ...new Set(
+      getSpeakerSessions(speaker)
+        .map((s) => getEventById(s.eventId)?.name)
+        .filter((name): name is string => Boolean(name))
+    ),
+  ];
+  const at = events.length > 0 ? ` at ${joinNames(events, 3)}` : " at Ethereum conferences";
   return buildMetadata({
-    title: `${speaker.name} — Talks — StreamETH`,
+    title: `${speaker.name}: ${count} Ethereum conference ${talks} — StreamETH`,
     description: truncate(
-      speaker.bio ||
-        `${speaker.sessionIds.length} ${speaker.sessionIds.length === 1 ? "talk" : "talks"} by ${speaker.name}${speaker.company ? ` (${speaker.company})` : ""} at Ethereum conferences.`,
+      `Watch ${count} ${talks} by ${speaker.name}${speaker.company ? ` (${speaker.company})` : ""}${at}.${speaker.bio ? ` ${speaker.bio}` : ""}`,
       200
     ),
     image: speaker.photo,
