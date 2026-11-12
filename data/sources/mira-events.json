@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-12",
-  "seriesCount": 210,
-  "eventCount": 1713,
+  "seriesCount": 211,
+  "eventCount": 1716,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1129,6 +1129,11 @@
       "id": "recrZkSpahxEE940A",
       "title": "TOKEN2049 SG Events",
       "slug": "TOKEN2049SGEvents2027"
+    },
+    {
+      "id": "recQctqxeP9PzNpbK",
+      "title": "MERGE Madrid",
+      "slug": "MERGEMadrid2027"
     }
   ],
   "events": [
@@ -34194,6 +34199,56 @@
       "seriesName": "Abu Dhabi Finance Week"
     },
     {
+      "id": "recC2kLPqPFIwlogA",
+      "kind": "main",
+      "name": "Global Trading Show",
+      "description": "Where the operators, capital and creators shaping global markets come together",
+      "startTime": "2026-12-10",
+      "endTime": "2026-12-11",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": "Global Trading Show",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "DeFi",
+        "Markets"
+      ],
+      "website": "https://www.globaltradingshow.com/",
+      "imageUrl": null,
+      "seriesSlug": "AbuDhabiFinanceWeek2026",
+      "seriesName": "Abu Dhabi Finance Week"
+    },
+    {
+      "id": "recDdW7K9VAiY4idG",
+      "kind": "main",
+      "name": "The Private Wealth & Funds Forum",
+      "description": "PRIVATE WEALTH, FAMILY OFFICES & FUNDS: STRATEGY, STRUCTURING AND THE NEXT INVESTMENT CYCLE",
+      "startTime": "2026-12-10",
+      "endTime": "2026-12-10",
+      "location": "Abu Dhabi, UAE 🇦🇪",
+      "city": "Abu Dhabi",
+      "country": "UAE 🇦🇪",
+      "organizer": "QUBE Events",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "AI",
+        "VC"
+      ],
+      "website": "https://www.qubevents.com/privatewealthandfunds",
+      "imageUrl": null,
+      "seriesSlug": "AbuDhabiFinanceWeek2026",
+      "seriesName": "Abu Dhabi Finance Week"
+    },
+    {
       "id": "recDvu3zCIaWIM4Zt",
       "kind": "side",
       "name": "HSС Asset Management Abu Dhabi Day 2",
@@ -37604,6 +37659,30 @@
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ac/f40ec087-7261-46d3-a02a-18f41beb2105.png",
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "reclyBNzV23Bs9eLL",
+      "kind": "main",
+      "name": "MERGE Madrid",
+      "description": "MERGE Madrid 2026 (Oct 27-29) — 5,000 attendees, +200 speakers. The conference where banks, regulators and the crypto ecosystem shape the future of finance and the Internet. Buy your ticket.",
+      "startTime": "2027-10-27",
+      "endTime": "2027-10-29",
+      "location": "Madrid, Spain 🇪🇸",
+      "city": "Madrid",
+      "country": "Spain 🇪🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "DeFi"
+      ],
+      "website": "https://www.mmerge.io/",
+      "imageUrl": "https://www.mmerge.io/img/social_2026.jpg",
+      "seriesSlug": "MERGEMadrid2027",
+      "seriesName": "MERGE Madrid"
     },
     {
       "id": "recndJleBceDXDJCz",
