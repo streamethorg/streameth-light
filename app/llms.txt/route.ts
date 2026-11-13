@@ -4,6 +4,7 @@ import { listSpeakers } from "@/lib/people";
 import { listTopics } from "@/lib/topics";
 import { SITE_NAME } from "@/lib/social";
 import { absoluteUrl } from "@/lib/seo";
+import { eventFormatCounts, getSeasonEventByPath } from "@/lib/season";
 
 // Built once at build time from the same static data as the site; the data
 // only changes with a deploy.
@@ -14,6 +15,26 @@ const MAX_TOPICS = 150;
 
 function mdLink(label: string, path: string): string {
   return `[${label.replace(/[[\]]/g, "")}](${absoluteUrl(path)})`;
+}
+
+function plural(n: number, one: string, many: string): string {
+  return `${n} ${n === 1 ? one : many}`;
+}
+
+/** What an event entry links to and counts. A YouTube upload group that is
+ * a calendar edition links to that edition's coverage page; count what the
+ * page shows (every talk and stream in its coverage window), not the
+ * title-matched upload group, which misses talks titled without the event
+ * name. */
+function eventCountLabel(href: string, groupTalks: number): string {
+  const [, channel, slug] = href.split("/");
+  const edition = channel && slug ? getSeasonEventByPath(channel, slug) : undefined;
+  if (!edition) return plural(groupTalks, "talk", "talks");
+  const counts = eventFormatCounts(edition);
+  const talks = Math.max(counts.talk, groupTalks);
+  return counts.stream > 0
+    ? `${plural(talks, "talk", "talks")} and ${plural(counts.stream, "livestream", "livestreams")}`
+    : plural(talks, "talk", "talks");
 }
 
 /** /llms.txt (https://llmstxt.org): a plain-markdown map of the archive for
@@ -47,7 +68,7 @@ export function GET() {
     "",
     ...events.map(
       (e) =>
-        `- ${mdLink(e.name, e.href)}: ${e.talkCount} ${e.talkCount === 1 ? "talk" : "talks"}, ${e.channelName}${e.location ? `, ${e.location}` : ""}`
+        `- ${mdLink(e.name, e.href)}: ${eventCountLabel(e.href, e.talkCount)}, ${e.channelName}${e.location ? `, ${e.location}` : ""}`
     ),
     "",
     "## Channels",

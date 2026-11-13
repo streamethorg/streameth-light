@@ -25,6 +25,7 @@ import {
   type SeasonEvent,
 } from "@/lib/season";
 import { accentStyle } from "@/lib/format";
+import { listChannelSummaries } from "@/lib/videoDb";
 import { buildMetadata } from "@/lib/social";
 import { organizationJsonLd, truncate } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
@@ -33,13 +34,27 @@ export function generateStaticParams() {
   return getDirectory().map((entry) => ({ org: entry.slug }));
 }
 
+/** "1,234 talks and recordings from ETHGlobal, including ETHGlobal Mumbai
+ * and ETHGlobal Tokyo." — the archive's size and newest editions, so the
+ * snippet says what a searcher gets before the channel's own blurb. */
+function channelSummaryLine(slug: string, name: string): string {
+  const videos = listChannelSummaries().find((c) => c.slug === slug)?.videos ?? 0;
+  const editions = allEventsForChannel(slug)
+    .filter((e) => e.from <= Date.now())
+    .slice(0, 2)
+    .map((e) => e.name);
+  const what = videos > 0 ? `${videos.toLocaleString("en-US")} talks and recordings` : "Talks and recordings";
+  const including = editions.length > 0 ? `, including ${editions.join(" and ")}` : "";
+  return `${what} from ${name}${including}, with transcripts and speakers.`;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ org: string }> }): Promise<Metadata> {
   const { org: orgSlug } = await params;
   const org = getOrganization(orgSlug);
   if (org) {
     return buildMetadata({
-      title: `${org.name} — StreamETH`,
-      description: truncate(org.description || `Every ${org.name} edition, with live coverage, recordings and reporting.`, 200),
+      title: `${org.name} talks & recordings — StreamETH`,
+      description: truncate(`${channelSummaryLine(org.slug, org.name)} ${org.description ?? ""}`, 200),
       image: org.banner ?? org.logo,
       path: `/${org.slug}`,
     });
@@ -47,8 +62,8 @@ export async function generateMetadata({ params }: { params: Promise<{ org: stri
   const entry = getDirectoryEntry(orgSlug);
   if (!entry) return {};
   return buildMetadata({
-    title: `${entry.name} — StreamETH`,
-    description: `Every ${entry.name} edition, with live coverage, recordings and reporting.`,
+    title: `${entry.name} talks & recordings — StreamETH`,
+    description: truncate(`${channelSummaryLine(entry.slug, entry.name)} Every edition, with live coverage and reporting.`, 200),
     path: `/${entry.slug}`,
   });
 }
