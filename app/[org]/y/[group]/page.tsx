@@ -55,6 +55,11 @@ export default async function YoutubeEventPage({
   const { org: orgSlug, group: groupSlug } = await params;
   const { v } = await searchParams;
 
+  // A legacy ?v=<video> link is about one talk, so it goes to that talk's own
+  // watch page (its canonical), not the group or event page that only
+  // switches the player. Search Console still sends talk queries to these.
+  if (v && getVideoById(`yt-${v}`)) permanentRedirect(`/watch/yt-${encodeURIComponent(v)}`);
+
   // Groups that are an event have a coverage page; ?v= plays that video there.
   const coverage = youtubeGroupHref(orgSlug, groupSlug);
   if (coverage) permanentRedirect(v ? `${coverage}?v=${encodeURIComponent(`yt-${v}`)}` : coverage);
@@ -139,6 +144,7 @@ export default async function YoutubeEventPage({
           video={vid}
           orgSlug={orgSlug}
           groupSlug={groupSlug}
+          watchHref={getVideoById(`yt-${vid.videoId}`) ? `/watch/yt-${vid.videoId}` : undefined}
           layout="compact"
         />
       ))}

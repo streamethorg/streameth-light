@@ -88,8 +88,8 @@ function speakerPath(name: string): string | undefined {
 }
 
 /** VideoObject + BreadcrumbList for a watch page. `event`/`org` are only
- * known for StreamETH-hosted sessions. */
-function watchJsonLd(video: UnifiedVideo, event?: Event, org?: Organization): JsonLdData[] {
+ * known for StreamETH-hosted sessions; `transcript` when the talk has one. */
+function watchJsonLd(video: UnifiedVideo, transcript: string | null, event?: Event, org?: Organization): JsonLdData[] {
   const orgPath = org ? `/${org.slug}` : video.orgSlug ? `/${video.orgSlug}` : undefined;
   const orgName = org?.name ?? video.orgName;
   const eventPath = event && org ? `/${org.slug}/${event.slug}` : undefined;
@@ -105,6 +105,7 @@ function watchJsonLd(video: UnifiedVideo, event?: Event, org?: Organization): Js
       coverImage: video.coverImage,
       durationSeconds: video.durationSeconds,
       contentUrl: video.contentUrl,
+      transcript,
       speakerPath,
       orgPath,
       event: event
@@ -152,7 +153,7 @@ export default async function WatchPage({
 
   return (
     <>
-      {video && <JsonLd data={watchJsonLd(video, event, org)} />}
+      {video && <JsonLd data={watchJsonLd(video, transcript, event, org)} />}
       <WatchLayout
         accentColor={event?.accentColor ?? org?.accentColor}
         orgName={org?.name}
@@ -251,7 +252,7 @@ async function YoutubeWatchPage({ id }: { id: string }) {
 
   return (
     <>
-      <JsonLd data={watchJsonLd(video)} />
+      <JsonLd data={watchJsonLd(video, transcript)} />
       <WatchLayout
         orgName={video.orgName}
         orgSlug={video.orgSlug}

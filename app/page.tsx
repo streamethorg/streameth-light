@@ -19,7 +19,7 @@ import {
   statusOf,
   upcomingEvents,
 } from "@/lib/season";
-import { browseVideos, listChannelOptions, topTopics } from "@/lib/videoDb";
+import { archiveStats, browseVideos, listChannelOptions, topTopics } from "@/lib/videoDb";
 import { filtersFromParams, isIdleFilters, paramsFromFilters } from "@/lib/browseParams";
 import { listAllEvents, listOrganizations } from "@/lib/data";
 import { listRecentEvents } from "@/lib/events";
@@ -36,10 +36,17 @@ export async function generateMetadata({
     if (typeof value === "string") urlSearchParams.set(key, value);
   }
   const filters = filtersFromParams(urlSearchParams);
+  // "StreamETH" alone drew 0 clicks for "eth streams" at position ~4; say
+  // what the archive is, with the words people search for it by.
+  const { videos } = archiveStats();
+  const title = "StreamETH: Ethereum conference talks & livestreams";
+  const description = `Watch and search ${Math.floor(videos / 500) * 500}+ talks, panels and livestreams from Devcon, ETHGlobal, EthCC and other Ethereum events, with speakers, topics and full transcripts.`;
   // Every filter/search/page variant canonicalizes to the homepage; search
   // results themselves stay out of the index (thin, endless permutations)
   // while their links are still followed.
   return {
+    title: { absolute: title },
+    description,
     alternates: { canonical: "/" },
     ...(isIdleFilters(filters) ? {} : { robots: { index: false, follow: true } }),
   };

@@ -110,8 +110,11 @@ export function videoMetaDescription(video: VideoSeoInput, max = 160): string {
 
 /** Long-form description for VideoObject JSON-LD and the video sitemap
  * (Google's limit is 2048 characters). */
-export function videoLongDescription(video: VideoSeoInput, max = 2000): string {
-  const description = usableDescription(video.description);
+export function videoLongDescription(video: VideoSeoInput, max = 2000, transcript?: string | null): string {
+  // No real description: the transcript's opening says what the talk is
+  // about better than the boilerplate context line alone.
+  const description =
+    usableDescription(video.description) ?? (transcript ? truncate(transcript, 600) : undefined);
   const topics = video.topics.length > 0 ? ` Topics: ${video.topics.slice(0, 8).join(", ")}.` : "";
   return truncate(`${videoContext(video)}${description ? ` ${description}` : ""}${topics}`, max);
 }
@@ -154,7 +157,13 @@ export interface VideoJsonLdInput extends VideoSeoInput {
   orgPath?: string;
   /** The conference the talk was recorded at, when known. */
   event?: { name: string; path?: string; start?: string; end?: string; location?: string };
+  /** Full transcript text, when the talk has one. */
+  transcript?: string | null;
 }
+
+// Enough for search engines to understand the talk without doubling the
+// page weight of a 2-hour livestream's transcript.
+const MAX_JSONLD_TRANSCRIPT = 5000;
 
 export function videoJsonLd(video: VideoJsonLdInput): JsonLd {
   const url = absoluteUrl(`/watch/${video.id}`);
@@ -165,7 +174,7 @@ export function videoJsonLd(video: VideoJsonLdInput): JsonLd {
     "@id": `${url}#video`,
     url,
     name: video.title,
-    description: videoLongDescription(video),
+    description: videoLongDescription(video, 2000, video.transcript),
     thumbnailUrl: [videoThumbnail(video)],
     uploadDate:
       video.publishedAt && video.publishedAt > 0 ? new Date(video.publishedAt).toISOString() : undefined,
@@ -175,6 +184,7 @@ export function videoJsonLd(video: VideoJsonLdInput): JsonLd {
     inLanguage: "en",
     keywords: video.topics.length > 0 ? video.topics.join(", ") : undefined,
     isAccessibleForFree: true,
+    transcript: video.transcript ? truncate(video.transcript, MAX_JSONLD_TRANSCRIPT) : undefined,
     author: video.speakers.map((name) => {
       const path = video.speakerPath?.(name);
       return compact({ "@type": "Person", name, url: path ? absoluteUrl(path) : undefined });

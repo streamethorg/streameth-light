@@ -6,19 +6,24 @@ export default function YoutubeVideoCard({
   video,
   orgSlug,
   groupSlug,
+  watchHref,
   layout = "grid",
 }: {
   video: YoutubeVideo;
   /** When known, links internally to the embedded playback page instead of out to youtube.com. */
   orgSlug?: string;
   groupSlug?: string;
+  /** The talk's own /watch page, when it has one; preferred over the ?v= group link. */
+  watchHref?: string;
   layout?: VideoTileLayout;
 }) {
-  const internal = Boolean(orgSlug && groupSlug);
+  const internal = Boolean(watchHref || (orgSlug && groupSlug));
   return (
     <VideoTile
       href={
-        internal
+        watchHref
+          ? watchHref
+          : internal
           ? `/${orgSlug}/y/${groupSlug}?v=${video.videoId}`
           : `https://www.youtube.com/watch?v=${video.videoId}`
       }
