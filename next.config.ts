@@ -19,6 +19,17 @@ const nextConfig: NextConfig = {
       "./data/sources/mira-ethdenver-2025.json",
     ],
   },
+  async redirects() {
+    return [
+      // Pages from the old site that Google still shows as "streameth"
+      // sitelinks but now 404: /blog/the-future-of-live-streaming-in-web3
+      // (49 impressions) and /data-request (46). The archive's editorial
+      // lives in /stories now; the data-request form has no successor.
+      { source: "/blog", destination: "/stories", permanent: true },
+      { source: "/blog/:slug*", destination: "/stories", permanent: true },
+      { source: "/data-request", destination: "/", permanent: true },
+    ];
+  },
   async rewrites() {
     return {
       // /watch/<id>.md → the markdown copy of a watch page for AI crawlers
