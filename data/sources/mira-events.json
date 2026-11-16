@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-16",
-  "seriesCount": 211,
-  "eventCount": 1716,
+  "seriesCount": 220,
+  "eventCount": 1717,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1134,6 +1134,51 @@
       "id": "recQctqxeP9PzNpbK",
       "title": "MERGE Madrid",
       "slug": "MERGEMadrid2027"
+    },
+    {
+      "id": "recPObhjyx974Wwoy",
+      "title": "Plan B Events",
+      "slug": "PlanBEvents2027"
+    },
+    {
+      "id": "recDicoLg6z0psA6L",
+      "title": "Cayman Crypto Week",
+      "slug": "CaymanCryptoWeek2027"
+    },
+    {
+      "id": "rec5jwT1z9mQUTtTT",
+      "title": "GDC Side Events",
+      "slug": "GDCSideEvents2027"
+    },
+    {
+      "id": "recs43Dc2yswwXn6r",
+      "title": "DAS NYC Events",
+      "slug": "DASNYCEvents2027"
+    },
+    {
+      "id": "recTOZu8qxBKZIzmy",
+      "title": "RWC",
+      "slug": "RWC2027"
+    },
+    {
+      "id": "recivNxJI1HVXdarF",
+      "title": "BTC Prague Events",
+      "slug": "BTCPragueEvents2027"
+    },
+    {
+      "id": "rec2b86DU6UgGmC7H",
+      "title": "SuperReturn",
+      "slug": "SuperReturn2027"
+    },
+    {
+      "id": "recH1R6iM43v41XCd",
+      "title": "TOKEN2049 NYC Events",
+      "slug": "TOKEN2049NYCEvents2027"
+    },
+    {
+      "id": "recAQ7riAoRLtVsC2",
+      "title": "Money20/20 Australia",
+      "slug": "Money2020Australia2028"
     }
   ],
   "events": [
@@ -32565,8 +32610,8 @@
       ],
       "website": "https://iconnections.io/global-alts-asia-2026/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SGFintechFestEvents2026",
+      "seriesName": "SG Fintech Fest Events"
     },
     {
       "id": "recKohLSN6jyeDrnR",
@@ -32916,7 +32961,7 @@
     {
       "id": "recWh8LksCe536tDc",
       "kind": "main",
-      "name": "Africa Fintech Summit Kigali 2026",
+      "name": "Africa Fintech Summit Kigali",
       "description": "The Africa Fintech Summit comes to Rwanda under the theme \"Powering the World from Africa\". Three days connecting investors, banks, regulators and founders, including a startup track where 34 early-stage fintechs from 10 countries pitch on day one.",
       "startTime": "2026-11-18",
       "endTime": "2026-11-20",
@@ -32937,7 +32982,7 @@
     {
       "id": "recTaiDFiSTvqE90i",
       "kind": "main",
-      "name": "Dubai Future Week 2026",
+      "name": "Dubai Future Week",
       "description": "Organised by Dubai Future Foundation. 18–21 November 2026 at Emirates Towers and the Museum of the Future, Dubai.",
       "startTime": "2026-11-18",
       "endTime": "2026-11-21",
@@ -33126,7 +33171,7 @@
     {
       "id": "recCFQsP09fVNDghW",
       "kind": "main",
-      "name": "Crypto Fest 2026",
+      "name": "Crypto Fest",
       "description": "No information at this moment",
       "startTime": "2026-11-20",
       "endTime": "2026-11-20",
@@ -33149,7 +33194,7 @@
     {
       "id": "reclhyt9Cit1yGzkD",
       "kind": "main",
-      "name": "Trust Summit | Singapore Fintech Festival 2026",
+      "name": "Trust Summit | Singapore Fintech Festival",
       "description": "This event is by invitation only. For those with an invitation code, enter your code on the next page to unlock your complimentary ticket. Waitlisted…",
       "startTime": "2026-11-20",
       "endTime": "2026-11-20",
@@ -33220,7 +33265,7 @@
     {
       "id": "recaVPuuBD6KRacsC",
       "kind": "main",
-      "name": "FintechWeek Vienna 2026",
+      "name": "FintechWeek Vienna",
       "description": "AI. Financializing Energy. RegTech. Crypto",
       "startTime": "2026-11-23",
       "endTime": "2026-11-27",
@@ -33243,9 +33288,33 @@
       "seriesName": ""
     },
     {
+      "id": "recSghtNAcx9XAraJ",
+      "kind": "main",
+      "name": "FM Summit London",
+      "description": "Finance Magnates Summits (FMsummits) organise the world's leading premium events in fintech, online trading, digital assets, and payments. Since 2012, we gather the most exceptional professionals in these rapidly evolving industries to grow their business, network, learn, and remain ahead of the curve.",
+      "startTime": "2026-11-23",
+      "endTime": "2026-11-24",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": "financemagnates, F_M_events",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Markets"
+      ],
+      "website": "https://events.financemagnates.com/events/fmsummitlondon/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recMcebTtnZ66nqnO",
       "kind": "main",
-      "name": "AI Summit Europe 2026",
+      "name": "AI Summit Europe",
       "description": "AI Summit Europe brings together European business leaders, innovators, and AI experts to showcase practical AI adoption, enterprise use cases, and emerging technologies. The event features keynotes, workshops, networking, and is co-located with Big Data Conference Europe.",
       "startTime": "2026-11-24",
       "endTime": "2026-11-27",
@@ -33261,30 +33330,6 @@
         "AI"
       ],
       "website": "https://aisummiteurope.eu",
-      "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
-    },
-    {
-      "id": "recSghtNAcx9XAraJ",
-      "kind": "main",
-      "name": "FM Summit London 2026",
-      "description": "Finance Magnates Summits (FMsummits) organise the world's leading premium events in fintech, online trading, digital assets, and payments. Since 2012, we gather the most exceptional professionals in these rapidly evolving industries to grow their business, network, learn, and remain ahead of the curve.",
-      "startTime": "2026-11-24",
-      "endTime": "2026-11-24",
-      "location": "London, UK 🇬🇧",
-      "city": "London",
-      "country": "UK 🇬🇧",
-      "organizer": "financemagnates, F_M_events",
-      "tags": [
-        "Conference",
-        "Multichain"
-      ],
-      "topics": [
-        "TradFi",
-        "Markets"
-      ],
-      "website": "https://events.financemagnates.com/events/fmsummitlondon/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -33315,7 +33360,7 @@
     {
       "id": "recMRhDNFvp8YGSP1",
       "kind": "main",
-      "name": "AI World Congress 2026",
+      "name": "AI World Congress",
       "description": "AI World Congress is a global conference that brings together AI researchers, technology leaders, startups, enterprises, and policymakers to explore the latest advances in artificial intelligence. The event features keynote talks, technical sessions, exhibitions, and networking focused on real-world AI innovation and adoption.",
       "startTime": "2026-11-25",
       "endTime": "2026-11-26",
@@ -33508,7 +33553,7 @@
     {
       "id": "recmDNJBWign5HbYu",
       "kind": "main",
-      "name": "CryptoCon 2026",
+      "name": "CryptoCon",
       "description": "Join us at the Southern Hemisphere’s largest crypto and blockchain event, taking place at ICC Sydney on 28–29 November 2026.\nNow in its fifth year,…",
       "startTime": "2026-11-28",
       "endTime": "2026-11-29",
@@ -33555,7 +33600,7 @@
     {
       "id": "rec0Y9ehrJaOCTyYg",
       "kind": "main",
-      "name": "AWS re:Invent 2026",
+      "name": "AWS re:Invent",
       "description": "AWS re:Invent is Amazon Web Services' flagship annual conference, bringing together developers, engineers, architects, startups, and business leaders to explore the latest innovations in cloud computing and artificial intelligence. The event features keynotes, technical sessions, hands-on labs, certifications, and extensive networking opportunities.",
       "startTime": "2026-11-30",
       "endTime": "2026-12-04",
@@ -33625,7 +33670,7 @@
     {
       "id": "reccaQMV5jICfJBHN",
       "kind": "main",
-      "name": "Blockchain Life 2026",
+      "name": "Blockchain Life",
       "description": "17th International Forum on Web3, Cryptocurrencies and Mining",
       "startTime": "2026-12-01",
       "endTime": "2026-12-02",
@@ -33644,29 +33689,6 @@
       "imageUrl": null,
       "seriesSlug": "BlockchainLifeWeek2026",
       "seriesName": "Blockchain Life Week"
-    },
-    {
-      "id": "recS8sxxU5ijggmUY",
-      "kind": "main",
-      "name": "Black Hat MEA",
-      "description": "Black Hat Middle East and Africa is a leading cybersecurity conference and exhibition held in Riyadh, KSA. The event brings together cybersecurity professionals, cutting-edge technologies, solution providers, and decision-makers from around the world, condensing several months of networking into just three days.",
-      "startTime": "2026-12-01",
-      "endTime": "2026-12-03",
-      "location": "Riyadh, Saudi Arabia 🇸🇦",
-      "city": "Riyadh",
-      "country": "Saudi Arabia 🇸🇦",
-      "organizer": null,
-      "tags": [
-        "Other",
-        "Conference"
-      ],
-      "topics": [
-        "Security"
-      ],
-      "website": "https://blackhatmea.com/",
-      "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
     },
     {
       "id": "recWYcMDXVF7P5owm",
@@ -33694,7 +33716,7 @@
     {
       "id": "recMX2dK8GtfbpZmk",
       "kind": "main",
-      "name": "AI Future Forum 2026",
+      "name": "AI Future Forum",
       "description": "AI Future Forum 2026 will take place on December 1–2 in Dubai as part of Blockchain Life Forum. The event brings together entrepreneurs, investors, developers, and startups at the intersection of AI and Web3.\nOn one platform, crypto investors, funds, and tech teams will explore real-world AI applications, new business models, and opportunities in the digital economy.\nAttendees will gain insights from industry leaders, discover practical use cases, and connect through high-level international networking.\nThe forum takes place just ahead of the Formula 1 Grand Prix Final, bringing together the global tech community in Dubai.",
       "startTime": "2026-12-01",
       "endTime": "2026-12-02",
@@ -33711,8 +33733,8 @@
       ],
       "website": "https://ai-future.com",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/AIFutureForum2026_2026-11-02T11-44.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BlockchainLifeWeek2026",
+      "seriesName": "Blockchain Life Week"
     },
     {
       "id": "recMhvG2j2SuatN2C",
@@ -33785,8 +33807,8 @@
       ],
       "website": "https://www.carmocompanies.com/florida-private-markets-meeting26",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "ArtBaselMiamiEvents2026",
+      "seriesName": "Art Basel Miami Events"
     },
     {
       "id": "recqgycL0ee8ieuQt",
@@ -33971,8 +33993,8 @@
       ],
       "website": "https://www.gitex.com/",
       "imageUrl": null,
-      "seriesSlug": "GITEXGlobal2026",
-      "seriesName": "GITEX Global"
+      "seriesSlug": "BlockchainLifeWeek2026",
+      "seriesName": "Blockchain Life Week"
     },
     {
       "id": "recWPyQgzGUBiDv5i",
@@ -34026,7 +34048,7 @@
     {
       "id": "rec0Gz2s0E6G9JS3x",
       "kind": "main",
-      "name": "Middle East and Africa Summit 2026",
+      "name": "Middle East and Africa Summit",
       "description": "Progress with Purpose: Advancing Meaningful Partnerships4 – 5 December 2025",
       "startTime": "2026-12-07",
       "endTime": "2026-12-08",
@@ -34049,7 +34071,7 @@
     {
       "id": "rec353RU9ZzILrVwx",
       "kind": "main",
-      "name": "U.S. BankTech Summit 2026",
+      "name": "U.S. BankTech Summit",
       "description": "Connect with senior banking executives, technology leaders, and fintech partners for three days of strategic dialogue, practical insights, and high-impact",
       "startTime": "2026-12-07",
       "endTime": "2026-12-09",
@@ -34095,7 +34117,7 @@
     {
       "id": "recxKbGLr2B5Ep2bj",
       "kind": "main",
-      "name": "FTT Fintech Festival North America 2026",
+      "name": "FTT Fintech Festival North America",
       "description": "Fintech Talents' North American festival for 450+ fintech and financial services innovators.",
       "startTime": "2026-12-08",
       "endTime": "2026-12-09",
@@ -34137,7 +34159,7 @@
     {
       "id": "recJfVbTQ09oTRrpb",
       "kind": "main",
-      "name": "Expand North Star 2026",
+      "name": "Expand North Star",
       "description": "No information at this moment",
       "startTime": "2026-12-08",
       "endTime": "2026-12-10",
@@ -34152,8 +34174,8 @@
       "topics": [],
       "website": "https://expandnorthstar.com",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BlockchainLifeWeek2026",
+      "seriesName": "Blockchain Life Week"
     },
     {
       "id": "recm6Uuh8OVV5xvGX",
@@ -34292,8 +34314,8 @@
       ],
       "website": "https://www.lunapr.com/our-events",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BlockchainLifeWeek2026",
+      "seriesName": "Blockchain Life Week"
     },
     {
       "id": "rec3HURNk7kgrtQfU",
@@ -34321,7 +34343,7 @@
     {
       "id": "recBHG0C9kQxnrUOt",
       "kind": "main",
-      "name": "CES 2027",
+      "name": "CES",
       "description": "The world’s most powerful tech event is your place to experience the innovations transforming how we live.\n\nThis is where global brands get business done, meet new partners and where the industry's sharpest minds take the stage to unveil their latest releases and boldest breakthroughs. Get a real feel for the latest solutions to the world's biggest challenges with immersive activations and demos. Engage with the greatest minds and most impactful brands of our time. \n\nSign up to be notified when registration for CES 2027 opens. ",
       "startTime": "2027-01-06",
       "endTime": "2027-01-09",
@@ -34345,7 +34367,7 @@
     {
       "id": "rectoD2AkQrsXrfte",
       "kind": "main",
-      "name": "PEER Summit 2027",
+      "name": "PEER Summit",
       "description": "An invite-only weekend retreat for leaders, authors, change-makers, and founders.",
       "startTime": "2027-01-08",
       "endTime": "2027-01-10",
@@ -34370,7 +34392,7 @@
     {
       "id": "rec7UmTouFCMFugWQ",
       "kind": "main",
-      "name": "IC3 Winter Retreat 2027",
+      "name": "IC3 Winter Retreat",
       "description": "The Winter Retreat will look and feel a little different in 2027 as it heads to Cascais, Portugal.",
       "startTime": "2027-01-12",
       "endTime": "2027-01-14",
@@ -34391,7 +34413,7 @@
     {
       "id": "recB1XOkWCtblxbSb",
       "kind": "main",
-      "name": "CfC st. Mortiz 2027",
+      "name": "CfC st. Mortiz",
       "description": "A highly curated digital assets and blockchain conference for investors and decision-makers, set in the breathtaking scenery of the Swiss Alps.",
       "startTime": "2027-01-13",
       "endTime": "2027-01-15",
@@ -34410,13 +34432,13 @@
       ],
       "website": "https://cfc-stmoritz.com/",
       "imageUrl": null,
-      "seriesSlug": "CfCst.Mortiz2027",
-      "seriesName": "CfC st. Mortiz 2027"
+      "seriesSlug": "DavosEvents2027",
+      "seriesName": "Davos Events"
     },
     {
       "id": "recCxx9dcPwVXbORT",
       "kind": "main",
-      "name": "W3N 2027",
+      "name": "W3N",
       "description": "THE ONLY GLOBAL EMERGING TECH GATHERING FOR IMPACT-DRIVEN BUILDERS, CREATORS & DOERS AT THE EDGE OF EUROPE",
       "startTime": "2027-01-15",
       "endTime": "2027-01-16",
@@ -34532,7 +34554,7 @@
     {
       "id": "recgT0tPpnbL7UEvs",
       "kind": "main",
-      "name": "Web3 Hub Davos 2027",
+      "name": "Web3 Hub Davos",
       "description": "WHERE THE FUTURE OF TECHNOLOGY\nMEETS THE LEADERS SHAPING IT",
       "startTime": "2027-01-18",
       "endTime": "2027-01-21",
@@ -34556,7 +34578,7 @@
     {
       "id": "rec4vEGMRjZvDxDpQ",
       "kind": "main",
-      "name": "World Economic Forum Annual Meeting 2027",
+      "name": "World Economic Forum Annual Meeting",
       "description": "Under the theme Deliberate Conversations on the Future, leaders from over 100 governments, 1,000 leading global companies, major international organizations, civil society, academia and media will come together to support ambitious thinking and decisive action on the priorities that will shape our future.",
       "startTime": "2027-01-18",
       "endTime": "2027-01-22",
@@ -34720,13 +34742,13 @@
       ],
       "website": "https://planb.sv/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "PlanBEvents2027",
+      "seriesName": "Plan B Events"
     },
     {
       "id": "recEA23MFkhkevNhI",
       "kind": "main",
-      "name": "Web Summit Qatar 2027",
+      "name": "Web Summit Qatar",
       "description": "Tech leaders gather at Web Summit Qatar to shape the future of the industry. Join our network and secure access before prices increase.",
       "startTime": "2027-01-31",
       "endTime": "2027-02-03",
@@ -34771,7 +34793,7 @@
     {
       "id": "recqA37otekf6Ickh",
       "kind": "main",
-      "name": "Consensus Hong Kong 2027",
+      "name": "Consensus Hong Kong",
       "description": "Third edition with programming built around Digital Assets, AI and where they converge.",
       "startTime": "2027-02-01",
       "endTime": "2027-02-03",
@@ -34791,6 +34813,31 @@
       "imageUrl": null,
       "seriesSlug": "ConsensusHKEvents2027",
       "seriesName": "Consensus HK Events"
+    },
+    {
+      "id": "recZB60iWV0owR98U",
+      "kind": "main",
+      "name": "Cayman Crypto Week",
+      "description": "The Caribbean's flagship Web3, digital assets and fintech summit.",
+      "startTime": "2027-02-01",
+      "endTime": "2027-02-05",
+      "location": "Grand Cayman, Cayman Islands 🇰🇾",
+      "city": "Grand Cayman",
+      "country": "Cayman Islands 🇰🇾",
+      "organizer": "Cayman Crypto Week 2026",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://ccw2027.com/",
+      "imageUrl": null,
+      "seriesSlug": "CaymanCryptoWeek2027",
+      "seriesName": "Cayman Crypto Week"
     },
     {
       "id": "recmNsycVlidSv3e8",
@@ -34891,7 +34938,7 @@
     {
       "id": "recVRA0V1P6B2Gn4N",
       "kind": "main",
-      "name": "Generative AI Expo 2027",
+      "name": "Generative AI Expo",
       "description": "No information at this moment",
       "startTime": "2027-02-09",
       "endTime": "2027-02-11",
@@ -34937,7 +34984,7 @@
     {
       "id": "reczDKwkcFlkEYHxR",
       "kind": "main",
-      "name": "Africa Tech Summit Nairobi 2027",
+      "name": "Africa Tech Summit Nairobi",
       "description": "Africa Tech Summit Nairobi connects African tech corporates, investors, startups, fintech, and climate leaders at the leading Africa tech event.",
       "startTime": "2027-02-10",
       "endTime": "2027-02-11",
@@ -34984,7 +35031,7 @@
     {
       "id": "rechxsYq9EoSJ1qZE",
       "kind": "main",
-      "name": "Adopting Bitcoin Cape Town 2027",
+      "name": "Adopting Bitcoin Cape Town",
       "description": "The boots-on-the-ground Bitcoin conference for real-world adoption in Southern Africa.",
       "startTime": "2027-02-26",
       "endTime": "2027-02-27",
@@ -35032,7 +35079,7 @@
     {
       "id": "rec5oB91lILLV1NlI",
       "kind": "main",
-      "name": "FinAi Banking Summit 2027",
+      "name": "FinAi Banking Summit",
       "description": "Successor to the Bank Automation Summit, focused on AI and automation in banking and financial services.",
       "startTime": "2027-03-01",
       "endTime": "2027-03-02",
@@ -35055,7 +35102,7 @@
     {
       "id": "rechJs36ktlKRqegY",
       "kind": "main",
-      "name": "GDC 2027",
+      "name": "GDC",
       "description": "Where Ideas Come Alive",
       "startTime": "2027-03-01",
       "endTime": "2027-03-04",
@@ -35071,8 +35118,8 @@
       ],
       "website": "https://gdconf.com/",
       "imageUrl": null,
-      "seriesSlug": "GDC2027",
-      "seriesName": "GDC 2027"
+      "seriesSlug": "GDCSideEvents2027",
+      "seriesName": "GDC Side Events"
     },
     {
       "id": "rectzt7RK2cboTrxF",
@@ -35102,7 +35149,7 @@
     {
       "id": "recqtVZiJBrhB6jSp",
       "kind": "main",
-      "name": "SBC Summit Rio 2027",
+      "name": "SBC Summit Rio",
       "description": "The SBC Summit Rio 2026 was a true celebration of Brazil's betting and gaming industry, and we are extremely grateful to everyone who helped make it a reality. To our exhibitors, sponsors, speakers, partners, and all participants, thank you for attending with such passion and enthusiasm. You brought the spirit, the emotion, and the inspiration to raise the bar even higher for 2027. This edition proved once again why the SBC Summit Rio is the place to be. We learned a lot, saw many fantastic products in the exhibition hall, and certainly made the most of the networking opportunities throughout the week. Bringing together all licensed operators, along with a strong contingent of regulators, procurement experts, and suppliers, the 2026 edition created a unique space for market insights and connection with the most influential names in Brazil. Of course, Rio brought networking to life in true SBC style. From a packed and incredibly fun opening party with everything (even beach soccer, a...",
       "startTime": "2027-03-02",
       "endTime": "2027-03-04",
@@ -35166,8 +35213,8 @@
       ],
       "website": "https://www.cbcsummit.io/europe",
       "imageUrl": null,
-      "seriesSlug": "CBCSummitEurope2027",
-      "seriesName": "CBC Summit Europe"
+      "seriesSlug": "MoneyLIVEEvents2027",
+      "seriesName": "MoneyLIVE Events"
     },
     {
       "id": "recNdnl0rQDnzdrbx",
@@ -35222,7 +35269,7 @@
     {
       "id": "rec57hYT8binX1WbJ",
       "kind": "main",
-      "name": "Merchant Payments Ecosystem (MPE) 2027",
+      "name": "Merchant Payments Ecosystem (MPE)",
       "description": "The 20th edition of Europe's merchant payments conference, with around 1,600 payment professionals, more than half at director level or above. Focus areas include AI, payment orchestration, fraud prevention and cross-border commerce, with hosted meetings, roundtables and workshops.",
       "startTime": "2027-03-09",
       "endTime": "2027-03-11",
@@ -35315,7 +35362,7 @@
     {
       "id": "recdfC6VzjfbeiD04",
       "kind": "main",
-      "name": "AIBC Eurasia 2027",
+      "name": "AIBC Eurasia",
       "description": "No information at this moment",
       "startTime": "2027-03-15",
       "endTime": "2027-03-17",
@@ -35337,7 +35384,7 @@
     {
       "id": "recKpfwhZkwscJDyc",
       "kind": "main",
-      "name": "SXSW Austin 2027",
+      "name": "SXSW Austin",
       "description": "No information at this moment",
       "startTime": "2027-03-15",
       "endTime": "2027-03-21",
@@ -35386,7 +35433,7 @@
     {
       "id": "recyr3vUs3zLGwcU3",
       "kind": "main",
-      "name": "Crypto Expo Europe 2027",
+      "name": "Crypto Expo Europe",
       "description": "Crypto Expo Europe gathers exchanges, brokers, and fintech companies in Bucharest for two days of trading and Web3 focused sessions. The 2027 edition is expected in March, with official dates still to be announced.",
       "startTime": "2027-03-17",
       "endTime": "2027-03-18",
@@ -35426,13 +35473,13 @@
       ],
       "website": "https://uae-wealth.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "AIBCEurasiaEvents2027",
+      "seriesName": "AIBC Eurasia Events"
     },
     {
       "id": "reczxGHSTBmSTHvya",
       "kind": "main",
-      "name": "Global Blockchain Congress - Dubai",
+      "name": "Global Blockchain Congress",
       "description": "Where Capital Meets Innovation\n‍\nThe 16th Global Blockchain Congress brings together leading investors, founders, and decision-makers across blockchain, digital assets, and AI for two days of curated discussions, meaningful networking, and high-value business connections.\n‍\nThrough pre-arranged one-to-one meetings and a carefully selected audience, GBC creates an environment where the right people come together to explore opportunities and build lasting relationships.",
       "startTime": "2027-03-18",
       "endTime": "2027-03-19",
@@ -35451,13 +35498,13 @@
       ],
       "website": "https://www.gbc-uae.com",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/GlobalBlockchainCongressDubai_2026-11-03T11-02.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "AIBCEurasiaEvents2027",
+      "seriesName": "AIBC Eurasia Events"
     },
     {
       "id": "recXBPqAdzZG1mr9p",
       "kind": "main",
-      "name": "Mining Disrupt 2027",
+      "name": "Mining Disrupt",
       "description": "The world's largest Bitcoin mining expo, where mining meets AI and HPC. March 22–24, 2027, Irving Convention Center, Dallas. Passes, booths and sponsorships.",
       "startTime": "2027-03-22",
       "endTime": "2027-03-24",
@@ -35504,7 +35551,7 @@
     {
       "id": "recaLG1qAmQ1e6tz4",
       "kind": "main",
-      "name": "ETHDenver 2027",
+      "name": "ETHDenver",
       "description": "ETHDenver is one of the largest Ethereum community gatherings in the world, mixing a builder hackathon with a multi day conference in Colorado. The 2027 edition is expected in February, with official dates still to be announced.",
       "startTime": "2027-03-24",
       "endTime": "2027-03-25",
@@ -35525,7 +35572,7 @@
     {
       "id": "recI42eh9m0FAc3dK",
       "kind": "main",
-      "name": "Next Block Expo 2027",
+      "name": "Next Block Expo",
       "description": "Next Block Expo is Warsaw’s main Web3 conference, bringing together startups, investors, and developers from across Central and Eastern Europe. The 2027 edition is expected in March, with official dates still to be announced.",
       "startTime": "2027-03-24",
       "endTime": "2027-03-25",
@@ -35568,7 +35615,7 @@
     {
       "id": "recuBEcF7SWvX6brV",
       "kind": "main",
-      "name": "Digital Asset Summit NYC 2027",
+      "name": "Digital Asset Summit NYC",
       "description": "Blockworks' institutional conference on onchain capital markets, stablecoins, payments, DeFi and US policy.",
       "startTime": "2027-03-30",
       "endTime": "2027-04-01",
@@ -35583,13 +35630,13 @@
       "topics": [],
       "website": "https://blockworks.com/event/digital-asset-summit-nyc",
       "imageUrl": null,
-      "seriesSlug": "DigitalAssetSummitNYC2027",
-      "seriesName": "Digital Asset Summit NYC"
+      "seriesSlug": "DASNYCEvents2027",
+      "seriesName": "DAS NYC Events"
     },
     {
       "id": "recKFxkOeafUB0TRk",
       "kind": "main",
-      "name": "Building Blocks TLV 2027",
+      "name": "Building Blocks TLV",
       "description": "Building Blocks TLV is Israel’s flagship blockchain conference, connecting local founders and developers with global investors in Tel Aviv. The 2027 edition is expected in March, with official dates still to be announced.",
       "startTime": "2027-03-30",
       "endTime": "2027-03-31",
@@ -35610,7 +35657,7 @@
     {
       "id": "reckQxyTcHIm5Fx99",
       "kind": "main",
-      "name": "BitBlockBoom 2027",
+      "name": "BitBlockBoom",
       "description": "Network with fellow Bitcoiners!\nApril 1st-4th, 2027 | The longest running bitcoin conference and celebrating our 10th year. Pay in bitcoin or fiat",
       "startTime": "2027-04-01",
       "endTime": "2027-04-04",
@@ -35633,7 +35680,7 @@
     {
       "id": "rec94B8Xt0av5qrqv",
       "kind": "main",
-      "name": "Ipê Village 2027",
+      "name": "Ipê Village",
       "description": "Learn frontier technology, build alongside talented specialists, access remote job opportunities and earn while collaborating.",
       "startTime": "2027-04-01",
       "endTime": "2027-04-30",
@@ -35657,7 +35704,7 @@
     {
       "id": "recc87VCogb0OMMWJ",
       "kind": "main",
-      "name": "FHE.org Conference 2027",
+      "name": "FHE.org Conference",
       "description": "FHE.org 2027 conference\nThe 6th Annual FHE.org Conference on Fully Homomorphic Encryption will take place in Seattle, USA, on April 4th 2027. The conference will feature presentation sessions, poster sessions, invited speakers, and our usual after party.\n\nFor updates, make sure to subscribe to the FHE.org newsletter.\n\nImportant dates\nSubmission deadline: November 1, 2026 (23:59 AoE)\nNotification: December 18, 2026\nConference date: April 4, 2027\nLatest updates\n2026.07.01: Conference website online\n2026.07.08: Program Chairs announced (David Archer and Rachel Player)\n2026.07.31: Submission deadline and notification date posted\n2026.08.04: Call for presentations posted\nSponsors\nInterested in showing your support for FHE research and development through your company? Consider sponsoring this or future conferences just as our 2026 sponsors have. Reach out to us at contact@fhe.org.\n\nICW-IACR\nFHE.org 2027 is held in cooperation with IACR (ICW-IACR).",
       "startTime": "2027-04-04",
       "endTime": "2027-04-04",
@@ -35681,7 +35728,7 @@
     {
       "id": "recF3dlMfyGuI4r1O",
       "kind": "main",
-      "name": "RWC 2027",
+      "name": "RWC",
       "description": "RWC 2027 will take place in Seattle, United States on April 5–7, 2027. RWC 2027 is organized by the International Association for Cryptologic Research (IACR).",
       "startTime": "2027-04-05",
       "endTime": "2027-04-07",
@@ -35698,8 +35745,8 @@
       ],
       "website": "https://rwc.iacr.org/2027/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "RWC2027",
+      "seriesName": "RWC"
     },
     {
       "id": "rec5vOh6OOl6DgfXC",
@@ -35728,7 +35775,7 @@
     {
       "id": "recFWK59LhMTmNAWQ",
       "kind": "main",
-      "name": "TEAMZ Summit 2027",
+      "name": "TEAMZ Summit",
       "description": "Japan’s Premier AI Conference",
       "startTime": "2027-04-06",
       "endTime": "2027-04-07",
@@ -35752,7 +35799,7 @@
     {
       "id": "rec5uELwCkioNiykR",
       "kind": "main",
-      "name": "UN:BLOCK 2027",
+      "name": "UN:BLOCK",
       "description": "Blockchain and Web3 conference in Riga connecting builders, investors and regulators from the Baltics and Europe.",
       "startTime": "2027-04-07",
       "endTime": "2027-04-08",
@@ -35791,13 +35838,13 @@
       ],
       "website": "https://sezdubai.com/",
       "imageUrl": null,
-      "seriesSlug": "SEZDubaiEvents2027",
-      "seriesName": "SEZ Dubai Events"
+      "seriesSlug": "TOKEN2049DubaiEvents2027",
+      "seriesName": "TOKEN2049 Dubai Events"
     },
     {
       "id": "rec7MnG3HVutRKFxQ",
       "kind": "main",
-      "name": "FIBE 2027",
+      "name": "FIBE",
       "description": "Two-day finance and technology festival bringing together banks, fintechs, investors and policymakers from across Europe.",
       "startTime": "2027-04-07",
       "endTime": "2027-04-08",
@@ -35820,7 +35867,7 @@
     {
       "id": "recBn93rkz2DlGlkm",
       "kind": "main",
-      "name": "Digital Euro Conference 2027",
+      "name": "Digital Euro Conference",
       "description": "Join the Digital Euro Conference 2027 in Frankfurt on April 8! Explore CBDCs, stablecoins, and the future of digital money with industry leaders. Register now!",
       "startTime": "2027-04-08",
       "endTime": "2027-04-08",
@@ -36059,7 +36106,7 @@
     {
       "id": "recdrEw38wBTqoa1U",
       "kind": "main",
-      "name": "Unchained Summit Dubai 2027",
+      "name": "Unchained Summit Dubai",
       "description": "#1 Web3 & Crypto Event\nfor High-impact Networking and Deal-flow",
       "startTime": "2027-04-19",
       "endTime": "2027-04-20",
@@ -36077,13 +36124,13 @@
       ],
       "website": "https://unchainedsummit.com/dubai/",
       "imageUrl": null,
-      "seriesSlug": "UnchainedSummitEvents2027",
-      "seriesName": "Unchained Summit Events"
+      "seriesSlug": "TOKEN2049DubaiEvents2027",
+      "seriesName": "TOKEN2049 Dubai Events"
     },
     {
       "id": "recwcYSDCBH1Am2dU",
       "kind": "main",
-      "name": "TOKEN2049 Dubai 2027",
+      "name": "TOKEN2049 Dubai",
       "description": "TOKEN2049 will take over the majestic Madinat Jumeirah with a unique indoor-outdoor setting. An immersive experience awaits: ziplines, cold plunges, protein shakes and IV drips, a colossal outdoor wall, live performances – all while being treated to our signature Arabian hospitality and an elevated gastronomic experience.\n\n",
       "startTime": "2027-04-21",
       "endTime": "2027-04-22",
@@ -36176,7 +36223,7 @@
     {
       "id": "recmaOJWz6fdL8Blq",
       "kind": "main",
-      "name": "Lugano\nSummit 2027",
+      "name": "Lugano\nSummit",
       "description": "Seven pillars of modern wealth\nEach pillar receives its own stage time, its own voices and its own room of allocators — because a portfolio, a passport, a physician and a private collection all answer to the same principal",
       "startTime": "2027-04-28",
       "endTime": "2027-04-30",
@@ -36201,7 +36248,7 @@
     {
       "id": "recvTYhAeNkuj5Ixi",
       "kind": "main",
-      "name": "React Miami 2027",
+      "name": "React Miami",
       "description": "The Ultimate\nReact Conference\nin the US",
       "startTime": "2027-04-29",
       "endTime": "2027-04-30",
@@ -36344,7 +36391,7 @@
     {
       "id": "recAHIr10a4gKwiJ5",
       "kind": "main",
-      "name": "BTC Prague 2027",
+      "name": "BTC Prague",
       "description": "The biggest, most influential bitcoin event in Europe ever, again!",
       "startTime": "2027-05-06",
       "endTime": "2027-05-08",
@@ -36362,8 +36409,8 @@
       ],
       "website": "https://btcprague.com/",
       "imageUrl": "https://2027.btcprague.com/wp-content/uploads/2026/06/27btcprg_og_image.png",
-      "seriesSlug": "BTCPrague2027",
-      "seriesName": "BTC Prague 2027"
+      "seriesSlug": "BTCPragueEvents2027",
+      "seriesName": "BTC Prague Events"
     },
     {
       "id": "recWoufgEYYvYukja",
@@ -36392,7 +36439,7 @@
     {
       "id": "recbvQXtbhUWT89Xx",
       "kind": "main",
-      "name": "ETHCluj 2027",
+      "name": "ETHCluj",
       "description": "The internet is changing.\n\nWe are here to help you understand how — through workshops, events, and open resources on Web3, blockchain, and digital freedom.",
       "startTime": "2027-05-12",
       "endTime": "2027-05-13",
@@ -36464,7 +36511,7 @@
     {
       "id": "recjKTgN6P6ltx1fd",
       "kind": "main",
-      "name": "Banking Transformation Summit Europe 2027",
+      "name": "Banking Transformation Summit Europe",
       "description": "European banking summit bringing together leaders from 200+ banks and building societies across seven theatres on AI, payments, risk, cyber and operations.",
       "startTime": "2027-05-18",
       "endTime": "2027-05-19",
@@ -36481,8 +36528,8 @@
       ],
       "website": "https://bankingtransformationsummit.com/",
       "imageUrl": null,
-      "seriesSlug": "BankingTransformationSummitEurope2027",
-      "seriesName": "Banking Transformation Summit Europe 2027"
+      "seriesSlug": "SXSWLondonEvents2027",
+      "seriesName": "SXSW London Events"
     },
     {
       "id": "recezPNUdgvcycbkN",
@@ -36505,13 +36552,13 @@
       ],
       "website": "https://www.omfif.org/dms2027/",
       "imageUrl": null,
-      "seriesSlug": "DigitalMoneyEvents2027",
-      "seriesName": "Digital Money Events"
+      "seriesSlug": "SXSWLondonEvents2027",
+      "seriesName": "SXSW London Events"
     },
     {
       "id": "rec1Zr695NzoJZZlI",
       "kind": "main",
-      "name": "Dutch Blockchain Week 2027",
+      "name": "Dutch Blockchain Week",
       "description": "One of Europe’s leading Business events for digital assets, blockchain and Web3, Dutch Blockchain Week brings together professionals from exchanges, banks, payment providers, funds, market makers, regulators, infrastructure companies and global technology leaders in Amsterdam.\n\nAt the heart of the week, the DBW Main Summit brings the industry together for two days of high-level content, business development and networking.\n\nThe DBW Summit on May 19 & 20 in the Johan Cruijff ArenA offers two full days of Web3 insights, panels, deep dives, and high-level networking, designed for institutions, founders, policymakers, and professionals shaping the future of digital assets.",
       "startTime": "2027-05-19",
       "endTime": "2027-05-20",
@@ -36577,13 +36624,13 @@
       ],
       "website": "https://www.usaaisummit.net/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "NYCMayEvents2027",
+      "seriesName": "NYC May Events"
     },
     {
       "id": "rec9G6soeKXPGkEPm",
       "kind": "main",
-      "name": "Milano Blockchain Week 2027",
+      "name": "Milano Blockchain Week",
       "description": "The Italian Blockchain Conference.",
       "startTime": "2027-05-20",
       "endTime": "2027-05-22",
@@ -36632,7 +36679,7 @@
     {
       "id": "recgQbI9f5Mbn4V3L",
       "kind": "main",
-      "name": "SXSW London 2027",
+      "name": "SXSW London",
       "description": "Experience SXSW London in Shoreditch where global music, film, tech, and culture meet for six days of discovery, networking, and inspiration.",
       "startTime": "2027-05-24",
       "endTime": "2027-05-29",
@@ -36681,7 +36728,7 @@
     {
       "id": "rec4GBRN2cljmgyOe",
       "kind": "main",
-      "name": "Web Summit Vancouver 2027",
+      "name": "Web Summit Vancouver",
       "description": "Tech leaders gather at Web Summit Vancouver to shape the future of the industry.",
       "startTime": "2027-05-25",
       "endTime": "2027-05-28",
@@ -36705,7 +36752,7 @@
     {
       "id": "recSnr76TBcV1iA7I",
       "kind": "main",
-      "name": "Nordic Blockchain Conference 2027",
+      "name": "Nordic Blockchain Conference",
       "description": "The industry association for blockchain and digital assets in the Nordics.",
       "startTime": "2027-05-26",
       "endTime": "2027-05-27",
@@ -36752,7 +36799,7 @@
     {
       "id": "rec0EGmchsjS4P2yJ",
       "kind": "main",
-      "name": "NFC Summit 2027",
+      "name": "NFC Summit",
       "description": "Non Fungible Conference is now NFC Summit. Sixth edition, 27–29 May 2027 at the Unicorn Factory, Lisbon. Get your name on the wall of the venue until October 30.",
       "startTime": "2027-05-27",
       "endTime": "2027-05-29",
@@ -36776,7 +36823,7 @@
     {
       "id": "recPNmTM3MGZycbn2",
       "kind": "main",
-      "name": "ETHPrague 2027",
+      "name": "ETHPrague",
       "description": "ETHPrague is an event focused on the future of Ethereum and potential concepts or applications that don't yet exist.",
       "startTime": "2027-05-28",
       "endTime": "2027-05-30",
@@ -36796,6 +36843,29 @@
       "imageUrl": null,
       "seriesSlug": "ETHPragueSideEvents2027",
       "seriesName": "ETHPrague Side Events"
+    },
+    {
+      "id": "recS8sxxU5ijggmUY",
+      "kind": "main",
+      "name": "Black Hat MEA",
+      "description": "Black Hat Middle East and Africa is a leading cybersecurity conference and exhibition held in Riyadh, KSA. The event brings together cybersecurity professionals, cutting-edge technologies, solution providers, and decision-makers from around the world, condensing several months of networking into just three days.",
+      "startTime": "2027-05-31",
+      "endTime": "2027-06-02",
+      "location": "Riyadh, Saudi Arabia 🇸🇦",
+      "city": "Riyadh",
+      "country": "Saudi Arabia 🇸🇦",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Conference"
+      ],
+      "topics": [
+        "Security"
+      ],
+      "website": "https://blackhatmea.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recMdJVreS1oMoxfa",
@@ -36849,7 +36919,7 @@
     {
       "id": "rec2Z2TE3zhHjzgMf",
       "kind": "main",
-      "name": "London Tech Week 2027",
+      "name": "London Tech Week",
       "description": "Welcome to London Tech Week, the premier destination for innovation, collaboration, and growth in the tech industry. Each June at Olympia London, we bring together the brightest minds, visionary leaders, and cutting-edge solutions to shape the future of business.\n\nJoin us in exploring transformative ideas, connecting with global influencers, and discovering the technologies that will redefine industries. Whether you're an entrepreneur, executive, or innovator, London Tech Week is your gateway to the insights, connections and opportunities that power growth.",
       "startTime": "2027-06-07",
       "endTime": "2027-06-11",
@@ -36893,13 +36963,13 @@
       ],
       "website": "https://informaconnect.com/superreturn-international/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SuperReturn2027",
+      "seriesName": "SuperReturn"
     },
     {
       "id": "recHLgTExoqaOanIt",
       "kind": "main",
-      "name": "Tech Week NYC 2027",
+      "name": "Tech Week NYC",
       "description": "Top founders, funds, and companies around the globe will be at a16z's Tech Week next year. Will you?",
       "startTime": "2027-06-07",
       "endTime": "2027-06-13",
@@ -36918,13 +36988,13 @@
       ],
       "website": "https://www.tech-week.com/",
       "imageUrl": null,
-      "seriesSlug": "NYCTechWeek2027",
-      "seriesName": "NYC Tech Week"
+      "seriesSlug": "TOKEN2049NYCEvents2027",
+      "seriesName": "TOKEN2049 NYC Events"
     },
     {
       "id": "reclS2eR4Hxu4vY3Y",
       "kind": "main",
-      "name": "Money20/20 Europe 2027",
+      "name": "Money20/20 Europe",
       "description": "Europe's largest fintech and payments show returns to the RAI in Amsterdam. Around one in three attendees is C-suite, spanning banks, payments, big tech, startups, retail, policy, crypto and cyber security.",
       "startTime": "2027-06-08",
       "endTime": "2027-06-10",
@@ -36947,7 +37017,7 @@
     {
       "id": "recgSE9OkVaTGzwDr",
       "kind": "main",
-      "name": "WAIB Summit Monaco 2027",
+      "name": "WAIB Summit Monaco",
       "description": "The World’s Most Exclusive Summit for Web3, AI, and Digital Assets. Invest the Future.",
       "startTime": "2027-06-08",
       "endTime": "2027-06-09",
@@ -36970,7 +37040,7 @@
     {
       "id": "rec59bkY8JcFklo9X",
       "kind": "main",
-      "name": "The AI Summit London 2027",
+      "name": "The AI Summit London",
       "description": "The AI Summit London is one of the world's leading commercial AI conferences, bringing together business leaders, AI practitioners, startups, investors, and technology innovators to explore real-world AI applications. The event features keynote sessions, enterprise case studies, exhibitions, and networking during London Tech Week",
       "startTime": "2027-06-09",
       "endTime": "2027-06-10",
@@ -37036,13 +37106,13 @@
       ],
       "website": "https://ethconf.com/",
       "imageUrl": null,
-      "seriesSlug": "ETHConfEvents2027",
-      "seriesName": "ETHConf Events"
+      "seriesSlug": "TOKEN2049NYCEvents2027",
+      "seriesName": "TOKEN2049 NYC Events"
     },
     {
       "id": "recjYtrilgGpvXyXO",
       "kind": "main",
-      "name": "Web Summit Rio 2027",
+      "name": "Web Summit Rio",
       "description": "Meet tech leaders this June at Web Summit Rio. Join our network to secure two tickets for the price of one, only R$995. Don’t miss out!",
       "startTime": "2027-06-14",
       "endTime": "2027-06-17",
@@ -37088,7 +37158,7 @@
     {
       "id": "recc9PSs52YKDMByy",
       "kind": "main",
-      "name": "VivaTech 2026",
+      "name": "VivaTech",
       "description": "VivaTech is Europe's largest startup and technology event, bringing together startups, investors, enterprises, policymakers, and innovators to showcase the latest breakthroughs in AI, deep tech, sustainability, and digital transformation. The event features world-class keynotes, startup exhibitions, networking, and innovation showcases.",
       "startTime": "2027-06-16",
       "endTime": "2027-06-19",
@@ -37128,13 +37198,13 @@
       ],
       "website": "https://www.token2049.com/new-york",
       "imageUrl": "https://cdn.prod.website-files.com/6756df8f05088bc3e51c64c0/6abe2f6497a70ad6abe776af_9030286fd3ad3cd3661b7bc8c18cd4ac_nyc.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "TOKEN2049NYCEvents2027",
+      "seriesName": "TOKEN2049 NYC Events"
     },
     {
       "id": "recQ6BC3ebB8AHUTF",
       "kind": "main",
-      "name": "Le Paradigme Bitcoin 2027",
+      "name": "Le Paradigme Bitcoin",
       "description": "Le Paradigme Bitcoin 2027",
       "startTime": "2027-06-25",
       "endTime": "2027-06-26",
@@ -37231,7 +37301,7 @@
     {
       "id": "recQLFb176G0d4kLx",
       "kind": "main",
-      "name": "Bitcoin 2027",
+      "name": "Bitcoin",
       "description": "The Bitcoin Conference returns to Nashville July 15–17, 2027. Bitcoin 2027 is the world's largest Bitcoin event — three days of keynotes, builders, founders, policy, music, and the people defining the protocol's next decade.",
       "startTime": "2027-07-15",
       "endTime": "2027-07-17",
@@ -37254,7 +37324,7 @@
     {
       "id": "rec0TyHHaZTw8XQUV",
       "kind": "main",
-      "name": "Money Expo India 2027",
+      "name": "Money Expo India",
       "description": "One Platform. Unlimited Opportunities.",
       "startTime": "2027-08-14",
       "endTime": "2027-08-15",
@@ -37302,7 +37372,7 @@
     {
       "id": "recknqFdw8TTOcYFo",
       "kind": "main",
-      "name": "SuperAI 2027",
+      "name": "SuperAI",
       "description": "SuperAI is Asia's largest AI conference, bringing together over 10,000 attendees, 1,500+ AI companies, startups, investors, researchers, and enterprise leaders to explore the latest advancements in artificial intelligence. The event features world-class keynotes, startup competitions, exhibitions, and networking as the anchor event of Singapore AI Week.",
       "startTime": "2027-09-08",
       "endTime": "2027-09-09",
@@ -37348,7 +37418,7 @@
     {
       "id": "recvADExmCGIfqkBg",
       "kind": "main",
-      "name": "UN Blockchain Week 2027",
+      "name": "UN Blockchain Week",
       "description": "Blockchain Week - UNGA Edition 2027 is a six-day blockchain gathering during the United Nations General Assembly in Times Square, New York.",
       "startTime": "2027-09-13",
       "endTime": "2027-09-18",
@@ -37422,7 +37492,7 @@
     {
       "id": "recJMV0wugfij8b4M",
       "kind": "main",
-      "name": "Sibos 2027",
+      "name": "Sibos",
       "description": "Singapore hosts Sibos for the third time at the iconic Marina Bay Sands, bringing together the Asia Pacific financial community.",
       "startTime": "2027-09-20",
       "endTime": "2027-09-23",
@@ -37470,7 +37540,7 @@
     {
       "id": "rec2r7V5df5ZTeYsj",
       "kind": "main",
-      "name": "Wiki Finance Expo Hong Kong 2027",
+      "name": "Wiki Finance Expo Hong Kong",
       "description": "WikiEXPO Brand Exhibtion: WikiEXPO is an authoritative platform, gathering KOLs and elites worldwide in various sectors, covering forex,  blackchain, and cryptos.",
       "startTime": "2027-09-23",
       "endTime": "2027-09-24",
@@ -37495,7 +37565,7 @@
     {
       "id": "recaQvhimsqdSqM9v",
       "kind": "main",
-      "name": "Stablecon US 2027",
+      "name": "Stablecon US",
       "description": "Stablecon brings together the people building, adopting, and exploring the future of programmable money — all in one place.\n\nFrom infrastructure to institutions, it’s where the stablecoin ecosystem connects and moves forward.",
       "startTime": "2027-09-29",
       "endTime": "2027-09-30",
@@ -37519,7 +37589,7 @@
     {
       "id": "recasAUxWmivTQFzu",
       "kind": "main",
-      "name": "Tech Week SF 2027",
+      "name": "Tech Week SF",
       "description": "Top founders, funds, and companies around the globe will be at a16z's Tech Week next year. Will you?",
       "startTime": "2027-10-04",
       "endTime": "2027-10-10",
@@ -37568,7 +37638,7 @@
     {
       "id": "recJNsSZFbldTJgIV",
       "kind": "main",
-      "name": "TOKEN2049 Singapore 2027",
+      "name": "TOKEN2049 Singapore",
       "description": "TOKEN2049 is the world's largest crypto event. Join the ecosystem's decision-makers in Singapore to connect, exchange ideas, network, and shape the industry.",
       "startTime": "2027-10-06",
       "endTime": "2027-10-07",
@@ -37639,7 +37709,7 @@
     {
       "id": "recBmDrCcwHOEsjlm",
       "kind": "main",
-      "name": "Dubai 2027 Venture Capital World Summit",
+      "name": "Dubai Venture Capital World Summit",
       "description": "Venture Capital World Summit, World Series Seasons of Investment Conferences\nGlobal community for investors and investees\nHere to help businesses get more…",
       "startTime": "2027-10-19",
       "endTime": "2027-10-19",
@@ -37730,8 +37800,8 @@
       ],
       "website": "https://australia.money2020.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "Money2020Australia2028",
+      "seriesName": "Money20/20 Australia"
     }
   ]
 }
