@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listVideosForSitemap } from "@/lib/videoDb";
 import { VIDEOS_PER_SITEMAP, videoSitemapIds } from "@/lib/sitemaps";
-import { absoluteUrl, videoLongDescription, videoThumbnail, xmlEscape } from "@/lib/seo";
+import { absoluteUrl, cleanVideoTitle, videoLongDescription, videoThumbnail, xmlEscape } from "@/lib/seo";
 
 // Google's video sitemap caps duration at 8 hours; longer livestream
 // recordings are listed without one rather than rejected.
@@ -29,7 +29,7 @@ export default async function sitemap(props: { id: Promise<string> }): Promise<M
       lastModified: published,
       videos: [
         {
-          title: xmlEscape(video.title.slice(0, 100)),
+          title: xmlEscape(cleanVideoTitle(video.title).slice(0, 100)),
           thumbnail_loc: xmlEscape(videoThumbnail(video)),
           description: xmlEscape(videoLongDescription(video)),
           ...(video.contentUrl ? { content_loc: xmlEscape(video.contentUrl) } : {}),

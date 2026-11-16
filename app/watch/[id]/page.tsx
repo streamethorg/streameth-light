@@ -30,6 +30,7 @@ import JsonLd from "@/components/JsonLd";
 import {
   breadcrumbJsonLd,
   videoJsonLd,
+  cleanVideoTitle,
   videoMetaDescription,
   videoPageTitle,
   videoThumbnail,
@@ -96,7 +97,7 @@ function watchJsonLd(video: UnifiedVideo, transcript: string | null, event?: Eve
   const crumbs = [{ name: "Home", path: "/" }];
   if (orgPath && orgName) crumbs.push({ name: orgName, path: orgPath });
   if (event && eventPath) crumbs.push({ name: event.name, path: eventPath });
-  crumbs.push({ name: video.title, path: `/watch/${video.id}` });
+  crumbs.push({ name: cleanVideoTitle(video.title), path: `/watch/${video.id}` });
 
   return [
     videoJsonLd({
