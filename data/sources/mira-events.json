@@ -1,6 +1,6 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-16",
+  "importedAt": "2026-11-17",
   "seriesCount": 220,
   "eventCount": 1717,
   "series": [
@@ -32961,7 +32961,7 @@
     {
       "id": "recWh8LksCe536tDc",
       "kind": "main",
-      "name": "Africa Fintech Summit Kigali",
+      "name": "Africa Fintech Summit",
       "description": "The Africa Fintech Summit comes to Rwanda under the theme \"Powering the World from Africa\". Three days connecting investors, banks, regulators and founders, including a startup track where 34 early-stage fintechs from 10 countries pitch on day one.",
       "startTime": "2026-11-18",
       "endTime": "2026-11-20",
@@ -33194,7 +33194,7 @@
     {
       "id": "reclhyt9Cit1yGzkD",
       "kind": "main",
-      "name": "Trust Summit | Singapore Fintech Festival",
+      "name": "Trust Summit",
       "description": "This event is by invitation only. For those with an invitation code, enter your code on the next page to unlock your complimentary ticket. Waitlisted…",
       "startTime": "2026-11-20",
       "endTime": "2026-11-20",
@@ -33265,7 +33265,7 @@
     {
       "id": "recaVPuuBD6KRacsC",
       "kind": "main",
-      "name": "FintechWeek Vienna",
+      "name": "FintechWeek",
       "description": "AI. Financializing Energy. RegTech. Crypto",
       "startTime": "2026-11-23",
       "endTime": "2026-11-27",
@@ -33337,7 +33337,7 @@
     {
       "id": "rechN3HyyKXTicRjq",
       "kind": "main",
-      "name": "DEAI Summit Malta",
+      "name": "DEAI Summit",
       "description": "🤖 DeAI Summit 2026: Beyond Borders, The Inflection Point of AI November 25–28, 2026 | Malta\n \n🌟20,000+ Tech expo attendees, and 2,500 DEAI Summit participants, including 1,000+ VIP attendees with global leaders in AI, decentralized infrastructure, regulatory institutions, academia, venture capital, enterprise innovation, and public policy shaping the future of compliant, human-centric AI.\n\nKey Themes: \n• Centralized vs decentralized AI architectures \n• EU AI Act compliance & governance \n• AI safety, transparency & accountability \n• Societal impact & labor transformation • Capital allocation in next-gen AI",
       "startTime": "2026-11-25",
       "endTime": "2026-11-26",
@@ -33625,7 +33625,7 @@
     {
       "id": "recvDWBUDJ8jfzVAI",
       "kind": "main",
-      "name": "NVIDIA GTC Washington D.C.",
+      "name": "NVIDIA GTC",
       "description": "Join government leaders, policymakers, scientists, and industry partners at NVIDIA GTC Washington, D.C. to learn how AI is accelerating American economic growth, reindustrialization, and scientific discovery. The conference will feature CEO Jensen Huang’s keynote, expert sessions, live demos, and hands-on workshops covering everything from open models and AI factories to physical AI, high-performance computing, and the future of U.S. scientific advancement.",
       "startTime": "2026-11-30",
       "endTime": "2026-12-03",
@@ -34117,7 +34117,7 @@
     {
       "id": "recxKbGLr2B5Ep2bj",
       "kind": "main",
-      "name": "FTT Fintech Festival North America",
+      "name": "FTT Fintech Festival",
       "description": "Fintech Talents' North American festival for 450+ fintech and financial services innovators.",
       "startTime": "2026-12-08",
       "endTime": "2026-12-09",
@@ -34596,8 +34596,8 @@
       ],
       "website": "https://events.weforum.org/en/events/world-economic-forum-annual-meeting-2027/home",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DavosEvents2027",
+      "seriesName": "Davos Events"
     },
     {
       "id": "recxpN06s52OZDqjV",
@@ -35269,7 +35269,7 @@
     {
       "id": "rec57hYT8binX1WbJ",
       "kind": "main",
-      "name": "Merchant Payments Ecosystem (MPE)",
+      "name": "Merchant Payments Ecosystem",
       "description": "The 20th edition of Europe's merchant payments conference, with around 1,600 payment professionals, more than half at director level or above. Focus areas include AI, payment orchestration, fraud prevention and cross-border commerce, with hosted meetings, roundtables and workshops.",
       "startTime": "2027-03-09",
       "endTime": "2027-03-11",
