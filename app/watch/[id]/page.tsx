@@ -19,7 +19,7 @@ import {
   listAllSessions,
   relatedSessions,
 } from "@/lib/data";
-import { getVideoById, relatedVideos } from "@/lib/videoDb";
+import { getVideoById, relatedVideos, seoDescription } from "@/lib/videoDb";
 import { getFullTranscript } from "@/lib/transcriptChunks";
 import { slugifyTopic } from "@/lib/topics";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
@@ -74,7 +74,7 @@ function toSeoInput(video: UnifiedVideo) {
   return {
     id: video.id,
     title: video.title,
-    description: video.description,
+    description: seoDescription(video),
     speakers: video.speakers,
     eventName: video.eventName,
     orgName: video.orgName,

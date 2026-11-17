@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { listVideosForSitemap } from "@/lib/videoDb";
+import { listVideosForSitemap, seoDescription } from "@/lib/videoDb";
 import { VIDEOS_PER_SITEMAP, videoSitemapIds } from "@/lib/sitemaps";
 import { absoluteUrl, cleanVideoTitle, videoLongDescription, videoThumbnail, xmlEscape } from "@/lib/seo";
 
@@ -31,7 +31,7 @@ export default async function sitemap(props: { id: Promise<string> }): Promise<M
         {
           title: xmlEscape(cleanVideoTitle(video.title).slice(0, 100)),
           thumbnail_loc: xmlEscape(videoThumbnail(video)),
-          description: xmlEscape(videoLongDescription(video)),
+          description: xmlEscape(videoLongDescription({ ...video, description: seoDescription(video) })),
           ...(video.contentUrl ? { content_loc: xmlEscape(video.contentUrl) } : {}),
           ...(youtubeId ? { player_loc: xmlEscape(`https://www.youtube.com/embed/${youtubeId}`) } : {}),
           ...(duration ? { duration } : {}),
