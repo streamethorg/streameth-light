@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-17",
-  "seriesCount": 220,
-  "eventCount": 1717,
+  "seriesCount": 226,
+  "eventCount": 1735,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1179,6 +1179,36 @@
       "id": "recAQ7riAoRLtVsC2",
       "title": "Money20/20 Australia",
       "slug": "Money2020Australia2028"
+    },
+    {
+      "id": "recvn8pgZykdJBtYa",
+      "title": "Stripe Sessions",
+      "slug": "StripeSessions2027"
+    },
+    {
+      "id": "recGxPmV4ZIjCtucg",
+      "title": "ETHTokyo Week",
+      "slug": "ETHTokyoWeek2027"
+    },
+    {
+      "id": "rec9gCBt7WKKgaBLF",
+      "title": "Taipei Blockchain Week",
+      "slug": "TaipeiBlockchainWeek2027"
+    },
+    {
+      "id": "recjMGlwc26IWQJHx",
+      "title": "Breakpoint 2027 Events",
+      "slug": "Breakpoint2027Events2027"
+    },
+    {
+      "id": "recdVExhwX7pDopZH",
+      "title": "Devcon Side Events",
+      "slug": "DevconSideEvents2027"
+    },
+    {
+      "id": "recU8JV4Xg6F0HsJx",
+      "title": "FTT Fintech Events",
+      "slug": "FTTFintechEvents2027"
     }
   ],
   "events": [
@@ -33121,6 +33151,31 @@
       "seriesName": ""
     },
     {
+      "id": "recSOu0CYpGEZqpyK",
+      "kind": "main",
+      "name": "Global Bitcoin Circular Economies Summit",
+      "description": "Gathers the people growing real adoption on the ground: community leaders, merchants, educators, and builders.",
+      "startTime": "2026-11-19",
+      "endTime": "2026-11-20",
+      "location": "El Zonte, El Salvador 🇸🇻",
+      "city": "El Zonte",
+      "country": "El Salvador 🇸🇻",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "DeFi",
+        "Institutional",
+        "Infrastructure"
+      ],
+      "website": "https://www.bitcoinbeach.com/summit-blog/bitcoin-circular-economies-summit-2026",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recbtXuU8dNft7GFb",
       "kind": "main",
       "name": "CodeLap Hackathon",
@@ -33475,6 +33530,30 @@
       ],
       "website": "https://lu.ma/u4ykka8r",
       "imageUrl": "https://images.lumacdn.com/uploads/xu/61e055e4-308f-46bf-9e44-1b4a9ffe24cd.png",
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recYNGRGbaQhQdstU",
+      "kind": "main",
+      "name": "Bitcoin Japan",
+      "description": "Features Festival, Expo, and Summit—three events shaped for different Bitcoin audiences.",
+      "startTime": "2026-11-27",
+      "endTime": "2026-11-28",
+      "location": "Tokyo, Japan 🇯🇵",
+      "city": "Tokyo",
+      "country": "Japan 🇯🇵",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://btc-jpn.com/",
+      "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
     },
@@ -34863,6 +34942,30 @@
       "seriesName": ""
     },
     {
+      "id": "reczxybEltnwpeRPM",
+      "kind": "main",
+      "name": "RWA Summit Hong Kong",
+      "description": "​The 2nd edition of RWA SUMMIT HONG KONG and the 4th edition of RWA SUMMIT GLOBAL SERIES hosted in Hong Kong, Dubai, and Singapore in 2026.",
+      "startTime": "2027-02-03",
+      "endTime": "2027-02-04",
+      "location": "Hong Kong, Hong Kong 🇭🇰",
+      "city": "Hong Kong",
+      "country": "Hong Kong 🇭🇰",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "RWA"
+      ],
+      "website": "https://luma.com/rwasummit",
+      "imageUrl": null,
+      "seriesSlug": "ConsensusHKEvents2027",
+      "seriesName": "Consensus HK Events"
+    },
+    {
       "id": "rec9HNdjBiF0UZ3dd",
       "kind": "main",
       "name": "Summit Lake Tahoe",
@@ -35684,8 +35787,8 @@
       "description": "Learn frontier technology, build alongside talented specialists, access remote job opportunities and earn while collaborating.",
       "startTime": "2027-04-01",
       "endTime": "2027-04-30",
-      "location": "Other, Brazil, Brazil 🇧🇷",
-      "city": "Other, Brazil",
+      "location": " Ipê, Brazil 🇧🇷",
+      "city": " Ipê",
       "country": "Brazil 🇧🇷",
       "organizer": null,
       "tags": [
@@ -36008,6 +36111,30 @@
       "imageUrl": null,
       "seriesSlug": "StableconEMEAEvents2027",
       "seriesName": "Stablecon EMEA Events"
+    },
+    {
+      "id": "reccZlcOT9zleIjRr",
+      "kind": "main",
+      "name": "ETHGlobal Cannes",
+      "description": "IRL Hackathon",
+      "startTime": "2027-04-14",
+      "endTime": "2027-04-16",
+      "location": "Cannes, France 🇫🇷",
+      "city": "Cannes",
+      "country": "France 🇫🇷",
+      "organizer": null,
+      "tags": [
+        "Hack",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Infrastructure",
+        "DeFi"
+      ],
+      "website": "https://ethglobal.com/events",
+      "imageUrl": null,
+      "seriesSlug": "EthCC10Events2027",
+      "seriesName": "EthCC 10 Events"
     },
     {
       "id": "reclW32FWQml4y9tm",
@@ -36363,6 +36490,30 @@
       "imageUrl": null,
       "seriesSlug": "ConsensusMiamiEvents2027",
       "seriesName": "Consensus Miami Events"
+    },
+    {
+      "id": "recy7d4TbiCM5ytKA",
+      "kind": "main",
+      "name": "Stripe Sessions",
+      "description": "The internet economy conference",
+      "startTime": "2027-05-04",
+      "endTime": "2027-05-06",
+      "location": "San Francisco, USA 🇺🇸",
+      "city": "San Francisco",
+      "country": "USA 🇺🇸",
+      "organizer": "Stripe",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "Other"
+      ],
+      "website": "https://stripesessions.com/",
+      "imageUrl": null,
+      "seriesSlug": "StripeSessions2027",
+      "seriesName": "Stripe Sessions"
     },
     {
       "id": "recU0ugU95TSfKOkj",
@@ -36845,6 +36996,27 @@
       "seriesName": "ETHPrague Side Events"
     },
     {
+      "id": "recAZrdm9GDRs2VQg",
+      "kind": "main",
+      "name": "Adopting Bitcoin Arnhem",
+      "description": "Adopting Bitcoin Arnhem is a two day edition of the Adopting Bitcoin conference series, focused on everyday Bitcoin adoption for both bitcoiners and newcomers. It takes place on 28 and 29 May 2027 at the Koepelgevangenis in Arnhem. Tickets can be paid in bitcoin only.",
+      "startTime": "2027-05-28",
+      "endTime": "2027-05-29",
+      "location": "Arnhem, Netherlands 🇳🇱",
+      "city": "Arnhem",
+      "country": "Netherlands 🇳🇱",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [],
+      "website": "https://nl27.adoptingbitcoin.org/",
+      "imageUrl": null,
+      "seriesSlug": "DutchBlockchainWeek2027",
+      "seriesName": "Dutch Blockchain Week"
+    },
+    {
       "id": "recS8sxxU5ijggmUY",
       "kind": "main",
       "name": "Black Hat MEA",
@@ -36992,6 +37164,30 @@
       "seriesName": "TOKEN2049 NYC Events"
     },
     {
+      "id": "recxSkR1zKhoc6Kte",
+      "kind": "main",
+      "name": "World Family Office Forum",
+      "description": "Bringing together the region's leading business families and family offices for two days of conversation and connection.",
+      "startTime": "2027-06-07",
+      "endTime": "2027-06-08",
+      "location": "Lausanne, Switzerland 🇨🇭",
+      "city": "Lausanne",
+      "country": "Switzerland 🇨🇭",
+      "organizer": "ConnectGroupHQ",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://europe.worldfamilyofficeforum.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "reclS2eR4Hxu4vY3Y",
       "kind": "main",
       "name": "Money20/20 Europe",
@@ -37130,6 +37326,30 @@
       "imageUrl": null,
       "seriesSlug": "WebSummitRio2027",
       "seriesName": "Web Summit Rio"
+    },
+    {
+      "id": "rectsdNTetd4PZpgi",
+      "kind": "main",
+      "name": "ETHGlobal New York",
+      "description": "IRL Hackathon",
+      "startTime": "2027-06-14",
+      "endTime": "2027-06-16",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Hack",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Infrastructure",
+        "DeFi"
+      ],
+      "website": "https://ethglobal.com/events",
+      "imageUrl": null,
+      "seriesSlug": "TOKEN2049NYCEvents2027",
+      "seriesName": "TOKEN2049 NYC Events"
     },
     {
       "id": "recYK6Tp1MQyVkTJP",
@@ -37347,6 +37567,103 @@
       "seriesName": "Money Expo India"
     },
     {
+      "id": "rec5Qvm3kWXDM7HvH",
+      "kind": "main",
+      "name": "ETHGlobal Tokyo",
+      "description": "IRL Hackathon",
+      "startTime": "2027-08-23",
+      "endTime": "2027-08-25",
+      "location": "Tokyo, Japan 🇯🇵",
+      "city": "Tokyo",
+      "country": "Japan 🇯🇵",
+      "organizer": null,
+      "tags": [
+        "Hack",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Infrastructure",
+        "DeFi"
+      ],
+      "website": "https://ethglobal.com/events",
+      "imageUrl": null,
+      "seriesSlug": "ETHTokyoWeek2027",
+      "seriesName": "ETHTokyo Week"
+    },
+    {
+      "id": "recXO0w8w1QgRFS2X",
+      "kind": "main",
+      "name": "Wyoming Blockchain Symposium",
+      "description": "SALT is partnering with Kraken, a leading cryptocurrency exchange on our flagship digital finance conference.",
+      "startTime": "2027-08-23",
+      "endTime": "2027-08-26",
+      "location": "Jackson Hole, USA 🇺🇸",
+      "city": "Jackson Hole",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://www.salt.org/events/wyoming-blockchain-symposium-2027",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recxR8JydIh2f5yAx",
+      "kind": "main",
+      "name": "ETHTokyo",
+      "description": "ETHTokyo is a Tokyo-based Ethereum community and coordination layer, bringing together builders, researchers, artists, founders, institutions, public-goods contributors, and independent communities around a shared cypherpunk ethos and optimism for the future.",
+      "startTime": "2027-08-25",
+      "endTime": "2027-08-29",
+      "location": "Tokyo, Japan 🇯🇵",
+      "city": "Tokyo",
+      "country": "Japan 🇯🇵",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Infrastructure",
+        "Institutional"
+      ],
+      "website": "https://www.ethtokyo.org/",
+      "imageUrl": null,
+      "seriesSlug": "ETHTokyoWeek2027",
+      "seriesName": "ETHTokyo Week"
+    },
+    {
+      "id": "recViEs9DB0fEoJIi",
+      "kind": "main",
+      "name": "WebX",
+      "description": "WebX is Japan’s largest Web3 conference, hosted in Tokyo with strong participation from domestic corporates, regulators, and global projects. The 2027 edition takes place on 25 and 26 August at Tokyo Big Sight.",
+      "startTime": "2027-08-25",
+      "endTime": "2027-08-26",
+      "location": "Tokyo, Japan 🇯🇵",
+      "city": "Tokyo",
+      "country": "Japan 🇯🇵",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Media",
+        "DePIN"
+      ],
+      "website": "https://2027.webx-asia.com/",
+      "imageUrl": null,
+      "seriesSlug": "ETHTokyoWeek2027",
+      "seriesName": "ETHTokyo Week"
+    },
+    {
       "id": "recAPAaXfvgAgwI8Z",
       "kind": "main",
       "name": "Bitcoin Asia",
@@ -37370,6 +37687,30 @@
       "seriesName": "Bitcoin Asia Events"
     },
     {
+      "id": "rec3HfrphJNtLrzjT",
+      "kind": "main",
+      "name": "FUTUREMODE",
+      "description": "Taipei Blockchain Week gathers the Taiwanese and wider Chinese speaking Web3 community for a week of conference days and side events. The organisers have renamed the event FUTUREMODE and moved it to September; 2027 dates are still to be announced.",
+      "startTime": "2027-09-01",
+      "endTime": "2027-09-05",
+      "location": "Taipei, Taiwan 🇹🇼",
+      "city": "Taipei",
+      "country": "Taiwan 🇹🇼",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Infrastructure"
+      ],
+      "website": "https://taipeiblockchainweek.com/",
+      "imageUrl": null,
+      "seriesSlug": "TaipeiBlockchainWeek2027",
+      "seriesName": "Taipei Blockchain Week"
+    },
+    {
       "id": "recknqFdw8TTOcYFo",
       "kind": "main",
       "name": "SuperAI",
@@ -37391,6 +37732,31 @@
       "imageUrl": null,
       "seriesSlug": "SuperAISideEvents2027",
       "seriesName": "SuperAI Side Events"
+    },
+    {
+      "id": "reczRn0haikMxIhl0",
+      "kind": "main",
+      "name": "Solana Breakpoint",
+      "description": "Breakpoint is the Solana ecosystem’s annual conference, bringing validators, application teams, and investors together for protocol and product announcements. The 2027 edition is expected in the fourth quarter, with the host city and official dates still to be announced.",
+      "startTime": "2027-09-08",
+      "endTime": "2027-09-10",
+      "location": "San Francisco, USA 🇺🇸",
+      "city": "San Francisco",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Solana"
+      ],
+      "topics": [
+        "DeFi",
+        "Infrastructure",
+        "Institutional"
+      ],
+      "website": "https://solana.com/breakpoint",
+      "imageUrl": null,
+      "seriesSlug": "Breakpoint2027Events2027",
+      "seriesName": "Breakpoint 2027 Events"
     },
     {
       "id": "recy2b7h3bQ1Rqw7x",
@@ -37679,8 +38045,32 @@
       ],
       "website": "https://devcon.org/lisbon/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DevconSideEvents2027",
+      "seriesName": "Devcon Side Events"
+    },
+    {
+      "id": "recvUV3l6UzifkvKo",
+      "kind": "main",
+      "name": "ETHGlobal Lisbon",
+      "description": "Come build our decentralized future",
+      "startTime": "2027-10-13",
+      "endTime": "2027-10-15",
+      "location": "Lisbon, Portugal 🇵🇹",
+      "city": "Lisbon",
+      "country": "Portugal 🇵🇹",
+      "organizer": null,
+      "tags": [
+        "Hack",
+        "Ethereum/EVM"
+      ],
+      "topics": [
+        "Infrastructure",
+        "DeFi"
+      ],
+      "website": "https://ethglobal.com/events",
+      "imageUrl": null,
+      "seriesSlug": "DevconSideEvents2027",
+      "seriesName": "Devcon Side Events"
     },
     {
       "id": "recrOFkc0BsIUsxmq",
@@ -37753,6 +38143,78 @@
       "imageUrl": "https://www.mmerge.io/img/social_2026.jpg",
       "seriesSlug": "MERGEMadrid2027",
       "seriesName": "MERGE Madrid"
+    },
+    {
+      "id": "recn58KUZt5EJebFC",
+      "kind": "main",
+      "name": "SALT London",
+      "description": "SALT London is a gathering of 300 leading alternative asset managers, institutional asset allocators, bankers and fintech executives.",
+      "startTime": "2027-11-03",
+      "endTime": "2027-11-04",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://www.salt.org/events",
+      "imageUrl": null,
+      "seriesSlug": "FTTFintechEvents2027",
+      "seriesName": "FTT Fintech Events"
+    },
+    {
+      "id": "recUTamVKvex1M09s",
+      "kind": "main",
+      "name": "FTT Fintech Festival",
+      "description": "FTT Fintech Festival returns to London, 8-9 Nov 2027. 2,500+ attendees, 400+ speakers, 8 stages. Register your interest.",
+      "startTime": "2027-11-08",
+      "endTime": "2027-11-09",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi"
+      ],
+      "website": "https://www.fintechtalents.com/events/europe/festival-london/",
+      "imageUrl": "https://www.fintechtalents.com/wp-content/uploads/fintech-carousel.png",
+      "seriesSlug": "FTTFintechEvents2027",
+      "seriesName": "FTT Fintech Events"
+    },
+    {
+      "id": "recd7vmXTgzdTEvIP",
+      "kind": "main",
+      "name": "London Family Office & High Net Worth Conference",
+      "description": "London Family Office & High Net Worth Conference — November 10, 2027, The Berkeley Hotel, London",
+      "startTime": "2027-11-10",
+      "endTime": "2027-11-10",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional",
+        "Markets"
+      ],
+      "website": "https://london-wealth.com/",
+      "imageUrl": "https://pub-2d17085d87254f31817801a23e8133e2.r2.dev/backgrounds/3f252949-f8fb-4b6f-8ec4-f654af6da65b.jpeg",
+      "seriesSlug": "FTTFintechEvents2027",
+      "seriesName": "FTT Fintech Events"
     },
     {
       "id": "recndJleBceDXDJCz",
