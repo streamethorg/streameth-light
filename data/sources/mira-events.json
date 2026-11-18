@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-18",
-  "seriesCount": 226,
-  "eventCount": 1735,
+  "seriesCount": 236,
+  "eventCount": 1778,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -592,7 +592,7 @@
     },
     {
       "id": "recZe1oj3UZu17ZgO",
-      "title": "UN Blockchain Week 2027",
+      "title": "UN Blockchain Week",
       "slug": "UNBlockchainWeek2027"
     },
     {
@@ -1209,6 +1209,56 @@
       "id": "recU8JV4Xg6F0HsJx",
       "title": "FTT Fintech Events",
       "slug": "FTTFintechEvents2027"
+    },
+    {
+      "id": "recFvnvoOKc2zIuMy",
+      "title": "PKC 2027",
+      "slug": "PKC2027"
+    },
+    {
+      "id": "recZsDKuijCtjcI6M",
+      "title": "Eurocrypt 2027",
+      "slug": "Eurocrypt2027"
+    },
+    {
+      "id": "recRtvpUqg1a1RpU2",
+      "title": "GAIM Ops Cayman 2027",
+      "slug": "GAIMOpsCayman2027"
+    },
+    {
+      "id": "reckykd68bYA7L0bm",
+      "title": "Vienna Blockchain Week",
+      "slug": "ViennaBlockchainWeek2027"
+    },
+    {
+      "id": "rec2b86DU6UgGmC7H",
+      "title": "SuperReturn Events",
+      "slug": "SuperReturnEvents2027"
+    },
+    {
+      "id": "recTYbOCzgrcSYXjW",
+      "title": "Swiss Fintech Week",
+      "slug": "SwissFintechWeek2027"
+    },
+    {
+      "id": "recsp6krl67PUCAay",
+      "title": "ICML 2027",
+      "slug": "ICML2027"
+    },
+    {
+      "id": "recunnOMx6hQGqR0G",
+      "title": "Las Vegas Events",
+      "slug": "LasVegasEvents2027"
+    },
+    {
+      "id": "rec34ftCqPXiOH3Fe",
+      "title": "Tech Week Grand Rapids",
+      "slug": "TechWeekGrandRapids2027"
+    },
+    {
+      "id": "recxy6aqro7KYdjCW",
+      "title": "Nrth Side Events",
+      "slug": "NrthSideEvents2027"
     }
   ],
   "events": [
@@ -33295,6 +33345,31 @@
       "seriesName": ""
     },
     {
+      "id": "recxNW8Ao93qCfrV5",
+      "kind": "main",
+      "name": "Digitec 2026",
+      "description": "WORLD'S NEW AI HUB.",
+      "startTime": "2026-11-20",
+      "endTime": "2026-11-22",
+      "location": "Yerevan, Armenia 🇦🇲",
+      "city": "Yerevan",
+      "country": "Armenia 🇦🇲",
+      "organizer": "Digitec",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "AI",
+        "Infrastructure",
+        "VC"
+      ],
+      "website": "https://digitec.am/en-US",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "reczUHSoFnCdWepgJ",
       "kind": "main",
       "name": "Devfest Antananarivo",
@@ -34800,6 +34875,31 @@
       "seriesName": ""
     },
     {
+      "id": "recDDtJanqwE11NaW",
+      "kind": "main",
+      "name": "CapitalMENA Summit",
+      "description": "Where Capital Goes Next.",
+      "startTime": "2027-01-28",
+      "endTime": "2027-01-28",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": "CapitalMENA",
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "VC",
+        "Markets"
+      ],
+      "website": "https://capitalmena.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "reccMRbXftSM680l7",
       "kind": "main",
       "name": "Plan ₿ Forum El Salvador",
@@ -35008,6 +35108,30 @@
         "Institutional"
       ],
       "website": "https://www.aima.org/events/aima-middle-east-forum-2027.html",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recAWkodOyYnepfbD",
+      "kind": "main",
+      "name": "Digital Assets Week Dubai",
+      "description": "Transforming Finance With Tokenisation",
+      "startTime": "2027-02-04",
+      "endTime": "2027-02-04",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": "Juliet Media",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "RWA",
+        "TradFi"
+      ],
+      "website": "https://daweek.org/dubai/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -35225,6 +35349,29 @@
       "seriesName": "GDC Side Events"
     },
     {
+      "id": "recX7VyHIa87he9cq",
+      "kind": "main",
+      "name": "PKC",
+      "description": "PKC 2027 will take place in Taipei, Taiwan on March 1-4, 2027. PKC 2027 is organized by the International Association for Cryptologic Research (IACR). This will be the 30th annual conference on public key cryptography.",
+      "startTime": "2027-03-01",
+      "endTime": "2027-03-04",
+      "location": "Taipei, Taiwan 🇹🇼",
+      "city": "Taipei",
+      "country": "Taiwan 🇹🇼",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Conference"
+      ],
+      "topics": [
+        "Privacy"
+      ],
+      "website": "https://pkc.iacr.org/2027/",
+      "imageUrl": null,
+      "seriesSlug": "PKC2027",
+      "seriesName": "PKC 2027"
+    },
+    {
       "id": "rectzt7RK2cboTrxF",
       "kind": "main",
       "name": "RIA Edge Nashville",
@@ -35293,6 +35440,29 @@
       "imageUrl": "https://moneylive-insights.com/wp-content/uploads/2024/03/230308-MoneyLiveSummit-owenbphoto-161-2-1.jpg",
       "seriesSlug": "MoneyLIVEEvents2027",
       "seriesName": "MoneyLIVE Events"
+    },
+    {
+      "id": "recuV9Iq9rYPeYZ6u",
+      "kind": "main",
+      "name": "Digital Assets Week Hong Kong",
+      "description": "On-Chain Capital Markets – From tokenised securities, to treasuries, and beyond",
+      "startTime": "2027-03-03",
+      "endTime": "2027-03-03",
+      "location": "Hong Kong, Hong Kong 🇭🇰",
+      "city": "Hong Kong",
+      "country": "Hong Kong 🇭🇰",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "DeFi",
+        "VC"
+      ],
+      "website": "https://daweek.org/hong-kong/",
+      "imageUrl": null,
+      "seriesSlug": "ArtBaselHKEvents2027",
+      "seriesName": "Art Basel HK Events"
     },
     {
       "id": "rec2S776O0W17dWLw",
@@ -35438,6 +35608,28 @@
       "imageUrl": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_Nz8bv9R",
       "seriesSlug": "AIEvents",
       "seriesName": "AI Events"
+    },
+    {
+      "id": "recy9J0FdQVl2iKFw",
+      "kind": "main",
+      "name": "AI+ Renaissance Conference",
+      "description": "We have already started planning for 2027, and it gets better every year...\nSpeaking | product showcase | partnership: team@aiplus.dev",
+      "startTime": "2027-03-13",
+      "endTime": "2027-03-13",
+      "location": "San Francisco, USA 🇺🇸",
+      "city": "San Francisco",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://luma.com/renaissance27",
+      "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ol/38ebb1bc-7a73-4d2a-9ef4-1dceca3871f8.png",
+      "seriesSlug": "GDCSideEvents2027",
+      "seriesName": "GDC Side Events"
     },
     {
       "id": "rec7SABpczzzOCT10",
@@ -35716,6 +35908,29 @@
       "seriesName": "Art Basel HK Events"
     },
     {
+      "id": "recwbcOkOV7RuFNYT",
+      "kind": "main",
+      "name": "ZIGChain Summit",
+      "description": "Ecosystem fund backing the builders who ship. Capital, infrastructure and builders must move together for compounding to happen.",
+      "startTime": "2027-03-25",
+      "endTime": "2027-03-25",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional"
+      ],
+      "website": "https://summit.zigchain.com/2026",
+      "imageUrl": null,
+      "seriesSlug": "AIBCEurasiaEvents2027",
+      "seriesName": "AIBC Eurasia Events"
+    },
+    {
       "id": "recuBEcF7SWvX6brV",
       "kind": "main",
       "name": "Digital Asset Summit NYC",
@@ -35756,6 +35971,30 @@
       "imageUrl": null,
       "seriesSlug": "BuildingBlocksTLV2027",
       "seriesName": "Building Blocks TLV 2027"
+    },
+    {
+      "id": "recKXm9QCm07iCcdp",
+      "kind": "main",
+      "name": "Chainalysis Links",
+      "description": "No information at this moment",
+      "startTime": "2027-03-30",
+      "endTime": "2027-03-30",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Institutional"
+      ],
+      "website": "https://events.chainalysis.com/Links-2027",
+      "imageUrl": null,
+      "seriesSlug": "DASNYCEvents2027",
+      "seriesName": "DAS NYC Events"
     },
     {
       "id": "reckQxyTcHIm5Fx99",
@@ -35991,6 +36230,30 @@
       "seriesName": "Frankfurt Blockchain Week"
     },
     {
+      "id": "recx8OQcV3fQmUHBZ",
+      "kind": "main",
+      "name": "Eurocrypt",
+      "description": "Eurocrypt 2027 will take place in Eindhoven, the Netherlands on April 11-15, 2027. Eurocrypt 2027 is organized by the International Association for Cryptologic Research (IACR). This will be the 46th annual international conference on the theory and applications of cryptographic techniques.",
+      "startTime": "2027-04-11",
+      "endTime": "2027-04-15",
+      "location": "Eindhoven, Netherlands 🇳🇱",
+      "city": "Eindhoven",
+      "country": "Netherlands 🇳🇱",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Conference"
+      ],
+      "topics": [
+        "Privacy",
+        "Security"
+      ],
+      "website": "https://eurocrypt.iacr.org/2027/",
+      "imageUrl": null,
+      "seriesSlug": "Eurocrypt2027",
+      "seriesName": "Eurocrypt 2027"
+    },
+    {
       "id": "recdDM5KiU0OfKKwA",
       "kind": "main",
       "name": "EthCC [10]",
@@ -36036,6 +36299,55 @@
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recyDwbkdCrs9KnwK",
+      "kind": "main",
+      "name": "LEAP",
+      "description": "No information at this moment",
+      "startTime": "2027-04-12",
+      "endTime": "2027-04-15",
+      "location": "Riyadh, Saudi Arabia 🇸🇦",
+      "city": "Riyadh",
+      "country": "Saudi Arabia 🇸🇦",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Conference"
+      ],
+      "topics": [
+        "AI",
+        "VC"
+      ],
+      "website": "https://onegiantleap.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recCOx3ba9kb3V3Q3",
+      "kind": "main",
+      "name": "AIM",
+      "description": "World’s Leading Investment Platform",
+      "startTime": "2027-04-12",
+      "endTime": "2027-04-14",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Markets",
+        "Infrastructure"
+      ],
+      "website": "https://aimcongress.com/",
+      "imageUrl": null,
+      "seriesSlug": "TOKEN2049DubaiEvents2027",
+      "seriesName": "TOKEN2049 Dubai Events"
     },
     {
       "id": "recgWLNJ9ZBvA8sZC",
@@ -36160,6 +36472,30 @@
       "imageUrl": null,
       "seriesSlug": "DAFAbuDhabiEvents2027",
       "seriesName": "DAF Abu Dhabi Events"
+    },
+    {
+      "id": "rec6SfxnY2u21gaMp",
+      "kind": "main",
+      "name": "GAIM Ops",
+      "description": "Powering the next era of global alternative investment operations",
+      "startTime": "2027-04-18",
+      "endTime": "2027-04-18",
+      "location": "Grand Cayman, Cayman Islands 🇰🇾",
+      "city": "Grand Cayman",
+      "country": "Cayman Islands 🇰🇾",
+      "organizer": null,
+      "tags": [
+        "Conference"
+      ],
+      "topics": [
+        "TradFi",
+        "VC",
+        "AI"
+      ],
+      "website": "https://informaconnect.com/gaim-ops-cayman/",
+      "imageUrl": null,
+      "seriesSlug": "GAIMOpsCayman2027",
+      "seriesName": "GAIM Ops Cayman 2027"
     },
     {
       "id": "reckTHd18uPTvfhnh",
@@ -36516,6 +36852,30 @@
       "seriesName": "Stripe Sessions"
     },
     {
+      "id": "recJ03uMKXrfoZAJx",
+      "kind": "main",
+      "name": "Hyperliquid Forum Miami",
+      "description": "Where Institutional  Capital Explores Hyperliquid",
+      "startTime": "2027-05-04",
+      "endTime": "2027-05-04",
+      "location": "Miami, USA 🇺🇸",
+      "city": "Miami",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "TradFi"
+      ],
+      "website": "https://www.hyperliquidforum.com/",
+      "imageUrl": null,
+      "seriesSlug": "ConsensusMiamiEvents2027",
+      "seriesName": "Consensus Miami Events"
+    },
+    {
       "id": "recU0ugU95TSfKOkj",
       "kind": "main",
       "name": "Toronto Family Office & High Net Worth Conference",
@@ -36564,6 +36924,29 @@
       "seriesName": "BTC Prague Events"
     },
     {
+      "id": "rechp2OOwG1jH29R1",
+      "kind": "main",
+      "name": "Human × AI Conference",
+      "description": "Building Europe’s Sovereign Growth Engine",
+      "startTime": "2027-05-11",
+      "endTime": "2027-05-11",
+      "location": "Vienna, Austria 🇦🇹",
+      "city": "Vienna",
+      "country": "Austria 🇦🇹",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://humanxai.events/",
+      "imageUrl": null,
+      "seriesSlug": "ViennaBlockchainWeek2027",
+      "seriesName": "Vienna Blockchain Week"
+    },
+    {
       "id": "recWoufgEYYvYukja",
       "kind": "main",
       "name": "Digital Assets Summit",
@@ -36584,8 +36967,8 @@
       ],
       "website": "https://live.ft.com/digital-assets/",
       "imageUrl": null,
-      "seriesSlug": "DigitalAssetsSummit2027",
-      "seriesName": "Digital Assets Summit"
+      "seriesSlug": "SXSWLondonEvents2027",
+      "seriesName": "SXSW London Events"
     },
     {
       "id": "recbvQXtbhUWT89Xx",
@@ -36705,6 +37088,55 @@
       "imageUrl": null,
       "seriesSlug": "SXSWLondonEvents2027",
       "seriesName": "SXSW London Events"
+    },
+    {
+      "id": "rechxAAc1IfMLb5Wl",
+      "kind": "main",
+      "name": "PDI New York Forum",
+      "description": "Where North American private credit makes its next move",
+      "startTime": "2027-05-18",
+      "endTime": "2027-05-19",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "RWA"
+      ],
+      "website": "https://live.peievents.com/private-credit/new-york",
+      "imageUrl": null,
+      "seriesSlug": "NYCMayEvents2027",
+      "seriesName": "NYC May Events"
+    },
+    {
+      "id": "recWqxFLinBrflmny",
+      "kind": "main",
+      "name": "Data Innovation Summit Nordics",
+      "description": "The Leading and Most Influential\nApplied Data, Analytics & AI Event in the world",
+      "startTime": "2027-05-18",
+      "endTime": "2027-05-20",
+      "location": "Stockholm, Sweden 🇸🇪",
+      "city": "Stockholm",
+      "country": "Sweden 🇸🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Infrastructure",
+        "TradFi",
+        "Community"
+      ],
+      "website": "https://datainnovationsummit.com/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "rec1Zr695NzoJZZlI",
@@ -36851,6 +37283,29 @@
       "imageUrl": "https://images.ctfassets.net/ncjvo7rlyfez/2CY4vYYvLFQGVvR98JvkIR/49cd430bea860e92611d6e9559716204/SXSW_London__3_.png",
       "seriesSlug": "SXSWLondonEvents2027",
       "seriesName": "SXSW London Events"
+    },
+    {
+      "id": "recCeH0jPMb7kQEN9",
+      "kind": "main",
+      "name": "Fintech Week CEE",
+      "description": "Fintech Week CEE returns to Prague on 24–28 May 2027 (provisional dates). Bankers in the same rooms as builders, founders in the same rooms as regulators.",
+      "startTime": "2027-05-24",
+      "endTime": "2027-05-28",
+      "location": "Prague, Czech Republic 🇨🇿",
+      "city": "Prague",
+      "country": "Czech Republic 🇨🇿",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi"
+      ],
+      "website": "https://fintechweekcee.com/",
+      "imageUrl": "https://fintechweekcee.com/images/ftw-og-card.png?v=2027",
+      "seriesSlug": "ETHPragueSideEvents2027",
+      "seriesName": "ETHPrague Side Events"
     },
     {
       "id": "recAmGVX5P7wwW3Lh",
@@ -37089,6 +37544,30 @@
       "seriesName": "Proof of Talk Events"
     },
     {
+      "id": "recgCHe4K04h5QsYh",
+      "kind": "main",
+      "name": "Vienna Blockchain Week",
+      "description": "The largest institutional digital assets and AI conference in Austria. Two focused days connecting banks, asset managers, regulators, investors, exchanges, infrastructure providers and technology leaders from across Europe.",
+      "startTime": "2027-06-02",
+      "endTime": "2027-06-03",
+      "location": "Vienna, Austria 🇦🇹",
+      "city": "Vienna",
+      "country": "Austria 🇦🇹",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "DeFi",
+        "Infrastructure"
+      ],
+      "website": "https://viennablockchainweek.org/",
+      "imageUrl": null,
+      "seriesSlug": "ViennaBlockchainWeek2027",
+      "seriesName": "Vienna Blockchain Week"
+    },
+    {
       "id": "rec2Z2TE3zhHjzgMf",
       "kind": "main",
       "name": "London Tech Week",
@@ -37135,8 +37614,8 @@
       ],
       "website": "https://informaconnect.com/superreturn-international/",
       "imageUrl": null,
-      "seriesSlug": "SuperReturn2027",
-      "seriesName": "SuperReturn"
+      "seriesSlug": "SuperReturnEvents2027",
+      "seriesName": "SuperReturn Events"
     },
     {
       "id": "recHLgTExoqaOanIt",
@@ -37184,8 +37663,8 @@
       ],
       "website": "https://europe.worldfamilyofficeforum.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "SwissFintechWeek2027",
+      "seriesName": "Swiss Fintech Week"
     },
     {
       "id": "reclS2eR4Hxu4vY3Y",
@@ -37253,8 +37732,8 @@
       ],
       "website": "https://london.theaisummit.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "LondonTechWeek2027",
+      "seriesName": "London Tech Week"
     },
     {
       "id": "recJfLqv6v3OZvMeM",
@@ -37422,6 +37901,76 @@
       "seriesName": "TOKEN2049 NYC Events"
     },
     {
+      "id": "rec0F3ud9KmILZJ7l",
+      "kind": "main",
+      "name": "Art Basel",
+      "description": "Our Basel fair brings the international artworld together. It features over 280 leading galleries and more than 4,000 artists from five continents. Many high-quality exhibitions take place concurrently in and around Basel, creating a region-wide art week.",
+      "startTime": "2027-06-17",
+      "endTime": "2027-06-20",
+      "location": "Basel, Switzerland 🇨🇭",
+      "city": "Basel",
+      "country": "Switzerland 🇨🇭",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "NFTs",
+        "Other"
+      ],
+      "website": "https://www.artbasel.com/basel",
+      "imageUrl": null,
+      "seriesSlug": "SwissFintechWeek2027",
+      "seriesName": "Swiss Fintech Week"
+    },
+    {
+      "id": "recgspE9TfKCxagRG",
+      "kind": "main",
+      "name": "FundForum Monaco",
+      "description": "Where the future of wealth is defined",
+      "startTime": "2027-06-22",
+      "endTime": "2027-06-24",
+      "location": "Monaco, Monaco 🇲🇨",
+      "city": "Monaco",
+      "country": "Monaco 🇲🇨",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "VC"
+      ],
+      "website": "https://informaconnect.com/impower-fundforum/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recGRq0UE4iWXy6cA",
+      "kind": "main",
+      "name": "Stablecoins Unblocked",
+      "description": "The UK’s premier full-day conference dedicated to the global impact of stablecoins",
+      "startTime": "2027-06-22",
+      "endTime": "2027-06-22",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Stablecoins"
+      ],
+      "website": "https://www.stablecoinsunblocked.com",
+      "imageUrl": null,
+      "seriesSlug": "LondonTechWeek2027",
+      "seriesName": "London Tech Week"
+    },
+    {
       "id": "recQ6BC3ebB8AHUTF",
       "kind": "main",
       "name": "Le Paradigme Bitcoin",
@@ -37443,8 +37992,55 @@
       ],
       "website": "https://leparadigmebitcoin.ch/home",
       "imageUrl": null,
-      "seriesSlug": "LeParadigmeBitcoin2027",
-      "seriesName": "Le Paradigme Bitcoin 2027"
+      "seriesSlug": "SwissFintechWeek2027",
+      "seriesName": "Swiss Fintech Week"
+    },
+    {
+      "id": "recQawulmMVr9g9lr",
+      "kind": "main",
+      "name": "Swiss Fintech Week",
+      "description": "Three days of Swiss fintech in Zurich, 28–30 June 2027: the Fintech Forum, Fintech Fair, Point Zero Forum, awards and evening events.",
+      "startTime": "2027-06-28",
+      "endTime": "2027-06-30",
+      "location": "Zurich, Switzerland 🇨🇭",
+      "city": "Zurich",
+      "country": "Switzerland 🇨🇭",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://www.swissfintechweek.com/",
+      "imageUrl": "https://swissfintechweek.com/og-default.png",
+      "seriesSlug": "SwissFintechWeek2027",
+      "seriesName": "Swiss Fintech Week"
+    },
+    {
+      "id": "reckNvbCzcVjcHWmY",
+      "kind": "main",
+      "name": "AI Engineer World's Fair",
+      "description": "Join us at Moscone West June 29–July 1 for technical tracks, workshops, an AI tools expo and conversations with the people building AI.",
+      "startTime": "2027-06-29",
+      "endTime": "2027-07-01",
+      "location": "San Francisco, USA 🇺🇸",
+      "city": "San Francisco",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://ai.engineer/worldsfair/2027",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recjtnRQ7xEgPUiMJ",
@@ -37489,6 +38085,29 @@
         "Institutional"
       ],
       "website": "https://signalweek.com/",
+      "imageUrl": null,
+      "seriesSlug": "SignalWeekEvents2027",
+      "seriesName": "Signal Week Events"
+    },
+    {
+      "id": "recLWV2Al8Nyo3of6",
+      "kind": "main",
+      "name": "Raise Summit",
+      "description": "Where visionaries and AI converge",
+      "startTime": "2027-07-06",
+      "endTime": "2027-07-08",
+      "location": "Paris, France 🇫🇷",
+      "city": "Paris",
+      "country": "France 🇫🇷",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://www.raisesummit.com/",
       "imageUrl": null,
       "seriesSlug": "SignalWeekEvents2027",
       "seriesName": "Signal Week Events"
@@ -37540,6 +38159,100 @@
       "imageUrl": "https://conference.b.tc/og-image.jpg",
       "seriesSlug": "Bitcoin2027Events2027",
       "seriesName": "Bitcoin 2027 Events"
+    },
+    {
+      "id": "recpeE1xZ5nWuEUyh",
+      "kind": "main",
+      "name": "D.C. Private Markets Meeting",
+      "description": "Over 150 senior institutional investors, family offices and alternative investment professionals gather to discuss the latest trends, opportunities, and challenges in the dynamic world of private markets. ",
+      "startTime": "2027-07-21",
+      "endTime": "2027-07-22",
+      "location": "Washington DC, USA 🇺🇸",
+      "city": "Washington DC",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "TradFi",
+        "VC"
+      ],
+      "website": "https://www.carmocompanies.com/dc-private-markets-meeting",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recHBpI2HrHFSfjaV",
+      "kind": "main",
+      "name": "ICML",
+      "description": "Forty-Fourth International Conference on Machine Learning",
+      "startTime": "2027-07-31",
+      "endTime": "2027-08-06",
+      "location": "Rio De Janeiro, Brazil 🇧🇷",
+      "city": "Rio De Janeiro",
+      "country": "Brazil 🇧🇷",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Conference"
+      ],
+      "topics": [
+        "Other",
+        "AI"
+      ],
+      "website": "https://icml.cc/",
+      "imageUrl": null,
+      "seriesSlug": "ICML2027",
+      "seriesName": "ICML 2027"
+    },
+    {
+      "id": "recWJDbD5Zg81Lb6t",
+      "kind": "main",
+      "name": "Black Hat USA",
+      "description": "Step into the future of cybersecurity",
+      "startTime": "2027-07-31",
+      "endTime": "2027-08-05",
+      "location": "Las Vegas, USA 🇺🇸",
+      "city": "Las Vegas",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Security"
+      ],
+      "website": "https://blackhat.com/us-26/",
+      "imageUrl": null,
+      "seriesSlug": "LasVegasEvents2027",
+      "seriesName": "Las Vegas Events"
+    },
+    {
+      "id": "recNK7NgUIfWs8Pru",
+      "kind": "main",
+      "name": "Def Con",
+      "description": "The DEF CON activation that ships qualified pipeline.",
+      "startTime": "2027-08-05",
+      "endTime": "2027-08-08",
+      "location": "Las Vegas, USA 🇺🇸",
+      "city": "Las Vegas",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Hack"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://forkoff.xyz/events/defcon-2026",
+      "imageUrl": null,
+      "seriesSlug": "LasVegasEvents2027",
+      "seriesName": "Las Vegas Events"
     },
     {
       "id": "rec0TyHHaZTw8XQUV",
@@ -37711,6 +38424,28 @@
       "seriesName": "Taipei Blockchain Week"
     },
     {
+      "id": "rec5BeRGCFmHCs6Lt",
+      "kind": "main",
+      "name": "CHES",
+      "description": "CHES 2027 introduces an \"extended-review long paper\" format spanning two issues.\nPlease note that the review process for some long papers may therefore take longer.\nSee the Instructions for Authors for details.",
+      "startTime": "2027-09-06",
+      "endTime": "2027-09-06",
+      "location": "Cancún, Mexico 🇲🇽",
+      "city": "Cancún",
+      "country": "Mexico 🇲🇽",
+      "organizer": null,
+      "tags": [
+        "Other"
+      ],
+      "topics": [
+        "Privacy"
+      ],
+      "website": "https://ches.iacr.org/2027/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "recknqFdw8TTOcYFo",
       "kind": "main",
       "name": "SuperAI",
@@ -37759,6 +38494,31 @@
       "seriesName": "Breakpoint 2027 Events"
     },
     {
+      "id": "recPCgHaz4h9O3Cf2",
+      "kind": "main",
+      "name": "All In Summit",
+      "description": "The sixth annual All-In Summit will convene the world's most influential thinkers, investors, founders, and leaders to shape the future of business, technology, and society.",
+      "startTime": "2027-09-12",
+      "endTime": "2027-09-14",
+      "location": "Los Angeles, USA 🇺🇸",
+      "city": "Los Angeles",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "DeFi",
+        "TradFi",
+        "VC"
+      ],
+      "website": "https://theallinsummit.com/",
+      "imageUrl": null,
+      "seriesSlug": "LATechWeek2027",
+      "seriesName": "LA Tech Week"
+    },
+    {
       "id": "recy2b7h3bQ1Rqw7x",
       "kind": "main",
       "name": "LA Tech Week",
@@ -37803,7 +38563,103 @@
       "website": "https://unblockchainweek.com/",
       "imageUrl": "https://www.blockchainweek.ai/opengraph-image.png?opengraph-image.1ej6942i6150k.png?dpl=dpl_9vU3VKEh3dzSA4qo4MBRvPF3N66C",
       "seriesSlug": "UNBlockchainWeek2027",
-      "seriesName": "UN Blockchain Week 2027"
+      "seriesName": "UN Blockchain Week"
+    },
+    {
+      "id": "rec4WEXBr3CanBlLr",
+      "kind": "main",
+      "name": "FinovateFall",
+      "description": "The world’s premier fintech showcase & meetings hotspot",
+      "startTime": "2027-09-13",
+      "endTime": "2027-09-15",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Multichain",
+        "Conference"
+      ],
+      "topics": [
+        "TradFi",
+        "Markets"
+      ],
+      "website": "https://informaconnect.com/finovatefall/",
+      "imageUrl": null,
+      "seriesSlug": "UNBlockchainWeek2027",
+      "seriesName": "UN Blockchain Week"
+    },
+    {
+      "id": "recdIk6FR5alcQW1y",
+      "kind": "main",
+      "name": "SuperReturn US West",
+      "description": "The West Coast's private capital powerhouse",
+      "startTime": "2027-09-13",
+      "endTime": "2027-09-14",
+      "location": "Los Angeles, USA 🇺🇸",
+      "city": "Los Angeles",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "VC"
+      ],
+      "website": "https://informaconnect.com/superreturn-uswest/",
+      "imageUrl": null,
+      "seriesSlug": "LATechWeek2027",
+      "seriesName": "LA Tech Week"
+    },
+    {
+      "id": "recJBZx33CbugkAQb",
+      "kind": "main",
+      "name": "AICPA Banks & Credit Unions Conference",
+      "description": "Focused learning for banking and credit union professionals, with 2 distinct tracks and the flexibility to build an agenda across both.",
+      "startTime": "2027-09-13",
+      "endTime": "2027-09-15",
+      "location": "Washington DC, USA 🇺🇸",
+      "city": "Washington DC",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Institutional"
+      ],
+      "website": "https://www.aicpa-cima.com/cpe-learning/conference/aicpa-national-conference-on-banks-savings-institutions",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recRShvYmLVGTNv3Y",
+      "kind": "main",
+      "name": "Tech Week Grand Rapids",
+      "description": "Tech Week Grand Rapids is a week-long collection of technology and innovation events designed to showcase West Michigan's vibrant technology community.",
+      "startTime": "2027-09-13",
+      "endTime": "2027-09-18",
+      "location": "Grand Rapids, USA 🇺🇸",
+      "city": "Grand Rapids",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Security",
+        "Other"
+      ],
+      "website": "https://www.techweekgr.com/",
+      "imageUrl": null,
+      "seriesSlug": "TechWeekGrandRapids2027",
+      "seriesName": "Tech Week Grand Rapids"
     },
     {
       "id": "rectzWoJ4Jt5zb3CU",
@@ -37831,6 +38687,53 @@
       "seriesName": "Money 20/20 Middle East"
     },
     {
+      "id": "reckjGKApAc8thbcF",
+      "kind": "main",
+      "name": "SuperReturn Real Assets Conference",
+      "description": "Your bridge to real returns in real assets.",
+      "startTime": "2027-09-14",
+      "endTime": "2027-09-15",
+      "location": "River Oaks, USA 🇺🇸",
+      "city": "River Oaks",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Other",
+        "Conference"
+      ],
+      "topics": [
+        "RWA",
+        "Institutional"
+      ],
+      "website": "https://informaconnect.com/superreturn-real-assets-north-america/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recHBzl9Vqt15DxVQ",
+      "kind": "main",
+      "name": "Nrth",
+      "description": "Join the brightest minds in tech, and innovation at Nrth Festival 2027 in Toronto. Get your tickets now before they sell out!",
+      "startTime": "2027-09-14",
+      "endTime": "2027-09-16",
+      "location": "Toronto, Canada 🇨🇦",
+      "city": "Toronto",
+      "country": "Canada 🇨🇦",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "VC"
+      ],
+      "website": "https://nrth.ca/tickets/",
+      "imageUrl": "https://nrth.ca/wp-content/uploads/2026/09/Nrth-OG.jpg",
+      "seriesSlug": "NrthSideEvents2027",
+      "seriesName": "Nrth Side Events"
+    },
+    {
       "id": "rectDRy3E0my2a612",
       "kind": "main",
       "name": "CBC Summit USA",
@@ -37851,6 +38754,31 @@
         "Other"
       ],
       "website": "https://www.cbcsummit.io/usa",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recdDquk27h07NZiG",
+      "kind": "main",
+      "name": "MEBIS",
+      "description": "Where the future of banking\ntakes shape.",
+      "startTime": "2027-09-15",
+      "endTime": "2027-09-16",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Markets",
+        "Institutional"
+      ],
+      "website": "https://www.bankinnovation-me.com/",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -37877,6 +38805,30 @@
       "imageUrl": null,
       "seriesSlug": "SibosSingaporeEvents2027",
       "seriesName": "Sibos Singapore Events"
+    },
+    {
+      "id": "recBoEnscWZ1SZ2f9",
+      "kind": "main",
+      "name": "ALL IN",
+      "description": "Canada’s most important AI event brings together 6,500+ decision-makers and experts. This is where AI insights, investments and connections turn into real opportunities for your business, career or product.",
+      "startTime": "2027-09-22",
+      "endTime": "2027-09-23",
+      "location": "Montreal, Canada 🇨🇦",
+      "city": "Montreal",
+      "country": "Canada 🇨🇦",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "VC"
+      ],
+      "website": "https://allinevent.ai/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "rec14fvgMJsashPw8",
@@ -37927,6 +38879,29 @@
       "imageUrl": null,
       "seriesSlug": "WikiFinanceExpoHongKong2027",
       "seriesName": "Wiki Finance Expo Hong Kong 2027"
+    },
+    {
+      "id": "rec3acrgsNApnpcYi",
+      "kind": "main",
+      "name": "SuperReturn Asia",
+      "description": "The region’s premier private capital gathering. The most LPs and GPs.\nFrom all over the world.",
+      "startTime": "2027-09-27",
+      "endTime": "2027-09-30",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional"
+      ],
+      "website": "https://informaconnect.com/superreturnasia/",
+      "imageUrl": null,
+      "seriesSlug": "TOKEN2049SGEvents2027",
+      "seriesName": "TOKEN2049 SG Events"
     },
     {
       "id": "recaQvhimsqdSqM9v",
@@ -37998,8 +38973,8 @@
       ],
       "website": "https://daysevent.com/singapore-2027",
       "imageUrl": null,
-      "seriesSlug": "DigitalAssetYieldSummitSingapore2027",
-      "seriesName": "Digital Asset Yield Summit Singapore"
+      "seriesSlug": "TOKEN2049SGEvents2027",
+      "seriesName": "TOKEN2049 SG Events"
     },
     {
       "id": "recJNsSZFbldTJgIV",
@@ -38049,12 +39024,107 @@
       "seriesName": "Devcon Side Events"
     },
     {
+      "id": "recLwudqnppibrCW7",
+      "kind": "main",
+      "name": "Forex Expo",
+      "description": "The #1 Global Event for Multi-Asset Trading & Fintech Industry",
+      "startTime": "2027-10-12",
+      "endTime": "2027-10-13",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi"
+      ],
+      "website": "https://theforexexpo.com/dubai",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recS5THW2C7u7Y1aP",
+      "kind": "main",
+      "name": "The AI Conference",
+      "description": "The AI Conference 2027 returns to San Francisco Oct 12-14. Join thousands of builders, researchers, and leaders shaping applied AI.",
+      "startTime": "2027-10-12",
+      "endTime": "2027-10-14",
+      "location": "San Francisco, USA 🇺🇸",
+      "city": "San Francisco",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI"
+      ],
+      "website": "https://aiconference.com/",
+      "imageUrl": "https://aiconference.com/wp-content/uploads/2026/11/1200x630-Moscone-Social-Share.jpg",
+      "seriesSlug": "SFTechWeek2027",
+      "seriesName": "SF Tech Week"
+    },
+    {
+      "id": "recPnIZ3B9EMhQp34",
+      "kind": "main",
+      "name": "Super Return",
+      "description": "Global private markets. Middle East capital. One meeting place.",
+      "startTime": "2027-10-12",
+      "endTime": "2027-10-14",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Institutional",
+        "VC"
+      ],
+      "website": "https://informaconnect.com/superreturn-me/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
+      "id": "recyD7tayibawGcFx",
+      "kind": "main",
+      "name": "Singapore Tech Week",
+      "description": "Tech Week Singapore brings together cloud architects, data leaders, infrastructure teams, cybersecurity professionals, and enterprise technology decision-makers from across Southeast Asia and the wider Asia-Pacific region.",
+      "startTime": "2027-10-13",
+      "endTime": "2027-10-14",
+      "location": "Singapore, Singapore 🇸🇬",
+      "city": "Singapore",
+      "country": "Singapore 🇸🇬",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Infrastructure",
+        "AI",
+        "Security"
+      ],
+      "website": "https://www.singaporetechnologyweek.com/",
+      "imageUrl": null,
+      "seriesSlug": "TOKEN2049SGEvents2027",
+      "seriesName": "TOKEN2049 SG Events"
+    },
+    {
       "id": "recvUV3l6UzifkvKo",
       "kind": "main",
       "name": "ETHGlobal Lisbon",
       "description": "Come build our decentralized future",
-      "startTime": "2027-10-13",
-      "endTime": "2027-10-15",
+      "startTime": "2027-10-14",
+      "endTime": "2027-10-16",
       "location": "Lisbon, Portugal 🇵🇹",
       "city": "Lisbon",
       "country": "Portugal 🇵🇹",
