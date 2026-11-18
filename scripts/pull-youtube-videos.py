@@ -315,7 +315,7 @@ def main() -> None:
     if failed_tabs:
         print(f"{failed_tabs} channel tabs failed to list (kept their previous entries)")
     print(
-        f"{retained_total} stored videos no tab lists any more were kept (unlisted); "
+        f"{retained_total} stored channel entries no tab lists any more were kept (unlisted); "
         f"{len(gone)} confirmed gone on YouTube were dropped: {sorted(gone)}"
     )
 
