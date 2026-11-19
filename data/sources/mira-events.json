@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-18",
-  "seriesCount": 236,
-  "eventCount": 1778,
+  "importedAt": "2026-11-19",
+  "seriesCount": 237,
+  "eventCount": 1783,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1259,6 +1259,11 @@
       "id": "recxy6aqro7KYdjCW",
       "title": "Nrth Side Events",
       "slug": "NrthSideEvents2027"
+    },
+    {
+      "id": "recCxBDR3JBO6a6s6",
+      "title": "NEXTPredict - New York 2027",
+      "slug": "NEXTPredict-NewYork2027"
     }
   ],
   "events": [
@@ -36350,6 +36355,30 @@
       "seriesName": "TOKEN2049 Dubai Events"
     },
     {
+      "id": "recrtN6yKboj64nek",
+      "kind": "main",
+      "name": "AI in Finance Summit New York",
+      "description": "From generative AI and intelligent automation to AI governance, risk management, and real-world implementation, the summit delivers practical insights to help organizations improve decision-making and unlock business value through AI.",
+      "startTime": "2027-04-12",
+      "endTime": "2027-04-13",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "TradFi"
+      ],
+      "website": "https://ny-ai-finance.re-work.co/",
+      "imageUrl": null,
+      "seriesSlug": "DASNYCEvents2027",
+      "seriesName": "DAS NYC Events"
+    },
+    {
       "id": "recgWLNJ9ZBvA8sZC",
       "kind": "main",
       "name": "The Agora",
@@ -37162,6 +37191,31 @@
       "imageUrl": null,
       "seriesSlug": "DutchBlockchainWeek2027",
       "seriesName": "Dutch Blockchain Week"
+    },
+    {
+      "id": "recd3gGQk8dsbjz0O",
+      "kind": "main",
+      "name": "NexGen Banking Summit UK",
+      "description": "As one of the UK's most anticipated AI events in banking, the summit will bring together senior leaders from across the financial services industry to explore how generative AI in banking is reshaping the sector - from front-office customer experience to back-office risk and compliance.",
+      "startTime": "2027-05-19",
+      "endTime": "2027-05-20",
+      "location": "London, UK 🇬🇧",
+      "city": "London",
+      "country": "UK 🇬🇧",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "Institutional",
+        "DeFi"
+      ],
+      "website": "https://www.nexgenbanking.com/uk2027/",
+      "imageUrl": null,
+      "seriesSlug": "SXSWLondonEvents2027",
+      "seriesName": "SXSW London Events"
     },
     {
       "id": "recQjy9yJcBjrODf0",
@@ -39191,6 +39245,30 @@
       "seriesName": ""
     },
     {
+      "id": "rec1aV0AOiWjL1sar",
+      "kind": "main",
+      "name": "RIA Edge Orange County",
+      "description": "Where growth-focused RIAs and innovators scale smarter, together",
+      "startTime": "2027-10-26",
+      "endTime": "2027-10-28",
+      "location": "Dana Point CA, USA 🇺🇸",
+      "city": "Dana Point CA",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "TradFi",
+        "VC"
+      ],
+      "website": "https://informaconnect.com/ria-edge-orange-county/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
+    },
+    {
       "id": "reclyBNzV23Bs9eLL",
       "kind": "main",
       "name": "MERGE Madrid",
@@ -39215,6 +39293,31 @@
       "seriesName": "MERGE Madrid"
     },
     {
+      "id": "rechSamP3gX60yFlA",
+      "kind": "main",
+      "name": "NEXTPredict - New York",
+      "description": "The World’s Largest Prediction Markets Summit",
+      "startTime": "2027-10-28",
+      "endTime": "2027-10-29",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "Markets",
+        "Institutional",
+        "TradFi"
+      ],
+      "website": "https://nextpredict.io/summits/the-worlds-prediction-markets-summit/",
+      "imageUrl": null,
+      "seriesSlug": "NEXTPredict-NewYork2027",
+      "seriesName": "NEXTPredict - New York 2027"
+    },
+    {
       "id": "recn58KUZt5EJebFC",
       "kind": "main",
       "name": "SALT London",
@@ -39237,6 +39340,30 @@
       "imageUrl": null,
       "seriesSlug": "FTTFintechEvents2027",
       "seriesName": "FTT Fintech Events"
+    },
+    {
+      "id": "recO60fdNOe4dv2Qe",
+      "kind": "main",
+      "name": "Portugal Tech Week",
+      "description": "The world's tech scene, in Portugal.",
+      "startTime": "2027-11-05",
+      "endTime": "2027-11-14",
+      "location": "Lisbon, Portugal 🇵🇹",
+      "city": "Lisbon",
+      "country": "Portugal 🇵🇹",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Other"
+      ],
+      "topics": [
+        "AI",
+        "Infrastructure"
+      ],
+      "website": "https://portugaltechweek.com",
+      "imageUrl": null,
+      "seriesSlug": "DevconSideEvents2027",
+      "seriesName": "Devcon Side Events"
     },
     {
       "id": "recUTamVKvex1M09s",
