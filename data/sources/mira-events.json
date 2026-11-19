@@ -2,7 +2,7 @@
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-19",
   "seriesCount": 237,
-  "eventCount": 1783,
+  "eventCount": 1784,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -33989,7 +33989,7 @@
         "Institutional",
         "Markets"
       ],
-      "website": "https://proofoftalk.io/abu-dhabi/",
+      "website": "https://proofoftalk.io/abu-dhabi/join/miragather-com/",
       "imageUrl": null,
       "seriesSlug": "AbuDhabiFinanceWeek2026",
       "seriesName": "Abu Dhabi Finance Week"
@@ -35620,7 +35620,7 @@
       "name": "AI+ Renaissance Conference",
       "description": "We have already started planning for 2027, and it gets better every year...\nSpeaking | product showcase | partnership: team@aiplus.dev",
       "startTime": "2027-03-13",
-      "endTime": "2027-03-13",
+      "endTime": "2027-03-14",
       "location": "San Francisco, USA 🇺🇸",
       "city": "San Francisco",
       "country": "USA 🇺🇸",
@@ -36508,7 +36508,7 @@
       "name": "GAIM Ops",
       "description": "Powering the next era of global alternative investment operations",
       "startTime": "2027-04-18",
-      "endTime": "2027-04-18",
+      "endTime": "2027-04-21",
       "location": "Grand Cayman, Cayman Islands 🇰🇾",
       "city": "Grand Cayman",
       "country": "Cayman Islands 🇰🇾",
@@ -39243,6 +39243,31 @@
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ac/f40ec087-7261-46d3-a02a-18f41beb2105.png",
       "seriesSlug": "",
       "seriesName": ""
+    },
+    {
+      "id": "recgsSkqzYLbnzD8P",
+      "kind": "main",
+      "name": "MoneyCon ",
+      "description": "For the outsiders.\nFor the changemakers.",
+      "startTime": "2027-10-19",
+      "endTime": "2027-10-21",
+      "location": "Las Vegas, USA 🇺🇸",
+      "city": "Las Vegas",
+      "country": "USA 🇺🇸",
+      "organizer": "Fintech NerdCon",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "TradFi",
+        "Community",
+        "DeFi"
+      ],
+      "website": "https://www.fintechnerdcon.com/moneycon",
+      "imageUrl": null,
+      "seriesSlug": "Money2020USEvents2027",
+      "seriesName": "Money 20/20 US Events"
     },
     {
       "id": "rec1aV0AOiWjL1sar",
