@@ -2,7 +2,7 @@
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-20",
   "seriesCount": 237,
-  "eventCount": 1784,
+  "eventCount": 1786,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -33734,6 +33734,29 @@
       "seriesName": "AusCryptoCon Events"
     },
     {
+      "id": "rectSrzXpfi9h4sne",
+      "kind": "main",
+      "name": "Bitcoin Thailand Conference",
+      "description": "Two days of talks, workshops, and networking with the brightest minds in Bitcoin and the Lightning Network.",
+      "startTime": "2026-11-28",
+      "endTime": "2026-11-29",
+      "location": "Bangkok, Thailand 🇹🇭",
+      "city": "Bangkok",
+      "country": "Thailand 🇹🇭",
+      "organizer": "RightShift_to",
+      "tags": [
+        "Conference",
+        "Bitcoin"
+      ],
+      "topics": [
+        "DeFi"
+      ],
+      "website": "https://bitcointhailand.co/",
+      "imageUrl": null,
+      "seriesSlug": "BinanceBlockchainWeek2026",
+      "seriesName": "Binance Blockchain Week"
+    },
+    {
       "id": "rec8cMJVk9kg0zrlF",
       "kind": "main",
       "name": "muShenzhen",
@@ -35350,8 +35373,8 @@
       ],
       "website": "https://gdconf.com/",
       "imageUrl": null,
-      "seriesSlug": "GDCSideEvents2027",
-      "seriesName": "GDC Side Events"
+      "seriesSlug": "NVIDIAGTCEvents2027",
+      "seriesName": "NVIDIA GTC Events "
     },
     {
       "id": "recX7VyHIa87he9cq",
@@ -35626,15 +35649,16 @@
       "country": "USA 🇺🇸",
       "organizer": null,
       "tags": [
-        "Other"
+        "Other",
+        "Conference"
       ],
       "topics": [
         "AI"
       ],
       "website": "https://luma.com/renaissance27",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ol/38ebb1bc-7a73-4d2a-9ef4-1dceca3871f8.png",
-      "seriesSlug": "GDCSideEvents2027",
-      "seriesName": "GDC Side Events"
+      "seriesSlug": "NVIDIAGTCEvents2027",
+      "seriesName": "NVIDIA GTC Events "
     },
     {
       "id": "rec7SABpczzzOCT10",
@@ -38483,7 +38507,7 @@
       "name": "CHES",
       "description": "CHES 2027 introduces an \"extended-review long paper\" format spanning two issues.\nPlease note that the review process for some long papers may therefore take longer.\nSee the Instructions for Authors for details.",
       "startTime": "2027-09-06",
-      "endTime": "2027-09-06",
+      "endTime": "2027-09-09",
       "location": "Cancún, Mexico 🇲🇽",
       "city": "Cancún",
       "country": "Mexico 🇲🇽",
@@ -39412,6 +39436,30 @@
       "imageUrl": "https://www.fintechtalents.com/wp-content/uploads/fintech-carousel.png",
       "seriesSlug": "FTTFintechEvents2027",
       "seriesName": "FTT Fintech Events"
+    },
+    {
+      "id": "recSfZOtcjyKRXuTx",
+      "kind": "main",
+      "name": "Web Summit Lisbon",
+      "description": "Join over 70,000 attendees and the companies redefining the tech industry at Web Summit 2027, the best tech conference in Europe.",
+      "startTime": "2027-11-08",
+      "endTime": "2027-11-11",
+      "location": "Lisbon, Portugal 🇵🇹",
+      "city": "Lisbon",
+      "country": "Portugal 🇵🇹",
+      "organizer": null,
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Other",
+        "AI"
+      ],
+      "website": "https://websummit.com/web-summit-2026/",
+      "imageUrl": "https://websummit.com/wp-media/2026/10/54915213913_14e6de5f96_c-1.jpg",
+      "seriesSlug": "DevconSideEvents2027",
+      "seriesName": "Devcon Side Events"
     },
     {
       "id": "recd7vmXTgzdTEvIP",
