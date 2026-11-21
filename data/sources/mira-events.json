@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
-  "importedAt": "2026-11-20",
-  "seriesCount": 237,
-  "eventCount": 1786,
+  "importedAt": "2026-11-21",
+  "seriesCount": 238,
+  "eventCount": 1787,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1264,6 +1264,11 @@
       "id": "recCxBDR3JBO6a6s6",
       "title": "NEXTPredict - New York 2027",
       "slug": "NEXTPredict-NewYork2027"
+    },
+    {
+      "id": "recs43Dc2yswwXn6r",
+      "title": "DAS & PE4KS Events",
+      "slug": "DAS&PE4KSEvents2027"
     }
   ],
   "events": [
@@ -35873,6 +35878,31 @@
       "seriesName": "Global AI Show"
     },
     {
+      "id": "recgPY7qSs86qmE6r",
+      "kind": "main",
+      "name": "PE4KS",
+      "description": "The whole of onchain finance in one room.\nFour summits run in parallel. One pass admits all of them.",
+      "startTime": "2027-03-23",
+      "endTime": "2027-03-24",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "Party Action People",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Stablecoins",
+        "RWA",
+        "TradFi"
+      ],
+      "website": "https://www.pe4ks.com/",
+      "imageUrl": null,
+      "seriesSlug": "DAS&PE4KSEvents2027",
+      "seriesName": "DAS & PE4KS Events"
+    },
+    {
       "id": "recaLG1qAmQ1e6tz4",
       "kind": "main",
       "name": "ETHDenver",
@@ -35974,11 +36004,14 @@
         "Conference",
         "Multichain"
       ],
-      "topics": [],
+      "topics": [
+        "DeFi",
+        "Institutional"
+      ],
       "website": "https://blockworks.com/event/digital-asset-summit-nyc",
       "imageUrl": null,
-      "seriesSlug": "DASNYCEvents2027",
-      "seriesName": "DAS NYC Events"
+      "seriesSlug": "DAS&PE4KSEvents2027",
+      "seriesName": "DAS & PE4KS Events"
     },
     {
       "id": "recKFxkOeafUB0TRk",
@@ -36022,8 +36055,8 @@
       ],
       "website": "https://events.chainalysis.com/Links-2027",
       "imageUrl": null,
-      "seriesSlug": "DASNYCEvents2027",
-      "seriesName": "DAS NYC Events"
+      "seriesSlug": "DAS&PE4KSEvents2027",
+      "seriesName": "DAS & PE4KS Events"
     },
     {
       "id": "reckQxyTcHIm5Fx99",
@@ -36399,8 +36432,8 @@
       ],
       "website": "https://ny-ai-finance.re-work.co/",
       "imageUrl": null,
-      "seriesSlug": "DASNYCEvents2027",
-      "seriesName": "DAS NYC Events"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "recgWLNJ9ZBvA8sZC",
