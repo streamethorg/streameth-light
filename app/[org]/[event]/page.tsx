@@ -4,6 +4,7 @@ import { getOrgForEvent, listAllEvents } from "@/lib/data";
 import { buildMetadata } from "@/lib/social";
 import { breadcrumbJsonLd, eventJsonLd, truncate } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import type { VideoFormat } from "@/lib/videoDb";
 import EventCoverage, { parseEventTab, parseVideoLength } from "@/components/EventCoverage";
 import {
   eventCover,
@@ -11,7 +12,19 @@ import {
   formatEventDates,
   getSeasonEventByPath,
   requestTime,
+  statusOf,
 } from "@/lib/season";
+
+/** "12 talks and 3 livestreams" — what's there to watch, for titles and
+ * descriptions. */
+function watchSummary(counts: Record<VideoFormat, number>): string | undefined {
+  const parts: string[] = [];
+  const talks = counts.talk + counts.clip;
+  if (talks > 0) parts.push(`${talks} ${talks === 1 ? "talk" : "talks"}`);
+  if (counts.stream > 0) parts.push(`${counts.stream} ${counts.stream === 1 ? "livestream" : "livestreams"}`);
+  if (parts.length === 0 && counts.short > 0) parts.push(`${counts.short} ${counts.short === 1 ? "Short" : "Shorts"}`);
+  return parts.length > 0 ? parts.join(" and ") : undefined;
+}
 
 export function generateStaticParams() {
   return listAllEvents()
@@ -34,12 +47,30 @@ export async function generateMetadata({
   const where = `${formatEventDates(event)}${event.city ? ` in ${event.city}` : ""}`;
   let meta: Metadata;
   if (event.videoIds) {
+    // "Pragma (ETHGlobal) — 2026 — StreamETH" (13 impressions at position
+    // 6.7, 0 clicks) doesn't say there's anything to watch; lead with it.
     const counts = eventFormatCounts(event);
     const count = counts.talk + counts.clip + counts.short + counts.stream;
+    const summary = watchSummary(counts);
     meta = buildMetadata({
-      title: `${event.name} — StreamETH`,
+      title: summary ? `${event.name}: ${summary} — StreamETH` : `${event.name} — StreamETH`,
       description: truncate(
-        event.description || `${count} ${count === 1 ? "recording" : "recordings"} from ${event.name}, ${where}.`,
+        event.description ||
+          `Watch ${summary ?? `${count} ${count === 1 ? "recording" : "recordings"}`} from ${event.name}, ${where}, with speakers and topics.`,
+        200
+      ),
+      image: eventCover(event) ?? undefined,
+      path,
+    });
+  } else if (statusOf(event) === "past") {
+    // Two weeks after it ends, nobody is looking for live coverage any more
+    // (TOKEN2049 Singapore 2026: 14 impressions at position 4.5, 0 clicks);
+    // say what the archive holds instead.
+    const summary = watchSummary(eventFormatCounts(event));
+    meta = buildMetadata({
+      title: summary ? `${event.name}: ${summary} — StreamETH` : `${event.name} talks & recordings — StreamETH`,
+      description: truncate(
+        `Watch ${summary ?? "the talks"} from ${event.name}, ${where}, with speakers and topics.`,
         200
       ),
       image: eventCover(event) ?? undefined,

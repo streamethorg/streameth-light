@@ -4,14 +4,23 @@ import { listSpeakers } from "@/lib/people";
 import { listTopics } from "@/lib/topics";
 import { SITE_NAME } from "@/lib/social";
 import { absoluteUrl } from "@/lib/seo";
-import { eventFormatCounts, getSeasonEventByPath } from "@/lib/season";
+import { eventFormatCounts, getSeasonEvent, getSeasonEventByPath } from "@/lib/season";
+import { listRecentStories } from "@/lib/stories";
 
-// Built once at build time from the same static data as the site; the data
-// only changes with a deploy.
-export const dynamic = "force-static";
+// The archive data only changes with a deploy, but stories are published
+// while the site runs, so the file is rebuilt hourly (as the sitemap is).
+export const revalidate = 3600;
 
 const MAX_SPEAKERS = 300;
 const MAX_TOPICS = 150;
+const MAX_STORIES = 60;
+const STORY_KIND_LABEL: Record<string, string> = {
+  preview: "preview",
+  day: "day report",
+  recap: "recap",
+  thread: "topic thread",
+  lead: "story",
+};
 
 function mdLink(label: string, path: string): string {
   return `[${label.replace(/[[\]]/g, "")}](${absoluteUrl(path)})`;
@@ -41,12 +50,13 @@ function eventCountLabel(href: string, groupTalks: number): string {
  * AI assistants and answer engines — what's here, how it's organized, and
  * where to get clean text (per-talk markdown with transcripts, or the MCP
  * server) instead of scraping HTML. */
-export function GET() {
+export async function GET() {
   const stats = archiveStats();
   const events = listRecentEvents();
   const channels = listChannelSummaries();
   const speakers = listSpeakers().slice(0, MAX_SPEAKERS);
   const topics = listTopics().slice(0, MAX_TOPICS);
+  const stories = await listRecentStories(MAX_STORIES).catch(() => []);
 
   const lines = [
     `# ${SITE_NAME}`,
@@ -63,7 +73,20 @@ export function GET() {
     `- ${mdLink("Events", "/events")}: conferences and meetups, newest first`,
     `- ${mdLink("Speakers", "/speakers")}: everyone with a recorded talk`,
     `- ${mdLink("Topics", "/topics")}: talks grouped by subject`,
+    `- ${mdLink("Stories", "/stories")}: previews, day reports and recaps of each event, written from the talk transcripts with every claim linked to its talk`,
     "",
+    ...(stories.length > 0
+      ? [
+          "## Stories",
+          "",
+          ...stories.map((story) => {
+            const event = getSeasonEvent(story.eventKeys[0]?.replace(/:day-\d+$/, "") ?? "");
+            const date = story.writtenAt.slice(0, 10);
+            return `- ${mdLink(story.headline, `/stories/${story.slug}`)}: ${STORY_KIND_LABEL[story.kind] ?? "story"}${event ? `, ${event.name}` : ""}, ${date}`;
+          }),
+          "",
+        ]
+      : []),
     "## Events",
     "",
     ...events.map(

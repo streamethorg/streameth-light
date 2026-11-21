@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { lazy } from "./lazy";
 import type { BrowseFilters, DurationBucket } from "./browseParams";
 import type { VideoFormat } from "./videoFormat.mjs";
+import { boilerplateKeys, cleanDescription } from "./descriptionCore.mjs";
 
 export type { VideoFormat };
 export type LiveStatus = "is_live" | "is_upcoming" | "was_live";
@@ -95,6 +96,31 @@ const getDb = lazy(() => {
   const dbPath = join(process.cwd(), "data", "streameth.db");
   return new DatabaseSync(dbPath, { readOnly: true });
 });
+
+const boilerplateByChannel = new Map<string, Set<string>>();
+
+/** A channel's repeated YouTube description paragraphs (promo, links
+ * footer), computed once per channel per server instance (~25 ms for the
+ * biggest, ETHGlobal's 3,177 uploads). */
+function channelBoilerplate(orgSlug: string): Set<string> {
+  let keys = boilerplateByChannel.get(orgSlug);
+  if (!keys) {
+    const rows = getDb()
+      .prepare(`SELECT description FROM videos WHERE source = 'youtube' AND org_slug = ? AND description != ''`)
+      .all(orgSlug) as { description: string }[];
+    keys = boilerplateKeys(rows.map((r) => r.description));
+    boilerplateByChannel.set(orgSlug, keys);
+  }
+  return keys;
+}
+
+/** The description search snippets, VideoObject and the video sitemap use:
+ * for YouTube uploads, without the channel's boilerplate and raw links (see
+ * lib/descriptionCore.mjs). StreamETH session descriptions are as written. */
+export function seoDescription(video: { source: "streameth" | "youtube"; orgSlug: string; description: string }): string {
+  if (video.source !== "youtube" || !video.description) return video.description;
+  return cleanDescription(video.description, video.orgSlug ? channelBoilerplate(video.orgSlug) : undefined);
+}
 
 const DURATION_BOUNDS: Record<DurationBucket, [number, number]> = {
   short: [0, 4 * 60],

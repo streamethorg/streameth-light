@@ -19,7 +19,7 @@ import {
   listAllSessions,
   relatedSessions,
 } from "@/lib/data";
-import { getVideoById, relatedVideos } from "@/lib/videoDb";
+import { getVideoById, relatedVideos, seoDescription } from "@/lib/videoDb";
 import { getFullTranscript } from "@/lib/transcriptChunks";
 import { slugifyTopic } from "@/lib/topics";
 import { getSessionDurationSeconds } from "@/lib/browseParams";
@@ -30,6 +30,7 @@ import JsonLd from "@/components/JsonLd";
 import {
   breadcrumbJsonLd,
   videoJsonLd,
+  cleanVideoTitle,
   videoMetaDescription,
   videoPageTitle,
   videoThumbnail,
@@ -73,7 +74,7 @@ function toSeoInput(video: UnifiedVideo) {
   return {
     id: video.id,
     title: video.title,
-    description: video.description,
+    description: seoDescription(video),
     speakers: video.speakers,
     eventName: video.eventName,
     orgName: video.orgName,
@@ -96,7 +97,7 @@ function watchJsonLd(video: UnifiedVideo, transcript: string | null, event?: Eve
   const crumbs = [{ name: "Home", path: "/" }];
   if (orgPath && orgName) crumbs.push({ name: orgName, path: orgPath });
   if (event && eventPath) crumbs.push({ name: event.name, path: eventPath });
-  crumbs.push({ name: video.title, path: `/watch/${video.id}` });
+  crumbs.push({ name: cleanVideoTitle(video.title), path: `/watch/${video.id}` });
 
   return [
     videoJsonLd({

@@ -29,6 +29,7 @@ import { listChannelSummaries } from "@/lib/videoDb";
 import { buildMetadata } from "@/lib/social";
 import { organizationJsonLd, truncate } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import { channelIsEmpty } from "@/lib/channelContent";
 
 export function generateStaticParams() {
   return getDirectory().map((entry) => ({ org: entry.slug }));
@@ -51,21 +52,29 @@ function channelSummaryLine(slug: string, name: string): string {
 export async function generateMetadata({ params }: { params: Promise<{ org: string }> }): Promise<Metadata> {
   const { org: orgSlug } = await params;
   const org = getOrganization(orgSlug);
+  // An empty channel page stays reachable but out of the index.
+  const robots = channelIsEmpty(orgSlug) ? { robots: { index: false, follow: true } } : {};
   if (org) {
-    return buildMetadata({
+    return {
+      ...buildMetadata({
       title: `${org.name} talks & recordings — StreamETH`,
       description: truncate(`${channelSummaryLine(org.slug, org.name)} ${org.description ?? ""}`, 200),
-      image: org.banner ?? org.logo,
-      path: `/${org.slug}`,
-    });
+        image: org.banner ?? org.logo,
+        path: `/${org.slug}`,
+      }),
+      ...robots,
+    };
   }
   const entry = getDirectoryEntry(orgSlug);
   if (!entry) return {};
-  return buildMetadata({
-    title: `${entry.name} talks & recordings — StreamETH`,
-    description: truncate(`${channelSummaryLine(entry.slug, entry.name)} Every edition, with live coverage and reporting.`, 200),
-    path: `/${entry.slug}`,
-  });
+  return {
+    ...buildMetadata({
+      title: `${entry.name} talks & recordings — StreamETH`,
+      description: truncate(`${channelSummaryLine(entry.slug, entry.name)} Every edition, with live coverage and reporting.`, 200),
+      path: `/${entry.slug}`,
+    }),
+    ...robots,
+  };
 }
 
 const MIN_EDITION_VIDEOS = 3;
