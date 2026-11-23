@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { getOrgForEvent, listAllEvents } from "@/lib/data";
 import { buildMetadata } from "@/lib/social";
@@ -12,6 +12,7 @@ import {
   getSeasonEventByPath,
   requestTime,
 } from "@/lib/season";
+import { getInferredEventGroup } from "@/lib/youtube";
 
 export function generateStaticParams() {
   return listAllEvents()
@@ -71,7 +72,15 @@ export default async function EventPage({
 }) {
   const { org: orgSlug, event: eventSlug } = await params;
   const event = getSeasonEventByPath(orgSlug, eventSlug);
-  if (!event) notFound();
+  if (!event) {
+    // A YouTube year group without a coverage page lives at /<org>/y/<slug>;
+    // its bare /<org>/<slug> form (e.g. /devconnect/devconnect-2026) gets
+    // search impressions, so send it there instead of a 404.
+    if (getInferredEventGroup(orgSlug, eventSlug)) {
+      permanentRedirect(`/${orgSlug}/y/${encodeURIComponent(eventSlug)}`);
+    }
+    notFound();
+  }
   const query = await searchParams;
   const path = event.href ?? `/${orgSlug}/${eventSlug}`;
 
