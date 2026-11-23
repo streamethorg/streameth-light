@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listOrganizations } from "@/lib/data";
 import { getDirectory } from "@/lib/directory";
+import { channelIsEmpty } from "@/lib/channelContent";
 import { getOrphanSessionsForOrg, groupSessionsByInferredEvent } from "@/lib/orphanSessions";
 import { getYoutubeVideosForChannel, groupVideosByInferredEvent } from "@/lib/youtube";
 import { listSpeakers } from "@/lib/people";
@@ -27,6 +28,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   for (const entry of getDirectory()) {
+    // Empty channel pages are noindexed; keep them out until they fill.
+    if (channelIsEmpty(entry.slug)) continue;
     add(`/${entry.slug}`, { changeFrequency: "weekly", priority: 0.7 });
     // Upload groups without a coverage page keep their old page; the rest
     // redirect to the coverage page listed below.

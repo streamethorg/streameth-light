@@ -25,6 +25,15 @@ function slugify(name: string): string {
   );
 }
 
+// Bios the CMS fills in when a speaker has none ("No description" on 445
+// speakers); they read as junk in search snippets and on the page.
+const PLACEHOLDER_BIOS = new Set(["no description", "-", "tbd", "tba", "n/a", "na", "none", "."]);
+
+function realBio(bio: string | undefined): string | undefined {
+  const clean = bio?.trim();
+  return clean && !PLACEHOLDER_BIOS.has(clean.toLowerCase()) ? clean : undefined;
+}
+
 const getSpeakerIndex = lazy(() => {
   const { sessions } = getStore();
   const byName = new Map<string, Speaker>();
@@ -39,7 +48,7 @@ const getSpeakerIndex = lazy(() => {
         speaker = {
           name,
           slug: "",
-          bio: sp.bio || undefined,
+          bio: realBio(sp.bio),
           company: sp.company || undefined,
           twitter: sp.twitter || undefined,
           photo: sp.photo || undefined,
@@ -47,7 +56,7 @@ const getSpeakerIndex = lazy(() => {
         };
         byName.set(key, speaker);
       } else {
-        speaker.bio = speaker.bio || sp.bio || undefined;
+        speaker.bio = speaker.bio || realBio(sp.bio);
         speaker.company = speaker.company || sp.company || undefined;
         speaker.twitter = speaker.twitter || sp.twitter || undefined;
         speaker.photo = speaker.photo || sp.photo || undefined;

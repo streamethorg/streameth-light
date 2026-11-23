@@ -5,13 +5,36 @@ import Avatar from "@/components/Avatar";
 import PageHero, { HeroLink } from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
-import { getEventById, getOrgForEvent } from "@/lib/data";
+import { getEventById, getOrgForSession } from "@/lib/data";
 import { buildMetadata } from "@/lib/social";
-import { joinNames, speakerJsonLd, truncate } from "@/lib/seo";
+import { cleanVideoTitle, joinNames, speakerJsonLd, truncate } from "@/lib/seo";
+import type { Session } from "@/lib/types";
 import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return listSpeakers().map((sp) => ({ speaker: sp.slug }));
+}
+
+const TITLE_MAX = 70;
+
+/** One talk: "Name: <talk> — <venue>", since the talk says more than "1 talk"
+ * (/speakers/alina-chan: 106 impressions, 0 clicks). More: "Name: N talks at
+ * <venues>". Drops the venue, then truncates, to stay near 70 characters. */
+function speakerPageTitle(name: string, sessions: Session[], venues: string[]): string {
+  if (sessions.length === 1) {
+    const talk = cleanVideoTitle(sessions[0].name ?? "").trim();
+    if (talk && talk.toLowerCase() !== name.toLowerCase()) {
+      const withVenue = venues[0] ? `${name}: ${talk} — ${venues[0]}` : "";
+      if (withVenue && withVenue.length <= TITLE_MAX) return withVenue;
+      return truncate(`${name}: ${talk}`, TITLE_MAX);
+    }
+  }
+  const talks = sessions.length === 1 ? "talk" : "talks";
+  if (venues.length > 0) {
+    const t = `${name}: ${sessions.length} ${talks} at ${joinNames(venues, 2)}`;
+    if (t.length <= TITLE_MAX) return t;
+  }
+  return `${name}: ${sessions.length} Ethereum conference ${talks} — StreamETH`;
 }
 
 export async function generateMetadata({
@@ -23,19 +46,25 @@ export async function generateMetadata({
   const speaker = getSpeakerBySlug(slug);
   if (!speaker) return {};
   // The bio alone (e.g. /speakers/vlad-zamfir: 193 impressions, 0 clicks)
-  // doesn't say there are talks to watch here; lead with the count and where.
-  const count = speaker.sessionIds.length;
+  // doesn't say there are talks to watch here; lead with the talks and where.
+  // Sessions whose event record is gone still name their organizer (Vlad
+  // Zamfir's and Alina Chan's Devcon 7 talks), instead of "Ethereum conferences".
+  const sessions = getSpeakerSessions(speaker);
+  const count = sessions.length;
   const talks = count === 1 ? "talk" : "talks";
-  const events = [
+  const venues = [
     ...new Set(
-      getSpeakerSessions(speaker)
-        .map((s) => getEventById(s.eventId)?.name)
+      sessions
+        .map((s) => {
+          const event = getEventById(s.eventId);
+          return event?.name ?? getOrgForSession(s, event)?.name;
+        })
         .filter((name): name is string => Boolean(name))
     ),
   ];
-  const at = events.length > 0 ? ` at ${joinNames(events, 3)}` : " at Ethereum conferences";
+  const at = venues.length > 0 ? ` at ${joinNames(venues, 3)}` : " at Ethereum conferences";
   return buildMetadata({
-    title: `${speaker.name}: ${count} Ethereum conference ${talks} — StreamETH`,
+    title: speakerPageTitle(speaker.name, sessions, venues),
     description: truncate(
       `Watch ${count} ${talks} by ${speaker.name}${speaker.company ? ` (${speaker.company})` : ""}${at}.${speaker.bio ? ` ${speaker.bio}` : ""}`,
       200
@@ -97,7 +126,7 @@ export default async function SpeakerPage({
         <div className="grid grid-cols-1 gap-x-4 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {sessions.map((s) => {
             const event = getEventById(s.eventId);
-            return <VideoCard key={s._id} session={s} event={event} org={getOrgForEvent(event)} />;
+            return <VideoCard key={s._id} session={s} event={event} org={getOrgForSession(s, event)} />;
           })}
         </div>
       </div>
