@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-23",
-  "seriesCount": 238,
-  "eventCount": 1787,
+  "seriesCount": 249,
+  "eventCount": 1788,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1269,6 +1269,61 @@
       "id": "recs43Dc2yswwXn6r",
       "title": "DAS & PE4KS Events",
       "slug": "DAS&PE4KSEvents2027"
+    },
+    {
+      "id": "recMDSLeSygHrb5SA",
+      "title": "NVIDIA GTC DC",
+      "slug": "NVIDIAGTCDC2026"
+    },
+    {
+      "id": "recwq84TuGfasYl7L",
+      "title": "BlockDown Events",
+      "slug": "BlockDownEvents2027"
+    },
+    {
+      "id": "rechhAWML8nabNetc",
+      "title": "ETHDenver Events",
+      "slug": "ETHDenverEvents2027"
+    },
+    {
+      "id": "recTOZu8qxBKZIzmy",
+      "title": "RWC Events",
+      "slug": "RWCEvents2027"
+    },
+    {
+      "id": "recIKsmrcYxYFsfrq",
+      "title": "Web3 Festival Events",
+      "slug": "Web3FestivalEvents2027"
+    },
+    {
+      "id": "recw0HkW3tklCDG01",
+      "title": "ETHCluj Events",
+      "slug": "ETHClujEvents2027"
+    },
+    {
+      "id": "recipmC6jS9MnoMDG",
+      "title": "ETHPrague Events",
+      "slug": "ETHPragueEvents2027"
+    },
+    {
+      "id": "rec2b86DU6UgGmC7H",
+      "title": "SuperReturn Berlin",
+      "slug": "SuperReturnBerlin2027"
+    },
+    {
+      "id": "rec5cKOI6f527fq4D",
+      "title": "Sibos SG Events",
+      "slug": "SibosSGEvents2027"
+    },
+    {
+      "id": "recsDHRa811p1MGsR",
+      "title": "Dubai Oct Events",
+      "slug": "DubaiOctEvents2027"
+    },
+    {
+      "id": "recAQ7riAoRLtVsC2",
+      "title": "Money20/20 AU",
+      "slug": "Money2020AU2028"
     }
   ],
   "events": [
@@ -33637,7 +33692,7 @@
         "DeFi",
         "Institutional"
       ],
-      "website": "https://btc-jpn.com/",
+      "website": "https://btc-jpn.com/en",
       "imageUrl": null,
       "seriesSlug": "",
       "seriesName": ""
@@ -33812,7 +33867,7 @@
     {
       "id": "recvDWBUDJ8jfzVAI",
       "kind": "main",
-      "name": "NVIDIA GTC",
+      "name": "NVIDIA GTC DC",
       "description": "Join government leaders, policymakers, scientists, and industry partners at NVIDIA GTC Washington, D.C. to learn how AI is accelerating American economic growth, reindustrialization, and scientific discovery. The conference will feature CEO Jensen Huang’s keynote, expert sessions, live demos, and hands-on workshops covering everything from open models and AI factories to physical AI, high-performance computing, and the future of U.S. scientific advancement.",
       "startTime": "2026-11-30",
       "endTime": "2026-12-03",
@@ -33829,8 +33884,8 @@
       ],
       "website": "https://www.nvidia.com/gtc/dc/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "NVIDIAGTCDC2026",
+      "seriesName": "NVIDIA GTC DC"
     },
     {
       "id": "recFTK0IW25oINfIt",
@@ -34881,8 +34936,8 @@
       ],
       "website": "https://blockdownfestival.com/",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/BlockDownFestivalDubai_2026-09-22T14-04.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BlockDownEvents2027",
+      "seriesName": "BlockDown Events"
     },
     {
       "id": "recb3eq3S9gkYRxdo",
@@ -34929,8 +34984,8 @@
       ],
       "website": "https://capitalmena.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BlockDownEvents2027",
+      "seriesName": "BlockDown Events"
     },
     {
       "id": "reccMRbXftSM680l7",
@@ -35142,8 +35197,8 @@
       ],
       "website": "https://www.aima.org/events/aima-middle-east-forum-2027.html",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BlockDownEvents2027",
+      "seriesName": "BlockDown Events"
     },
     {
       "id": "recAWkodOyYnepfbD",
@@ -35166,8 +35221,8 @@
       ],
       "website": "https://daweek.org/dubai/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "BlockDownEvents2027",
+      "seriesName": "BlockDown Events"
     },
     {
       "id": "recWh9QAVEqZu9YGB",
@@ -35494,8 +35549,8 @@
       ],
       "website": "https://daweek.org/hong-kong/",
       "imageUrl": null,
-      "seriesSlug": "ArtBaselHKEvents2027",
-      "seriesName": "Art Basel HK Events"
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "rec2S776O0W17dWLw",
@@ -35898,7 +35953,7 @@
         "TradFi"
       ],
       "website": "https://www.pe4ks.com/",
-      "imageUrl": null,
+      "imageUrl": "https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fpe4ks-web-monorepo.vercel.app%2Fopengraph-image-1c1a04%3Ff25fcfc935d17934",
       "seriesSlug": "DAS&PE4KSEvents2027",
       "seriesName": "DAS & PE4KS Events"
     },
@@ -35920,8 +35975,8 @@
       "topics": [],
       "website": "https://ethdenver.com/",
       "imageUrl": null,
-      "seriesSlug": "ETHDenverSideEvents2027",
-      "seriesName": "ETHDenver Side Events"
+      "seriesSlug": "ETHDenverEvents2027",
+      "seriesName": "ETHDenver Events"
     },
     {
       "id": "recI42eh9m0FAc3dK",
@@ -36126,8 +36181,8 @@
       ],
       "website": "https://fhe.org/conferences/conference-2027/",
       "imageUrl": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/FHEorgConference2027_2026-09-25T15-06.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "RWCEvents2027",
+      "seriesName": "RWC Events"
     },
     {
       "id": "recF3dlMfyGuI4r1O",
@@ -36149,8 +36204,8 @@
       ],
       "website": "https://rwc.iacr.org/2027/",
       "imageUrl": null,
-      "seriesSlug": "RWC2027",
-      "seriesName": "RWC"
+      "seriesSlug": "RWCEvents2027",
+      "seriesName": "RWC Events"
     },
     {
       "id": "rec5vOh6OOl6DgfXC",
@@ -36601,8 +36656,8 @@
       "topics": [],
       "website": "https://luma.com/hkweb3festival_2027",
       "imageUrl": null,
-      "seriesSlug": "Web3FestivalSideEvents2027",
-      "seriesName": "Web3 Festival Side Events"
+      "seriesSlug": "Web3FestivalEvents2027",
+      "seriesName": "Web3 Festival Events"
     },
     {
       "id": "recp2uwHhSgMG2RTS",
@@ -37078,8 +37133,8 @@
       ],
       "website": "https://www.ethcluj.org/",
       "imageUrl": null,
-      "seriesSlug": "ETHClujSideEvents2027",
-      "seriesName": "ETHCluj Side Events"
+      "seriesSlug": "ETHClujEvents2027",
+      "seriesName": "ETHCluj Events"
     },
     {
       "id": "rec4CVmUNhIQWBhRS",
@@ -37415,8 +37470,8 @@
       ],
       "website": "https://fintechweekcee.com/",
       "imageUrl": "https://fintechweekcee.com/images/ftw-og-card.png?v=2027",
-      "seriesSlug": "ETHPragueSideEvents2027",
-      "seriesName": "ETHPrague Side Events"
+      "seriesSlug": "ETHPragueEvents2027",
+      "seriesName": "ETHPrague Events"
     },
     {
       "id": "recAmGVX5P7wwW3Lh",
@@ -37558,8 +37613,8 @@
       ],
       "website": "https://ethprague.com/",
       "imageUrl": null,
-      "seriesSlug": "ETHPragueSideEvents2027",
-      "seriesName": "ETHPrague Side Events"
+      "seriesSlug": "ETHPragueEvents2027",
+      "seriesName": "ETHPrague Events"
     },
     {
       "id": "recAZrdm9GDRs2VQg",
@@ -37725,8 +37780,8 @@
       ],
       "website": "https://informaconnect.com/superreturn-international/",
       "imageUrl": null,
-      "seriesSlug": "SuperReturnEvents2027",
-      "seriesName": "SuperReturn Events"
+      "seriesSlug": "SuperReturnBerlin2027",
+      "seriesName": "SuperReturn Berlin"
     },
     {
       "id": "recHLgTExoqaOanIt",
@@ -38129,6 +38184,31 @@
       "imageUrl": "https://swissfintechweek.com/og-default.png",
       "seriesSlug": "SwissFintechWeek2027",
       "seriesName": "Swiss Fintech Week"
+    },
+    {
+      "id": "recz4MaahIZ9VCjG4",
+      "kind": "main",
+      "name": "TokenizeThis",
+      "description": "The Flagship Institutional RWA Conference",
+      "startTime": "2027-06-28",
+      "endTime": "2027-06-30",
+      "location": "New York City, USA 🇺🇸",
+      "city": "New York City",
+      "country": "USA 🇺🇸",
+      "organizer": "TokenizeThis",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "RWA",
+        "Institutional",
+        "TradFi"
+      ],
+      "website": "https://tokenizethis.redstone.finance/",
+      "imageUrl": null,
+      "seriesSlug": "",
+      "seriesName": ""
     },
     {
       "id": "reckNvbCzcVjcHWmY",
@@ -38914,8 +38994,8 @@
       ],
       "website": "https://www.sibos.com/about/future-sibos",
       "imageUrl": null,
-      "seriesSlug": "SibosSingaporeEvents2027",
-      "seriesName": "Sibos Singapore Events"
+      "seriesSlug": "SibosSGEvents2027",
+      "seriesName": "Sibos SG Events"
     },
     {
       "id": "recBoEnscWZ1SZ2f9",
@@ -39154,8 +39234,8 @@
       ],
       "website": "https://theforexexpo.com/dubai",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DubaiOctEvents2027",
+      "seriesName": "Dubai Oct Events"
     },
     {
       "id": "recS5THW2C7u7Y1aP",
@@ -39201,8 +39281,8 @@
       ],
       "website": "https://informaconnect.com/superreturn-me/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DubaiOctEvents2027",
+      "seriesName": "Dubai Oct Events"
     },
     {
       "id": "recyD7tayibawGcFx",
@@ -39298,8 +39378,8 @@
       ],
       "website": "https://lu.ma/loawlhnc",
       "imageUrl": "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=1,anim=false,background=white,quality=75,width=800,height=420/event-social/ac/f40ec087-7261-46d3-a02a-18f41beb2105.png",
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "DubaiOctEvents2027",
+      "seriesName": "Dubai Oct Events"
     },
     {
       "id": "recgsSkqzYLbnzD8P",
@@ -39565,8 +39645,8 @@
       ],
       "website": "https://australia.money2020.com/",
       "imageUrl": null,
-      "seriesSlug": "Money2020Australia2028",
-      "seriesName": "Money20/20 Australia"
+      "seriesSlug": "Money2020AU2028",
+      "seriesName": "Money20/20 AU"
     }
   ]
 }
