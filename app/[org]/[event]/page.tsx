@@ -46,6 +46,8 @@ export async function generateMetadata({
   if (!event) return {};
   const path = event.href ?? `/${orgSlug}/${eventSlug}`;
   const where = `${formatEventDates(event)}${event.city ? ` in ${event.city}` : ""}`;
+  const status = statusOf(event);
+  const endedSummary = event.videoIds || status === "live" || status === "upcoming" ? undefined : watchSummary(eventFormatCounts(event));
   let meta: Metadata;
   if (event.videoIds) {
     // "Pragma (ETHGlobal) — 2026 — StreamETH" (13 impressions at position
@@ -63,11 +65,12 @@ export async function generateMetadata({
       image: eventCover(event) ?? undefined,
       path,
     });
-  } else if (statusOf(event) === "past") {
-    // Two weeks after it ends, nobody is looking for live coverage any more
-    // (TOKEN2049 Singapore 2026: 14 impressions at position 4.5, 0 clicks);
-    // say what the archive holds instead.
-    const summary = watchSummary(eventFormatCounts(event));
+  } else if (status === "past" || (status === "recent" && endedSummary)) {
+    // Once it's over, nobody is looking for live coverage any more
+    // (TOKEN2049 Singapore 2026: 14 impressions at position 4.5, 0 clicks;
+    // Stable Summit IV London, ended Nov 13: "stable summit london" 37
+    // impressions at position 3.6, 0 clicks); say what the archive holds.
+    const summary = endedSummary;
     meta = buildMetadata({
       title: summary ? `${event.name}: ${summary} — StreamETH` : `${event.name} talks & recordings — StreamETH`,
       description: truncate(
