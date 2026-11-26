@@ -1,8 +1,8 @@
 {
   "source": "miragather.com (formerly cryptonomads.org)",
   "importedAt": "2026-11-26",
-  "seriesCount": 249,
-  "eventCount": 1788,
+  "seriesCount": 250,
+  "eventCount": 1789,
   "series": [
     {
       "id": "recrKcQhdyNUjYxTJ",
@@ -1324,6 +1324,11 @@
       "id": "recAQ7riAoRLtVsC2",
       "title": "Money20/20 AU",
       "slug": "Money2020AU2028"
+    },
+    {
+      "id": "recsMKJSU97FRzYz7",
+      "title": "London Dec Events",
+      "slug": "LondonDecEvents2026"
     }
   ],
   "events": [
@@ -33757,7 +33762,7 @@
       "organizer": "Binance",
       "tags": [
         "Conference",
-        "Multichain"
+        "Other"
       ],
       "topics": [
         "AI",
@@ -33910,6 +33915,31 @@
       "seriesName": "DAF NYC Events"
     },
     {
+      "id": "reccCxCiZqf3LEg8P",
+      "kind": "main",
+      "name": "Daos Digital Assets Week",
+      "description": "Three days in Dubai among the people who move digital assets, on a guest list worth being on.",
+      "startTime": "2026-11-30",
+      "endTime": "2026-12-02",
+      "location": "Dubai, UAE 🇦🇪",
+      "city": "Dubai",
+      "country": "UAE 🇦🇪",
+      "organizer": "Daos Hub",
+      "tags": [
+        "Conference",
+        "Multichain"
+      ],
+      "topics": [
+        "Institutional",
+        "Stablecoins",
+        "RWA"
+      ],
+      "website": "https://daos.co/week/",
+      "imageUrl": null,
+      "seriesSlug": "BlockchainLifeWeek2026",
+      "seriesName": "Blockchain Life Week"
+    },
+    {
       "id": "reccaQMV5jICfJBHN",
       "kind": "main",
       "name": "Blockchain Life",
@@ -34000,8 +34030,8 @@
       ],
       "website": "https://banking.live.ft.com/",
       "imageUrl": null,
-      "seriesSlug": "",
-      "seriesName": ""
+      "seriesSlug": "LondonDecEvents2026",
+      "seriesName": "London Dec Events"
     },
     {
       "id": "recAebWcEdzIJubVg",
@@ -36837,7 +36867,8 @@
       "organizer": "ScytaleResearch",
       "tags": [
         "Conference",
-        "Other"
+        "Other",
+        "Bitcoin"
       ],
       "topics": [
         "TradFi",
@@ -37005,7 +37036,7 @@
       "organizer": null,
       "tags": [
         "Conference",
-        "Multichain"
+        "Other"
       ],
       "topics": [
         "Institutional",
