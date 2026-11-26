@@ -4,7 +4,11 @@ import { absoluteUrl } from "@/lib/seo";
 import { sitemapPaths } from "@/lib/sitemaps";
 
 // Signed-in and utility pages: nothing there for a search engine.
-const PRIVATE_PATHS = ["/api/", "/saved", "/settings", "/signin", "/connect", "/oauth/", "/auth/", "/offline"];
+// /saved, /settings and /signin are deliberately not blocked: they carry
+// `noindex`, and Google only drops a page (here: from the "streameth"
+// sitelinks) once it may crawl it and see that tag. A robots.txt block
+// would hide the noindex and keep the URL indexed.
+const PRIVATE_PATHS = ["/api/", "/connect", "/oauth/", "/auth/", "/offline"];
 
 // AI search and answer engines, named explicitly so the archive can be cited
 // in AI answers even if a host or CDN default ever starts blocking them.

@@ -103,7 +103,7 @@ export function videoMetaDescription(video: VideoSeoInput, max = 160): string {
   const context = videoContext(video);
   if (!description) {
     const topics = video.topics.length > 0 ? ` Topics: ${video.topics.slice(0, 4).join(", ")}.` : "";
-    return truncate(`${video.title} — ${context}${topics}`, max);
+    return truncate(`${cleanVideoTitle(video.title)} — ${context}${topics}`, max);
   }
   return truncate(`${context} ${description}`, max);
 }
@@ -119,16 +119,30 @@ export function videoLongDescription(video: VideoSeoInput, max = 2000, transcrip
   return truncate(`${videoContext(video)}${description ? ` ${description}` : ""}${topics}`, max);
 }
 
+// A run of hashtags at the end of a YouTube title ("… #tech #web3 #shorts").
+const TRAILING_HASHTAGS_RE = /(?:\s+#[\p{L}][\p{L}\p{N}_]*)+\s*$/u;
+// "#privacy" inside a title; "C#" and "Call #102" are left alone.
+const INLINE_HASHTAG_RE = /(^|\s)#(?=\p{L})/gu;
+
+/** The title as a search result should show it: YouTube hashtags dropped
+ * from the end and the "#" taken off inline ones. Falls back to the raw
+ * title if nothing would be left. */
+export function cleanVideoTitle(title: string): string {
+  const clean = title.replace(TRAILING_HASHTAGS_RE, "").replace(INLINE_HASHTAG_RE, "$1").replace(/\s+/g, " ").trim();
+  return clean || title;
+}
+
 /** "Title — Speaker at Event". Skips whatever the title already says (YouTube
  * titles often embed the speaker or event already). */
 export function videoPageTitle(video: VideoSeoInput): string {
-  const lower = video.title.toLowerCase();
+  const title = cleanVideoTitle(video.title);
+  const lower = title.toLowerCase();
   const speakers = video.speakers.filter((name) => !lower.includes(name.toLowerCase()));
   const venue = video.eventName || video.orgName || "";
   const venuePart = venue && !lower.includes(venue.toLowerCase()) ? venue : "";
   const speakerPart = speakers.length > 0 ? joinNames(speakers, 2) : "";
   const suffix = [speakerPart, venuePart].filter(Boolean).join(" at ");
-  return suffix ? `${video.title} — ${suffix}` : `${video.title} — ${SITE_NAME}`;
+  return suffix ? `${title} — ${suffix}` : `${title} — ${SITE_NAME}`;
 }
 
 type JsonLdValue = string | number | boolean | null | undefined | JsonLd | JsonLdValue[];
@@ -173,7 +187,7 @@ export function videoJsonLd(video: VideoJsonLdInput): JsonLd {
     "@type": "VideoObject",
     "@id": `${url}#video`,
     url,
-    name: video.title,
+    name: cleanVideoTitle(video.title),
     description: videoLongDescription(video, 2000, video.transcript),
     thumbnailUrl: [videoThumbnail(video)],
     uploadDate:
