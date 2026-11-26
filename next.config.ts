@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import reuploadRedirects from "./data/youtube-reupload-redirects.json";
 
 const nextConfig: NextConfig = {
   // lib/data.ts reads data files by name, so file tracing bundles all of
@@ -28,6 +29,14 @@ const nextConfig: NextConfig = {
       { source: "/blog", destination: "/stories", permanent: true },
       { source: "/blog/:slug*", destination: "/stories", permanent: true },
       { source: "/data-request", destination: "/", permanent: true },
+      // Talks the uploader replaced with a re-upload under a new YouTube ID
+      // (Devcon 8: the EF re-uploaded ~114 sessions in Nov 2026). Old
+      // /watch/yt-<old> links were already shared, so send them to the
+      // official upload. Map: old ID -> new ID.
+      ...Object.entries(reuploadRedirects as Record<string, string>).flatMap(([from, to]) => [
+        { source: `/watch/yt-${from}`, destination: `/watch/yt-${to}`, permanent: true },
+        { source: `/watch/yt-${from}.md`, destination: `/watch/yt-${to}.md`, permanent: true },
+      ]),
     ];
   },
   async rewrites() {
