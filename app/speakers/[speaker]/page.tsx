@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import VideoCard from "@/components/VideoCard";
 import Avatar from "@/components/Avatar";
 import PageHero, { HeroLink } from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
-import { listSpeakers, getSpeakerBySlug, getSpeakerSessions } from "@/lib/people";
+import { listSpeakers, getSpeakerBySlug, getSpeakerSessions, mergedSpeakerSlug } from "@/lib/people";
 import { getEventById, getOrgForSession } from "@/lib/data";
 import { buildMetadata } from "@/lib/social";
 import { cleanVideoTitle, joinNames, speakerJsonLd, truncate } from "@/lib/seo";
@@ -82,7 +82,11 @@ export default async function SpeakerPage({
 }) {
   const { speaker: slug } = await params;
   const speaker = getSpeakerBySlug(slug);
-  if (!speaker) notFound();
+  if (!speaker) {
+    const merged = mergedSpeakerSlug(slug);
+    if (merged) permanentRedirect(`/speakers/${merged}`);
+    notFound();
+  }
 
   const sessions = getSpeakerSessions(speaker);
   const twitterHandle = speaker.twitter?.trim().replace(/^@/, "");

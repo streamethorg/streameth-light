@@ -83,7 +83,8 @@ export function usableDescription(text: string | null | undefined): string | und
  * facts we always have, so a video with an empty or junk description still
  * gets a real, specific description instead of a duplicate generic one. */
 function videoContext(video: VideoSeoInput): string {
-  const speakers = video.speakers.length > 0 ? ` by ${joinNames(video.speakers)}` : "";
+  const named = videoSpeakers(video);
+  const speakers = named.length > 0 ? ` by ${joinNames(named)}` : "";
   const where = video.eventName
     ? ` at ${video.eventName}${video.orgName && video.orgName !== video.eventName ? ` (${video.orgName})` : ""}`
     : video.orgName
@@ -124,20 +125,44 @@ const TRAILING_HASHTAGS_RE = /(?:\s+#[\p{L}][\p{L}\p{N}_]*)+\s*$/u;
 // "#privacy" inside a title; "C#" and "Call #102" are left alone.
 const INLINE_HASHTAG_RE = /(^|\s)#(?=\p{L})/gu;
 
+// Swarm's sessions are named "Talk || Speaker" and carry no speaker list
+// (57 talks; "platbox": 85 impressions at position 8.6, 0 clicks, on a page
+// titled "PlatBox … || Henry Bergström — Swarm").
+const TITLE_SPEAKER_RE = /\s*\|\|\s*([^|]+?)\s*$/;
+
 /** The title as a search result should show it: YouTube hashtags dropped
  * from the end and the "#" taken off inline ones. Falls back to the raw
  * title if nothing would be left. */
 export function cleanVideoTitle(title: string): string {
-  const clean = title.replace(TRAILING_HASHTAGS_RE, "").replace(INLINE_HASHTAG_RE, "$1").replace(/\s+/g, " ").trim();
+  const clean = title
+    .replace(TRAILING_HASHTAGS_RE, "")
+    .replace(INLINE_HASHTAG_RE, "$1")
+    .replace(TITLE_SPEAKER_RE, " — $1")
+    .replace(/\s+/g, " ")
+    .trim();
   return clean || title;
+}
+
+/** The title without a trailing "|| Speaker", and that speaker. */
+function splitTitleSpeaker(title: string): { title: string; speaker?: string } {
+  const match = TITLE_SPEAKER_RE.exec(title);
+  if (!match || match.index === 0) return { title };
+  return { title: title.slice(0, match.index), speaker: match[1] };
+}
+
+/** The talk's speakers, or the one its "Talk || Speaker" title names. */
+function videoSpeakers(video: VideoSeoInput): string[] {
+  if (video.speakers.length > 0) return video.speakers;
+  const { speaker } = splitTitleSpeaker(video.title);
+  return speaker ? [speaker] : [];
 }
 
 /** "Title — Speaker at Event". Skips whatever the title already says (YouTube
  * titles often embed the speaker or event already). */
 export function videoPageTitle(video: VideoSeoInput): string {
-  const title = cleanVideoTitle(video.title);
+  const title = cleanVideoTitle(splitTitleSpeaker(video.title).title);
   const lower = title.toLowerCase();
-  const speakers = video.speakers.filter((name) => !lower.includes(name.toLowerCase()));
+  const speakers = videoSpeakers(video).filter((name) => !lower.includes(name.toLowerCase()));
   const venue = video.eventName || video.orgName || "";
   const venuePart = venue && !lower.includes(venue.toLowerCase()) ? venue : "";
   const speakerPart = speakers.length > 0 ? joinNames(speakers, 2) : "";
